@@ -1,0 +1,2 @@
+class WorkersCompensationCertificateUploader < SellerDocumentUploader
+end

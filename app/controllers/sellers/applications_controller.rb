@@ -1,0 +1,56 @@
+class Sellers::ApplicationsController < Sellers::BaseController
+  before_action :authenticate_user!
+
+  def new
+    if existing_application.present?
+      redirect_to sellers_application_path(existing_application)
+    else
+      seller = Seller.create!(owner: current_user)
+      application = seller.applications.create!(owner: current_user)
+
+      redirect_to sellers_application_path(application)
+    end
+  end
+
+  def show
+    if params[:step].present?
+      form.prepopulate!
+    else
+      redirect_to presenter.first_step_path
+    end
+  end
+
+  def update
+    if params.key?(:application)
+      if form.validate(params[:application])
+        form.save
+        redirect_to presenter.next_step_path
+      else
+        render action: :show
+      end
+    else
+      redirect_to presenter.next_step_path
+    end
+  end
+
+private
+  def application
+    @application ||= current_user.seller_applications.find(params[:id])
+  end
+  helper_method :application
+
+  def presenter
+    @presenter ||= SellerApplicationPresenter.new(application,
+                                                  current_step_key: params[:step])
+  end
+  helper_method :presenter
+
+  def form
+    presenter.current_step_form
+  end
+
+  def existing_application
+    @existing_application ||= current_user.seller_applications.first
+  end
+
+end

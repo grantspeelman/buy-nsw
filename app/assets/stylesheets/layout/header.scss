@@ -1,0 +1,50 @@
+header[role=global] {
+  background: #fff;
+  border-bottom: 8px solid $dark-blue;
+  height: 110px;
+
+  h1 {
+    @extend .col-md-8;
+    font-size: 21px;
+    padding-top: 20px;
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+    }
+    span.logo {
+      background: asset-url('nsw-logo.svg') no-repeat;
+      background-size: 3.5rem;
+      text-indent: -9999px;
+      border-right: 1px solid $dark-blue;
+
+      height: 4rem;
+      width: 4.25rem;
+    }
+    span.marketplace-title {
+      margin-top: 8px;
+      margin-left: .5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
+
+  aside {
+    @extend .col-md-4;
+    text-align: right;
+    margin-top: 37px;
+
+    ul {
+      padding-left: 0;
+    }
+    li {
+      display: inline-block;
+      list-style: none;
+      padding-left: 1em;
+    }
+  }
+
+}

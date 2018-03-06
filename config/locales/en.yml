@@ -1,33 +1,157 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activemodel:
+    attributes:
+      'sellers/applications/business_details_form':
+        name: 'Business name'
+        abn: 'ABN'
+        summary: 'Summary'
+        website_url: 'Website URL'
+        linkedin_url: 'LinkedIn URL (optional)'
+      'sellers/applications/business_info_form':
+        number_of_employees: 'Number of employees'
+        start_up: 'Start-up'
+        sme: 'Small to medium-sized enterprise (SME)'
+        not_for_profit: 'Not for profit / social enterprise'
+        regional: 'Regional or non-metropolitan business'
+        travel: 'Happy to travel for regional or interstate opportunities'
+        disability: 'Australian disability enterprise'
+        female_owned: 'Female owned'
+        indigenous: 'Indigenous'
+        no_experience: "No, we're looking forward to working with government for the first time"
+        local_government_experience: 'Yes, with local government'
+        state_government_experience: 'Yes, with state or territory government'
+        federal_government_experience: 'Yes, with federal government'
+        international_government_experience: 'Yes, with government outside Australia'
+      'sellers/applications/contacts_form':
+        contact_name: Name
+        contact_email: Email address
+        contact_phone: Phone
+        representative_name: Name
+        representative_email: Email address
+        representative_phone: Phone
+      'sellers/applications/disclosures_form':
+        structural_changes:
+          'false': 'No'
+          'true': 'Yes'
+        investigations:
+          'false': 'No'
+          'true': 'Yes'
+        legal_proceedings:
+          'false': 'No'
+          'true': 'Yes'
+        insurance_claims:
+          'false': 'No'
+          'true': 'Yes'
+        conflicts_of_interest:
+          'false': 'No'
+          'true': 'Yes'
+        other_circumstances:
+          'false': 'No'
+          'true': 'Yes'
+        structural_changes_details: 'Please provide details'
+        investigations_details: 'Please provide details'
+        legal_proceedings_details: 'Please provide details'
+        insurance_claims_details: 'Please provide details'
+        conflicts_of_interest_details: 'Please provide details'
+        other_circumstances_details: 'Please provide details'
+      'sellers/applications/documents_form':
+        financial_statement: 'Financial statement'
+        professional_indemnity_certificate: 'Professional Indemnity and Public Liability Insurance'
+        workers_compensation_certificate: 'Workers Compensation Insurance'
+      'sellers/applications/methods_form':
+        tools: "Tools"
+        methodologies: "Methodologies"
+        technologies: "Technologies (optional)"
+  activerecord:
+    help:
+      'sellers/applications/business_details_form':
+        name: The business name you use on the Marketplace must be listed under your ABN. You can omit suffixes such as PTY or LTD.
+        abn_html: 'You need an Australian Business Number to do business in Australia. <a href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/">Apply for an ABN here</a>.'
+        summary: 3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
+        website_url: Provide a link to your website beginning with http
+        linkedin_url: Provide a LinkedIn URL beginning with http
+      'sellers/applications/business_info_form':
+        start_up: Your business aims to disrupt an established market using technology. It is not listed on any stock exchange and is less than 5 years old.
+        sme: You have less than 200 employees and are independent of any parent organisation for taxation purposes.
+        not_for_profit: An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
+        disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
+        female_owned: Your business has at least 50% female ownership.
+        indigenous_html: 'Your business is at least 50% Indigenous owned and listed on <a href="https://www.supplynation.org.au/search">Supply Nation</a>.'
+      'sellers/applications/methods_form':
+        tools: What delivery management software, tools or other artefacts do you use day-to-day?
+        methodologies: What methodologies form the core of your practice?
+        technologies: What technologies or programming languages do you use?
+      'sellers/applications/documents_form':
+        financial_statement: 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.'
+        professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
+        workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
+  devise:
+    failure:
+      unauthenticated: "Please sign in or create an account to continue."
+  enumerize:
+    seller:
+      number_of_employees:
+        sole: '1 employee'
+        2to19: '2 to 19 employees'
+        20to49: '20 to 49 employees'
+        50to99: '50 to 99 employees'
+        100to199: '100 to 199 employees'
+        200plus: 'More than 200 employees'
+      services:
+        advisory-consulting: Advisory and consulting
+        cloud-services: Cloud services
+        data-analytics: Data and analytics
+        emerging-technology: Emerging technology and innovation
+        end-user-computing: End user computing and peripherals
+        ict-workforce: ICT workforce
+        infrastructure: Infrastructure and networks
+        managed-services: Managed services
+        project-program-management: Project and program management
+        security-identity: Security and identity
+        software-development: Software design and development
+        software-licensing: Software licensing and maintenance
+        telecommunications: Telecommunications
+        training-learning: Training and learning
+  sellers:
+    applications:
+      steps:
+        business_details:
+          short: 'Business basics'
+          long: 'Tell us about your business'
+        business_info:
+          short: 'Business details'
+          long: 'More about your business'
+        contacts:
+          short: 'Contacts'
+          long: 'Contact details'
+        declaration:
+          short: 'Declaration'
+          long: 'Your declaration'
+        disclosures:
+          short: 'Disclosures'
+          long: 'Disclosures'
+        documents:
+          short: 'Documents'
+          long: 'Upload your documents'
+        introduction:
+          short: 'Introduction'
+          long: 'Joining the Digital Marketplace'
+        methods:
+          short: 'Methods'
+          long: 'Tools and methodologies'
+        recognition:
+          short: 'Recognition'
+          long: 'Awards and accreditations'
+        recruiter:
+          short: 'Recruiter'
+          long: 'Are you a recruiter?'
+        services:
+          short: 'Services'
+          long: 'What services will you offer?'
+      disclosures:
+        structural_changes: 'Are you planning to sell, merge, or alter the corporate structure of your company?'
+        investigations: "Has your organisation — or any of its directors or principals — been investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
+        legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
+        insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years?"
+        conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"
+        other_circumstances: "Is there any other material circumstance that is likely to adversely affect your performance of any work order in the Digital Marketplace?"

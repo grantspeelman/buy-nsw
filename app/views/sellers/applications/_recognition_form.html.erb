@@ -1,0 +1,43 @@
+<p>This is your opportunity to share some of the things you are proud of. All questions are optional but can help your business attract potential buyers.</p>
+
+<fieldset class="multiple-child-objects" data-module="expanding-list">
+  <legend class="with-label">Accreditations (optional)</legend>
+  <small class="form-text text-muted">Does your business have any formal accreditations you want to share?</small>
+
+  <ol>
+  <%= f.fields_for :accreditations do |a| %>
+    <li>
+      <%= a.text_field :accreditation, label: "#{a.options[:child_index]+1}." %>
+      <%= a.hidden_field :id %>
+    </li>
+  <% end %>
+</ol>
+</fieldset>
+
+<fieldset class="multiple-child-objects" data-module="expanding-list">
+  <legend class="with-label">Industry engagement (optional)</legend>
+  <small class="form-text text-muted">Are you involved in any boards, committees or groups for your industry?</small>
+
+  <ol>
+  <%= f.fields_for :awards do |a| %>
+    <li>
+      <%= a.text_field :award, label: "#{a.options[:child_index]+1}." %>
+      <%= a.hidden_field :id %>
+    </li>
+  <% end %>
+  </ol>
+</fieldset>
+
+<fieldset class="multiple-child-objects" data-module="expanding-list">
+  <legend class="with-label">Awards (optional)</legend>
+  <small class="form-text text-muted">Has your work been recognised and awarded within your industry or by others?</small>
+
+  <ol>
+  <%= f.fields_for :engagements do |a| %>
+    <li>
+      <%= a.text_field :engagement, label: "#{a.options[:child_index]+1}." %>
+      <%= a.hidden_field :id %>
+    </li>
+  <% end %>
+  </ol>
+</fieldset>

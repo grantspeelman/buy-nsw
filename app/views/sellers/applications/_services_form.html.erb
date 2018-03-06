@@ -1,0 +1,6 @@
+<p>Select the services you have the expertise to provide.</p>
+<p>For each you choose you will need to provide a case study and referee to ensure you meet our assessment criteria.</p>
+
+<fieldset class="multiple-choice-group checkbox-group">
+  <%= f.collection_check_boxes(:services, Seller.services.options, :last, :first, skip_label: true) %>
+</fieldset>

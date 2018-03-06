@@ -1,0 +1,10 @@
+body {
+  background: #fefefe;
+}
+
+main {
+  @extend .container;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: 75vh;
+}

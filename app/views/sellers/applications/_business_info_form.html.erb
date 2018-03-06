@@ -1,0 +1,66 @@
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:number_of_employees, Seller.number_of_employees.options, :last, :first) %>
+</fieldset>
+
+<fieldset class="multiple-choice-group">
+  <legend>Business identifiers (optional)</legend>
+
+  <%= f.form_group :start_up do %>
+    <%= f.check_box :start_up %>
+  <% end %>
+
+  <%= f.form_group :sme do %>
+    <%= f.check_box :sme %>
+  <% end %>
+
+  <%= f.form_group :not_for_profit do %>
+    <%= f.check_box :not_for_profit %>
+  <% end %>
+</fieldset>
+
+<fieldset class="multiple-choice-group">
+  <legend>Location (optional)</legend>
+
+  <%= f.form_group :regional do %>
+    <%= f.check_box :regional %>
+  <% end %>
+  <%= f.form_group :travel do %>
+    <%= f.check_box :travel %>
+  <% end %>
+</fieldset>
+
+<fieldset class="multiple-choice-group">
+  <legend>Diversity and inclusion (optional)</legend>
+
+  <%= f.form_group :disability do %>
+    <%= f.check_box :disability %>
+  <% end %>
+
+  <%= f.form_group :female_owned do %>
+    <%= f.check_box :female_owned %>
+  <% end %>
+
+  <%= f.form_group :indigenous do %>
+    <%= f.check_box :indigenous %>
+  <% end %>
+</fieldset>
+
+<fieldset class="multiple-choice-group">
+  <legend>Has your business worked with government before?</legend>
+
+  <%= f.form_group :no_experience do %>
+    <%= f.check_box :no_experience %>
+  <% end %>
+  <%= f.form_group :local_government_experience do %>
+    <%= f.check_box :local_government_experience %>
+  <% end %>
+  <%= f.form_group :state_government_experience do %>
+    <%= f.check_box :state_government_experience %>
+  <% end %>
+  <%= f.form_group :federal_government_experience do %>
+    <%= f.check_box :federal_government_experience %>
+  <% end %>
+  <%= f.form_group :international_government_experience do %>
+    <%= f.check_box :international_government_experience %>
+  <% end %>
+</fieldset>

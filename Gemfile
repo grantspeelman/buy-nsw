@@ -9,6 +9,16 @@ gem 'rails', '~> 5.1.5'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 
+gem 'aasm'
+gem 'enumerize'
+gem 'devise'
+gem 'reform-rails', '~> 0.1.7'
+gem 'carrierwave', '~> 1.0'
+
+gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
+                      branch: 'master'
+gem 'jquery-rails', '~> 4.3.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -16,10 +26,13 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'capybara', '~> 2.18.0'
   gem 'database_cleaner'
   gem 'foreman'
   gem 'factory_bot_rails', "~> 4.0"
+  gem 'i18n-debug'
+  gem 'poltergeist'
+  gem 'rspec-rails'
 end
 
 group :development do

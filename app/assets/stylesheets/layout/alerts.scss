@@ -1,0 +1,19 @@
+.messages {
+  background: $grey-1;
+  border-bottom: 1px solid $grey-2;
+}
+
+.message-container {
+  @extend .container;
+}
+
+.messages ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.messages li {
+  @extend .col-md-12;
+  list-style: none;
+  padding: 1rem;
+}

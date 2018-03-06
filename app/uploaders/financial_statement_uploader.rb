@@ -1,0 +1,2 @@
+class FinancialStatementUploader < SellerDocumentUploader
+end

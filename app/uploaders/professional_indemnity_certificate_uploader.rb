@@ -1,0 +1,2 @@
+class ProfessionalIndemnityCertificateUploader < SellerDocumentUploader
+end

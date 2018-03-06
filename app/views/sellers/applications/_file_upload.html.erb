@@ -1,0 +1,12 @@
+<fieldset class="file-upload">
+  <legend><%= t("activemodel.attributes.sellers/applications/documents_form.#{key}") %></legend>
+  <p><%= t("activerecord.help.sellers/applications/documents_form.#{key}") %></p>
+
+  <% if (upload = f.object.upload_for(key)) && upload&.url.present? %>
+    <div class="current-document">
+      Current document: <%= link_to upload.file.identifier, upload.url %>
+    </div>
+  <% end %>
+
+  <%= f.file_field key, help: false, label: (upload&.url.present? ? 'Replace this file' : 'Upload a file') %>
+</fieldset>

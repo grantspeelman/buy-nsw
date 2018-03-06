@@ -1,0 +1,44 @@
+.view-sellers-applications {
+  @extend .row;
+
+  .steps-list {
+    @extend .col-md-3;
+  }
+
+  .steps-list ol {
+    padding-left: 0;
+  }
+  .steps-list li {
+    list-style: none;
+    border-top: 1px solid #ccc;
+
+    &:last-of-type {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+  .steps-list li a {
+    display: block;
+    padding: 1em;
+    color: #000;
+    text-decoration: none;
+
+    &:hover {
+      background: #f6f6f6;
+    }
+  }
+  .steps-list li.current a {
+    background: $grey-1;
+  }
+
+  .current-step {
+    @extend .col-md-8;
+    @extend .offset-md-1;
+  }
+
+  .current-document {
+    background: $grey-1;
+    border: 1px solid $grey-2;
+    padding: 1em;
+    margin-bottom: 1rem;
+  }
+}

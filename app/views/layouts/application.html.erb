@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProcurementHub</title>
+    <title>NSW Procurement</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,37 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header role="global">
+      <div class="container">
+        <div class="row">
+          <h1>
+            <%= link_to root_path do %>
+              <span class="logo">NSW Government</span>
+              <span class="marketplace-title">Digital<br> Marketplace</span>
+            <% end %>
+          </h1>
+
+          <%= render partial: 'layouts/user_links' %>
+        </div>
+      </div>
+    </header>
+
+    <% if notice.present? || alert.present? %>
+      <div class="messages">
+        <div class="message-container">
+          <div class="row">
+            <ul>
+              <% flash.each do |key, value| %>
+                <li><%= value %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
