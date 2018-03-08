@@ -67,7 +67,7 @@ en:
         technologies: "Technologies (optional)"
       'sellers/applications/declaration_form':
         agree_html: |
-          I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the terms set out in the Marketplace Master Agreement
+          I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
   activerecord:
     help:
       'sellers/applications/business_details_form':
