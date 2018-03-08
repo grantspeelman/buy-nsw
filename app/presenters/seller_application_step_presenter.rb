@@ -14,6 +14,7 @@ class SellerApplicationStepPresenter
     [
       Sellers::Applications::IntroductionForm,
       Sellers::Applications::BusinessDetailsForm,
+      Sellers::Applications::IndustryForm,
       Sellers::Applications::BusinessInfoForm,
       Sellers::Applications::ContactsForm,
       Sellers::Applications::DisclosuresForm,

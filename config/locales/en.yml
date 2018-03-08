@@ -96,6 +96,10 @@ en:
       unauthenticated: "Please sign in or create an account to continue."
   enumerize:
     seller:
+      industry:
+        ict: 'ICT and Digital'
+        construction: 'Building and Construction'
+        other: 'Other'
       number_of_employees:
         sole: '1 employee'
         2to19: '2 to 19 employees'
@@ -154,6 +158,9 @@ en:
           short: 'Documents'
           long: 'Upload your documents'
           button_label: 'Upload documents and continue'
+        industry:
+          short: 'Industry'
+          long: 'Which industries would you like to apply for?'
         introduction:
           short: 'Introduction'
           long: 'Qualify to sell to the NSW Government'

@@ -8,6 +8,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
 
     complete_introduction
     fill_in_business_basics
+    fill_in_industry
     fill_in_business_details
     fill_in_contact_details
     fill_in_disclosures
@@ -21,7 +22,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
   end
 
   def complete_introduction
-    expect(page).to have_content('Joining the Digital Marketplace')
     click_on 'Start application'
   end
 
@@ -48,6 +48,11 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
       end
     end
 
+    click_on 'Save and continue'
+  end
+
+  def fill_in_industry
+    check 'ICT'
     click_on 'Save and continue'
   end
 

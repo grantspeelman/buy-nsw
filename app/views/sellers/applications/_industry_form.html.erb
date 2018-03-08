@@ -1,0 +1,3 @@
+<fieldset class="multiple-choice-group checkbox-group">
+  <%= f.collection_check_boxes(:industry, Seller.industry.options, :last, :first, skip_label: true) %>
+</fieldset>
