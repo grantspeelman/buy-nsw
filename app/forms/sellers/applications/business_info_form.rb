@@ -21,4 +21,10 @@ class Sellers::Applications::BusinessInfoForm < Sellers::Applications::BaseForm
   property :state_government_experience,         on: :seller
   property :federal_government_experience,       on: :seller
   property :international_government_experience, on: :seller
+
+  validation :default do
+    required(:seller).schema do
+      required(:number_of_employees).filled
+    end
+  end
 end

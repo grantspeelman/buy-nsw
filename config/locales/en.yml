@@ -58,10 +58,16 @@ en:
         financial_statement: 'Financial statement'
         professional_indemnity_certificate: 'Professional Indemnity and Public Liability Insurance'
         workers_compensation_certificate: 'Workers Compensation Insurance'
+        financial_statement_expiry: Expiry date
+        professional_indemnity_certificate_expiry: Expiry date
+        workers_compensation_certificate_expiry: Expiry date
       'sellers/applications/methods_form':
         tools: "Tools"
         methodologies: "Methodologies"
         technologies: "Technologies (optional)"
+      'sellers/applications/declaration_form':
+        agree_html: |
+          I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the terms set out in the Marketplace Master Agreement
   activerecord:
     help:
       'sellers/applications/business_details_form':
@@ -112,6 +118,19 @@ en:
         software-licensing: Software licensing and maintenance
         telecommunications: Telecommunications
         training-learning: Training and learning
+    seller_address:
+      state:
+        nsw: New South Wales
+        act: Australian Capital Territory
+        nt: Northern Territory
+        qld: Queensland
+        sa: South Australia
+        tas: Tasmania
+        vic: Victoria
+        wa: Western Australia
+  errors:
+    file?: Please provide a copy of this document.
+    in_future?: The expiry date for this document must be in the future.
   sellers:
     applications:
       steps:
@@ -127,15 +146,18 @@ en:
         declaration:
           short: 'Declaration'
           long: 'Your declaration'
+          button_label: 'Submit application'
         disclosures:
           short: 'Disclosures'
           long: 'Disclosures'
         documents:
           short: 'Documents'
           long: 'Upload your documents'
+          button_label: 'Upload documents and continue'
         introduction:
           short: 'Introduction'
           long: 'Joining the Digital Marketplace'
+          button_label: 'Start application'
         methods:
           short: 'Methods'
           long: 'Tools and methodologies'
@@ -147,7 +169,7 @@ en:
           long: 'Are you a recruiter?'
         services:
           short: 'Services'
-          long: 'What services will you offer?'
+          long: 'What is your offering?'
       disclosures:
         structural_changes: 'Are you planning to sell, merge, or alter the corporate structure of your company?'
         investigations: "Has your organisation — or any of its directors or principals — been investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"

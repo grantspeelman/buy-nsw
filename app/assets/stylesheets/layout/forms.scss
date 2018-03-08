@@ -12,6 +12,10 @@ fieldset {
   }
 }
 
+.invalid-feedback {
+  display: block;
+}
+
 legend, .multiple-choice-group .form-group > label {
   font-size: 1.1rem;
   font-weight: 700;
@@ -31,36 +35,13 @@ legend.with-label {
   padding-bottom: 1rem;
 }
 
-.multiple-child-objects {
-  .form-group {
-    margin-top: 0.4rem;
-    margin-bottom: 0.4rem;
-  }
-}
-
 .expanding-list {
-  input[type=text] {
-    padding-left: 2.2rem;
-  }
-  .form-group {
-    @extend .col-md-8;
-  }
-  .delete-action {
-    @extend .col-md-3;
-
-    a {
-      margin-top: 1rem;
-      display: inline-block;
-    }
-  }
-
   ol {
     padding-left: 0;
     margin-top: 0.75rem;
 
     li {
       list-style: none;
-      @extend .row;
     }
     li.removed {
       opacity: 0.8;
@@ -70,21 +51,57 @@ legend.with-label {
         text-decoration: line-through;
       }
 
-      .previous-value {
-        position: absolute;
-        padding: 0.46rem 0 0 2.3rem;
-        z-index: 1;
-        font-size: 16px;
+      input {
         text-decoration: line-through;
       }
     }
   }
 
-  .form-group label {
-    position: absolute;
-    padding: 0.46rem 0 0 0.8rem;
-    z-index: 1;
-    font-size: 16px;
+  .delete-action a {
+    margin-top: 1rem;
+  }
+
+  &.with-inline-labels {
+    input[type=text] {
+      padding-left: 2.2rem;
+    }
+
+    li {
+      @extend .row;
+    }
+
+    .form-group {
+      @extend .col-md-8;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group label {
+      position: absolute;
+      padding: 0.46rem 0 0 0.8rem;
+      z-index: 1;
+      font-size: 16px;
+    }
+
+    li.removed .previous-value {
+      padding: 0.46rem 0 0 2.3rem;
+    }
+
+    .delete-action {
+      @extend .col-md-3;
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+
+  &.with-nested-blocks {
+    li {
+      border-left: 10px solid $grey-2;
+      margin: 1.5rem 0;
+      padding: 0 1rem;
+    }
   }
 }
 
@@ -122,6 +139,10 @@ input[type=checkbox] + label, input[type=radio] + label {
 }
 input[type=checkbox]:checked + label, input[type=radio]:checked + label{
   font-weight: 700;
+
+  strong {
+    font-weight: 700;
+  }
 }
 
 input[type=checkbox] + label::before {
@@ -196,4 +217,31 @@ input[type=radio]:checked + label::after {
   zoom: 1;
   filter: alpha(opacity=100);
   opacity: 1;
+}
+
+// Inline date fields
+
+.date-field {
+  padding-top: .5rem;
+  .form-group {
+    display: inline-block;
+    padding-right: 1em;
+  }
+  label {
+    display: block;
+    margin-bottom: .2rem;
+    font-weight: normal;
+
+    &.primary-label {
+      width: 100%;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+  }
+  .day, .month {
+    width: 3em;
+  }
+  .year {
+    width: 5em;
+  }
 }

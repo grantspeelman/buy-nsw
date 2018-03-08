@@ -15,11 +15,14 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     fill_in_tools
     fill_in_recognition
     fill_in_services
+    complete_declaration
+
+    expect(page).to have_content('Your seller application has been submitted.')
   end
 
   def complete_introduction
     expect(page).to have_content('Joining the Digital Marketplace')
-    click_on 'Save and continue'
+    click_on 'Start application'
   end
 
   def fill_in_business_basics
@@ -28,6 +31,23 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     fill_in 'Summary', with: 'A summary of my business'
     fill_in 'Website URL', with: 'http://example.org'
     fill_in 'LinkedIn URL', with: 'http://linkedin.com/example'
+
+    within_fieldset 'Your business address' do
+      fill_in 'Address', with: '123 Test Street'
+      fill_in 'Suburb', with: 'Millers Point'
+      select 'New South Wales', from: 'State'
+      fill_in 'Postcode', with: '2000'
+
+      click_on 'Add another address'
+
+      within 'ol li:last-of-type' do
+        fill_in 'Address', with: '321 Test Street'
+        fill_in 'Suburb', with: 'Millers Point'
+        select 'New South Wales', from: 'State'
+        fill_in 'Postcode', with: '2000'
+      end
+    end
+
     click_on 'Save and continue'
   end
 
@@ -78,17 +98,31 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
   end
 
   def upload_documents
+    expiry_date = 1.year.from_now
+
     within_fieldset 'Financial statement' do
       attach_file 'Upload a file', example_pdf, make_visible: true
+
+      fill_in 'Day', with: expiry_date.day
+      fill_in 'Month', with: expiry_date.month
+      fill_in 'Year', with: expiry_date.year
     end
     within_fieldset 'Professional Indemnity' do
       attach_file 'Upload a file', example_pdf, make_visible: true
+
+      fill_in 'Day', with: expiry_date.day
+      fill_in 'Month', with: expiry_date.month
+      fill_in 'Year', with: expiry_date.year
     end
     within_fieldset 'Workers Compensation' do
       attach_file 'Upload a file', example_pdf, make_visible: true
+
+      fill_in 'Day', with: expiry_date.day
+      fill_in 'Month', with: expiry_date.month
+      fill_in 'Year', with: expiry_date.year
     end
 
-    click_on 'Save and continue'
+    click_on 'Upload documents'
   end
 
   def example_pdf
@@ -127,6 +161,11 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     check 'Training and learning'
 
     click_on 'Save and continue'
+  end
+
+  def complete_declaration
+    check 'I am Churchill Smith-Winston, an authorised representative of Test Pty Ltd (ABN: 10 123 456 789)'
+    click_on 'Submit application'
   end
 
 end

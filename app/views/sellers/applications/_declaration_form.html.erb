@@ -1,0 +1,26 @@
+<p>All you need to do now is:</p>
+
+<ol>
+  <li>Review your application and the Master Agreement</li>
+  <li>Complete the declaration</li>
+</ol>
+
+<%= link_to 'Download Master Agreement (PDF 229KB)', '' %>
+
+<section class="agreement-text">
+  <h1>Master agreement</h1>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+  <p>Some agreement text.</p>
+</section>
+
+<%= f.check_box :agree,
+      label: t('activemodel.attributes.sellers/applications/declaration_form.agree_html',
+        name: f.object.seller.representative_name,
+        organisation: f.object.seller.name,
+        abn: f.object.seller.abn) %>

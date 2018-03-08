@@ -4,10 +4,11 @@ class Seller < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
 
+  has_many :accreditations, class_name: 'SellerAccreditation', dependent: :destroy
+  has_many :addresses, class_name: 'SellerAddress', dependent: :destroy
   has_many :applications, class_name: 'SellerApplication'
-  has_many :awards, class_name: 'SellerAward'
-  has_many :engagements, class_name: 'SellerEngagement'
-  has_many :accreditations, class_name: 'SellerAccreditation'
+  has_many :awards, class_name: 'SellerAward', dependent: :destroy
+  has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
 
   aasm column: :state do
     state :inactive, initial: true

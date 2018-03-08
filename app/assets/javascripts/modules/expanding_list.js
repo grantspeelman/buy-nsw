@@ -7,6 +7,13 @@
     this.$template = this.buildTemplateForm();
     this.$container = this.$el.find('ol');
 
+    this.inlineLabels = this.hasInlineLabels();
+    this.objectName = this.$el.attr('data-object-name');
+
+    if (this.objectName == null) {
+      this.objectName = 'row';
+    }
+
     this.setupForm();
   }
 
@@ -29,25 +36,30 @@
 
     var $newRow = this.$template.clone();
 
-    var $label = $newRow.find('label');
-    var $textInput = $newRow.find('input[type=text]');
+    var $visibleInputs = $newRow.find('input[type=text], select');
     var $hiddenInput = $newRow.find('input[type=hidden]');
 
     var newIndex = this.getNewIndex();
     var visibleIndex = newIndex + 1;
 
-    $label.text(visibleIndex + '.');
+    $visibleInputs.each($.proxy(function(i, input){
+      var $input = $(input);
+      var $label = $input.siblings('label');
 
-    $label.attr('for', this.buildFieldID(
-                          $textInput.attr('id'), newIndex
-                        ));
-
-    $textInput.attr('name', this.buildFieldName(
-                              $textInput.attr('name'), newIndex
-                            ));
-    $textInput.attr('id', this.buildFieldID(
-                            $textInput.attr('id'), newIndex
+      if (this.inlineLabels == true) {
+        $label.text(visibleIndex + '.');
+      }
+      $label.attr('for', this.buildFieldID(
+                            $input.attr('id'), newIndex
                           ));
+
+      $input.attr('name', this.buildFieldName(
+                                $input.attr('name'), newIndex
+                              ));
+      $input.attr('id', this.buildFieldID(
+                              $input.attr('id'), newIndex
+                            ));
+    }, this));
 
     $hiddenInput.attr('name', this.buildFieldName(
                               $hiddenInput.attr('name'), newIndex
@@ -62,24 +74,20 @@
   ExpandingListModule.prototype.deleteRow = function deleteRow($row){
     event.preventDefault();
 
-    var $inputField = $row.find('input[type=text]');
+    var $inputField = $row.find('input[type=text], select');
     var $deleteLink = $row.find('a');
     var $label = $row.find('label');
 
     var existingText = $inputField.val();
 
-    var $previousVal = $('<span></span>');
-    $previousVal.addClass('previous-value').text(existingText);
-
     $row.addClass('removed');
-    $inputField.val('').attr('disabled', true);
-    $previousVal.insertAfter($label);
+    $inputField.attr('disabled', true);
     $deleteLink.remove();
   }
 
   ExpandingListModule.prototype.buildAddLink = function buildAddLink(){
     var $addLink = $('<a></a>');
-    $addLink.text('Add another row');
+    $addLink.text('Add another '+ this.objectName);
     $addLink.attr('href','#');
     $addLink.on('click', $.proxy(this.addNewRow, this));
 
@@ -91,7 +99,7 @@
     var $deleteLink = $('<a></a>');
     var $element = $(element);
 
-    $deleteLink.text('Delete this row');
+    $deleteLink.text('Delete this '+ this.objectName);
     $deleteLink.attr('href','#');
     $deleteLink.on('click', $.proxy(this.deleteRow, this, $element));
 
@@ -104,10 +112,15 @@
 
     var $label = $templateForm.find('label');
     var $textInput = $templateForm.find('input[type=text]');
+    var $selectInput = $templateForm.find('select');
     var $hiddenInput = $templateForm.find('input[type=hidden]');
 
     $textInput.val('');
     $hiddenInput.val('');
+
+    // Reset the selected value in any dropdown boxes
+    $selectInput.find('option').removeAttr('selected');
+    $selectInput.find('option:first').attr('selected', true);
 
     return $templateForm;
   }
@@ -150,6 +163,17 @@
     var lastIndex = parseInt(matches[1]);
 
     return (lastIndex + 1);
+  }
+
+  ExpandingListModule.prototype.hasInlineLabels = function hasInlineLabels(){
+    var classes = this.$el.attr('class');
+    var matches = classes.match(/with\-inline\-labels/);
+
+    if (matches !== null && matches.length >= 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ProcurementHub.ExpandingListModule = ExpandingListModule;

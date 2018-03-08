@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305051249) do
+ActiveRecord::Schema.define(version: 20180307004003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 20180305051249) do
   create_table "seller_accreditations", force: :cascade do |t|
     t.integer "seller_id", null: false
     t.string "accreditation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seller_addresses", force: :cascade do |t|
+    t.integer "seller_id", null: false
+    t.string "address"
+    t.string "suburb"
+    t.string "state"
+    t.string "postcode"
+    t.boolean "primary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,6 +106,12 @@ ActiveRecord::Schema.define(version: 20180305051249) do
     t.string "financial_statement"
     t.string "professional_indemnity_certificate"
     t.string "workers_compensation_certificate"
+    t.date "financial_statement_expiry"
+    t.date "professional_indemnity_certificate_expiry"
+    t.date "workers_compensation_certificate_expiry"
+    t.boolean "agree"
+    t.datetime "agreed_at"
+    t.integer "agreed_by"
   end
 
   create_table "users", force: :cascade do |t|

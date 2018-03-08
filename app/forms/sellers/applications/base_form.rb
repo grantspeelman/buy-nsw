@@ -9,11 +9,63 @@ class Sellers::Applications::BaseForm < Reform::Form
   end
 
   def seller_id
-    self.model[:seller].id
+    seller.id
+  end
+
+  def seller
+    self.model[:seller]
   end
 
   def upload_for(key)
     self.model[:seller].public_send(key)
+  end
+
+  # When composing forms from multiple models, Reform assigns error messages to
+  # the underlying models, which is no use to the Rails form builder. This
+  # overrides the `errors` method to flatten all keys to be at the same level.
+  #
+  # An extra quirk here is that this method is seemingly invoked multiple times
+  # with varying levels of detail. If we parse a early call of the method containing
+  # no error messages, the models appear to pass as valid and this isn't invoked
+  # again.
+  #
+  # To handle this, if there are no model-specific error messages, we simply
+  # return the original error object from the superclass.
+  #
+  def errors
+    new_errors = Reform::Contract::Errors.new
+
+    new_messages = super.messages.select {|key, value|
+      self.model.keys.include?(key) && value.first&.is_a?(Array)
+    }
+
+    new_messages.each do |model, errors|
+      errors.each do |field, msgs|
+        # Support accessing the keys as both strings and symbols, as the form
+        # builder seems to require both for all fields to work.
+        #
+        new_errors.messages[field.to_s] = msgs
+        new_errors.messages[field] = msgs
+      end
+    end
+
+    new_messages.any? ? new_errors : super
+  end
+
+  # Calculate if a form has been started by looking to see if it either has:
+  # - a completed attribute (for normal forms)
+  # - a saved child object, determined by the presence of an `id` attribute (for collections)
+  #
+  def started?
+    schema.keys.map {|key|
+      value = send(key)
+
+      if value.is_a?(Array)
+        value.first&.id.present?
+      else
+        value.present? || value == false
+      end
+    }.compact.any?
   end
 
   # The following bit of hackery bodges the way that the model name is returned
@@ -31,4 +83,38 @@ class Sellers::Applications::BaseForm < Reform::Form
       __getobj__.instance_variable_get(:@klass).name
     end
   end
+
+  # This Populator is used by multiple forms to handle loading, saving and
+  # deletion of child objects.
+  #
+  NestedChildPopulator = ->(fragment:, collection:, index:, params:, context:, model_klass:, **) {
+    if fragment['id'].present?
+      item = collection.find { |item|
+        item.id.to_s == fragment['id'].to_s
+      }
+
+      record = model_klass.find_by(seller_id: context.seller_id, id: fragment['id'])
+    end
+
+    values = fragment.slice(*params).reject {|k,v| v.blank? }
+
+    if values.empty?
+      if item
+        collection.delete(item)
+      end
+
+      # Invoke this manually because Reform doesn't seem to delete the record,
+      # instead attemtping to zero out the foreign key (which violates the
+      # database constraint)
+      #
+      if record
+        record.destroy
+      end
+
+      return context.skip!
+    end
+
+    item ? item : collection.append(model_klass.new(:seller_id => context.seller_id))
+  }
+
 end

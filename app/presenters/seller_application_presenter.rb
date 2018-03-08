@@ -1,50 +1,49 @@
 class SellerApplicationPresenter
-  include Rails.application.routes.url_helpers
+  # include Rails.application.routes.url_helpers
 
-  attr_reader :current_step_key
+  attr_reader :current_step, :current_step_slug
 
-  def initialize(application, current_step_key: nil)
+  def initialize(application, current_step_slug: nil)
     @application = application
-    @current_step_key = current_step_key
+    @current_step_slug = current_step_slug
+
+    @current_step = current_step_slug ? get_step_from_slug(current_step_slug) : steps.first
   end
 
   def steps
-    [
-      Sellers::Applications::IntroductionForm,
-      Sellers::Applications::BusinessDetailsForm,
-      Sellers::Applications::BusinessInfoForm,
-      Sellers::Applications::ContactsForm,
-      Sellers::Applications::DisclosuresForm,
-      Sellers::Applications::DocumentsForm,
-      Sellers::Applications::MethodsForm,
-      Sellers::Applications::RecognitionForm,
-      Sellers::Applications::ServicesForm,
-      Sellers::Applications::DeclarationForm,
-    ]
+    SellerApplicationStepPresenter.steps(application)
   end
 
   ## Current steps
 
-  def current_step
-    get_step_from_key(current_step_key)
-  end
-
   def current_step_form
-    @form ||= current_step.new(application: application, seller: application.seller)
+    @form ||= current_step.form
   end
 
   def current_step_name
-    step_name(current_step, :long)
+    current_step.name(:long)
+  end
+
+  def current_step_key
+    current_step.key
   end
 
   def current_step_view_path
-    current_step.name.underscore
+    current_step.key + "_form"
+  end
+
+  def current_step_button_label(default:)
+    current_step.button_label(default: default)
   end
 
   ## First and Next Steps
 
   def first_step_path
-    step_path(steps.first)
+    steps.first.path
+  end
+
+  def last_step?
+    current_step == steps.last
   end
 
   def next_step
@@ -53,52 +52,22 @@ class SellerApplicationPresenter
   end
 
   def next_step_path
-    step_path(next_step)
+    next_step.path
   end
 
   ## Step helpers
 
-  def step_path(step)
-    sellers_application_step_path(
-      application,
-      step_key(step, format: :url)
-    )
-  end
+  def html_classes(step)
+    current_state = (step == current_step) ? 'current' : ''
 
-  def step_name(step, type = :short)
-    key = step_key(step)
-
-    I18n.t("sellers.applications.steps.#{key}.#{type}")
-  end
-
-  def step_classes(step)
-    classes = []
-
-    if step == current_step
-      classes << 'current'
-    end
-
-    classes.join(' ')
+    [ step.html_classes, current_state ].join(' ')
   end
 
 private
   attr_reader :application
 
-  def step_key(klass, format: nil)
-    name = klass.name.demodulize.sub(/Form$/,'').underscore
-
-    if format == :url
-      name.dasherize
-    else
-      name
-    end
-  end
-
-  def get_step_from_key(key)
-    base = 'Sellers::Applications::'
-    name = key.underscore.camelize + 'Form'
-
-    (base + name).constantize
+  def get_step_from_slug(slug)
+    SellerApplicationStepPresenter.find_by_slug(application, slug)
   end
 
 end

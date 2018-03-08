@@ -12,6 +12,7 @@ gem 'puma', '~> 3.7'
 gem 'aasm'
 gem 'enumerize'
 gem 'devise'
+gem 'dry-validation'
 gem 'reform-rails', '~> 0.1.7'
 gem 'carrierwave', '~> 1.0'
 

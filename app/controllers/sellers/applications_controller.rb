@@ -1,6 +1,8 @@
 class Sellers::ApplicationsController < Sellers::BaseController
   before_action :authenticate_user!
 
+  # rescue_from SellerApplicationStepPresenter::NotFound, with: :error_404
+
   def new
     if existing_application.present?
       redirect_to sellers_application_path(existing_application)
@@ -13,10 +15,19 @@ class Sellers::ApplicationsController < Sellers::BaseController
   end
 
   def show
-    if params[:step].present?
-      form.prepopulate!
+    if application.submitted?
+      flash.notice = 'Your seller application has been submitted.'
+      redirect_to root_path
     else
-      redirect_to presenter.first_step_path
+      if params[:step].present?
+        form.prepopulate!
+
+        if presenter.current_step.started?
+          form.valid?
+        end
+      else
+        redirect_to presenter.first_step_path
+      end
     end
   end
 
@@ -24,8 +35,16 @@ class Sellers::ApplicationsController < Sellers::BaseController
     if params.key?(:application)
       if form.validate(params[:application])
         form.save
+
+        if presenter.last_step?
+          application.submit!
+        end
+
         redirect_to presenter.next_step_path
       else
+        form.save
+        form.prepopulate!
+
         render action: :show
       end
     else
@@ -41,7 +60,7 @@ private
 
   def presenter
     @presenter ||= SellerApplicationPresenter.new(application,
-                                                  current_step_key: params[:step])
+                                                  current_step_slug: params[:step])
   end
   helper_method :presenter
 
@@ -50,7 +69,7 @@ private
   end
 
   def existing_application
-    @existing_application ||= current_user.seller_applications.first
+    @existing_application ||= current_user.seller_applications.created.first
   end
 
 end

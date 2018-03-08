@@ -9,5 +9,15 @@ class SellerApplication < ApplicationRecord
     state :submitted
     state :approved
     state :rejected
+
+    event :submit do
+      transitions from: :created, to: :submitted
+    end
+  end
+
+  scope :created, ->{ where(state: :created) }
+
+  def valid_application?
+
   end
 end
