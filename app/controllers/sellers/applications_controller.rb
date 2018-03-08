@@ -36,7 +36,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
       if form.validate(params[:application])
         form.save
 
-        if presenter.last_step?
+        if presenter.last_step? && presenter.valid?
           application.submit!
         end
 

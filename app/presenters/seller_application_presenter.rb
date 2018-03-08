@@ -14,6 +14,10 @@ class SellerApplicationPresenter
     SellerApplicationStepPresenter.steps(application)
   end
 
+  def valid?
+    steps.reject(&:valid?).any?
+  end
+
   ## Current steps
 
   def current_step_form
@@ -58,9 +62,7 @@ class SellerApplicationPresenter
   ## Step helpers
 
   def html_classes(step)
-    current_state = (step == current_step) ? 'current' : ''
-
-    [ step.html_classes, current_state ].join(' ')
+    current_state = (step == current_step) ? 'current' : step.html_classes
   end
 
 private
