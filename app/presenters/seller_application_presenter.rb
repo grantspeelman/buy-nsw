@@ -15,7 +15,7 @@ class SellerApplicationPresenter
   end
 
   def valid?
-    steps.reject(&:valid?).any?
+    steps.reject(&:valid?).empty?
   end
 
   ## Current steps
