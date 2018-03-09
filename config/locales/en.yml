@@ -160,7 +160,7 @@ en:
           button_label: 'Upload documents and continue'
         industry:
           short: 'Industry'
-          long: 'Which industries would you like to apply for?'
+          long: 'In which industry sectors do you provide services?'
         introduction:
           short: 'Introduction'
           long: 'Qualify to sell to the NSW Government'
