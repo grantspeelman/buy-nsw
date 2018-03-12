@@ -8,13 +8,13 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
 
     complete_introduction
     fill_in_business_basics
-    fill_in_industry
     fill_in_business_details
     fill_in_contact_details
     fill_in_disclosures
     upload_documents
     fill_in_tools
     fill_in_recognition
+    fill_in_industry
     fill_in_services
     complete_declaration
 

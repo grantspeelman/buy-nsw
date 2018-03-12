@@ -3,5 +3,6 @@
 <p>Select the categories which are most relevant to your business.</p>
 
 <fieldset class="multiple-choice-group checkbox-group">
-  <%= f.collection_check_boxes(:services, Seller.services.options, :last, :first, skip_label: true) %>
+  <%= f.collection_check_boxes(:services, Seller.services.options, :last, :first, skip_label: true,
+                                                                                  wrapper: { class: error_class_for(f, :services) }) %>
 </fieldset>

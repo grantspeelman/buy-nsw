@@ -10,18 +10,7 @@ class Sellers::Applications::DocumentsForm < Sellers::Applications::BaseForm
   property :professional_indemnity_certificate_expiry, on: :seller, multi_params: true
   property :workers_compensation_certificate_expiry,   on: :seller, multi_params: true
 
-  validation :default do
-    configure do
-      config.messages = :i18n
-      def file?(uploader_class)
-        uploader_class.respond_to?(:original_filename) || uploader_class.file
-      end
-
-      def in_future?(date)
-        date.present? && date > Date.today
-      end
-    end
-
+  validation :default, inherit: true do
     required(:seller).schema do
       required(:financial_statement).filled(:file?)
       required(:professional_indemnity_certificate).filled(:file?)

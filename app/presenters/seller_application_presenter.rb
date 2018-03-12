@@ -18,6 +18,10 @@ class SellerApplicationPresenter
     steps.reject(&:valid?).empty?
   end
 
+  def ready_for_submission?
+    steps[0...-1].reject(&:valid?).empty?
+  end
+
   ## Current steps
 
   def current_step_form
@@ -62,7 +66,7 @@ class SellerApplicationPresenter
   ## Step helpers
 
   def html_classes(step)
-    current_state = (step == current_step) ? 'current' : step.html_classes
+    (step == current_step) ? 'current' : step.html_classes
   end
 
 private

@@ -7,9 +7,11 @@
   <%= render partial: presenter.current_step_view_path,
          locals: { f: f, presenter: presenter, application: application } %>
 
-  <fieldset class="actions">
-    <%= f.submit presenter.current_step_button_label(default: 'Save and continue') %>
-  </fieldset>
+  <% unless presenter.last_step? && ! presenter.ready_for_submission? %>
+    <fieldset class="actions">
+      <%= f.submit presenter.current_step_button_label(default: 'Save and continue') %>
+    </fieldset>
+  <% end %>
 
   <%= hidden_field_tag :step, presenter.current_step_slug %>
 <% end %>

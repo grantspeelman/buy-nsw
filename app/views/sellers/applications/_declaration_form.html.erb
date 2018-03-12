@@ -21,8 +21,12 @@
   <p>Any terms contained in other parts of the agreement that conflict with, or limit the operation of, these core terms have no legal effect.</p>
 </section>
 
-<%= f.check_box :agree,
-      label: t('activemodel.attributes.sellers/applications/declaration_form.agree_html',
-        name: f.object.seller.representative_name,
-        organisation: f.object.seller.name,
-        abn: f.object.seller.abn) %>
+<% if presenter.ready_for_submission? %>
+  <%= f.check_box :agree,
+        label: t('activemodel.attributes.sellers/applications/declaration_form.agree_html',
+          name: f.object.seller.representative_name,
+          organisation: f.object.seller.name,
+          abn: f.object.seller.abn) %>
+<% else %>
+  <p>Please complete all other steps before submitting your application.</p>
+<% end %>

@@ -133,8 +133,9 @@ en:
         vic: Victoria
         wa: Western Australia
   errors:
-    file?: Please provide a copy of this document.
-    in_future?: The expiry date for this document must be in the future.
+    file?: Please provide a copy of this document
+    in_future?: The expiry date for this document must be in the future
+    any_checked?: must select at least one option
   sellers:
     applications:
       steps:

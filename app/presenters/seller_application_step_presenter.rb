@@ -10,24 +10,30 @@ class SellerApplicationStepPresenter
     @form_klass ||= form_klass
   end
 
-  def self.forms
-    [
-      Sellers::Applications::IntroductionForm,
-      Sellers::Applications::BusinessDetailsForm,
-      Sellers::Applications::IndustryForm,
-      Sellers::Applications::BusinessInfoForm,
-      Sellers::Applications::ContactsForm,
-      Sellers::Applications::DisclosuresForm,
-      Sellers::Applications::DocumentsForm,
-      Sellers::Applications::MethodsForm,
-      Sellers::Applications::RecognitionForm,
-      Sellers::Applications::ServicesForm,
-      Sellers::Applications::DeclarationForm,
-    ]
+  def self.forms(application)
+    forms = []
+
+    forms << Sellers::Applications::IntroductionForm
+    forms << Sellers::Applications::BusinessDetailsForm
+    forms << Sellers::Applications::BusinessInfoForm
+    forms << Sellers::Applications::ContactsForm
+    forms << Sellers::Applications::DisclosuresForm
+    forms << Sellers::Applications::DocumentsForm
+    forms << Sellers::Applications::MethodsForm
+    forms << Sellers::Applications::RecognitionForm
+    forms << Sellers::Applications::IndustryForm
+
+    if application.seller.industry.any?
+      forms << Sellers::Applications::ServicesForm
+    end
+
+    forms << Sellers::Applications::DeclarationForm
+
+    forms
   end
 
   def self.steps(application)
-    forms.map {|form|
+    forms(application).map {|form|
       self.new(application, form)
     }
   end
