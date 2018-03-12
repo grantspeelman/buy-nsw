@@ -1,0 +1,10 @@
+{
+  "environments": {
+    "test": {
+      "buildpacks": [
+        { "url": "heroku/ruby" },
+        { "url": "https://github.com/stomita/heroku-buildpack-phantomjs" }
+      ]
+    }
+  }
+}
