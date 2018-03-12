@@ -94,6 +94,8 @@ GEM
       representable (>= 2.4.0, <= 3.1.0)
       uber (< 0.2.0)
     dotenv (0.7.0)
+    dotenv-rails (0.7.0)
+      dotenv (= 0.7.0)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -294,6 +296,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   database_cleaner
   devise
+  dotenv-rails
   dry-validation
   enumerize
   factory_bot_rails (~> 4.0)

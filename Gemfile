@@ -31,6 +31,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.18.0'
   gem 'database_cleaner'
+  gem 'dotenv-rails'
   gem 'foreman'
   gem 'factory_bot_rails', "~> 4.0"
   gem 'i18n-debug'
