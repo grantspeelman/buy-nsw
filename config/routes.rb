@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :applications
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 
+    resources :profiles
+
     root to: 'base#index'
   end
 

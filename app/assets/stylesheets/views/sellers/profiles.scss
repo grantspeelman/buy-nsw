@@ -1,0 +1,99 @@
+.view-sellers-profiles {
+  .intro {
+    @extend .row;
+    padding: 1.5em 0;
+
+    .summary {
+      @extend .col-md-9;
+    }
+    .actions {
+      @extend .col-md-3;
+      text-align: right;
+
+      a {
+        @extend .btn;
+        @extend .btn-block;
+      }
+    }
+  }
+
+  .profile-container {
+    @extend .row;
+  }
+  .contents {
+    @extend .col-md-3;
+    font-size: 0.9rem;
+
+    h3 {
+      font-size: 1em;
+    }
+    ol {
+      padding-left: 1em;
+
+      li {
+        padding-bottom: 0.1em;
+      }
+      a::after {
+        content: ' ↓';
+      }
+    }
+  }
+  .profile {
+    @extend .col-md-9;
+  }
+
+  ul.tags {
+    padding-left: 0;
+    margin-bottom: 0.5em;
+
+    li {
+      display: inline-block;
+      background: $light-blue;
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 0.3em 0.65em;
+    }
+  }
+
+  dl {
+    @extend .row;
+    margin-bottom: 2em;
+
+    dt, dd {
+      border-top: 1px solid $grey-2;
+      padding-top: 1em;
+      padding-bottom: 0.9em;
+    }
+
+    dt {
+      @extend .col-md-4;
+      font-weight: 500;
+    }
+    dd {
+      @extend .col-md-8;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 2em 0 0.5em;
+    font-weight: 600;
+  }
+
+  ul {
+    padding-left: 1em;
+    margin-bottom: 0;
+  }
+  ul.addresses {
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      padding-bottom: 1em;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
