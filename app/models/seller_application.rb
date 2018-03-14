@@ -16,8 +16,4 @@ class SellerApplication < ApplicationRecord
   end
 
   scope :created, ->{ where(state: :created) }
-
-  def valid_application?
-
-  end
 end

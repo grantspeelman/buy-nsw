@@ -24,6 +24,28 @@ class Sellers::Applications::BusinessDetailsForm < Sellers::Applications::BaseFo
       required(:abn).filled
       required(:summary).filled
       required(:website_url).filled
+
+      optional(:addresses).each do
+        schema do
+          required(:address).filled
+          required(:suburb).filled
+          required(:state).filled
+          required(:postcode).filled
+        end
+      end
+
+      optional(:addresses_attributes).each do
+        schema do
+          required(:address).filled
+          required(:suburb).filled
+          required(:state).filled
+          required(:postcode).filled
+        end
+      end
+
+      rule(addresses_present?: [:addresses]) do |addresses|
+        addresses.array? > addresses.min_size?(1)
+      end
     end
   end
 
@@ -39,9 +61,5 @@ class Sellers::Applications::BusinessDetailsForm < Sellers::Applications::BaseFo
       required(:state).filled
       required(:postcode).filled
     end
-  end
-
-  def valid?
-    super && addresses.map(&:valid?).any?
   end
 end

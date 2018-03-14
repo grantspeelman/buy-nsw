@@ -136,6 +136,7 @@ en:
     file?: Please provide a copy of this document
     in_future?: The expiry date for this document must be in the future
     any_checked?: must select at least one option
+    addresses_present?: must provide at least one address
   sellers:
     applications:
       steps:
