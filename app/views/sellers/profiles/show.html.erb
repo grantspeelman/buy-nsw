@@ -24,7 +24,7 @@
       </ol>
     </div>
     <div class="profile">
-      <dl>
+      <dl id="basic-details">
         <dt>Website</dt>
         <dd><%= link_to seller.website_url %></dd>
 
@@ -41,8 +41,8 @@
         </dd>
       </dl>
 
-      <h2 id="company-details">Company details</h2>
-      <dl>
+      <dl id="company-details">
+        <h2>Company details</h2>
         <dt>Authorised representative</dt>
         <dd>
           <%= seller.representative_name %><br>
@@ -90,8 +90,8 @@
       </dl>
 
       <% if seller.awards.any? %>
-      <h2 id="recognition">Recognition</h2>
-      <dl>
+      <dl id="recognition">
+        <h2>Recognition</h2>
         <dt>Awards</dt>
         <dd>
           <ul>
@@ -103,15 +103,15 @@
       </dl>
       <% end %>
 
-      <h2 id="methods">Methods</h2>
-      <dl>
+      <dl id="methods">
+        <h2>Methods</h2>
         <dt>Tools</dt>
         <dd><%= simple_format seller.tools %></dd>
         <dt>Methodologies</dt>
         <dd><%= simple_format seller.methodologies %></dd>
         <% if seller.technologies.present? %>
-          <dt>Techologies</dt>
-          <dd><%= simple_format seller.methodologies %></dd>
+          <dt>Technologies</dt>
+          <dd><%= simple_format seller.technologies %></dd>
         <% end %>
       </dl>
     </div>
