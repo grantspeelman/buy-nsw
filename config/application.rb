@@ -27,5 +27,15 @@ module ProcurementHub
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.action_mailer.smtp_settings = {
+      user_name: ENV['SMTP_USERNAME'],
+      password: ENV['SMTP_PASSWORD'],
+      domain: ENV['SMTP_DOMAIN'],
+      address: ENV['SMTP_HOST'],
+      port: ENV.fetch('SMTP_PORT', '587'),
+      authentication: :plain,
+      enable_starttls_auto: true,
+    }
   end
 end
