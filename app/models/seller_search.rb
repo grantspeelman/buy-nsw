@@ -16,6 +16,7 @@ class SellerSearch
 
   def available_filters
     {
+      services: service_keys,
       business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
     }
   end
@@ -39,7 +40,8 @@ private
           yield_self(&method(:disability_filter)).
           yield_self(&method(:regional_filter)).
           yield_self(&method(:indigenous_filter)).
-          yield_self(&method(:not_for_profit_filter))
+          yield_self(&method(:not_for_profit_filter)).
+          yield_self(&method(:services_filter))
   end
 
   def start_up_filter(relation)
@@ -88,5 +90,19 @@ private
     else
       relation
     end
+  end
+
+  def services_filter(relation)
+    relation
+    service_keys.each do |service|
+      if filter_selected?(:services, service)
+        relation = relation.with_service(service)
+      end
+    end
+    relation
+  end
+
+  def service_keys
+    Seller.services.values
   end
 end

@@ -197,6 +197,23 @@ en:
             regional: Regional
             sme: SME
             start_up: Start-up
+        services:
+          name: Services
+          options:
+            advisory-consulting: Advisory and consulting
+            cloud-services: Cloud services
+            data-analytics: Data and analytics
+            emerging-technology: Emerging technology and innovation
+            end-user-computing: End user computing and peripherals
+            ict-workforce: ICT workforce
+            infrastructure: Infrastructure and networks
+            managed-services: Managed services
+            project-program-management: Project and program management
+            security-identity: Security and identity
+            software-development: Software design and development
+            software-licensing: Software licensing and maintenance
+            telecommunications: Telecommunications
+            training-learning: Training and learning
     tags:
       start_up: Start-up
       sme: SME
