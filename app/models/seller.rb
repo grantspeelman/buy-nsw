@@ -37,4 +37,11 @@ class Seller < ApplicationRecord
   mount_uploader :financial_statement, FinancialStatementUploader
   mount_uploader :professional_indemnity_certificate, ProfessionalIndemnityCertificateUploader
   mount_uploader :workers_compensation_certificate, WorkersCompensationCertificateUploader
+
+  scope :disability, ->{ where(disability: true) }
+  scope :indigenous, ->{ where(indigenous: true) }
+  scope :not_for_profit, ->{ where(not_for_profit: true) }
+  scope :regional, ->{ where(regional: true) }
+  scope :sme, ->{ where(sme: true) }
+  scope :start_up, ->{ where(start_up: true) }
 end

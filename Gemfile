@@ -16,6 +16,7 @@ gem 'enumerize'
 gem 'devise'
 gem 'dry-validation'
 gem 'reform-rails', '~> 0.1.7'
+gem 'textacular', '~> 5.0'
 gem 'carrierwave', '~> 1.0'
 
 gem 'bootstrap', '~> 4.0.0'

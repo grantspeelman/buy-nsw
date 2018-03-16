@@ -1,0 +1,126 @@
+.view-sellers-search {
+
+  .search-form {
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 0.4em;
+    }
+    label {
+      display: block;
+    }
+    .form-group {
+      width: 50%;
+    }
+    input[type=text].form-control {
+      font-size: 1.1em;
+    }
+    .form-group, input[type=submit] {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .search-results {
+    @extend .row;
+
+    padding-top: 1em;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .filters {
+    @extend .col-md-4;
+
+    h2 {
+      font-size: 1em;
+    }
+
+    .filter {
+      list-style: none;
+      background: $grey-2;
+      padding: 0.3em;
+      margin: 0.5em 10% 1em 0;
+
+      h3 {
+        font-size: 1em;
+        padding: 0.2em 0.2em 0.4em;
+        margin-bottom: 0;
+      }
+
+      .options {
+        background: #fff;
+        padding: 0.5em;
+      }
+
+      li {
+        list-style: none;
+        position: relative;
+        margin-bottom: .4em;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      input[type=checkbox] + label {
+        padding: 0 0 0 32px;
+        margin-bottom: 0;
+        font-size: 0.8em;
+
+        &::before {
+          width: 24px;
+          height: 24px;
+        }
+
+        &::after {
+          width: 14px;
+          height: 7px;
+          border-width: 0 0 3px 3px;
+          top: 7px;
+          left: 5px;
+        }
+      }
+    }
+  }
+
+  .results {
+    @extend .col-md-8;
+  }
+
+  .result-count {
+    font-size: 1em;
+    border-bottom: 2px solid $grey-2;
+    margin-bottom: 1em;
+    padding-bottom: .2em;
+
+
+    .big-number {
+      font-size: 2.8em;
+      font-weight: 700;
+      font-style: normal;
+      padding-right: 0.15em;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .big-number-label {
+      font-weight: normal;
+      vertical-align: top;
+      display: inline-block;
+      padding-top: 0.5em;
+    }
+  }
+
+  .result {
+    list-style: none;
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 0.3em;
+    }
+    p {
+      font-size: .9em;
+    }
+  }
+
+}

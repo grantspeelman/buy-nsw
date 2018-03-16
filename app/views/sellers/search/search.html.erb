@@ -1,0 +1,50 @@
+<section class="view-sellers-search">
+  <div class="search-form">
+    <%= bootstrap_form_tag method: :get, enforce_utf8: false do |f| %>
+      <%= f.label :q do %>
+        <h1>Search results for <span class="visually-hidden"><%= search.term %></span></h1>
+      <% end %>
+      <%= f.text_field :q, value: search.term, class: 'form-control', hide_label: true %>
+      <%= f.submit 'Search', name: nil %>
+    <% end %>
+  </div>
+
+  <% if search.term.present? %>
+    <div class="search-results">
+      <ul class="filters">
+        <%= form_tag '', method: :get, enforce_utf8: false do %>
+          <% search.available_filters.each do |key, options| %>
+            <li class="filter">
+              <h3><%= t("sellers.search.filters.#{key}.name") %></h3>
+              <ul class="options">
+                <% options.each do |option| %>
+                  <li>
+                    <%= check_box_tag "#{key}[]", option, search.filter_selected?(key, option), id: "#{key}_#{option}" %>
+                    <%= label_tag "#{key}_#{option}" do %>
+                      <%= t("sellers.search.filters.#{key}.options.#{option}") %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+
+          <%= hidden_field_tag :q, search.term %>
+          <%= submit_tag 'Apply filters', name: nil, class: 'btn btn-primary' %>
+        <% end %>
+      </ul>
+      <ul class="results">
+        <h2 class="result-count">
+          <em class="big-number"><%= search.result_count %></em>
+          <span class="big-number-label"><%= 'seller'.pluralize(search.result_count) %></span>
+        </h2>
+        <% search.results.each do |seller| %>
+          <li class="result">
+            <h3><%= link_to seller.name, sellers_profile_path(seller) %></h3>
+            <p><%= seller.summary %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</section>
