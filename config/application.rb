@@ -30,7 +30,7 @@ module ProcurementHub
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = {
-      host: ENV.fetch('EMAIL_URL_HOST'),
+      host: ENV['EMAIL_URL_HOST'],
       port: ENV.fetch('EMAIL_URL_PORT', 80),
     }
     config.action_mailer.smtp_settings = {
