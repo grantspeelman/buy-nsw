@@ -28,6 +28,11 @@ module ProcurementHub
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = {
+      host: ENV.fetch('EMAIL_URL_HOST'),
+      port: ENV.fetch('EMAIL_URL_PORT', 80),
+    }
     config.action_mailer.smtp_settings = {
       user_name: ENV['SMTP_USERNAME'],
       password: ENV['SMTP_PASSWORD'],
