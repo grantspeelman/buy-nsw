@@ -1,6 +1,4 @@
 class SellerApplicationPresenter
-  # include Rails.application.routes.url_helpers
-
   attr_reader :current_step, :current_step_slug
 
   def initialize(application, current_step_slug: nil)
