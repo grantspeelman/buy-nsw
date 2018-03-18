@@ -3,7 +3,7 @@ class Sellers::Applications::ServicesForm < Sellers::Applications::BaseForm
 
   validation :default, inherit: true do
     required(:seller).schema do
-      required(:services).filled(:any_checked?)
+      required(:services).value(any_checked?: true, one_of?: Seller.services.values)
     end
   end
 end

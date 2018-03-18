@@ -3,7 +3,7 @@ class Sellers::Applications::IndustryForm < Sellers::Applications::BaseForm
 
   validation :default, inherit: true do
     required(:seller).schema do
-      required(:industry).filled(:any_checked?)
+      required(:industry).value(any_checked?: true, one_of?: Seller.industry.values)
     end
   end
 end

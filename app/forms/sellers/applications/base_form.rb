@@ -7,7 +7,11 @@ class Sellers::Applications::BaseForm < Reform::Form
   validation :default do
     configure do
       def any_checked?(value)
-        value.reject(&:blank?).any?
+        value&.reject(&:blank?)&.any?
+      end
+
+      def one_of?(values, list)
+        list.all? { |value| value.blank? || values.include?(value) }
       end
 
       def file?(uploader_class)
@@ -104,9 +108,11 @@ class Sellers::Applications::BaseForm < Reform::Form
   # deletion of child objects.
   #
   NestedChildPopulator = ->(fragment:, collection:, index:, params:, context:, model_klass:, **) {
-    if fragment['id'].present?
+    id = fragment['id'] || fragment[:id]
+
+    if id.present?
       item = collection.find { |item|
-        item.id.to_s == fragment['id'].to_s
+        item.id.to_s == id.to_s
       }
 
       record = model_klass.find_by(seller_id: context.seller_id, id: fragment['id'])

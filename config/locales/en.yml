@@ -133,10 +133,11 @@ en:
         vic: Victoria
         wa: Western Australia
   errors:
+    addresses_present?: must provide at least one address
+    any_checked?: must select at least one option
     file?: Please provide a copy of this document
     in_future?: The expiry date for this document must be in the future
-    any_checked?: must select at least one option
-    addresses_present?: must provide at least one address
+    one_of?: must be selected from the list
   sellers:
     applications:
       steps:
