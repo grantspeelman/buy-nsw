@@ -12,12 +12,12 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 
 gem 'aasm'
-gem 'enumerize'
+gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'dry-validation'
+gem 'enumerize'
 gem 'reform-rails', '~> 0.1.7'
 gem 'textacular', '~> 5.0'
-gem 'carrierwave', '~> 1.0'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
