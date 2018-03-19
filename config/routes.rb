@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
   namespace :sellers do
     resources :applications, only: [:new, :show, :update] do
       resources :products, controller: 'applications/products'

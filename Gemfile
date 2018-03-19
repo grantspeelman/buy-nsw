@@ -16,7 +16,6 @@ gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'dry-validation'
 gem 'enumerize'
-gem 'rails_admin', '~> 1.3'
 gem 'reform-rails', '~> 0.1.7'
 gem 'textacular', '~> 5.0'
 
