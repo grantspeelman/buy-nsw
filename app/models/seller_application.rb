@@ -14,6 +14,4 @@ class SellerApplication < ApplicationRecord
       transitions from: :created, to: :submitted
     end
   end
-
-  scope :created, ->{ where(state: :created) }
 end

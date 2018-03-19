@@ -15,19 +15,14 @@ class Sellers::ApplicationsController < Sellers::BaseController
   end
 
   def show
-    if application.submitted?
-      flash.notice = 'Your seller application has been submitted.'
-      redirect_to root_path
-    else
-      if params[:step].present?
-        form.prepopulate!
+    if params[:step].present?
+      form.prepopulate!
 
-        if presenter.current_step.started?
-          form.valid?
-        end
-      else
-        redirect_to presenter.first_step_path
+      if presenter.current_step.started?
+        form.valid?
       end
+    else
+      redirect_to presenter.first_step_path
     end
   end
 
@@ -38,9 +33,11 @@ class Sellers::ApplicationsController < Sellers::BaseController
 
         if presenter.last_step? && presenter.valid?
           application.submit!
+          flash.notice = 'Your seller application has been submitted.'
+          redirect_to root_path
+        else
+          redirect_to presenter.next_step_path
         end
-
-        redirect_to presenter.next_step_path
       else
         form.save
         form.prepopulate!
@@ -54,7 +51,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
 
 private
   def application
-    @application ||= current_user.seller_applications.find(params[:id])
+    @application ||= current_user.seller_applications.created.find(params[:id])
   end
   helper_method :application
 
