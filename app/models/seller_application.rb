@@ -11,7 +11,10 @@ class SellerApplication < ApplicationRecord
     state :rejected
 
     event :submit do
-      transitions from: :created, to: :submitted
+      # NOTE: This is a temporary change to automatically approve any new
+      # seller applications at the current time.
+      #
+      transitions from: :created, to: :approved
     end
   end
 end
