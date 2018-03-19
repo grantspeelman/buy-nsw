@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :sellers do
     resources :applications
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
