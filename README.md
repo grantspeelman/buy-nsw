@@ -5,7 +5,7 @@
 
 ```
 bin/setup
-foreman start
+foreman start -m web=1
 ```
 
 ## Running the test suite
