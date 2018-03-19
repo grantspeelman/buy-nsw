@@ -25,6 +25,10 @@ class SellerApplicationStepPresenter
 
     if application.seller.industry.any?
       forms << Sellers::Applications::ServicesForm
+
+      if application.seller.services.any?
+        forms << Sellers::Applications::ProductsForm
+      end
     end
 
     forms << Sellers::Applications::DeclarationForm

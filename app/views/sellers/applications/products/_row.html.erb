@@ -1,0 +1,18 @@
+<tr class="product <% unless product.valid? %>has-errors<% end %>">
+  <th scope="row">
+    <% if product.name.present? %>
+      <%= product.name %>
+    <% else %>
+      <em>No product name</em>
+    <% end %>
+  </th>
+  <td class="actions">
+    <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', sellers_application_product_path(application, product),
+                          method: :delete,
+                          data: {
+                            confirm: 'Are you sure?'
+                          },
+                          class: 'btn btn-danger' %>
+  </td>
+</tr>

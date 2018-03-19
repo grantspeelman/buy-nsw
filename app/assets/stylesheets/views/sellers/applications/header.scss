@@ -1,0 +1,17 @@
+.application-header {
+  padding: 1em;
+  background: $grey-1;
+  border-bottom: 1px solid $grey-2;
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    
+    .type-label {
+      font-size: 0.9rem;
+      color: #555;
+      display: block;
+      font-weight: normal;
+    }
+  }
+}

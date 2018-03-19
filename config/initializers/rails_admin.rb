@@ -26,22 +26,12 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    # new
-    export do
-      only ['Seller', 'User', 'SellerApplication']
-    end
-    bulk_delete do
-      only ['Seller', 'User', 'SellerApplication']
-    end
-    show do
-      only ['Seller', 'User', 'SellerApplication']
-    end
-    edit do
-      only ['Seller', 'User', 'SellerApplication']
-    end
-    delete do
-      only ['Seller', 'User', 'SellerApplication']
-    end
+    new
+    export
+    bulk_delete
+    show
+    edit
+    delete
     # show_in_app
 
     ## With an audit adapter, you can add:

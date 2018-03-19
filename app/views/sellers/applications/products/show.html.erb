@@ -1,0 +1,11 @@
+<h1>Products</h1>
+
+<%= bootstrap_form_for(form, url: sellers_application_product_path(application, form.model)) do |f| %>
+
+  <%= f.text_field :name %>
+
+  <fieldset class="actions">
+    <%= f.submit 'Save product', class: 'btn btn-primary' %>
+  </fieldset>
+
+<% end %>

@@ -171,6 +171,9 @@ en:
         methods:
           short: 'Methods'
           long: 'Tools and methodologies'
+        products:
+          short: 'Products'
+          long: 'Your products'
         recognition:
           short: 'Recognition'
           long: 'Awards and accreditations'
@@ -178,7 +181,7 @@ en:
           short: 'Recruiter'
           long: 'Are you a recruiter?'
         services:
-          short: 'Services'
+          short: 'Offering'
           long: 'What is your offering?'
       disclosures:
         structural_changes: 'Are you planning to sell, merge, or alter the corporate structure of your company?'

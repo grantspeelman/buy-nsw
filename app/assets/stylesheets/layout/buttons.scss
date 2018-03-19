@@ -7,10 +7,18 @@
   text-decoration: none;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary {
   background: $light-blue;
 
   &:hover {
     background: darken($light-blue, 15%);
+  }
+}
+
+.btn-secondary {
+  background: $orange;
+
+  &:hover {
+    background: darken($orange, 15%);
   }
 }

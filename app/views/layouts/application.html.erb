@@ -38,8 +38,10 @@
       </div>
     <% end %>
 
+    <%= yield(:content_outside_container) %>
+
     <main>
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
 
     <footer>

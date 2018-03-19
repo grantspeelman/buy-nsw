@@ -1,0 +1,24 @@
+<% content_for(:content_outside_container) do %>
+  <% if application.seller.name.present? %>
+  <header class="application-header">
+    <div class="container">
+      <h1>
+        <span class="type-label">Seller application<span class="visually-hidden">:</span></span>
+        <%= application.seller.name %>
+      </h1>
+    </div>
+  </header>
+  <% end %>
+<% end %>
+
+<% content_for(:content) do %>
+<section class="view-sellers-applications">
+  <div class="steps-list">
+    <%= render partial: 'sellers/applications/step_list', locals: { presenter: presenter } %>
+  </div>
+  <div class="current-step">
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </div>
+</section>
+<% end %>
+<%= render template: 'layouts/application' %>

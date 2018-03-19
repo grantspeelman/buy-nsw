@@ -16,6 +16,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     fill_in_recognition
     fill_in_industry
     fill_in_services
+    add_products
     complete_declaration
 
     expect(page).to have_content('Your seller application has been submitted.')
@@ -164,6 +165,13 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     check 'Cloud services'
     check 'Data and analytics'
     check 'Training and learning'
+
+    click_on 'Save and continue'
+  end
+
+  def add_products
+    fill_in 'Name', with: 'My friendly product'
+    click_on 'Save'
 
     click_on 'Save and continue'
   end

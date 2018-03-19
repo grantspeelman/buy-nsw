@@ -1,0 +1,29 @@
+.view-sellers-applications {
+  .products-list {
+    @extend .table;
+    @extend .table-striped;
+  }
+
+  tr.product {
+    .btn {
+      @extend .btn-sm;
+    }
+    .actions {
+      text-align: right;
+      padding: 0.6rem;
+    }
+    th em {
+      font-weight: normal;
+    }
+
+    &.has-errors {
+      th {
+        color: $red;
+      }
+    }
+  }
+
+  .product-add-link {
+
+  }
+}

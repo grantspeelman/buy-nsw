@@ -9,6 +9,7 @@ class Seller < ApplicationRecord
   has_many :applications, class_name: 'SellerApplication'
   has_many :awards, class_name: 'SellerAward', dependent: :destroy
   has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
+  has_many :products
 
   aasm column: :state do
     state :inactive, initial: true

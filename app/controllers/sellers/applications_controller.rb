@@ -2,6 +2,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
   before_action :authenticate_user!
 
   rescue_from SellerApplicationStepPresenter::NotFound, with: :error_404
+  layout '../sellers/applications/_layout'
 
   def new
     if existing_application.present?

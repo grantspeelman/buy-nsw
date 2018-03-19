@@ -1,0 +1,29 @@
+<h1>Products</h1>
+
+<p>Here you can list the products you wish to sell.</p>
+
+<fieldset>
+  <table class="products-list">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <%= render partial: 'row', locals: { product: product, application: application } %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>
+    <%= link_to 'Add another product', new_sellers_application_product_path(application), class: 'product-add-link' %>
+  </p>
+</fieldset>
+
+<fieldset class="actions">
+  <p>
+    <%= link_to 'Save and continue', presenter.next_step_path, class: 'btn btn-primary' %>
+  </p>
+</fieldset>
