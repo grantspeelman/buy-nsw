@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get '/cloud', to: 'static#cloud', as: :cloud
+
   root to: 'static#index'
 end

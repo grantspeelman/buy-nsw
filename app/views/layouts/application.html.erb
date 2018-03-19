@@ -38,9 +38,7 @@
       </div>
     <% end %>
 
-    <%= yield(:content_outside_container) %>
-
-    <main>
+    <main<% unless content_for?(:without_container) %> class="with-container" <% end %>>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
 

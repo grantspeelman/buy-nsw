@@ -1,0 +1,43 @@
+.views-cloud {
+
+  header[role=banner] {
+    background: $light-blue;
+    color: $white;
+    padding: 2.5rem 0;
+    margin-bottom: 2em;
+
+    h1 {
+      width: 75%;
+      font-size: 3.8rem;
+      line-height: 1.1em;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .categories {
+    @extend .container;
+
+    > p {
+      width: 75%;
+    }
+  }
+
+  ul.category-list {
+    @extend .row;
+    padding: 1em 0;
+
+    li {
+      @extend .col-md-4;
+      list-style: none;
+      padding-right: 7%;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+  }
+
+}
