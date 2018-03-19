@@ -43,6 +43,9 @@
     </main>
 
     <footer>
+      <div class="container">
+        <%= deployment_env.try(:titleize) %>
+      </div>
     </footer>
   </body>
 </html>
