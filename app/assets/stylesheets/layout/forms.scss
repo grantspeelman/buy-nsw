@@ -269,3 +269,13 @@ input[type=radio]:checked + label::after {
     width: 5em;
   }
 }
+
+// Custom file input
+
+.custom-file-label {
+  color: #888;
+}
+
+.custom-file-input.with-attached-file + .custom-file-label {
+  color: #000;
+}
