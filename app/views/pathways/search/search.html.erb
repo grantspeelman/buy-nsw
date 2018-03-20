@@ -1,0 +1,15 @@
+<section class="view-sellers-search">
+  <%= render partial: 'shared/search/form', locals: { search: search } %>
+
+  <div class="search-results">
+    <%= render partial: 'shared/search/filters', locals: { search: search, base_i18n_key: :products } %>
+
+    <ul class="results">
+      <%= render partial: 'shared/search/result_count', locals: { search: search, object: 'product' } %>
+
+      <% search.results.each do |product| %>
+        <%= render partial: 'result', locals: { product: product } %>
+      <% end %>
+    </ul>
+  </div>
+</section>

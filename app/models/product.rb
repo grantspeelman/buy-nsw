@@ -31,4 +31,7 @@ class Product < ApplicationRecord
     'sales-marketing',
     'security-cyber',
   ]
+
+  scope :with_section, ->(section){ where("section = :section", section: section) }
+  scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }
 end

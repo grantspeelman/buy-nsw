@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/cloud', to: 'static#cloud', as: :cloud
+  get '/cloud/:section', to: 'pathways/search#search', as: :pathway_search
 
   root to: 'static#index'
 end
