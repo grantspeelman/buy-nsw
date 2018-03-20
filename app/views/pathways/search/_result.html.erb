@@ -1,4 +1,10 @@
 <li class="result">
-  <h3><%= link_to product.name, '' %></h3>
+  <h3>
+    <%= link_to product.name, '' %>
+    <div class="seller-details">
+      <span class="visually-hidden">by</span>
+      <%= product.seller.name %>
+    </div>
+  </h3>
   <p><%= product.summary %></p>
 </li>
