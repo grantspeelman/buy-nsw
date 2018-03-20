@@ -10,8 +10,4 @@ private
     )
   end
   helper_method :search
-
-  # def filters
-  #   params.select(*search.available_filters.keys)
-  # end
 end

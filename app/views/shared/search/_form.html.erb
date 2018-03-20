@@ -1,0 +1,9 @@
+<div class="search-form">
+  <%= bootstrap_form_tag method: :get, enforce_utf8: false do |f| %>
+    <%= f.label :q do %>
+      <h1>Search results for <span class="visually-hidden"><%= search.term %></span></h1>
+    <% end %>
+    <%= f.text_field :q, value: search.term, class: 'form-control', hide_label: true %>
+    <%= f.submit 'Search', name: nil %>
+  <% end %>
+</div>
