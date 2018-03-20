@@ -6,5 +6,5 @@
       <%= product.seller.name %>
     </div>
   </h3>
-  <p><%= product.summary %></p>
+  <p class="summary"><%= product.summary.truncate_words(50) %></p>
 </li>
