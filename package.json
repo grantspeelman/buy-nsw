@@ -1,5 +1,10 @@
 {
   "name": "procurement-hub",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "standard": {
+    "globals": [
+      "$"
+    ]
+  }
 }
