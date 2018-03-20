@@ -16,7 +16,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
       name: 'Cloud-o-matic Unlimited',
       summary: 'Summary',
       section: section,
-      audiences: ['data-analytics'],
+      audiences: ['legal'],
     )
   }
 
@@ -41,7 +41,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     expect(page.all('.results li').size).to eq(2)
 
     within '.filters' do
-      check 'Data and analytics'
+      page.find('label', text: 'Legal').trigger('click')
     end
     click_on 'Apply filters'
 
