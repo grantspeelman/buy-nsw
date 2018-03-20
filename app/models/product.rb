@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   end
 
   enumerize :section, in: [
-    'applications-services',
+    'applications-software',
     'hosting-infrastructure',
     'support-services',
   ]

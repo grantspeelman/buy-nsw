@@ -13,7 +13,7 @@ FactoryBot.define do
     trait :with_basic_details do
       name 'Product name'
       summary 'Summary'
-      section 'applications-services'
+      section 'applications-software'
       audiences ['developers']
     end
 

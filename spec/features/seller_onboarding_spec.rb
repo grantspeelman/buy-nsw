@@ -172,7 +172,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
   def add_products
     fill_in 'Name', with: 'My friendly product'
     fill_in 'Summary', with: 'My product description'
-    choose 'Applications and services'
+    choose 'Applications and software'
     check 'Security and cyber'
 
     click_on 'Save'

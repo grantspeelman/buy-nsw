@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Searching products', type: :feature, js: true do
 
-  let(:section) { 'applications-services' }
+  let(:section) { 'applications-software' }
   let!(:product_1) {
     create(:active_product,
       name: 'Cloud-o-matic',
