@@ -7,6 +7,10 @@ class Product < ApplicationRecord
   aasm column: :state do
     state :inactive, initial: true
     state :active
+
+    event :make_active do
+      transitions from: :inactive, to: :active
+    end
   end
 
   enumerize :section, in: [

@@ -15,6 +15,11 @@ class SellerApplication < ApplicationRecord
       # seller applications at the current time.
       #
       transitions from: :created, to: :approved
+
+      after_commit do
+        seller.make_active!
+        seller.products.each(&:make_active!)
+      end
     end
   end
 end

@@ -14,6 +14,10 @@ class Seller < ApplicationRecord
   aasm column: :state do
     state :inactive, initial: true
     state :active
+
+    event :make_active do
+      transitions from: :inactive, to: :active
+    end
   end
 
   enumerize :industry, multiple: true, in: ['ict', 'construction', 'other']
