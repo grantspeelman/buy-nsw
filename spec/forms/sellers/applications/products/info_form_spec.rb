@@ -9,6 +9,7 @@ RSpec.describe Sellers::Applications::Products::InfoForm do
   let(:atts) {
     {
       name: 'Product-o-tron 2000',
+      summary: "We name you product so you don't have to",
     }
   }
 

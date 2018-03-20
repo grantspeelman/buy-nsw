@@ -1,11 +1,23 @@
-<h1>Products</h1>
+<h1>What are your products?</h1>
 
 <%= bootstrap_form_for(form, url: sellers_application_product_path(application, form.model)) do |f| %>
 
   <%= f.text_field :name %>
+  <%= f.text_area :summary, rows: 5 %>
+
+  <fieldset class="multiple-choice-group checkbox-group">
+    <legend>Which category best describes your product?</legend>
+    <%= f.collection_radio_buttons(:section, Product.section.options, :last, :first, skip_label: true) %>
+  </fieldset>
+
+  <fieldset class="multiple-choice-group checkbox-group">
+    <legend>Who is your product aimed at?</legend>
+    <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true) %>
+  </fieldset>
 
   <fieldset class="actions">
-    <%= f.submit 'Save product', class: 'btn btn-primary' %>
+    <p><%= f.submit 'Save product', class: 'btn btn-primary' %></p>
+    <p><%= link_to 'Skip and return later', sellers_application_products_path(application) %></p>
   </fieldset>
 
 <% end %>

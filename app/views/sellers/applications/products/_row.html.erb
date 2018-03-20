@@ -1,11 +1,21 @@
-<tr class="product <% unless product.valid? %>has-errors<% end %>">
+<tr class="product">
   <th scope="row">
     <% if product.name.present? %>
       <%= product.name %>
     <% else %>
       <em>No product name</em>
     <% end %>
+    <% if product.section.present? %>
+    <span class="product-section"><%= product.section_text %></span>
+    <% end %>
   </th>
+  <td>
+    <% if product.valid? %>
+      All details provided
+    <% else %>
+      <%= pluralize(product.errors.messages.keys.size, 'field') %> to review
+    <% end %>
+  </td>
   <td class="actions">
     <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'btn btn-primary' %>
     <%= link_to 'Delete', sellers_application_product_path(application, product),

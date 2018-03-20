@@ -7,17 +7,23 @@ class Sellers::Applications::ProductsController < Sellers::BaseController
 
   def new
     product = relation.create
-    redirect_to sellers_application_product_path(application, product)
+    redirect_to sellers_application_product_path(application, product, new: true)
+  end
+
+  def show
+    unless params.key?(:new)
+      form.valid?
+    end
   end
 
   def update
-    form.validate(params[:product])
+    valid = form.validate(params[:product])
     form.save
 
-    if form.valid?
+    if valid
       redirect_to action: :index
     else
-      redirect_to action: :show
+      render action: :show
     end
   end
 

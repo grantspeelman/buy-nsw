@@ -1,6 +1,6 @@
 require 'ostruct'
 
-class Sellers::Applications::BaseForm < Reform::Form
+class Sellers::Applications::BaseForm < BaseForm
   include Composition
   model :application
 
@@ -70,22 +70,6 @@ class Sellers::Applications::BaseForm < Reform::Form
     end
 
     new_messages.any? ? new_errors : super
-  end
-
-  # Calculate if a form has been started by looking to see if it either has:
-  # - a completed attribute (for normal forms)
-  # - a saved child object, determined by the presence of an `id` attribute (for collections)
-  #
-  def started?
-    schema.keys.map {|key|
-      value = send(key)
-
-      if value.is_a?(Array)
-        value.first&.id.present?
-      else
-        value.present? || value == false
-      end
-    }.compact.any?
   end
 
   # The following bit of hackery bodges the way that the model name is returned

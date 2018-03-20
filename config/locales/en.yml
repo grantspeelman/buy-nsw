@@ -95,6 +95,23 @@ en:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
   enumerize:
+    product:
+      audiences:
+        accounting-finance: Accounting and finance
+        audit-risk-compliance: Audit, risk and compliance
+        data-analytics: Data and analytics
+        developers: Developers
+        facilities: Facilities
+        human-resource-management: Human resource management
+        legal: Legal
+        operations-management: Operations management
+        projects-team-collaboration: Projects and team collaboration
+        sales-marketing: Sales and marketing
+        security-cyber: Security and cyber
+      section:
+        applications-services: Applications and services
+        hosting-infrastructure: Hosting and infrastructure
+        support-services: Support services
     seller:
       industry:
         ict: 'ICT and Digital'

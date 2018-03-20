@@ -15,11 +15,9 @@
     th em {
       font-weight: normal;
     }
-
-    &.has-errors {
-      th {
-        color: $red;
-      }
+    .product-section {
+      font-weight: normal;
+      display: block;
     }
   }
 
