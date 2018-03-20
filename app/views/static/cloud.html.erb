@@ -13,22 +13,36 @@
   <section class="categories">
     <p>Some introductory text here about cloud services and why you would choose them, how the sellers here are qualified and you can buy the listed products quickly.</p>
 
-    <p>Browse one of the three categories to see available offerings.</p>
+    <p>Choose one of the categories below to find available offerings.</p>
 
     <ul class="category-list">
       <li>
-        <h2><a href="">Applications and services</a></h2>
+        <h2>Applications and services</h2>
         <p>Find software applications which are accessed over the internet and hosted in the cloud.</p>
+        <%= link_to 'Find applications and services', '', class: 'action' %>
       </li>
       <li>
-        <h2><a href="">Hosting and infrastructure</a></h2>
+        <h2>Hosting and infrastructure</h2>
         <p>Find cloud hosting and infrastructure services to help you deploy, manage and run software.</p>
+        <%= link_to 'Find hosting and infrastructure', '', class: 'action' %>
       </li>
       <li>
-        <h2><a href="">Support services</a></h2>
+        <h2>Support services</h2>
         <p>Find cloud support services to help you set up and maintain your cloud software or hosting services.</p>
+        <%= link_to 'Find cloud support services', '', class: 'action' %>
       </li>
     </ul>
-  </div>
+
+    <div class="seller-action">
+      <div class="overview">
+        <h2>Have cloud products and support to sell?</h2>
+        <p>Apply to sell to the NSW government. It's quick and easy.</p>
+      </div>
+
+      <div class="action">
+        <%= link_to 'Start application', new_sellers_application_path %>
+      </div>
+    </div>
+  </section>
 
 </section>

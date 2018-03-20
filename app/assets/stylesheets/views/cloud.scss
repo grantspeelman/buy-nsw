@@ -4,7 +4,7 @@
     background: $light-blue;
     color: $white;
     padding: 2.5rem 0;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 
     h1 {
       width: 75%;
@@ -27,7 +27,7 @@
 
   ul.category-list {
     @extend .row;
-    padding: 1em 0;
+    padding: 2em 0;
 
     li {
       @extend .col-md-4;
@@ -37,6 +37,40 @@
 
     h2 {
       font-size: 1.2em;
+    }
+
+    .action {
+      @extend .btn;
+      @extend .btn-primary;
+
+      font-size: 1rem;
+    }
+  }
+
+  .seller-action {
+    @extend .row;
+
+    background: $grey-1;
+    padding: 1em 0 0;
+    margin-top: 2em;
+    margin-bottom: 3em;
+
+    h2 {
+      font-size: 1.2em;
+      margin-bottom: 0.3em;
+    }
+    .overview {
+      @extend .col-md-8;
+    }
+    .action {
+      @extend .col-md-4;
+      text-align: right;
+      padding-top: 0.3em;
+
+      a {
+        @extend .btn;
+        @extend .btn-primary;
+      }
     }
   }
 
