@@ -117,7 +117,7 @@ en:
         support-services: Support services
     seller:
       industry:
-        ict: 'ICT and Digital'
+        ict: 'ICT'
         construction: 'Building and Construction'
         other: 'Other'
       number_of_employees:
@@ -201,8 +201,8 @@ en:
           short: 'Recruiter'
           long: 'Are you a recruiter?'
         services:
-          short: 'Offering'
-          long: 'What is your offering?'
+          short: 'ICT categories'
+          long: 'What types of ICT products and services do you provide?'
       disclosures:
         structural_changes: 'Are you planning to sell, merge, or alter the corporate structure of your company?'
         investigations: "Has your organisation — or any of its directors or principals — been investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
