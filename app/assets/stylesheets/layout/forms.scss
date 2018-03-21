@@ -5,7 +5,7 @@ label {
 fieldset {
   margin: 1.5em 0;
   padding-bottom: 1em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $grey-2;
 
   &:last-of-type {
     border-bottom: none;
@@ -41,6 +41,10 @@ legend.with-label {
 }
 .radio-group .form-check, .checkbox-group .form-check {
   padding-bottom: 1rem;
+
+  small {
+    padding-left: 26px;
+  }
 }
 
 .expanding-list {
