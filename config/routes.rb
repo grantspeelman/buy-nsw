@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/cloud', to: 'static#cloud', as: :cloud
   get '/cloud/:section', to: 'pathways/search#search', as: :pathway_search
+  get '/cloud/:section/products/:id', to: 'pathways/products#show', as: :pathway_product
 
   root to: 'static#index'
 end

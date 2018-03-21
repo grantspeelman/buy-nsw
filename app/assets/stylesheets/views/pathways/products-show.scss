@@ -1,0 +1,11 @@
+.view-pathways-products-show {
+  @include profile;
+
+  .price {
+    font-weight: 600;
+    font-size: 1.4em;
+    margin-bottom: 1rem;
+    line-height: 1.1em;
+    text-align: left;
+  }
+}

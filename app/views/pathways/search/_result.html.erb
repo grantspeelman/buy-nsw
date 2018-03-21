@@ -1,6 +1,6 @@
 <li class="result">
   <h3>
-    <%= link_to product.name, '' %>
+    <%= link_to product.name, pathway_product_path(section, product) %>
     <div class="seller-details">
       <span class="visually-hidden">by</span>
       <%= product.seller.name %>

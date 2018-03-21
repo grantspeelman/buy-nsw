@@ -1,0 +1,46 @@
+<section class="view-pathways-products-show">
+  <h1><%= product.name %></h1>
+
+  <div class="intro">
+    <div class="summary">
+      <%= simple_format product.summary %>
+    </div>
+    <div class="actions">
+      <div class="price">$40 per unit per year</div>
+      <a href="" class="btn-primary">Buy this product</a>
+    </div>
+  </div>
+
+  <div class="profile-container">
+    <div class="contents-container">
+      <div class="contents">
+        <h3>On this page</h3>
+        <ol>
+          <% mock_product_details.keys.each do |key| %>
+            <li><%= link_to key, "##{key.parameterize}" %></li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+    <div class="profile">
+      <% mock_product_details.each do |heading, details| %>
+        <dl id="<%= heading.parameterize %>">
+          <h2><%= heading %></h2>
+          <% details.each do |key, value| %>
+            <dt><%= key %></dt>
+            <dd>
+              <% if value.is_a?(Array) %>
+                <ul>
+                  <% value.each do |value| %>
+                    <li><%= value %></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <%= value %>
+              <% end %>
+            </dd>
+          <% end %>
+        </dl>
+      <% end %>
+    </div>
+</section>
