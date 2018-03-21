@@ -1,5 +1,7 @@
 <h1>What are your products?</h1>
 
+<p>Tell us about your products. Once you have added one product, you can add more.</p>
+
 <%= bootstrap_form_for(form, url: sellers_application_product_path(application, form.model)) do |f| %>
 
   <%= f.text_field :name %>

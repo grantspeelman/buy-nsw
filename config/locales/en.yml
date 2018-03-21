@@ -97,6 +97,9 @@ en:
         financial_statement_expiry: We will ask you to upload a new document one year from now.
         professional_indemnity_certificate_expiry: We will ask you to upload a new document when this document expires.
         workers_compensation_certificate_expiry: We will ask you to upload a new document when this document expires.
+      'sellers/applications/products/info_form':
+        name: This is how your product will appear in the listing.
+        summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
