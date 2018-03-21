@@ -20,13 +20,14 @@
 
   .profile-container {
     @extend .row;
+    padding-top: 1em;
   }
   .contents-container {
     @extend .col-md-4;
   }
   .contents {
     @extend .sticky-top;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding-top: 1em;
 
     h3 {
