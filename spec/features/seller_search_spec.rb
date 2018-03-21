@@ -37,14 +37,14 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     fill_in 'q', with: 'Ltd'
     click_on 'Search'
 
-    expect(page.all('.results li').size).to eq(2)
+    expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
       check 'Start-up'
     end
     click_on 'Apply filters'
 
-    expect(page.all('.results li').size).to eq(1)
+    expect(page.all('.results li.result').size).to eq(1)
 
     within '.results' do
       expect(page).to have_content(:li, seller_2.name)
@@ -57,14 +57,14 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     fill_in 'q', with: 'Ltd'
     click_on 'Search'
 
-    expect(page.all('.results li').size).to eq(2)
+    expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
       check 'Cloud products'
     end
     click_on 'Apply filters'
 
-    expect(page.all('.results li').size).to eq(1)
+    expect(page.all('.results li.result').size).to eq(1)
 
     within '.results' do
       expect(page).to have_content(:li, seller_1.name)

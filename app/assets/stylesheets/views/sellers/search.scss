@@ -117,6 +117,8 @@
     border-bottom: 1px solid $grey-1;
     margin-bottom: 1em;
 
+    @include tags;
+
     h3 {
       font-size: 1.1em;
       margin-bottom: 0.3em;
