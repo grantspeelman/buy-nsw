@@ -5,5 +5,8 @@
 @import 'bootstrap';
 
 @import '_variables';
+
+@import 'patterns/**/*';
+
 @import 'layout/**/*';
 @import 'views/**/*';

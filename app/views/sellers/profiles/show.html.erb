@@ -13,15 +13,17 @@
   </div>
 
   <div class="profile-container">
-    <div class="contents">
-      <h3>On this page</h3>
-      <ol>
-        <li><%= link_to 'Company details', '#company-details' %></li>
-        <% if seller.awards.any? %>
-          <li><%= link_to 'Recognition', '#recognition' %></li>
-        <% end %>
-        <li><%= link_to 'Methods', '#methods' %></li>
-      </ol>
+    <div class="contents-container">
+      <div class="contents">
+        <h3>On this page</h3>
+        <ol>
+          <li><%= link_to 'Company details', '#company-details' %></li>
+          <% if seller.awards.any? %>
+            <li><%= link_to 'Recognition', '#recognition' %></li>
+          <% end %>
+          <li><%= link_to 'Methods', '#methods' %></li>
+        </ol>
+      </div>
     </div>
     <div class="profile">
       <dl id="basic-details">
