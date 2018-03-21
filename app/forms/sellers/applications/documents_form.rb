@@ -16,7 +16,7 @@ class Sellers::Applications::DocumentsForm < Sellers::Applications::BaseForm
       required(:professional_indemnity_certificate).filled(:file?)
       required(:workers_compensation_certificate).filled(:file?)
 
-      required(:financial_statement_expiry).filled(:date?, :in_future?)
+      required(:financial_statement_expiry).filled(:date?)
       required(:professional_indemnity_certificate_expiry).filled(:date?, :in_future?)
       required(:workers_compensation_certificate_expiry).filled(:date?, :in_future?)
     end

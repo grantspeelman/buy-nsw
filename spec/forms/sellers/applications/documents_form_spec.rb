@@ -20,7 +20,7 @@ RSpec.describe Sellers::Applications::DocumentsForm do
       financial_statement: example_pdf,
       professional_indemnity_certificate: example_pdf,
       workers_compensation_certificate: example_pdf,
-      financial_statement_expiry: future_date,
+      financial_statement_expiry: historical_date,
       professional_indemnity_certificate_expiry: future_date,
       workers_compensation_certificate_expiry: future_date,
     }
@@ -57,13 +57,6 @@ RSpec.describe Sellers::Applications::DocumentsForm do
   context 'financial_statement_expiry' do
     it 'is invalid when blank' do
       subject.validate(atts.merge(financial_statement_expiry: nil))
-
-      expect(subject).to_not be_valid
-      expect(subject.errors[:financial_statement_expiry]).to be_present
-    end
-
-    it 'is invalid when in the past' do
-      subject.validate(atts.merge(financial_statement_expiry: historical_date))
 
       expect(subject).to_not be_valid
       expect(subject.errors[:financial_statement_expiry]).to be_present

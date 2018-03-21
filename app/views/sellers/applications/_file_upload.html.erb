@@ -10,4 +10,8 @@
 
   <%= f.file_field key, help: false, label: (upload&.url.present? ? 'Replace this file' : 'Upload a file') %>
   <%= date_field_from_value f, "#{key}_expiry", f.object.send("#{key}_expiry") %>
+
+  <small class="form-text text-muted">
+    <%= t("activerecord.help.sellers/applications/documents_form.#{key}_expiry") %>
+  </small>
 </fieldset>

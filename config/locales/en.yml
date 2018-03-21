@@ -60,7 +60,7 @@ en:
         financial_statement: 'Financial statement'
         professional_indemnity_certificate: 'Professional Indemnity and Public Liability Insurance'
         workers_compensation_certificate: 'Workers Compensation Insurance'
-        financial_statement_expiry: Expiry date
+        financial_statement_expiry: Date of document
         professional_indemnity_certificate_expiry: Expiry date
         workers_compensation_certificate_expiry: Expiry date
       'sellers/applications/methods_form':
@@ -94,6 +94,9 @@ en:
         financial_statement: 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.'
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
+        financial_statement_expiry: We will ask you to upload a new document one year from now.
+        professional_indemnity_certificate_expiry: We will ask you to upload a new document when this document expires.
+        workers_compensation_certificate_expiry: We will ask you to upload a new document when this document expires.
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
@@ -155,8 +158,8 @@ en:
   errors:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
-    file?: Please provide a copy of this document
-    in_future?: The expiry date for this document must be in the future
+    file?: must be provided
+    in_future?: must be in the future
     one_of?: must be selected from the list
   sellers:
     applications:
