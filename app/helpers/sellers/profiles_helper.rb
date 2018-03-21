@@ -14,6 +14,12 @@ module Sellers::ProfilesHelper
   end
 
   def formatted_abn(abn)
-    abn.gsub(' ','').insert(2, ' ').insert(6, ' ').insert(10, ' ')
+    abn = (abn || '').gsub(' ','')
+
+    abn = abn.insert(2, ' ') if abn.length > 2
+    abn = abn.insert(6, ' ') if abn.length > 6
+    abn = abn.insert(10, ' ') if abn.length > 10
+
+    abn
   end
 end
