@@ -19,7 +19,6 @@ class SellerApplicationStepPresenter
     forms << Sellers::Applications::ContactsForm
     forms << Sellers::Applications::DisclosuresForm
     forms << Sellers::Applications::DocumentsForm
-    forms << Sellers::Applications::MethodsForm
     forms << Sellers::Applications::RecognitionForm
     forms << Sellers::Applications::IndustryForm
 
