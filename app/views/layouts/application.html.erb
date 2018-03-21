@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NSW Procurement</title>
+    <title>
+      <%= "(#{deployment_env.try(:titleize)})" %> NSW Procurement Hub</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
