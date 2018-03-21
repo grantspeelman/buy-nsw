@@ -73,9 +73,9 @@ en:
   activerecord:
     help:
       'sellers/applications/business_details_form':
-        name: The business name you use on the Marketplace must be listed under your ABN. You can omit suffixes such as PTY or LTD.
+        name: The business name you use must be listed under your ABN. You can omit suffixes such as PTY or LTD.
         abn_html: 'You need an Australian Business Number to do business in Australia. <a href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/">Apply for an ABN here</a>.'
-        summary: 3-4 sentences that describe your business. This can be seen by all Digital Marketplace visitors without signing in.
+        summary: 3-4 sentences that describe your business. This can be seen by anyone without signing in.
         website_url: Provide a link to your website beginning with http
         linkedin_url: Provide a LinkedIn URL beginning with http
       'sellers/applications/business_info_form':
@@ -211,8 +211,8 @@ en:
         investigations: "Has your organisation — or any of its directors or principals — been investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
         legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
         insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years?"
-        conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact on the Digital Marketplace?"
-        other_circumstances: "Is there any other material circumstance that is likely to adversely affect your performance of any work order in the Digital Marketplace?"
+        conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with the NSW Government?"
+        other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
     search:
       filters:
         business_identifiers:
