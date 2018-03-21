@@ -129,7 +129,7 @@ en:
         200plus: 'More than 200 employees'
       services:
         advisory-consulting: Advisory and consulting
-        cloud-services: Cloud services
+        cloud-services: Cloud products and support
         data-analytics: Data and analytics
         emerging-technology: Emerging technology and innovation
         end-user-computing: End user computing and peripherals
@@ -225,7 +225,7 @@ en:
           name: Services
           options:
             advisory-consulting: Advisory and consulting
-            cloud-services: Cloud services
+            cloud-services: Cloud products and support
             data-analytics: Data and analytics
             emerging-technology: Emerging technology and innovation
             end-user-computing: End user computing and peripherals

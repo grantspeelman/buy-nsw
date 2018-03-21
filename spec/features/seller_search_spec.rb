@@ -60,7 +60,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     expect(page.all('.results li').size).to eq(2)
 
     within '.filters' do
-      check 'Cloud services'
+      check 'Cloud products'
     end
     click_on 'Apply filters'
 

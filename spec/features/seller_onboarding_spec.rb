@@ -162,7 +162,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
   end
 
   def fill_in_services
-    check 'Cloud services'
+    check 'Cloud products'
     check 'Data and analytics'
     check 'Training and learning'
 
