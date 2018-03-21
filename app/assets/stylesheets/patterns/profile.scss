@@ -54,7 +54,6 @@
   dl {
     @extend .row;
     margin-bottom: 3em;
-    font-size: 0.8em;
     border-bottom: 1px solid $grey-2;
 
     h2 {
@@ -74,11 +73,15 @@
     dd {
       @extend .col-md-8;
     }
+
+    &:first-of-type {
+      margin-top: 1em;
+    }
   }
 
   h2 {
     font-size: 1.6rem;
-    margin: 1em 0 0.5em;
+    margin: 0 0 0.5em;
     font-weight: 600;
   }
 
