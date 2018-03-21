@@ -1,5 +1,8 @@
 <section class="view-pathways-products-show">
-  <h1><%= product.name %></h1>
+  <header class="with-seller-details">
+    <h1><%= product.name %></h1>
+    <p class="seller">by <%= link_to product.seller.name, sellers_profile_path(product.seller) %></p>
+  </header>
 
   <div class="intro">
     <div class="summary">

@@ -1,6 +1,15 @@
 .view-pathways-products-show {
   @include profile;
 
+  header.with-seller-details {
+    h1 {
+      margin-bottom: 0.3em;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
   .price {
     font-weight: 600;
     font-size: 1.4em;

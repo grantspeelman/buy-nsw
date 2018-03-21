@@ -5,6 +5,7 @@
 
     .summary {
       @extend .col-md-9;
+      padding-right: 3em;
     }
     .actions {
       @extend .col-md-3;
@@ -43,9 +44,6 @@
         &:hover {
           text-decoration: underline;
         }
-      }
-      a::after {
-        // content: ' ↓';
       }
     }
   }
