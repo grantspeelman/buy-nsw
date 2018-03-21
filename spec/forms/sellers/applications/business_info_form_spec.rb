@@ -13,6 +13,8 @@ RSpec.describe Sellers::Applications::BusinessInfoForm do
       start_up: true,
       sme: true,
       not_for_profit: false,
+      australian_owned: true,
+      rural_remote: false,
       regional: true,
       travel: true,
       disability: false,

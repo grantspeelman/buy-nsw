@@ -5,9 +5,11 @@ class Sellers::Applications::BusinessInfoForm < Sellers::Applications::BaseForm
   property :sme,                                 on: :seller
   property :not_for_profit,                      on: :seller
 
+  property :rural_remote,                        on: :seller
   property :regional,                            on: :seller
   property :travel,                              on: :seller
 
+  property :australian_owned,                    on: :seller
   property :disability,                          on: :seller
   property :female_owned,                        on: :seller
   property :indigenous,                          on: :seller

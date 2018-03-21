@@ -12,6 +12,8 @@ en:
         start_up: 'Start-up'
         sme: 'Small to medium-sized enterprise (SME)'
         not_for_profit: 'Not for profit / social enterprise'
+        australian_owned: 'Australian owned'
+        rural_remote: 'Rural or remote business'
         regional: 'Regional or non-metropolitan business'
         travel: 'Happy to travel for regional or interstate opportunities'
         disability: 'Australian disability enterprise'
@@ -80,6 +82,7 @@ en:
         start_up: Your business aims to disrupt an established market using technology. It is not listed on any stock exchange and is less than 5 years old.
         sme: You have less than 200 employees and are independent of any parent organisation for taxation purposes.
         not_for_profit: An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
+        australian_owned: Your business is founded and headquartered in Australia, and owned by Australian nationals.
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
         indigenous_html: 'Your business is at least 50% Indigenous owned and listed on <a href="https://www.supplynation.org.au/search">Supply Nation</a>.'
