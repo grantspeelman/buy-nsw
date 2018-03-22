@@ -1,6 +1,15 @@
 <p>Select the categories which are most relevant to your business.</p>
 
 <fieldset class="multiple-choice-group checkbox-group">
-  <%= f.collection_check_boxes(:services, Seller.services.options, :last, :first, skip_label: true,
-                                                                                  wrapper: { class: error_class_for(f, :services) }) %>
+
+  <div class="form-group <%= error_class_for(f, :services) %>">
+    <%= hidden_field_tag "application[services][]" %>
+    <% Seller.services.options.each do |(label, value)| %>
+      <%= f.check_box "services", { multiple: true, include_hidden: false }, value do %>
+        <%= label %>
+        <small class="form-text text-muted"><%= service_description_text(value) %></small>
+      <% end %>
+    <% end %>
+  </div>
+
 </fieldset>

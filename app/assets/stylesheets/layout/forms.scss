@@ -45,6 +45,10 @@ legend.with-label {
   small {
     padding-left: 26px;
   }
+
+  label small {
+    padding-left: 0;
+  }
 }
 
 .expanding-list {

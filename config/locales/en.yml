@@ -97,6 +97,21 @@ en:
         financial_statement_expiry: We will ask you to upload a new document one year from now.
         professional_indemnity_certificate_expiry: We will ask you to upload a new document when this document expires.
         workers_compensation_certificate_expiry: We will ask you to upload a new document when this document expires.
+      'sellers/applications/services_form':
+        advisory-consulting: "The provision of specialist expertise, acting in an advisory capability to government. Includes building business cases and strategic roadmaps, developing enterprise architectures, providing policy analysis and advice."
+        cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
+        data-analytics: "Data science disciplines, data management practices and business intelligence and analytical tools. Examples include data cleansing, scenario modelling, statistical analysis, data classification through machine learning, data visualisation and data governance."
+        emerging-technology: "A category for showcasing innovative pre-commercialisation concepts in emerging technologies including artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality. Must be at proof of concept stage for inclusion."
+        end-user-computing: "All devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, peripherals such as keyboards and assistive technologies such as screen readers."
+        ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
+        infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks  (such as racking, cabling, routers, switches, and their firmware)."
+        managed-services: "Outsourcing the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infastructure (e.g. printers, desktops) associated with the service."
+        project-program-management: "All services relating to the delivery and management of a project or program.  Examples include business and technical performance analysis, delivery and risk management, and change management."
+        security-identity: "Solutions to protect and authenticate government and citizens when online. Examples includes identity verification, information security assessments, ethical hacking/ pen testing, monitoring, incident response, data privacy and digital forensics."
+        software-development: "The design, construction and delivery of bespoke software and software modifications. Includes user research; service, interaction and content design; coding; and testing for stability, security and accessibility. Also includes managing technical envionments and all technical skillsets and ways of working, together with supporting toolsets."
+        software-licensing: "Licences for software applications and systems. Including those offered on a named or concurrent user, location, enterprise or any basis other than as a cloud-hosted subscription service. Maintenance and updates for these software licences."
+        telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
+        training-learning: "Includes bespoke and general training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification, and information handling."
       'sellers/applications/products/info_form':
         name: This is how your product will appear in the listing.
         summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
