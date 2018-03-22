@@ -35,7 +35,7 @@ header[role=global] {
   aside {
     @extend .col-md-4;
     text-align: right;
-    margin-top: 37px;
+    margin-top: 2rem;
 
     ul {
       padding-left: 0;
@@ -44,6 +44,11 @@ header[role=global] {
       display: inline-block;
       list-style: none;
       padding-left: 1em;
+    }
+    a {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: 1rem;
     }
   }
 

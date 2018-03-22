@@ -1,12 +1,8 @@
 <aside class="user">
   <ul>
     <% if user_signed_in? %>
-      <% if current_user.has_seller_application? %>
-        <li><%= link_to 'Continue application', new_sellers_application_path %></li>
-      <% end %>
       <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <li><%= link_to 'Join the Marketplace', new_user_registration_path %></li>
       <li><%= link_to 'Sign in', new_user_session_path %></li>
     <% end %>
   </ul>

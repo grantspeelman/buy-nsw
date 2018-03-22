@@ -4,7 +4,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
 
   it 'submits a successful application' do
     visit '/'
-    click_on 'Apply as a seller'
+    click_on 'Start your application'
 
     complete_introduction
     fill_in_business_basics
