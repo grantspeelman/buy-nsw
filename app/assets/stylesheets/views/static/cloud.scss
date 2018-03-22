@@ -1,10 +1,10 @@
-.views-cloud {
+.view-cloud {
 
   header[role=banner] {
     background: $light-blue;
     color: $white;
     padding: 2.5rem 0;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 
     h1 {
       width: 75%;
@@ -20,7 +20,16 @@
   .categories {
     @extend .container;
 
-    > p {
+    ul.intro {
+      padding-left: 1em;
+      font-size: 1.1em;
+    }
+
+    li {
+      padding-bottom: 0.6em;
+    }
+
+    > p, > li {
       width: 75%;
     }
   }
@@ -28,7 +37,7 @@
   ul.category-list {
     @extend .row;
 
-    padding: 1.5em 0;
+    padding: 2em 0;
     margin-top: 1.5em;
     border-top: 1px solid $grey-2;
 

@@ -1,34 +1,36 @@
 <% content_for(:without_container, true) %>
 
-<section class="views-cloud">
+<section class="view-cloud">
 
   <header role="banner">
     <div class="container">
       <h1>Buy cloud products and support</h1>
 
-      <p>It's simple and easy to purchase cloud products and support for your NSW government organisation.</p>
+      <p>It's simple and easy to purchase cloud products and support for your NSW government organisation</p>
     </div>
   </header>
 
   <section class="categories">
-    <p>Some introductory text here about cloud services and why you would choose them, how the sellers here are qualified and you can buy the listed products quickly.</p>
-
-    <p>Choose one of the categories below to find available offerings.</p>
+    <ul class="intro">
+      <li>Find and connect with sellers approved to supply cloud products, services and support to government</li>
+      <li>Explore and compare their offerings</li>
+      <li>Click to add selections to your shopping cart and buy using a virtual p-card (where your entity has set up this facility)</li>
+    </ul>
 
     <ul class="category-list">
       <li>
         <h2>Applications and software</h2>
-        <p>Find applications which are accessed over the internet and hosted in the cloud.</p>
+        <p>Applications which are accessed over the internet and hosted in the cloud.</p>
         <%= link_to 'Find applications and software', pathway_search_path('applications-software'), class: 'action' %>
       </li>
       <li>
         <h2>Hosting and infrastructure</h2>
-        <p>Find hosting and infrastructure services to help you deploy, manage and run software.</p>
+        <p>Hosting and infrastructure services to help you deploy, manage and run software.</p>
         <%= link_to 'Find hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'action' %>
       </li>
       <li>
         <h2>Support services</h2>
-        <p>Find support services to help you set up and maintain your cloud software or hosting services.</p>
+        <p>Support services to help you set up and maintain your cloud software or hosting services.</p>
         <%= link_to 'Find cloud support services', pathway_search_path('support-services'), class: 'action' %>
       </li>
     </ul>
@@ -36,11 +38,7 @@
     <div class="seller-action">
       <div class="overview">
         <h2>Have cloud products and support to sell?</h2>
-        <p>Apply to sell to the NSW government. It's quick and easy.</p>
-      </div>
-
-      <div class="action">
-        <%= link_to 'Start application', new_sellers_application_path %>
+        <p><%= link_to "Apply to become a registered seller", new_sellers_application_path %> to the NSW government. It's quick and easy.</p>
       </div>
     </div>
   </section>
