@@ -40,6 +40,7 @@ group :development, :test do
   gem 'i18n-debug'
   gem 'poltergeist'
   gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :development do
