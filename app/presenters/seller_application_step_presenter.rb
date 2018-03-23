@@ -42,7 +42,7 @@ class SellerApplicationStepPresenter
   end
 
   def self.find_by_key(application, key)
-    steps(application).find {|step| step.key == key }
+    steps(application).find {|step| step.key == key } || raise(NotFound, key)
   end
 
   def self.find_by_slug(application, slug)

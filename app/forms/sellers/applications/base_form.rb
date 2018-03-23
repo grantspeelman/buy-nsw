@@ -36,6 +36,10 @@ class Sellers::Applications::BaseForm < BaseForm
     self.model[:seller]
   end
 
+  def application
+    self.model[:application]
+  end
+
   def upload_for(key)
     self.model[:seller].public_send(key)
   end
