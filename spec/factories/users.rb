@@ -3,5 +3,16 @@ FactoryBot.define do
     sequence(:email) {|n| "user-#{n}@example.org" }
     password '12345678'
     confirmed_at 1.day.ago
+
+    trait :seller do
+      roles ['seller']
+    end
+
+    trait :admin do
+      roles ['admin']
+    end
+
+    factory :seller_user, traits: [:seller]
+    factory :admin_user, traits: [:admin]
   end
 end
