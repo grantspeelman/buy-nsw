@@ -10,6 +10,7 @@
   </head>
 
   <body class="<%= yield(:body_classes) %>">
+    <% unless content_for(:skip_header) %>
     <header role="global">
       <div class="container">
         <div class="row">
@@ -26,6 +27,7 @@
 
       <%= yield(:extra_header_content) %>
     </header>
+    <% end %>
 
     <% if notice.present? || alert.present? %>
       <div class="messages">
@@ -45,10 +47,12 @@
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
 
-    <footer>
-      <div class="container">
-        <%= deployment_env.try(:titleize) %>
-      </div>
-    </footer>
+    <% unless content_for(:skip_footer) %>
+      <footer role="global">
+        <div class="container">
+          <%= deployment_env.try(:titleize) %>
+        </div>
+      </footer>
+    <% end %>
   </body>
 </html>
