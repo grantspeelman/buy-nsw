@@ -2,6 +2,8 @@ class SellerApplication < ApplicationRecord
   include AASM
 
   belongs_to :owner, class_name: 'User'
+  belongs_to :assigned_to, class_name: 'User', optional: true
+
   belongs_to :seller
 
   aasm column: :state do
@@ -22,4 +24,7 @@ class SellerApplication < ApplicationRecord
       end
     end
   end
+
+  scope :unassigned, -> { where('assigned_to IS NULL') }
+  scope :assigned_to, ->(user) { where('assigned_to = ?', user) }
 end
