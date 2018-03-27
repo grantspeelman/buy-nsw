@@ -1,0 +1,37 @@
+body.ops {
+
+  nav {
+    min-height: 70vh;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    ul {
+      padding-left: 0;
+
+      li {
+        border-bottom: 1px solid $grey-2;
+        list-style: none;
+
+        a {
+          padding: 0.8em 1em;
+          display: block;
+          font-size: 0.9rem;
+          text-decoration: none;
+          color: $black;
+
+          &:hover {
+            background: $grey-2;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    font-size: 0.75rem;
+
+    border-top: 1px solid $grey-2;
+    padding-top: 1em;
+    text-align: center;
+  }
+}

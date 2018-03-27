@@ -1,0 +1,44 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Seller name</th>
+      <th scope="col">Submitted</th>
+
+      <% unless local_assigns[:hide_assignee] %>
+        <th scope="col">Assignee</th>
+      <% end %>
+
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% applications.each do |application| %>
+    <tr>
+      <td><%= application.id %></td>
+      <td><%= application.seller.name %></td>
+      <td>
+        <abbr title="<%= application.submitted_at.to_s %>">
+          <%= time_ago_in_words application.submitted_at %> ago
+        </abbr>
+      </td>
+
+      <% unless local_assigns[:hide_assignee] %>
+        <td>
+          <% if application.assigned_to.present? %>
+            <%= application.assigned_to.email %>
+          <% end %>
+        </td>
+      <% end %>
+
+      <td class="actions">
+        <% if application.assigned_to == current_user %>
+          <a href="">View</a>
+        <% else %>
+          <a href="">Assign</a>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

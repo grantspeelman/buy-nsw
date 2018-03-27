@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
     resources :profiles, only: :show
     get '/search', to: 'search#search', as: :search
-
-    root to: 'base#index'
   end
 
   devise_for :users
@@ -17,6 +15,12 @@ Rails.application.routes.draw do
   get '/cloud', to: 'static#cloud', as: :cloud
   get '/cloud/:section', to: 'pathways/search#search', as: :pathway_search
   get '/cloud/:section/products/:id', to: 'pathways/products#show', as: :pathway_product
+
+  namespace :ops do
+    resources :seller_applications, path: 'seller-applications'
+
+    root to: 'root#index'
+  end
 
   root to: 'static#index'
 end
