@@ -9,18 +9,37 @@ class SellerApplication < ApplicationRecord
   aasm column: :state do
     state :created, initial: true
     state :submitted
+    state :assigned
     state :approved
     state :rejected
 
     event :submit do
-      # NOTE: This is a temporary change to automatically approve any new
-      # seller applications at the current time.
-      #
-      transitions from: :created, to: :approved
+      transitions from: :created, to: :submitted
+
+      before do
+        self.submitted_at = Time.now
+      end
+    end
+
+    event :assign do
+      transitions from: :submitted, to: :assigned
+    end
+
+    event :approve do
+      transitions from: :assigned, to: :approved
 
       after_commit do
+        self.decided_at = Time.now
         seller.make_active!
         seller.products.each(&:make_active!)
+      end
+    end
+
+    event :reject do
+      transitions from: :submitted, to: :rejected
+
+      before do
+        self.decided_at = Time.now
       end
     end
   end
