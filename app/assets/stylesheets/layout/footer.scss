@@ -1,7 +1,11 @@
-footer {
+footer[role=global] {
   .container {
     font-size: 0.76em;
     padding: 1.5em 1em;
     color: #888;
   }
+
+  background: #fff;
+  min-height: 10vh;
+  border-top: 8px solid $dark-blue;
 }
