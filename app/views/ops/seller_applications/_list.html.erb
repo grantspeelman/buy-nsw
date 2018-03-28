@@ -32,11 +32,8 @@
       <% end %>
 
       <td class="actions">
-        <% if application.assigned_to == current_user %>
-          <a href="">View</a>
-        <% else %>
-          <a href="">Assign</a>
-        <% end %>
+        <%= link_to (current_user == application.assigned_to ? 'Review' : 'View'), ops_seller_application_path(application) %>
+        <%= link_to 'Assign', assign_ops_seller_application_path(application), class: 'btn-light' %>
       </td>
     </tr>
     <% end %>

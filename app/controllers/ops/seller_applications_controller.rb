@@ -1,6 +1,15 @@
 class Ops::SellerApplicationsController < Ops::BaseController
 
-  def index
+  def assign
+    run Ops::SellerApplication::Assign::Present
+  end
+
+  def update_assign
+    run Ops::SellerApplication::Assign do |result|
+      return redirect_to ops_seller_applications_path
+    end
+
+    render :assign
   end
 
 private
@@ -18,5 +27,10 @@ private
     applications.assigned_to(current_user)
   end
   helper_method :my_applications
+
+  def form
+    @form
+  end
+  helper_method :form
 
 end

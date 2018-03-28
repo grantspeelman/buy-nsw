@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def is_admin?
     roles.include?('admin')
   end
+
+  scope :with_role, ->(role) { where(":role = ANY(roles)", role: role) }
+  scope :admin, ->{ with_role('admin') }
+  scope :seller, ->{ with_role('seller') }
 end

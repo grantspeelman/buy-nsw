@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   get '/cloud/:section/products/:id', to: 'pathways/products#show', as: :pathway_product
 
   namespace :ops do
-    resources :seller_applications, path: 'seller-applications'
+    resources :seller_applications, path: 'seller-applications' do
+      member do
+        get :assign
+        patch :update_assign, path: 'assign'
+      end
+    end
 
     root to: 'root#index'
   end
