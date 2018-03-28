@@ -4,31 +4,29 @@
 <% content_for(:body_classes, 'ops') %>
 
 <% content_for(:content) do %>
-  <div class="container-fluid">
-    <div class="column-set">
-      <div class="left-col">
-        <header class="ops">
-          <h1>
-            <span class="logo">NSW Government</span>
-            <span class="title">Procurement Ops</span>
-          </h1>
-        </header>
+  <div class="column-set">
+    <div class="left-col">
+      <header class="ops">
+        <h1>
+          <span class="logo">NSW Government</span>
+          <span class="title">Procurement Ops</span>
+        </h1>
+      </header>
 
-        <nav>
-          <ul>
-            <li><%= link_to 'Dashboard', ops_root_path %></li>
-            <li><%= link_to 'Seller applications', ops_seller_applications_path %></a></li>
-          </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><%= link_to 'Dashboard', ops_root_path %></li>
+          <li><%= link_to 'Seller applications', ops_seller_applications_path %></a></li>
+        </ul>
+      </nav>
 
-        <footer>
-          <p><%= current_user.email %></p>
-        </footer>
-      </div>
+      <footer>
+        <p><%= current_user.email %></p>
+      </footer>
+    </div>
 
-      <div class="right-col">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-      </div>
+    <div class="right-col">
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </div>
 <% end %>

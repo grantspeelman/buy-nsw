@@ -1,6 +1,10 @@
 body.ops {
   .column-set {
-    @extend .row;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 
     .left-col, .right-col {
       height: 100vh;
@@ -8,14 +12,14 @@ body.ops {
     }
 
     .left-col {
-      @extend .col-sm-3;
-      background: $grey-1;
+      width: 20vw;
+      background: $grey-3;
       border-right: 5px solid darken($grey-1, 5%);
     }
 
     .right-col {
-      @extend .col-9;
       padding: 1rem;
+      flex: 1;
     }
   }
 }
