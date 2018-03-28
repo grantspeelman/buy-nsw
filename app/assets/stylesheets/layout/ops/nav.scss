@@ -1,6 +1,6 @@
 body.ops {
 
-  nav {
+  nav.vertical {
     min-height: 70vh;
 
     ul {
@@ -18,8 +18,17 @@ body.ops {
           font-weight: 500;
 
           &:hover {
-            background: darken($grey-3, 10%);
+            background: darken($grey-3, 5%);
           }
+
+          .oi {
+            font-weight: normal;
+            width: 1.5rem;
+          }
+        }
+
+        &.selected a {
+          background: darken($grey-3, 10%);
         }
       }
     }

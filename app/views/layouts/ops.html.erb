@@ -13,10 +13,10 @@
         </h1>
       </header>
 
-      <nav>
+      <nav class="vertical">
         <ul>
-          <li><%= link_to 'Dashboard', ops_root_path %></li>
-          <li><%= link_to 'Seller applications', ops_seller_applications_path %></a></li>
+          <%= nav_link_to 'Dashboard', ops_root_path, icon: 'grid-three-up' %>
+          <%= nav_link_to 'Seller applications', ops_seller_applications_path, icon: 'inbox', match_prefix: true %>
         </ul>
       </nav>
 

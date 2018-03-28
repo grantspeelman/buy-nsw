@@ -1,0 +1,42 @@
+<section class="view-ops-seller-applications-show">
+  <div class="column-set">
+    <aside>
+      <h1>
+        <span class="type">Seller application</span>
+        <%= application.seller.name %>
+      </h1>
+      <nav class="vertical">
+        <ul>
+          <%= nav_link_to 'Overview', ops_seller_application_path(application), icon: 'ellipses' %>
+          <%= nav_link_to 'Core details', '', icon: 'spreadsheet' %>
+          <%= nav_link_to 'Products', '', icon: 'cart' %>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="current-view">
+
+      <section class="status-overview">
+        <div class="status-indicator">
+          <span>Status</span>
+          <%= application.state %>
+        </div>
+        <div class="assigned-to">
+          <span>Assigned to</span>
+          <% if application.assigned_to.present? %>
+            <%= application.assigned_to.email %>
+          <% end %>
+        </div>
+      </section>
+
+      <section class="application-details">
+        <dl>
+          <dt>Submitted by</dt>
+          <dd><%= application.owner.email %></dd>
+          <dt>Submitted at</dt>
+          <dd><%= application.submitted_at.localtime.to_formatted_s(:long) %></dd>
+        </dl>
+      </section>
+    </div>
+  </div>
+</section>

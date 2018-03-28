@@ -1,10 +1,6 @@
 body.ops {
   .column-set {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+    @include app-column-container;
 
     .left-col, .right-col {
       height: 100vh;
@@ -12,14 +8,20 @@ body.ops {
     }
 
     .left-col {
-      width: 20vw;
+      @include app-column-fixed;
+
       background: $grey-3;
       border-right: 5px solid darken($grey-1, 5%);
     }
 
     .right-col {
-      padding: 1rem;
+      @include app-column;
+
       flex: 1;
     }
+  }
+
+  h2 {
+    font-size: 1.4rem;
   }
 }

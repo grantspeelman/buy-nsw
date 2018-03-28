@@ -18,6 +18,11 @@ private
   end
   helper_method :applications
 
+  def application
+    applications.find(params[:id])
+  end
+  helper_method :application
+
   def unassigned_applications
     applications.unassigned
   end
