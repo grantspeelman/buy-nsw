@@ -18,38 +18,16 @@
 }
 
 .view-static-index {
-  .for-buyers, .for-sellers {
-    min-height: 300px;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
+  background: -webkit-linear-gradient(lighten($light-blue, 5%), darken($light-blue, 10%));
+  color: #fff;
 
-    h1 {
-      font-size: 1.8rem;
-    }
-  }
-
-  .features {
+  .audiences {
     @extend .row;
-    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 
   .feature {
-    @extend .col-md-6;
-
-    .border-wrap {
-      border-right: 5px solid rgba(255,255,255,0.1);
-      margin-right: 1%;
-      min-height: 200px;
-      margin-top: -10px;
-
-      padding-top: 20px;
-      padding-right: 1.5em;
-      padding-bottom: 1em;
-    }
-
-    &:last-of-type {
-      padding-top: 10px;
-    }
+    margin: 1rem 0 0;
 
     h2 {
       font-size: 1.4rem;
@@ -58,17 +36,33 @@
 
     .btn {
       font-size: 1.1rem;
+      border-bottom: 4px solid darken($light-blue, 5%);
     }
-  }
 
-  .for-buyers {
-    background: $light-blue;
-    color: #fff;
-  }
+    &.half-width {
+      @extend .col-md-6;
 
-  .for-sellers {
-    .feature {
-      @extend .col-md-8;
+      .inner {
+        p:first-of-type {
+          min-height: 5em;
+        }
+      }
+    }
+    &.full-width {
+      @extend .col-12;
+    }
+
+    .inner {
+      background: $white;
+      color: $black;
+      padding: 1em;
+      box-shadow: darken($light-blue, 10%) 0px 2px 2px;
+    }
+
+    padding: 1em;
+
+    h1 {
+      font-size: 1.8rem;
     }
   }
 

@@ -1,6 +1,6 @@
 <div class="inline-search-form">
   <%= bootstrap_form_tag url: sellers_search_path, method: :get, enforce_utf8: false do |f| %>
     <%= f.text_field :q, value: '', class: 'form-control', hide_label: true %>
-    <%= f.submit 'Search', name: nil, class: 'btn btn-light' %>
+    <%= f.submit 'Search', name: nil, class: 'btn btn-primary' %>
   <% end %>
 </div>

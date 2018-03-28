@@ -10,42 +10,42 @@
 <% end %>
 
 <section class="view-static-index">
-  <section class="for-buyers">
-    <div class="container">
-      <h1>For buyers</h1>
-
-      <p>You can buy products and services here if you are a NSW government body or on the <a href="" style="color: #fff;">list of other eligible organisations</a>.</p>
-
-      <div class="features">
-        <div class="feature">
-          <div class="border-wrap">
-            <h2>Buy cloud products and support</h2>
-            <p>Compare and select from a diverse range of approved cloud applications, hosting, infrastructure and support &ndash; then purchase quickly and easily as we guide you through the process.</p>
-            <%= link_to 'Start now &gt;'.html_safe, cloud_path, class: 'btn btn-light' %>
-          </div>
-        </div>
-
-        <div class="feature">
-          <h2>Find approved sellers</h2>
-          <p>Search our comprehensive seller database to find suppliers who can meet your needs.</p>
-
-          <%= render partial: 'inline_search_form' %>
+  <div class="container">
+    <div class="audiences">
+      <div class="feature half-width">
+        <div class="inner">
+          <h1>For buyers</h1>
+          <h2>Search for and connect with qualified sellers</h2>
+          <p>You can buy products and services here if you are a NSW government body or on the <a href="">list of other eligible organisations</a>.</p>
+          <p><%= link_to 'Sign up as a buyer &gt;'.html_safe, new_sellers_application_path, class: 'btn btn-primary' %></p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="for-sellers">
-    <div class="container">
-      <h1>For sellers</h1>
+      <div class="feature half-width">
+        <div class="inner">
+          <h1>For sellers</h1>
 
-      <div class="row">
-        <div class="feature">
           <h2>Offer your products and services to government</h2>
           <p>Apply to become a registered seller and offer your products or services to the NSW Government. The application process is easy and straightforward.</p>
           <p><%= link_to 'Start your application &gt;'.html_safe, new_sellers_application_path, class: 'btn btn-primary' %></p>
         </div>
       </div>
+
+      <div class="feature full-width">
+        <div class="inner">
+          <h2>Buy cloud products and support</h2>
+          <p>Compare and select from a diverse range of approved cloud applications, hosting, infrastructure and support &ndash; then purchase quickly and easily as we guide you through the process.</p>
+          <%= link_to 'Start now &gt;'.html_safe, cloud_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <div class="feature full-width">
+        <div class="inner">
+          <h2>Find approved sellers</h2>
+          <p>Search our comprehensive seller database to find suppliers who can meet your needs.</p>
+          <%= render partial: 'inline_search_form' %>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 </section>
