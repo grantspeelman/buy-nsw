@@ -18,6 +18,7 @@ and internal users.
 
 - Ruby – currently 2.5.0 (as defined in `.ruby-version`)
 - Bundler – install with `gem install bundler`
+- Yarn – for assets. On a Mac, install with `brew install yarn`
 - PostgreSQL – On a Mac, use [Postgres.app](https://postgresapp.com))
 - PhantomJS – for running feature tests. On a Mac, install with `brew install
 phantomjs`
