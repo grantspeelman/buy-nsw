@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :sellers, foreign_key: :owner_id
   has_many :seller_applications, foreign_key: :owner_id
+  has_many :assigned_applications, class_name: 'SellerApplication', foreign_key: :assigned_to_id
 
   def has_seller_application?
     seller_applications.any?

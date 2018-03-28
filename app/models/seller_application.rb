@@ -44,6 +44,6 @@ class SellerApplication < ApplicationRecord
     end
   end
 
-  scope :unassigned, -> { where('assigned_to IS NULL') }
-  scope :assigned_to, ->(user) { where('assigned_to = ?', user) }
+  scope :unassigned, -> { where('assigned_to_id IS NULL') }
+  scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
 end
