@@ -186,6 +186,13 @@ en:
           approve: Approve this application
           reject: Reject this application
         response: Feedback (shared with applicant)
+  seller_applications:
+    search:
+      filters:
+        state:
+          name: Status
+        assigned_to:
+          name: Assigned to
   sellers:
     applications:
       steps:

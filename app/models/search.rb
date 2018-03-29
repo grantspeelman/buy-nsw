@@ -19,8 +19,16 @@ class Search
     @selected_filters.slice(*available_filters.keys)
   end
 
-  def filter_selected?(filter, option)
-    selected_filters[filter]&.include?(option.to_s)
+  def filter_selected?(filter, option = nil)
+    if option
+      filter_value(filter)&.include?(option.to_s)
+    else
+      filter_value(filter).present?
+    end
+  end
+
+  def filter_value(filter)
+    selected_filters[filter]
   end
 
 private

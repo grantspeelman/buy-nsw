@@ -30,6 +30,13 @@ private
   end
   helper_method :applications
 
+  def search
+    @search ||= SellerApplicationSearch.new(
+      selected_filters: params,
+    )
+  end
+  helper_method :search
+
   def application
     @application ||= SellerApplication.find(params[:id])
   end

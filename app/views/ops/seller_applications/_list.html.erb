@@ -4,6 +4,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Seller name</th>
+        <th scope="col">Status</th>
         <th scope="col">Submitted</th>
 
         <% unless local_assigns[:hide_assignee] %>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= application.id %></td>
         <td><%= application.seller.name %></td>
+        <td><%= application.state %></td>
         <td>
           <% if application.submitted_at.present? %>
             <abbr title="<%= application.submitted_at.to_s %>">
@@ -36,7 +38,6 @@
 
         <td class="actions">
           <%= link_to (current_user == application.assigned_to ? 'Review' : 'View'), ops_seller_application_path(application) %>
-          <%= link_to 'Assign', assign_ops_seller_application_path(application), class: 'btn-light' %>
         </td>
       </tr>
       <% end %>

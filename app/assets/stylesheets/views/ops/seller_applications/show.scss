@@ -1,9 +1,5 @@
 .view-ops-seller-applications-show {
 
-  .column-set {
-    @include app-column-container;
-  }
-
   aside {
     @include app-column-fixed;
     background: #f2f5f6;
