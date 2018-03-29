@@ -1,0 +1,7 @@
+<h2>Assign this application for review</h2>
+
+<%= bootstrap_form_for form, url: assign_ops_seller_application_path(form.model) do |f| %>
+  <%= f.collection_select :assigned_to_id, available_assignees, :id, :email %>
+
+  <%= f.submit 'Assign' %>
+<% end %>
