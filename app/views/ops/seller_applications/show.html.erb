@@ -25,6 +25,8 @@
           <span>Assigned to</span>
           <% if application.assigned_to.present? %>
             <%= application.assigned_to.email %>
+          <% else %>
+            nobody
           <% end %>
         </div>
       </section>

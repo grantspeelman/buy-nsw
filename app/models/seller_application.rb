@@ -36,7 +36,7 @@ class SellerApplication < ApplicationRecord
     end
 
     event :reject do
-      transitions from: :submitted, to: :rejected
+      transitions from: :assigned, to: :rejected
 
       before do
         self.decided_at = Time.now

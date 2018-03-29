@@ -6,5 +6,10 @@ class Ops::SellerApplication::Assign < Trailblazer::Operation
 
   step Nested(Present)
   step Contract::Validate( key: :seller_application )
+  step :change_application_state
   step Contract::Persist()
+
+  def change_application_state(options, model:, **)
+    model.assign
+  end
 end
