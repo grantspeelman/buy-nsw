@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       member do
         get :assign
         patch :update_assign, path: 'assign'
+        patch :decide
       end
     end
 

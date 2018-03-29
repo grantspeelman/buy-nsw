@@ -41,6 +41,12 @@
           <% end %>
         </dl>
       </section>
+
+      <% if application.may_approve? %>
+        <section class="make-decision">
+          <%= render partial: 'decision_form', locals: { form: form } %>
+        </section>
+      <% end %>
     </div>
   </div>
 </section>

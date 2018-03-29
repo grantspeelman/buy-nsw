@@ -1,0 +1,15 @@
+<h2>Make a decision on this application</h2>
+
+<%= bootstrap_form_for form, url: decide_ops_seller_application_path(form.model) do |f| %>
+  <fieldset class="multiple-choice-group radio-group">
+    <legend>Outcome</legend>
+    <%= f.form_group :decision do %>
+      <%= f.radio_button :decision, :approve %>
+      <%= f.radio_button :decision, :reject %>
+    <% end %>
+  </fieldset>
+
+  <%= f.text_area :response, rows: 5 %>
+
+  <%= f.submit 'Make decision' %>
+<% end %>

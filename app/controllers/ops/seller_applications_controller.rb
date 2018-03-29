@@ -1,5 +1,9 @@
 class Ops::SellerApplicationsController < Ops::BaseController
 
+  def show
+    run Ops::SellerApplication::Decide::Present
+  end
+
   def assign
     run Ops::SellerApplication::Assign::Present
   end
@@ -10,6 +14,14 @@ class Ops::SellerApplicationsController < Ops::BaseController
     end
 
     render :assign
+  end
+
+  def decide
+    run Ops::SellerApplication::Decide do |result|
+      return redirect_to ops_seller_applications_path
+    end
+
+    render :show
   end
 
 private
