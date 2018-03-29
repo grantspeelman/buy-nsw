@@ -33,10 +33,12 @@
 
       <section class="application-details">
         <dl>
-          <dt>Submitted by</dt>
-          <dd><%= application.owner.email %></dd>
-          <dt>Submitted at</dt>
-          <dd><%= application.submitted_at.localtime.to_formatted_s(:long) %></dd>
+          <% if application.submitted_at.present? %>
+            <dt>Submitted by</dt>
+            <dd><%= application.owner.email %></dd>
+            <dt>Submitted at</dt>
+            <dd><%= application.submitted_at.localtime.to_formatted_s(:long) %></dd>
+          <% end %>
         </dl>
       </section>
     </div>

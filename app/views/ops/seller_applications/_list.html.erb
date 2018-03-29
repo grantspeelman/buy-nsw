@@ -1,41 +1,49 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Seller name</th>
-      <th scope="col">Submitted</th>
+<% if applications.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Seller name</th>
+        <th scope="col">Submitted</th>
 
-      <% unless local_assigns[:hide_assignee] %>
-        <th scope="col">Assignee</th>
-      <% end %>
+        <% unless local_assigns[:hide_assignee] %>
+          <th scope="col">Assignee</th>
+        <% end %>
 
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% applications.each do |application| %>
-    <tr>
-      <td><%= application.id %></td>
-      <td><%= application.seller.name %></td>
-      <td>
-        <abbr title="<%= application.submitted_at.to_s %>">
-          <%= time_ago_in_words application.submitted_at %> ago
-        </abbr>
-      </td>
-
-      <% unless local_assigns[:hide_assignee] %>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% applications.each do |application| %>
+      <tr>
+        <td><%= application.id %></td>
+        <td><%= application.seller.name %></td>
         <td>
-          <% if application.assigned_to.present? %>
-            <%= application.assigned_to.email %>
+          <% if application.submitted_at.present? %>
+            <abbr title="<%= application.submitted_at.to_s %>">
+              <%= time_ago_in_words application.submitted_at %> ago
+            </abbr>
           <% end %>
         </td>
-      <% end %>
 
-      <td class="actions">
-        <%= link_to (current_user == application.assigned_to ? 'Review' : 'View'), ops_seller_application_path(application) %>
-        <%= link_to 'Assign', assign_ops_seller_application_path(application), class: 'btn-light' %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+        <% unless local_assigns[:hide_assignee] %>
+          <td>
+            <% if application.assigned_to.present? %>
+              <%= application.assigned_to.email %>
+            <% end %>
+          </td>
+        <% end %>
+
+        <td class="actions">
+          <%= link_to (current_user == application.assigned_to ? 'Review' : 'View'), ops_seller_application_path(application) %>
+          <%= link_to 'Assign', assign_ops_seller_application_path(application), class: 'btn-light' %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="no-records">
+    <%= local_assigns[:empty_message].present? ? local_assigns[:empty_message] : 'No applications' %>
+  </p>
+<% end %>

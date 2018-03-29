@@ -14,24 +14,14 @@ class Ops::SellerApplicationsController < Ops::BaseController
 
 private
   def applications
-    @applications ||= SellerApplication.submitted.includes(:seller)
+    @applications ||= SellerApplication.includes(:seller)
   end
   helper_method :applications
 
   def application
-    applications.find(params[:id])
+    @application ||= SellerApplication.find(params[:id])
   end
   helper_method :application
-
-  def unassigned_applications
-    applications.unassigned
-  end
-  helper_method :unassigned_applications
-
-  def my_applications
-    applications.assigned_to(current_user)
-  end
-  helper_method :my_applications
 
   def form
     @form

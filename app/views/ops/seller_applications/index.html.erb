@@ -1,15 +1,13 @@
 <section class="view-ops-seller-applications-list">
-  <header>
+  <header class="view-header in-padded-container">
     <h1>Seller applications</h1>
   </header>
 
-  <% if my_applications.any? %>
-    <h2>Assigned to me</h2>
-    <%= render partial: 'list', locals: { applications: my_applications } %>
-  <% end %>
-
-  <% if unassigned_applications.any? %>
-    <h2>Unassigned</h2>
-    <%= render partial: 'list', locals: { applications: unassigned_applications, hide_assignee: true } %>
-  <% end %>
+  <section class="record-list">
+    <h2><%= pluralize(applications.size, 'applications') %></h2>
+    <%= render partial: 'list', locals: {
+          applications: applications,
+          empty_message: 'No applications',
+        } %>
+  </section>
 </section>
