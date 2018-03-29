@@ -1,18 +1,11 @@
-class ProductSearch
+class ProductSearch < Search
   attr_reader :term, :section
 
   def initialize(term:, section:, selected_filters: {})
     @term = term
     @section = section
-    @selected_filters = selected_filters
-  end
 
-  def results
-    @results ||= apply_filters(products)
-  end
-
-  def result_count
-    results.size
+    super(selected_filters: selected_filters)
   end
 
   def available_filters
@@ -21,16 +14,8 @@ class ProductSearch
     }
   end
 
-  def selected_filters
-    @selected_filters.slice(*available_filters.keys)
-  end
-
-  def filter_selected?(filter, option)
-    selected_filters[filter]&.include?(option.to_s)
-  end
-
 private
-  def products
+  def base_relation
     Product.with_section(section).active
   end
 

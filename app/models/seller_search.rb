@@ -1,17 +1,10 @@
-class SellerSearch
+class SellerSearch < Search
   attr_reader :term
 
   def initialize(term:, selected_filters: {})
     @term = term
-    @selected_filters = selected_filters
-  end
 
-  def results
-    @results ||= apply_filters(sellers.basic_search(term))
-  end
-
-  def result_count
-    results.size
+    super(selected_filters: selected_filters)
   end
 
   def available_filters
@@ -21,27 +14,28 @@ class SellerSearch
     }
   end
 
-  def selected_filters
-    @selected_filters.slice(*available_filters.keys)
-  end
-
-  def filter_selected?(filter, option)
-    selected_filters[filter]&.include?(option.to_s)
-  end
-
 private
-  def sellers
+  def base_relation
     Seller.active
   end
 
   def apply_filters(scope)
-    scope.yield_self(&method(:start_up_filter)).
+    scope.yield_self(&method(:term_filter)).
+          yield_self(&method(:start_up_filter)).
           yield_self(&method(:sme_filter)).
           yield_self(&method(:disability_filter)).
           yield_self(&method(:regional_filter)).
           yield_self(&method(:indigenous_filter)).
           yield_self(&method(:not_for_profit_filter)).
           yield_self(&method(:services_filter))
+  end
+
+  def term_filter(relation)
+    if term.present?
+      relation = relation.basic_search(term)
+    else
+      relation
+    end
   end
 
   def start_up_filter(relation)
