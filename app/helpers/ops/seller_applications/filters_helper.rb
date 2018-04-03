@@ -6,7 +6,7 @@ module Ops::SellerApplications::FiltersHelper
       if option.is_a?(Array)
         option
       else
-        [ t("seller_applications.search.filters.#{key}.options.#{option}"), option ]
+        [ t("ops.seller_applications.search.filters.#{key}.options.#{option}"), option ]
       end
     }
 

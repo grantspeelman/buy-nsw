@@ -1,0 +1,9 @@
+<h2>Seller details</h2>
+
+<%= display_list(type: :basic, resource: application.seller) %>
+<%= display_list(type: :industry, resource: application.seller) %>
+<%= display_list(type: :contacts, resource: application.seller) %>
+<%= display_list(type: :disclosures, resource: application.seller) %>
+<%= display_list(type: :details, resource: application.seller) %>
+<%= render partial: 'business_info_details', locals: { seller: application.seller } %>
+<%= display_list(type: :terms, resource: application.seller) %>

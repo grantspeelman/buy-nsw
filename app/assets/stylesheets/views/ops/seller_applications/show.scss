@@ -86,6 +86,10 @@
     dd {
       @extend .col-8;
     }
+
+    em {
+      color: #888;
+    }
   }
 
   .make-decision {

@@ -1,0 +1,26 @@
+<% content_for(:ops_content) do %>
+  <section class="view-ops-seller-applications-show">
+    <div class="column-set">
+      <aside>
+        <h1>
+          <span class="type">Seller application</span>
+          <%= application.seller.name %>
+        </h1>
+        <nav class="vertical">
+          <ul>
+            <%= nav_link_to 'Application', ops_seller_application_path(application), icon: 'ellipses' %>
+            <%= nav_link_to 'Seller details', seller_details_ops_seller_application_path(application), icon: 'spreadsheet' %>
+            <%= nav_link_to 'Documents', '', icon: 'file' %>
+            <%= nav_link_to 'Products', '', icon: 'cart' %>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="current-view">
+        <%= content_for?(:seller_application_content) ? yield(:seller_application_content) : yield %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= render template: 'layouts/ops' %>

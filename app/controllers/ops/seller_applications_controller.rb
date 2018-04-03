@@ -1,5 +1,9 @@
 class Ops::SellerApplicationsController < Ops::BaseController
 
+  layout ->{
+    action_name == 'index' ? 'ops' : '../ops/seller_applications/_layout'
+  }
+
   def show
     run Ops::SellerApplication::Decide::Present
   end

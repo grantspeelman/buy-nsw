@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :seller_applications, path: 'seller-applications' do
       member do
         get :assign
+        get :seller_details
+
         patch :update_assign, path: 'assign'
         patch :decide
       end
