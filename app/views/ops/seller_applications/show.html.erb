@@ -25,6 +25,12 @@
     </dl>
   </section>
 
+  <% if application.may_assign? %>
+    <section class="make-decision">
+      <%= render partial: 'assign_form', locals: { form: form } %>
+    </section>
+  <% end %>
+
   <% if application.may_approve? %>
     <section class="make-decision">
       <%= render partial: 'decision_form', locals: { form: form } %>

@@ -5,7 +5,11 @@ class Ops::SellerApplicationsController < Ops::BaseController
   }
 
   def show
-    run Ops::SellerApplication::Decide::Present
+    if application.may_assign?
+      run Ops::SellerApplication::Assign::Present
+    elsif application.may_approve?
+      run Ops::SellerApplication::Decide::Present
+    end
   end
 
   def assign
