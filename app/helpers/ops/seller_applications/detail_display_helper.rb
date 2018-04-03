@@ -83,7 +83,7 @@ module Ops::SellerApplications::DetailDisplayHelper
       case field
       when :abn then
         link_to(formatted_abn(value), abn_lookup_url(value))
-      when :linkedin_url, :website_url then link_to(value)
+      when :linkedin_url, :website_url then link_to(value, value)
       else
         value
       end
