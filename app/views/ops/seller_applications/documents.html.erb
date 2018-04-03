@@ -1,0 +1,7 @@
+<h2>Uploaded documents</h2>
+
+<ul class="documents">
+  <%= render partial: 'document', locals: { key: :financial_statement, no_expiry: true } %>
+  <%= render partial: 'document', locals: { key: :professional_indemnity_certificate } %>
+  <%= render partial: 'document', locals: { key: :workers_compensation_certificate } %>
+</ul>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       member do
         get :assign
         get :seller_details
+        get :documents
 
         patch :update_assign, path: 'assign'
         patch :decide

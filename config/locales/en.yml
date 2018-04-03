@@ -235,6 +235,12 @@ en:
           name: 'Agreed at'
         agreed_by:
           name: 'Agreed by'
+        workers_compensation_certificate:
+          name: Workers Compensation Insurance
+        professional_indemnity_certificate:
+          name: Professional Indemnity and Public Liability Insurance
+        financial_statement:
+          name: Financial statement
       search:
         filters:
           state:
