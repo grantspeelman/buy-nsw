@@ -1,4 +1,4 @@
-class Sellers::ProfilesController < ApplicationController
+class Sellers::ProfilesController < Sellers::BaseController
   def show
   end
 

@@ -1,4 +1,4 @@
-class Sellers::SearchController < ApplicationController
+class Sellers::SearchController < Sellers::BaseController
   def search
   end
 
