@@ -8,21 +8,22 @@ class SellerApplication < ApplicationRecord
 
   aasm column: :state do
     state :created, initial: true
-    state :submitted
+    state :awaiting_assignment
     state :assigned
     state :approved
     state :rejected
 
     event :submit do
-      transitions from: :created, to: :submitted
+      transitions from: :created, to: :awaiting_assignment
+      transitions from: :created, to: :assigned, guard: :assignee_present?
 
       before do
         self.submitted_at = Time.now
       end
     end
 
-    event :assign do
-      transitions from: :submitted, to: :assigned
+    event :assign, guard: :assignee_present? do
+      transitions from: :awaiting_assignment, to: :assigned
     end
 
     event :approve do
@@ -42,6 +43,10 @@ class SellerApplication < ApplicationRecord
         self.decided_at = Time.now
       end
     end
+  end
+
+  def assignee_present?
+    assigned_to.present?
   end
 
   scope :for_review, -> { submitted.or(assigned) }

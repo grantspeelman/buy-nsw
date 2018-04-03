@@ -92,9 +92,8 @@
     }
   }
 
-  .make-decision {
-    border-top: 3px solid $grey-2;
-    padding-top: 1rem;
+  .make-decision, .make-assignment {
+    @include operation-box;
   }
 
   .documents {

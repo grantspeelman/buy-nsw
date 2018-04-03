@@ -6,11 +6,7 @@
         <th scope="col">Seller name</th>
         <th scope="col">Status</th>
         <th scope="col">Submitted</th>
-
-        <% unless local_assigns[:hide_assignee] %>
-          <th scope="col">Assignee</th>
-        <% end %>
-
+        <th scope="col">Assigned to</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -27,17 +23,13 @@
             </abbr>
           <% end %>
         </td>
-
-        <% unless local_assigns[:hide_assignee] %>
-          <td>
-            <% if application.assigned_to.present? %>
-              <%= application.assigned_to.email %>
-            <% end %>
-          </td>
-        <% end %>
-
+        <td>
+          <% if application.assigned_to.present? %>
+            <%= application.assigned_to.email %>
+          <% end %>
+        </td>
         <td class="actions">
-          <%= link_to (current_user == application.assigned_to ? 'Review' : 'View'), ops_seller_application_path(application) %>
+          <%= link_to 'View', ops_seller_application_path(application) %>
         </td>
       </tr>
       <% end %>

@@ -1,0 +1,18 @@
+.collapsible-section {
+
+  h2 {
+    cursor: pointer;
+
+    &::after {
+      float: right;
+      content: '↓';
+    }
+  }
+
+  &.expanded-section {
+    h2::after {
+      content: '↑';
+    }
+  }
+
+}

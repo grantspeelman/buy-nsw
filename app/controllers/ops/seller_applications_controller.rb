@@ -5,20 +5,17 @@ class Ops::SellerApplicationsController < Ops::BaseController
   }
 
   def show
-    if application.may_assign?
-      run Ops::SellerApplication::Assign::Present
-    elsif application.may_approve?
-      run Ops::SellerApplication::Decide::Present
-    end
-  end
+    assign_op = run Ops::SellerApplication::Assign::Present
+    decide_op = run Ops::SellerApplication::Decide::Present
 
-  def assign
-    run Ops::SellerApplication::Assign::Present
+    @assign_form = assign_op['contract.default']
+    @decide_form = decide_op['contract.default']
   end
 
   def update_assign
     run Ops::SellerApplication::Assign do |result|
-      return redirect_to ops_seller_applications_path
+      flash.notice = 'Application assigned'
+      return redirect_to ops_seller_application_path(application)
     end
 
     render :assign
@@ -26,7 +23,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
 
   def decide
     run Ops::SellerApplication::Decide do |result|
-      return redirect_to ops_seller_applications_path
+      return redirect_to ops_seller_application_path(application)
     end
 
     render :show
@@ -54,5 +51,15 @@ private
     @form
   end
   helper_method :form
+
+  def assign_form
+    @assign_form
+  end
+  helper_method :assign_form
+
+  def decide_form
+    @decide_form
+  end
+  helper_method :decide_form
 
 end

@@ -25,15 +25,21 @@
     </dl>
   </section>
 
-  <% if application.may_assign? %>
-    <section class="make-decision">
-      <%= render partial: 'assign_form', locals: { form: form } %>
-    </section>
-  <% end %>
+  <section class="make-assignment" data-module="collapsible-section">
+    <h2>Assign this application to a user</h2>
 
-  <% if application.may_approve? %>
-    <section class="make-decision">
-      <%= render partial: 'decision_form', locals: { form: form } %>
+    <div class="inner">
+      <%= render partial: 'assign_form', locals: { form: assign_form } %>
+    </div>
+  </section>
+
+  <% if application.may_approve? && application.assigned_to == current_user %>
+    <section class="make-decision" data-module="collapsible-section">
+      <h2>Make a decision on this application</h2>
+
+      <div class="inner">
+        <%= render partial: 'decision_form', locals: { form: decide_form } %>
+      </div>
     </section>
   <% end %>
 <% end %>

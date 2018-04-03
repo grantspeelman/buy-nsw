@@ -1,0 +1,26 @@
+@mixin operation-box {
+  border: 2px solid $grey-2;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    background: $grey-2;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .inner {
+    padding: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+
+  fieldset:first-of-type {
+    margin-top: 0;
+  }
+}
+
+body.ops .box {
+  @include operation-box;
+}
