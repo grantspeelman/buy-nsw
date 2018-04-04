@@ -13,4 +13,8 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: postgres://<%= ENV['RDS_USERNAME'] %>:<%= ENV['RDS_PASSWORD'] %>@<%= ENV['RDS_HOSTNAME'] %>:<%= ENV['RDS_PORT'] %>/<%= ENV['RDS_DB_NAME'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
