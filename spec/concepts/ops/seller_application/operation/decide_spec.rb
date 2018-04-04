@@ -77,7 +77,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     end
     application.reload
 
-    expect(application.decided_at).to eq(time)
+    expect(application.decided_at.to_i).to eq(time.to_i)
   end
 
   it 'fails when the state transition is not valid' do
