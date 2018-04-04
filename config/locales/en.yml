@@ -185,6 +185,7 @@ en:
         decision:
           approve: Approve this application
           reject: Reject this application
+          return_to_applicant: Return this application to the seller for changes
         response: Feedback (shared with applicant)
   ops:
     seller_applications:

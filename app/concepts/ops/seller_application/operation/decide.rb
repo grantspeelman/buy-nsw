@@ -14,6 +14,7 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
     case options['contract.default'].decision
     when 'approve' then model.approve!
     when 'reject' then model.reject!
+    when 'return_to_applicant' then model.return_to_applicant!
     end
   end
 

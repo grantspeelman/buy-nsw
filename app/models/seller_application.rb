@@ -14,7 +14,7 @@ class SellerApplication < ApplicationRecord
     state :rejected
 
     event :submit do
-      transitions from: :created, to: :awaiting_assignment
+      transitions from: :created, to: :awaiting_assignment, guard: :unassigned?
       transitions from: :created, to: :assigned, guard: :assignee_present?
 
       before do
@@ -22,7 +22,7 @@ class SellerApplication < ApplicationRecord
       end
     end
 
-    event :assign, guard: :assignee_present? do
+    event :assign do
       transitions from: :awaiting_assignment, to: :assigned
     end
 
@@ -43,10 +43,18 @@ class SellerApplication < ApplicationRecord
         self.decided_at = Time.now
       end
     end
+
+    event :return_to_applicant do
+      transitions from: :assigned, to: :created
+    end
   end
 
   def assignee_present?
     assigned_to.present?
+  end
+
+  def unassigned?
+    ! assignee_present?
   end
 
   scope :for_review, -> { submitted.or(assigned) }
