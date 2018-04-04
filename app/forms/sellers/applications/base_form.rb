@@ -2,27 +2,9 @@ require 'ostruct'
 
 class Sellers::Applications::BaseForm < BaseForm
   include Composition
+  include Forms::ValidationHelper
+  
   model :application
-
-  validation :default do
-    configure do
-      def any_checked?(value)
-        value&.reject(&:blank?)&.any?
-      end
-
-      def one_of?(values, list)
-        list.all? { |value| value.blank? || values.include?(value) }
-      end
-
-      def file?(uploader_class)
-        uploader_class.respond_to?(:original_filename) || uploader_class.file
-      end
-
-      def in_future?(date)
-        date.present? && date > Date.today
-      end
-    end
-  end
 
   def self.human_attribute_name(attribute_key_name, options = {})
     I18n.t("activemodel.attributes.#{self.to_s.underscore}.#{attribute_key_name}", options)

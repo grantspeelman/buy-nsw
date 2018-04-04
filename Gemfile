@@ -42,6 +42,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'timecop'
 end
 
 group :development do

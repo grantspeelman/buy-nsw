@@ -179,6 +179,7 @@ en:
     file?: must be provided
     in_future?: must be in the future
     one_of?: must be selected from the list
+    in_list?: must be selected from the list
   helpers:
     label:
       seller_application:

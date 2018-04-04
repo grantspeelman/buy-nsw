@@ -30,7 +30,6 @@ class SellerApplication < ApplicationRecord
       transitions from: :assigned, to: :approved
 
       after_commit do
-        self.decided_at = Time.now
         seller.make_active!
         seller.products.each(&:make_active!)
       end
@@ -38,10 +37,6 @@ class SellerApplication < ApplicationRecord
 
     event :reject do
       transitions from: :assigned, to: :rejected
-
-      before do
-        self.decided_at = Time.now
-      end
     end
 
     event :return_to_applicant do
