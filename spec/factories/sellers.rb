@@ -70,5 +70,6 @@ FactoryBot.define do
 
     factory :active_seller, traits: [:active, :with_full_profile]
     factory :inactive_seller, traits: [:inactive]
+    factory :inactive_seller_with_full_profile, traits: [:inactive, :with_full_profile]
   end
 end
