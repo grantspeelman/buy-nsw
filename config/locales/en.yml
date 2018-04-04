@@ -248,6 +248,12 @@ en:
             name: Status
           assigned_to:
             name: Assigned to
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+          return_to_applicant: Application returned to the seller
   sellers:
     applications:
       steps:
