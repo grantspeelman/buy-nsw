@@ -77,9 +77,9 @@ jobs:
           command: sudo pip install awsebcli --upgrade
 
       - run:
-        name: Deploy to EB if branch is Master
-        command: |
-          eb deploy -v
+          name: Deploy to EB if branch is Master
+          command: |
+            eb deploy -v
 
 workflows:
   version: 2
