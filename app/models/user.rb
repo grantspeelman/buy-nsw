@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :confirmable, :recoverable, :rememberable,
          :trackable, :validatable
 
-  enumerize :roles, in: ['seller', 'admin'], multiple: true, default: :seller
+  enumerize :roles, in: ['seller', 'buyer', 'admin'], multiple: true, default: :seller
 
   has_many :sellers, foreign_key: :owner_id
   has_many :seller_applications, foreign_key: :owner_id
@@ -19,7 +19,16 @@ class User < ApplicationRecord
     roles.include?('admin')
   end
 
+  def is_buyer?
+    roles.include?('buyer')
+  end
+
+  def is_seller?
+    roles.include?('seller')
+  end
+
   scope :with_role, ->(role) { where(":role = ANY(roles)", role: role) }
   scope :admin, ->{ with_role('admin') }
   scope :seller, ->{ with_role('seller') }
+  scope :buyer, ->{ with_role('buyer') }
 end
