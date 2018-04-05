@@ -75,7 +75,7 @@ jobs:
           command: |
             git config --global user.name "CircleCI tagging robot"
             git tag -a 'build-$CIRCLE_BUILD_NUM' -m 'adding build tag'
-            git push
+            git push --set-upstream origin $CIRCLE_BRANCH
 
   deploy:
     docker:
