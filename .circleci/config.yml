@@ -70,6 +70,10 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+      - add_ssh_keys:
+          fingerprints:
+            - "30:75:6f:4d:22:a0:dd:4b:1a:28:53:91:a9:84:7c:4c"
+
       - run:
           name: tag successful build
           command: |
