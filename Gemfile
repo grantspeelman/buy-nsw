@@ -42,6 +42,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
