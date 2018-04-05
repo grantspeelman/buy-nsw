@@ -28,7 +28,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - *
+            - "*"
 
       # Download and cache dependencies
       - restore_cache:
