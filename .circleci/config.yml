@@ -5,7 +5,7 @@
 # Just making a change here to force a new commit
 version: 2
 jobs:
-  build:
+  test:
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.5.1-node-browsers
@@ -65,6 +65,20 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      - run:
-          name: Install awsebcli
-          command: sudo pip install awsebcli --upgrade
+  deploy:
+    docker:
+      # Just use any old python image for this (with a new enough version)
+      - image: 3.6.5-stretch-browsers
+      - steps:
+        - checkout
+
+        - run:
+            name: Install awsebcli
+            command: sudo pip install awsebcli --upgrade
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy
