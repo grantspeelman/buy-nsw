@@ -87,7 +87,7 @@ jobs:
            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
 
       - run:
-          name: Deploy to EB if branch is Master
+          name: Deploy to Elastic Beanstalk
           command: |
             eb deploy -v
 
