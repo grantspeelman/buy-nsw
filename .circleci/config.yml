@@ -69,7 +69,7 @@ jobs:
     docker:
       # Just use any old python image for this (with a new enough version)
       - image: 3.6.5-stretch-browsers
-      - steps:
+      steps:
         - checkout
 
         - run:
