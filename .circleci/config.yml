@@ -77,6 +77,12 @@ jobs:
             export TAG=build-$CIRCLE_BUILD_NUM
             git tag -a $TAG -m 'adding build tag'
             git push origin $TAG
+            echo $TAG > .tag
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .tag
 
   deploy:
     docker:
@@ -108,7 +114,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            eb deploy -v
+            eb deploy -v -l $(cat .tag)
 
 workflows:
   version: 2
