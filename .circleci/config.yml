@@ -70,6 +70,12 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+      - run:
+          name: tag successful build
+          command: |
+            git tag -a 'build-$CIRCLE_BUILD_NUM' -m 'adding build tag'
+            git push
+
   deploy:
     docker:
       # Just use any old python image for this (with a new enough version)
