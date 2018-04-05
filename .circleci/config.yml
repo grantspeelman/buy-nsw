@@ -66,5 +66,5 @@ jobs:
           destination: test-results
 
       - run:
-        name: Install awsebcli
-        command: sudo pip install awsebcli --upgrade
+          name: Install awsebcli
+          command: sudo pip install awsebcli --upgrade
