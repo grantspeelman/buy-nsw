@@ -68,7 +68,7 @@ jobs:
   deploy:
     docker:
       # Just use any old python image for this (with a new enough version)
-      - image: 3.6.5-stretch-browsers
+      - image: python:3.6.5-stretch-browsers
     steps:
       - checkout
 
