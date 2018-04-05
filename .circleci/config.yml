@@ -25,6 +25,12 @@ jobs:
     steps:
       - checkout
 
+      - persist_to_workspace:
+        root: ~/repo
+        paths:
+          - *
+
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -69,8 +75,14 @@ jobs:
     docker:
       # Just use any old python image for this (with a new enough version)
       - image: circleci/python:3.6.5-browsers
+
+    working_directory: ~/repo
+
     steps:
-      - checkout
+      # We don't want to do just another checkout in case there is new code
+      # between the running of the test job and the deploy job
+      - attach_workspace:
+          at: ~/repo
 
       - run:
           name: Install awsebcli
