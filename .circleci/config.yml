@@ -73,6 +73,7 @@ jobs:
       - run:
           name: tag successful build
           command: |
+            git config --global user.name "CircleCI tagging robot"
             git tag -a 'build-$CIRCLE_BUILD_NUM' -m 'adding build tag'
             git push
 
