@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.5.1'
+# There is unfortunately not a single ruby recent-ish version that's going to
+# work across both Elastic Beanstalk and Circle CI. Across the last four minor
+# releases the versions they support have different patch versions. Sigh.
+# So, we'll be using 2.5.0 on Elastic Beanstalk and 2.5.1 on CircleCI and
+# disabling the checking of the ruby version here.
+#ruby '2.5.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
