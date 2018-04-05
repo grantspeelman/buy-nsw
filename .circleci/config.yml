@@ -68,7 +68,7 @@ jobs:
   deploy:
     docker:
       # Just use any old python image for this (with a new enough version)
-      - image: python:3.6.5-stretch-browsers
+      - image: circleci/python:3.6.5-browsers
     steps:
       - checkout
 
@@ -80,5 +80,5 @@ workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - test
+      # - test
       - deploy
