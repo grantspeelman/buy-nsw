@@ -114,7 +114,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            eb deploy -v -l $(cat .tag)
+            eb deploy staging -v -l $(cat .tag)
 
 workflows:
   version: 2
