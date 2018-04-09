@@ -14,7 +14,7 @@ RSpec.describe Ops::SellerApplication::Assign do
    }
 
   it 'can assign a user to an application' do
-    result = Ops::SellerApplication::Assign.(params: params)
+    result = Ops::SellerApplication::Assign.(params)
     application.reload
 
     expect(result).to be_success
@@ -22,7 +22,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   end
 
   it 'transitions the application to the assigned state if necessary' do
-    result = Ops::SellerApplication::Assign.(params: params)
+    result = Ops::SellerApplication::Assign.(params)
     application.reload
 
     expect(result).to be_success
@@ -32,7 +32,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   it 'does not transition the application if another state' do
     created_application = create(:created_seller_application)
 
-    result = Ops::SellerApplication::Assign.(params: params.merge(id: created_application.id))
+    result = Ops::SellerApplication::Assign.(params.merge(id: created_application.id))
     created_application.reload
 
     expect(result).to be_success

@@ -6,7 +6,7 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'can approve an application' do
     result = Ops::SellerApplication::Decide.(
-               params: {
+               {
                  id: application.id,
                  seller_application: {
                    decision: 'approve',
@@ -25,7 +25,7 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'can reject an application' do
     result = Ops::SellerApplication::Decide.(
-               params: {
+               {
                  id: application.id,
                  seller_application: {
                    decision: 'reject',
@@ -44,7 +44,7 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'can return an application to the seller' do
     result = Ops::SellerApplication::Decide.(
-               params: {
+               {
                  id: application.id,
                  seller_application: {
                    decision: 'return_to_applicant',
@@ -66,7 +66,7 @@ RSpec.describe Ops::SellerApplication::Decide do
 
     Timecop.freeze(time) do
       result = Ops::SellerApplication::Decide.(
-                 params: {
+                 {
                    id: application.id,
                    seller_application: {
                      decision: 'approve',
@@ -84,7 +84,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     application = create(:created_seller_application)
 
     result = Ops::SellerApplication::Decide.(
-               params: {
+               {
                  id: application.id,
                  seller_application: {
                    decision: 'approve',
