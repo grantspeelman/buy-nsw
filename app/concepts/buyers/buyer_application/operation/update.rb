@@ -126,8 +126,17 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
     if (current_step == steps.last) && all_steps_valid?(options)
       options[:application_model].submit!
       options['result.submitted'] = true
+
+      if options[:application_model].state == 'awaiting_manager_approval'
+        send_manager_approval_email!(options[:application_model])
+      end
     else
       options['result.submitted'] = false
     end
+  end
+
+  def send_manager_approval_email!(application)
+    application.set_manager_approval_token!
+    BuyerApplicationMailer.with(application: application).manager_approval_email.deliver_now
   end
 end

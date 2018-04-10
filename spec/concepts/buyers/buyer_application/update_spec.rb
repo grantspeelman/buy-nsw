@@ -105,6 +105,32 @@ RSpec.describe Buyers::BuyerApplication::Update do
       expect(result['result.submitted']).to be_truthy
       expect(result[:application_model].state).to eq('awaiting_assignment')
     end
+
+    it 'sets the token when manager approval is required' do
+      buyer = create(:inactive_completed_contractor_buyer, user: user)
+      application = create(:created_manager_approval_buyer_application, buyer: buyer)
+
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms', terms_agreed: '1'),
+                 'current_user' => user,
+               )
+      result[:application_model].reload
+
+      expect(result).to be_success
+      expect(result[:application_model].manager_approval_token).to be_present
+    end
+
+    it 'sends an email when manager approval is required' do
+      buyer = create(:inactive_completed_contractor_buyer, user: user)
+      application = create(:created_manager_approval_buyer_application, buyer: buyer)
+
+      expect {
+        Buyers::BuyerApplication::Update.(
+          build_params(application, 'terms', terms_agreed: '1'),
+          'current_user' => user,
+        )
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
   end
 
   context '#next_step!' do

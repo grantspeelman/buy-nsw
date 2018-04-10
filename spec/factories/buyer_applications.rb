@@ -29,6 +29,7 @@ FactoryBot.define do
     end
 
     factory :created_buyer_application, traits: [:created]
+    factory :created_manager_approval_buyer_application, traits: [:created, :manager_approval]
     factory :awaiting_manager_approval_buyer_application, traits: [:awaiting_manager_approval, :with_completed_buyer_profile]
     factory :awaiting_assignment_buyer_application, traits: [:awaiting_assignment, :with_completed_buyer_profile]
     factory :assigned_buyer_application, traits: [:assigned, :with_completed_buyer_profile]
