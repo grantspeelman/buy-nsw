@@ -41,7 +41,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
         model = result[:buyer_model].reload
 
         expect(model.terms_agreed).to be_truthy
-        expect(model.terms_agreed_at).to eq(time)
+        expect(model.terms_agreed_at.to_i).to eq(time.to_i)
       end
     end
 

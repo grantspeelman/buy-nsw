@@ -41,7 +41,7 @@ RSpec.describe Buyers::BuyerApplication::Create do
 
     Timecop.freeze(time) do
       result = Buyers::BuyerApplication::Create.({ }, 'current_user' => user)
-      expect(result[:application_model].started_at).to eq(time)
+      expect(result[:application_model].started_at.to_i).to eq(time.to_i)
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe Buyers::BuyerApplication::Create do
     application = create(:buyer_application, buyer: buyer, started_at: 1.hour.ago)
 
     result = Buyers::BuyerApplication::Create.({ }, 'current_user' => user)
-    expect(result[:application_model].started_at).to eq(application.started_at)
+    expect(result[:application_model].started_at.to_i).to eq(application.started_at.to_i)
   end
 
 end
