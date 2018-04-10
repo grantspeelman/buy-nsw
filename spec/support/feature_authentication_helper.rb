@@ -15,8 +15,8 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do |example|
     unless example.metadata[:skip_login]
 
-      if example.metadata[:admin_user]
-        @user = create(:admin_user)
+      if factory = example.metadata[:user]
+        @user = create(factory)
       else
         @user = create(:seller_user)
       end
