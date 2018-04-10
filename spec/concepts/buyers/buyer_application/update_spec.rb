@@ -1,0 +1,156 @@
+require 'rails_helper'
+
+RSpec.describe Buyers::BuyerApplication::Update do
+
+  let(:user) { create(:buyer_user_without_approved_email) }
+
+  let(:buyer) { create(:buyer, user: user) }
+  let(:application) { create(:created_buyer_application, buyer: buyer) }
+
+  def build_params(application, step, params = {})
+    {
+      id: application.id,
+      step: step,
+      buyer_application: params,
+    }
+  end
+
+  it 'can save a buyer given a step and valid attributes' do
+    result = Buyers::BuyerApplication::Update.(
+               build_params(application, 'basic-details', {
+                 name: 'John Doe',
+                 organisation: 'Organisation Name',
+               }),
+               'current_user' => user,
+             )
+    result[:buyer_model].reload
+
+    expect(result).to be_success
+    expect(result[:buyer_model].name).to eq('John Doe')
+  end
+
+  context '#set_terms_agreed_at!' do
+    it 'sets the timestamp when `terms_agreed` is newly-checked' do
+      time = 1.day.ago
+
+      Timecop.freeze(time) do
+        result = Buyers::BuyerApplication::Update.(
+                   build_params(application, 'terms', terms_agreed: '1'),
+                   'current_user' => user
+                 )
+        model = result[:buyer_model].reload
+
+        expect(model.terms_agreed).to be_truthy
+        expect(model.terms_agreed_at).to eq(time)
+      end
+    end
+
+    it 'does not update the timestamp when already checked' do
+      buyer.terms_agreed = '1'
+      buyer.save
+
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms', terms_agreed: '1'),
+                 'current_user' => user,
+               )
+      model = result[:buyer_model].reload
+
+      expect(model.terms_agreed_at).to be_nil
+    end
+
+    it 'unsets the timestamp when unchecked' do
+      buyer.terms_agreed = '1'
+      buyer.terms_agreed_at = 1.hour.ago
+      buyer.save
+
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms', terms_agreed: '0'),
+                 'current_user' => user,
+               )
+      model = result[:buyer_model].reload
+
+      expect(model.terms_agreed_at).to be_nil
+    end
+  end
+
+  context '#submit_if_valid_and_last_step!' do
+    it 'does not submit an application when a contract is invalid' do
+      # NOTE: The application here is inherited from above but is invalid for
+      # submission
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms', terms_agreed: '1'),
+                 'current_user' => user,
+               )
+      result[:application_model].reload
+
+      # NOTE: Expect this to be a success as it is still persisted even when
+      # invalid.
+      expect(result).to be_success
+
+      expect(result['result.submitted']).to be_falsey
+      expect(result[:application_model].state).to eq('created')
+    end
+
+    it 'submits an application on the last step when all fields are valid' do
+      buyer = create(:completed_buyer, user: user)
+      application = create(:created_buyer_application, buyer: buyer)
+
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms', terms_agreed: '1'),
+                 'current_user' => user,
+               )
+      result[:application_model].reload
+
+      expect(result).to be_success
+      expect(result['result.submitted']).to be_truthy
+      expect(result[:application_model].state).to eq('awaiting_assignment')
+    end
+  end
+
+  context '#next_step!' do
+    it 'writes the next step slug to the result object' do
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'basic-details'),
+                 'current_user' => user,
+               )
+
+      expect(result['result.next_step_slug']).to eq('email-approval')
+    end
+
+    it 'returns the first step slug when the next slug does not exist' do
+      result = Buyers::BuyerApplication::Update.(
+                 build_params(application, 'terms'),
+                 'current_user' => user,
+               )
+
+      expect(result['result.next_step_slug']).to eq('basic-details')
+    end
+  end
+
+  context '#set_submission_status!' do
+    it 'sets the `ready_for_submission` flag to `true` when all steps aside from the last are valid' do
+      buyer = create(:completed_buyer, user: user)
+      application = create(:created_buyer_application, buyer: buyer)
+
+      result = Buyers::BuyerApplication::Update::Present.(
+                 build_params(application, 'terms'),
+                 'current_user' => user,
+               )
+
+      expect(result['result.ready_for_submission']).to be_truthy
+    end
+
+    it 'sets the `ready_for_submission` flag to `false` when a step that is not the last is invalid' do
+      buyer = create(:buyer, user: user)
+      application = create(:created_buyer_application, buyer: buyer)
+
+      result = Buyers::BuyerApplication::Update::Present.(
+                 build_params(application, 'terms'),
+                 'current_user' => user,
+               )
+
+      expect(result['result.ready_for_submission']).to be_falsey
+    end
+  end
+
+end
