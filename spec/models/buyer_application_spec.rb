@@ -37,6 +37,32 @@ RSpec.describe BuyerApplication do
       end
     end
 
+    describe '#manager_approve' do
+      let(:application) { create(:awaiting_manager_approval_buyer_application) }
+
+      it 'transitions to `awaiting_assignment` when email approval is required and no assignee is present' do
+        application.user.email = 'foo@outside.org'
+        application.manager_approve
+
+        expect(application.state).to eq('awaiting_assignment')
+      end
+
+      it 'transitions to `assigned` when email approval is required and an assignee is present' do
+        application.user.email = 'foo@outside.org'
+        application.assigned_to = create(:admin_user)
+        application.manager_approve
+
+        expect(application.state).to eq('assigned')
+      end
+
+      it 'transitions to `approved` when email approval is not required' do
+        application.user.email = 'foo@example.nsw.gov.au'
+        application.manager_approve
+
+        expect(application.state).to eq('approved')
+      end
+    end
+
     describe '#assign' do
       let(:application) { create(:awaiting_assignment_buyer_application) }
 

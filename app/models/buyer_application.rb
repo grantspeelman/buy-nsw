@@ -27,6 +27,12 @@ class BuyerApplication < ApplicationRecord
       end
     end
 
+    event :manager_approve do
+      transitions from: :awaiting_manager_approval, to: :awaiting_assignment, guard: [:requires_email_approval?, :unassigned?]
+      transitions from: :awaiting_manager_approval, to: :assigned, guard: [:requires_email_approval?, :assignee_present?]
+      transitions from: :awaiting_manager_approval, to: :approved
+    end
+
     event :assign do
       transitions from: :awaiting_assignment, to: :assigned
     end
