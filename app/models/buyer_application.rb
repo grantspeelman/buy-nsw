@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class BuyerApplication < ApplicationRecord
   include AASM
 
@@ -65,6 +67,10 @@ class BuyerApplication < ApplicationRecord
       'buyers.user_id' => user_id,
       'buyer_applications.id' => application_id,
     ).first!
+  end
+
+  def set_manager_approval_token!
+    update_attribute(:manager_approval_token, SecureRandom.hex(16))
   end
 
   scope :in_state, ->(state) { where('state = ?', state) }

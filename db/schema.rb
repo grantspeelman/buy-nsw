@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406014343) do
+ActiveRecord::Schema.define(version: 20180410050346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180406014343) do
     t.string "manager_name"
     t.string "manager_email"
     t.datetime "manager_approved_at"
+    t.string "manager_approval_token"
   end
 
   create_table "buyers", force: :cascade do |t|

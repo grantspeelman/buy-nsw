@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe BuyerApplication do
 
   describe 'state changes' do
-
     describe '#submit' do
       let(:application) { create(:buyer_application) }
 
@@ -67,7 +66,18 @@ RSpec.describe BuyerApplication do
         expect(application.state).to eq('rejected')
       end
     end
+  end
 
+  describe '#set_manager_approval_token!' do
+    it 'persists a new random token in the `manager_approval_token` field' do
+      application = create(:buyer_application)
+      expect(SecureRandom).to receive(:hex).and_return('random string')
+
+      application.set_manager_approval_token!
+      application.reload
+
+      expect(application.manager_approval_token).to eq('random string')
+    end
   end
 
 end
