@@ -1,0 +1,129 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+# Just making a change here to force a new commit
+version: 2
+jobs:
+  test:
+    docker:
+      # specify the version you desire here
+       - image: circleci/ruby:2.5.1-node-browsers
+         environment:
+           TEST_DATABASE_URL: postgresql://localhost/nsw_procure_test
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+       - image: circleci/postgres:10.3-alpine-ram
+         environment:
+           POSTGRES_USER: circleci
+           POSTGRES_DB: nsw_procure_test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - "*"
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Database setup
+      - run: bin/setup
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+      - run:
+          name: tag successful build
+          command: |
+            git config --global user.name "CircleCI tagging robot"
+            export TAG=build-$CIRCLE_BUILD_NUM
+            git tag -a $TAG -m 'adding build tag'
+            git push origin $TAG
+            echo $TAG > .tag
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .tag
+
+  deploy:
+    docker:
+      # Just use any old python image for this (with a new enough version)
+      - image: circleci/python:3.6.5-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      # We don't want to do just another checkout in case there is new code
+      # between the running of the test job and the deploy job
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Install awsebcli
+          command: sudo pip install awsebcli --upgrade
+
+      - run:
+          name: Create AWS credentials manually
+          command: |
+           mkdir ~/.aws
+           touch ~/.aws/config
+           chmod 600 ~/.aws/config
+           echo "[profile eb-cli]" > ~/.aws/config
+           echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+           echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+
+      - run:
+          name: Deploy to Elastic Beanstalk
+          command: |
+            eb deploy staging -v -l $(cat .tag)
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: aws-spike

@@ -86,6 +86,14 @@ The forms for the application are defined in `app/forms/sellers/applications/`,
 with associated views in `app/views/sellers/applications/`, and most of the form
 strings in the `en` locale file.
 
+## AWS Setup (spike)
+
+[Install the Elastic Beanstalk CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
+On OS X:
+```
+brew install awsebcli
+```
+
 ## Licence
 
 [MIT License](LICENCE)
