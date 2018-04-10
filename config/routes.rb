@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     get '/search', to: 'search#search', as: :search
   end
 
+  namespace :buyers do
+    resources :applications
+    get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
+    get '/applications/:id/:step', to: 'applications#show', as: :application_step
+  end
+
   devise_for :users
 
   get '/cloud', to: 'static#cloud', as: :cloud
@@ -17,6 +23,16 @@ Rails.application.routes.draw do
   get '/cloud/:section/products/:id', to: 'pathways/products#show', as: :pathway_product
 
   namespace :ops do
+    resources :buyer_applications, path: 'buyer-applications' do
+      member do
+        get :assign
+        get :buyer_details
+
+        patch :update_assign, path: 'assign'
+        patch :decide
+      end
+    end
+
     resources :seller_applications, path: 'seller-applications' do
       member do
         get :assign

@@ -48,7 +48,7 @@
     vertical-align: top;
     line-height: 1em;
   }
-  .steps-list li.started, .steps-list li.current {
+  .steps-list li.started {
     &::before {
       background: $light-blue;
       content: '...';

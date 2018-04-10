@@ -3,6 +3,7 @@
     <legend>Outcome</legend>
     <%= f.form_group :decision do %>
       <%= f.radio_button :decision, :approve %>
+      <%= f.radio_button :decision, :return_to_applicant %>
       <%= f.radio_button :decision, :reject %>
     <% end %>
   </fieldset>

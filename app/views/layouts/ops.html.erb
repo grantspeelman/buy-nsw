@@ -16,6 +16,11 @@
       <nav class="vertical">
         <ul>
           <%= nav_link_to 'Dashboard', ops_root_path, icon: 'grid-three-up' %>
+        </ul>
+
+        <h3>Applications</h3>
+        <ul>
+          <%= nav_link_to 'Buyer applications', ops_buyer_applications_path, icon: 'inbox', match_prefix: true %>
           <%= nav_link_to 'Seller applications', ops_seller_applications_path, icon: 'inbox', match_prefix: true %>
         </ul>
       </nav>

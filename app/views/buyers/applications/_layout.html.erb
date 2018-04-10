@@ -1,0 +1,25 @@
+<% content_for(:without_container, true) %>
+
+<% content_for(:content) do %>
+  <header class="application-header">
+    <div class="container">
+      <h1>
+        <span class="type-label">Sign up as a buyer<span class="visually-hidden">:</span></span>
+        <%= application.buyer.user.email %>
+      </h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="view-sellers-applications">
+      <div class="steps-list">
+        <%= render partial: 'buyers/applications/step_list', locals: { operation: operation } %>
+      </div>
+      <div class="current-step">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
+    </section>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

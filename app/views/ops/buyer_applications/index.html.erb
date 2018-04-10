@@ -1,0 +1,21 @@
+<% content_for(:ops_content) do %>
+<section class="view-ops-seller-applications-list">
+  <div class="column-set">
+    <aside>
+      <h1>Buyer applications</h1>
+
+      <%= render partial: 'filters', locals: { search: search } %>
+    </aside>
+
+    <div class="current-view">
+      <section class="record-list">
+        <h2><%= pluralize(search.result_count, 'application') %></h2>
+        <%= render partial: 'list', locals: {
+              applications: search.results,
+              empty_message: 'No applications',
+            } %>
+      </section>
+    </div>
+  </div>
+</section>
+<% end %>

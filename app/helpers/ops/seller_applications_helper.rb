@@ -1,7 +1,9 @@
 module Ops::SellerApplicationsHelper
   include Sellers::ProfilesHelper
 
-  include Ops::SellerApplications::AssigneesHelper
-  include Ops::SellerApplications::DetailDisplayHelper
-  include Ops::SellerApplications::FiltersHelper
+  include Ops::AssigneesHelper
+  include Ops::DetailHelper
+  include Ops::FiltersHelper
+
+  include Ops::SellerApplications::DetailHelper
 end

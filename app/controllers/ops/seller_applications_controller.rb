@@ -5,24 +5,21 @@ class Ops::SellerApplicationsController < Ops::BaseController
   }
 
   def show
-    assign_op = run Ops::SellerApplication::Assign::Present
-    decide_op = run Ops::SellerApplication::Decide::Present
-
-    @assign_form = assign_op['contract.default']
-    @decide_form = decide_op['contract.default']
   end
 
   def update_assign
     run Ops::SellerApplication::Assign do |result|
-      flash.notice = 'Application assigned'
+      flash.notice = I18n.t('ops.seller_applications.messages.update_assign_success')
       return redirect_to ops_seller_application_path(application)
     end
 
-    render :assign
+    render :show
   end
 
   def decide
     run Ops::SellerApplication::Decide do |result|
+      decision = result['contract.default'].decision
+      flash.notice = I18n.t("ops.seller_applications.messages.decision_success.#{decision}")
       return redirect_to ops_seller_application_path(application)
     end
 
@@ -47,19 +44,18 @@ private
   end
   helper_method :application
 
-  def form
-    @form
+  def forms
+    @forms ||= {
+      assign: ops[:assign]['contract.default'],
+      decide: ops[:decide]['contract.default'],
+    }
   end
-  helper_method :form
+  helper_method :forms
 
-  def assign_form
-    @assign_form
+  def ops
+    @ops ||= {
+      assign: (run Ops::SellerApplication::Assign::Present),
+      decide: (run Ops::SellerApplication::Decide::Present),
+    }
   end
-  helper_method :assign_form
-
-  def decide_form
-    @decide_form
-  end
-  helper_method :decide_form
-
 end

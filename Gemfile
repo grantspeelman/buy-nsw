@@ -12,7 +12,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.1.6'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 
@@ -21,9 +21,12 @@ gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'dry-validation'
 gem 'enumerize'
+gem 'nokogiri'
+gem 'premailer-rails'
 gem 'reform-rails', '~> 0.1.7'
 gem 'textacular', '~> 5.0'
-gem 'trailblazer-rails', '~> 2.0.0'
+gem 'trailblazer', '~> 2.0.0'
+gem 'trailblazer-rails', '~> 1.0.4'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
@@ -47,6 +50,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'timecop'
   gem 'rspec_junit_formatter'
 end
 

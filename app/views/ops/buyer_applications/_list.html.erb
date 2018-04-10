@@ -1,0 +1,44 @@
+<% if applications.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Buyer name</th>
+        <th scope="col">Organisation</th>
+        <th scope="col">Status</th>
+        <th scope="col">Submitted</th>
+        <th scope="col">Assigned to</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% applications.each do |application| %>
+      <tr>
+        <td><%= application.id %></td>
+        <td><%= application.buyer.name %></td>
+        <td><%= application.buyer.organisation %></td>
+        <td><%= application.state %></td>
+        <td>
+          <% if application.submitted_at.present? %>
+            <abbr title="<%= application.submitted_at.to_s %>">
+              <%= time_ago_in_words application.submitted_at %> ago
+            </abbr>
+          <% end %>
+        </td>
+        <td>
+          <% if application.assigned_to.present? %>
+            <%= application.assigned_to.email %>
+          <% end %>
+        </td>
+        <td class="actions">
+          <%= link_to 'View', ops_buyer_application_path(application) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="no-records">
+    <%= local_assigns[:empty_message].present? ? local_assigns[:empty_message] : 'No applications' %>
+  </p>
+<% end %>

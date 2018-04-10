@@ -1,6 +1,14 @@
 en:
   activemodel:
     attributes:
+      'buyers/buyer_application/contract/basic_details':
+        name: Full name
+        organisation: Organisation name
+      'buyers/buyer_application/contract/manager_approval':
+        manager_name: "Your manager's full name"
+        manager_email: "Your manager's email"
+      'buyers/buyer_application/contract/terms':
+        terms_agreed: I agree to the terms and conditions
       'sellers/applications/business_details_form':
         name: 'Business name'
         abn: 'ABN'
@@ -115,10 +123,35 @@ en:
       'sellers/applications/products/info_form':
         name: This is how your product will appear in the listing.
         summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
+  buyers:
+    applications:
+      messages:
+        already_submitted: You have already submitted a buyer application.
+        submitted: Your application has been submitted.
+      steps:
+        basic_details:
+          short: 'Your details'
+          long: 'Your details'
+        email_approval:
+          short: 'Application'
+          long: 'Why do you need access?'
+        manager_approval:
+          short: 'Your manager'
+          long: 'Approval from your line manager'
+        employment_status:
+          short: Employment status
+          long: 'What is your employment status?'
+        terms:
+          short: 'Review terms'
+          long: 'Terms'
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
   enumerize:
+    buyer:
+      employment_status:
+        employee: "I am a NSW Government employee and need access to the Procurement Hub to perform my role."
+        contractor: "I am a contractor working in state or local government."
     product:
       audiences:
         accounting-finance: Accounting and finance
@@ -179,14 +212,53 @@ en:
     file?: must be provided
     in_future?: must be in the future
     one_of?: must be selected from the list
+    in_list?: must be selected from the list
   helpers:
     label:
       seller_application:
         decision:
           approve: Approve this application
           reject: Reject this application
+          return_to_applicant: Return this application to the seller for changes
         response: Feedback (shared with applicant)
+      buyer_application:
+        decision:
+          approve: Approve this application
+          reject: Reject this application
+        decision_body: Response (shared with applicant)
   ops:
+    buyer_applications:
+      fields:
+        name:
+          name: 'Buyer name'
+        organisation:
+          name: 'Organisation name'
+        employment_status:
+          name: 'Employment status'
+        application_body:
+          name: 'Application text'
+        manager_name:
+          name: "Manager's name"
+        manager_email:
+          name: "Manager's email"
+        terms_agreed:
+          name: "Terms agreed?"
+        terms_agreed_at:
+          name: "Terms agreed at"
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+      search:
+        filters:
+          state:
+            name: Status
+            options:
+              awaiting_manager_approval: Awaiting manager approval
+              awaiting_assignment: Awaiting assignment
+          assigned_to:
+            name: Assigned to
     seller_applications:
       fields:
         name:
@@ -247,6 +319,12 @@ en:
             name: Status
           assigned_to:
             name: Assigned to
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+          return_to_applicant: Application returned to the seller
   sellers:
     applications:
       steps:

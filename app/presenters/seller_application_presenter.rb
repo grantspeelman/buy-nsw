@@ -64,7 +64,7 @@ class SellerApplicationPresenter
   ## Step helpers
 
   def html_classes(step)
-    (step == current_step) ? 'current' : step.html_classes
+    (step == current_step) ? "current #{step.html_classes}" : step.html_classes
   end
 
 private
