@@ -20,6 +20,7 @@ module Ops::DetailHelper
     value = 'yes' if value.is_a?(TrueClass)
     value = 'no' if value.is_a?(FalseClass)
     value = extract_enumerize_set(value) if value.is_a?(Enumerize::Set)
+    value = format_timestamp(value) if value.is_a?(Time)
 
     value = sanitize(value)
 
@@ -38,5 +39,9 @@ module Ops::DetailHelper
 
   def extract_enumerize_set(set)
     set.map {|key| key.text }.join('<br>').html_safe
+  end
+
+  def format_timestamp(time)
+    time.localtime.strftime('%d %b %Y %H:%m')
   end
 end

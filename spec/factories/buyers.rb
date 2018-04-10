@@ -14,6 +14,8 @@ FactoryBot.define do
       name 'Buyer Buyer'
       organisation 'Organisation Name'
       employment_status 'employee'
+      terms_agreed true
+      terms_agreed_at 1.day.ago
     end
 
     factory :active_buyer, traits: [:active]

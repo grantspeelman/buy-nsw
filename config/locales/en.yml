@@ -221,7 +221,44 @@ en:
           reject: Reject this application
           return_to_applicant: Return this application to the seller for changes
         response: Feedback (shared with applicant)
+      buyer_application:
+        decision:
+          approve: Approve this application
+          reject: Reject this application
+        decision_body: Response (shared with applicant)
   ops:
+    buyer_applications:
+      fields:
+        name:
+          name: 'Buyer name'
+        organisation:
+          name: 'Organisation name'
+        employment_status:
+          name: 'Employment status'
+        application_body:
+          name: 'Application text'
+        manager_name:
+          name: "Manager's name"
+        manager_email:
+          name: "Manager's email"
+        terms_agreed:
+          name: "Terms agreed?"
+        terms_agreed_at:
+          name: "Terms agreed at"
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+      search:
+        filters:
+          state:
+            name: Status
+            options:
+              awaiting_manager_approval: Awaiting manager approval
+              awaiting_assignment: Awaiting assignment
+          assigned_to:
+            name: Assigned to
     seller_applications:
       fields:
         name:
