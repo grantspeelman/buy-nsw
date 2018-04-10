@@ -24,6 +24,18 @@ class BuyerApplication < ApplicationRecord
         self.submitted_at = Time.now
       end
     end
+
+    event :assign do
+      transitions from: :awaiting_assignment, to: :assigned
+    end
+
+    event :approve do
+      transitions from: :assigned, to: :approved
+    end
+
+    event :reject do
+      transitions from: :assigned, to: :rejected
+    end
   end
 
   def requires_email_approval?
@@ -54,4 +66,7 @@ class BuyerApplication < ApplicationRecord
       'buyer_applications.id' => application_id,
     ).first!
   end
+
+  scope :in_state, ->(state) { where('state = ?', state) }
+  scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
 end
