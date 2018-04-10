@@ -4,6 +4,10 @@ FactoryBot.define do
     state 'created'
     application_body 'Text'
 
+    trait :with_completed_buyer_profile do
+      association :buyer, factory: :inactive_completed_buyer
+    end
+
     trait :created do
       state 'created'
     end
@@ -15,7 +19,7 @@ FactoryBot.define do
     end
 
     factory :created_buyer_application, traits: [:created]
-    factory :awaiting_assignment_buyer_application, traits: [:awaiting_assignment]
-    factory :assigned_buyer_application, traits: [:assigned]
+    factory :awaiting_assignment_buyer_application, traits: [:awaiting_assignment, :with_completed_buyer_profile]
+    factory :assigned_buyer_application, traits: [:assigned, :with_completed_buyer_profile]
   end
 end

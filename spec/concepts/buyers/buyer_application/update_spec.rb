@@ -92,7 +92,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
     end
 
     it 'submits an application on the last step when all fields are valid' do
-      buyer = create(:completed_buyer, user: user)
+      buyer = create(:inactive_completed_buyer, user: user)
       application = create(:created_buyer_application, buyer: buyer)
 
       result = Buyers::BuyerApplication::Update.(
@@ -129,7 +129,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
 
   context '#set_submission_status!' do
     it 'sets the `ready_for_submission` flag to `true` when all steps aside from the last are valid' do
-      buyer = create(:completed_buyer, user: user)
+      buyer = create(:inactive_completed_buyer, user: user)
       application = create(:created_buyer_application, buyer: buyer)
 
       result = Buyers::BuyerApplication::Update::Present.(
