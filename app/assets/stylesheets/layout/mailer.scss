@@ -1,0 +1,23 @@
+@import 'base';
+@import 'typography';
+@import 'buttons';
+
+body.mailer {
+
+  padding: 1rem;
+
+  header {
+    border-bottom: 4px solid $dark-blue;
+    margin-bottom: 1rem;
+
+    h1 {
+      @include logo;
+    }
+  }
+
+  a.button {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+}
