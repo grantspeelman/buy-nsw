@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     get '/search', to: 'search#search', as: :search
   end
 
+  namespace :buyers do
+    resources :applications
+    get '/applications/:id/:step', to: 'applications#show', as: :application_step
+  end
+
   devise_for :users
 
   get '/cloud', to: 'static#cloud', as: :cloud

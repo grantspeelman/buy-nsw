@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   enumerize :roles, in: ['seller', 'buyer', 'admin'], multiple: true, default: :seller
 
+  has_one :buyer
   has_many :sellers, foreign_key: :owner_id
   has_many :seller_applications, foreign_key: :owner_id
   has_many :assigned_applications, class_name: 'SellerApplication', foreign_key: :assigned_to_id
