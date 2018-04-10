@@ -1,9 +1,12 @@
 require 'ostruct'
 
 class Sellers::Applications::BaseForm < BaseForm
+  include Concerns::Contracts::Composition
+  include Concerns::Contracts::Status
+
   include Composition
   include Forms::ValidationHelper
-  
+
   model :application
 
   def self.human_attribute_name(attribute_key_name, options = {})
@@ -24,38 +27,6 @@ class Sellers::Applications::BaseForm < BaseForm
 
   def upload_for(key)
     self.model[:seller].public_send(key)
-  end
-
-  # When composing forms from multiple models, Reform assigns error messages to
-  # the underlying models, which is no use to the Rails form builder. This
-  # overrides the `errors` method to flatten all keys to be at the same level.
-  #
-  # An extra quirk here is that this method is seemingly invoked multiple times
-  # with varying levels of detail. If we parse a early call of the method containing
-  # no error messages, the models appear to pass as valid and this isn't invoked
-  # again.
-  #
-  # To handle this, if there are no model-specific error messages, we simply
-  # return the original error object from the superclass.
-  #
-  def errors
-    new_errors = Reform::Contract::Errors.new
-
-    new_messages = super.messages.select {|key, value|
-      self.model.keys.include?(key) && value.first&.is_a?(Array)
-    }
-
-    new_messages.each do |model, errors|
-      errors.each do |field, msgs|
-        # Support accessing the keys as both strings and symbols, as the form
-        # builder seems to require both for all fields to work.
-        #
-        new_errors.messages[field.to_s] = msgs
-        new_errors.messages[field] = msgs
-      end
-    end
-
-    new_messages.any? ? new_errors : super
   end
 
   # This Populator is used by multiple forms to handle loading, saving and
