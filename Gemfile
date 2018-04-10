@@ -18,7 +18,8 @@ gem 'dry-validation'
 gem 'enumerize'
 gem 'reform-rails', '~> 0.1.7'
 gem 'textacular', '~> 5.0'
-gem 'trailblazer-rails', '~> 2.0.0'
+gem 'trailblazer', '~> 2.0.0'
+gem 'trailblazer-rails', '~> 1.0.4'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',

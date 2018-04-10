@@ -1,0 +1,9 @@
+<p>To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation.</p>
+
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:employment_status, Buyer.employment_status.options, :last, :first, hide_label: true) %>
+</fieldset>
+
+<fieldset class="actions">
+  <%= f.submit 'Save and continue' %>
+</fieldset>

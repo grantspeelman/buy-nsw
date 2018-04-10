@@ -16,14 +16,12 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
     end
   end
 
-  step Wrap( WithTransaction ) {
-    step Nested(Present)
-    step Contract::Validate( key: :seller_application )
-    step :validate_step_change
-    step :set_timestamp
-    step Contract::Persist()
-    step :change_application_state
-  }
+  step Nested(Present)
+  step Contract::Validate( key: :seller_application )
+  step :validate_step_change
+  step :set_timestamp
+  step Contract::Persist()
+  step :change_application_state
 
   def validate_step_change(options, model:, **)
     case options['contract.default'].decision

@@ -1,6 +1,14 @@
 en:
   activemodel:
     attributes:
+      'buyers/buyer_application/contract/basic_details':
+        name: Full name
+        organisation: Organisation name
+      'buyers/buyer_application/contract/manager_approval':
+        manager_name: "Your manager's full name"
+        manager_email: "Your manager's email"
+      'buyers/buyer_application/contract/terms':
+        terms_agreed: I agree to the terms and conditions
       'sellers/applications/business_details_form':
         name: 'Business name'
         abn: 'ABN'
@@ -115,10 +123,35 @@ en:
       'sellers/applications/products/info_form':
         name: This is how your product will appear in the listing.
         summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
+  buyers:
+    applications:
+      messages:
+        already_submitted: You have already submitted a buyer application.
+        submitted: Your application has been submitted.
+      steps:
+        basic_details:
+          short: 'Your details'
+          long: 'Your details'
+        email_approval:
+          short: 'Application'
+          long: 'Why do you need access?'
+        manager_approval:
+          short: 'Your manager'
+          long: 'Approval from your line manager'
+        employment_status:
+          short: Employment status
+          long: 'What is your employment status?'
+        terms:
+          short: 'Review terms'
+          long: 'Terms'
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
   enumerize:
+    buyer:
+      employment_status:
+        employee: "I am a NSW Government employee and need access to the Procurement Hub to perform my role."
+        contractor: "I am a contractor working in state or local government."
     product:
       audiences:
         accounting-finance: Accounting and finance

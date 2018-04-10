@@ -10,11 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327234958) do
+ActiveRecord::Schema.define(version: 20180406014343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "buyer_applications", force: :cascade do |t|
+    t.string "state", null: false
+    t.integer "buyer_id"
+    t.integer "assigned_to_id"
+    t.text "application_body"
+    t.text "decision_body"
+    t.datetime "started_at"
+    t.datetime "submitted_at"
+    t.datetime "decided_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "manager_name"
+    t.string "manager_email"
+    t.datetime "manager_approved_at"
+  end
+
+  create_table "buyers", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "organisation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "state", null: false
+    t.string "name"
+    t.string "employment_status"
+    t.boolean "terms_agreed"
+    t.datetime "terms_agreed_at"
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer "seller_id", null: false

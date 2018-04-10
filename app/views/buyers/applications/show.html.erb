@@ -1,0 +1,7 @@
+<h1><%= operation['result.step'].name(:long) %></h1>
+
+<%= bootstrap_form_for form, url: buyers_application_path(application), as: :buyer_application do |f| %>
+  <%= render partial: operation['result.step'].key, locals: { f: f, operation: operation } %>
+
+  <%= hidden_field_tag :step, operation['result.step'].slug %>
+<% end %>

@@ -1,0 +1,12 @@
+<fieldset class="multiple-choice-group checkbox-group">
+  <%= f.check_box :terms_agreed,
+                label: t('activemodel.attributes.buyers/buyer_application/contract/terms.terms_agreed') %>
+</fieldset>
+
+<fieldset class="actions">
+  <% if operation['result.ready_for_submission'].present? %>
+    <%= f.submit 'Submit application' %>
+  <% else %>
+    <p>Please complete all other steps before submitting your buyer appplication.</p>
+  <% end %>
+</fieldset>

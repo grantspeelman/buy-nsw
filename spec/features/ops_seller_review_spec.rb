@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
-  describe 'as an admin user', admin_user: true do
+  describe 'as an admin user', user: :admin_user do
     it 'can approve an application' do
       application = create(:awaiting_assignment_seller_application)
 
