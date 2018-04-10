@@ -1,0 +1,11 @@
+<p>Hello,</p>
+
+<p>
+  <strong><%= @application.buyer.name %></strong> (<%= @application.user.email %>) has requested a buyer account on the Procurement Hub.
+</p>
+
+<p>Accounts for contractors require manager approval, and you have been nominated as their manager.</p>
+
+<p>If you are happy to approve the account, please click the link below.</p>
+
+<p><%= link_to 'Approve account', buyers_manager_approve_application_url(@application, token: @application.manager_approval_token), class: 'button' %></p>

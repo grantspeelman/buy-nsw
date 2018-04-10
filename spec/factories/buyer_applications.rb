@@ -8,11 +8,18 @@ FactoryBot.define do
       association :buyer, factory: :inactive_completed_buyer
     end
 
+    trait :manager_approval do
+      manager_name 'Manager Manager'
+      manager_email 'manager@example.org'
+      sequence(:manager_approval_token) {|n| n }
+    end
+
     trait :created do
       state 'created'
     end
     trait :awaiting_manager_approval do
       state 'awaiting_manager_approval'
+      manager_approval
     end
     trait :awaiting_assignment do
       state 'awaiting_assignment'

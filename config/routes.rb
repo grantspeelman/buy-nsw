@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :buyers do
     resources :applications
+    get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
   end
 
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
       member do
         get :assign
         get :buyer_details
-        
+
         patch :update_assign, path: 'assign'
         patch :decide
       end
