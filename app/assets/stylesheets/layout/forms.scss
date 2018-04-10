@@ -5,7 +5,7 @@ label {
 fieldset {
   margin: 1.5em 0;
   padding-bottom: 1em;
-  border-bottom: 1px solid $grey-2;
+  border-bottom: 1px solid $grey-2a;
 
   &:last-of-type {
     border-bottom: none;
@@ -125,7 +125,10 @@ legend.with-label {
 
 form .actions {
   padding-top: 1rem;
-  border-top: 1px solid #eee;
+
+  &:first-of-type {
+    border-top: 1px solid $grey-2a;
+  }
 }
 
 /* Text boxes */
