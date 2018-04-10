@@ -1,4 +1,4 @@
-module Ops::SellerApplications::AssigneesHelper
+module Ops::AssigneesHelper
   def available_assignees
     User.admin
   end

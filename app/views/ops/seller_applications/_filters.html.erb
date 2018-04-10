@@ -7,7 +7,7 @@
         <li class="filter">
           <%= label_tag key do %>
             <%= t("ops.seller_applications.search.filters.#{key}.name") %>
-            <%= select_tag key, options_for_select(prepare_filter_options(key, options), search.selected_filters[key]), class: 'form-control' %>
+            <%= select_tag key, options_for_select(prepare_filter_options(:seller_applications, key, options), search.selected_filters[key]), class: 'form-control' %>
           <% end %>
         </li>
       <% end %>
