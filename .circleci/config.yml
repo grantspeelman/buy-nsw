@@ -126,4 +126,4 @@ workflows:
             - test
           filters:
             branches:
-              only: aws-spike
+              only: master
