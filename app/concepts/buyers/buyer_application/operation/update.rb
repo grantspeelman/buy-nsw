@@ -1,35 +1,34 @@
 class Buyers::BuyerApplication::Update < Trailblazer::Operation
   module Steps
     extend ActiveSupport::Concern
+    include Concerns::Operations::MultiStepForm
 
-    def steps!(options, **)
-      options['result.steps'] = step_contracts(options).map {|contract|
-        Buyers::BuyerApplication::Step.new(
-          application: options[:application_model],
-          buyer: options[:buyer_model],
-          contract_class: contract,
-        )
-      }
-    end
+    included do
+      step_configuration do |options|
+        i18n_key 'buyers.applications'
+        params_key :buyer_application
 
-    def step_contracts(options)
-      steps = []
+        model :application, options[:application_model]
+        model :buyer, options[:buyer_model]
 
-      steps << Buyers::BuyerApplication::Contract::BasicDetails
-
-      if options[:application_model].requires_email_approval?
-        steps << Buyers::BuyerApplication::Contract::EmailApproval
+        path_route :buyers_application_step_path, :application
       end
 
-      steps << Buyers::BuyerApplication::Contract::EmploymentStatus
+      step_flow do |application, buyer|
+        step Buyers::BuyerApplication::Contract::BasicDetails
 
-      if options[:application_model].requires_manager_approval?
-        steps << Buyers::BuyerApplication::Contract::ManagerApproval
+        if application.requires_email_approval?
+          step Buyers::BuyerApplication::Contract::EmailApproval
+        end
+
+        step Buyers::BuyerApplication::Contract::EmploymentStatus
+
+        if application.requires_manager_approval?
+          step Buyers::BuyerApplication::Contract::ManagerApproval
+        end
+
+        step Buyers::BuyerApplication::Contract::Terms
       end
-
-      steps << Buyers::BuyerApplication::Contract::Terms
-
-      steps
     end
   end
 
@@ -48,27 +47,6 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
       options[:buyer_model] = options[:application_model].buyer
 
       options[:application_model].present?
-    end
-
-    def build_contract_from_step!(options, params:, **)
-      slug = params.fetch(:step, nil)
-      options['result.step'] =
-        options['result.steps'].find {|step| step.slug == slug } || options['result.steps'].first
-
-      options['result.step'].contract
-    end
-
-    def prevalidate_if_started!(options, params:, **)
-      contract = options['contract.default']
-
-      unless params.key?(:buyer_application)
-        contract.validate(params.fetch(:buyer_application, {})) if contract.started?
-      end
-    end
-
-    def set_submission_status!(options, **)
-      options['result.ready_for_submission'] =
-        options['result.steps'][0...-1].reject {|step| step.started? && step.valid? }.empty?
     end
   end
 
@@ -105,18 +83,6 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
     elsif !! form.terms_agreed
       form.terms_agreed_at = nil
     end
-  end
-
-  def next_step!(options, **)
-    current_step = options['result.step']
-    steps = options['result.steps']
-
-    next_step_key = steps.index(current_step) + 1
-    options['result.next_step_slug'] = steps[next_step_key]&.slug || steps.first.slug
-  end
-
-  def all_steps_valid?(options)
-    options['result.steps'].reject(&:valid?).empty?
   end
 
   def submit_if_valid_and_last_step!(options, **)
