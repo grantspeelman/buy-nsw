@@ -39,6 +39,10 @@ class BuyerApplication < ApplicationRecord
 
     event :approve do
       transitions from: :assigned, to: :approved
+
+      after_commit do
+        buyer.make_active!
+      end
     end
 
     event :reject do

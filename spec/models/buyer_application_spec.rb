@@ -81,6 +81,12 @@ RSpec.describe BuyerApplication do
 
         expect(application.state).to eq('approved')
       end
+
+      it 'transitions the buyer to `active`' do
+        expect { application.approve! }.to change {
+          application.buyer.reload.state
+        }.from('inactive').to('active')
+      end
     end
 
     describe '#reject' do
