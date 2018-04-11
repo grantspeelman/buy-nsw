@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       member do
         get :buyer_details
 
-        patch :update_assign, path: 'assign'
+        patch :assign
         patch :decide
       end
     end
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
         get :seller_details
         get :documents
 
-        patch :update_assign, path: 'assign'
+        patch :assign
         patch :decide
       end
     end

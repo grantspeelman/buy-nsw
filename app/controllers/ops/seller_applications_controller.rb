@@ -7,7 +7,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
   def show
   end
 
-  def update_assign
+  def assign
     run Ops::SellerApplication::Assign do |result|
       flash.notice = I18n.t('ops.seller_applications.messages.update_assign_success')
       return redirect_to ops_seller_application_path(application)
