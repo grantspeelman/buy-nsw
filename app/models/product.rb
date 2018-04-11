@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::StateScopes
+
   belongs_to :seller
 
   aasm column: :state do

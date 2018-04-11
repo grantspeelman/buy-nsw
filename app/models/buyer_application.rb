@@ -3,6 +3,8 @@ require 'securerandom'
 class BuyerApplication < ApplicationRecord
   include AASM
 
+  include Concerns::StateScopes
+
   belongs_to :assigned_to, class_name: 'User', optional: true
   belongs_to :buyer
   has_one :user, through: :buyer
@@ -82,7 +84,6 @@ class BuyerApplication < ApplicationRecord
   def set_manager_approval_token!
     update_attribute(:manager_approval_token, SecureRandom.hex(16))
   end
-
-  scope :in_state, ->(state) { where('state = ?', state) }
+  
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
 end

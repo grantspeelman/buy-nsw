@@ -1,5 +1,7 @@
 class SellerApplication < ApplicationRecord
   include AASM
+  
+  include Concerns::StateScopes
 
   belongs_to :owner, class_name: 'User'
   belongs_to :assigned_to, class_name: 'User', optional: true
@@ -53,7 +55,6 @@ class SellerApplication < ApplicationRecord
   end
 
   scope :for_review, -> { submitted.or(assigned) }
-  scope :in_state, ->(state) { where('state = ?', state) }
 
   scope :unassigned, -> { where('assigned_to_id IS NULL') }
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }

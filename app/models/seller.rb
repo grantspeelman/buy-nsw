@@ -2,6 +2,8 @@ class Seller < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::StateScopes
+
   belongs_to :owner, class_name: 'User'
 
   has_many :accreditations, class_name: 'SellerAccreditation', dependent: :destroy

@@ -2,6 +2,8 @@ class Buyer < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::StateScopes
+
   belongs_to :user
   has_many :applications, class_name: 'BuyerApplication'
 
