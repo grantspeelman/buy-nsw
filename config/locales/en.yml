@@ -128,6 +128,8 @@ en:
       messages:
         already_submitted: You have already submitted a buyer application.
         submitted: Your application has been submitted.
+        manager_approve_success: Thanks for approving this application.
+        manager_approve_failure: There was a problem approving this application. Please contact the support team for help.
       steps:
         basic_details:
           short: 'Your details'

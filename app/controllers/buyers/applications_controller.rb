@@ -1,5 +1,5 @@
 class Buyers::ApplicationsController < Buyers::BaseController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :manager_approve
   layout '../buyers/applications/_layout'
 
   def new
@@ -26,6 +26,16 @@ class Buyers::ApplicationsController < Buyers::BaseController
     end
 
     render :show
+  end
+
+  def manager_approve
+    @operation = run Buyers::BuyerApplication::ManagerApprove
+
+    flash.notice = (operation['result.approved'] == true) ?
+      I18n.t('buyers.applications.messages.manager_approve_success') :
+        I18n.t('buyers.applications.messages.manager_approve_failure')
+
+    return redirect_to root_path
   end
 
 private
