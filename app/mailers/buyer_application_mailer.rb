@@ -5,7 +5,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.manager_email,
-      subject: "NSW Procurement Hub: Your approval required for #{@application.user.email}",
+      subject: "NSW Digital Marketplace: Your approval required for #{@application.user.email}",
     )
   end
 
