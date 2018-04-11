@@ -6,7 +6,7 @@
       <% search.available_filters.each do |key, options| %>
         <li class="filter">
           <%= label_tag key do %>
-            <%= t("ops.seller_applications.search.filters.#{key}.name") %>
+            <%= t("ops.buyer_applications.search.filters.#{key}.name") %>
             <%= select_tag key, options_for_select(prepare_filter_options(:buyer_applications, key, options), search.selected_filters[key]), class: 'form-control' %>
           <% end %>
         </li>

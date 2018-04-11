@@ -1,4 +1,4 @@
-.view-ops-seller-applications-list {
+@mixin ops-resource-list-column-set {
   @include ops-list;
 
   aside {
@@ -35,7 +35,7 @@
     label {
       display: block;
     }
-    select {
+    select, input[type=text] {
       margin-top: 0.2em;
     }
 

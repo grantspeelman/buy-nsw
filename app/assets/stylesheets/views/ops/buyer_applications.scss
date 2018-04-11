@@ -1,0 +1,7 @@
+.view-ops-buyer-applications-list {
+  @include ops-resource-list-column-set;
+}
+
+.view-ops-buyer-applications-show {
+  @include ops-resource-show-column-set;
+}

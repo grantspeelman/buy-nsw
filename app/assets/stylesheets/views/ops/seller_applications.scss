@@ -1,0 +1,35 @@
+.view-ops-seller-applications-list {
+  @include ops-resource-list-column-set;
+}
+
+.view-ops-seller-applications-show {
+  @include ops-resource-show-column-set;
+
+  .make-decision, .make-assignment {
+    @include operation-box;
+  }
+
+  .documents {
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  .document {
+    background: #fff;
+    border: 1px solid $grey-2;
+    border-left-width: 8px;
+    padding: 1em;
+    list-style: none;
+    margin-bottom: 1rem;
+
+    h3 {
+      font-size: 1.3rem;
+    }
+    h3, p {
+      margin-bottom: 0.8rem;
+    }
+    .btn {
+      font-size: 1rem;
+    }
+  }
+
+}
