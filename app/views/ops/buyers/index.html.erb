@@ -1,0 +1,18 @@
+<% content_for(:ops_content) do %>
+<section class="view-ops-buyers-list">
+  <div class="column-set">
+    <aside>
+      <h1>Buyers</h1>
+
+      <%= render partial: 'filters', locals: { search: search } %>
+    </aside>
+
+    <div class="current-view">
+      <section class="record-list">
+        <h2><%= pluralize(search.result_count, 'buyer') %></h2>
+        <%= render partial: 'list', locals: { results: search.results } %>
+      </section>
+    </div>
+  </div>
+</section>
+<% end %>

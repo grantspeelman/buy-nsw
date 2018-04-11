@@ -1,0 +1,24 @@
+<% content_for(:ops_content) do %>
+  <section class="view-ops-buyers-show">
+    <div class="column-set">
+      <aside>
+        <h1>
+          <span class="type">Buyers</span>
+          <%= buyer.name %>
+        </h1>
+        <nav class="vertical">
+          <ul>
+            <%= nav_link_to 'Overview', ops_buyer_path(buyer), icon: 'ellipses' %>
+            <%= nav_link_to 'Details', details_ops_buyer_path(buyer), icon: 'spreadsheet' %>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="current-view">
+        <%= content_for?(:buyer_content) ? yield(:buyer_content) : yield %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<%= render template: 'layouts/ops' %>

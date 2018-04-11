@@ -229,6 +229,13 @@ en:
           reject: Reject this application
         decision_body: Response (shared with applicant)
   ops:
+    buyers:
+      search:
+        filters:
+          term:
+            name: Search by
+          state:
+            name: Status
     buyer_applications:
       fields:
         name:

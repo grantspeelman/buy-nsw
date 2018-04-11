@@ -1,0 +1,11 @@
+.view-ops-buyers-list {
+  @include ops-resource-list-column-set;
+}
+
+.view-ops-buyers-show {
+  @include ops-resource-show-column-set;
+
+  .status-overview div:last-of-type {
+    text-align: left;
+  }
+}
