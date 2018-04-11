@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Promote a build from development to production
+
+# Usage: ./bin/promote-to-production build-66
+
+build=$1
+
+if [[ $build == "build-"* ]]
+then
+  echo "Deploying $build to production..."
+  eb deploy --version $build production
+else
+  echo "Expect the build number to start with 'build-'"
+fi
