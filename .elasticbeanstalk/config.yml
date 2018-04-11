@@ -1,9 +1,6 @@
 branch-defaults:
-  aws-spike:
-    environment: rails-beanstalk-env
-    group_suffix: null
   master:
-    environment: rails-beanstalk-env
+    environment: staging
 global:
   application_name: nsw-procurement-hub
   branch: null
