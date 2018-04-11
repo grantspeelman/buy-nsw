@@ -32,7 +32,7 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
     end
   end
 
-  class Buyers::BuyerApplication::Update::Present < Trailblazer::Operation
+  class Present < Trailblazer::Operation
     include Steps
 
     step :model!
