@@ -8,7 +8,7 @@ en:
         manager_name: "Your manager's full name"
         manager_email: "Your manager's email"
       'buyers/buyer_application/contract/terms':
-        terms_agreed: I agree to the terms and conditions
+        terms_agreed: I agree to the Terms of Use
       'sellers/applications/business_details_form':
         name: 'Business name'
         abn: 'ABN'
