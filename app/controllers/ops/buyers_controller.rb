@@ -28,17 +28,4 @@ private
     @buyer ||= Buyer.find(params[:id])
   end
   helper_method :buyer
-
-  def forms
-    @form ||= {
-      deactivate: ops[:deactivate]['contract.default'],
-    }
-  end
-  helper_method :forms
-
-  def ops
-    @ops ||= {
-      deactivate: (run Ops::Buyer::Deactivate::Present),
-    }
-  end
 end

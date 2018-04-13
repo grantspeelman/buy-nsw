@@ -5,4 +5,14 @@
       <%= buyer.state %>
     </div>
   </section>
+
+  <% if buyer.active? %>
+    <section class="deactivate" data-module="collapsible-section">
+      <h2>Deactivate this buyer account</h2>
+
+      <div class="inner">
+        <%= render partial: 'deactivate_form' %>
+      </div>
+    </section>
+  <% end %>
 <% end %>

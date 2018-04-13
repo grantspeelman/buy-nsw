@@ -1,0 +1,8 @@
+<p>Deactivating this buyer account will remove their access to the Digital Marketplace immediately.</p>
+
+<p>If you need to re-activate the account, please contact the Marketplace team for help.</p>
+
+<%= button_to 'Deactivate buyer',
+              deactivate_ops_buyer_path,
+              class: 'btn btn-danger',
+              data: { method: :post } %>

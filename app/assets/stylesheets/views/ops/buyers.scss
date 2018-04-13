@@ -8,4 +8,8 @@
   .status-overview div:last-of-type {
     text-align: left;
   }
+
+  .deactivate {
+    @include operation-box;
+  }
 }
