@@ -4,4 +4,8 @@
 
 .view-ops-buyer-applications-show {
   @include ops-resource-show-column-set;
+
+  .make-decision, .make-assignment {
+    @include operation-box;
+  }
 }
