@@ -58,6 +58,9 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'guard-rspec', require: false
+  # Not sure if two gems below only make sense on OS X
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard', '~> 1.6.1'
 end
 
 group :production do

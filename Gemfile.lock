@@ -315,6 +315,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    terminal-notifier (2.0.0)
+    terminal-notifier-guard (1.6.4)
     textacular (5.0.1)
       activerecord (>= 3.0, < 5.2)
     thor (0.20.0)
@@ -387,6 +389,8 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails (~> 5.0)
   simplecov
+  terminal-notifier
+  terminal-notifier-guard (~> 1.6.1)
   textacular (~> 5.0)
   timecop
   trailblazer (~> 2.0.0)
