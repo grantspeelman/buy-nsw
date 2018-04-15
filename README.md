@@ -49,6 +49,12 @@ This will run:
 - the RSpec test suite (in `/spec`)
 - an RCov coverage report, which will be saved to `coverage/`
 
+To run tests on file changes:
+```
+bundle exec guard
+```
+(To run all tests from the guard console just press return)
+
 ### Sending emails in development
 
 To receive emails in development, use [MailCatcher](https://mailcatcher.me). It
