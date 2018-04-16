@@ -1,9 +1,13 @@
 <aside class="user">
+  <% if user_signed_in? %>
+  <h2><%= current_user.email %></h2>
   <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'Sign in', new_user_session_path %></li>
+    <% if current_user.is_seller? %>
+      <li><%= link_to 'Seller dashboard', sellers_dashboard_path %></li>
     <% end %>
+    <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
   </ul>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+  <% end %>
 </aside>
