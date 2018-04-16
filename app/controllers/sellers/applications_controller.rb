@@ -9,7 +9,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
       redirect_to sellers_application_path(existing_application)
     else
       seller = Seller.create!(owner: current_user)
-      application = seller.applications.create!(owner: current_user)
+      application = seller.applications.create!
 
       redirect_to sellers_application_path(application)
     end
