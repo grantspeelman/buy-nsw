@@ -56,6 +56,20 @@ RSpec.describe Ops::SellerApplication::Decide do
     expect(application.response).to eq('Response')
   end
 
+  it 'sends an email when the application is rejected' do
+    expect {
+      Ops::SellerApplication::Decide.(
+                 {
+                   id: application.id,
+                   seller_application: {
+                     decision: 'reject',
+                     response: 'Response',
+                   }
+                 }
+               )
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
   it 'can return an application to the seller' do
     result = Ops::SellerApplication::Decide.(
                {
@@ -73,6 +87,20 @@ RSpec.describe Ops::SellerApplication::Decide do
 
     expect(application.state).to eq('created')
     expect(application.response).to eq('Response')
+  end
+
+  it 'sends an email when the application is returned to the seller' do
+    expect {
+      Ops::SellerApplication::Decide.(
+                 {
+                   id: application.id,
+                   seller_application: {
+                     decision: 'return_to_applicant',
+                     response: 'Response',
+                   }
+                 }
+               )
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sets a decided_at timestamp' do

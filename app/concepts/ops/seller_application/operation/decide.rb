@@ -41,12 +41,14 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
   end
 
   def notify_owner_by_email(options, model:, **)
-    # Only handling the approve situation at the moment
+    mailer = SellerApplicationMailer.with(application: model)
     case options['contract.default'].decision
     when 'approve'
-      SellerApplicationMailer.with(application: model).application_approved_email.deliver_now
-    when 'reject', 'return_to_applicant'
-      true
+      mailer.application_approved_email.deliver_now
+    when 'reject'
+      mailer.application_rejected_email.deliver_now
+    when 'return_to_applicant'
+      mailer.application_return_to_applicant_email.deliver_now
     end
   end
 
