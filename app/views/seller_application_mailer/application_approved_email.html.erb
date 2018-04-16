@@ -1,0 +1,11 @@
+<p>Congratulations!</p>
+
+<p>
+  Your application for <%= @application.seller.name %> to sell on NSW Marketplace has been approved.
+</p>
+
+<p>
+  Feedback from the reviewer: "<%= @application.response %>"
+</p>
+
+<p><%= link_to "View your seller profile", sellers_profile_url(@application.seller) %></p>
