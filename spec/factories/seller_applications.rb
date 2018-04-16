@@ -26,9 +26,15 @@ FactoryBot.define do
       response 'Well done!'
     end
 
+    trait :rejected do
+      state 'rejected'
+      response 'Sorry!'
+    end
+
     factory :created_seller_application, traits: [:created]
     factory :awaiting_assignment_seller_application, traits: [:awaiting_assignment, :with_full_seller_profile]
     factory :assigned_seller_application, traits: [:assigned]
     factory :approved_seller_application, traits: [:approved, :with_full_seller_profile]
+    factory :rejected_seller_application, traits: [:rejected, :with_full_seller_profile]
   end
 end
