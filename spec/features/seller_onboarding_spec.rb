@@ -18,7 +18,8 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
     add_products
     complete_declaration
 
-    expect(page).to have_content('Your seller application has been submitted.')
+    expect(page).to have_content('Seller dashboard')
+    expect(page).to have_content('Your seller application is under review')
   end
 
   def complete_introduction
