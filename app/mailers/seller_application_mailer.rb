@@ -4,17 +4,16 @@ class SellerApplicationMailer < ApplicationMailer
 
   def application_approved_email
     @application = params[:application]
-
-    mail(
-      subject: "Congratulations, your application has been approved"
-    )
+    mail(subject: "Congratulations, your application has been approved")
   end
 
   def application_rejected_email
     @application = params[:application]
+    mail(subject: "Sorry, your application has not been approved")
+  end
 
-    mail(
-      subject: "Sorry, your application has not been approved"
-    )
+  def application_return_to_applicant_email
+    @application = params[:application]
+    mail(subject: "Your application needs some changes before it can be approved")
   end
 end

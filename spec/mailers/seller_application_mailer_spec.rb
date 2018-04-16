@@ -47,4 +47,28 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
       expect(mail.body.encoded).to match(application.response)
     end
   end
+
+  describe "#application_return_to_applicant_email" do
+    let(:application) { create(:returned_to_applicant_seller_application) }
+    let(:mail) { SellerApplicationMailer.with(application: application).application_return_to_applicant_email }
+
+    it 'renders the headers' do
+      expect(mail.subject).to match("Your application needs some changes before it can be approved")
+      # TODO: Probably want the person's name in there too
+      expect(mail.to).to contain_exactly(application.owner.email)
+    end
+
+    it 'lets them know that they need to make changes' do
+      expect(mail.body.encoded).to match('needs some changes')
+    end
+
+    it 'should include the name of the seller' do
+      expect(mail.body.encoded).to match(application.seller.name)
+    end
+
+    it 'should include the feedback from the reviewer' do
+      expect(mail.body.encoded).to match(application.response)
+    end
+  end
+
 end

@@ -10,4 +10,9 @@ class SellerApplicationMailerPreview < ActionMailer::Preview
     application = SellerApplication.rejected.first
     SellerApplicationMailer.with(application: application).application_rejected_email
   end
+
+  def application_return_to_applicant_email
+    application = SellerApplication.created.where('response IS NOT NULL').first
+    SellerApplicationMailer.with(application: application).application_return_to_applicant_email
+  end
 end
