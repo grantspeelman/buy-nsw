@@ -23,6 +23,20 @@ RSpec.describe Ops::SellerApplication::Decide do
     expect(application.response).to eq('Response')
   end
 
+  it 'sends an email when an application is approved' do
+    expect {
+      Ops::SellerApplication::Decide.(
+                 {
+                   id: application.id,
+                   seller_application: {
+                     decision: 'approve',
+                     response: 'Response',
+                   }
+                 }
+               )
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
   it 'can reject an application' do
     result = Ops::SellerApplication::Decide.(
                {

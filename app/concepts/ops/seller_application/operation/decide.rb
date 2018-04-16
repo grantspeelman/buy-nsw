@@ -22,6 +22,7 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
   step :set_timestamp
   step Contract::Persist()
   step :change_application_state
+  step :notify_owner_by_email
 
   def validate_step_change(options, model:, **)
     case options['contract.default'].decision
@@ -36,6 +37,16 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
     when 'approve' then model.approve!
     when 'reject' then model.reject!
     when 'return_to_applicant' then model.return_to_applicant!
+    end
+  end
+
+  def notify_owner_by_email(options, model:, **)
+    # Only handling the approve situation at the moment
+    case options['contract.default'].decision
+    when 'approve'
+      SellerApplicationMailer.with(application: model).application_approved_email.deliver_now
+    when 'reject', 'return_to_applicant'
+      true
     end
   end
 
