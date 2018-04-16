@@ -10,6 +10,7 @@ class Ops::BuyerApplication::Decide < Trailblazer::Operation
   step :set_timestamp
   step Contract::Persist()
   step :change_application_state
+  step :notify_user_by_email
 
   def validate_step_change(options, model:, **)
     case options['contract.default'].decision
@@ -22,6 +23,14 @@ class Ops::BuyerApplication::Decide < Trailblazer::Operation
     case options['contract.default'].decision
     when 'approve' then model.approve!
     when 'reject' then model.reject!
+    end
+  end
+
+  def notify_user_by_email(options, model:, **)
+    mailer = BuyerApplicationMailer.with(application: model)
+    case options['contract.default'].decision
+    when 'approve' then mailer.application_approved_email.deliver_now
+    when 'reject' then mailer.application_rejected_email.deliver_now
     end
   end
 
