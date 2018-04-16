@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :profiles, only: :show
     get '/search', to: 'search#search', as: :search
+    get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
 
   namespace :buyers do
