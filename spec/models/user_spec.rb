@@ -43,7 +43,8 @@ RSpec.describe User do
   describe '#has_seller_application?' do
     it 'is true when there are associated seller applications' do
       user = create(:user)
-      create(:seller_application, owner: user)
+      seller = create(:seller, owner: user)
+      create(:seller_application, seller: seller)
 
       expect(user.has_seller_application?).to be_truthy
     end

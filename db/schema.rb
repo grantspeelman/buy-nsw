@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410050346) do
+ActiveRecord::Schema.define(version: 20180416043312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20180410050346) do
   end
 
   create_table "seller_applications", force: :cascade do |t|
-    t.integer "owner_id", null: false
     t.string "state", null: false
     t.text "response"
     t.datetime "started_at"
@@ -184,7 +183,6 @@ ActiveRecord::Schema.define(version: 20180410050346) do
 
   add_foreign_key "seller_accreditations", "sellers"
   add_foreign_key "seller_applications", "sellers"
-  add_foreign_key "seller_applications", "users", column: "owner_id"
   add_foreign_key "seller_awards", "sellers"
   add_foreign_key "seller_engagements", "sellers"
   add_foreign_key "sellers", "users", column: "owner_id"

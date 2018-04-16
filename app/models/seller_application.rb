@@ -1,12 +1,10 @@
 class SellerApplication < ApplicationRecord
   include AASM
-  
+
   include Concerns::StateScopes
 
-  belongs_to :owner, class_name: 'User'
-  belongs_to :assigned_to, class_name: 'User', optional: true
-
   belongs_to :seller
+  belongs_to :assigned_to, class_name: 'User', optional: true
 
   aasm column: :state do
     state :created, initial: true
@@ -44,6 +42,10 @@ class SellerApplication < ApplicationRecord
     event :return_to_applicant do
       transitions from: :assigned, to: :created
     end
+  end
+
+  def owner
+    seller.owner
   end
 
   def assignee_present?
