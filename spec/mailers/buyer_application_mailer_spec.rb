@@ -20,4 +20,32 @@ RSpec.describe BuyerApplicationMailer, type: :mailer do
     end
   end
 
+  describe '#application_approved_email' do
+    let(:application) { create(:approved_buyer_application) }
+    let(:mail) { BuyerApplicationMailer.with(application: application).application_approved_email }
+
+    it 'renders the headers' do
+      expect(mail.subject).to match("Your application has been approved")
+      expect(mail.to).to contain_exactly(application.user.email)
+    end
+
+    it 'should include the feedback from the reviewer' do
+      expect(mail.body.encoded).to match(application.decision_body)
+    end
+  end
+
+  describe '#application_rejected_email' do
+    let(:application) { create(:rejected_buyer_application) }
+    let(:mail) { BuyerApplicationMailer.with(application: application).application_rejected_email }
+
+    it 'renders the headers' do
+      expect(mail.subject).to match("Your application has been rejected")
+      expect(mail.to).to contain_exactly(application.user.email)
+    end
+
+    it 'should include the feedback from the reviewer' do
+      expect(mail.body.encoded).to match(application.decision_body)
+    end
+  end
+
 end

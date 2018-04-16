@@ -9,4 +9,21 @@ class BuyerApplicationMailer < ApplicationMailer
     )
   end
 
+  def application_approved_email
+    @application = params[:application]
+
+    mail(
+      to: @application.user.email,
+      subject: "Your application has been approved",
+    )
+  end
+
+  def application_rejected_email
+    @application = params[:application]
+
+    mail(
+      to: @application.user.email,
+      subject: "Your application has been rejected",
+    )
+  end
 end
