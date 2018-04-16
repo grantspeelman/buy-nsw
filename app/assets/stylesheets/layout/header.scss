@@ -4,28 +4,29 @@ header[role=global] {
   height: 110px;
 
   h1 {
-    @extend .col-md-8;
+    @extend .col-md-6;
     @include logo;
   }
 
   aside {
-    @extend .col-md-4;
+    @extend .col-md-6;
     text-align: right;
     margin-top: 2rem;
+    font-size: 0.9rem;
 
+    h2 {
+      display: block;
+      font-size: 1em;
+      margin-bottom: 0.1rem;
+    }
     ul {
       padding-left: 0;
+      display: inline-block;
     }
     li {
       display: inline-block;
       list-style: none;
       padding-left: 1em;
-    }
-    a {
-      font-size: 1rem !important;
-
-      @extend .btn;
-      @extend .btn-primary;
     }
   }
 
