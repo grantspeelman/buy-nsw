@@ -22,7 +22,7 @@ FactoryBot.define do
       terms_agreed_at 1.day.ago
     end
 
-    factory :active_buyer, traits: [:active]
+    factory :active_buyer, traits: [:active, :completed]
     factory :inactive_buyer, traits: [:inactive]
     factory :inactive_completed_buyer, traits: [:inactive, :completed]
     factory :inactive_completed_contractor_buyer, traits: [:inactive, :completed, :contractor]

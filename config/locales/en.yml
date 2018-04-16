@@ -230,6 +230,8 @@ en:
         decision_body: Response (shared with applicant)
   ops:
     buyers:
+      messages:
+        deactivate_success: Buyer deactivated
       search:
         filters:
           term:
