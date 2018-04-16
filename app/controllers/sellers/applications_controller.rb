@@ -35,7 +35,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
         if presenter.last_step? && presenter.valid?
           application.submit!
           flash.notice = 'Your seller application has been submitted.'
-          redirect_to root_path
+          redirect_to sellers_dashboard_path
         else
           redirect_to presenter.next_step_path
         end
