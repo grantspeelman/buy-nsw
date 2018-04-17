@@ -451,3 +451,31 @@ en:
             projects-team-collaboration: Projects and team collaboration
             sales-marketing: Sales and marketing
             security-cyber: Security and cyber
+  users:
+    sessions:
+      sign_up:
+        title: Sign up to the Digital Marketplace
+        buyers:
+          title: Buyers
+          body_html: |
+            <p>Register for a buyer account if you work for a government organisation looking to buy from the Digital Marketplace.</p>
+            <p>You will need an account to view full seller profiles and buy products.</p>
+          button_label: Create a buyer account
+        sellers:
+          title: Sellers
+          body_html: |
+            <p>Register for a seller account if you're an organisation looking to sell your products and services to government.</p>
+            <p>You will need an account to create and manage your seller profile.</p>
+          button_label: Create a seller account
+      sign_in:
+        title: Already have an account?
+        help:
+          body_html: |
+            <p>Get help if you have %{forgotten_password} or if you %{confirmation_email}.</p>
+          forgotten_password_label: forgotten your password
+          confirmation_email_label: haven't received a confirmation email
+        form:
+          email_label: Email address
+          password_label: Password
+          remember_me_label: Remember me
+          submit_label: Sign in
