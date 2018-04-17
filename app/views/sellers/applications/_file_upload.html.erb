@@ -4,7 +4,7 @@
 
   <% if (upload = f.object.upload_for(key)) && upload&.url.present? %>
     <div class="current-document">
-      Current document: <%= link_to upload.file.identifier, upload.url %>
+      Current document: <%= link_to upload.file.filename, upload.url %>
     </div>
   <% end %>
 
