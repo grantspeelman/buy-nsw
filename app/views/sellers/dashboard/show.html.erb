@@ -20,6 +20,15 @@
           <p>In the meantime, you can <%= link_to 'contact us', '' %> if you have any questions.</p>
         </div>
       <% end %>
+
+      <section class="account-actions">
+        <h2><%= t 'sellers.dashboard.actions.label' %></h2>
+        <ul>
+          <li><%= link_to t('sellers.dashboard.actions.change_password'), edit_user_registration_path %></li>
+          <li><%= link_to t('sellers.dashboard.actions.update_email'), edit_user_registration_path %></li>
+          <li><%= link_to t('sellers.dashboard.actions.contact_support'), '#' %></li>
+        </ul>
+      </section>
     </section>
   </div>
 <% end %>
