@@ -52,4 +52,8 @@ class Seller < ApplicationRecord
   scope :sme, ->{ where(sme: true) }
   scope :start_up, ->{ where(start_up: true) }
   scope :with_service, ->(service){ where(":service = ANY(services)", service: service) }
+
+  def application_in_progress?
+    applications.created.any?
+  end
 end
