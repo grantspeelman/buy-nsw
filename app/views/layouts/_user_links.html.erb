@@ -3,7 +3,11 @@
   <h2><%= current_user.email %></h2>
   <ul>
     <% if current_user.is_seller? %>
-      <li><%= link_to 'Seller dashboard', sellers_dashboard_path %></li>
+      <% if current_user.seller&.application_in_progress? %>
+        <li><%= link_to 'Continue application', new_sellers_application_path %></li>
+      <% else %>
+        <li><%= link_to 'Seller dashboard', sellers_dashboard_path %></li>
+      <% end %>
     <% end %>
     <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
   </ul>
