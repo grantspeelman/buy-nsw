@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :confirmable, :recoverable, :rememberable,
          :trackable, :validatable
 
-  enumerize :roles, in: ['seller', 'buyer', 'admin'], multiple: true, default: :seller
+  enumerize :roles, in: ['seller', 'buyer', 'admin'], multiple: true
 
   has_one :buyer
   has_one :seller, foreign_key: :owner_id
