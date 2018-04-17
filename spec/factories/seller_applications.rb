@@ -15,7 +15,7 @@ FactoryBot.define do
       state 'awaiting_assignment'
     end
 
-    trait :assigned do
+    trait :ready_for_review do
       state 'ready_for_review'
       association :assigned_to, factory: :user
     end
@@ -37,7 +37,7 @@ FactoryBot.define do
 
     factory :created_seller_application, traits: [:created]
     factory :awaiting_assignment_seller_application, traits: [:awaiting_assignment, :with_full_seller_profile]
-    factory :assigned_seller_application, traits: [:assigned]
+    factory :ready_for_review_seller_application, traits: [:ready_for_review]
     factory :approved_seller_application, traits: [:approved, :with_full_seller_profile]
     factory :rejected_seller_application, traits: [:rejected, :with_full_seller_profile]
     factory :returned_to_applicant_seller_application, traits: [:returned_to_applicant, :with_full_seller_profile]

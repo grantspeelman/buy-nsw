@@ -74,7 +74,7 @@ RSpec.describe BuyerApplication do
     end
 
     describe '#approve' do
-      let(:application) { create(:assigned_buyer_application) }
+      let(:application) { create(:ready_for_review_buyer_application) }
 
       it 'transitions from `assigned` to `approved`' do
         application.approve
@@ -90,7 +90,7 @@ RSpec.describe BuyerApplication do
     end
 
     describe '#reject' do
-      let(:application) { create(:assigned_buyer_application) }
+      let(:application) { create(:ready_for_review_buyer_application) }
 
       it 'transitions from `assigned` to `rejected`' do
         application.reject

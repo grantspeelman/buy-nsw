@@ -4,7 +4,7 @@ RSpec.describe 'Seller dashboard', type: :feature do
 
   it 'shows a message to sellers awaiting review' do
     seller = create(:inactive_seller_with_full_profile, owner: @user)
-    create(:assigned_seller_application, seller: seller)
+    create(:ready_for_review_seller_application, seller: seller)
 
     visit '/'
     click_on 'Seller dashboard'
