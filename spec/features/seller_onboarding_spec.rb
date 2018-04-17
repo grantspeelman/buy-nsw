@@ -1,11 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'Seller onboarding', type: :feature, js: true do
+RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true do
 
   it 'submits a successful application' do
     visit '/'
     click_on 'Start your application'
 
+    complete_seller_sign_up
+    confirm_email_address
     complete_introduction
     fill_in_business_basics
     fill_in_business_details
@@ -20,6 +22,22 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true do
 
     expect(page).to have_content('Seller dashboard')
     expect(page).to have_content('Your seller application is under review')
+  end
+
+  def complete_seller_sign_up
+    fill_in 'Email', with: 'test@test.org'
+    fill_in 'Password', with: 'test password'
+    fill_in 'Confirm', with: 'test password'
+    click_on 'Continue'
+
+    expect(page).to have_content('Confirm your email')
+  end
+
+  def confirm_email_address
+    token = User.find_by_email('test@test.org').confirmation_token
+    visit user_confirmation_path(confirmation_token: token)
+
+    expect(page).to have_content('Thanks for confirming')
   end
 
   def complete_introduction
