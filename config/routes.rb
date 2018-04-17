@@ -6,6 +6,7 @@ Rails.application.routes.draw do
                       },
                       controllers: {
                         registrations: 'users/registrations',
+                        confirmations: 'users/confirmations',
                       },
                       skip: [
                         :registrations,
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
     get '/register/:type', to: 'users/registrations#new', as: :registration
     post '/register/:type', to: 'users/registrations#create'
     get '/register/:type/confirm', to: 'users/registrations#confirm', as: :registration_confirm
+
+    get '/account', to: 'users/registrations#edit', as: :edit_account
+    put '/account', to: 'users/registrations#update', as: :account
   end
 
   namespace :sellers do

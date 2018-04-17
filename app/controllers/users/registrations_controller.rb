@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :assert_valid_user_type!
+  before_action :assert_valid_user_type!, only: [:new, :create]
 
 private
   def user_type
