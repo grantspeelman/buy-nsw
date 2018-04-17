@@ -7,6 +7,8 @@ class Sellers::ApplicationsController < Sellers::BaseController
   def new
     if existing_application.present?
       redirect_to sellers_application_path(existing_application)
+    elsif current_user.seller.present?
+      redirect_to sellers_dashboard_path
     else
       seller = Seller.create!(owner: current_user)
       application = seller.applications.create!
@@ -35,7 +37,7 @@ class Sellers::ApplicationsController < Sellers::BaseController
         if presenter.last_step? && presenter.valid?
           application.submit!
           flash.notice = 'Your seller application has been submitted.'
-          redirect_to root_path
+          redirect_to sellers_dashboard_path
         else
           redirect_to presenter.next_step_path
         end

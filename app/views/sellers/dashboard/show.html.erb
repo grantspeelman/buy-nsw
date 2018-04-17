@@ -1,0 +1,40 @@
+<% content_for(:without_container, true) %>
+
+<% content_for(:content) do %>
+  <header class="application-header">
+    <div class="container">
+      <h1>
+        <span class="type-label"><%= t 'sellers.dashboard.title' %><span class="visually-hidden">:</span></span>
+        <%= seller.name %>
+      </h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="view-sellers-dashboard">
+      <% if seller.active? %>
+        <div class="seller-status">
+          <span class="active-icon" aria-hidden="true"></span>
+          <%= t 'sellers.dashboard.status.good_standing' %>
+        </div>
+      <% elsif seller.inactive? %>
+        <div class="current-application">
+          <span class="under-review-icon" aria-hidden="true"></span>
+          <h2><%= t 'sellers.dashboard.status.awaiting_review_title' %></h2>
+          <%= t 'sellers.dashboard.status.awaiting_review_message_html' %>
+        </div>
+      <% end %>
+
+      <section class="account-actions">
+        <h2><%= t 'sellers.dashboard.actions.label' %></h2>
+        <ul>
+          <li><%= link_to t('sellers.dashboard.actions.change_password'), edit_user_registration_path %></li>
+          <li><%= link_to t('sellers.dashboard.actions.update_email'), edit_user_registration_path %></li>
+          <li><%= link_to t('sellers.dashboard.actions.contact_support'), '#' %></li>
+        </ul>
+      </section>
+    </section>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

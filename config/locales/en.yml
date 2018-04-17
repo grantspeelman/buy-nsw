@@ -388,6 +388,19 @@ en:
         insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years?"
         conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with the NSW Government?"
         other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
+    dashboard:
+      actions:
+        label: Account actions
+        change_password: Change your password
+        update_email: Update your email address
+        contact_support: Contact support
+      status:
+        good_standing: Your seller account is active and in good standing
+        awaiting_review_title: Your seller application is under review
+        awaiting_review_message_html: |
+          <p>We are currently reviewing your seller application. You'll receive an email when we've made a decision.</p>
+          <p>In the meantime, you can <a href="">contact us</a> if you have any questions.</p>
+      title: Seller dashboard
     search:
       filters:
         business_identifiers:
