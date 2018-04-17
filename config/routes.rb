@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
 
+  devise_for :users,  path: '',
+                      path_names: {
+                        sign_in: 'sign-in',
+                      },
+                      controllers: {
+                        registrations: 'users/registrations',
+                      },
+                      skip: [
+                        :registrations,
+                      ],
+                      skip_helpers: true
+
+  devise_scope :user do
+    get '/register', to: redirect('/sign-in'), as: :register_without_type
+    get '/register/:type', to: 'users/registrations#new', as: :registration
+    post '/register/:type', to: 'users/registrations#create'
+    get '/register/:type/confirm', to: 'users/registrations#confirm', as: :registration_confirm
+  end
+
   namespace :sellers do
     resources :applications, only: [:new, :show, :update] do
       resources :products, controller: 'applications/products'
@@ -16,8 +35,6 @@ Rails.application.routes.draw do
     get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
   end
-
-  devise_for :users
 
   get '/cloud', to: 'static#cloud', as: :cloud
   get '/cloud/:section', to: 'pathways/search#search', as: :pathway_search

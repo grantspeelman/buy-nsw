@@ -1,0 +1,16 @@
+<section class="view-user-registrations-confirm">
+  <div class="confirmation-box">
+    <span class="confirmation-icon" aria-hidden="true"></span>
+    <h1><%= t('users.registrations.shared.confirm.title') %></h1>
+    <%= t('users.registrations.shared.confirm.body_html', email: params[:email]) %>
+  </div>
+
+  <p class="resend-action">
+    <%= t('users.registrations.shared.confirm.resend_html',
+      resend_action: link_to(
+        t('users.registrations.shared.confirm.resend_label'),
+        new_user_confirmation_path(resource_name)
+      )
+    ) %>
+  </p>
+</section>

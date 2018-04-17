@@ -6,14 +6,14 @@
       <div class="box">
         <h2><%= t('users.sessions.sign_up.buyers.title') %></h2>
         <%= t('users.sessions.sign_up.buyers.body_html') %>
-        <%= link_to t('users.sessions.sign_up.buyers.button_label'), new_user_registration_path(type: 'buyer'), class: 'action' %>
+        <%= link_to t('users.sessions.sign_up.buyers.button_label'), registration_path('buyer'), class: 'action' %>
       </div>
     </li>
     <li class="seller-account">
       <div class="box">
         <h2><%= t('users.sessions.sign_up.sellers.title') %></h2>
         <%= t('users.sessions.sign_up.sellers.body_html') %>
-        <%= link_to t('users.sessions.sign_up.sellers.button_label'), new_user_registration_path(type: 'seller'), class: 'action' %>
+        <%= link_to t('users.sessions.sign_up.sellers.button_label'), registration_path('seller'), class: 'action' %>
       </div>
     </li>
   </ul>

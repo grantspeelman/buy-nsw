@@ -479,3 +479,34 @@ en:
           password_label: Password
           remember_me_label: Remember me
           submit_label: Sign in
+    registrations:
+      buyer:
+        title: Create a buyer account
+        body_html: |
+          <p>Once you have verified your details, you will be able to complete your buyer account.</p>
+          <p>Already have an account? %{sign_in}.</p>
+        sign_in_label: Sign in
+        form:
+          email_help: If you have one, use your government email address. We will send an email to this address to verify it is yours.
+      seller:
+        title: Create a seller account
+        body_html: |
+          <p>Once you have verified your details, you will be able to start your seller application.</p>
+          <p>Already have an account? %{sign_in}.</p>
+        sign_in_label: Sign in
+        form:
+          email_help: Please use your corporate email address. We will send an email to this address to verify it is yours.
+      shared:
+        form:
+          email_label: Email address
+          password_label: Password
+          password_help: A long password with multiple words is more secure, and easier to remember (eg. 'correct horse battery staple').
+          password_confirmation_label: Confirm your password
+          submit_label: Continue
+        confirm:
+          title: Confirm your email address
+          body_html: |
+            <p>We've sent a one-time link to <strong>%{email}</strong>.<br>
+            Please click the link to verify your email address and continue your registration.</p>
+          resend_html: If you don't receive a link, you can %{resend_action}.
+          resend_label: request we send it again
