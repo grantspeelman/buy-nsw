@@ -133,7 +133,7 @@ form .actions {
 
 /* Text boxes */
 
-textarea, input[type=text], input[type=password], select {
+textarea, input[type=text], input[type=password], input[type=email], select {
   &.form-control {
     border-radius: 0px;
     border-width: 2px;
