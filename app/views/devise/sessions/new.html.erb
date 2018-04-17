@@ -1,22 +1,20 @@
 <section class="view-user-sessions-new">
-  <h1><%= t('users.sessions.sign_up.title') %></h1>
+  <section class="registration">
+    <header>
+      <h1><%= t('users.sessions.sign_up.title') %></h1>
+    </header>
 
-  <ul class="accounts">
-    <li class="buyer-account">
-      <div class="box">
-        <h2><%= t('users.sessions.sign_up.buyers.title') %></h2>
+    <ul class="accounts">
+      <li class="buyer-account">
         <%= t('users.sessions.sign_up.buyers.body_html') %>
-        <%= link_to t('users.sessions.sign_up.buyers.button_label'), registration_path('buyer'), class: 'action' %>
-      </div>
-    </li>
-    <li class="seller-account">
-      <div class="box">
-        <h2><%= t('users.sessions.sign_up.sellers.title') %></h2>
+        <p><%= link_to t('users.sessions.sign_up.buyers.button_label'), registration_path('buyer'), class: 'action' %></p>
+      </li>
+      <li class="seller-account">
         <%= t('users.sessions.sign_up.sellers.body_html') %>
-        <%= link_to t('users.sessions.sign_up.sellers.button_label'), registration_path('seller'), class: 'action' %>
-      </div>
-    </li>
-  </ul>
+        <p><%= link_to t('users.sessions.sign_up.sellers.button_label'), registration_path('seller'), class: 'action' %></p>
+      </li>
+    </ul>
+  </section>
 
   <section class="sign-in-form">
     <header>

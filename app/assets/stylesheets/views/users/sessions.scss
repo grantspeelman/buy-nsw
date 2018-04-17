@@ -1,34 +1,5 @@
 .view-user-sessions-new {
-  .accounts {
-    @extend .row;
-
-    padding: 1rem 0 2rem;
-    border-bottom: 1px solid $grey-2;
-    margin-bottom: 2rem;
-
-    li {
-      @extend .col-md-6;
-      list-style: none;
-    }
-
-    .box {
-      background: $light-blue;
-      color: #fff;
-      padding: 1rem;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-    }
-
-    a.action {
-      @extend .btn;
-      @extend .btn-light;
-      font-size: 1rem;
-    }
-  }
-
-  .sign-in-form {
+  .registration, .sign-in-form {
     @extend .row;
 
     header {
@@ -36,8 +7,33 @@
       padding-right: 3em;
     }
 
-    form {
+    form, .accounts {
       @extend .col-md-8;
+    }
+  }
+
+  .registration {
+    border-bottom: 1px solid $grey-1;
+    padding-bottom: .5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .accounts {
+    padding-left: 0;
+
+    li {
+      display: block;
+      list-style: none;
+
+      &.buyer-account {
+        padding-bottom: .5rem;
+      }
+    }
+
+    a.action {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: 1.1rem;
     }
   }
 }
