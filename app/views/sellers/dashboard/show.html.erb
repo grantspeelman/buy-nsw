@@ -4,7 +4,7 @@
   <header class="application-header">
     <div class="container">
       <h1>
-        <span class="type-label">Seller dashboard<span class="visually-hidden">:</span></span>
+        <span class="type-label"><%= t 'sellers.dashboard.title' %><span class="visually-hidden">:</span></span>
         <%= seller.name %>
       </h1>
     </div>
@@ -15,9 +15,8 @@
       <% if seller.inactive? %>
         <div class="current-application">
           <span class="under-review-icon" aria-hidden="true"></span>
-          <h2>Your seller application is under review</h2>
-          <p>We are currently reviewing your seller application. You'll receive an email when we've made a decision.</p>
-          <p>In the meantime, you can <%= link_to 'contact us', '' %> if you have any questions.</p>
+          <h2><%= t 'sellers.dashboard.status.awaiting_review_title' %></h2>
+          <%= t 'sellers.dashboard.status.awaiting_review_message' %>
         </div>
       <% end %>
 

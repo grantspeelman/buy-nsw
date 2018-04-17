@@ -394,6 +394,12 @@ en:
         change_password: Change your password
         update_email: Update your email address
         contact_support: Contact support
+      status:
+        awaiting_review_title: Your seller application is under review
+        awaiting_review_message_html: |
+          <p>We are currently reviewing your seller application. You'll receive an email when we've made a decision.</p>
+          <p>In the meantime, you can <a href="">contact us</a> if you have any questions.</p>
+      title: Seller dashboard
     search:
       filters:
         business_identifiers:
