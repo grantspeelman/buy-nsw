@@ -4,10 +4,6 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
 
-test:
-  <<: *default
-  url: <%= ENV['TEST_DATABASE_URL'] %>
-
 # This is for the benefit of the AWS spike
 production:
   adapter: postgresql

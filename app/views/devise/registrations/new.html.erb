@@ -1,15 +1,24 @@
-<h2>Join the Marketplace</h2>
+<section class="view-user-registrations-new">
+  <header>
+    <h1><%= t("users.registrations.#{user_type}.title") %></h1>
+    <%= t("users.registrations.#{user_type}.body_html",
+      sign_in: link_to(t("users.registrations.#{user_type}.sign_in_label"), new_session_path(resource_name))
+    ) %>
+  </header>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(user_type)) do |f| %>
+    <%= f.email_field :email, autofocus: true,
+                              autocomplete: "email",
+                              label: t('users.registrations.shared.form.email_label'),
+                              help: t("users.registrations.#{user_type}.form.email_help") %>
+    <%= f.password_field :password, autocomplete: "off",
+                                    label: t('users.registrations.shared.form.password_label'),
+                                    help: t('users.registrations.shared.form.password_help') %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",
+                                                 label: t('users.registrations.shared.form.password_confirmation_label') %>
 
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  <%= f.password_field :password, autocomplete: "off" %>
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-
-  <fieldset class="actions">
-    <%= f.submit "Sign up" %>
-  </fieldset>
-<% end %>
-
-<%= render "devise/shared/links" %>
+    <fieldset class="actions">
+      <%= f.submit t('users.registrations.shared.form.submit_label') %>
+    </fieldset>
+  <% end %>
+</section>

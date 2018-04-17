@@ -1,11 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Buyer onboarding', type: :feature, js: true do
+RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
-  describe 'as a buyer with a government email', user: :buyer_user_with_approved_email do
+  describe 'as a buyer with a government email' do
+    let(:user) { build(:buyer_user_with_approved_email) }
+
     it 'submits a valid employee application' do
       visit '/'
       click_on 'Sign up as a buyer'
+
+      complete_buyer_sign_up(user)
+      confirm_email_address(user)
 
       fill_in_buyer_details
       fill_in_employment_status(:employee)
@@ -17,6 +22,9 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true do
     it 'submits a valid contractor application' do
       visit '/'
       click_on 'Sign up as a buyer'
+
+      complete_buyer_sign_up(user)
+      confirm_email_address(user)
 
       fill_in_buyer_details
       fill_in_employment_status(:contractor)
@@ -27,22 +35,28 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true do
     end
   end
 
-  describe 'as a buyer with a non-government email', user: :buyer_user_without_approved_email do
+  describe 'as a buyer with a non-government email' do
+    let(:user) { build(:buyer_user_without_approved_email) }
+
     it 'submits a valid employee application' do
       visit '/'
       click_on 'Sign up as a buyer'
+
+      complete_buyer_sign_up(user)
+      confirm_email_address(user)
 
       fill_in_buyer_details
       fill_in_application_body
       fill_in_employment_status(:employee)
       accept_terms_and_submit
-
-
     end
 
     it 'submits a valid contractor application' do
       visit '/'
       click_on 'Sign up as a buyer'
+
+      complete_buyer_sign_up(user)
+      confirm_email_address(user)
 
       fill_in_buyer_details
       fill_in_application_body
@@ -52,6 +66,22 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true do
 
       expect_submission_message
     end
+  end
+
+  def complete_buyer_sign_up(user)
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'test password'
+    fill_in 'Confirm', with: 'test password'
+    click_on 'Continue'
+
+    expect(page).to have_content('Confirm your email')
+  end
+
+  def confirm_email_address(user)
+    token = User.find_by_email(user.email).confirmation_token
+    visit user_confirmation_path(confirmation_token: token)
+
+    expect(page).to have_content('Thanks for confirming')
   end
 
   def fill_in_buyer_details

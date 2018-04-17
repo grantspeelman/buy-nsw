@@ -1,16 +1,50 @@
-<h2>Sign in</h2>
+<section class="view-user-sessions-new">
+  <section class="registration">
+    <header>
+      <h1><%= t('users.sessions.sign_up.title') %></h1>
+    </header>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  <%= f.password_field :password, autocomplete: "off" %>
+    <ul class="accounts">
+      <li class="buyer-account">
+        <%= t('users.sessions.sign_up.buyers.body_html') %>
+        <p><%= link_to t('users.sessions.sign_up.buyers.button_label'), registration_path('buyer'), class: 'action' %></p>
+      </li>
+      <li class="seller-account">
+        <%= t('users.sessions.sign_up.sellers.body_html') %>
+        <p><%= link_to t('users.sessions.sign_up.sellers.button_label'), registration_path('seller'), class: 'action' %></p>
+      </li>
+    </ul>
+  </section>
 
-  <% if devise_mapping.rememberable? -%>
-    <%= f.check_box :remember_me %>
-  <% end -%>
+  <section class="sign-in-form">
+    <header>
+      <h1><%= t('users.sessions.sign_in.title') %></h1>
+      <%= t('users.sessions.sign_in.help.body_html',
+        forgotten_password: link_to(
+          t('users.sessions.sign_in.help.forgotten_password_label'),
+          new_password_path(resource_name)
+        ),
+        confirmation_email: link_to(
+          t('users.sessions.sign_in.help.confirmation_email_label'),
+          new_confirmation_path(resource_name)
+        )
+      ) %>
+    </header>
 
-  <fieldset class="actions">
-    <%= f.submit "Sign in" %>
-  </fieldset>
-<% end %>
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, autocomplete: "email",
+                                autofocus: true,
+                                label: t('users.sessions.sign_in.form.email_label') %>
+      <%= f.password_field :password, autocomplete: "off",
+                                      label: t('users.sessions.sign_in.form.password_label')%>
 
-<%= render "devise/shared/links" %>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me, label: t('users.sessions.sign_in.form.remember_me_label') %>
+      <% end -%>
+
+      <fieldset class="actions">
+        <%= f.submit t('users.sessions.sign_in.form.submit_label') %>
+      </fieldset>
+    <% end %>
+  </section>
+</section>

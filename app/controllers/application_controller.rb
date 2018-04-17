@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate!
 
   class NotAuthorized < StandardError; end
+  class NotFound < StandardError; end
 
   rescue_from NotAuthorized, with: :render_unauthorized
+  rescue_from NotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
 private

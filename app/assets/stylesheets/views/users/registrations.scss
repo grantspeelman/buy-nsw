@@ -1,0 +1,46 @@
+.view-user-registrations-new {
+  @extend .row;
+
+  header {
+    @extend .col-md-4;
+    padding-right: 3em;
+  }
+
+  form {
+    @extend .col-md-8;
+  }
+}
+
+.view-user-registrations-confirm {
+  text-align: center;
+
+  .confirmation-box {
+    background: $light-blue;
+    color: $white;
+    margin-bottom: 1.5rem;
+
+    a {
+      color: $white;
+    }
+
+    padding: 1rem;
+
+    .confirmation-icon {
+      @extend .oi;
+      @extend .oi-envelope-open;
+      display: block;
+      font-size: 5rem;
+      margin: 1rem 0;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+  }
+
+  .resend-action {
+
+  }
+}
