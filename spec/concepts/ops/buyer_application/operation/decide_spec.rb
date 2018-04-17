@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ops::BuyerApplication::Decide do
 
-  let(:application) { create(:assigned_buyer_application) }
+  let(:application) { create(:ready_for_review_buyer_application) }
 
   it 'can approve an application' do
     result = Ops::BuyerApplication::Decide.(

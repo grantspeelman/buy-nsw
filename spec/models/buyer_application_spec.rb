@@ -25,7 +25,7 @@ RSpec.describe BuyerApplication do
         application.assigned_to = create(:admin_user)
         application.submit
 
-        expect(application.state).to eq('assigned')
+        expect(application.state).to eq('ready_for_review')
       end
 
       it 'transitions to `approved` when email approval is not required and the buyer is an employee' do
@@ -52,7 +52,7 @@ RSpec.describe BuyerApplication do
         application.assigned_to = create(:admin_user)
         application.manager_approve
 
-        expect(application.state).to eq('assigned')
+        expect(application.state).to eq('ready_for_review')
       end
 
       it 'transitions to `approved` when email approval is not required' do
@@ -69,12 +69,12 @@ RSpec.describe BuyerApplication do
       it 'transitions from `awaiting_assignment` to `assigned`' do
         application.assign
 
-        expect(application.state).to eq('assigned')
+        expect(application.state).to eq('ready_for_review')
       end
     end
 
     describe '#approve' do
-      let(:application) { create(:assigned_buyer_application) }
+      let(:application) { create(:ready_for_review_buyer_application) }
 
       it 'transitions from `assigned` to `approved`' do
         application.approve
@@ -90,7 +90,7 @@ RSpec.describe BuyerApplication do
     end
 
     describe '#reject' do
-      let(:application) { create(:assigned_buyer_application) }
+      let(:application) { create(:ready_for_review_buyer_application) }
 
       it 'transitions from `assigned` to `rejected`' do
         application.reject

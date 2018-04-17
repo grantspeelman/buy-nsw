@@ -44,7 +44,7 @@ RSpec.describe BuyerApplicationSearch do
 
   it 'filters by state' do
     create_list(:buyer_application, 5, state: 'created')
-    create_list(:buyer_application, 3, state: 'assigned')
+    create_list(:buyer_application, 3, state: 'ready_for_review')
 
     search = BuyerApplicationSearch.new(
       selected_filters: {

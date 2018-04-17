@@ -44,7 +44,7 @@ RSpec.describe SellerApplicationSearch do
 
   it 'filters by state' do
     create_list(:seller_application, 5, state: 'created')
-    create_list(:seller_application, 3, state: 'assigned')
+    create_list(:seller_application, 3, state: 'ready_for_review')
 
     search = SellerApplicationSearch.new(
       selected_filters: {

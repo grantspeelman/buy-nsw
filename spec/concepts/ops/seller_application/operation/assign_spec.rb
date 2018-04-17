@@ -26,7 +26,7 @@ RSpec.describe Ops::SellerApplication::Assign do
     application.reload
 
     expect(result).to be_success
-    expect(application.state).to eq('assigned')
+    expect(application.state).to eq('ready_for_review')
   end
 
   it 'does not transition the application if another state' do

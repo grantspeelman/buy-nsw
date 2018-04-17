@@ -24,8 +24,8 @@ FactoryBot.define do
     trait :awaiting_assignment do
       state 'awaiting_assignment'
     end
-    trait :assigned do
-      state 'assigned'
+    trait :ready_for_review do
+      state 'ready_for_review'
     end
 
     trait :approved do
@@ -42,7 +42,7 @@ FactoryBot.define do
     factory :created_manager_approval_buyer_application, traits: [:created, :manager_approval]
     factory :awaiting_manager_approval_buyer_application, traits: [:awaiting_manager_approval, :with_completed_buyer_profile]
     factory :awaiting_assignment_buyer_application, traits: [:awaiting_assignment, :with_completed_buyer_profile]
-    factory :assigned_buyer_application, traits: [:assigned, :with_completed_buyer_profile]
+    factory :ready_for_review_buyer_application, traits: [:ready_for_review, :with_completed_buyer_profile]
     factory :approved_buyer_application, traits: [:approved]
     factory :rejected_buyer_application, traits: [:rejected]
   end
