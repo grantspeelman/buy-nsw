@@ -395,6 +395,7 @@ en:
         update_email: Update your email address
         contact_support: Contact support
       status:
+        good_standing: Your seller account is active and in good standing
         awaiting_review_title: Your seller application is under review
         awaiting_review_message_html: |
           <p>We are currently reviewing your seller application. You'll receive an email when we've made a decision.</p>

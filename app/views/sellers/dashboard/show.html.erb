@@ -12,7 +12,12 @@
 
   <div class="container">
     <section class="view-sellers-dashboard">
-      <% if seller.inactive? %>
+      <% if seller.active? %>
+        <div class="seller-status">
+          <span class="active-icon" aria-hidden="true"></span>
+          <%= t 'sellers.dashboard.status.good_standing' %>
+        </div>
+      <% elsif seller.inactive? %>
         <div class="current-application">
           <span class="under-review-icon" aria-hidden="true"></span>
           <h2><%= t 'sellers.dashboard.status.awaiting_review_title' %></h2>
