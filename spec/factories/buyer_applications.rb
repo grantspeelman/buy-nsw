@@ -25,7 +25,7 @@ FactoryBot.define do
       state 'awaiting_assignment'
     end
     trait :assigned do
-      state 'assigned'
+      state 'ready_for_review'
     end
 
     trait :approved do

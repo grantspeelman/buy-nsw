@@ -16,7 +16,7 @@ FactoryBot.define do
     end
 
     trait :assigned do
-      state 'assigned'
+      state 'ready_for_review'
       association :assigned_to, factory: :user
     end
 

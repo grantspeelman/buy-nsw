@@ -16,7 +16,7 @@ RSpec.describe 'Reviewing buyer applications', type: :feature, js: true do
       assign_application_to(@user.email)
 
       expect_flash_message('Application assigned')
-      expect_application_state('assigned')
+      expect_application_state('ready_for_review')
 
       expect_buyer_details(
         'Buyer name' => application.buyer.name,

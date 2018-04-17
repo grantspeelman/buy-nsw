@@ -13,7 +13,7 @@ class BuyerApplication < ApplicationRecord
     state :created, initial: true
     state :awaiting_manager_approval
     state :awaiting_assignment
-    state :assigned
+    state :ready_for_review
     state :approved
     state :rejected
 
@@ -22,7 +22,7 @@ class BuyerApplication < ApplicationRecord
       transitions from: :created, to: :awaiting_manager_approval, guard: :requires_manager_approval?
 
       transitions from: :created, to: :awaiting_assignment, guard: [:requires_email_approval?, :unassigned?]
-      transitions from: :created, to: :assigned, guard: [:requires_email_approval?, :assignee_present?]
+      transitions from: :created, to: :ready_for_review, guard: [:requires_email_approval?, :assignee_present?]
 
       before do
         self.submitted_at = Time.now
@@ -31,16 +31,16 @@ class BuyerApplication < ApplicationRecord
 
     event :manager_approve do
       transitions from: :awaiting_manager_approval, to: :awaiting_assignment, guard: [:requires_email_approval?, :unassigned?]
-      transitions from: :awaiting_manager_approval, to: :assigned, guard: [:requires_email_approval?, :assignee_present?]
+      transitions from: :awaiting_manager_approval, to: :ready_for_review, guard: [:requires_email_approval?, :assignee_present?]
       transitions from: :awaiting_manager_approval, to: :approved
     end
 
     event :assign do
-      transitions from: :awaiting_assignment, to: :assigned
+      transitions from: :awaiting_assignment, to: :ready_for_review
     end
 
     event :approve do
-      transitions from: :assigned, to: :approved
+      transitions from: :ready_for_review, to: :approved
 
       after_commit do
         buyer.make_active!
@@ -48,7 +48,7 @@ class BuyerApplication < ApplicationRecord
     end
 
     event :reject do
-      transitions from: :assigned, to: :rejected
+      transitions from: :ready_for_review, to: :rejected
     end
   end
 
