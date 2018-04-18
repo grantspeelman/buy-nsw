@@ -69,7 +69,7 @@ RSpec.describe Sellers::SellerApplication::Contract::BusinessDetails do
       subject.validate(invalid_atts)
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:addresses][0][:address]).to be_present
+      expect(subject.addresses[0].errors[:address]).to be_present
     end
 
     it 'is invalid when there is no suburb' do
@@ -79,7 +79,7 @@ RSpec.describe Sellers::SellerApplication::Contract::BusinessDetails do
       subject.validate(invalid_atts)
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:addresses][0][:suburb]).to be_present
+      expect(subject.addresses[0].errors[:suburb]).to be_present
     end
 
     it 'is invalid when there is no state' do
@@ -89,7 +89,7 @@ RSpec.describe Sellers::SellerApplication::Contract::BusinessDetails do
       subject.validate(invalid_atts)
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:addresses][0][:state]).to be_present
+      expect(subject.addresses[0].errors[:state]).to be_present
     end
 
     it 'is invalid when there is no postcode' do
@@ -99,7 +99,7 @@ RSpec.describe Sellers::SellerApplication::Contract::BusinessDetails do
       subject.validate(invalid_atts)
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:addresses][0][:postcode]).to be_present
+      expect(subject.addresses[0].errors[:postcode]).to be_present
     end
 
     # TODO: This behaviour currently works in the application but appears not to
