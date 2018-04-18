@@ -7,7 +7,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
     it 'submits a valid employee application' do
       visit '/'
-      click_on 'Sign up as a buyer'
+      click_on 'Join as a buyer'
 
       complete_buyer_sign_up(user)
       confirm_email_address(user)
@@ -21,7 +21,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
     it 'submits a valid contractor application' do
       visit '/'
-      click_on 'Sign up as a buyer'
+      click_on 'Join as a buyer'
 
       complete_buyer_sign_up(user)
       confirm_email_address(user)
@@ -40,7 +40,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
     it 'submits a valid employee application' do
       visit '/'
-      click_on 'Sign up as a buyer'
+      click_on 'Join as a buyer'
 
       complete_buyer_sign_up(user)
       confirm_email_address(user)
@@ -53,7 +53,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
     it 'submits a valid contractor application' do
       visit '/'
-      click_on 'Sign up as a buyer'
+      click_on 'Join as a buyer'
 
       complete_buyer_sign_up(user)
       confirm_email_address(user)
