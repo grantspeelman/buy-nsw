@@ -17,7 +17,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     fill_in_recognition
     fill_in_industry
     fill_in_services
-    add_products
     complete_declaration
 
     expect(page).to have_content('Seller dashboard')
