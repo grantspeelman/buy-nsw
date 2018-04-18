@@ -40,7 +40,7 @@ class Buyers::ApplicationsController < Buyers::BaseController
 
 private
   def form
-    @form
+    operation["contract.default"]
   end
   helper_method :form
 
