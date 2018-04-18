@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Sellers::Applications::Products::InfoForm do
+RSpec.describe Sellers::Product::Contract::Info do
 
   let(:product) { create(:inactive_product) }
 
-  subject { Sellers::Applications::Products::InfoForm.new(product) }
+  subject { Sellers::Product::Contract::Info.new(product) }
 
   let(:atts) {
     {

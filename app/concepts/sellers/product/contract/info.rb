@@ -1,5 +1,7 @@
-module Sellers::SellerApplication::Contract::Products
-  class Info < Base
+module Sellers::Product::Contract
+  class Info < Reform::Form
+    include Forms::ValidationHelper
+
     model :product
 
     property :name
