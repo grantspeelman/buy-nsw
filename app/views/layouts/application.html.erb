@@ -51,6 +51,9 @@
       <footer role="global">
         <div class="container">
           <%= deployment_env.try(:titleize) %>
+          <% if defined?(APP_VERSION) %>
+            (<%= APP_VERSION %>)
+          <% end %>
         </div>
       </footer>
     <% end %>
