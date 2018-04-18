@@ -25,6 +25,12 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Add build number to clean checkout
+          command: |
+            export TAG=build-$CIRCLE_BUILD_NUM
+            echo $TAG > BUILD
+
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -63,13 +69,6 @@ jobs:
                             --format progress \
                             $TEST_FILES
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-
       - run:
           name: tag successful build
           command: |
@@ -77,12 +76,13 @@ jobs:
             export TAG=build-$CIRCLE_BUILD_NUM
             git tag -a $TAG -m 'adding build tag'
             git push origin $TAG
-            echo $TAG > BUILD
 
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - BUILD
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
 
   deploy:
     docker:
