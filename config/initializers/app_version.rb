@@ -1,3 +1,3 @@
 if !defined?(APP_VERSION) && File.exists?("BUILD")
-  APP_VERSION = File.read("BUILD")
+  APP_VERSION = File.read("BUILD").strip
 end
