@@ -103,6 +103,6 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
 
   def send_manager_approval_email!(application)
     application.set_manager_approval_token!
-    BuyerApplicationMailer.with(application: application).manager_approval_email.deliver_now
+    BuyerApplicationMailer.with(application: application).manager_approval_email.deliver_later
   end
 end

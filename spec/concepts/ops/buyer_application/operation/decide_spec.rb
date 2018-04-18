@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ops::BuyerApplication::Decide do
+  include ActiveJob::TestHelper
 
   let(:application) { create(:ready_for_review_buyer_application) }
 
@@ -25,15 +26,17 @@ RSpec.describe Ops::BuyerApplication::Decide do
 
   it 'sends an email when an application is approved' do
     expect {
-      Ops::BuyerApplication::Decide.(
-                 {
-                   id: application.id,
-                   buyer_application: {
-                     decision: 'approve',
-                     decision_body: 'Response',
+      perform_enqueued_jobs do
+        Ops::BuyerApplication::Decide.(
+                   {
+                     id: application.id,
+                     buyer_application: {
+                       decision: 'approve',
+                       decision_body: 'Response',
+                     }
                    }
-                 }
-               )
+                 )
+      end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
@@ -58,15 +61,17 @@ RSpec.describe Ops::BuyerApplication::Decide do
 
   it 'sends an email when the application is rejected' do
     expect {
-      Ops::BuyerApplication::Decide.(
-                 {
-                   id: application.id,
-                   buyer_application: {
-                     decision: 'reject',
-                     decision_body: 'Response',
+      perform_enqueued_jobs do
+        Ops::BuyerApplication::Decide.(
+                   {
+                     id: application.id,
+                     buyer_application: {
+                       decision: 'reject',
+                       decision_body: 'Response',
+                     }
                    }
-                 }
-               )
+                 )
+      end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 

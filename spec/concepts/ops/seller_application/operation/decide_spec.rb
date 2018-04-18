@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ops::SellerApplication::Decide do
+  include ActiveJob::TestHelper
 
   let(:application) { create(:ready_for_review_seller_application) }
 
@@ -25,15 +26,17 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'sends an email when an application is approved' do
     expect {
-      Ops::SellerApplication::Decide.(
-                 {
-                   id: application.id,
-                   seller_application: {
-                     decision: 'approve',
-                     response: 'Response',
+      perform_enqueued_jobs do
+        Ops::SellerApplication::Decide.(
+                   {
+                     id: application.id,
+                     seller_application: {
+                       decision: 'approve',
+                       response: 'Response',
+                     }
                    }
-                 }
-               )
+                 )
+      end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
@@ -58,15 +61,17 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'sends an email when the application is rejected' do
     expect {
-      Ops::SellerApplication::Decide.(
-                 {
-                   id: application.id,
-                   seller_application: {
-                     decision: 'reject',
-                     response: 'Response',
+      perform_enqueued_jobs do
+        Ops::SellerApplication::Decide.(
+                   {
+                     id: application.id,
+                     seller_application: {
+                       decision: 'reject',
+                       response: 'Response',
+                     }
                    }
-                 }
-               )
+                 )
+      end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
@@ -91,15 +96,17 @@ RSpec.describe Ops::SellerApplication::Decide do
 
   it 'sends an email when the application is returned to the seller' do
     expect {
-      Ops::SellerApplication::Decide.(
-                 {
-                   id: application.id,
-                   seller_application: {
-                     decision: 'return_to_applicant',
-                     response: 'Response',
+      perform_enqueued_jobs do
+        Ops::SellerApplication::Decide.(
+                   {
+                     id: application.id,
+                     seller_application: {
+                       decision: 'return_to_applicant',
+                       response: 'Response',
+                     }
                    }
-                 }
-               )
+                 )        
+      end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 

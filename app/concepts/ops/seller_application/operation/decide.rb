@@ -44,11 +44,11 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
     mailer = SellerApplicationMailer.with(application: model)
     case options['contract.default'].decision
     when 'approve'
-      mailer.application_approved_email.deliver_now
+      mailer.application_approved_email.deliver_later
     when 'reject'
-      mailer.application_rejected_email.deliver_now
+      mailer.application_rejected_email.deliver_later
     when 'return_to_applicant'
-      mailer.application_return_to_applicant_email.deliver_now
+      mailer.application_return_to_applicant_email.deliver_later
     end
   end
 

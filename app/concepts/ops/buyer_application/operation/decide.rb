@@ -29,8 +29,8 @@ class Ops::BuyerApplication::Decide < Trailblazer::Operation
   def notify_user_by_email(options, model:, **)
     mailer = BuyerApplicationMailer.with(application: model)
     case options['contract.default'].decision
-    when 'approve' then mailer.application_approved_email.deliver_now
-    when 'reject' then mailer.application_rejected_email.deliver_now
+    when 'approve' then mailer.application_approved_email.deliver_later
+    when 'reject' then mailer.application_rejected_email.deliver_later
     end
   end
 
