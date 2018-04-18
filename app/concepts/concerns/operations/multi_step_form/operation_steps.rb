@@ -8,7 +8,7 @@ module Concerns::Operations::MultiStepForm::OperationSteps
   # As a stylistic point, they are all 'bang!' methods, as returning false from
   # a step will cause the operation to fail.
   #
-  
+
   def steps!(options, **)
     options['result.steps'] = build_steps_from_contracts(options)
   end
@@ -27,8 +27,14 @@ module Concerns::Operations::MultiStepForm::OperationSteps
     params_key = config.get(:params_key)
 
     unless params.key?(params_key)
+      contract.prepopulate!
       contract.validate(params.fetch(params_key, {})) if contract.started?
     end
+  end
+
+  def prepopulate!(options, **)
+    contract = options['contract.default']
+    contract.prepopulate!
   end
 
   def set_submission_status!(options, **)
