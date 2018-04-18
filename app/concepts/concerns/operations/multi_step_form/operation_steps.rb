@@ -48,6 +48,7 @@ module Concerns::Operations::MultiStepForm::OperationSteps
 
     next_step_key = steps.index(current_step) + 1
     options['result.next_step_slug'] = steps[next_step_key]&.slug || steps.first.slug
+    options['result.last_step?'] = current_step == steps.last
   end
 
   def all_steps_valid?(options)
