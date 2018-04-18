@@ -9,13 +9,13 @@ en:
         manager_email: "Your manager's email"
       'buyers/buyer_application/contract/terms':
         terms_agreed: I agree to the Terms of Use
-      'sellers/applications/business_details_form':
+      'sellers/seller_application/contract/business_details':
         name: 'Business name'
         abn: 'ABN'
         summary: 'Summary'
         website_url: 'Website URL'
         linkedin_url: 'LinkedIn URL (optional)'
-      'sellers/applications/business_info_form':
+      'sellers/seller_application/contract/business_info':
         number_of_employees: 'Number of employees'
         start_up: 'Start-up'
         sme: 'Small to medium-sized enterprise (SME)'
@@ -32,14 +32,14 @@ en:
         state_government_experience: 'Yes, with state or territory government'
         federal_government_experience: 'Yes, with federal government'
         international_government_experience: 'Yes, with government outside Australia'
-      'sellers/applications/contacts_form':
+      'sellers/seller_application/contract/contacts':
         contact_name: Name
         contact_email: Email address
         contact_phone: Phone
         representative_name: Name
         representative_email: Email address
         representative_phone: Phone
-      'sellers/applications/disclosures_form':
+      'sellers/seller_application/contract/disclosures':
         structural_changes:
           'false': 'No'
           'true': 'Yes'
@@ -64,29 +64,29 @@ en:
         insurance_claims_details: 'Please provide details'
         conflicts_of_interest_details: 'Please provide details'
         other_circumstances_details: 'Please provide details'
-      'sellers/applications/documents_form':
+      'sellers/seller_application/contract/documents':
         financial_statement: 'Financial statement'
         professional_indemnity_certificate: 'Professional Indemnity and Public Liability Insurance'
         workers_compensation_certificate: 'Workers Compensation Insurance'
         financial_statement_expiry: Date of document
         professional_indemnity_certificate_expiry: Expiry date
         workers_compensation_certificate_expiry: Expiry date
-      'sellers/applications/methods_form':
+      'sellers/seller_application/contract/methods':
         tools: "Tools"
         methodologies: "Methodologies"
         technologies: "Technologies (optional)"
-      'sellers/applications/declaration_form':
+      'sellers/seller_application/contract/declaration':
         agree_html: |
           I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
   activerecord:
     help:
-      'sellers/applications/business_details_form':
+      'sellers/seller_application/contract/business_details':
         name: The business name you use must be listed under your ABN. You can omit suffixes such as PTY or LTD.
         abn_html: 'You need an Australian Business Number to do business in Australia. <a href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/">Apply for an ABN here</a>.'
         summary: 3-4 sentences that describe your business. This can be seen by anyone without signing in.
         website_url: Provide a link to your website beginning with http
         linkedin_url: Provide a LinkedIn URL beginning with http
-      'sellers/applications/business_info_form':
+      'sellers/seller_application/contract/business_info':
         start_up: Your business aims to disrupt an established market using technology. It is not listed on any stock exchange and is less than 5 years old.
         sme: You have less than 200 employees and are independent of any parent organisation for taxation purposes.
         not_for_profit: An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
@@ -94,18 +94,18 @@ en:
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
         indigenous_html: 'Your business is at least 50% Indigenous owned and listed on <a href="https://www.supplynation.org.au/search">Supply Nation</a>.'
-      'sellers/applications/methods_form':
+      'sellers/seller_application/contract/methods':
         tools: What delivery management software, tools or other artefacts do you use day-to-day?
         methodologies: What methodologies form the core of your practice?
         technologies: What technologies or programming languages do you use?
-      'sellers/applications/documents_form':
+      'sellers/seller_application/contract/documents':
         financial_statement: 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.'
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
         financial_statement_expiry: We will ask you to upload a new document one year from now.
         professional_indemnity_certificate_expiry: We will ask you to upload a new document when this document expires.
         workers_compensation_certificate_expiry: We will ask you to upload a new document when this document expires.
-      'sellers/applications/services_form':
+      'sellers/seller_application/contract/services':
         advisory-consulting: "The provision of specialist expertise, acting in an advisory capability to government. Includes building business cases and strategic roadmaps, developing enterprise architectures, providing policy analysis and advice."
         cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
         data-analytics: "Data science disciplines, data management practices and business intelligence and analytical tools. Examples include data cleansing, scenario modelling, statistical analysis, data classification through machine learning, data visualisation and data governance."
@@ -120,7 +120,7 @@ en:
         software-licensing: "Licences for software applications and systems. Including those offered on a named or concurrent user, location, enterprise or any basis other than as a cloud-hosted subscription service. Maintenance and updates for these software licences."
         telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
         training-learning: "Includes bespoke and general training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification, and information handling."
-      'sellers/applications/products/info_form':
+      'sellers/seller_application/contract/pro/info_form':
         name: This is how your product will appear in the listing.
         summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
   buyers:
