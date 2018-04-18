@@ -5,14 +5,6 @@ module Concerns::Contracts::Composition
     include Reform::Form::Composition
   end
 
-  # This is used by the monkey patching in /config/initializers/reform.rb to
-  # bypass the odd Trailblazer::Rails::Form behaviour which breaks the `to_model`
-  # method (and the i18n strings as a result).
-  #
-  def base_form
-    self
-  end
-
   def errors
     new_errors = Reform::Contract::Errors.new
 
