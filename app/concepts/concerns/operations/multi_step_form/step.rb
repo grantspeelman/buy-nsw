@@ -16,6 +16,10 @@ module Concerns::Operations::MultiStepForm
       I18n.t("#{i18n_key}.steps.#{key}.#{type}")
     end
 
+    def button_label(default:)
+      I18n.t("#{i18n_key}.steps.#{key}.button_label", default: default)
+    end
+
     def key
       contract_class.name.demodulize.underscore
     end
@@ -53,7 +57,7 @@ module Concerns::Operations::MultiStepForm
 
   private
     attr_reader :config
-    
+
     def build_contract
       contract_class.new(**models)
     end
