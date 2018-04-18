@@ -4,7 +4,7 @@
 <% content_for :extra_header_content do %>
   <div class="container main-title">
     <div class="row">
-      <h1>The place to buy and sell in the NSW Government</h1>
+      <h1>The place to buy and sell in NSW Government</h1>
     </div>
   </div>
 <% end %>
@@ -14,27 +14,27 @@
     <div class="audiences">
       <div class="feature half-width">
         <div class="inner">
-          <h1>For buyers</h1>
-          <h2>Search for and connect with qualified sellers</h2>
-          <p>You can buy products and services here if you are a NSW government body or on the <a href="">list of other eligible organisations</a>.</p>
-          <p><%= link_to 'Sign up as a buyer &gt;'.html_safe, registration_path('buyer'), class: 'btn btn-primary' %></p>
+          <h1>Buyers</h1>
+          <h2>Connect with approved sellers</h2>
+          <p>You can buy products and services here if you're in NSW government body or <a href="">another eligible organisations</a>.</p>
+          <p><%= link_to 'Join as a buyer &gt;'.html_safe, registration_path('buyer'), class: 'btn btn-primary' %></p>
         </div>
       </div>
 
       <div class="feature half-width">
         <div class="inner">
-          <h1>For sellers</h1>
+          <h1>Sellers</h1>
 
-          <h2>Offer your products and services to government</h2>
-          <p>Apply to become a registered seller and offer your products or services to the NSW Government. The application process is easy and straightforward.</p>
+          <h2>Supply to NSW government</h2>
+          <p>Apply to now to offer your products or services to NSW Government through the Digital Marketplace.</p>
           <p><%= link_to 'Start your application &gt;'.html_safe, registration_path('seller'), class: 'btn btn-primary' %></p>
         </div>
       </div>
 
       <div class="feature full-width">
         <div class="inner">
-          <h2>Buy cloud products and support</h2>
-          <p>Compare and select from a diverse range of approved cloud applications, hosting, infrastructure and support &ndash; then purchase quickly and easily as we guide you through the process.</p>
+          <h2>Buy cloud software, hosting and support</h2>
+          <p>Browse and compare approved cloud applications, hosting, infrastructure and support &ndash; then purchase in a few simple steps.</p>
           <%= link_to 'Start now &gt;'.html_safe, cloud_path, class: 'btn btn-primary' %>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div class="feature full-width">
         <div class="inner">
           <h2>Find approved sellers</h2>
-          <p>Search our comprehensive seller database to find suppliers who can meet your needs.</p>
+          <p>Search the seller catalogue by seller name, or by the service you need.</p>
           <%= render partial: 'inline_search_form' %>
         </div>
       </div>
