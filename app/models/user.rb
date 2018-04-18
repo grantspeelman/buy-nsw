@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :confirmable, :recoverable, :rememberable,
-         :trackable, :validatable
+         :trackable, :validatable, :async
 
   enumerize :roles, in: ['seller', 'buyer', 'admin'], multiple: true
 
