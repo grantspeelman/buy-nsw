@@ -1,6 +1,6 @@
 <fieldset class="file-upload">
-  <legend><%= t("activemodel.attributes.sellers/applications/documents_form.#{key}") %></legend>
-  <p><%= t("activerecord.help.sellers/applications/documents_form.#{key}") %></p>
+  <legend><%= t("activemodel.attributes.sellers/seller_application/contract/documents.#{key}") %></legend>
+  <p><%= t("activerecord.help.sellers/seller_application/contract/documents.#{key}") %></p>
 
   <% if (upload = f.object.upload_for(key)) && upload&.url.present? %>
     <div class="current-document">
@@ -12,6 +12,6 @@
   <%= date_field_from_value f, "#{key}_expiry", f.object.send("#{key}_expiry") %>
 
   <small class="form-text text-muted">
-    <%= t("activerecord.help.sellers/applications/documents_form.#{key}_expiry") %>
+    <%= t("activerecord.help.sellers/seller_application/contract/documents.#{key}_expiry") %>
   </small>
 </fieldset>
