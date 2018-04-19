@@ -52,7 +52,7 @@
         <div class="container">
           <%= deployment_env.try(:titleize) %>
           <% if defined?(APP_VERSION) %>
-            (<%= APP_VERSION %>)
+            (<%= APP_VERSION %>, deployed <%= time_ago_in_words(APP_VERSION_TIME) %> ago)
           <% end %>
         </div>
       </footer>
