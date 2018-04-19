@@ -1,0 +1,54 @@
+<p>The details you have given will determine the information you need to provide in your application.</p>
+<p>Please check the information before continuing.</p>
+
+<section class="detail-review">
+<% if operation['result.ready_for_submission'].present? %>
+  <dl>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/business_details.name') %></dt>
+    <dd><%= operation[:seller_model].name %></dd>
+
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/business_details.abn') %></dt>
+    <dd><%= operation[:seller_model].abn %></dd>
+
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/business_details.summary') %></dt>
+    <dd><%= operation[:seller_model].summary %></dd>
+
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/business_details.website_url') %></dt>
+    <dd><%= operation[:seller_model].website_url %></dd>
+
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/business_details.linkedin_url') %></dt>
+    <dd><%= (url = operation[:seller_model].linkedin_url && url.present?) ? url : 'none' %></dd>
+
+    <dt>Your industries</dt>
+    <dd><%= operation[:seller_model].industry.texts.join("<br>").html_safe %></dd>
+
+    <dt>ICT categories</dt>
+    <dd><%= operation[:seller_model].services.texts.join("<br>").html_safe %></dd>
+  </dl>
+
+  <h3>Business contact</h3>
+
+  <dl>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.contact_name') %></dt>
+    <dd><%= operation[:seller_model].contact_name %></dd>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.contact_email') %></dt>
+    <dd><%= operation[:seller_model].contact_email %></dd>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.contact_phone') %></dt>
+    <dd><%= operation[:seller_model].contact_phone %></dd>
+  </dl>
+
+  <h3>Authorised representative</h3>
+
+  <dl>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.representative_name') %></dt>
+    <dd><%= operation[:seller_model].representative_name %></dd>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.representative_email') %></dt>
+    <dd><%= operation[:seller_model].representative_email %></dd>
+    <dt><%= t('activemodel.attributes.sellers/seller_application/contract/contacts.representative_phone') %></dt>
+    <dd><%= operation[:seller_model].representative_phone %></dd>
+  </dl>
+</section>
+
+<% else %>
+  <p>Please complete all other steps before you continue.</p>
+<% end %>

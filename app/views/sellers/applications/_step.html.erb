@@ -6,7 +6,7 @@
 
   <%= render partial: operation['result.step'].key, locals: { f: f, operation: operation } %>
 
-  <% unless operation['result.last_step?'] && ! operation['result.ready_for_submission'] %>
+  <% unless operation['result.last_step?'] && !operation['result.ready_for_submission'] %>
     <fieldset class="actions">
       <%= f.submit operation['result.step'].button_label(default: 'Save and continue'), class: 'btn btn-primary' %>
     </fieldset>

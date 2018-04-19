@@ -11,12 +11,15 @@ module Concerns::Operations::MultiStepForm::OperationSteps
 
   def steps!(options, **)
     options['result.steps'] = build_steps_from_contracts(options)
+
   end
 
   def build_contract_from_step!(options, params:, **)
+    steps = options['result.steps']
+
     slug = params.fetch(:step, nil)
-    options['result.step'] =
-      options['result.steps'].find {|step| step.slug == slug } || options['result.steps'].first
+    options['result.step'] = steps.find {|step| step.slug == slug } || steps.first
+    options['result.last_step?'] = (options['result.step'] == steps.last)
 
     options['result.step'].contract
   end
@@ -48,7 +51,6 @@ module Concerns::Operations::MultiStepForm::OperationSteps
 
     next_step_key = steps.index(current_step) + 1
     options['result.next_step_slug'] = steps[next_step_key]&.slug || steps.first.slug
-    options['result.last_step?'] = current_step == steps.last
   end
 
   def all_steps_valid?(options)

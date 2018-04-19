@@ -17,22 +17,14 @@ class Sellers::SellerApplication::Update < Trailblazer::Operation
       step_flow do |application, seller|
         step Sellers::SellerApplication::Contract::Introduction
         step Sellers::SellerApplication::Contract::BusinessDetails
-        step Sellers::SellerApplication::Contract::BusinessInfo
         step Sellers::SellerApplication::Contract::Contacts
-        step Sellers::SellerApplication::Contract::Disclosures
-        step Sellers::SellerApplication::Contract::Documents
-        step Sellers::SellerApplication::Contract::Recognition
         step Sellers::SellerApplication::Contract::Industry
 
         if seller.industry.any?
           step Sellers::SellerApplication::Contract::Services
-          #
-          # if seller.services.any?
-          #   step Sellers::SellerApplication::Contract::Products
-          # end
         end
 
-        step Sellers::SellerApplication::Contract::Declaration
+        step Sellers::SellerApplication::Contract::Review
       end
     end
   end
