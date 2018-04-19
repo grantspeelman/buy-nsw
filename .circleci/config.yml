@@ -123,7 +123,7 @@ jobs:
       - run:
           name: Deploy worker to Elastic Beanstalk
           command: |
-            eb deploy worker-staging -v -l $(cat BUILD)
+            eb deploy --version $(cat BUILD) worker-staging
 
 workflows:
   version: 2
