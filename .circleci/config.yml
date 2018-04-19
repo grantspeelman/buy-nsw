@@ -118,7 +118,7 @@ jobs:
       - run:
           name: Deploy application to Elastic Beanstalk
           command: |
-            eb deploy staging -v -l $(cat BUILD)
+            eb deploy app-staging -v -l $(cat BUILD)
 
       - run:
           name: Deploy worker to Elastic Beanstalk

@@ -9,7 +9,7 @@ build=$1
 if [[ $build == "build-"* ]]
 then
   echo "Deploying application $build to production..."
-  eb deploy --version $build production
+  eb deploy --version $build app-production
   echo "Deploying worker $build to production..."
   eb deploy --version $build worker-production
 else
