@@ -112,9 +112,14 @@ jobs:
            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
 
       - run:
-          name: Deploy to Elastic Beanstalk
+          name: Deploy application to Elastic Beanstalk
           command: |
             eb deploy staging -v -l $(cat BUILD)
+
+      - run:
+          name: Deploy worker to Elastic Beanstalk
+          command: |
+            eb deploy worker-staging -v -l $(cat BUILD)
 
 workflows:
   version: 2
