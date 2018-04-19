@@ -55,6 +55,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'timecop'
   gem 'rspec_junit_formatter'
+  gem 'brakeman', :require => false
 end
 
 group :development do

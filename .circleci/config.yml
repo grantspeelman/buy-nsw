@@ -70,6 +70,10 @@ jobs:
                             $TEST_FILES
 
       - run:
+          name: run static analysis
+          command: bundle exec brakeman
+
+      - run:
           name: tag successful build
           command: |
             git config --global user.name "CircleCI tagging robot"
