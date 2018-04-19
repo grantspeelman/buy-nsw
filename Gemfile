@@ -19,6 +19,7 @@ gem 'puma', '~> 3.7'
 gem 'aasm'
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
+gem 'devise-async'
 gem 'dry-validation'
 gem 'enumerize'
 gem 'nokogiri'
@@ -39,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'airbrake', '~> 7.2'
 gem 'fog-aws'
+gem 'active_elastic_job'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

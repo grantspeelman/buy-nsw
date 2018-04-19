@@ -34,6 +34,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_elastic_job (2.0.1)
+      aws-sdk (~> 2)
+      rails (>= 4.2)
     activejob (5.1.6)
       activesupport (= 5.1.6)
       globalid (>= 0.3.6)
@@ -56,6 +59,14 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (8.0.0)
       execjs
+    aws-sdk (2.11.33)
+      aws-sdk-resources (= 2.11.33)
+    aws-sdk-core (2.11.33)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.11.33)
+      aws-sdk-core (= 2.11.33)
+    aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0)
@@ -92,6 +103,9 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise-async (1.0.0)
+      activejob (>= 5.0)
+      devise (>= 4.0)
     diff-lcs (1.3)
     disposable (0.4.3)
       declarative (>= 0.0.9, < 1.0.0)
@@ -190,6 +204,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jmespath (1.4.0)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -384,6 +399,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  active_elastic_job
   airbrake (~> 7.2)
   bootstrap (~> 4.0.0)
   bootstrap_form!
@@ -392,6 +408,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   database_cleaner
   devise
+  devise-async
   dotenv-rails
   dry-validation
   enumerize

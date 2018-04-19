@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Buyers::BuyerApplication::Update do
+  include ActiveJob::TestHelper
 
   let(:user) { create(:buyer_user_without_approved_email) }
 
@@ -125,10 +126,12 @@ RSpec.describe Buyers::BuyerApplication::Update do
       application = create(:created_manager_approval_buyer_application, buyer: buyer)
 
       expect {
-        Buyers::BuyerApplication::Update.(
-          build_params(application, 'terms', terms_agreed: '1'),
-          'current_user' => user,
-        )
+        perform_enqueued_jobs do
+          Buyers::BuyerApplication::Update.(
+            build_params(application, 'terms', terms_agreed: '1'),
+            'current_user' => user,
+          )          
+        end
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
