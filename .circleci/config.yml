@@ -128,8 +128,9 @@ jobs:
       - run:
           name: Notify airbrake of deploy
           command: |
+            export BUILD=$(cat BUILD)
             curl -X POST -H "Content-Type: application/json" \
-              -d '{"environment":"staging","username":"circleci","repository":"https://github.com/hyperealhq/nsw-procurement-hub","revision":"$(cat BUILD)"}' \
+              -d '{"environment":"staging","username":"circleci","repository":"https://github.com/hyperealhq/nsw-procurement-hub","revision":"$BUILD"}' \
               "https://airbrake.io/api/v4/projects/$AIRBRAKE_PROJECT_ID/deploys?key=$AIRBRAKE_API_KEY"
 
 workflows:
