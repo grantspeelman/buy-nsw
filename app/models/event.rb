@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   belongs_to :user, optional: true
   serialize :message_params, Hash
 
-  def description
+  def message
     I18n.t("ops.buyer_applications.events.messages.#{message_type}", message_params)
   end
 
