@@ -91,6 +91,9 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
 
     if (current_step == steps.last) && all_steps_valid?(options)
       options[:application_model].submit!
+      Event.submit_application!(
+        options['current_user'], options[:application_model]
+      )
       options['result.submitted'] = true
 
       if options[:application_model].state == 'awaiting_manager_approval'

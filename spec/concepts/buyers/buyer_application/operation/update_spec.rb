@@ -105,6 +105,8 @@ RSpec.describe Buyers::BuyerApplication::Update do
       expect(result).to be_success
       expect(result['result.submitted']).to be_truthy
       expect(result[:application_model].state).to eq('awaiting_assignment')
+      expect(result[:application_model].events.last.description).to eq('Submitted application')
+      expect(result[:application_model].events.last.user).to eq(user)
     end
 
     it 'sets the token when manager approval is required' do
