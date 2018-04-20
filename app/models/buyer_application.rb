@@ -85,6 +85,6 @@ class BuyerApplication < ApplicationRecord
   def set_manager_approval_token!
     update_attribute(:manager_approval_token, SecureRandom.hex(16))
   end
-  
+
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
 end
