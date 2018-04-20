@@ -8,8 +8,7 @@ class Event < ApplicationRecord
     create(
       user: user,
       eventable: application,
-      # TODO: Move text into config/locales/en.yml
-      description: "Submitted application"
+      description: I18n.t('ops.buyer_applications.events.messages.submitted_application')
     )
   end
 
@@ -18,7 +17,8 @@ class Event < ApplicationRecord
       # The manager did something but they are not a user on the system
       user: nil,
       eventable: application,
-      description: "Manager #{application.manager_name} (#{application.manager_email}) approved the buyer"
+      description: I18n.t('ops.buyer_applications.events.messages.manager_approved',
+        name: application.manager_name, email: application.manager_email)
     )
   end
 end
