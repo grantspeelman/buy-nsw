@@ -11,7 +11,7 @@ class Buyers::BuyerApplication::Create < Trailblazer::Operation
     options[:application_model] = options[:buyer_model].applications.first ||
                                     BuyerApplication.new(started_at: Time.now)
   end
-  
+
 
   def check_application_state!(options, **)
     options[:application_model].created?
