@@ -29,4 +29,12 @@ class Event < ApplicationRecord
       }
     )
   end
+
+  def self.start_application!(user, application)
+    create(
+      user: user,
+      eventable: application,
+      message_type: 'started_application'
+    )
+  end
 end
