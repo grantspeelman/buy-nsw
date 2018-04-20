@@ -9,7 +9,7 @@ class Event < ApplicationRecord
     I18n.t("ops.buyer_applications.events.messages.#{message_type}", message_params)
   end
 
-  def self.submit_application!(user, application)
+  def self.submitted_application!(user, application)
     create(
       user: user,
       eventable: application,
@@ -17,7 +17,7 @@ class Event < ApplicationRecord
     )
   end
 
-  def self.manager_approve!(application)
+  def self.manager_approved!(application)
     create(
       # The manager did something but they are not a user on the system
       user: nil,
@@ -30,7 +30,7 @@ class Event < ApplicationRecord
     )
   end
 
-  def self.start_application!(user, application)
+  def self.started_application!(user, application)
     create(
       user: user,
       eventable: application,

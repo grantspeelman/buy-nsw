@@ -24,7 +24,7 @@ class Buyers::BuyerApplication::Create < Trailblazer::Operation
   end
 
   def log_event!(options, **)
-    Event.start_application!(
+    Event.started_application!(
       options['current_user'], options[:application_model]
     )
   end
