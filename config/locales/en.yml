@@ -261,6 +261,10 @@ en:
         decision_success:
           approve: Application approved
           reject: Application rejected
+      events:
+        messages:
+          submitted_application: Submitted application
+          manager_approved: Manager %{name} (%{email}) approved the buyer
       search:
         filters:
           state:
