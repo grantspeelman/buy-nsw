@@ -45,6 +45,12 @@ RSpec.describe Buyers::BuyerApplication::Create do
     end
   end
 
+  it 'logs an event when the application is started' do
+    result = Buyers::BuyerApplication::Create.({ }, 'current_user' => user)
+    expect(result[:application_model].events.last.message).to eq("Started application")
+    expect(result[:application_model].events.last.user).to eq(user)
+  end
+
   it 'does not update the started_at timestamp for an existing application' do
     buyer = create(:buyer, user: user)
     application = create(:buyer_application, buyer: buyer, started_at: 1.hour.ago)
