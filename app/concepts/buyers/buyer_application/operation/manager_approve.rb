@@ -6,6 +6,7 @@ class Buyers::BuyerApplication::ManagerApprove < Trailblazer::Operation
   step :set_approval_flag!
   step :advance_application_state!
   step :persist!
+  step :log_event!
 
   def model!(options, params:, **)
     options[:model] = BuyerApplication.awaiting_manager_approval.find_by!(
@@ -28,4 +29,7 @@ class Buyers::BuyerApplication::ManagerApprove < Trailblazer::Operation
     options[:model].save
   end
 
+  def log_event!(options, **)
+    Event.manager_approve!(options[:model])
+  end
 end
