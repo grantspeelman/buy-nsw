@@ -8,7 +8,7 @@ class BuyerApplication < ApplicationRecord
   belongs_to :assigned_to, class_name: 'User', optional: true
   belongs_to :buyer
   has_one :user, through: :buyer
-  has_many :events, -> { order(created_at: :desc) }, as: :eventable
+  has_many :events, -> { order(created_at: :desc) }, as: :eventable, class_name: 'Event::Event'
 
   aasm column: :state do
     state :created, initial: true

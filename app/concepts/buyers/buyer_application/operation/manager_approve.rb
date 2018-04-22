@@ -30,6 +30,6 @@ class Buyers::BuyerApplication::ManagerApprove < Trailblazer::Operation
   end
 
   def log_event!(options, **)
-    Event.manager_approved!(options[:model])
+    Event::Event.manager_approved!(options[:model])
   end
 end
