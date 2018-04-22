@@ -1,40 +1,51 @@
-class Event < ApplicationRecord
-  # The thing that was changed
-  belongs_to :eventable, polymorphic: true
-  # Who made the change
-  belongs_to :user, optional: true
-  serialize :message_params, Hash
+module Event
+  class Event < ApplicationRecord
+    # The thing that was changed
+    belongs_to :eventable, polymorphic: true
+    # Who made the change
+    belongs_to :user, optional: true
 
-  def message
-    I18n.t("ops.buyer_applications.events.messages.#{message_type}", message_params)
-  end
+    def locale_name
+      "ops.buyer_applications.events.messages.#{type.demodulize.underscore}"
+    end
 
-  def self.submitted_application!(user, application)
-    create(
-      user: user,
-      eventable: application,
-      message_type: 'submitted_application'
-    )
-  end
+    # Default implementation
+    def message
+      I18n.t(locale_name)
+    end
 
-  def self.manager_approved!(application)
-    create(
-      # The manager did something but they are not a user on the system
-      user: nil,
-      eventable: application,
-      message_type: 'manager_approved',
-      message_params: {
+    def self.submitted_application!(user, application)
+      SubmittedApplication.create(
+        user: user,
+        eventable: application
+      )
+    end
+
+    def self.manager_approved!(application)
+      ManagerApproved.create(
+        # The manager did something but they are not a user on the system
+        user: nil,
+        eventable: application,
         name: application.manager_name,
         email: application.manager_email
-      }
-    )
+      )
+    end
+
+    def self.started_application!(user, application)
+      StartedApplication.create(
+        user: user,
+        eventable: application
+      )
+    end
   end
 
-  def self.started_application!(user, application)
-    create(
-      user: user,
-      eventable: application,
-      message_type: 'started_application'
-    )
+  class SubmittedApplication < Event; end
+
+  class StartedApplication < Event; end
+
+  class ManagerApproved < Event
+    def message
+      I18n.t(locale_name, name: name, email: email)
+    end
   end
 end
