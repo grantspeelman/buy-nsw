@@ -13,6 +13,7 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
   step :set_timestamp!
   step :change_application_state!
   step :persist!
+  step :log_event!
 
   def validate_step_change!(options, model:, **)
     model.may_submit?
@@ -28,5 +29,9 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
 
   def persist!(options, model:, **)
     model.save
+  end
+
+  def log_event!(options, model:, **)
+    Event::Event.submitted_application!(options['current_user'], model)
   end
 end
