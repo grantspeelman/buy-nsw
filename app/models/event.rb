@@ -6,7 +6,7 @@ module Event
     belongs_to :user, optional: true
 
     def locale_name
-      "ops.buyer_applications.events.messages.#{type.demodulize.underscore}"
+      "events.messages.#{type.demodulize.underscore}"
     end
 
     # Default implementation
