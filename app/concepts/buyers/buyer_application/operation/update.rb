@@ -104,8 +104,9 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
 
   def log_event!(options, **)
     if options['result.submitted']
-      Event::Event.submitted_application!(
-        options['current_user'], options[:application_model]
+      Event::SubmittedApplication.create(
+        user: options['current_user'],
+        eventable: options[:application_model]
       )
     end
   end

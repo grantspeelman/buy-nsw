@@ -7,7 +7,10 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
     else
       seller = Seller.create!(owner: current_user)
       application = seller.applications.create!
-      Event::Event.started_application!(current_user, application)
+      Event::StartedApplication.create(
+        user: current_user,
+        eventable: application
+      )
 
       redirect_to sellers_application_path(application)
     end

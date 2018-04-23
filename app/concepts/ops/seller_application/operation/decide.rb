@@ -42,10 +42,14 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
   end
 
   def log_event(options, model:, **)
+    params = {
+      user: options['current_user'],
+      eventable: model
+    }
     case options['contract.default'].decision
-    when 'approve' then Event::Event.approved_application!(options['current_user'], model)
-    when 'reject' then Event::Event.rejected_application!(options['current_user'], model)
-    when 'return_to_applicant' then Event::Event.returned_application!(options['current_user'], model)
+    when 'approve' then Event::ApprovedApplication.create(params)
+    when 'reject' then Event::RejectedApplication.create(params)
+    when 'return_to_applicant' then Event::ReturnedApplication.create(params)
     end
   end
 

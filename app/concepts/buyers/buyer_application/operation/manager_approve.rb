@@ -30,6 +30,12 @@ class Buyers::BuyerApplication::ManagerApprove < Trailblazer::Operation
   end
 
   def log_event!(options, **)
-    Event::Event.manager_approved!(options[:model])
+    Event::ManagerApproved.create(
+      # The manager did something but they are not a user on the system
+      user: nil,
+      eventable: options[:model],
+      name: options[:model].manager_name,
+      email: options[:model].manager_email
+    )
   end
 end
