@@ -45,11 +45,29 @@ module Event
         email: application.assigned_to.email
       )
     end
+
+    def self.approved_application!(user, application)
+      ApprovedApplication.create(
+        user: user,
+        eventable: application
+      )
+    end
+
+    def self.rejected_application!(user, application)
+      RejectedApplication.create(
+        user: user,
+        eventable: application
+      )
+    end
   end
 
   class SubmittedApplication < Event; end
 
   class StartedApplication < Event; end
+
+  class ApprovedApplication < Event; end
+
+  class RejectedApplication < Event; end
 
   class ManagerApproved < Event
     def message
