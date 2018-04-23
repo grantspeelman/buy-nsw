@@ -1,4 +1,5 @@
 class Sellers::Applications::ProductsController < Sellers::BaseController
+  before_action :authenticate_user!
   layout '../sellers/applications/_layout'
 
   def index

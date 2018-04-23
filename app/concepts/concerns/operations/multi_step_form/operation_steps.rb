@@ -11,7 +11,6 @@ module Concerns::Operations::MultiStepForm::OperationSteps
 
   def steps!(options, **)
     options['result.steps'] = build_steps_from_contracts(options)
-
   end
 
   def build_contract_from_step!(options, params:, **)
@@ -50,7 +49,8 @@ module Concerns::Operations::MultiStepForm::OperationSteps
     steps = options['result.steps']
 
     next_step_key = steps.index(current_step) + 1
-    options['result.next_step_slug'] = steps[next_step_key]&.slug || steps.first.slug
+    options['result.next_step'] = steps[next_step_key] || steps.first
+    options['result.next_step_slug'] = options['result.next_step'].slug
   end
 
   def all_steps_valid?(options)

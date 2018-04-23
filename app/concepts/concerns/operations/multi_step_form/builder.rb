@@ -45,7 +45,7 @@ module Concerns::Operations::MultiStepForm
 
     def model_args
       config.models.map {|key, object|
-        object
+        object.reload
       }
     end
   end

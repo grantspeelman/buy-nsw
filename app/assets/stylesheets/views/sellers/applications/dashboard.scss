@@ -1,0 +1,127 @@
+.view-sellers-applications .application-dashboard {
+  @extend .row;
+
+  > aside {
+    @extend .col-4;
+    padding-right: 2rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  ul.cards {
+    @extend .col-8;
+
+    li.card {
+      list-style: none;
+      border: 1px solid $grey-2;
+      border-bottom-width: 5px;
+
+      padding: 1rem;
+      margin-bottom: 1rem;
+
+      .overview {
+        @extend .col-5;
+      }
+      .data, .guidance {
+        @extend .col-7;
+      }
+    }
+  }
+
+  .card .data {
+    font-size: .9rem;
+
+    dl {
+      @extend .row;
+      border-bottom: 1px solid #eee;
+
+      dt, dd {
+        border-top: 1px solid #eee;
+        padding: .3rem 0;
+        margin: 0;
+
+        &:first-of-type {
+          border-top: none;
+        }
+      }
+
+      dt {
+        @extend .col-5;
+      }
+      dd {
+        @extend .col-7;
+      }
+    }
+  }
+
+  .card .guidance {
+    color: $grey-3;
+  }
+
+  .progress-indicator {
+    position: relative;
+    padding-left: 1.8rem;
+    font-size: .9rem;
+    padding-bottom: 1.3rem;
+  }
+  .status {
+    &::before {
+      content: ' ';
+      display: inline-block;
+      position: absolute;
+      height: 1.5em;
+      width: 1.5em;
+      top: 0px;
+      left: 0px;
+      background: $grey-2;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      text-align: center;
+      vertical-align: top;
+      line-height: 1em;
+    }
+    &.started {
+      &::before {
+        background: $light-blue;
+        content: '...';
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+    &.complete::before {
+      background: $green;
+    }
+    &.complete .inner::before {
+      content: '';
+      border: solid;
+      border-width: 0 0 3px 3px;
+      background: transparent;
+      border-top-color: transparent;
+      width: 12px;
+      height: 7px;
+      position: absolute;
+      top: 6px;
+      left: 5px;
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      color: #fff;
+    }
+  }
+
+  .action {
+    @extend .btn;
+    @extend .btn-primary;
+
+    font-size: 1rem;
+  }
+
+}
