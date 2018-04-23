@@ -267,6 +267,8 @@ en:
           manager_approved: Manager %{name} (%{email}) approved the buyer
           started_application: Started application
           assigned_application: Assigned application to %{email}
+          approved_application: Approved application
+          rejected_application: Rejected application
       search:
         filters:
           state:
