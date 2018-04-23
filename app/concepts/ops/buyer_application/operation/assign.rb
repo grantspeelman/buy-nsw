@@ -8,10 +8,15 @@ class Ops::BuyerApplication::Assign < Trailblazer::Operation
   step Contract::Validate( key: :buyer_application )
   success :change_application_state
   step Contract::Persist()
+  step :log_event
 
   def change_application_state(options, model:, **)
     if model.may_assign?
       model.assign
     end
+  end
+
+  def log_event(options, model:, **)
+    Event::Event.assigned_application!(options['current_user'], model)
   end
 end

@@ -118,6 +118,7 @@ en:
           submitted_application: Submitted application
           manager_approved: Manager %{name} (%{email}) approved the buyer
           started_application: Started application
+          assigned_application: Assigned application to %{email}
       search:
         filters:
           state:
