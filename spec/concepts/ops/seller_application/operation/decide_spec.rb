@@ -4,17 +4,36 @@ RSpec.describe Ops::SellerApplication::Decide do
   include ActiveJob::TestHelper
 
   let(:application) { create(:ready_for_review_seller_application) }
+  let(:approve_params) {
+    {
+      id: application.id,
+      seller_application: {
+        decision: 'approve',
+        response: 'Response',
+      }
+    }
+  }
+  let(:reject_params) {
+    {
+      id: application.id,
+      seller_application: {
+        decision: 'reject',
+        response: 'Response',
+      }
+    }
+  }
+  let(:return_to_seller_params) {
+    {
+      id: application.id,
+      seller_application: {
+        decision: 'return_to_applicant',
+        response: 'Response',
+      }
+    }
+  }
 
   it 'can approve an application' do
-    result = Ops::SellerApplication::Decide.(
-               {
-                 id: application.id,
-                 seller_application: {
-                   decision: 'approve',
-                   response: 'Response',
-                 }
-               }
-             )
+    result = Ops::SellerApplication::Decide.(approve_params)
 
     expect(result).to be_success
 
@@ -27,29 +46,13 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when an application is approved' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(
-                   {
-                     id: application.id,
-                     seller_application: {
-                       decision: 'approve',
-                       response: 'Response',
-                     }
-                   }
-                 )
+        Ops::SellerApplication::Decide.(approve_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'can reject an application' do
-    result = Ops::SellerApplication::Decide.(
-               {
-                 id: application.id,
-                 seller_application: {
-                   decision: 'reject',
-                   response: 'Response',
-                 }
-               }
-             )
+    result = Ops::SellerApplication::Decide.(reject_params)
 
     expect(result).to be_success
 
@@ -62,29 +65,13 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when the application is rejected' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(
-                   {
-                     id: application.id,
-                     seller_application: {
-                       decision: 'reject',
-                       response: 'Response',
-                     }
-                   }
-                 )
+        Ops::SellerApplication::Decide.(reject_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'can return an application to the seller' do
-    result = Ops::SellerApplication::Decide.(
-               {
-                 id: application.id,
-                 seller_application: {
-                   decision: 'return_to_applicant',
-                   response: 'Response',
-                 }
-               }
-             )
+    result = Ops::SellerApplication::Decide.(return_to_seller_params)
 
     expect(result).to be_success
 
@@ -97,15 +84,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when the application is returned to the seller' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(
-                   {
-                     id: application.id,
-                     seller_application: {
-                       decision: 'return_to_applicant',
-                       response: 'Response',
-                     }
-                   }
-                 )        
+        Ops::SellerApplication::Decide.(return_to_seller_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
@@ -114,15 +93,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     time = Time.now
 
     Timecop.freeze(time) do
-      result = Ops::SellerApplication::Decide.(
-                 {
-                   id: application.id,
-                   seller_application: {
-                     decision: 'approve',
-                     response: 'Response',
-                   }
-                 }
-               )
+      result = Ops::SellerApplication::Decide.(approve_params)
     end
     application.reload
 
