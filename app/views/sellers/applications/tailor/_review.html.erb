@@ -1,0 +1,23 @@
+<p>The details you have given will determine the information you need to provide in your application.</p>
+<p>Please check the information before continuing.</p>
+
+<section class="detail-review">
+<% if operation['result.ready_for_submission'].present? %>
+  <dl>
+    <dt><%= t('activemodel.attributes.sellers.seller_application.tailor.contract.business_details.name') %></dt>
+    <dd><%= operation[:seller_model].name %></dd>
+
+    <dt><%= t('activemodel.attributes.sellers.seller_application.tailor.contract.business_details.abn') %></dt>
+    <dd><%= operation[:seller_model].abn %></dd>
+
+    <dt>Your industries</dt>
+    <dd><%= operation[:seller_model].industry.texts.join("<br>").html_safe %></dd>
+
+    <dt>ICT categories</dt>
+    <dd><%= operation[:seller_model].services.texts.join("<br>").html_safe %></dd>
+  </dl>
+</section>
+
+<% else %>
+  <p>Please complete all other steps before you continue.</p>
+<% end %>

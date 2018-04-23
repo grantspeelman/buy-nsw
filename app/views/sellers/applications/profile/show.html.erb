@@ -1,0 +1,13 @@
+<% content_for(:step_container_header) do %>
+  <h1>Your profile</h1>
+  <p>The information here is available to all buyers.</p>
+  <p>The more information you provide, the more likely you will be to appear in search results.</p>
+<% end %>
+
+<%= render partial: 'sellers/applications/shared/step', locals: {
+  form: form,
+  form_path: profile_sellers_application_path(application),
+  application: operation[:application_model],
+  operation: operation,
+  hide_header: true,
+} %>

@@ -1,0 +1,12 @@
+<% content_for(:without_container, true) %>
+<% content_for(:seller_breadcrumb, 'Your company details') %>
+
+<% content_for(:steps) do %>
+  <%= render partial: 'sellers/applications/shared/step_list', locals: { operation: operation } %>
+<% end %>
+
+<% content_for(:current_step) do %>
+  <%= content_for?(:content) ? yield(:content) : yield %>
+<% end %>
+
+<%= render template: 'sellers/applications/shared/_layout' %>

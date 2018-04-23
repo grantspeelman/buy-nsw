@@ -56,6 +56,13 @@ class SellerApplication < ApplicationRecord
     ! assignee_present?
   end
 
+  def self.find_by_user_and_application(user_id, application_id)
+    joins(:seller).where(
+      'sellers.owner_id' => user_id,
+      'seller_applications.id' => application_id,
+    ).first!
+  end
+
   scope :for_review, -> { submitted.or(assigned) }
 
   scope :unassigned, -> { where('assigned_to_id IS NULL') }

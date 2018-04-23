@@ -8,15 +8,17 @@ module Concerns::Operations::MultiStepForm::OperationSteps
   # As a stylistic point, they are all 'bang!' methods, as returning false from
   # a step will cause the operation to fail.
   #
-  
+
   def steps!(options, **)
     options['result.steps'] = build_steps_from_contracts(options)
   end
 
   def build_contract_from_step!(options, params:, **)
+    steps = options['result.steps']
+
     slug = params.fetch(:step, nil)
-    options['result.step'] =
-      options['result.steps'].find {|step| step.slug == slug } || options['result.steps'].first
+    options['result.step'] = steps.find {|step| step.slug == slug } || steps.first
+    options['result.last_step?'] = (options['result.step'] == steps.last)
 
     options['result.step'].contract
   end
@@ -27,8 +29,14 @@ module Concerns::Operations::MultiStepForm::OperationSteps
     params_key = config.get(:params_key)
 
     unless params.key?(params_key)
+      contract.prepopulate!
       contract.validate(params.fetch(params_key, {})) if contract.started?
     end
+  end
+
+  def prepopulate!(options, **)
+    contract = options['contract.default']
+    contract.prepopulate!
   end
 
   def set_submission_status!(options, **)
@@ -41,7 +49,8 @@ module Concerns::Operations::MultiStepForm::OperationSteps
     steps = options['result.steps']
 
     next_step_key = steps.index(current_step) + 1
-    options['result.next_step_slug'] = steps[next_step_key]&.slug || steps.first.slug
+    options['result.next_step'] = steps[next_step_key] || steps.first
+    options['result.next_step_slug'] = options['result.next_step'].slug
   end
 
   def all_steps_valid?(options)

@@ -1,0 +1,23 @@
+<header class="application-header">
+  <div class="container">
+    <div class="row">
+      <h1>
+        <span class="type-label">Seller application<span class="visually-hidden">:</span></span>
+        <%= application.seller.name %>
+      </h1>
+      <% unless controller_name == 'root' %>
+        <div class="action">
+          <%= link_to sellers_application_path(application) do %>
+            Back to your application &rarr;
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
+<% if content_for?(:seller_breadcrumb) %>
+  <div class="seller-breadcrumbs">
+    <%= link_to 'Your application', sellers_application_path(application) %> &rarr;
+    <%= yield(:seller_breadcrumb) %>
+  </div>
+<% end %>

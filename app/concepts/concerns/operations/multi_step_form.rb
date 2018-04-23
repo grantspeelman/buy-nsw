@@ -3,23 +3,26 @@ module Concerns::Operations::MultiStepForm
 
   included do
     include OperationSteps
+    mattr_accessor :step_contract_block, :step_configuration_block
+  end
 
-    def self.step_flow(&block)
-      @@step_contract_block = block
+  class_methods do
+    def step_flow(&block)
+      self.step_contract_block = block
     end
 
-    def self.step_configuration(&block)
-      @@step_configuration_block = block
+    def step_configuration(&block)
+      self.step_configuration_block = block
     end
   end
 
   def build_configuration_from_contracts(operation_result)
-    @configuration ||= Configuration.new(@@step_configuration_block, operation_result)
+    @configuration ||= Configuration.new(self.step_configuration_block, operation_result)
   end
 
   def build_steps_from_contracts(operation_result)
     Builder.new(
-      @@step_contract_block,
+      self.step_contract_block,
       operation_result: operation_result,
       config: build_configuration_from_contracts(operation_result),
     ).steps

@@ -8,17 +8,14 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     complete_seller_sign_up
     confirm_email_address
-    complete_introduction
-    fill_in_business_basics
-    fill_in_business_details
-    fill_in_contact_details
-    fill_in_disclosures
-    upload_documents
-    fill_in_recognition
-    fill_in_industry
-    fill_in_services
-    add_products
-    complete_declaration
+
+    complete_tailor_steps
+    complete_contacts_steps
+    complete_profile_steps
+    complete_documents_steps
+    complete_legals_steps
+
+    submit_application
 
     expect(page).to have_content('Seller dashboard')
     expect(page).to have_content('Your seller application is under review')
@@ -40,17 +37,90 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     expect(page).to have_content('Thanks for confirming')
   end
 
-  def complete_introduction
+  def complete_tailor_steps
     click_on 'Start application'
-  end
 
-  def fill_in_business_basics
+    # Business details
     fill_in 'Business name', with: 'Test Pty Ltd'
     fill_in 'ABN', with: '10 123 456 789'
+    click_on 'Save'
+
+    # Industry
+    check 'ICT'
+    click_on 'Save'
+
+    # Services
+    check 'Cloud products'
+    check 'Data and analytics'
+    check 'Training and learning'
+    click_on 'Save'
+
+    # Review
+    click_on 'Continue'
+  end
+
+  def complete_contacts_steps
+    within '#contacts' do
+      click_on 'Edit'
+    end
+
+    fill_in_contact_details
+
+    click_on_step 'Business address'
+    fill_in_address
+
+    go_back_to_application
+  end
+
+  def complete_profile_steps
+    within '#profile' do
+      click_on 'Edit'
+    end
+
     fill_in 'Summary', with: 'A summary of my business'
     fill_in 'Website URL', with: 'http://example.org'
     fill_in 'LinkedIn URL', with: 'http://linkedin.com/example'
+    click_on 'Save'
 
+    click_on_step 'Business details'
+    fill_in_business_details
+
+    click_on_step 'Recognition'
+    fill_in_recognition
+
+    go_back_to_application
+  end
+
+  def complete_documents_steps
+    within '#documents' do
+      click_on 'Edit'
+    end
+
+    upload_document
+
+    click_on_step 'Professional indemnity'
+    upload_document
+
+    click_on_step 'Workers compensation'
+    upload_document
+
+    go_back_to_application
+  end
+
+  def complete_legals_steps
+    within '#legals' do
+      click_on 'Edit'
+    end
+
+    fill_in_disclosures
+
+    click_on_step 'Agree terms'
+    complete_declaration
+
+    go_back_to_application
+  end
+
+  def fill_in_address
     within_fieldset 'Your business address' do
       fill_in 'Address', with: '123 Test Street'
       fill_in 'Suburb', with: 'Millers Point'
@@ -66,13 +136,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
         fill_in 'Postcode', with: '2000'
       end
     end
-
-    click_on 'Save and continue'
-  end
-
-  def fill_in_industry
-    check 'ICT'
-    click_on 'Save and continue'
+    click_on 'Save'
   end
 
   def fill_in_business_details
@@ -83,7 +147,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     check 'Indigenous'
     check 'Yes, with local government'
     check 'Yes, with federal government'
-    click_on 'Save and continue'
+    click_on 'Save'
   end
 
   def fill_in_contact_details
@@ -97,7 +161,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
       fill_in 'Email address', with: 'example@test.org'
       fill_in 'Phone', with: '0487 654 321'
     end
-    click_on 'Save and continue'
+    click_on 'Save'
   end
 
   def fill_in_disclosures
@@ -107,7 +171,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     fill_in_disclosure :insurance_claims, 'Yes', 'Further details'
     fill_in_disclosure :conflicts_of_interest, 'Yes', 'Further details'
     fill_in_disclosure :other_circumstances, 'No'
-    click_on 'Save and continue'
+    click_on 'Save'
   end
 
   def fill_in_disclosure(field, option, details=nil)
@@ -121,43 +185,20 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
   end
 
-  def upload_documents
+  def upload_document
     expiry_date = 1.year.from_now
 
-    within_fieldset 'Financial statement' do
-      attach_file 'Upload a file', example_pdf, make_visible: true
+    attach_file 'Upload a file', example_pdf, make_visible: true
 
-      fill_in 'Day', with: expiry_date.day
-      fill_in 'Month', with: expiry_date.month
-      fill_in 'Year', with: expiry_date.year
-    end
-    within_fieldset 'Professional Indemnity' do
-      attach_file 'Upload a file', example_pdf, make_visible: true
+    fill_in 'Day', with: expiry_date.day
+    fill_in 'Month', with: expiry_date.month
+    fill_in 'Year', with: expiry_date.year
 
-      fill_in 'Day', with: expiry_date.day
-      fill_in 'Month', with: expiry_date.month
-      fill_in 'Year', with: expiry_date.year
-    end
-    within_fieldset 'Workers Compensation' do
-      attach_file 'Upload a file', example_pdf, make_visible: true
-
-      fill_in 'Day', with: expiry_date.day
-      fill_in 'Month', with: expiry_date.month
-      fill_in 'Year', with: expiry_date.year
-    end
-
-    click_on 'Upload documents'
+    click_on 'Upload document'
   end
 
   def example_pdf
     Rails.root.join('spec', 'fixtures', 'files', 'example.pdf')
-  end
-
-  def fill_in_tools
-    fill_in 'Tools', with: 'Some tools'
-    fill_in 'Methodologies', with: 'Much methodologies'
-    fill_in 'Technologies', with: 'Many technologies'
-    click_on 'Save and continue'
   end
 
   def fill_in_recognition
@@ -176,31 +217,27 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
       fill_in '1', with: 'Butter Pie of the Year 2018'
     end
 
-    click_on 'Save and continue'
-  end
-
-  def fill_in_services
-    check 'Cloud products'
-    check 'Data and analytics'
-    check 'Training and learning'
-
-    click_on 'Save and continue'
-  end
-
-  def add_products
-    fill_in 'Name', with: 'My friendly product'
-    fill_in 'Summary', with: 'My product description'
-    choose 'Applications and software'
-    check 'Security and cyber'
-
     click_on 'Save'
-
-    click_on 'Save and continue'
   end
 
   def complete_declaration
     check 'I am Churchill Smith-Winston, an authorised representative of Test Pty Ltd (ABN: 10 123 456 789)'
+    click_on 'Save'
+  end
+
+  def submit_application
     click_on 'Submit application'
+  end
+
+  def go_back_to_application
+    click_on 'Back to your application'
+  end
+
+  def click_on_step(label)
+    within '.steps-list' do
+      node = page.find('a', text: label)
+      node.trigger('click')
+    end
   end
 
 end
