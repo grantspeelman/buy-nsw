@@ -2,16 +2,16 @@
   <thead>
     <tr>
       <th>Time</th>
-      <th>Description</th>
       <th>User</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <% events.each do |event| %>
       <tr>
         <td><%= event.created_at.localtime.to_formatted_s(:long) %></td>
-        <td><%= event.message %></td>
         <td><%= event.user.email if event.user%></td>
+        <td><%= event.message %></td>
       </tr>
     <% end %>
   </tbody>
