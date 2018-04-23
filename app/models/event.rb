@@ -37,6 +37,14 @@ module Event
         eventable: application
       )
     end
+
+    def self.assigned_application!(user, application)
+      AssignedApplication.create(
+        user: user,
+        eventable: application,
+        email: application.assigned_to.email
+      )
+    end
   end
 
   class SubmittedApplication < Event; end
@@ -46,6 +54,12 @@ module Event
   class ManagerApproved < Event
     def message
       I18n.t(locale_name, name: name, email: email)
+    end
+  end
+
+  class AssignedApplication < Event
+    def message
+      I18n.t(locale_name, email: email)
     end
   end
 end
