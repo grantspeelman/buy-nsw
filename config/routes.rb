@@ -24,8 +24,31 @@ Rails.application.routes.draw do
   end
 
   namespace :sellers do
-    resources :applications, only: [:new, :show, :update] do
+    resources :applications, only: [:new, :show, :update], controller: 'applications/root' do
       resources :products, controller: 'applications/products'
+      member do
+        post :submit
+        
+        get '/tailor', to: 'applications/tailor#show', as: :tailor
+        get '/tailor/:step', to: 'applications/tailor#show', as: :tailor_step
+        patch '/tailor', to: 'applications/tailor#update'
+
+        get '/profile', to: 'applications/profile#show', as: :profile
+        get '/profile/:step', to: 'applications/profile#show', as: :profile_step
+        patch '/profile', to: 'applications/profile#update'
+
+        get '/documents', to: 'applications/documents#show', as: :documents
+        get '/documents/:step', to: 'applications/documents#show', as: :documents_step
+        patch '/documents', to: 'applications/documents#update'
+
+        get '/contacts', to: 'applications/contacts#show', as: :contacts
+        get '/contacts/:step', to: 'applications/contacts#show', as: :contacts_step
+        patch '/contacts', to: 'applications/contacts#update'
+
+        get '/legals', to: 'applications/legals#show', as: :legals
+        get '/legals/:step', to: 'applications/legals#show', as: :legals_step
+        patch '/legals', to: 'applications/legals#update'
+      end
     end
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 

@@ -1,0 +1,85 @@
+.view-sellers-applications.flow-linear {
+  .steps-container {
+    @extend .row;
+  }
+
+  .steps-list {
+    @extend .col-md-3;
+  }
+
+  .steps-list ol {
+    padding-left: 0;
+  }
+  .steps-list li {
+    list-style: none;
+    border-top: 1px solid #ccc;
+    position: relative;
+
+    &:last-of-type {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+  .steps-list li a {
+    display: block;
+    padding: .6em .6em .6em 2.7em;
+    color: #000;
+    text-decoration: none;
+
+    &:hover {
+      background: #f6f6f6;
+    }
+  }
+  .steps-list li.current a {
+    background: $grey-1;
+  }
+
+  .steps-list li::before {
+    content: ' ';
+    display: inline-block;
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+    top: 9px;
+    left: 9px;
+    background: $grey-2;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    text-align: center;
+    vertical-align: top;
+    line-height: 1em;
+  }
+  .steps-list li.started {
+    &::before {
+      background: $light-blue;
+      content: '...';
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+  .steps-list li.complete::before {
+    background: $green;
+  }
+  .steps-list li.complete a::before {
+    content: '';
+    border: solid;
+    border-width: 0 0 3px 3px;
+    background: transparent;
+    border-top-color: transparent;
+    width: 13px;
+    height: 7px;
+    position: absolute;
+    top: 17px;
+    left: 15px;
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    color: #fff;
+  }
+
+  .current-step {
+    @extend .col-md-8;
+    @extend .offset-md-1;
+  }
+}

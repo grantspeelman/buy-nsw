@@ -1,0 +1,32 @@
+<% content_for(:without_container, true) %>
+
+<% content_for(:content) do %>
+  <% if application.seller.name.present? %>
+    <%= render partial: 'sellers/applications/shared/header', locals: { application: application } %>
+  <% end %>
+
+  <div class="container">
+    <section class="view-sellers-applications <%= content_for?(:seller_application_class) ? yield(:seller_application_class) : 'flow-linear' %>">
+      <% if content_for?(:step_container_header) %>
+        <header>
+          <%= yield(:step_container_header) %>
+        </header>
+      <% end %>
+      
+      <% if content_for?(:steps) %>
+        <section class="steps-container">
+          <div class="steps-list">
+            <%= yield(:steps) %>
+          </div>
+          <div class="current-step">
+            <%= yield(:current_step) %>
+          </div>
+        </section>
+      <% else %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      <% end %>
+    </section>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

@@ -1,7 +1,0 @@
-<ol>
-<% presenter.steps.each do |step| %>
-  <%= content_tag :li, class: presenter.html_classes(step) do %>
-    <%= link_to step.name(:short), step.path %>
-  <% end %>
-<% end %>
-</ol>

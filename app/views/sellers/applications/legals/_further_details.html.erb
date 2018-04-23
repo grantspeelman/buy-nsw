@@ -1,0 +1,10 @@
+<fieldset class="multiple-choice-group radio-group" id="field-<%= field.to_s.dasherize %>" data-module="further-details-fields">
+  <legend><%= t("sellers.applications.legals.disclosures.#{field}") %></legend>
+
+  <%= f.form_group field do %>
+    <%= f.radio_button field, 'true' %>
+    <%= f.radio_button field, 'false' %>
+  <% end %>
+
+  <%= f.text_area "#{field.to_s}_details", rows: 5 %>
+</fieldset>
