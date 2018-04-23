@@ -271,3 +271,4 @@ en:
       approved_application: Approved application
       rejected_application: Rejected application
       returned_application: Returned application to seller
+      note: "Note added: %{note}"

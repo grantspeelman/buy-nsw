@@ -36,4 +36,10 @@ module Event
       I18n.t(locale_name, email: email)
     end
   end
+
+  class Note < Event
+    def message
+      I18n.t(locale_name, note: note)
+    end
+  end
 end
