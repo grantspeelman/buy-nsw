@@ -270,3 +270,4 @@ en:
       assigned_application: Assigned application to %{email}
       approved_application: Approved application
       rejected_application: Rejected application
+      returned_application: Returned application to seller

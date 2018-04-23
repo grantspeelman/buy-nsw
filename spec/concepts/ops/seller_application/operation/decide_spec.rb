@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Ops::SellerApplication::Decide do
   include ActiveJob::TestHelper
 
+  let(:current_user) { create(:admin_user) }
   let(:application) { create(:ready_for_review_seller_application) }
   let(:approve_params) {
     {
@@ -43,6 +44,14 @@ RSpec.describe Ops::SellerApplication::Decide do
     expect(application.response).to eq('Response')
   end
 
+  it 'logs an event when an application is approved' do
+    Ops::SellerApplication::Decide.(approve_params, 'current_user' => current_user)
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Approved application")
+  end
+
   it 'sends an email when an application is approved' do
     expect {
       perform_enqueued_jobs do
@@ -62,6 +71,14 @@ RSpec.describe Ops::SellerApplication::Decide do
     expect(application.response).to eq('Response')
   end
 
+  it 'logs an event when an application is rejected' do
+    Ops::SellerApplication::Decide.(reject_params, 'current_user' => current_user)
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Rejected application")
+  end
+
   it 'sends an email when the application is rejected' do
     expect {
       perform_enqueued_jobs do
@@ -79,6 +96,14 @@ RSpec.describe Ops::SellerApplication::Decide do
 
     expect(application.state).to eq('created')
     expect(application.response).to eq('Response')
+  end
+
+  it 'logs an event when an application is returned to the seller' do
+    Ops::SellerApplication::Decide.(return_to_seller_params, 'current_user' => current_user)
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Returned application to seller")
   end
 
   it 'sends an email when the application is returned to the seller' do
