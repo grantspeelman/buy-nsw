@@ -5,6 +5,7 @@ class SellerApplication < ApplicationRecord
 
   belongs_to :seller
   belongs_to :assigned_to, class_name: 'User', optional: true
+  has_many :events, -> { order(created_at: :desc) }, as: :eventable, class_name: 'Event::Event'
 
   aasm column: :state do
     state :created, initial: true
