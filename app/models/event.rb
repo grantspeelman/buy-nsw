@@ -59,6 +59,13 @@ module Event
         eventable: application
       )
     end
+
+    def self.returned_application!(user, application)
+      ReturnedApplication.create(
+        user: user,
+        eventable: application
+      )
+    end
   end
 
   class SubmittedApplication < Event; end
@@ -68,6 +75,8 @@ module Event
   class ApprovedApplication < Event; end
 
   class RejectedApplication < Event; end
+
+  class ReturnedApplication < Event; end
 
   class ManagerApproved < Event
     def message

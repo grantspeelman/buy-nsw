@@ -22,6 +22,7 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
   step :set_timestamp
   step Contract::Persist()
   step :change_application_state
+  step :log_event
   step :notify_owner_by_email
 
   def validate_step_change(options, model:, **)
@@ -37,6 +38,14 @@ class Ops::SellerApplication::Decide < Trailblazer::Operation
     when 'approve' then model.approve!
     when 'reject' then model.reject!
     when 'return_to_applicant' then model.return_to_applicant!
+    end
+  end
+
+  def log_event(options, model:, **)
+    case options['contract.default'].decision
+    when 'approve' then Event::Event.approved_application!(options['current_user'], model)
+    when 'reject' then Event::Event.rejected_application!(options['current_user'], model)
+    when 'return_to_applicant' then Event::Event.returned_application!(options['current_user'], model)
     end
   end
 
