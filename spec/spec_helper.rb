@@ -1,5 +1,8 @@
 require 'simplecov'
 SimpleCov.start 'rails'
+# Really I think this should be at 90 but we're a little too close to this
+# right now for comfort so dropping it a little
+SimpleCov.minimum_coverage 85
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
