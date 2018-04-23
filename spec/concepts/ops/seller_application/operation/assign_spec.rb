@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Ops::SellerApplication::Assign do
 
   let(:application) { create(:awaiting_assignment_seller_application) }
+  let(:current_user) { create(:admin_user) }
   let(:user) { create(:admin_user) }
   let(:params) {
     {
@@ -27,6 +28,14 @@ RSpec.describe Ops::SellerApplication::Assign do
 
     expect(result).to be_success
     expect(application.state).to eq('ready_for_review')
+  end
+
+  it 'logs an event' do
+    Ops::SellerApplication::Assign.(params, 'current_user' => current_user)
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Assigned application to #{user.email}")
   end
 
   it 'does not transition the application if another state' do
