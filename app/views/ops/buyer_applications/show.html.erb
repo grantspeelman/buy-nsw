@@ -46,7 +46,7 @@
   <section class="events-list">
     <% if application.events.any? %>
       <h2>History</h2>
-      <%= render partial: 'events', locals: { events: application.events } %>
+      <%= render partial: 'ops/shared/events', locals: { events: application.events } %>
     <% end %>
   </section>
 <% end %>
