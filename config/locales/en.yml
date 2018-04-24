@@ -68,6 +68,7 @@ en:
     one_of?: must be selected from the list
     in_list?: must be selected from the list
     abn?: does not look like a valid ABN
+    unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
   helpers:
     label:
       seller_application:
