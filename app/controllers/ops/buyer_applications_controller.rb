@@ -26,6 +26,16 @@ class Ops::BuyerApplicationsController < Ops::BaseController
     render :show
   end
 
+  def notes
+    application = BuyerApplication.find(params[:id])
+    event = Event::Note.create(
+      user: current_user,
+      eventable: application,
+      note: params[:event_note]['note']
+    )
+    redirect_to ops_buyer_application_path(application)
+  end
+  
 private
   def applications
     @applications ||= BuyerApplication.includes(:seller)

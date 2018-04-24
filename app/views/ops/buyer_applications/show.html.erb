@@ -43,6 +43,14 @@
     </section>
   <% end %>
 
+  <section class="add-note" data-module="collapsible-section">
+    <h2>Add a private note to this application</h2>
+
+    <div class="inner">
+      <%= render partial: 'note_form', locals: { event: Event::Note.new, application: application } %>
+    </div>
+  </section>
+
   <section class="events-list">
     <% if application.events.any? %>
       <h2>History</h2>
