@@ -5,7 +5,7 @@
 .view-ops-seller-applications-show {
   @include ops-resource-show-column-set;
 
-  .make-decision, .make-assignment {
+  .make-decision, .make-assignment, .add-note {
     @include operation-box;
   }
 

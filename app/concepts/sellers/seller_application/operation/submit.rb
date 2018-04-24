@@ -32,6 +32,9 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
   end
 
   def log_event!(options, model:, **)
-    Event::Event.submitted_application!(options['current_user'], model)
+    Event::SubmittedApplication.create(
+      user: options['current_user'],
+      eventable: model
+    )
   end
 end

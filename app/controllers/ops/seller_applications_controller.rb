@@ -26,6 +26,16 @@ class Ops::SellerApplicationsController < Ops::BaseController
     render :show
   end
 
+  def notes
+    application = SellerApplication.find(params[:id])
+    event = Event::Note.create(
+      user: current_user,
+      eventable: application,
+      note: params[:event_note]['note']
+    )
+    redirect_to ops_seller_application_path(application)
+  end
+
 private
   def applications
     @applications ||= SellerApplication.includes(:seller)

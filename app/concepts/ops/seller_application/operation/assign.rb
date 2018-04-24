@@ -19,6 +19,10 @@ class Ops::SellerApplication::Assign < Trailblazer::Operation
   end
 
   def log_event(options, model:, **)
-    Event::Event.assigned_application!(options['current_user'], model)
+    Event::AssignedApplication.create(
+      user: options['current_user'],
+      eventable: model,
+      email: model.assigned_to.email
+    )
   end
 end

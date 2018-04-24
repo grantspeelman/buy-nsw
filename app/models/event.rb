@@ -13,59 +13,6 @@ module Event
     def message
       I18n.t(locale_name)
     end
-
-    def self.submitted_application!(user, application)
-      SubmittedApplication.create(
-        user: user,
-        eventable: application
-      )
-    end
-
-    def self.manager_approved!(application)
-      ManagerApproved.create(
-        # The manager did something but they are not a user on the system
-        user: nil,
-        eventable: application,
-        name: application.manager_name,
-        email: application.manager_email
-      )
-    end
-
-    def self.started_application!(user, application)
-      StartedApplication.create(
-        user: user,
-        eventable: application
-      )
-    end
-
-    def self.assigned_application!(user, application)
-      AssignedApplication.create(
-        user: user,
-        eventable: application,
-        email: application.assigned_to.email
-      )
-    end
-
-    def self.approved_application!(user, application)
-      ApprovedApplication.create(
-        user: user,
-        eventable: application
-      )
-    end
-
-    def self.rejected_application!(user, application)
-      RejectedApplication.create(
-        user: user,
-        eventable: application
-      )
-    end
-
-    def self.returned_application!(user, application)
-      ReturnedApplication.create(
-        user: user,
-        eventable: application
-      )
-    end
   end
 
   class SubmittedApplication < Event; end
@@ -87,6 +34,12 @@ module Event
   class AssignedApplication < Event
     def message
       I18n.t(locale_name, email: email)
+    end
+  end
+
+  class Note < Event
+    def message
+      I18n.t(locale_name, note: note)
     end
   end
 end
