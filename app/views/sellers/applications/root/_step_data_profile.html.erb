@@ -1,0 +1,8 @@
+<dl>
+  <% if application.seller.website_url.present? %>
+  <dt>Website URL:</dt>
+  <dd><%= application.seller.website_url %></dd>
+  <% end %>
+  <dt>Identifiers:</dt>
+  <dd><%= business_identifier_text_for(application) %></dd>
+</dl>

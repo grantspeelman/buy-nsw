@@ -1,9 +1,9 @@
 <div class="progress-indicator">
-  <% if step['result.valid?'] == true %>
+  <% if step_completed?(step) %>
     <div class="status complete">
       <span class="inner">All details provided</span>
     </div>
-  <% elsif step['result.percent_complete'] > 0 %>
+  <% elsif step_started?(step) %>
     <div class="status started">
       <span class="inner"><%= step['result.percent_complete'] %>% complete</span>
     </div>

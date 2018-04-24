@@ -1,0 +1,16 @@
+<dl>
+  <% if application.seller.financial_statement_expiry.present? %>
+  <dt>Financial statement:</dt>
+  <dd>dated <%= application.seller.financial_statement_expiry.strftime('%d %b %Y') %></dd>
+  <% end %>
+
+  <% if application.seller.professional_indemnity_certificate_expiry.present? %>
+    <dt>Professional indemnity:</dt>
+    <dd>expires <%= application.seller.professional_indemnity_certificate_expiry.strftime('%d %b %Y') %></dd>
+  <% end %>
+
+  <% if application.seller.workers_compensation_certificate_expiry.present? %>
+    <dt>Workers compensation:</dt>
+    <dd>expires <%= application.seller.workers_compensation_certificate_expiry.strftime('%d %b %Y') %></dd>
+  <% end %>
+</dl>

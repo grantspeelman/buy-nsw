@@ -1,4 +1,4 @@
-<p>The choices you make here will determine the information you need to complete before submitting your application.</p>
+<%= t('sellers.applications.tailor.steps.industry.intro_html') %>
 
 <fieldset class="multiple-choice-group checkbox-group">
   <%= f.collection_check_boxes(:industry, Seller.industry.options, :last, :first, skip_label: true,

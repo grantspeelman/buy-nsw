@@ -8,11 +8,11 @@
 
   <%= render partial: operation['result.step'].key, locals: { f: f, operation: operation } %>
 
-  <%# unless operation['result.last_step?'] && !operation['result.ready_for_submission'] %>
+  <% unless local_assigns[:skip_button] %>
     <fieldset class="actions">
       <%= f.submit operation['result.step'].button_label(default: 'Save'), class: 'btn btn-primary' %>
     </fieldset>
-  <%# end %>
+  <% end %>
 
   <%= hidden_field_tag :step, operation['result.step'].slug %>
 <% end %>

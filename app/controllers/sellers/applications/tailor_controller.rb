@@ -6,7 +6,7 @@ class Sellers::Applications::TailorController < Sellers::Applications::QuestionG
 
     @operation = run operation_class do |result|
       if result['result.completed'] == true
-        return redirect_to sellers_dashboard_path
+        return redirect_to sellers_application_path(result[:application_model])
       else
         return redirect_to result['result.next_step'].path
       end

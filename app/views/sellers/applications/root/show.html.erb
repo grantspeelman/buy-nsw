@@ -1,119 +1,17 @@
 <section class="application-dashboard">
   <aside>
-    <h1>Your application</h1>
-    <p>You can complete the steps in any order. Your progress is saved automatically, so you can return at any time.</p>
+    <h1><%= t('sellers.applications.title') %></h1>
+    <%= t('sellers.applications.aside_html') %>
   </aside>
 
   <ul class="cards">
-    <li id="tailor" class="card">
-      <div class="row">
-        <div class="overview">
-          <h2>Your company details</h2>
-          <%= progress_indicator_for(steps[:tailor]) %>
-        </div>
-        <div class="data">
-          <dl>
-            <dt>ABN:</dt>
-            <dd><%= application.seller.abn %></dd>
-            <dt>Industry:</dt>
-            <dd><%= application.seller.industry.texts.join(', ') %></dd>
-            <dt>ICT categories:</dt>
-            <dd><%= application.seller.services.texts.join('<br>').html_safe %></dd>
-          </dl>
-        </div>
-      </div>
-    </li>
-    <li id="contacts" class="card">
-      <div class="row">
-        <div class="overview">
-          <h2>Your contact details</h2>
-          <%= progress_indicator_for(steps[:contacts]) %>
-
-          <%= link_to 'Edit', contacts_sellers_application_path(application), class: 'action' %>
-        </div>
-        <div class="data">
-          <dl>
-            <dt>Contacts:</dt>
-            <dd>
-              <%= application.seller.contact_name %><br>
-              <%= application.seller.representative_name %>
-            </dd>
-            <dt>Business address:</dt>
-            <dd>
-              <% application.seller.addresses.each do |address| %>
-                <%= address.address %>, <%= address.suburb %><br>
-              <% end %>
-            </dd>
-          </dl>
-        </div>
-      </div>
-    </li>
-    <li id="profile" class="card">
-      <div class="row">
-        <div class="overview">
-          <h2>Your seller profile</h2>
-          <%= progress_indicator_for(steps[:profile]) %>
-
-          <%= link_to 'Edit', profile_sellers_application_path(application), class: 'action' %>
-        </div>
-        <div class="data">
-          <dl>
-            <dt>Website URL:</dt>
-            <dd><%= application.seller.website_url %></dd>
-            <dt>Business identifiers:</dt>
-            <dd>Start-up<br>SME<br>Not for profit / social enterprise<br>Australian owned</dd>
-          </dl>
-        </div>
-      </div>
-    </li>
-    <li id="documents" class="card">
-      <div class="row">
-        <div class="overview">
-          <h2>Your documents</h2>
-          <%= progress_indicator_for(steps[:documents]) %>
-
-          <%= link_to 'Edit', documents_sellers_application_path(application), class: 'action' %>
-        </div>
-        <div class="data">
-          <dl>
-            <% if application.seller.financial_statement_expiry.present? %>
-            <dt>Financial statement:</dt>
-            <dd>dated <%= application.seller.financial_statement_expiry.strftime('%d %b %Y') %></dd>
-            <% end %>
-
-            <% if application.seller.professional_indemnity_certificate_expiry.present? %>
-              <dt>Professional indemnity:</dt>
-              <dd>expires <%= application.seller.professional_indemnity_certificate_expiry.strftime('%d %b %Y') %></dd>
-            <% end %>
-
-            <% if application.seller.workers_compensation_certificate_expiry.present? %>
-              <dt>Workers compensation:</dt>
-              <dd>expires <%= application.seller.workers_compensation_certificate_expiry.strftime('%d %b %Y') %></dd>
-            <% end %>
-          </dl>
-        </div>
-      </div>
-    </li>
-    <li id="legals" class="card">
-      <div class="row">
-        <div class="overview">
-          <h2>Your legals</h2>
-          <%= progress_indicator_for(steps[:legals]) %>
-
-          <%= link_to 'Edit', legals_sellers_application_path(application), class: 'action' %>
-        </div>
-
-        <div class="guidance">
-          <p>This will take approximately 15 minutes.</p>
-          <p>You will need your authorised representative to agree to the Core Terms on behalf of your organisation.</p>
-        </div>
-      </div>
-    </li>
-  </ul>
-
-  <div id="submit" class="submit">
     <% if can_submit_application? %>
-      <%= button_to 'Submit application', submit_sellers_application_path(application) %>
+      <%= render partial: 'submit', locals: { application: application } %>
     <% end %>
-  </div>
+    <%= display_step(application, steps, :tailor, skip_button: true) %>
+    <%= display_step(application, steps, :contacts) %>
+    <%= display_step(application, steps, :profile) %>
+    <%= display_step(application, steps, :documents) %>
+    <%= display_step(application, steps, :legals) %>
+  </ul>
 </section>

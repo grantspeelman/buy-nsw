@@ -2,5 +2,6 @@
   form: form,
   form_path: tailor_sellers_application_path(application),
   application: operation[:application_model],
-  operation: operation
+  operation: operation,
+  skip_button: (operation['result.last_step?'] && !operation['result.ready_for_submission'])
 } %>

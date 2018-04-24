@@ -3,10 +3,12 @@
 <% content_for(:content) do %>
   <header class="application-header">
     <div class="container">
-      <h1>
-        <span class="type-label"><%= t 'sellers.dashboard.title' %><span class="visually-hidden">:</span></span>
-        <%= seller.name %>
-      </h1>
+      <div class="row">
+        <h1>
+          <span class="type-label"><%= t 'sellers.dashboard.title' %><span class="visually-hidden">:</span></span>
+          <%= seller.name %>
+        </h1>
+      </div>
     </div>
   </header>
 

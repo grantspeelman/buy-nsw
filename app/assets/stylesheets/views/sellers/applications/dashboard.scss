@@ -16,52 +16,72 @@
 
   ul.cards {
     @extend .col-8;
-
-    li.card {
-      list-style: none;
-      border: 1px solid $grey-2;
-      border-bottom-width: 5px;
-
-      padding: 1rem;
-      margin-bottom: 1rem;
-
-      .overview {
-        @extend .col-5;
-      }
-      .data, .guidance {
-        @extend .col-7;
-      }
-    }
   }
 
-  .card .data {
-    font-size: .9rem;
+  li.card {
+    list-style: none;
+    border: 1px solid #BFC1C3;
+    border-bottom-width: 3px;
+    border-radius: 0px;
 
-    dl {
-      @extend .row;
-      border-bottom: 1px solid #eee;
+    padding: 1rem;
+    margin-bottom: 1rem;
 
-      dt, dd {
-        border-top: 1px solid #eee;
-        padding: .3rem 0;
-        margin: 0;
+    .overview {
+      @extend .col-5;
+    }
+    .data, .guidance {
+      @extend .col-7;
+    }
 
-        &:first-of-type {
-          border-top: none;
+    .data {
+      font-size: .9rem;
+
+      dl {
+        @extend .row;
+        border-bottom: 1px solid #eee;
+
+        dt, dd {
+          border-top: 1px solid #eee;
+          padding: .3rem 0;
+          margin: 0;
+
+          &:first-of-type {
+            border-top: none;
+          }
+        }
+
+        dt {
+          @extend .col-5;
+        }
+        dd {
+          @extend .col-7;
         }
       }
+    }
 
-      dt {
-        @extend .col-5;
+    .guidance {
+      /* NOTE: set the left padding to 0 to bring in horizontal alignment with
+      the data tables */
+      padding-left: 0;
+
+      color: $grey-3;
+      font-size: 0.9rem;
+    }
+
+    &.submit {
+      background: #fefde7;
+
+      form {
+        text-align: right;
       }
-      dd {
-        @extend .col-7;
+
+      input[type=submit] {
+        @extend .btn;
+        @extend .btn-primary;
+        font-size: 1rem;
       }
     }
-  }
-
-  .card .guidance {
-    color: $grey-3;
   }
 
   .progress-indicator {
