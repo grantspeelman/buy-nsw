@@ -25,10 +25,9 @@ Rails.application.routes.draw do
 
   namespace :sellers do
     resources :applications, only: [:new, :show, :update], controller: 'applications/root' do
-      resources :products, controller: 'applications/products'
       member do
         post :submit
-        
+
         get '/tailor', to: 'applications/tailor#show', as: :tailor
         get '/tailor/:step', to: 'applications/tailor#show', as: :tailor_step
         patch '/tailor', to: 'applications/tailor#update'
@@ -49,6 +48,8 @@ Rails.application.routes.draw do
         get '/legals/:step', to: 'applications/legals#show', as: :legals_step
         patch '/legals', to: 'applications/legals#update'
       end
+      resources :products, controller: 'applications/products'
+      get '/products/:id/:step', to: 'applications/products#show', as: :product_step
     end
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 

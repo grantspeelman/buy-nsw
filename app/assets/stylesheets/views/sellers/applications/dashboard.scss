@@ -144,4 +144,50 @@
     font-size: 1rem;
   }
 
+  .products-list {
+    ul {
+      padding-left: 0;
+      margin-bottom: .5rem;
+    }
+
+    li {
+      @extend .row;
+
+      list-style: none;
+      border-bottom: 1px solid $grey-2;
+      padding: .5rem 0;
+    }
+
+    .product-info {
+      @extend .col-8;
+    }
+    .product-actions {
+      @extend .col-4;
+      text-align: right;
+
+      .action {
+        @extend .btn-light;
+        background: $grey-2;
+      }
+    }
+
+    .action {
+      font-size: .8rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: .4rem 0 0;
+
+      em {
+        font-weight: normal;
+        font-style: italic;
+      }
+    }
+
+    .new-product-action {
+      text-align: right;
+    }
+  }
+
 }

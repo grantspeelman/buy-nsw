@@ -13,5 +13,6 @@
     <%= display_question_set(application, question_sets, :profile) %>
     <%= display_question_set(application, question_sets, :documents) %>
     <%= display_question_set(application, question_sets, :legals) %>
+    <%= render partial: 'products', locals: { application: application } %>
   </ul>
 </section>

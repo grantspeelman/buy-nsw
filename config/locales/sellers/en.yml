@@ -273,6 +273,11 @@ en:
               <p>The details you have given will determine the information you need to provide in your application.</p>
               <p>Please check the information before continuing.</p>
             incomplete_message: Please complete all other steps before you continue.
+      products:
+        title: 'Cloud products and support: your products'
+        empty_name_label: No name
+        new_product_action_label: Add a new product
+        edit_product_action_label: Edit
       profile:
         title: Your seller profile
         guidance_html: |

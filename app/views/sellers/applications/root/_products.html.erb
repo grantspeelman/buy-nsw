@@ -1,0 +1,31 @@
+<li id="products" class="card">
+  <div class="row">
+    <div class="overview">
+      <h2><%= t("sellers.applications.products.title") %></h2>
+    </div>
+
+    <div class="data products-list">
+      <ul>
+        <% application.seller.products.each do |product| %>
+          <li>
+            <div class="product-info">
+              <h3>
+                <% if product.name.present? %>
+                  <%= product.name %>
+                <% else %>
+                  <em><%= t("sellers.applications.products.empty_name_label") %></em>
+                <% end %>
+              </h3>
+            </div>
+            <div class="product-actions">
+              <%= link_to t("sellers.applications.products.edit_product_action_label"), sellers_application_product_path(application, product), class: 'action' %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <div class="new-product-action">
+        <%= link_to t("sellers.applications.products.new_product_action_label"), new_sellers_application_product_path(application), class: 'action' %>
+      </div>
+    </div>
+  </div>
+</li>
