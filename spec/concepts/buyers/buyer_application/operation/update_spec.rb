@@ -105,6 +105,8 @@ RSpec.describe Buyers::BuyerApplication::Update do
       expect(result).to be_success
       expect(result['result.submitted']).to be_truthy
       expect(result[:application_model].state).to eq('awaiting_assignment')
+      expect(result[:application_model].events.last.message).to eq('Submitted application')
+      expect(result[:application_model].events.last.user).to eq(user)
     end
 
     it 'sets the token when manager approval is required' do
@@ -130,7 +132,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
           Buyers::BuyerApplication::Update.(
             build_params(application, 'terms', terms_agreed: '1'),
             'current_user' => user,
-          )          
+          )
         end
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end

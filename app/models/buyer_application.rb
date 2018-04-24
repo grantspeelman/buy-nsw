@@ -8,6 +8,7 @@ class BuyerApplication < ApplicationRecord
   belongs_to :assigned_to, class_name: 'User', optional: true
   belongs_to :buyer
   has_one :user, through: :buyer
+  has_many :events, -> { order(created_at: :desc) }, as: :eventable, class_name: 'Event::Event'
 
   aasm column: :state do
     state :created, initial: true
@@ -84,6 +85,6 @@ class BuyerApplication < ApplicationRecord
   def set_manager_approval_token!
     update_attribute(:manager_approval_token, SecureRandom.hex(16))
   end
-  
+
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
 end

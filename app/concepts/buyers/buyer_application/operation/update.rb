@@ -67,6 +67,7 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
   success :next_step!
 
   success :submit_if_valid_and_last_step!
+  success :log_event!
 
   # NOTE: Invoking this again at the end of the flow means that we can add
   # validation errors and show the form again when the fields are invalid.
@@ -98,6 +99,14 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
       end
     else
       options['result.submitted'] = false
+    end
+  end
+
+  def log_event!(options, **)
+    if options['result.submitted']
+      Event::Event.submitted_application!(
+        options['current_user'], options[:application_model]
+      )
     end
   end
 

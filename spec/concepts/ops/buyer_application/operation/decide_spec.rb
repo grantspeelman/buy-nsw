@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Ops::BuyerApplication::Decide do
   include ActiveJob::TestHelper
 
+  let(:current_user) { create(:admin_user) }
   let(:application) { create(:ready_for_review_buyer_application) }
 
   it 'can approve an application' do
@@ -23,6 +24,24 @@ RSpec.describe Ops::BuyerApplication::Decide do
     expect(application.state).to eq('approved')
     expect(application.decision_body).to eq('Response')
   end
+
+  it 'logs an event when approving an application' do
+    Ops::BuyerApplication::Decide.(
+               {
+                 id: application.id,
+                 buyer_application: {
+                   decision: 'approve',
+                   decision_body: 'Response',
+                 }
+               },
+               'current_user' => current_user
+             )
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Approved application")
+  end
+
 
   it 'sends an email when an application is approved' do
     expect {
@@ -57,6 +76,23 @@ RSpec.describe Ops::BuyerApplication::Decide do
 
     expect(application.state).to eq('rejected')
     expect(application.decision_body).to eq('Response')
+  end
+
+  it 'logs an event when rejecting an application' do
+    Ops::BuyerApplication::Decide.(
+               {
+                 id: application.id,
+                 buyer_application: {
+                   decision: 'reject',
+                   decision_body: 'Response',
+                 }
+               },
+               'current_user' => current_user
+             )
+    application.reload
+
+    expect(application.events.first.user).to eq(current_user)
+    expect(application.events.first.message).to eq("Rejected application")
   end
 
   it 'sends an email when the application is rejected' do

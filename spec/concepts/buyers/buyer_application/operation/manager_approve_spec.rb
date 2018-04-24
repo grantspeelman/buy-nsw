@@ -41,6 +41,13 @@ RSpec.describe Buyers::BuyerApplication::ManagerApprove do
     expect(application.reload.manager_approval_token).to be_nil
   end
 
+  it 'logs an event' do
+    Buyers::BuyerApplication::ManagerApprove.(valid_params)
+
+    expect(application.reload.events.last.message).to eq('Manager Manager Manager (manager@example.org) approved the buyer')
+    expect(application.reload.events.last.user).to be_nil
+  end
+
   describe 'failure states' do
     it 'fails when the application does not exist' do
       expect(
