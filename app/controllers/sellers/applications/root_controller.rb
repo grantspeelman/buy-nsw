@@ -13,7 +13,7 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
   end
 
   def show
-    unless steps[:tailor]['result.valid?'] == true
+    unless question_sets[:tailor]['result.valid?'] == true
       return redirect_to(tailor_sellers_application_path(existing_application))
     end
 
@@ -24,7 +24,7 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
     if ! can_submit_application?
       return redirect_to sellers_application_path(application)
     end
-    
+
     run Sellers::SellerApplication::Submit do |result|
       return redirect_to sellers_dashboard_path
     end
@@ -41,7 +41,7 @@ private
     @application ||= current_user.seller_applications.created.find(params[:id])
   end
 
-  def steps
+  def question_sets
     {
       tailor: run(Sellers::SellerApplication::Tailor::Update::Present),
       contacts: run(Sellers::SellerApplication::Contacts::Update::Present),
@@ -50,10 +50,10 @@ private
       legals: run(Sellers::SellerApplication::Legals::Update::Present),
     }
   end
-  helper_method :steps
+  helper_method :question_sets
 
   def can_submit_application?
-    steps.reject {|key, step|
+    question_sets.reject {|key, step|
       step['result.valid?']
     }.empty?
   end

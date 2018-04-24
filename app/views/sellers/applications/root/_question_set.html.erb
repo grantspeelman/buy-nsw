@@ -11,7 +11,7 @@
 
     <% if step_completed?(step) %>
       <div class="data">
-        <%= render partial: "step_data_#{key}", locals: { application: application } %>
+        <%= render partial: "data_#{key}", locals: { application: application } %>
       </div>
     <% else %>
       <div class="guidance">

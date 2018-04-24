@@ -8,10 +8,10 @@
     <% if can_submit_application? %>
       <%= render partial: 'submit', locals: { application: application } %>
     <% end %>
-    <%= display_step(application, steps, :tailor, skip_button: true) %>
-    <%= display_step(application, steps, :contacts) %>
-    <%= display_step(application, steps, :profile) %>
-    <%= display_step(application, steps, :documents) %>
-    <%= display_step(application, steps, :legals) %>
+    <%= display_question_set(application, question_sets, :tailor, skip_button: true) %>
+    <%= display_question_set(application, question_sets, :contacts) %>
+    <%= display_question_set(application, question_sets, :profile) %>
+    <%= display_question_set(application, question_sets, :documents) %>
+    <%= display_question_set(application, question_sets, :legals) %>
   </ul>
 </section>

@@ -14,12 +14,12 @@ module Sellers::Applications::RootHelper
     step['result.percent_complete'] > 0
   end
 
-  def display_step(application, steps, key, options = {})
+  def display_question_set(application, sets, key, options = {})
     render(
-      partial: 'step',
+      partial: 'question_set',
       locals: options.merge(
         application: application,
-        step: steps[key],
+        step: sets[key],
         key: key,
       )
     )
