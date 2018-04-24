@@ -45,9 +45,9 @@ module Concerns::Operations::MultiStepForm
       @config[:params_key] = key
     end
 
-    def path_route(helper, model)
+    def path_route(helper, *models)
       @config[:path_helper] = helper
-      @config[:path_model] = model
+      @config[:path_models] = [ models ].flatten
     end
 
     def get(key)

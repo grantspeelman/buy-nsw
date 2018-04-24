@@ -29,8 +29,13 @@ module Concerns::Operations::MultiStepForm
     end
 
     def path
+      # NOTE: Use the models defined in the step configuration as arguments for the
+      # URL helper. This selects them in the order they were defined.
+      #
+      resources = models.slice(*config.get(:path_models)).values
+
       Rails.application.routes.url_helpers.send(
-        config.get(:path_helper), models.fetch(config.get(:path_model)), slug
+        config.get(:path_helper), *resources, slug
       )
     end
 
