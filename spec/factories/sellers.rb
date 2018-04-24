@@ -37,6 +37,7 @@ FactoryBot.define do
     trait :with_full_profile do
       name 'Seller Ltd'
       summary 'We sell things'
+      # Warning this will not make valid ABNs
       sequence(:abn) {|n| n.to_s.ljust(11, "0") }
       website_url 'http://example.org'
       linkedin_url 'http://linkedin.com/example'

@@ -41,8 +41,8 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     click_on 'Start application'
 
     # Business details
-    fill_in 'Business name', with: 'Test Pty Ltd'
-    fill_in 'ABN', with: '10 123 456 789'
+    fill_in 'Business name', with: 'OpenAustralia Foundation Ltd'
+    fill_in 'ABN', with: '24 138 089 942'
     click_on 'Save'
 
     # Industry
@@ -221,7 +221,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   end
 
   def complete_declaration
-    check 'I am Churchill Smith-Winston, an authorised representative of Test Pty Ltd (ABN: 10 123 456 789)'
+    check 'I am Churchill Smith-Winston, an authorised representative of OpenAustralia Foundation Ltd (ABN: 24 138 089 942)'
     click_on 'Save'
   end
 

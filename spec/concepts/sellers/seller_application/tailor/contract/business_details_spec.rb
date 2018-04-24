@@ -8,8 +8,8 @@ RSpec.describe Sellers::SellerApplication::Tailor::Contract::BusinessDetails do
 
   let(:atts) {
     {
-      name: 'Name',
-      abn: '10 123 456 789',
+      name: 'OpenAustralia Foundation',
+      abn: '24 138 089 942',
     }
   }
 
@@ -32,4 +32,10 @@ RSpec.describe Sellers::SellerApplication::Tailor::Contract::BusinessDetails do
     expect(subject.errors[:abn]).to be_present
   end
 
+  it 'is invalid when the ABN is invalid' do
+    subject.validate(atts.merge(abn: '10 123 456 789'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:abn]).to be_present
+  end
 end

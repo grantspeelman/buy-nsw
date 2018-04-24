@@ -67,6 +67,7 @@ en:
     in_future?: must be in the future
     one_of?: must be selected from the list
     in_list?: must be selected from the list
+    abn?: does not look like a valid ABN
   helpers:
     label:
       seller_application:
