@@ -1,0 +1,13 @@
+<dl>
+  <dt>Contacts:</dt>
+  <dd>
+    <%= application.seller.contact_name %><br>
+    <%= application.seller.representative_name %>
+  </dd>
+  <dt>Business address:</dt>
+  <dd>
+    <% application.seller.addresses.each do |address| %>
+      <%= address.address %>, <%= address.suburb %><br>
+    <% end %>
+  </dd>
+</dl>

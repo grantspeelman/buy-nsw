@@ -25,6 +25,10 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
   end
 
   def submit
+    if ! can_submit_application?
+      return redirect_to sellers_application_path(application)
+    end
+    
     run Sellers::SellerApplication::Submit do |result|
       return redirect_to sellers_dashboard_path
     end

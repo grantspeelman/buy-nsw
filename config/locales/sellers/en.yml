@@ -167,7 +167,22 @@ en:
         wa: Western Australia
   sellers:
     applications:
+      title: Your application
+      aside_html: |
+        <p>You can complete the steps in any order. Your progress is saved automatically, so you can return at any time.</p>
       documents:
+        title: Provide documents
+        guidance_html: |
+          <p>This will take approximately 5 minutes.</p>
+          <p>You will need:</p>
+          <ul>
+            <li>your financial documents</li>
+            <li>your insurance documents</li>
+          </ul>
+        aside_html: |
+          <p>Your corporate documents will appear on your seller profile to logged in buyers.</p>
+          <p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they are up to date.</p>
+          <p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
         steps:
           financials:
             short: 'Financials'
@@ -179,12 +194,29 @@ en:
             short: 'Professional indemnity'
             button_label: 'Upload document'
       contacts:
+        title: Your contact details
+        guidance_html: |
+          <p>This will take approximately 5 minutes.</p>
+          <p>You will need:</p>
+          <ul>
+            <li>your contact details</li>
+            <li>your business address</li>
+            <li>contact details of someone authorised to act on behalf of your business</li>
+          </ul>
+        aside_html: |
+          <p>The information here is available to all buyers.</p>
         steps:
           contacts:
             short: 'People'
           addresses:
             short: 'Business address'
       legals:
+        title: Your legals
+        guidance_html: |
+          <p>This will take approximately 15 minutes.</p>
+          <p>You will need your authorised representative to agree to the Core Terms on behalf of your organisation.</p>
+        aside_html: |
+          <p>You'll need to complete the disclosures and accept the Core Terms to become a seller.</p>
         steps:
           declaration:
             short: 'Agree terms'
@@ -198,25 +230,57 @@ en:
           conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with the NSW Government?"
           other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
       tailor:
+        title: Your company details
         steps:
           introduction:
             short: 'Introduction'
             long: 'Qualify to sell to the NSW Government'
             button_label: 'Start application'
+            body_html: |
+              <p>To become a registered seller and offer your services or products to government you need to tell us about your business.</p>
+              <p>The information you share will be used to create your seller profile. The information will also be used to confirm you meet the assessment criteria for sellers to government.</p>
+              <p>It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.</p>
+              <h3>You will need</h3>
+              <ul>
+                <li>Your basic business information</li>
+                <li>Recent financial records or a viability statement from your accountant</li>
+                <li>Details of your insurance cover</li>
+              </ul>
+              <h3>You will be asked to</h3>
+              <ul>
+                <li>Share details about services or products you offer</li>
+                <li>Provide detail about your offering that will support your application</li>
+                <li>Accept the Core Terms</li>
+              </ul>
           business_details:
             short: 'Business details'
             long: 'Tell us about your business'
           industry:
             short: 'Industry'
             long: 'In which industry sectors do you provide services?'
+            intro_html: |
+              <p>The choices you make here will determine the information you need to complete before submitting your application.</p>
           services:
             short: 'ICT categories'
             long: 'What types of ICT products and services do you provide?'
+            intro_html: |
+              <p>Select the categories which are most relevant to your business.</p>
           review:
             short: 'Review details'
             long: 'Review your details'
             button_label: 'Continue'
+            intro_html: |
+              <p>The details you have given will determine the information you need to provide in your application.</p>
+              <p>Please check the information before continuing.</p>
+            incomplete_message: Please complete all other steps before you continue.
       profile:
+        title: Your seller profile
+        guidance_html: |
+          <p>This will take approximately 10 minutes.</p>
+          <p>This information will appear on your profile to interested buyers.</p>
+        aside_html: |
+          <p>The information here is available to all buyers.</p>
+          <p>The more information you provide, the more likely you will be to appear in search results.</p>
         steps:
           introduction:
             short: 'Introduction'

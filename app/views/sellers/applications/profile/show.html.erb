@@ -1,7 +1,6 @@
 <% content_for(:step_container_header) do %>
-  <h1>Your profile</h1>
-  <p>The information here is available to all buyers.</p>
-  <p>The more information you provide, the more likely you will be to appear in search results.</p>
+  <h1><%= t('sellers.applications.profile.title') %></h1>
+  <%= t('sellers.applications.profile.aside_html') %>
 <% end %>
 
 <%= render partial: 'sellers/applications/shared/step', locals: {

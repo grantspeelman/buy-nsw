@@ -1,6 +1,6 @@
 <% content_for(:step_container_header) do %>
-  <h1>Your legals</h1>
-  <p>You'll need to complete the disclosures and accept the Core Terms to become a seller.</p>
+  <h1><%= t('sellers.applications.legals.title') %></h1>
+  <%= t('sellers.applications.legals.aside_html') %>
 <% end %>
 
 <%= render partial: 'sellers/applications/shared/step', locals: {

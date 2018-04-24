@@ -1,8 +1,7 @@
-<p>The details you have given will determine the information you need to provide in your application.</p>
-<p>Please check the information before continuing.</p>
-
 <section class="detail-review">
 <% if operation['result.ready_for_submission'].present? %>
+  <%= t('sellers.applications.tailor.steps.review.intro_html') %>
+  
   <dl>
     <dt><%= t('activemodel.attributes.sellers.seller_application.tailor.contract.business_details.name') %></dt>
     <dd><%= operation[:seller_model].name %></dd>
@@ -19,5 +18,5 @@
 </section>
 
 <% else %>
-  <p>Please complete all other steps before you continue.</p>
+  <p><%= t('sellers.applications.tailor.steps.review.incomplete_message') %></p>
 <% end %>

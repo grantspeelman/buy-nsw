@@ -5,7 +5,8 @@
         <span class="type-label">Seller application<span class="visually-hidden">:</span></span>
         <%= application.seller.name %>
       </h1>
-      <% unless controller_name == 'root' %>
+
+      <% unless ['tailor','root'].include?(controller_name) %>
         <div class="action">
           <%= link_to sellers_application_path(application) do %>
             Back to your application &rarr;

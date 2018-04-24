@@ -61,7 +61,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def complete_contacts_steps
     within '#contacts' do
-      click_on 'Edit'
+      click_on 'Start'
     end
 
     fill_in_contact_details
@@ -74,7 +74,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def complete_profile_steps
     within '#profile' do
-      click_on 'Edit'
+      click_on 'Start'
     end
 
     fill_in 'Summary', with: 'A summary of my business'
@@ -93,7 +93,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def complete_documents_steps
     within '#documents' do
-      click_on 'Edit'
+      click_on 'Start'
     end
 
     upload_document
@@ -109,7 +109,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def complete_legals_steps
     within '#legals' do
-      click_on 'Edit'
+      click_on 'Start'
     end
 
     fill_in_disclosures

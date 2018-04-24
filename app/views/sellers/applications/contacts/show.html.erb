@@ -1,6 +1,6 @@
 <% content_for(:step_container_header) do %>
-  <h1>Your contact details</h1>
-  <p>The information here is available to all buyers.</p>
+  <h1><%= t('sellers.applications.contacts.title') %></h1>
+  <%= t('sellers.applications.contacts.aside_html') %>
 <% end %>
 
 <%= render partial: 'sellers/applications/shared/step', locals: {

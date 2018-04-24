@@ -1,0 +1,22 @@
+<li id="<%= key %>" class="card">
+  <div class="row">
+    <div class="overview">
+      <h2><%= t("sellers.applications.#{key}.title") %></h2>
+      <%= progress_indicator_for(step) %>
+
+      <% unless local_assigns[:skip_button] %>
+        <%= link_to step_button_label(step), send("#{key}_sellers_application_path", application), class: 'action' %>
+      <% end %>
+    </div>
+
+    <% if step_completed?(step) %>
+      <div class="data">
+        <%= render partial: "step_data_#{key}", locals: { application: application } %>
+      </div>
+    <% else %>
+      <div class="guidance">
+        <%= t("sellers.applications.#{key}.guidance_html") %>
+      </div>
+    <% end %>
+  </div>
+</li>
