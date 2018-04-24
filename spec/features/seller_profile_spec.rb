@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Seller profiles', type: :feature, js: true do
 
-  let(:abn) { '12 345 678 900' }
+  let(:abn) { '24 138 089 942' }
   let(:compact_abn) { abn.gsub(/\s/, '') }
 
   let(:seller) { create(:active_seller, abn: compact_abn) }
