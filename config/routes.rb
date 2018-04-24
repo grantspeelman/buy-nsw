@@ -92,6 +92,7 @@ Rails.application.routes.draw do
 
         patch :assign
         patch :decide
+        post :notes
       end
     end
 
