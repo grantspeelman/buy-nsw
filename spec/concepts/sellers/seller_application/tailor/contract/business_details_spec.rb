@@ -38,4 +38,10 @@ RSpec.describe Sellers::SellerApplication::Tailor::Contract::BusinessDetails do
     expect(subject).to_not be_valid
     expect(subject.errors[:abn]).to be_present
   end
+
+  it 'is also valid when the ABN has no spaces' do
+    subject.validate(atts.merge(abn: '24138089942'))
+
+    expect(subject).to be_valid
+  end
 end
