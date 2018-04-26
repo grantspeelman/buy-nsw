@@ -1,11 +1,11 @@
 <div class="progress-indicator">
-  <% if step_completed?(step) %>
+  <% if question_set_completed?(question_set) %>
     <div class="status complete">
       <span class="inner">All details provided</span>
     </div>
-  <% elsif step_started?(step) %>
+  <% elsif question_set_started?(question_set) %>
     <div class="status started">
-      <span class="inner"><%= step['result.percent_complete'] %>% complete</span>
+      <span class="inner"><%= question_set[:percent_complete] %>% complete</span>
     </div>
   <% else %>
     <div class="status">

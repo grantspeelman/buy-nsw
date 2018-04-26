@@ -81,6 +81,11 @@ en:
               declaration:
                 agree_html: |
                   I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
+          products:
+            contract:
+              basics:
+                name: Product name
+                summary: Summary
   activerecord:
     help:
       'sellers/seller_application/tailor/contract/business_details':
@@ -273,6 +278,15 @@ en:
               <p>The details you have given will determine the information you need to provide in your application.</p>
               <p>Please check the information before continuing.</p>
             incomplete_message: Please complete all other steps before you continue.
+      products:
+        title: 'Cloud products and support: your products'
+        empty_name_label: No name
+        new_product_action_label: Add a new product
+        edit_product_action_label: Edit
+        steps:
+          basics:
+            short: Product basics
+            long: Basic information about the product
       profile:
         title: Your seller profile
         guidance_html: |

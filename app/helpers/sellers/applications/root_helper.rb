@@ -1,34 +1,34 @@
 module Sellers::Applications::RootHelper
-  def progress_indicator_for(step)
+  def progress_indicator_for(question_set)
     render partial: 'sellers/applications/shared/progress_indicator',
            locals: {
-             step: step,
+             question_set: question_set,
            }
   end
 
-  def step_completed?(step)
-    step['result.valid?'] == true
+  def question_set_completed?(question_set)
+    question_set[:valid] == true
   end
 
-  def step_started?(step)
-    step['result.percent_complete'] > 0
+  def question_set_started?(question_set)
+    question_set[:percent_complete] > 0
   end
 
-  def display_step(application, steps, key, options = {})
+  def display_question_set(application, progress_report, key, options = {})
     render(
-      partial: 'step',
+      partial: 'question_set',
       locals: options.merge(
         application: application,
-        step: steps[key],
+        question_set: progress_report.question_set_progress["sellers.applications.#{key}"],
         key: key,
       )
     )
   end
 
-  def step_button_label(step)
+  def question_step_button_label(question_set)
     case
-    when step_completed?(step) then 'Edit'
-    when step_started?(step) then 'Complete'
+    when question_set_completed?(question_set) then 'Edit'
+    when question_set_started?(question_set) then 'Complete'
     else
       'Start'
     end

@@ -1,0 +1,18 @@
+<%= f.text_field :name %>
+<%= f.text_area :summary, rows: 5 %>
+
+<fieldset class="multiple-choice-group checkbox-group">
+  <legend>Which category best describes your product?</legend>
+  <%= f.collection_radio_buttons(:section, Product.section.options, :last, :first, skip_label: true) %>
+</fieldset>
+
+<fieldset class="multiple-choice-group checkbox-group with-enterprise-field">
+  <legend>Which buyers would use your product?</legend>
+  <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true) %>
+
+  <div class="form-check">
+    <%= check_box_tag 'enterprise', nil, false, id: "enterprise_check" %>
+    <%= label_tag "enterprise_check", "Enterprise", class: 'form-check-label' %>
+    <small class="form-text text-muted">More than 3 of the selections in the above list.</small>
+  </div>
+</fieldset>
