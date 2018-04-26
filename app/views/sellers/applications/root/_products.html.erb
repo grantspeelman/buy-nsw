@@ -16,6 +16,9 @@
                   <em><%= t("sellers.applications.products.empty_name_label") %></em>
                 <% end %>
               </h3>
+              <%= progress_indicator_for(
+                    progress_report.question_set_progress["sellers.applications.products.#{product.id}"]
+                  ) %>
             </div>
             <div class="product-actions">
               <%= link_to t("sellers.applications.products.edit_product_action_label"), sellers_application_product_path(application, product), class: 'action' %>

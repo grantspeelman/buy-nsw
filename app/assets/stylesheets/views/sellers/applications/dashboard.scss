@@ -154,12 +154,13 @@
       @extend .row;
 
       list-style: none;
-      border-bottom: 1px solid $grey-2;
+      border-bottom: 1px solid #eee;
       padding: .5rem 0;
     }
 
     .product-info {
       @extend .col-8;
+      padding-left: 0;
     }
     .product-actions {
       @extend .col-4;
@@ -169,6 +170,10 @@
         @extend .btn-light;
         background: $grey-2;
       }
+    }
+    .progress-indicator {
+      padding-bottom: 0;
+      margin-top: .3rem;
     }
 
     .action {

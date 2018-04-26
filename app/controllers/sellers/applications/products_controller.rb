@@ -1,66 +1,34 @@
-class Sellers::Applications::ProductsController < Sellers::BaseController
-  before_action :authenticate_user!
-  layout '../sellers/applications/_layout'
+class Sellers::Applications::ProductsController < Sellers::Applications::QuestionGroupController
+  layout '../sellers/applications/products/_layout'
 
   def index
-    redirect_to action: :new unless products.any?
+    redirect_to sellers_application_path(params[:application_id])
   end
 
   def new
-    product = relation.create
-    redirect_to sellers_application_product_path(application, product, new: true)
-  end
-
-  def show
-    unless params.key?(:new)
-      form.valid?
+    run Sellers::SellerApplication::Products::Create do |result|
+      return redirect_to sellers_application_product_path(result[:application_model], result[:product_model])
     end
   end
 
   def update
-    valid = form.validate(params[:product])
-    form.save
-
-    if valid
-      redirect_to action: :index
-    else
-      render action: :show
+    @operation = run operation_class do |result|
+      if result['result.completed'] == true
+        return redirect_to sellers_application_path(result[:application_model])
+      else
+        return redirect_to result['result.next_step'].path
+      end
     end
-  end
 
-  def destroy
-    product.destroy
-    redirect_to action: :index
+    render :show
   end
 
 private
-  def application
-    @application ||= current_user.seller_applications.created.find(params[:application_id])
-  end
-  helper_method :application
-
-  def presenter
-    @presenter ||= SellerApplicationPresenter.new(application,
-                                                  current_step_slug: 'products')
-  end
-  helper_method :presenter
-
-  def products
-    @products ||= presenter.current_step_form.product_forms
-  end
-  helper_method :products
-
-  def relation
-    application.seller.products
+  def operation_class
+    Sellers::SellerApplication::Products::Update
   end
 
-  def product
-    @product ||= relation.find(params[:id])
+  def operation_present_class
+    Sellers::SellerApplication::Products::Update::Present
   end
-
-  def form
-    @form ||= Sellers::Applications::Products::InfoForm.new(product)
-  end
-  helper_method :form
-
 end
