@@ -1,6 +1,6 @@
 class SellerApplicationMailer < ApplicationMailer
   # TODO: Probably want the person's name in there too
-  default to: -> { params[:application].owner.email }
+  default to: -> { params[:application].owners.map(&:email) }
 
   def application_approved_email
     @application = params[:application]

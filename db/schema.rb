@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423232046) do
+ActiveRecord::Schema.define(version: 20180427003850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20180423232046) do
   end
 
   create_table "sellers", force: :cascade do |t|
-    t.integer "owner_id", null: false
     t.string "state", null: false
     t.string "name"
     t.datetime "created_at", null: false
@@ -188,6 +187,7 @@ ActiveRecord::Schema.define(version: 20180423232046) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "roles", default: [], array: true
+    t.integer "seller_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -197,5 +197,4 @@ ActiveRecord::Schema.define(version: 20180423232046) do
   add_foreign_key "seller_applications", "sellers"
   add_foreign_key "seller_awards", "sellers"
   add_foreign_key "seller_engagements", "sellers"
-  add_foreign_key "sellers", "users", column: "owner_id"
 end

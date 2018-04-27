@@ -5,8 +5,11 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
     elsif current_user.seller.present?
       redirect_to sellers_dashboard_path
     else
-      seller = Seller.create!(owner: current_user)
-      application = seller.applications.create!
+      current_user.seller = Seller.create!
+      current_user.save!
+
+      application = current_user.seller.applications.create!
+
       Event::StartedApplication.create(
         user: current_user,
         eventable: application

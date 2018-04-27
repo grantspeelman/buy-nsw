@@ -9,7 +9,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to match("Congratulations, your application has been approved")
       # TODO: Probably want the person's name in there too
-      expect(mail.to).to contain_exactly(application.owner.email)
+      expect(mail.to).to contain_exactly(*application.owners.map(&:email))
     end
 
     it 'say nice things' do
@@ -32,7 +32,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to match("Sorry, your application has not been approved")
       # TODO: Probably want the person's name in there too
-      expect(mail.to).to contain_exactly(application.owner.email)
+      expect(mail.to).to contain_exactly(*application.owners.map(&:email))
     end
 
     it 'breaks the news gently' do
@@ -55,7 +55,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to match("Your application needs some changes before it can be approved")
       # TODO: Probably want the person's name in there too
-      expect(mail.to).to contain_exactly(application.owner.email)
+      expect(mail.to).to contain_exactly(*application.owners.map(&:email))
     end
 
     it 'lets them know that they need to make changes' do
