@@ -234,6 +234,8 @@ en:
           insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years?"
           conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with the NSW Government?"
           other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
+      messages:
+        invitation_sent: We've sent an invitation to %{email}.
       tailor:
         title: Your company details
         steps:

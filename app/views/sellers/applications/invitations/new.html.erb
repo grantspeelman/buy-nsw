@@ -1,0 +1,8 @@
+<h1>Invite</h1>
+
+<%= bootstrap_form_for form, url: sellers_application_invitations_path(operation[:application_model]),
+                             as: :invitation do |f| %>
+  <%= f.text_field :email %>
+
+  <%= f.submit %>
+<% end %>

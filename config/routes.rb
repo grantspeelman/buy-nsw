@@ -48,8 +48,11 @@ Rails.application.routes.draw do
         get '/legals/:step', to: 'applications/legals#show', as: :legals_step
         patch '/legals', to: 'applications/legals#update'
       end
+
       resources :products, controller: 'applications/products'
       get '/products/:id/:step', to: 'applications/products#show', as: :product_step
+
+      resources :invitations, controller: 'applications/invitations'
     end
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 
