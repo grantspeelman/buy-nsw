@@ -2,9 +2,8 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step :model!
 
-    def model!(options, **)
-      options['model'] = options[:application_model]
-      options['model'].present?
+    def model!(options, params:, **)
+      options['model'] = options['current_user'].seller_applications.find(params[:id])
     end
   end
 

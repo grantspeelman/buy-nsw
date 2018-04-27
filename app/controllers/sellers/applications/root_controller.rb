@@ -1,27 +1,15 @@
 class Sellers::Applications::RootController < Sellers::Applications::BaseController
   def new
-    if existing_application.present?
-      redirect_to sellers_application_path(existing_application)
-    elsif current_user.seller.present?
-      redirect_to sellers_dashboard_path
-    else
-      current_user.seller = Seller.create!
-      current_user.save!
-
-      application = current_user.seller.applications.create!
-
-      Event::StartedApplication.create(
-        user: current_user,
-        eventable: application
-      )
-
-      redirect_to sellers_application_path(application)
+    run Sellers::SellerApplication::Create do |result|
+      return redirect_to sellers_application_path(result[:application_model].id)
     end
+
+    redirect_to sellers_dashboard_path
   end
 
   def show
     unless tailor_step_valid?
-      return redirect_to(tailor_sellers_application_path(existing_application))
+      return redirect_to(tailor_sellers_application_path(application))
     end
 
     render :show
@@ -40,13 +28,10 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
   end
 
 private
-  def existing_application
-    @existing_application ||= current_user.seller_applications.created.first
-  end
-
   def application
     @application ||= current_user.seller_applications.created.find(params[:id])
   end
+  helper_method :application
 
   def question_sets
     [
@@ -81,8 +66,4 @@ private
     @operation ||= run(Sellers::SellerApplication::Submit::Present)
   end
   helper_method :submit_form
-
-  def _run_options(options)
-    super.merge( :application_model => application )
-  end
 end
