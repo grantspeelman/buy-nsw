@@ -236,6 +236,8 @@ en:
           other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
       messages:
         invitation_sent: We've sent an invitation to %{email}.
+        invitation_accepted: You've accepted the invitation and joined the seller profile.
+        invitation_invalid: This invitation code isn't valid. Please contact us for help.
       tailor:
         title: Your company details
         steps:

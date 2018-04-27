@@ -1,0 +1,17 @@
+<section class="team">
+  <h2>Your team</h2>
+  <ul>
+    <% application.seller.owners.each do |user| %>
+      <li>
+        <span class="icon" aria-hidden="true"></span>
+        <%= user.email %>
+        <% unless user.confirmed_at.present? %>
+          <span class="unconfirmed">Invitation sent</span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <p class="invite-action">
+    <%= link_to 'Invite a team member', new_sellers_application_invitation_path(application) %>
+  </p>
+</section>

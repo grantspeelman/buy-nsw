@@ -2,4 +2,4 @@
 
 <p>Click the button below to accept the invitation.</p>
 
-<p><%= link_to "Accept invitation", user_confirmation_url(confirmation_token: @user.confirmation_token), class: 'button' %></p>
+<p><%= link_to "Accept invitation", accept_sellers_application_invitations_url(@application, confirmation_token: @user.confirmation_token), class: 'button' %></p>

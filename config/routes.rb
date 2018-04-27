@@ -52,7 +52,12 @@ Rails.application.routes.draw do
       resources :products, controller: 'applications/products'
       get '/products/:id/:step', to: 'applications/products#show', as: :product_step
 
-      resources :invitations, controller: 'applications/invitations'
+      resources :invitations, controller: 'applications/invitations', only: [:new, :create] do
+        collection do
+          get :accept
+          patch '/accept', to: 'applications/invitations#update_accept', as: :update_accept
+        end
+      end
     end
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 

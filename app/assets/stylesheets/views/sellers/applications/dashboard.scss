@@ -195,4 +195,38 @@
     }
   }
 
+  .team {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      list-style: none;
+      font-size: .9rem;
+      padding: .2rem 0;
+
+      .icon {
+        @extend .oi;
+        @extend .oi-person;
+        padding-right: .4rem;
+      }
+    }
+
+    .invite-action a {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: .9rem;
+    }
+
+    .unconfirmed {
+      display: block;
+      padding-left: 1.6rem;
+      font-size: .8rem;
+      color: #666;
+    }
+  }
 }

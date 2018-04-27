@@ -33,4 +33,6 @@ class User < ApplicationRecord
   scope :admin, ->{ with_role('admin') }
   scope :seller, ->{ with_role('seller') }
   scope :buyer, ->{ with_role('buyer') }
+
+  scope :unconfirmed, ->{ where('confirmed_at IS NULL') }
 end
