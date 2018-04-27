@@ -22,4 +22,19 @@
       margin: 0 0 0.5em;
     }
   }
+
+  .alert-box {
+    border: 1px solid $grey-2;
+    border-left: .8rem solid $red;
+    padding: 1rem;
+    margin: 1rem 0;
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
 }
