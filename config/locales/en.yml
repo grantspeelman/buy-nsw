@@ -64,6 +64,7 @@ en:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
     file?: must be provided
+    file_uploaded?: file file must be provided
     in_future?: must be in the future
     one_of?: must be selected from the list
     in_list?: must be selected from the list

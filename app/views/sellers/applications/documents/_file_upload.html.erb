@@ -4,7 +4,11 @@
 
   <% if (upload = f.object.upload_for(key)) && upload&.url.present? %>
     <div class="current-document">
-      Your current uploaded file: <%= link_to upload.file.filename, upload.url %>
+      Your current uploaded file:
+      <div class="file">
+        <span class="icon" aria-hidden="true"></span>
+        <%= link_to upload.file.filename, upload.url %>
+      </div>
     </div>
   <% end %>
 

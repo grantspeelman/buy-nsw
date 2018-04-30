@@ -105,7 +105,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     upload_document
 
     click_on_step 'Workers compensation'
-    upload_document
+    upload_document(button_label: 'Save')
 
     go_back_to_application
   end
@@ -209,7 +209,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
   end
 
-  def upload_document
+  def upload_document(button_label: 'Upload document')
     expiry_date = 1.year.from_now
 
     attach_file 'Upload a file', example_pdf, make_visible: true
@@ -218,7 +218,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     fill_in 'Month', with: expiry_date.month
     fill_in 'Year', with: expiry_date.year
 
-    click_on 'Upload document'
+    click_on button_label
   end
 
   def example_pdf

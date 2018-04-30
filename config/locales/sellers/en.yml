@@ -51,6 +51,7 @@ en:
               workers_compensation:
                 workers_compensation_certificate: 'Workers Compensation Insurance'
                 workers_compensation_certificate_expiry: Expiry date
+                workers_compensation_exempt: This business is not required to have Workers Compensation insurance
           legals:
             contract:
               disclosures:
@@ -194,7 +195,7 @@ en:
             button_label: 'Upload document'
           workers_compensation:
             short: 'Workers compensation'
-            button_label: 'Upload document'
+            button_label: 'Save'
           professional_indemnity:
             short: 'Professional indemnity'
             button_label: 'Upload document'

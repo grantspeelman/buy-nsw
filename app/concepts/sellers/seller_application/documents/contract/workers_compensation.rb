@@ -5,11 +5,75 @@ module Sellers::SellerApplication::Documents::Contract
 
     property :workers_compensation_certificate,        on: :seller
     property :workers_compensation_certificate_expiry, on: :seller, multi_params: true
+    property :workers_compensation_exempt,             on: :seller
+
+    # NOTE: Trying to implement conditional validation on this model has been
+    # painstaking, but the following does work.
+    #
+    # Because the `workers_compensation_certificate` field is actually an
+    # instance of a CarrierWave Uploader on the model, it never returns `nil`.
+    #
+    # Therefore, when we try to create a validation rule which says "only
+    # validate the file when the checkbox is false", the presence of the field
+    # (as an object) causes the validation library to validate it anyway.
+    #
+    # The fix has been to coerce the file input into a string using Dry's Types
+    # functionality. This means we can search through the Uploader object to
+    # check if the file actually exists, and use that value instead.
+    #
+    # Of course, this is never simple, so we have to also handle the case that
+    # the file is an instance of ActionDispatch::Http::UploadedFile, which it is
+    # for a request where a user is actually uploading a new file.
+    #
+
+    module Types
+      include Dry::Types.module
+
+      File = Types::Any.constructor do |file|
+        # A file which has already been uploaded to the resource and is a
+        # CarrierWave Uploader object.
+        #
+        # file.filename returns the path.
+        #
+        if file.respond_to?(:file) && file.file.present?
+          file.file.filename
+
+        # A file which is being uploaded in this request, and is an instance of
+        # ActionDispatch::Http::UploadedFile.
+        #
+        # file.original_filename returns the path here.
+        #
+        elsif file.respond_to?(:original_filename) && file.original_filename.present?
+          file.original_filename
+        end
+      end
+    end
 
     validation :default, inherit: true do
+      configure do
+        config.type_specs = true
+
+        def file_uploaded?(document)
+          document.present?
+        end
+      end
+
       required(:seller).schema do
-        required(:workers_compensation_certificate).filled(:file?)
-        required(:workers_compensation_certificate_expiry).filled(:date?, :in_future?)
+        # NOTE: When you enable types in Dry-validation, you are then required
+        # to specify the type of all attributes in the schema.
+        #
+        # If you miss an attribute, it will quietly fail and ignore it.
+        #
+        required(:workers_compensation_exempt, Types::Bool).filled
+        required(:workers_compensation_certificate, Types::File).maybe(:file_uploaded?)
+        required(:workers_compensation_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
+
+        rule(workers_compensation_certificate: [:workers_compensation_exempt, :workers_compensation_certificate]) do |exempt, document|
+          exempt.false?.then(document.filled?)
+        end
+        rule(workers_compensation_certificate_expiry: [:workers_compensation_exempt, :workers_compensation_certificate_expiry]) do |exempt, expiry|
+          exempt.false?.then(expiry.filled?)
+        end
       end
     end
   end
