@@ -127,7 +127,17 @@
         display: block;
         font-size: .9rem;
         font-weight: normal;
-        margin-top: 0.4rem;
+        margin-top: .4rem;
+
+        ul.tags {
+          display: inline-block;
+          vertical-align: middle;
+          padding-left: .25rem;
+        }
+
+        ul.tags li {
+          
+        }
       }
     }
     p {
