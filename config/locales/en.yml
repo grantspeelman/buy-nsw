@@ -206,6 +206,15 @@ en:
             projects-team-collaboration: Projects and team collaboration
             sales-marketing: Sales and marketing
             security-cyber: Security and cyber
+        business_identifiers:
+          name: Business identifiers
+          options:
+            disability: Australian disability enterprise
+            indigenous: Indigenous business
+            not_for_profit: Not for profit / social enterprise
+            regional: Regional
+            sme: SME
+            start_up: Start-up
   users:
     sessions:
       sign_up:

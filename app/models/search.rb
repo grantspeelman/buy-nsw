@@ -20,8 +20,10 @@ class Search
   end
 
   def filter_selected?(filter, option = nil)
-    if option
-      filter_value(filter)&.include?(option.to_s)
+    value = filter_value(filter)
+
+    if option.present? && value.present?
+      value.is_a?(Array) ? value.map(&:to_s).include?(option.to_s) : value.to_s == option.to_s
     else
       filter_value(filter).present?
     end

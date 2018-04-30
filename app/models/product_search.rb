@@ -11,17 +11,26 @@ class ProductSearch < Search
   def available_filters
     {
       audiences: audiences_keys,
+      business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
     }
   end
 
 private
+  include Concerns::Search::SellerTagFilters
+
   def base_relation
     Product.with_section(section).active
   end
 
   def apply_filters(scope)
     scope.yield_self(&method(:term_filter)).
-          yield_self(&method(:audiences_filter))
+          yield_self(&method(:audiences_filter)).
+          yield_self(&method(:start_up_filter)).
+          yield_self(&method(:sme_filter)).
+          yield_self(&method(:disability_filter)).
+          yield_self(&method(:regional_filter)).
+          yield_self(&method(:indigenous_filter)).
+          yield_self(&method(:not_for_profit_filter))
   end
 
   def term_filter(relation)
