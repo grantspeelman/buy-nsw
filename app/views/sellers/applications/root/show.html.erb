@@ -2,6 +2,8 @@
   <aside>
     <h1><%= t('sellers.applications.title') %></h1>
     <%= t('sellers.applications.aside_html') %>
+
+    <%= render partial: 'team', locals: { application: application } %>
   </aside>
 
   <ul class="cards">

@@ -1,0 +1,20 @@
+<section class="accept-invitation">
+  <header>
+    <h1>Your invitation to join this seller</h1>
+
+    <p>You have been invited to join the seller profile for <strong><%= operation[:application_model].seller.name %></strong>.</p>
+    <p>Before you join, set a password. You'll need this when you sign in again.</p>
+  </header>
+
+  <%= bootstrap_form_for form, url: update_accept_sellers_application_invitations_path(operation[:application_model]),
+                               as: :user do |f| %>
+
+    <%= user_error_messages_for_model(operation['model']) %>
+
+    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
+    <%= hidden_field_tag :confirmation_token, params[:confirmation_token] %>
+
+    <%= f.submit 'Accept invitation' %>
+  <% end %>
+</section>

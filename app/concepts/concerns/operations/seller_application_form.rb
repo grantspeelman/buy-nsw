@@ -12,7 +12,7 @@ module Concerns::Operations::SellerApplicationForm
   end
 
   def model!(options, params:, **)
-    options[:application_model] ||= SellerApplication.created.find_by_user_and_application(options['current_user'], params[:id])
+    options[:application_model] ||= options['current_user'].seller_applications.created.find(params[:id])
     options[:seller_model] = options[:application_model].seller
 
     options[:application_model].present?

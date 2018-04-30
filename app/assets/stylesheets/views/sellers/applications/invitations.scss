@@ -1,0 +1,13 @@
+.view-sellers-applications {
+  .new-invitation, .accept-invitation {
+    @extend .row;
+
+    header {
+      @extend .col-4;
+      padding-right: 4rem;
+    }
+    form {
+      @extend .col-8;
+    }
+  }
+}

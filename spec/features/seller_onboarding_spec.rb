@@ -13,6 +13,9 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_contacts_steps
     complete_profile_steps
     complete_documents_steps
+
+    invite_team_member
+    accept_invitation
     complete_legals_steps
 
     submit_application
@@ -120,6 +123,27 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     go_back_to_application
   end
 
+  def invite_team_member
+    click_on 'Invite'
+
+    fill_in 'Email', with: 'authorised@test.org'
+    click_on 'Send invitation'
+  end
+
+  def accept_invitation
+    token = User.find_by_email('authorised@test.org').confirmation_token
+    application_id = SellerApplication.last.id
+
+    visit accept_sellers_application_invitations_path(application_id, confirmation_token: token)
+
+    fill_in 'Password', with: 'foo bar baz'
+    fill_in 'Password confirmation', with: 'foo bar baz'
+
+    click_on 'Accept'
+
+    expect(page).to have_content('accepted')
+  end
+
   def fill_in_address
     within_fieldset 'Your business address' do
       fill_in 'Address', with: '123 Test Street'
@@ -158,7 +182,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
     within_fieldset 'Authorised representative' do
       fill_in 'Name', with: 'Churchill Smith-Winston'
-      fill_in 'Email address', with: 'example@test.org'
+      fill_in 'Email address', with: 'authorised@test.org'
       fill_in 'Phone', with: '0487 654 321'
     end
     click_on 'Save'
