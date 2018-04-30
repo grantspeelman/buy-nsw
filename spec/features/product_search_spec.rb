@@ -29,7 +29,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     click_on 'Search'
 
     within '.results' do
-      expect(page.all('li').size).to eq(1)
+      expect(page.all('.results li.result').size).to eq(1)
       expect(page).to have_content(:li, product_2.name)
     end
   end
@@ -40,14 +40,14 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     fill_in 'q', with: 'Cloud-o-matic'
     click_on 'Search'
 
-    expect(page.all('.results li').size).to eq(2)
+    expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
       page.find('label', text: 'Legal').trigger('click')
     end
     click_on 'Apply filters'
 
-    expect(page.all('.results li').size).to eq(1)
+    expect(page.all('.results li.result').size).to eq(1)
 
     within '.results' do
       expect(page).to have_content(:li, product_2.name)

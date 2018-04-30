@@ -4,6 +4,7 @@
     <div class="seller-details">
       <span class="visually-hidden">by</span>
       <%= product.seller.name %>
+      <%= seller_profile_tags(product.seller) %>
     </div>
   </h3>
   <p class="summary"><%= product.summary.truncate_words(50) %></p>
