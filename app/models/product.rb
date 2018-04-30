@@ -36,4 +36,11 @@ class Product < ApplicationRecord
 
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }
+  scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }
+  scope :disability, ->{ joins(:seller).where('sellers.disability' => true) }
+  scope :indigenous, ->{ joins(:seller).where('sellers.indigenous' => true) }
+  scope :not_for_profit, ->{ joins(:seller).where('sellers.not_for_profit' => true) }
+  scope :regional, ->{ joins(:seller).where('sellers.regional' => true) }
+  scope :sme, ->{ joins(:seller).where('sellers.sme' => true) }
+  scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }
 end
