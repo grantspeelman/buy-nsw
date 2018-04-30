@@ -4,7 +4,9 @@ class Sellers::SellerApplication::Invitation::Accept < Trailblazer::Operation
     step Contract::Build( constant: Sellers::SellerApplication::Invitation::Contract::Accept )
 
     def validate_confirmation_token!(options, params:, **)
-      options[:application_model] = SellerApplication.find(params[:application_id])
+      options[:application_model] = SellerApplication.created.find_by_id(params[:application_id])
+
+      return false unless options[:application_model].present?
 
       unconfirmed_users = options[:application_model].seller.owners.unconfirmed
       options['model'] = unconfirmed_users.where(confirmation_token: params[:confirmation_token]).first
