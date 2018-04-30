@@ -11,6 +11,8 @@
                          url: sellers_application_invitations_path(operation[:application_model]),
                          as: :invitation do |f| %>
 
+    <%= user_error_messages_for_model(operation['model']) %>
+
     <%= f.text_field :email %>
     <%= f.submit 'Send invitation' %>
   <% end %>
