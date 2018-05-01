@@ -69,6 +69,7 @@ en:
     one_of?: must be selected from the list
     in_list?: must be selected from the list
     same_password?: must match
+    max_word_count?: exceeds the word count
   helpers:
     label:
       seller_application:

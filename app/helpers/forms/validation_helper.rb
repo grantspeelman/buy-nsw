@@ -23,6 +23,10 @@ module Forms::ValidationHelper
         def in_future?(date)
           date.present? && date > Date.today
         end
+
+        def max_word_count?(max_word_count, value)
+          value.split(' ').size <= max_word_count
+        end
       end
     end
   end

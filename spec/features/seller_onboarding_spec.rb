@@ -260,7 +260,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   def click_on_step(label)
     within '.steps-list' do
       node = page.find('a', text: label)
-      node.trigger('click')
+      node.click
     end
   end
 

@@ -290,3 +290,21 @@ input[type=radio]:checked + label::after {
 .custom-file-input.with-attached-file + .custom-file-label {
   color: #000;
 }
+
+// Word count
+
+*[data-module=max-word-count] .form-group {
+  overflow: auto;
+}
+
+.word-count-label {
+  display: block;
+  padding: .6rem .3rem 0 3rem;
+
+  float: right;
+  text-align: right;
+
+  &.invalid {
+    color: $red;
+  }
+}
