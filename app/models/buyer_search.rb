@@ -1,7 +1,4 @@
 class BuyerSearch < Search
-  def initialize(selected_filters: {})
-    super(selected_filters: selected_filters)
-  end
 
   def available_filters
     {
