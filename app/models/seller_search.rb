@@ -1,10 +1,10 @@
 class SellerSearch < Search
   attr_reader :term
 
-  def initialize(term:, selected_filters: {})
+  def initialize(term:, selected_filters: {}, page: nil, per_page: nil)
     @term = term
 
-    super(selected_filters: selected_filters)
+    super(selected_filters: selected_filters, page: page, per_page: per_page)
   end
 
   def available_filters

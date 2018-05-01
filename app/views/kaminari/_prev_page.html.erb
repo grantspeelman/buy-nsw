@@ -1,0 +1,8 @@
+<% unless current_page.first? %>
+  <li class="previous-link">
+    <%= link_to url, rel: 'prev', remote: remote do %>
+      <h3>&larr; Previous page</h3>
+      <span><%= current_page-1 %> of <%= total_pages %></span>
+    <% end %>
+  </li>
+<% end %>

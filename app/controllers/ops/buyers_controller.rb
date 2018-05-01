@@ -20,6 +20,8 @@ private
   def search
     @search ||= BuyerSearch.new(
       selected_filters: params,
+      page: params.fetch(:page, 1),
+      per_page: 25,
     )
   end
   helper_method :search
