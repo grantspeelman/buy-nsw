@@ -19,18 +19,42 @@ RSpec.describe Sellers::SellerApplication::Profile::Contract::Basics do
     expect(subject.save).to eq(true)
   end
 
-  it 'is invalid when the summary is blank' do
-    subject.validate(atts.merge(summary: ''))
-
-    expect(subject).to_not be_valid
-    expect(subject.errors[:summary]).to be_present
-  end
-
   it 'is invalid when the website URL is blank' do
     subject.validate(atts.merge(website_url: ''))
 
     expect(subject).to_not be_valid
     expect(subject.errors[:website_url]).to be_present
+  end
+
+  context 'summary' do
+    it 'is invalid when blank' do
+      subject.validate(atts.merge(summary: ''))
+
+      expect(subject).to_not be_valid
+      expect(subject.errors[:summary]).to be_present
+    end
+
+    it 'is valid when less than 50 words' do
+      summary = (1..49).map {|n| 'word' }.join(' ')
+      subject.validate(atts.merge(summary: summary))
+
+      expect(subject).to be_valid
+    end
+
+    it 'is valid when 50 words' do
+      summary = (1..50).map {|n| 'word' }.join(' ')
+      subject.validate(atts.merge(summary: summary))
+
+      expect(subject).to be_valid
+    end
+
+    it 'is invalid when longer than 50 words' do
+      summary = (1..51).map {|n| 'word' }.join(' ')
+      subject.validate(atts.merge(summary: summary))
+
+      expect(subject).to_not be_valid
+      expect(subject.errors[:summary]).to be_present
+    end
   end
 
 end
