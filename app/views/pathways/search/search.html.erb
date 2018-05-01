@@ -9,9 +9,13 @@
     <ul class="results">
       <%= render partial: 'shared/search/result_count', locals: { search: search, object: 'product' } %>
 
-      <% search.results.each do |product| %>
+      <% search.paginated_results.each do |product| %>
         <%= render partial: 'result', locals: { product: product } %>
       <% end %>
     </ul>
+
+    <div class="search-pagination">
+      <%= render partial: 'shared/search/pagination', locals: { search: search } %>
+    </div>
   </div>
 </section>
