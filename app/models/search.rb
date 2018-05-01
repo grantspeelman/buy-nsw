@@ -1,5 +1,7 @@
 class Search
   def initialize(selected_filters: {})
+  class MissingBaseRelation < StandardError; end
+
     @selected_filters = selected_filters
   end
 
@@ -35,7 +37,7 @@ class Search
 
 private
   def base_relation
-    raise('Missing base_relation in Search instance')
+    raise(MissingBaseRelation, 'Missing base_relation method. You need to override this in your Search subclass.')
   end
 
   def apply_filters(scope)
