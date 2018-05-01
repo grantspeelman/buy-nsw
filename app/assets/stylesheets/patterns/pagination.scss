@@ -1,0 +1,37 @@
+ul.pagination {
+  @extend .row;
+  margin-top: 1rem;
+
+  li.previous-link, li.next-link {
+    @extend .page-item;
+    @extend .col-4;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    a {
+      @extend .page-link;
+      border: none;
+      color: $dark-blue;
+      border-radius: .25rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: .3rem;
+      }
+    }
+  }
+
+  li.next-link {
+    text-align: right;
+    @extend .offset-md-4;
+
+    &:first-of-type {
+      @extend .offset-md-8;
+    }
+  }
+}
