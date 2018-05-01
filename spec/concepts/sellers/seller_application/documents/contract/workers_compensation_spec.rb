@@ -14,6 +14,12 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
   let(:future_date) { Date.today + 1.year }
   let(:historical_date) { Date.today - 1.year }
 
+  context '#started?' do
+    it 'returns false when all fields are empty' do
+      expect(subject.started?).to be_falsey
+    end
+  end
+
   context 'for a seller not exempt from workers compensation insurance' do
     let(:atts) {
       {

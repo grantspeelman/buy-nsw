@@ -8,7 +8,7 @@ module Concerns::Contracts::Status
       if value.is_a?(Array)
         value.first&.id.present?
       else
-        value.present? || value == false
+        value.present?
       end
     }.compact.any?
   end
