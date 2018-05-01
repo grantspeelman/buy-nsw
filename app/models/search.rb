@@ -1,5 +1,6 @@
 class Search
   class MissingBaseRelation < StandardError; end
+  class MissingPaginationArgument < StandardError; end
 
   def initialize(selected_filters: {}, page: nil, per_page: nil)
     @selected_filters = selected_filters
@@ -56,7 +57,7 @@ private
     if page
       scope.page(page).per(per_page)
     else
-      scope
+      raise(MissingPaginationArgument, 'Missing the `page` parameter required for pagination. Pass this into your search object, or instead call `results` for the full result list.')
     end
   end
 
