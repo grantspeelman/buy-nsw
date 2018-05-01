@@ -1,12 +1,18 @@
 class Search
-  def initialize(selected_filters: {})
   class MissingBaseRelation < StandardError; end
 
+  def initialize(selected_filters: {}, page: nil, per_page: nil)
     @selected_filters = selected_filters
+    @page = page
+    @per_page = per_page
   end
 
   def results
     @results ||= apply_filters(base_relation)
+  end
+
+  def paginated_results
+    @paginated_results ||= apply_pagination(results)
   end
 
   def result_count
@@ -36,12 +42,22 @@ class Search
   end
 
 private
+  attr_reader :page, :per_page
+
   def base_relation
     raise(MissingBaseRelation, 'Missing base_relation method. You need to override this in your Search subclass.')
   end
 
   def apply_filters(scope)
     scope
+  end
+
+  def apply_pagination(scope)
+    if page
+      scope.page(page).per(per_page)
+    else
+      scope
+    end
   end
 
 end
