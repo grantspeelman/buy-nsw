@@ -15,7 +15,7 @@
   }
 
   MaxWordCount.prototype.registerEvents = function registerEvents () {
-    this.$input.on('keydown', $.proxy(this.calculateWordCount, this))
+    this.$input.on('keyup', $.proxy(this.calculateWordCount, this))
   }
 
   MaxWordCount.prototype.hideErrorMessage = function hideErrorMessage () {
@@ -38,7 +38,7 @@
   MaxWordCount.prototype.calculateWordCount = function calculateWordCount () {
     var value = this.$input.val()
 
-    var wordCount = value.split(' ').filter(function (word) {
+    var wordCount = value.split(/[\s,]+/).filter(function (word) {
       return word.trim().length > 0
     }).length
 
@@ -71,8 +71,10 @@
 
 $(function () {
   $('*[data-module="max-word-count"]').each(
-    (i, el) => new window.ProcurementHub.MaxWordCount({
-      $el: $(el)
-    })
+    function (i, el) {
+      new window.ProcurementHub.MaxWordCount({
+        $el: $(el)
+      })
+    }
   )
 })
