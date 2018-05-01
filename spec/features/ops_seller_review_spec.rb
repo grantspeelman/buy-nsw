@@ -36,7 +36,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def assign_application_to(email)
-    page.find('h2', text: 'Assign this application').trigger('click')
+    page.find('h2', text: 'Assign this application').click
     select email, from: 'Assigned to'
     click_on 'Assign'
   end
@@ -54,7 +54,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def decide_on_application(decision:, response:)
-    page.find('h2', text: 'Make a decision').trigger('click')
+    page.find('h2', text: 'Make a decision').click
 
     within_fieldset 'Outcome' do
       choose decision

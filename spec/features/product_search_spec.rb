@@ -43,7 +43,8 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
-      page.find('label', text: 'Legal').trigger('click')
+      page.find('label', text: 'Legal').click
+      # check 'legal', name: 'audiences'
     end
     click_on 'Apply filters'
 
@@ -63,7 +64,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
-      page.find('label', text: 'Start-up').trigger('click')
+      page.find('label', text: 'Start-up').click
     end
     click_on 'Apply filters'
 
