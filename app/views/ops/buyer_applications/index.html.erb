@@ -11,9 +11,10 @@
       <section class="record-list">
         <h2><%= pluralize(search.result_count, 'application') %></h2>
         <%= render partial: 'list', locals: {
-              applications: search.results,
+              applications: search.paginated_results,
               empty_message: 'No applications',
             } %>
+        <%= paginate search.paginated_results %>
       </section>
     </div>
   </div>

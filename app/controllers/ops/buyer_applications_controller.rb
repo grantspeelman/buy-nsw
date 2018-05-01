@@ -35,7 +35,7 @@ class Ops::BuyerApplicationsController < Ops::BaseController
     )
     redirect_to ops_buyer_application_path(application)
   end
-  
+
 private
   def applications
     @applications ||= BuyerApplication.includes(:seller)
@@ -45,6 +45,8 @@ private
   def search
     @search ||= BuyerApplicationSearch.new(
       selected_filters: params,
+      page: params.fetch(:page, 1),
+      per_page: 25,
     )
   end
   helper_method :search
