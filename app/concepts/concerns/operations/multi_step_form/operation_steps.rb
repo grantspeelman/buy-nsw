@@ -57,11 +57,17 @@ module Concerns::Operations::MultiStepForm::OperationSteps
     options['result.steps'].reject(&:valid?).empty?
   end
 
+  def complete_if_valid_and_last_step!(options, **)
+    if all_steps_valid?(options)
+      complete_if_last_step!(options)
+    end
+  end
+
   def complete_if_last_step!(options, **)
     current_step = options['result.step']
     steps = options['result.steps']
 
-    if (current_step == steps.last) && all_steps_valid?(options)
+    if current_step == steps.last
       options['result.completed'] = true
     else
       options['result.completed'] = false
