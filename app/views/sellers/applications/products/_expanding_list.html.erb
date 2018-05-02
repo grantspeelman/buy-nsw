@@ -1,0 +1,16 @@
+<fieldset class="multiple-child-objects with-inline-labels"
+          data-module="expanding-list"
+          data-expanding-list-max="10"
+          data-object-name="<%= field %>">
+  <legend class="with-label"><%= t("#{i18n_base}.title") %></legend>
+  <small class="form-text text-muted"><%= t("#{i18n_base}.hint_text") %></small>
+
+  <ol>
+  <%= form.fields_for association do |object| %>
+    <li>
+      <%= object.text_field field, label: "#{object.options[:child_index]+1}." %>
+      <%= object.hidden_field :id %>
+    </li>
+  <% end %>
+</ol>
+</fieldset>

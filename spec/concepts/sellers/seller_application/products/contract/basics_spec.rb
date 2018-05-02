@@ -13,6 +13,19 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Basics do
     {
       name: 'Product-o-tron 2000',
       summary: "We name you product so you don't have to",
+      audiences: ['developers'],
+      reseller_type: 'extra-support',
+      organisation_resold: 'The Original Cloud Co',
+      custom_contact: true,
+      contact_name: 'Other Contact',
+      contact_email: 'other@example.org',
+      contact_phone: '01234 567890',
+      features: [
+        { feature: 'It does things' },
+      ],
+      benefits: [
+        { benefit: 'It benefits you' },
+      ],
     }
   }
 

@@ -27,6 +27,10 @@ module Forms::ValidationHelper
         def max_word_count?(max_word_count, value)
           value.split(' ').size <= max_word_count
         end
+
+        def max_items?(max_items, collection)
+          collection.size <= max_items
+        end
       end
     end
   end

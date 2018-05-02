@@ -82,11 +82,6 @@ en:
               declaration:
                 agree_html: |
                   I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
-          products:
-            contract:
-              basics:
-                name: Product name
-                summary: Summary
   activerecord:
     help:
       'sellers/seller_application/tailor/contract/business_details':

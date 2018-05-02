@@ -6,5 +6,9 @@ module Sellers::SellerApplication::Products::Contract
     include Forms::ValidationHelper
 
     model :product
+
+    def product_id
+      model[:product].id
+    end
   end
 end
