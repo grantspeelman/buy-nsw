@@ -51,7 +51,7 @@ module Sellers::SellerApplication::Products::Contract
     validation :default, inherit: true do
       required(:product).schema do
         required(:name).filled
-        required(:summary).filled
+        required(:summary).filled(max_word_count?: 200)
 
         required(:reseller_type).filled
         required(:organisation_resold).maybe(:str?)

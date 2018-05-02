@@ -37,6 +37,14 @@ class Product < ApplicationRecord
     'security-cyber',
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
+  enumerize :pricing_variables, multiple: true, in: [
+    'user-numbers',
+    'volumes',
+    'term-commitment',
+    'geographic-location',
+    'data-extraction',
+    'other',
+  ]
 
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }

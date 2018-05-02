@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502034522) do
+ActiveRecord::Schema.define(version: 20180502044650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,19 @@ ActiveRecord::Schema.define(version: 20180502034522) do
     t.string "contact_name"
     t.string "contact_email"
     t.string "contact_phone"
+    t.boolean "free_version"
+    t.text "free_version_details"
+    t.boolean "free_trial"
+    t.string "free_trial_url"
+    t.decimal "pricing_min"
+    t.decimal "pricing_max"
+    t.string "pricing_unit"
+    t.text "pricing_variables", default: [], array: true
+    t.text "pricing_variables_other"
+    t.string "pricing_calculator_url"
+    t.boolean "education_pricing"
+    t.text "education_pricing_eligibility"
+    t.text "education_pricing_differences"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

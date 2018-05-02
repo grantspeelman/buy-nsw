@@ -17,9 +17,18 @@
   }
 
   FurtherDetailsFieldsModule.prototype.refreshFields = function refreshFields () {
-    var value = this.$input.filter(':checked').val()
+    var values = []
+    var $checkedEls = this.$input.filter(':checked')
 
-    if (this.showValues.includes(value)) {
+    $checkedEls.each(function () {
+      values.push($(this).val())
+    })
+
+    var matching = this.showValues.filter(function (item) {
+      return (values.includes(item))
+    })
+
+    if (matching.length > 0) {
       this.$fields.show()
     } else {
       this.$fields.hide()

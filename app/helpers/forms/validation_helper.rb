@@ -31,6 +31,10 @@ module Forms::ValidationHelper
         def max_items?(max_items, collection)
           collection.size <= max_items
         end
+
+        def contains?(matching_word, input)
+          input.any? {|w| w == matching_word }
+        end
       end
     end
   end

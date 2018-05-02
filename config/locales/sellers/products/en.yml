@@ -21,6 +21,36 @@ en:
                 benefits:
                   title: Benefits
                   hint_text: List up to 10 benefits of your product or service
+              commercials:
+                free_version:
+                  question: Is this product or service available as freeware?
+                  'true': 'Yes'
+                  'false': 'No'
+                free_version_details: Describe the free version of your product or service
+                free_trial:
+                  question: Do you provide a free trial option for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                free_trial_url: Please provide a link to the free trial for your product or service
+                pricing:
+                  legend: Your pricing
+                pricing_unit: Price unit
+                pricing_min: Minimum price ($)
+                pricing_max: Maximum price ($)
+                pricing_calculator_url: Link to your pricing calculator (optional)
+                pricing_variables:
+                  question: What are the variables affecting your pricing?
+                pricing_variables_other: Which other variables affect your pricing?
+                education_pricing:
+                  question: Do you offer special pricing for educational organisations?
+                  'true': 'Yes'
+                  'false': 'No'
+                education_pricing_eligibility: Who is eligible for your pricing?
+                education_pricing_differences: How does the pricing differ?
+  activerecord:
+    help:
+      'sellers/seller_application/products/contract/commercials':
+        pricing_unit: "eg. per user per month"
   sellers:
     applications:
       products:
