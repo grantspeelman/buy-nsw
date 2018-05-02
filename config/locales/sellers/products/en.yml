@@ -50,6 +50,52 @@ en:
               onboarding_offboarding:
                 onboarding_assistance: How do you help users start using your product or service?
                 offboarding_assistance: Describe your disengagement assistance
+              environment:
+                deployment_model: Is the product or service deployed to public or private cloud?
+                addon_extension_type:
+                  question: Is the product or service an add-on or extension to other software services?
+                addon_extension_details: What other software is the product or service an extension to?
+                api:
+                  question: Is there an API for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                api_capabilities: Describe what users can and can't do using the API
+                api_automation: Which standard automation tools work with your product or service's API?
+                api_documentation:
+                  question: Do you provide API documentation for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                api_sandbox:
+                  question: Is there a sandbox or test environment for your API?
+                  'true': 'Yes'
+                  'false': 'No'
+                government_network_type:
+                  question: Is your product or service connected to a government network?
+                government_network_other: Which other government network is your product or service connected to?
+                web_interface:
+                  question: Is there a web interface for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                web_interface_details: Describe what users can and can't do using your web interface
+                supported_browsers:
+                  question: Which browsers are supported?
+                installed_application:
+                  question: Is there an application for users to install to use your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                supported_os:
+                  question: Which operating systems are supported?
+                supported_os_other: Please specify the other operating systems supported
+                mobile_devices:
+                  question: Has your product or service been designed to work on mobile devices?
+                  'true': 'Yes'
+                  'false': 'No'
+                mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
+                accessibility_type:
+                  question: What aspects of your product or service are accessible WCAG 2.0 AA or above?
+                accessibility_exclusions: Please specify the areas which are accessible (including any exclusions which apply)
+                scaling_type:
+                  question: How does your product or service scale?
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -57,6 +103,8 @@ en:
       'sellers/seller_application/products/contract/onboarding_offboarding':
         onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
         offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
+      'sellers/seller_application/products/contract/environment':
+        web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
   sellers:
     applications:
       products:
@@ -127,3 +175,41 @@ en:
         no-extras: Reseller (no extras)
         extra-support: Reseller providing extra support
         extra-features-support: Reseller providing extra features and support not available from the original supplier
+      deployment_model:
+        public-cloud: Public cloud
+        private-cloud: Private cloud
+      addon_extension_type:
+        'yes': 'Yes'
+        'yes-and-standalone': 'Yes, but can also be used as a standalone service'
+        'no': 'No'
+      government_network_type:
+        govdc: GovDC
+        id-hub: ID Hub
+        other: Other
+      supported_browsers:
+        ie7: Internet Explorer 7
+        ie8: Internet Explorer 8
+        ie9: Internet Explorer 9
+        ie10: Internet Explorer 10
+        ie11: Internet Explorer 11
+        ms-edge: Microsoft Edge
+        firefox: Firefox
+        chrome: Chrome
+        safari9: Safari 9+
+        opera: Opera
+      supported_os:
+        windows: Windows
+        macos: macOS
+        linux-unix: Linux and Unix
+        android: Android
+        ios: iOS
+        windows-phone: Windows Phone
+        other: Other
+      accessibility_type:
+        all: All
+        exclusions: Exclusions apply
+        none: None
+      scaling_type:
+        automatic: Scales automatically
+        manual: Scales with user intervention (manually)
+        none: Does not scale

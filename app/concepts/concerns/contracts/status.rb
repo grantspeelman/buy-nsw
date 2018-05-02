@@ -6,7 +6,9 @@ module Concerns::Contracts::Status
       value = send(key)
 
       if value.is_a?(Array)
-        value.first&.id.present?
+        value.any? {|item|
+          item.respond_to?(:id) ? item.id.present? : item.present?
+        }
       else
         value.present?
       end

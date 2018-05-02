@@ -55,6 +55,6 @@ class Sellers::SellerApplication::Products::Update < Trailblazer::Operation
   step Nested(Present)
 
   success :complete_if_last_step!
-  
+
   include Concerns::Operations::SellerApplicationForm::Persist
 end

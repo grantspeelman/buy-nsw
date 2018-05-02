@@ -5,7 +5,7 @@
   function FurtherDetailsFieldsModule (options) {
     this.$el = options.$el
     this.$input = this.$el.find('*[data-further-details=input]')
-    this.$fields = this.$el.find('*[data-further-details=fields]')
+    this.$fields = this.$el.find('> *[data-further-details=fields]')
     this.showValues = this.$el.attr('data-further-details-values').split(',')
 
     this.registerEvents()

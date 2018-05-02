@@ -13,7 +13,7 @@ module Forms::ValidationHelper
         end
 
         def in_list?(list, value)
-          value.blank? || list.include?(value)
+          value.present? && list.include?(value)
         end
 
         def file?(uploader_class)

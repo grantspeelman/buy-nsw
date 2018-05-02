@@ -42,6 +42,16 @@ legend.with-label {
   .form-group > label {
     margin-bottom: .5rem;
   }
+
+  fieldset:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  fieldset:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 }
 
 .multiple-choice-group {

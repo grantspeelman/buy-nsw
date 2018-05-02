@@ -45,6 +45,17 @@ class Product < ApplicationRecord
     'data-extraction',
     'other',
   ]
+  enumerize :deployment_model, in: ['private-cloud', 'public-cloud']
+  enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
+  enumerize :government_network_type, multiple: true, in: ['govdc', 'id-hub', 'other']
+  enumerize :supported_browsers, multiple: true, in: [
+    'ie7', 'ie8', 'ie9', 'ie10', 'ie11', 'ms-edge', 'firefox', 'chrome', 'safari9', 'opera'
+  ]
+  enumerize :supported_os, multiple: true, in: [
+    'windows', 'macos', 'linux-unix', 'android', 'ios', 'windows-phone', 'other'
+  ]
+  enumerize :accessibility_type, multiple: true, in: ['all', 'exclusions', 'none']
+  enumerize :scaling_type, multiple: true, in: ['automatic', 'manual', 'none']
 
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }
