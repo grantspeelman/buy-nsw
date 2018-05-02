@@ -47,10 +47,16 @@ en:
                   'false': 'No'
                 education_pricing_eligibility: Who is eligible for your pricing?
                 education_pricing_differences: How does the pricing differ?
+              onboarding_offboarding:
+                onboarding_assistance: How do you help users start using your product or service?
+                offboarding_assistance: Describe your disengagement assistance
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
         pricing_unit: "eg. per user per month"
+      'sellers/seller_application/products/contract/onboarding_offboarding':
+        onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
+        offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
   sellers:
     applications:
       products:
