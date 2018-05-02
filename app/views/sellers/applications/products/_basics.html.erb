@@ -1,11 +1,6 @@
 <%= f.text_field :name %>
 <%= f.text_area :summary, rows: 5 %>
 
-<fieldset class="multiple-choice-group checkbox-group">
-  <legend>Which category best describes your product?</legend>
-  <%= f.collection_radio_buttons(:section, Product.section.options, :last, :first, skip_label: true) %>
-</fieldset>
-
 <fieldset class="multiple-choice-group checkbox-group with-enterprise-field">
   <legend>Which buyers would use your product?</legend>
   <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true) %>

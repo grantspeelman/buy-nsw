@@ -1,15 +1,7 @@
 module Sellers::SellerApplication::Products::Contract
-  class Basics < Reform::Form
-    include Concerns::Contracts::Composition
-    include Concerns::Contracts::MultiStepForm
-    include Concerns::Contracts::Status
-    include Forms::ValidationHelper
-
-    model :product
-
+  class Basics < Base
     property :name, on: :product
     property :summary, on: :product
-    property :section, on: :product
     property :audiences, on: :product
 
     property :section_text, writeable: false, on: :product

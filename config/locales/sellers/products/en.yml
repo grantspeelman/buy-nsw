@@ -1,0 +1,48 @@
+en:
+  sellers:
+    applications:
+      products:
+        title: 'Cloud products and support: your products'
+        empty_name_label: No name
+        new_product_action_label: Add a new product
+        edit_product_action_label: Edit
+        steps:
+          type:
+            short: Product category
+            long: Which category best describes your product?
+          basics:
+            short: Product basics
+            long: Basic information about the product
+          commercials:
+            short: Commercials
+            long: Your product commercials
+          onboarding_offboarding:
+            short: On and offboarding
+            long: Onboarding and offboarding
+          environment:
+            short: Environment
+            long: Environment
+          availability_support:
+            short: Availability and support
+            long: Availability and support
+          user_data:
+            short: User data
+            long: User data
+          identity_authentication:
+            short: Identity and auth
+            long: Identity and authentication
+          security_standards:
+            short: Security standards
+            long: Security standards and certifications
+          security_practices:
+            short: Development practices
+            long: Security practices and staff
+          operational_security:
+            short: Operational security
+            long: Operational security
+          reporting_analytics:
+            short: Reporting and analytics
+            long: Reporting and analytics
+          review:
+            short: Review
+            long: Review your product details
