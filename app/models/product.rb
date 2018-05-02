@@ -6,6 +6,9 @@ class Product < ApplicationRecord
 
   belongs_to :seller
 
+  has_many :benefits, class_name: 'ProductBenefit'
+  has_many :features, class_name: 'ProductFeature'
+
   aasm column: :state do
     state :inactive, initial: true
     state :active
@@ -33,6 +36,7 @@ class Product < ApplicationRecord
     'sales-marketing',
     'security-cyber',
   ]
+  enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
 
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }

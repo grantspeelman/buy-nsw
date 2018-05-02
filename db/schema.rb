@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430045903) do
+ActiveRecord::Schema.define(version: 20180502034522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20180430045903) do
     t.text "note"
   end
 
+  create_table "product_benefits", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "benefit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_features", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "feature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "seller_id", null: false
     t.string "state", null: false
@@ -66,6 +80,12 @@ ActiveRecord::Schema.define(version: 20180430045903) do
     t.text "audiences", default: [], array: true
     t.text "summary"
     t.string "section"
+    t.string "reseller_type"
+    t.string "organisation_resold"
+    t.boolean "custom_contact"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "contact_phone"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|
