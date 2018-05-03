@@ -8,11 +8,11 @@ module Sellers::SellerApplication::Products::Contract
       required(:product).schema do
         required(:authentication_required).filled(:bool?)
 
-        required(:authentication_types).maybe(any_checked?: true, one_of?: Product.authentication_types.values)
+        required(:authentication_types).maybe(one_of?: Product.authentication_types.values)
         required(:authentication_other).maybe(:str?)
 
         rule(authentication_types: [:authentication_required, :authentication_types]) do |radio, field|
-          radio.true?.then(field.filled?)
+          radio.true?.then(field.filled?.any_checked?)
         end
         rule(authentication_other: [:authentication_required, :authentication_types, :authentication_other]) do |radio, checkboxes, field|
           (radio.true? & checkboxes.contains?('other')).then(field.filled?)
