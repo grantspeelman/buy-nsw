@@ -41,7 +41,7 @@ en:
   enumerize:
     buyer:
       employment_status:
-        employee: "I am a NSW Government employee and need access to the Digital Marketplace to perform my role."
+        employee: "I am a NSW Government employee and need access to buy.nsw to perform my role."
         contractor: "I am a contractor working in state or local government."
   errors:
     addresses_present?: must provide at least one address
@@ -208,7 +208,7 @@ en:
         buyers:
           title: Buyers
           body_html: |
-            <p>Register for a buyer account if you work for a government organisation looking to buy from the Digital Marketplace.</p>
+            <p>Register for a buyer account if you work for a government organisation looking to buy from the marketplace.</p>
           button_label: Create a buyer account
         sellers:
           title: Sellers

@@ -5,7 +5,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.manager_email,
-      subject: "NSW Digital Marketplace: Your approval required for #{@application.user.email}",
+      subject: "buy.nsw: Your approval required for #{@application.user.email}",
     )
   end
 
@@ -14,7 +14,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.user.email,
-      subject: "Your application has been approved",
+      subject: "buy.nsw: Your application has been approved",
     )
   end
 
@@ -23,7 +23,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.user.email,
-      subject: "Your application has been rejected",
+      subject: "buy.nsw: Your application has been rejected",
     )
   end
 end
