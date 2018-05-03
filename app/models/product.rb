@@ -54,8 +54,8 @@ class Product < ApplicationRecord
   enumerize :supported_os, multiple: true, in: [
     'windows', 'macos', 'linux-unix', 'android', 'ios', 'windows-phone', 'other'
   ]
-  enumerize :accessibility_type, multiple: true, in: ['all', 'exclusions', 'none']
-  enumerize :scaling_type, multiple: true, in: ['automatic', 'manual', 'none']
+  enumerize :accessibility_type, in: ['all', 'exclusions', 'none']
+  enumerize :scaling_type, in: ['automatic', 'manual', 'none']
   enumerize :support_options, multiple: true, in: ['phone', 'email', 'web-chat', 'online', 'onsite']
 
   scope :with_section, ->(section){ where("section = :section", section: section) }
