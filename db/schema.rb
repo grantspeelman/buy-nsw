@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503040939) do
+ActiveRecord::Schema.define(version: 20180503042408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,13 @@ ActiveRecord::Schema.define(version: 20180503040939) do
     t.string "secure_development_approach"
     t.string "penetration_testing_frequency"
     t.string "penetration_testing_approach"
+    t.text "outage_channel_types", default: [], array: true
+    t.text "outage_channel_other"
+    t.text "metrics_contents"
+    t.text "metrics_channel_types", default: [], array: true
+    t.text "metrics_channel_other"
+    t.text "usage_channel_types", default: [], array: true
+    t.text "usage_channel_other"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

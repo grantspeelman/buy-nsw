@@ -82,6 +82,10 @@ class Product < ApplicationRecord
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
   enumerize :penetration_testing_approach, in: ['crest-approved', 'other-external', 'in-house', 'none']
 
+  enumerize :outage_channel_types, multiple: true, in: ['email', 'sms', 'dashboard', 'api', 'other']
+  enumerize :metrics_channel_types, multiple: true, in: ['api', 'real-time', 'regular', 'on-request', 'other']
+  enumerize :usage_channel_types, multiple: true, in: ['email', 'sms', 'api', 'other']
+
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }
   scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }

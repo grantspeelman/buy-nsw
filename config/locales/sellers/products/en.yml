@@ -189,6 +189,14 @@ en:
                 secure_development_approach: How does your organisation demonstrate that it adheres to best practice in secure software development?
                 penetration_testing_frequency: How often do you do penetration testing?
                 penetration_testing_approach: What is your approach to penetration testing?
+              reporting_analytics:
+                metrics_contents: What metrics does your product or service report?
+                metrics_channel_types: How do you provide these reports?
+                metrics_channel_other: Specify how you provide these reports
+                outage_channel_types: How do you provide outage alerts?
+                outage_channel_other: Specify how you provide outage alerts
+                usage_channel_types: How are users notified if usage nears service limits?
+                usage_channel_other: Specify how users are notified if usage nears service limits
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -419,3 +427,20 @@ en:
         other-external: Performed by another external penetration testing organisation
         in-house: Performed in-house
         none: No penetration testing approach
+      outage_channel_types:
+        email: Email alerts
+        sms: SMS alerts
+        dashboard: Public dashboard
+        api: Through an API
+        other: Other
+      metrics_channel_types:
+        api: Through an API
+        real-time: Real-time dashboard
+        regular: Regular reports
+        on-request: Reports on request
+        other: Other
+      usage_channel_types:
+        email: Email alerts
+        sms: SMS alerts
+        api: Through an API
+        other: Other
