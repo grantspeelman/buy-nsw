@@ -101,7 +101,36 @@ en:
                 support_options: What are the core support options available?
                 support_hours: Specify the hours support is available (AEST time)
                 support_levels: Describe the support levels you provide, and how much different support levels cost
-
+              user_data:
+                data_import_formats: What open data formats can users upload their data in?
+                data_import_formats_other: List the other formats that users can upload their data in
+                data_export_formats: What open data formats can users export their data in?
+                data_export_formats_other: List the other formats that users can export their data in
+                data_access: Can users access and extract their data at any time?
+                audit_access_type: How do users access audit information about the actions their users have taken?
+                audit_storage_period: How long do you store user audit data for?
+                log_storage_period: How long are system logs stored for?
+                data_location: In which locations are user data stored, processed and managed?
+                data_location_other: List the other locations where user data is stored, processed and managed
+                data_storage_control_australia:
+                  question: Can users control where their data is stored, processed and managed in Australia?
+                  'true': 'Yes'
+                  'false': 'No'
+                third_party_infrastructure:
+                  question: Are there any third parties managing the data centres used to provide this product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                third_party_infrastructure_details: List the third parties managing the data centres
+                backup_capability: List what the service can backup
+                disaster_recovery_type: What's your data centre setup?
+                backup_scheduling_type: How do users schedule backups?
+                backup_recovery_type: How do users recover backups?
+                encryption_transit_user_types: How do you encrypt data between the end user and your product or service?
+                encryption_transit_user_other: Describe how else you encrypt data between the user and your product or service
+                encryption_transit_network_types: How do you encrypt data within your network?
+                encryption_transit_network_other: Describe how else you encrypt data within your network
+                encryption_rest_types: How do you encrypt data at rest?
+                encryption_rest_other: Describe how else you encrypt data at rest
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -114,6 +143,8 @@ en:
       'sellers/seller_application/products/contract/availability_support':
         guaranteed_availability: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
         support_hours: 'Include hours for business critical incidents, non business-critical incidents, and for enhancements.'
+      'sellers/seller_application/products/contract/user_data':
+        log_storage_period: Buyers may want reassurance about your ability to investigate security incidents
   sellers:
     applications:
       products:
@@ -228,3 +259,68 @@ en:
         online: Online
         web-chat: Web chat
         onsite: Onsite
+      data_import_formats:
+        csv: CSV
+        odf: ODF
+        other: Other
+      data_export_formats:
+        csv: CSV
+        odf: ODF
+        other: Other
+      data_access:
+        unrestricted: Yes, at all times
+        restrictions: Yes, with restrictions
+        'no': "No [breach of Core Terms]"
+      audit_access_type:
+        real-time: Users have access to real-time audit information
+        regular: Users receive audit information on a regular basis
+        manual: Users contact the support team to get audit information
+      audit_storage_period:
+        user-defined: User-defined
+        12-months: At least 12 months
+        6-to-12-months: Between 6 months and 12 months
+        1-to-6-months: Between 1 month and 6 months
+        less-than-1-month: Less than 1 month
+        supplier-controlled: Supplier controls when users can access audit information
+        none: No audit information available
+      log_storage_period:
+        user-defined: User-defined
+        12-months: At least 12 months
+        6-to-12-months: Between 6 months and 12 months
+        1-to-6-months: Between 1 month and 6 months
+        less-than-1-month: Less than 1 month
+      data_location:
+        only-australia: Only in Australia
+        other-known: Other known locations
+        dont-know: "Don't know"
+      disaster_recovery_type:
+        multiple-dc-with-dr: Multiple data centres with disaster recovery
+        single-dc-with-copies: Single data centre with multiple copies
+        multiple-dc: Multiple data centres
+        single-dc: Single data centre
+      backup_scheduling_type:
+        web-interface: Users schedule backups through a web interface
+        contact-support: Users contact the support team to schedule
+        supplier-controlled: Supplier controls the frequency of backups
+      backup_recovery_type:
+        self-managed: Users can recover backups themselves, eg. through a web interface
+        contact-support: Users contact the support team
+      encryption_transit_user_types:
+        private-or-gov-network: Private network or government network
+        tls: TLS (v1.2 or above)
+        legacy-ssl-tls: Legacy SSL and TLS (under v1.2)
+        vpn: IPSec or TLS VPN gateway
+        bonded-fibre: Bonded fibre optic connections
+        other: Other
+      encryption_transit_network_types:
+        tls: TLS (v1.2 or above)
+        legacy-ssl-tls: Legacy SSL and TLS (under v1.2)
+        vpn: IPSec or TLS VPN gateway
+        other: Other
+      encryption_rest_types:
+        physical-csa-ccm-v3: Physical access control, complying with CSA CCM v3.0
+        physical-ssae-16: Physical access control, complying with SSAE-16/ISAE 3402
+        physical-other: Physical access control, complying with another standard
+        encryption-physical-media: Encryption of all physical media
+        obfuscating: Scale, obfuscating techniques, or data storage sharding
+        other: Other
