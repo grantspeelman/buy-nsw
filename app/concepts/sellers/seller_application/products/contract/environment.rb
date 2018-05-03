@@ -69,21 +69,21 @@ module Sellers::SellerApplication::Products::Contract
 
         required(:web_interface).filled(:bool?)
         required(:web_interface_details).maybe(:str?)
-        required(:supported_browsers).maybe(any_checked?: true, one_of?: Product.supported_browsers.values)
+        optional(:supported_browsers).maybe(one_of?: Product.supported_browsers.values)
 
         rule(web_interface_details: [:web_interface, :web_interface_details]) do |radio, field|
-          radio.true?.then(field.filled?)
+          radio.true?.then(field.filled?.any_checked?)
         end
         rule(supported_browsers: [:web_interface, :supported_browsers]) do |radio, field|
           radio.true?.then(field.filled?)
         end
 
         required(:installed_application).filled(:bool?)
-        required(:supported_os).maybe(any_checked?: true, one_of?: Product.supported_os.values)
+        optional(:supported_os).maybe(one_of?: Product.supported_os.values)
         required(:supported_os_other).maybe(:str?)
 
         rule(supported_os: [:installed_application, :supported_os]) do |radio, field|
-          radio.true?.then(field.filled?)
+          radio.true?.then(field.filled?.any_checked?)
         end
         rule(supported_os_other: [:installed_application, :supported_os, :supported_os_other]) do |radio, checkboxes, field|
           (radio.true? & checkboxes.contains?('other')).then(field.filled?)
