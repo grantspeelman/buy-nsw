@@ -1,7 +1,5 @@
 module Sellers::SellerApplication::Products::Contract
   class IdentityAuthentication < Base
-    property :name, on: :product
-
     property :authentication_required, on: :product
     property :authentication_types, on: :product
     property :authentication_other, on: :product
