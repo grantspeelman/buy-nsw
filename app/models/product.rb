@@ -75,6 +75,9 @@ class Product < ApplicationRecord
   enumerize :authentication_types, multiple: true, in: ['username-password', '2fa', 'public-key', 'federation', 'government-network', 'dedicated-link', 'other']
   enumerize :access_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
 
+  enumerize :data_centre_security_standards, in: ['recognised-standard', 'supplier-defined', 'third-party']
+  enumerize :csa_star_level, in: ['level-1', 'level-2', 'level-3', 'level-4', 'level-5']
+
   scope :with_section, ->(section){ where("section = :section", section: section) }
   scope :with_audience, ->(audience){ where(":audience = ANY(audiences)", audience: audience) }
   scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }

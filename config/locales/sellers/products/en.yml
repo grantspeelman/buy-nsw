@@ -139,6 +139,52 @@ en:
                 authentication_types: How do you authenticate users when they access the product or service?
                 authentication_other: Describe how else you authenticate users
                 access_testing_frequency: How often do you test your access controls?
+              security_standards:
+                data_centre_security_standards: With which standards does your data centre security setup comply?
+                iso_27001:
+                  question: Do you have a current ISO/IEC 27001:2013 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27001_accreditor: Who accredited the ISO/IEC 27001:2013 certification?
+                iso_27001_date: When was the certification accredited?
+                iso_27001_exclusions: What is not covered by your ISO/IEC 27001:2013 certification?
+                iso_27017:
+                  question: Do you have a current ISO/IEC 27017:2015 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27017_accreditor: Who accredited the ISO/IEC 27017:2015 certification?
+                iso_27017_date: When was the certification accredited?
+                iso_27017_exclusions: What is not covered by your ISO/IEC 27017:2015 certification?
+                iso_27018:
+                  question: Do you have a current ISO/IEC 27018:2014 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27018_accreditor: Who accredited the ISO/IEC 27018:2014 certification?
+                iso_27018_date: When was the certification accredited?
+                iso_27018_exclusions: What is not covered by your ISO/IEC 27018:2014 certification?
+                csa_star:
+                  question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                csa_star_accreditor: Who accredited the CSA STAR certification?
+                csa_star_date: When was the certification accredited?
+                csa_star_level: What level is the certification?
+                csa_star_exclusions: What is not covered by your CSA STAR certification?
+                pci_dss:
+                  question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                pci_dss_accreditor: Who accredited the PCI DSS certification?
+                pci_dss_date: When was the certification accredited?
+                pci_dss_exclusions: What is not covered by your PCI DSS certification?
+                soc_1:
+                  question: Do you have a current SSAE-18 SOC I certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                soc_2:
+                  question: Do you have a current SOC II certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -345,3 +391,13 @@ en:
         at-least-once-year: At least once a year
         less-than-once-year: Less than once a year
         never: Never
+      data_centre_security_standards:
+        recognised-standard: Complies with a recognised standard (eg. CSA CCM v3.0)
+        supplier-defined: Supplier defined controls
+        third-party: Managed by a third party
+      csa_star_level:
+        level-1: "Level 1 – CSA STAR Self-Assessment"
+        level-2: "Level 2 – CSA STAR Attestation"
+        level-3: "Level 3 – CSA STAR Certification"
+        level-4: "Level 4 – CSA C-STAR Assessment"
+        level-5: "Level 5 – CSA STAR Continuous Monitoring"
