@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <%= "(#{deployment_env.try(:titleize)})" %> NSW Digital Marketplace</title>
+      <%= "(#{deployment_env.try(:titleize)})" %> buy.nsw</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -16,8 +16,10 @@
         <div class="row">
           <h1>
             <%= link_to root_path do %>
-              <span class="logo">NSW Government</span>
-              <span class="marketplace-title">Digital<br> Marketplace</span>
+              <div class="logo-container">
+                <span class="logo">NSW Government</span>
+              </div>
+              <span class="site-title">buy.nsw</span>
             <% end %>
           </h1>
 

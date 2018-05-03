@@ -1,33 +1,41 @@
 .with-big-header {
-  header[role=global] {
-    height: 400px;
-
-    .main-title h1 {
-      @extend .col-md-12;
-
-      font-size: 3.8rem;
-      line-height: 1.2em;
-      padding-top: 4rem;
-      padding-right: 20%;
-    }
-  }
-
   main {
     min-height: none;
   }
 }
 
+.main-title {
+  height: 400px;
+
+  h1 {
+    @extend .col-md-12;
+
+    font-size: 3.8rem;
+    line-height: 1.2em;
+    padding-top: 7.5rem;
+    padding-right: 20%;
+  }
+}
+
 .view-static-index {
-  background: -webkit-linear-gradient(lighten($light-blue, 5%), darken($light-blue, 10%));
-  color: #fff;
+  background: $light-purple;
+  border-top: 1px solid darken($light-purple, 5%);
+
+  padding-bottom: 2rem;
 
   .audiences {
     @extend .row;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+
+    > h2 {
+      @extend .col-md-12;
+      font-size: 1.6rem;
+      margin: 2rem 0 .5rem;
+    }
   }
 
   .feature {
-    margin: 1rem 0 0;
+    margin: 0;
 
     h2 {
       font-size: 1.4rem;
@@ -35,7 +43,7 @@
     }
 
     .btn {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       border-bottom: 4px solid darken($light-blue, 5%);
     }
 
@@ -55,8 +63,8 @@
     .inner {
       background: $white;
       color: $black;
-      padding: 1em;
-      box-shadow: darken($light-blue, 10%) 0px 2px 2px;
+      padding: 1rem;
+      box-shadow: darken($light-purple, 7%) 0px 2px 2px;
     }
 
     padding: 1em;
@@ -75,10 +83,11 @@
       }
       input.form-control {
         width: 100%;
-        margin-right: 1em;
+        margin-right: .5rem;
       }
       input[type=submit] {
         font-size: 1.1rem;
+        border-bottom: none;
       }
     }
   }

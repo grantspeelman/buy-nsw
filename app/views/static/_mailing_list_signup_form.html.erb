@@ -1,0 +1,6 @@
+<div class="inline-search-form">
+  <%= bootstrap_form_tag url: '', method: :get, enforce_utf8: false do |f| %>
+    <%= f.text_field :email, placeholder: 'Enter your email address', value: '', class: 'form-control', hide_label: true %>
+    <%= f.submit 'Join us', name: nil, class: 'btn btn-primary' %>
+  <% end %>
+</div>
