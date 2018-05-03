@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503022249) do
+ActiveRecord::Schema.define(version: 20180503040939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,9 @@ ActiveRecord::Schema.define(version: 20180503022249) do
     t.text "pci_dss_exclusions"
     t.boolean "soc_1"
     t.boolean "soc_2"
+    t.string "secure_development_approach"
+    t.string "penetration_testing_frequency"
+    t.string "penetration_testing_approach"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

@@ -185,6 +185,10 @@ en:
                   question: Do you have a current SOC II certification that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
+              security_practices:
+                secure_development_approach: How does your organisation demonstrate that it adheres to best practice in secure software development?
+                penetration_testing_frequency: How often do you do penetration testing?
+                penetration_testing_approach: What is your approach to penetration testing?
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -235,7 +239,7 @@ en:
             short: Security standards
             long: Security standards and certifications
           security_practices:
-            short: Development practices
+            short: Security practices
             long: Security practices and staff
           operational_security:
             short: Operational security
@@ -401,3 +405,17 @@ en:
         level-3: "Level 3 – CSA STAR Certification"
         level-4: "Level 4 – CSA C-STAR Assessment"
         level-5: "Level 5 – CSA STAR Continuous Monitoring"
+      secure_development_approach:
+        independently-assessed: "Independent review of processes (eg. ISO/IEC 27034, ISO/IEC 27001, or CSA CCM v3.0)"
+        self-assessed: Conforms to a recognised standard, but self-assessed
+        supplier-defined: Supplier-defined process
+      penetration_testing_frequency:
+        at-least-6-months: At least every 6 months
+        at-least-once-year: At least once a year
+        less-than-once-year: Less than once a year
+        never: Never
+      penetration_testing_approach:
+        crest-approved: Performed by a CREST-approved service provider
+        other-external: Performed by another external penetration testing organisation
+        in-house: Performed in-house
+        none: No penetration testing approach
