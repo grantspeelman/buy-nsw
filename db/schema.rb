@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502075950) do
+ActiveRecord::Schema.define(version: 20180502234300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,10 @@ ActiveRecord::Schema.define(version: 20180502075950) do
     t.string "accessibility_type"
     t.text "accessibility_exclusions"
     t.string "scaling_type"
+    t.text "guaranteed_availability"
+    t.text "support_options", default: [], array: true
+    t.text "support_hours"
+    t.text "support_levels"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

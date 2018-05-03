@@ -96,6 +96,12 @@ en:
                 accessibility_exclusions: Please specify the areas which are accessible (including any exclusions which apply)
                 scaling_type:
                   question: How does your product or service scale?
+              availability_support:
+                guaranteed_availability: Describe the level of availability you guarantee (excluding scheduled outages)
+                support_options: What are the core support options available?
+                support_hours: Specify the hours support is available (AEST time)
+                support_levels: Describe the support levels you provide, and how much different support levels cost
+
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -105,6 +111,9 @@ en:
         offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
       'sellers/seller_application/products/contract/environment':
         web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
+      'sellers/seller_application/products/contract/availability_support':
+        guaranteed_availability: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
+        support_hours: 'Include hours for business critical incidents, non business-critical incidents, and for enhancements.'
   sellers:
     applications:
       products:
@@ -213,3 +222,9 @@ en:
         automatic: Scales automatically
         manual: Scales with user intervention (manually)
         none: Does not scale
+      support_options:
+        phone: Phone
+        email: Email
+        online: Online
+        web-chat: Web chat
+        onsite: Onsite
