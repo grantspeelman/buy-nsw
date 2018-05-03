@@ -49,8 +49,8 @@ en:
     file?: must be provided
     file_uploaded?: file file must be provided
     in_future?: must be in the future
-    one_of?: must be selected from the list
-    in_list?: must be selected from the list
+    one_of?: ''
+    in_list?: ''
     same_password?: must match
     max_word_count?: exceeds the word count
     max_items?: has too many items
