@@ -72,10 +72,10 @@ module Sellers::SellerApplication::Products::Contract
         optional(:supported_browsers).maybe(one_of?: Product.supported_browsers.values)
 
         rule(web_interface_details: [:web_interface, :web_interface_details]) do |radio, field|
-          radio.true?.then(field.filled?.any_checked?)
+          radio.true?.then(field.filled?)
         end
         rule(supported_browsers: [:web_interface, :supported_browsers]) do |radio, field|
-          radio.true?.then(field.filled?)
+          radio.true?.then(field.filled?.any_checked?)
         end
 
         required(:installed_application).filled(:bool?)
