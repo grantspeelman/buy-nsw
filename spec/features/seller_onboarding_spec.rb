@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true do
 
   it 'submits a successful application' do
-    visit '/'
-    click_on 'Start your application'
+    visit '/register/seller'
 
     complete_seller_sign_up
     confirm_email_address
