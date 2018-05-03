@@ -1,1 +1,27 @@
-<%= f.text_field :name %>
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="true">
+
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.identity_authentication.authentication_required.question') %></legend>
+
+  <%= f.form_group :authentication_required do %>
+    <%= f.radio_button :authentication_required, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :authentication_required, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <fieldset class="multiple-choice-group checkbox-group"
+              data-module="further-details-fields"
+              data-further-details-values="other">
+
+      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.identity_authentication.authentication_types') %></legend>
+      <%= f.collection_check_boxes(:authentication_types, Product.authentication_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+
+      <div class="additional-fields" data-further-details="fields">
+        <div data-module="max-word-count" data-max-word-count="50">
+          <%= f.text_area :authentication_other, rows: 5 %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</fieldset>

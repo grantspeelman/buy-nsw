@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503001529) do
+ActiveRecord::Schema.define(version: 20180503020256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,9 @@ ActiveRecord::Schema.define(version: 20180503001529) do
     t.text "encryption_transit_network_other"
     t.text "encryption_rest_types", default: [], array: true
     t.text "encryption_rest_other"
+    t.boolean "authentication_required"
+    t.text "authentication_types", default: [], array: true
+    t.text "authentication_other"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

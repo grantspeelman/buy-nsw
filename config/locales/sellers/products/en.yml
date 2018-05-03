@@ -131,6 +131,14 @@ en:
                 encryption_transit_network_other: Describe how else you encrypt data within your network
                 encryption_rest_types: How do you encrypt data at rest?
                 encryption_rest_other: Describe how else you encrypt data at rest
+              identity_authentication:
+                authentication_required:
+                  question: Do users need to be authenticated when using the product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                authentication_types: How do you authenticate users when they access the product or service?
+                authentication_other: Describe how else you authenticate users
+                access_testing_frequency: How often do you test your access controls?
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -324,3 +332,16 @@ en:
         encryption-physical-media: Encryption of all physical media
         obfuscating: Scale, obfuscating techniques, or data storage sharding
         other: Other
+      authentication_types:
+        username-password: Username and password
+        2fa: Two-factor authentication
+        public-key: Public key authentication (including by TLS client certificate)
+        federation: Identity federation with existing provider (eg. Google Apps)
+        government-network: Limited access over a government network
+        dedicated-link: Dedicated link (eg. VPN or bonded fibre)
+        other: Other
+      access_testing_frequency:
+        at-least-6-months: At least every 6 months
+        at-least-once-year: At least once a year
+        less-than-once-year: Less than once a year
+        never: Never
