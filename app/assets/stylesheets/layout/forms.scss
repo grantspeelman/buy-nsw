@@ -33,6 +33,27 @@ legend.with-label {
   margin-bottom: 0rem;
 }
 
+
+.multiple-choice-group .additional-fields {
+  border-left: 10px solid $grey-2;
+  margin: 1.5rem 0;
+  padding: .5rem 1rem;
+
+  .form-group > label {
+    margin-bottom: .5rem;
+  }
+
+  fieldset:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  fieldset:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
 .multiple-choice-group {
   small {
     padding-left: 47px;

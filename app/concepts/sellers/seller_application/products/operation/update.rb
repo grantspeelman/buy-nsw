@@ -16,7 +16,19 @@ class Sellers::SellerApplication::Products::Update < Trailblazer::Operation
       end
 
       step_flow do |application, seller, product|
+        step Sellers::SellerApplication::Products::Contract::Type
         step Sellers::SellerApplication::Products::Contract::Basics
+        step Sellers::SellerApplication::Products::Contract::Commercials
+        step Sellers::SellerApplication::Products::Contract::OnboardingOffboarding
+        step Sellers::SellerApplication::Products::Contract::Environment
+        step Sellers::SellerApplication::Products::Contract::AvailabilitySupport
+        step Sellers::SellerApplication::Products::Contract::UserData
+        step Sellers::SellerApplication::Products::Contract::IdentityAuthentication
+        step Sellers::SellerApplication::Products::Contract::SecurityStandards
+        step Sellers::SellerApplication::Products::Contract::SecurityPractices
+        step Sellers::SellerApplication::Products::Contract::OperationalSecurity
+        step Sellers::SellerApplication::Products::Contract::ReportingAnalytics
+        step Sellers::SellerApplication::Products::Contract::Review
       end
     end
   end
@@ -41,6 +53,8 @@ class Sellers::SellerApplication::Products::Update < Trailblazer::Operation
 
   include Steps
   step Nested(Present)
+
+  success :complete_if_last_step!
 
   include Concerns::Operations::SellerApplicationForm::Persist
 end

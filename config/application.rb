@@ -44,6 +44,8 @@ module ProcurementHub
     }
 
     config.action_mailer.deliver_later_queue_name = ENV['MAILER_QUEUE_NAME']
+
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.yml')]
   end
 end

@@ -43,33 +43,17 @@ en:
       employment_status:
         employee: "I am a NSW Government employee and need access to the Digital Marketplace to perform my role."
         contractor: "I am a contractor working in state or local government."
-    product:
-      audiences:
-        accounting-finance: Accounting and finance
-        audit-risk-compliance: Audit, risk and compliance
-        data-analytics: Data and analytics
-        developers: Developers
-        facilities: Facilities
-        human-resource-management: Human resource management
-        legal: Legal
-        operations-management: Operations management
-        projects-team-collaboration: Projects and team collaboration
-        sales-marketing: Sales and marketing
-        security-cyber: Security and cyber
-      section:
-        applications-software: Applications and software
-        hosting-infrastructure: Hosting and infrastructure
-        support-services: Support services
   errors:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
     file?: must be provided
     file_uploaded?: file file must be provided
     in_future?: must be in the future
-    one_of?: must be selected from the list
-    in_list?: must be selected from the list
+    one_of?: ''
+    in_list?: ''
     same_password?: must match
     max_word_count?: exceeds the word count
+    max_items?: has too many items
   helpers:
     label:
       seller_application:

@@ -72,6 +72,7 @@
 $(function () {
   $('*[data-module="max-word-count"]').each(
     function (i, el) {
+      // eslint-disable-next-line no-new
       new window.ProcurementHub.MaxWordCount({
         $el: $(el)
       })

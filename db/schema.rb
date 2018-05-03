@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430045903) do
+ActiveRecord::Schema.define(version: 20180503042408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20180430045903) do
     t.text "note"
   end
 
+  create_table "product_benefits", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "benefit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_features", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "feature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "seller_id", null: false
     t.string "state", null: false
@@ -66,6 +80,112 @@ ActiveRecord::Schema.define(version: 20180430045903) do
     t.text "audiences", default: [], array: true
     t.text "summary"
     t.string "section"
+    t.string "reseller_type"
+    t.string "organisation_resold"
+    t.boolean "custom_contact"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "contact_phone"
+    t.boolean "free_version"
+    t.text "free_version_details"
+    t.boolean "free_trial"
+    t.string "free_trial_url"
+    t.decimal "pricing_min"
+    t.decimal "pricing_max"
+    t.string "pricing_unit"
+    t.text "pricing_variables", default: [], array: true
+    t.text "pricing_variables_other"
+    t.string "pricing_calculator_url"
+    t.boolean "education_pricing"
+    t.text "education_pricing_eligibility"
+    t.text "education_pricing_differences"
+    t.text "onboarding_assistance"
+    t.text "offboarding_assistance"
+    t.string "deployment_model"
+    t.string "addon_extension_type"
+    t.text "addon_extension_details"
+    t.boolean "api"
+    t.text "api_capabilities"
+    t.text "api_automation"
+    t.boolean "api_documentation"
+    t.boolean "api_sandbox"
+    t.text "government_network_type", default: [], array: true
+    t.string "government_network_other"
+    t.boolean "web_interface"
+    t.text "web_interface_details"
+    t.text "supported_browsers", default: [], array: true
+    t.boolean "installed_application"
+    t.text "supported_os", default: [], array: true
+    t.text "supported_os_other"
+    t.boolean "mobile_devices"
+    t.text "mobile_desktop_differences"
+    t.string "accessibility_type"
+    t.text "accessibility_exclusions"
+    t.string "scaling_type"
+    t.text "guaranteed_availability"
+    t.text "support_options", default: [], array: true
+    t.text "support_hours"
+    t.text "support_levels"
+    t.text "data_import_formats", default: [], array: true
+    t.text "data_import_formats_other"
+    t.text "data_export_formats", default: [], array: true
+    t.text "data_export_formats_other"
+    t.string "data_access"
+    t.string "audit_access_type"
+    t.string "audit_storage_period"
+    t.string "log_storage_period"
+    t.string "data_location"
+    t.text "data_location_other"
+    t.boolean "data_storage_control_australia"
+    t.boolean "third_party_infrastructure"
+    t.text "third_party_infrastructure_details"
+    t.text "backup_capability"
+    t.string "disaster_recovery_type"
+    t.string "backup_scheduling_type"
+    t.string "backup_recovery_type"
+    t.text "encryption_transit_user_types", default: [], array: true
+    t.text "encryption_transit_user_other"
+    t.text "encryption_transit_network_types", default: [], array: true
+    t.text "encryption_transit_network_other"
+    t.text "encryption_rest_types", default: [], array: true
+    t.text "encryption_rest_other"
+    t.boolean "authentication_required"
+    t.text "authentication_types", default: [], array: true
+    t.text "authentication_other"
+    t.string "data_centre_security_standards"
+    t.boolean "iso_27001"
+    t.string "iso_27001_accreditor"
+    t.date "iso_27001_date"
+    t.text "iso_27001_exclusions"
+    t.boolean "iso_27017"
+    t.string "iso_27017_accreditor"
+    t.date "iso_27017_date"
+    t.text "iso_27017_exclusions"
+    t.boolean "iso_27018"
+    t.string "iso_27018_accreditor"
+    t.date "iso_27018_date"
+    t.text "iso_27018_exclusions"
+    t.boolean "csa_star"
+    t.string "csa_star_accreditor"
+    t.date "csa_star_date"
+    t.string "csa_star_level"
+    t.text "csa_star_exclusions"
+    t.boolean "pci_dss"
+    t.string "pci_dss_accreditor"
+    t.date "pci_dss_date"
+    t.text "pci_dss_exclusions"
+    t.boolean "soc_1"
+    t.boolean "soc_2"
+    t.string "secure_development_approach"
+    t.string "penetration_testing_frequency"
+    t.string "penetration_testing_approach"
+    t.text "outage_channel_types", default: [], array: true
+    t.text "outage_channel_other"
+    t.text "metrics_contents"
+    t.text "metrics_channel_types", default: [], array: true
+    t.text "metrics_channel_other"
+    t.text "usage_channel_types", default: [], array: true
+    t.text "usage_channel_other"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

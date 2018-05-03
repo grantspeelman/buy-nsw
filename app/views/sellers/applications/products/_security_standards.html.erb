@@ -1,0 +1,28 @@
+<fieldset class="multiple-choice-group radio-group">
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.data_centre_security_standards') %></legend>
+  <%= f.collection_radio_buttons(:data_centre_security_standards, Product.data_centre_security_standards.options, :last, :first, skip_label: true) %>
+</fieldset>
+
+<%= render partial: 'certification', locals: { f: f, certification: :iso_27001 } %>
+<%= render partial: 'certification', locals: { f: f, certification: :iso_27017 } %>
+<%= render partial: 'certification', locals: { f: f, certification: :iso_27018 } %>
+<%= render partial: 'certification', locals: { f: f, certification: :csa_star } %>
+<%= render partial: 'certification', locals: { f: f, certification: :pci_dss } %>
+
+<fieldset class="multiple-choice-group radio-group">
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.soc_2.question') %></legend>
+
+  <%= f.form_group :soc_1 do %>
+    <%= f.radio_button :soc_1, 'true' %>
+    <%= f.radio_button :soc_1, 'false' %>
+  <% end %>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.soc_2.question') %></legend>
+
+  <%= f.form_group :soc_2 do %>
+    <%= f.radio_button :soc_2, 'true' %>
+    <%= f.radio_button :soc_2, 'false' %>
+  <% end %>
+</fieldset>
