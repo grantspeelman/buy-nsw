@@ -1,12 +1,20 @@
 .view-pathways-products-show {
   @include profile;
+  @include tags;
 
   header.with-seller-details {
     h1 {
       margin-bottom: 0.3em;
     }
-    p {
+    .seller {
       margin-bottom: 0;
+      vertical-align: bottom;
+    }
+    ul.tags {
+      display: inline-block;
+      padding-left: .5rem;
+      margin-bottom: 0;
+      vertical-align: bottom;
     }
   }
 
@@ -20,5 +28,56 @@
 
   dl {
     font-size: 0.8em;
+  }
+
+  .basics {
+    @extend .intro;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    dl {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+
+      dt {
+        @extend .col-md-3;
+        font-weight: bold;
+      }
+      dd {
+        @extend .col-md-9;
+
+        p:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .contact {
+      padding-top: 2rem;
+      text-align: left;
+
+      span {
+        display: block;
+      }
+    }
+
+    .features-benefits {
+      @extend .row;
+
+      border-top: 1px solid #eee;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+
+      ul {
+        @extend .col-md-6;
+        margin-bottom: 1rem;
+      }
+      li {
+        margin-left: 20px;
+      }
+    }
   }
 }

@@ -1,0 +1,110 @@
+<div class="basics">
+  <div class="summary">
+    <dl>
+      <% if product.is_reselling? %>
+        <dt>Made by:</dt>
+        <dd><%= product.organisation_resold %>
+      <% end %>
+      <dt>For:</dt>
+      <dd>
+        <ul>
+          <% product.audiences.texts.each do |audience| %>
+            <li><%= audience %>
+          <% end %>
+        </ul>
+      </dd>
+    </dl>
+    <%= simple_format product.summary %>
+
+    <div class="product-section features-benefits">
+      <% if product.features.any? %>
+      <ul>
+        <h2>Features</h2>
+        <% product.features.each do |feature| %>
+          <li><%= feature.feature %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
+      <% if product.benefits.any? %>
+      <ul>
+        <h2>Benefits</h2>
+        <% product.benefits.each do |benefit| %>
+          <li><%= benefit.benefit %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+
+    <dl>
+      <% if product.free_version? %>
+        <dt>Free version details</dt>
+        <dd><%= format_text_block product.free_version_details %></dd>
+      <% end %>
+      <% if product.free_trial? %>
+        <dt>Free trial available</dt>
+        <dd><%= link_to product.free_trial_url %></dd>
+      <% end %>
+      <dt>Pricing</dt>
+      <dd>
+        <p>
+          From <%= number_to_currency product.pricing_min %>
+          to <%= number_to_currency product.pricing_max %>
+          <%= product.pricing_unit %>
+        </p>
+
+        <% if product.pricing_calculator_url.present? || product.pricing_variables.any? %>
+        <dl class="nested">
+          <% if product.pricing_calculator_url.present? %>
+            <dt>Pricing calculator</dt>
+            <dd><%= link_to product.pricing_calculator_url %></dd>
+          <% end %>
+
+          <% if product.pricing_variables.any? %>
+            <dt>Variables affecting pricing</dt>
+            <dd>
+              <ul>
+                <% product.pricing_variables.texts.each do |variable| %>
+                  <li><%= variable %></li>
+                <% end %>
+              </ul>
+
+              <% if product.pricing_variables_other? %>
+              <div class="other-text">
+                <%= format_text_block product.pricing_variables_other %>
+              </div>
+              <% end %>
+            </dd>
+          <% end %>
+        </dl>
+        <% end %>
+      </dd>
+      <% if product.education_pricing? %>
+        <dt>Education pricing</dt>
+        <dd>
+          <dl class="nested">
+            <dt>Eligibility</dt>
+            <dd><%= format_text_block product.education_pricing_eligibility %></dd>
+            <dt>Pricing differences</dt>
+            <dd><%= format_text_block product.education_pricing_differences %></dd>
+          </dl>
+        </dd>
+      <% end %>
+    </dl>
+  </div>
+
+  <div class="actions">
+    <a href="" class="btn-primary">Buy this product</a>
+
+    <div class="contact">
+      <h2>Contact</h2>
+      <div class="vcard">
+        <span class="fn"><%= product.contact_name %></span>
+        <span class="email"><%= product.contact_email %></span>
+        <% if product.contact_phone.present? %>
+          <span class="tel"><%= product.contact_phone %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

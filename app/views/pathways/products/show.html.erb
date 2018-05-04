@@ -1,19 +1,17 @@
 <section class="view-pathways-products-show">
   <header class="with-seller-details">
     <h1><%= product.name %></h1>
-    <p class="seller">by <%= link_to product.seller.name, sellers_profile_path(product.seller) %></p>
+    <div class="seller">
+      by <%= link_to product.seller.name, sellers_profile_path(product.seller) %>
+      <% if product.is_reselling? %>
+        <ul class="tags">
+          <li>Reseller</li>
+        </ul>
+      <% end %>
+    </div>
   </header>
 
-  <div class="intro">
-    <div class="summary">
-      <%= simple_format product.summary %>
-    </div>
-    <div class="actions">
-      <div class="price">$40 per unit per year</div>
-      <a href="" class="btn-primary">Buy this product</a>
-      <a href="" class="btn-secondary">Shortlist and compare</a>
-    </div>
-  </div>
+  <%= render partial: 'basics', locals: { product: product } %>
 
   <div class="profile-container">
     <div class="contents-container">

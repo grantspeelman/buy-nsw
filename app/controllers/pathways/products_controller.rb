@@ -5,7 +5,10 @@ class Pathways::ProductsController < ApplicationController
 private
 
   def product
-    @product ||= Product.with_section(section).find(params[:id])
+    @product ||= ProductDecorator.new(
+      Product.with_section(section).find(params[:id]),
+      view_context,
+    )
   end
   helper_method :product
 
