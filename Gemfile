@@ -48,7 +48,7 @@ group :development, :test do
   gem 'capybara', '~> 2.18.0'
   gem 'capybara-selenium'
   gem 'database_cleaner'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '~> 2.4.0'
   gem 'foreman'
   gem 'factory_bot_rails', "~> 4.0"
   gem 'i18n-debug'
