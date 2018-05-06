@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true do
 
   it 'submits a successful application' do
-    visit '/'
-    click_on 'Start your application'
+    visit '/register/seller'
 
     complete_seller_sign_up
     confirm_email_address
@@ -13,6 +12,9 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_contacts_steps
     complete_profile_steps
     complete_documents_steps
+
+    invite_team_member
+    accept_invitation
     complete_legals_steps
 
     submit_application
@@ -102,7 +104,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     upload_document
 
     click_on_step 'Workers compensation'
-    upload_document
+    upload_document(button_label: 'Save')
 
     go_back_to_application
   end
@@ -118,6 +120,27 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_declaration
 
     go_back_to_application
+  end
+
+  def invite_team_member
+    click_on 'Invite'
+
+    fill_in 'Email', with: 'authorised@test.org'
+    click_on 'Send invitation'
+  end
+
+  def accept_invitation
+    token = User.find_by_email('authorised@test.org').confirmation_token
+    application_id = SellerApplication.last.id
+
+    visit accept_sellers_application_invitations_path(application_id, confirmation_token: token)
+
+    fill_in 'Password', with: 'foo bar baz'
+    fill_in 'Password confirmation', with: 'foo bar baz'
+
+    click_on 'Accept'
+
+    expect(page).to have_content('accepted')
   end
 
   def fill_in_address
@@ -158,7 +181,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
     within_fieldset 'Authorised representative' do
       fill_in 'Name', with: 'Churchill Smith-Winston'
-      fill_in 'Email address', with: 'example@test.org'
+      fill_in 'Email address', with: 'authorised@test.org'
       fill_in 'Phone', with: '0487 654 321'
     end
     click_on 'Save'
@@ -185,7 +208,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
   end
 
-  def upload_document
+  def upload_document(button_label: 'Upload document')
     expiry_date = 1.year.from_now
 
     attach_file 'Upload a file', example_pdf, make_visible: true
@@ -194,7 +217,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     fill_in 'Month', with: expiry_date.month
     fill_in 'Year', with: expiry_date.year
 
-    click_on 'Upload document'
+    click_on button_label
   end
 
   def example_pdf
@@ -236,7 +259,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   def click_on_step(label)
     within '.steps-list' do
       node = page.find('a', text: label)
-      node.trigger('click')
+      node.click
     end
   end
 

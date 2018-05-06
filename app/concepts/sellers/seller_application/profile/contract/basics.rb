@@ -4,9 +4,9 @@ module Sellers::SellerApplication::Profile::Contract
     property :website_url,  on: :seller
     property :linkedin_url, on: :seller
 
-    validation :default do
+    validation :default, inherit: true  do
       required(:seller).schema do
-        required(:summary).filled
+        required(:summary).filled(max_word_count?: 50)
         required(:website_url).filled
       end
     end

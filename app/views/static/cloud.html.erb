@@ -4,41 +4,37 @@
 
   <header role="banner">
     <div class="container">
-      <h1>Buying cloud products and support made easy</h1>
+      <h1>/cloud</h1>
+      <h2>Explore and buy cloud software, hosting, infrastructure and support</h2>
     </div>
   </header>
 
   <section class="categories">
-    <ol class="intro">
-      <li>Browse approved cloud software, hosting and support services</li>
-      <li>Shortlist and compare prices, features and specifications </li>
-      <li>Buy online (with the option of using a virtual p-card)</li>
-    </ul>
-    
+    <h2>What you can buy</h2>
+
     <ul class="category-list">
       <li>
-        <h2>Applications and software</h2>
-        <p>Explore approved software and applications hosted in the cloud your team can access over the internet.</p>
-        <%= link_to 'Find applications and software', pathway_search_path('applications-software'), class: 'action' %>
+        <div class="box">
+          <h2>Applications and software</h2>
+          <p>Explore approved software and applications hosted in the cloud your team can access over the internet.</p>
+          <%= link_to 'Find applications and software', pathway_search_path('applications-software'), class: 'action' %>
+        </div>
       </li>
       <li>
-        <h2>Hosting and infrastructure</h2>
-        <p>Hosting and infrastructure services to help you deploy, manage and run software.</p>
-        <%= link_to 'Find hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'action' %>
+        <div class="box">
+          <h2>Hosting and infrastructure</h2>
+          <p>Hosting and infrastructure services to help you deploy, manage and run software.</p>
+          <%= link_to 'Find hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'action' %>
+        </div>
       </li>
       <li>
-        <h2>Support services</h2>
-        <p>Support services to help you set up and maintain your cloud software or hosting services.</p>
-        <%= link_to 'Find cloud support services', pathway_search_path('support-services'), class: 'action' %>
+        <div class="box">
+          <h2>Support services</h2>
+          <p>Support services to help you set up and maintain your cloud software or hosting services.</p>
+          <%= link_to 'Find cloud support services', pathway_search_path('support-services'), class: 'action' %>
+        </div>
       </li>
     </ul>
-
-    <div class="seller-action">
-      <div class="overview">
-        <h2>Have cloud products and support to sell?</h2>
-        <p><%= link_to "Apply now and start selling through the NSW Digital Marketplace.", new_sellers_application_path %></p>
-      </div>
-    </div>
   </section>
 
 </section>

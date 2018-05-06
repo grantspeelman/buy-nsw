@@ -1,0 +1,8 @@
+<% unless current_page.last? %>
+  <li class="next-link">
+    <%= link_to url, rel: 'next', remote: remote do %>
+      <h3>Next page &rarr;</h3>
+      <span><%= current_page+1 %> of <%= total_pages %></span>
+    <% end %>
+  </li>
+<% end %>

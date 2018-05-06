@@ -8,10 +8,14 @@
       <ul class="results">
         <%= render partial: 'shared/search/result_count', locals: { search: search, object: 'seller' } %>
 
-        <% search.results.each do |seller| %>
+        <% search.paginated_results.each do |seller| %>
           <%= render partial: 'result', locals: { seller: seller } %>
         <% end %>
       </ul>
+
+      <div class="search-pagination">
+        <%= paginate search.paginated_results %>
+      </div>
     </div>
   <% end %>
 </section>

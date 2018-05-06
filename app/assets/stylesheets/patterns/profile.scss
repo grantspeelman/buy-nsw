@@ -55,14 +55,14 @@
   dl {
     @extend .row;
     margin-bottom: 3em;
-    border-bottom: 1px solid $grey-2;
+    border-bottom: 1px solid #eee;
 
     h2 {
       @extend .col-md-12;
     }
 
     dt, dd {
-      border-top: 1px solid $grey-2;
+      border-top: 1px solid #eee;
       padding-top: 0.8em;
       padding-bottom: 0.5em;
     }
@@ -75,9 +75,48 @@
       @extend .col-md-8;
     }
 
-    &:first-of-type {
-      margin-top: 1em;
+    dd dl.nested {
+      border-bottom: 0;
+      font-size: 1rem;
+
+      &:first-of-type:not(:first-child) {
+        padding-top: 1rem;
+        margin-top: 1em;
+      }
+      &:first-child {
+        dt:first-of-type, dd:first-of-type {
+          border-top: none;
+          padding-top: 0;
+        }
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+
+        dt:last-of-type, dd:last-of-type {
+          padding-bottom: 0;
+        }
+      }
+
+      h3 {
+        @extend .col-md-12;
+        font-size: 1rem;
+      }
+      dt, dd {
+        padding-top: .6em;
+        padding-bottom: .3em;
+      }
+      dt {
+        @extend .col-md-5;
+      }
+      dd {
+        @extend .col-md-7;
+      }
     }
+  }
+
+  .other-text {
+    padding-top: 1rem;
   }
 
   h2 {

@@ -18,6 +18,12 @@
       display: inline-block;
       vertical-align: top;
     }
+    input[type=submit] {
+      @extend .btn;
+      @extend .btn-primary;
+      
+      font-size: 1.2rem;
+    }
   }
 
   .search-results {
@@ -64,6 +70,11 @@
         }
       }
 
+      input[type=checkbox] {
+        width: 24px;
+        height: 24px;
+      }
+
       input[type=checkbox] + label {
         padding: 0 0 0 32px;
         margin-bottom: 0;
@@ -87,6 +98,11 @@
 
   .results {
     @extend .col-md-8;
+  }
+
+  .search-pagination {
+    @extend .col-md-8;
+    @extend .offset-md-4;
   }
 
   .result-count {
@@ -127,7 +143,13 @@
         display: block;
         font-size: .9rem;
         font-weight: normal;
-        margin-top: 0.4rem;
+        margin-top: .4rem;
+
+        ul.tags {
+          display: inline-block;
+          vertical-align: middle;
+          padding-left: .25rem;
+        }
       }
     }
     p {

@@ -1,0 +1,446 @@
+en:
+  activemodel:
+    attributes:
+      sellers:
+        seller_application:
+          products:
+            contract:
+              basics:
+                name: Give your product or service a name
+                summary: Write a short summary of the need your product or service addresses
+                organisation_resold: Which organisation's product/services do you resell?
+                custom_contact:
+                  'true': Somebody else
+                  'false': The contact listed on your seller profile
+                contact_name: Contact name
+                contact_email: Contact email
+                contact_phone: Contact phone number (optional)
+                features:
+                  title: Features
+                  hint_text: List up to 10 features of your product or service
+                benefits:
+                  title: Benefits
+                  hint_text: List up to 10 benefits of your product or service
+              commercials:
+                free_version:
+                  question: Is this product or service available as freeware?
+                  'true': 'Yes'
+                  'false': 'No'
+                free_version_details: Describe the free version of your product or service
+                free_trial:
+                  question: Do you provide a free trial option for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                free_trial_url: Please provide a link to the free trial for your product or service
+                pricing:
+                  legend: Your pricing
+                pricing_unit: Price unit
+                pricing_min: Minimum price ($)
+                pricing_max: Maximum price ($)
+                pricing_calculator_url: Link to your pricing calculator (optional)
+                pricing_variables:
+                  question: What are the variables affecting your pricing?
+                pricing_variables_other: Which other variables affect your pricing?
+                education_pricing:
+                  question: Do you offer special pricing for educational organisations?
+                  'true': 'Yes'
+                  'false': 'No'
+                education_pricing_eligibility: Who is eligible for your pricing?
+                education_pricing_differences: How does the pricing differ?
+              onboarding_offboarding:
+                onboarding_assistance: How do you help users start using your product or service?
+                offboarding_assistance: Describe your disengagement assistance
+              environment:
+                deployment_model: Is the product or service deployed to public or private cloud?
+                addon_extension_type:
+                  question: Is the product or service an add-on or extension to other software services?
+                addon_extension_details: What other software is the product or service an extension to?
+                api:
+                  question: Is there an API for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                api_capabilities: Describe what users can and can't do using the API
+                api_automation: Which standard automation tools work with your product or service's API?
+                api_documentation:
+                  question: Do you provide API documentation for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                api_sandbox:
+                  question: Is there a sandbox or test environment for your API?
+                  'true': 'Yes'
+                  'false': 'No'
+                government_network_type:
+                  question: Is your product or service connected to a government network?
+                government_network_other: Which other government network is your product or service connected to?
+                web_interface:
+                  question: Is there a web interface for your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                web_interface_details: Describe what users can and can't do using your web interface
+                supported_browsers:
+                  question: Which browsers are supported?
+                installed_application:
+                  question: Is there an application for users to install to use your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                supported_os:
+                  question: Which operating systems are supported?
+                supported_os_other: Please specify the other operating systems supported
+                mobile_devices:
+                  question: Has your product or service been designed to work on mobile devices?
+                  'true': 'Yes'
+                  'false': 'No'
+                mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
+                accessibility_type:
+                  question: What aspects of your product or service are accessible WCAG 2.0 AA or above?
+                accessibility_exclusions: Please specify the areas which are accessible (including any exclusions which apply)
+                scaling_type:
+                  question: How does your product or service scale?
+              availability_support:
+                guaranteed_availability: Describe the level of availability you guarantee (excluding scheduled outages)
+                support_options: What are the core support options available?
+                support_hours: Specify the hours support is available (AEST time)
+                support_levels: Describe the support levels you provide, and how much different support levels cost
+              user_data:
+                data_import_formats: What open data formats can users upload their data in?
+                data_import_formats_other: List the other formats that users can upload their data in
+                data_export_formats: What open data formats can users export their data in?
+                data_export_formats_other: List the other formats that users can export their data in
+                data_access: Can users access and extract their data at any time?
+                audit_access_type: How do users access audit information about the actions their users have taken?
+                audit_storage_period: How long do you store user audit data for?
+                log_storage_period: How long are system logs stored for?
+                data_location: In which locations are user data stored, processed and managed?
+                data_location_other: List the other locations where user data is stored, processed and managed
+                data_storage_control_australia:
+                  question: Can users control where their data is stored, processed and managed in Australia?
+                  'true': 'Yes'
+                  'false': 'No'
+                third_party_infrastructure:
+                  question: Are there any third parties managing the data centres used to provide this product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                third_party_infrastructure_details: List the third parties managing the data centres
+                backup_capability: List what the service can backup
+                disaster_recovery_type: What's your data centre setup?
+                backup_scheduling_type: How do users schedule backups?
+                backup_recovery_type: How do users recover backups?
+                encryption_transit_user_types: How do you encrypt data between the end user and your product or service?
+                encryption_transit_user_other: Describe how else you encrypt data between the user and your product or service
+                encryption_transit_network_types: How do you encrypt data within your network?
+                encryption_transit_network_other: Describe how else you encrypt data within your network
+                encryption_rest_types: How do you encrypt data at rest?
+                encryption_rest_other: Describe how else you encrypt data at rest
+              identity_authentication:
+                authentication_required:
+                  question: Do users need to be authenticated when using the product or service?
+                  'true': 'Yes'
+                  'false': 'No'
+                authentication_types: How do you authenticate users when they access the product or service?
+                authentication_other: Describe how else you authenticate users
+                access_testing_frequency: How often do you test your access controls?
+              security_standards:
+                data_centre_security_standards: With which standards does your data centre security setup comply?
+                iso_27001:
+                  question: Do you have a current ISO/IEC 27001:2013 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27001_accreditor: Who accredited the ISO/IEC 27001:2013 certification?
+                iso_27001_date: When was the certification accredited?
+                iso_27001_exclusions: What is not covered by your ISO/IEC 27001:2013 certification?
+                iso_27017:
+                  question: Do you have a current ISO/IEC 27017:2015 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27017_accreditor: Who accredited the ISO/IEC 27017:2015 certification?
+                iso_27017_date: When was the certification accredited?
+                iso_27017_exclusions: What is not covered by your ISO/IEC 27017:2015 certification?
+                iso_27018:
+                  question: Do you have a current ISO/IEC 27018:2014 certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                iso_27018_accreditor: Who accredited the ISO/IEC 27018:2014 certification?
+                iso_27018_date: When was the certification accredited?
+                iso_27018_exclusions: What is not covered by your ISO/IEC 27018:2014 certification?
+                csa_star:
+                  question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                csa_star_accreditor: Who accredited the CSA STAR certification?
+                csa_star_date: When was the certification accredited?
+                csa_star_level: What level is the certification?
+                csa_star_exclusions: What is not covered by your CSA STAR certification?
+                pci_dss:
+                  question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                pci_dss_accreditor: Who accredited the PCI DSS certification?
+                pci_dss_date: When was the certification accredited?
+                pci_dss_exclusions: What is not covered by your PCI DSS certification?
+                soc_1:
+                  question: Do you have a current SSAE-18 SOC I certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+                soc_2:
+                  question: Do you have a current SOC II certification that covers the security of your service?
+                  'true': 'Yes'
+                  'false': 'No'
+              security_practices:
+                secure_development_approach: How does your organisation demonstrate that it adheres to best practice in secure software development?
+                penetration_testing_frequency: How often do you do penetration testing?
+                penetration_testing_approach: What is your approach to penetration testing?
+              reporting_analytics:
+                metrics_contents: What metrics does your product or service report?
+                metrics_channel_types: How do you provide these reports?
+                metrics_channel_other: Specify how you provide these reports
+                outage_channel_types: How do you provide outage alerts?
+                outage_channel_other: Specify how you provide outage alerts
+                usage_channel_types: How are users notified if usage nears service limits?
+                usage_channel_other: Specify how users are notified if usage nears service limits
+  activerecord:
+    help:
+      'sellers/seller_application/products/contract/commercials':
+        pricing_unit: "eg. per user per month"
+      'sellers/seller_application/products/contract/onboarding_offboarding':
+        onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
+        offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
+      'sellers/seller_application/products/contract/environment':
+        web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
+      'sellers/seller_application/products/contract/availability_support':
+        guaranteed_availability: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
+        support_hours: 'Include hours for business critical incidents, non business-critical incidents, and for enhancements.'
+      'sellers/seller_application/products/contract/user_data':
+        log_storage_period: Buyers may want reassurance about your ability to investigate security incidents
+  sellers:
+    applications:
+      products:
+        title: 'Cloud products and support: your products'
+        empty_name_label: No name
+        new_product_action_label: Add a new product
+        edit_product_action_label: Edit
+        steps:
+          type:
+            short: Product category
+            long: Which category best describes your product?
+          basics:
+            short: Product basics
+            long: Basic information about the product
+          commercials:
+            short: Commercials
+            long: Your product commercials
+          onboarding_offboarding:
+            short: On and offboarding
+            long: Onboarding and offboarding
+          environment:
+            short: Environment
+            long: Environment
+          availability_support:
+            short: Availability and support
+            long: Availability and support
+          user_data:
+            short: User data
+            long: User data
+          identity_authentication:
+            short: Identity and auth
+            long: Identity and authentication
+          security_standards:
+            short: Security standards
+            long: Security standards and certifications
+          security_practices:
+            short: Security practices
+            long: Security practices and staff
+          operational_security:
+            short: Operational security
+            long: Operational security
+          reporting_analytics:
+            short: Reporting and analytics
+            long: Reporting and analytics
+          review:
+            short: Review
+            long: Review your product details
+  enumerize:
+    product:
+      audiences:
+        accounting-finance: Accounting and finance
+        audit-risk-compliance: Audit, risk and compliance
+        data-analytics: Data and analytics
+        developers: Developers
+        facilities: Facilities
+        human-resource-management: Human resource management
+        legal: Legal
+        operations-management: Operations management
+        projects-team-collaboration: Projects and team collaboration
+        sales-marketing: Sales and marketing
+        security-cyber: Security and cyber
+      section:
+        applications-software: Applications and software
+        hosting-infrastructure: Hosting and infrastructure
+        support-services: Support services
+      reseller_type:
+        own-product: Your own product/service
+        no-extras: Reseller (no extras)
+        extra-support: Reseller providing extra support
+        extra-features-support: Reseller providing extra features and support not available from the original supplier
+      deployment_model:
+        public-cloud: Public cloud
+        private-cloud: Private cloud
+      addon_extension_type:
+        'yes': 'Yes'
+        'yes-and-standalone': 'Yes, but can also be used as a standalone service'
+        'no': 'No'
+      government_network_type:
+        govdc: GovDC
+        id-hub: ID Hub
+        other: Other
+      supported_browsers:
+        ie7: Internet Explorer 7
+        ie8: Internet Explorer 8
+        ie9: Internet Explorer 9
+        ie10: Internet Explorer 10
+        ie11: Internet Explorer 11
+        ms-edge: Microsoft Edge
+        firefox: Firefox
+        chrome: Chrome
+        safari9: Safari 9+
+        opera: Opera
+      supported_os:
+        windows: Windows
+        macos: macOS
+        linux-unix: Linux and Unix
+        android: Android
+        ios: iOS
+        windows-phone: Windows Phone
+        other: Other
+      accessibility_type:
+        all: All
+        exclusions: Exclusions apply
+        none: None
+      scaling_type:
+        automatic: Scales automatically
+        manual: Scales with user intervention (manually)
+        none: Does not scale
+      support_options:
+        phone: Phone
+        email: Email
+        online: Online
+        web-chat: Web chat
+        onsite: Onsite
+      data_import_formats:
+        csv: CSV
+        odf: ODF
+        other: Other
+      data_export_formats:
+        csv: CSV
+        odf: ODF
+        other: Other
+      data_access:
+        unrestricted: Yes, at all times
+        restrictions: Yes, with restrictions
+        'no': "No [breach of Core Terms]"
+      audit_access_type:
+        real-time: Users have access to real-time audit information
+        regular: Users receive audit information on a regular basis
+        manual: Users contact the support team to get audit information
+      audit_storage_period:
+        user-defined: User-defined
+        12-months: At least 12 months
+        6-to-12-months: Between 6 months and 12 months
+        1-to-6-months: Between 1 month and 6 months
+        less-than-1-month: Less than 1 month
+        supplier-controlled: Supplier controls when users can access audit information
+        none: No audit information available
+      log_storage_period:
+        user-defined: User-defined
+        12-months: At least 12 months
+        6-to-12-months: Between 6 months and 12 months
+        1-to-6-months: Between 1 month and 6 months
+        less-than-1-month: Less than 1 month
+      data_location:
+        only-australia: Only in Australia
+        other-known: Other known locations
+        dont-know: "Don't know"
+      disaster_recovery_type:
+        multiple-dc-with-dr: Multiple data centres with disaster recovery
+        single-dc-with-copies: Single data centre with multiple copies
+        multiple-dc: Multiple data centres
+        single-dc: Single data centre
+      backup_scheduling_type:
+        web-interface: Users schedule backups through a web interface
+        contact-support: Users contact the support team to schedule
+        supplier-controlled: Supplier controls the frequency of backups
+      backup_recovery_type:
+        self-managed: Users can recover backups themselves, eg. through a web interface
+        contact-support: Users contact the support team
+      encryption_transit_user_types:
+        private-or-gov-network: Private network or government network
+        tls: TLS (v1.2 or above)
+        legacy-ssl-tls: Legacy SSL and TLS (under v1.2)
+        vpn: IPSec or TLS VPN gateway
+        bonded-fibre: Bonded fibre optic connections
+        other: Other
+      encryption_transit_network_types:
+        tls: TLS (v1.2 or above)
+        legacy-ssl-tls: Legacy SSL and TLS (under v1.2)
+        vpn: IPSec or TLS VPN gateway
+        other: Other
+      encryption_rest_types:
+        physical-csa-ccm-v3: Physical access control, complying with CSA CCM v3.0
+        physical-ssae-16: Physical access control, complying with SSAE-16/ISAE 3402
+        physical-other: Physical access control, complying with another standard
+        encryption-physical-media: Encryption of all physical media
+        obfuscating: Scale, obfuscating techniques, or data storage sharding
+        other: Other
+      authentication_types:
+        username-password: Username and password
+        2fa: Two-factor authentication
+        public-key: Public key authentication (including by TLS client certificate)
+        federation: Identity federation with existing provider (eg. Google Apps)
+        government-network: Limited access over a government network
+        dedicated-link: Dedicated link (eg. VPN or bonded fibre)
+        other: Other
+      access_testing_frequency:
+        at-least-6-months: At least every 6 months
+        at-least-once-year: At least once a year
+        less-than-once-year: Less than once a year
+        never: Never
+      data_centre_security_standards:
+        recognised-standard: Complies with a recognised standard (eg. CSA CCM v3.0)
+        supplier-defined: Supplier defined controls
+        third-party: Managed by a third party
+      csa_star_level:
+        level-1: "Level 1 – CSA STAR Self-Assessment"
+        level-2: "Level 2 – CSA STAR Attestation"
+        level-3: "Level 3 – CSA STAR Certification"
+        level-4: "Level 4 – CSA C-STAR Assessment"
+        level-5: "Level 5 – CSA STAR Continuous Monitoring"
+      secure_development_approach:
+        independently-assessed: "Independent review of processes (eg. ISO/IEC 27034, ISO/IEC 27001, or CSA CCM v3.0)"
+        self-assessed: Conforms to a recognised standard, but self-assessed
+        supplier-defined: Supplier-defined process
+      penetration_testing_frequency:
+        at-least-6-months: At least every 6 months
+        at-least-once-year: At least once a year
+        less-than-once-year: Less than once a year
+        never: Never
+      penetration_testing_approach:
+        crest-approved: Performed by a CREST-approved service provider
+        other-external: Performed by another external penetration testing organisation
+        in-house: Performed in-house
+        none: No penetration testing approach
+      outage_channel_types:
+        email: Email alerts
+        sms: SMS alerts
+        dashboard: Public dashboard
+        api: Through an API
+        other: Other
+      metrics_channel_types:
+        api: Through an API
+        real-time: Real-time dashboard
+        regular: Regular reports
+        on-request: Reports on request
+        other: Other
+      usage_channel_types:
+        email: Email alerts
+        sms: SMS alerts
+        api: Through an API
+        other: Other

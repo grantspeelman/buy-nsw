@@ -14,8 +14,24 @@
   <p>Any terms contained in other parts of the agreement that conflict with, or limit the operation of, these core terms have no legal effect.</p>
 </section>
 
-<%= f.check_box :agree,
-      label: t('activemodel.attributes.sellers.seller_application.legals.contract.declaration.agree_html',
-        name: f.object.seller.representative_name,
-        organisation: f.object.seller.name,
-        abn: f.object.seller.abn) %>
+<% if f.object.seller.agree == true %>
+  <p>Your authorised representative has already agreed to the Core Terms on behalf of the company.</p>
+<% else %>
+  <% if f.object.seller.representative_email.present? && current_user.email == f.object.seller.representative_email %>
+    <%= f.check_box :agree,
+          label: t('activemodel.attributes.sellers.seller_application.legals.contract.declaration.agree_html',
+            name: f.object.seller.representative_name,
+            organisation: f.object.seller.name,
+            abn: f.object.seller.abn) %>
+
+    <fieldset class="actions">
+      <%= f.submit operation['result.step'].button_label(default: 'Save'), class: 'btn btn-primary' %>
+    </fieldset>
+  <% else %>
+    <div class="alert-box">
+      <h3>Only the authorised representative <%= "(#{application.seller.representative_email})" if application.seller.representative_email.present? %> can agree to the Core Terms.</h3>
+      <p>Make sure you have <%= link_to 'provided their details', contacts_sellers_application_path(application) %> and have <%= link_to 'invited them to the team', new_sellers_application_invitation_path(application) %>.</p>
+      <p>Then ask them to visit this page and review the terms.</p>
+    </div>
+  <% end %>
+<% end %>

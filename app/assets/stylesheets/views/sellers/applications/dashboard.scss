@@ -144,4 +144,89 @@
     font-size: 1rem;
   }
 
+  .products-list {
+    ul {
+      padding-left: 0;
+      margin-bottom: .5rem;
+    }
+
+    li {
+      @extend .row;
+
+      list-style: none;
+      border-bottom: 1px solid #eee;
+      padding: .5rem 0;
+    }
+
+    .product-info {
+      @extend .col-8;
+      padding-left: 0;
+    }
+    .product-actions {
+      @extend .col-4;
+      text-align: right;
+
+      .action {
+        @extend .btn-light;
+        background: $grey-2;
+      }
+    }
+    .progress-indicator {
+      padding-bottom: 0;
+      margin-top: .3rem;
+    }
+
+    .action {
+      font-size: .8rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: .4rem 0 0;
+
+      em {
+        font-weight: normal;
+        font-style: italic;
+      }
+    }
+
+    .new-product-action {
+      text-align: right;
+    }
+  }
+
+  .team {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      list-style: none;
+      font-size: .9rem;
+      padding: .2rem 0;
+
+      .icon {
+        @extend .oi;
+        @extend .oi-person;
+        padding-right: .4rem;
+      }
+    }
+
+    .invite-action a {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: .9rem;
+    }
+
+    .unconfirmed {
+      display: block;
+      padding-left: 1.6rem;
+      font-size: .8rem;
+      color: #666;
+    }
+  }
 }

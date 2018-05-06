@@ -1,0 +1,28 @@
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="true">
+
+  <legend><%= t("activemodel.attributes.sellers.seller_application.products.contract.security_standards.#{certification}.question") %></legend>
+
+  <%= f.form_group certification do %>
+    <%= f.radio_button certification, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button certification, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <%= f.text_field "#{certification}_accreditor" %>
+
+    <%= date_field_from_value f, "#{certification}_date", f.object.send("#{certification}_date") %>
+
+    <% if certification == :csa_star %>
+      <fieldset class="multiple-choice-group radio-group">
+        <legend><%= t("activemodel.attributes.sellers.seller_application.products.contract.security_standards.csa_star_level") %></legend>
+        <%= f.collection_radio_buttons(:csa_star_level, Product.csa_star_level.options, :last, :first, skip_label: true) %>
+      </fieldset>
+    <% end %>
+
+    <div data-module="max-word-count" data-max-word-count="200">
+      <%= f.text_area "#{certification}_exclusions", rows: 5 %>
+    </div>
+  </div>
+</fieldset>

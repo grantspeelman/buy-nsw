@@ -29,7 +29,7 @@ RSpec.describe 'Managing buyers', type: :feature, js: true do
   end
 
   def deactivate_buyer
-    page.find('h2', text: 'Deactivate this buyer').trigger('click')
+    page.find('h2', text: 'Deactivate this buyer').click
     click_on 'Deactivate'
   end
 

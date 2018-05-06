@@ -4,7 +4,7 @@ class Seller < ApplicationRecord
 
   include Concerns::StateScopes
 
-  belongs_to :owner, class_name: 'User'
+  has_many :owners, class_name: 'User'
 
   has_many :accreditations, class_name: 'SellerAccreditation', dependent: :destroy
   has_many :addresses, class_name: 'SellerAddress', dependent: :destroy

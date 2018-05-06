@@ -13,7 +13,7 @@ module Forms::ValidationHelper
         end
 
         def in_list?(list, value)
-          value.blank? || list.include?(value)
+          value.present? && list.include?(value)
         end
 
         def file?(uploader_class)
@@ -22,6 +22,18 @@ module Forms::ValidationHelper
 
         def in_future?(date)
           date.present? && date > Date.today
+        end
+
+        def max_word_count?(max_word_count, value)
+          value.split(' ').size <= max_word_count
+        end
+
+        def max_items?(max_items, collection)
+          collection.size <= max_items
+        end
+
+        def contains?(matching_word, input)
+          input.any? {|w| w == matching_word }
         end
       end
     end

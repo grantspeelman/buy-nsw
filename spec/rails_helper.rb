@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'dotenv'
-Dotenv.load('.env.test')
+Dotenv.overload('.env.test')
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

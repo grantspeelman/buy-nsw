@@ -4,6 +4,6 @@
       <h1>Search results for <span class="visually-hidden"><%= search.term %></span></h1>
     <% end %>
     <%= f.text_field :q, value: search.term, class: 'form-control', hide_label: true %>
-    <%= f.submit 'Search', name: nil %>
+    <%= f.submit 'Search', name: nil, class: nil %>
   <% end %>
 </div>

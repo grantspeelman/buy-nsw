@@ -6,6 +6,8 @@ private
       term: params[:q],
       section: params[:section],
       selected_filters: params.except(:q, :section),
+      page: params.fetch(:page, 1),
+      per_page: 25,
     )
   end
   helper_method :search

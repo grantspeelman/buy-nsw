@@ -49,22 +49,11 @@ class Sellers::SellerApplication::Tailor::Update < Trailblazer::Operation
   success :steps!
   success :next_step!
 
-  success :complete_if_last_step!
+  success :complete_if_valid_and_last_step!
 
   # NOTE: Invoking this again at the end of the flow means that we can add
   # validation errors and show the form again when the fields are invalid.
   #
   step :prepopulate!
   step Contract::Validate()
-
-  def complete_if_last_step!(options, **)
-    current_step = options['result.step']
-    steps = options['result.steps']
-
-    if (current_step == steps.last) && all_steps_valid?(options)
-      options['result.completed'] = true
-    else
-      options['result.completed'] = false
-    end
-  end
 end

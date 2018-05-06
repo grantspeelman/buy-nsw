@@ -1,5 +1,8 @@
 <p>This information appears on your seller profile.</p>
 
-<%= f.text_area :summary, rows: 5 %>
+<div data-module="max-word-count" data-max-word-count="50">
+  <%= f.text_area :summary, rows: 5 %>
+</div>
+
 <%= f.text_field :website_url %>
 <%= f.text_field :linkedin_url %>

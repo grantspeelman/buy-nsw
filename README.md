@@ -20,8 +20,8 @@ and internal users.
 - Bundler – install with `gem install bundler`
 - Yarn – for assets. On a Mac, install with `brew install yarn`
 - PostgreSQL – On a Mac, use [Postgres.app](https://postgresapp.com))
-- PhantomJS – for running feature tests. On a Mac, install with `brew install
-phantomjs`
+- ChromeDriver and Chrome – for running feature tests. On a Mac, install with
+Caskroom: `brew cask install chromedriver`
 - MailCatcher (optional) – for receiving emails in development. Install with
 `gem install mailcatcher`
 

@@ -33,6 +33,27 @@ legend.with-label {
   margin-bottom: 0rem;
 }
 
+
+.multiple-choice-group .additional-fields {
+  border-left: 10px solid $grey-2;
+  margin: 1.5rem 0;
+  padding: .5rem 1rem;
+
+  .form-group > label {
+    margin-bottom: .5rem;
+  }
+
+  fieldset:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  fieldset:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
 .multiple-choice-group {
   small {
     padding-left: 47px;
@@ -289,4 +310,22 @@ input[type=radio]:checked + label::after {
 
 .custom-file-input.with-attached-file + .custom-file-label {
   color: #000;
+}
+
+// Word count
+
+*[data-module=max-word-count] .form-group {
+  overflow: auto;
+}
+
+.word-count-label {
+  display: block;
+  padding: .6rem .3rem 0 3rem;
+
+  float: right;
+  text-align: right;
+
+  &.invalid {
+    color: $red;
+  }
 }

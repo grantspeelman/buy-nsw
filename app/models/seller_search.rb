@@ -1,10 +1,10 @@
 class SellerSearch < Search
   attr_reader :term
 
-  def initialize(term:, selected_filters: {})
+  def initialize(term:, selected_filters: {}, page: nil, per_page: nil)
     @term = term
 
-    super(selected_filters: selected_filters)
+    super(selected_filters: selected_filters, page: page, per_page: per_page)
   end
 
   def available_filters
@@ -15,6 +15,8 @@ class SellerSearch < Search
   end
 
 private
+  include Concerns::Search::SellerTagFilters
+
   def base_relation
     Seller.active
   end
@@ -33,54 +35,6 @@ private
   def term_filter(relation)
     if term.present?
       relation = relation.basic_search(term)
-    else
-      relation
-    end
-  end
-
-  def start_up_filter(relation)
-    if filter_selected?(:business_identifiers, :start_up)
-      relation.start_up
-    else
-      relation
-    end
-  end
-
-  def sme_filter(relation)
-    if filter_selected?(:business_identifiers, :sme)
-      relation.sme
-    else
-      relation
-    end
-  end
-
-  def disability_filter(relation)
-    if filter_selected?(:business_identifiers, :disability)
-      relation.disability
-    else
-      relation
-    end
-  end
-
-  def regional_filter(relation)
-    if filter_selected?(:business_identifiers, :regional)
-      relation.regional
-    else
-      relation
-    end
-  end
-
-  def not_for_profit_filter(relation)
-    if filter_selected?(:business_identifiers, :not_for_profit)
-      relation.not_for_profit
-    else
-      relation
-    end
-  end
-
-  def indigenous_filter(relation)
-    if filter_selected?(:business_identifiers, :indigenous)
-      relation.indigenous
     else
       relation
     end

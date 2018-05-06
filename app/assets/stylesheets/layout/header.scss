@@ -1,7 +1,7 @@
 header[role=global] {
-  background: #fff;
-  border-bottom: 8px solid $dark-blue;
-  height: 110px;
+  background: $dark-blue;
+  height: 100px;
+  color: #fff;
 
   h1 {
     @extend .col-md-6;
@@ -11,22 +11,27 @@ header[role=global] {
   aside {
     @extend .col-md-6;
     text-align: right;
-    margin-top: 2rem;
-    font-size: 0.9rem;
+    margin-top: 1.9rem;
+    font-size: 1rem;
 
     h2 {
       display: block;
       font-size: 1em;
       margin-bottom: 0.1rem;
+      font-weight: 500;
     }
     ul {
       padding-left: 0;
       display: inline-block;
+      font-weight: 400;
     }
     li {
       display: inline-block;
       list-style: none;
       padding-left: 1em;
+    }
+    a {
+      color: #fff;
     }
   }
 
