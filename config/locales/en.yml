@@ -56,6 +56,8 @@ en:
     max_items?: has too many items
     abn?: does not look like a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
+    messages:
+      weak_password: "not strong enough. Consider adding a number, symbols or more letters to make it stronger."
   helpers:
     label:
       seller_application:

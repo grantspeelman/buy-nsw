@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     sequence(:email) {|n| "user-#{n}@example.org" }
-    password '12345678'
+    sequence(:password) { SecureRandom.hex(8) }
     confirmed_at 1.day.ago
 
     trait :buyer do
