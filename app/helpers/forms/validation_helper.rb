@@ -35,6 +35,10 @@ module Forms::ValidationHelper
         def contains?(matching_word, input)
           input.any? {|w| w == matching_word }
         end
+
+        def email?(value)
+          value.match?(URI::MailTo::EMAIL_REGEXP)
+        end
       end
     end
   end
