@@ -20,4 +20,8 @@ class ProductDecorator < BaseDecorator
     pricing_variables.include?('other')
   end
 
+  def details
+    @details ||= ProductDetails.new(self).details
+  end
+
 end

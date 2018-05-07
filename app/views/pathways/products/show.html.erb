@@ -18,14 +18,14 @@
       <div class="contents">
         <h3>On this page</h3>
         <ol>
-          <% mock_product_details.keys.each do |key| %>
+          <% product.details.keys.each do |key| %>
             <li><%= link_to key, "##{key.parameterize}" %></li>
           <% end %>
         </ol>
       </div>
     </div>
     <div class="profile">
-      <% mock_product_details.each do |heading, details| %>
+      <% product.details.each do |heading, details| %>
         <dl id="<%= heading.parameterize %>">
           <h2><%= heading %></h2>
           <% details.each do |key, value| %>
@@ -37,8 +37,14 @@
                     <li><%= value %></li>
                   <% end %>
                 </ul>
+              <% elsif value.is_a?(Date) %>
+                <%= value.strftime('%d/%m/%Y') %>
+              <% elsif value.is_a?(TrueClass) %>
+                Yes
+              <% elsif value.is_a?(FalseClass) %>
+                No
               <% else %>
-                <%= value %>
+                <%= format_text_block value %>
               <% end %>
             </dd>
           <% end %>
