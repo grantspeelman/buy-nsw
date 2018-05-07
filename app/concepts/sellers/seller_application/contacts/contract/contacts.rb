@@ -8,14 +8,14 @@ module Sellers::SellerApplication::Contacts::Contract
     property :representative_email,  on: :seller
     property :representative_phone,  on: :seller
 
-    validation :default do
+    validation :default, inherit: true do
       required(:seller).schema do
         required(:contact_name).filled(:str?)
-        required(:contact_email).filled(:str?)
+        required(:contact_email).filled(:str?, :email?)
         required(:contact_phone).filled(:str?)
 
         required(:representative_name).filled(:str?)
-        required(:representative_email).filled(:str?)
+        required(:representative_email).filled(:str?, :email?)
         required(:representative_phone).filled(:str?)
       end
     end
