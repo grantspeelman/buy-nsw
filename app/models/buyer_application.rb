@@ -54,9 +54,7 @@ class BuyerApplication < ApplicationRecord
   end
 
   def requires_email_approval?
-    # NOTE: Don't require approval for emails which are at *.nsw.gov.au
-    #
-    !(user.email =~ /.*\.nsw\.gov\.au\Z$/)
+    true
   end
 
   def no_approval_required?
