@@ -15,7 +15,8 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
       pricing_max: 20,
       pricing_unit: "per user per month",
       education_pricing: false,
-      free_trial_url: 'https://foo.com/blah'
+      free_trial_url: 'https://foo.com/blah',
+      pricing_calculator_url: 'https://foo.com/blah'
     }
   }
 
@@ -33,6 +34,12 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
 
   it 'is not valid with a free trial url without a host' do
     subject.validate(atts.merge(free_trial_url: '/blah'))
+
+    expect(subject).to_not be_valid
+  end
+
+  it 'is not valid with a bad pricing calculator url' do
+    subject.validate(atts.merge(pricing_calculator_url: 'foo'))
 
     expect(subject).to_not be_valid
   end

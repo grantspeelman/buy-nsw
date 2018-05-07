@@ -39,7 +39,7 @@ module Sellers::SellerApplication::Products::Contract
 
         required(:pricing_variables).value(one_of?: Product.pricing_variables.values)
         required(:pricing_variables_other).maybe(:str?)
-        required(:pricing_calculator_url).maybe(:str?)
+        required(:pricing_calculator_url).maybe(:str?, :url?)
 
         rule(pricing_variables_other: [:pricing_variables, :pricing_variables_other]) do |checkboxes, field|
           checkboxes.contains?('other').then(field.filled?)
