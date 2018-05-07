@@ -11,9 +11,7 @@ module Sellers::SellerApplication::Contacts::Contract
     validation :default do
       required(:seller).schema do
         configure do
-          def email?(value)
-            value.match?(URI::MailTo::EMAIL_REGEXP)
-          end
+          predicates(Shared::Predicates)
         end
 
         required(:contact_name).filled(:str?)
