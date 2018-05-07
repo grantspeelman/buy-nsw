@@ -3,7 +3,11 @@ module Sellers::SellerApplication::Invitation::Contract
     property :email
 
     validation :default do
-      required(:email).filled
+      configure do
+        predicates(Shared::Predicates)
+      end
+
+      required(:email).filled(:email?)
     end
   end
 end
