@@ -42,7 +42,6 @@ en:
     buyer:
       employment_status:
         employee: "I am a NSW Government employee and need access to buy.nsw to perform my role."
-        employee: "I am a NSW Government employee and need access to the Digital Marketplace to perform my role."
         contractor: "I am a contractor working in state or local government."
   errors:
     addresses_present?: must provide at least one address
