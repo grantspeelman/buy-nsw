@@ -42,4 +42,11 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Basics do
     expect(subject).to_not be_valid
     expect(subject.errors[:name]).to be_present
   end
+
+  it 'is invalid when the contact email address is not valid' do
+    subject.validate(atts.merge(contact_email: 'foo'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:contact_email]).to be_present
+  end
 end

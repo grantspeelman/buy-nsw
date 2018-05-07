@@ -62,7 +62,7 @@ module Sellers::SellerApplication::Products::Contract
 
         required(:custom_contact).filled(:bool?)
         optional(:contact_name).maybe(:str?)
-        optional(:contact_email).maybe(:str?)
+        optional(:contact_email).maybe(:str?, :email?)
         optional(:contact_phone).maybe(:str?)
 
         rule(contact_name: [:custom_contact, :contact_name]) do |radio, name|
