@@ -1,0 +1,15 @@
+<% content_for(:seller_application_content) do %>
+  <h2><%= product.name %> (Product #<%= product.id %>)</h2>
+
+  <div class="product-details">
+  <% product.all_details.each do |heading, details| %>
+    <dl id="<%= heading.parameterize %>">
+      <h2><%= heading %></h2>
+      <% details.each do |key, value| %>
+        <%= product_field(key, value) %>
+      <% end %>
+    </dl>
+  <% end %>
+  </div>
+
+<% end %>

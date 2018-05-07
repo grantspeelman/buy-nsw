@@ -21,7 +21,11 @@ class ProductDecorator < BaseDecorator
   end
 
   def details
-    @details ||= ProductDetails.new(self).details
+    ProductDetails.new(__getobj__).details
+  end
+
+  def all_details
+    ProductDetails.new(__getobj__, include_all: true).details
   end
 
 end

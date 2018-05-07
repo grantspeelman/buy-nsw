@@ -1,7 +1,8 @@
 class ProductDetails
 
-  def initialize(product)
+  def initialize(product, include_all: false)
     @product = product
+    @include_all = include_all
   end
 
   def details
@@ -17,9 +18,13 @@ class ProductDetails
   end
 
 private
-  attr_reader :product
+  attr_reader :product, :include_all
 
   def sections
+    include_all ? additional_sections.merge(core_sections) : core_sections
+  end
+
+  def core_sections
     {
       "Onboarding and offboarding" => onboarding_and_offboarding,
       "Environment" => environment,
@@ -29,6 +34,47 @@ private
       "Security standards" => security_standards,
       "Security practices" => security_practices,
       "Reporting and analytics" => reporting_and_analytics,
+    }
+  end
+
+  def additional_sections
+    {
+      "Product basics" => product_basics,
+      "Commercials" => commercials,
+    }
+  end
+
+  def product_basics
+    {
+      "Name" => product.name,
+      "Summary" => product.summary,
+      "Audiences" => product.audiences.texts,
+      "Features" => product.features.map(&:feature),
+      "Benefits" => product.benefits.map(&:benefit),
+      "Reseller status" => product.reseller_type_text,
+      "Organisation resold" => product.organisation_resold,
+      "Product-specific contact details" => product.custom_contact,
+      "Product contact name" => product.contact_name,
+      "Product contact email" => product.contact_email,
+      "Product contact phone" => product.contact_phone,
+    }
+  end
+
+  def commercials
+    {
+      "Free version available" => product.free_version,
+      "Free version details" => product.free_version_details,
+      "Free trial available" => product.free_trial,
+      "Free trial URL" => product.free_trial_url,
+      "Minimum price" => product.pricing_min,
+      "Maximum price" => product.pricing_max,
+      "Pricing unit" => product.pricing_unit,
+      "Variables affecting pricing" => product.pricing_variables.texts,
+      "Other variables affecting pricing" => product.pricing_variables_other,
+      "Pricing calculator URL" => product.pricing_calculator_url,
+      "Education pricing available" => product.education_pricing,
+      "Education pricing eligibility" => product.education_pricing_eligibility,
+      "Education pricing differences" => product.education_pricing_differences,
     }
   end
 

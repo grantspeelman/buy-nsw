@@ -29,24 +29,7 @@
         <dl id="<%= heading.parameterize %>">
           <h2><%= heading %></h2>
           <% details.each do |key, value| %>
-            <dt><%= key %></dt>
-            <dd>
-              <% if value.is_a?(Array) %>
-                <ul>
-                  <% value.each do |value| %>
-                    <li><%= value %></li>
-                  <% end %>
-                </ul>
-              <% elsif value.is_a?(Date) %>
-                <%= value.strftime('%d/%m/%Y') %>
-              <% elsif value.is_a?(TrueClass) %>
-                Yes
-              <% elsif value.is_a?(FalseClass) %>
-                No
-              <% else %>
-                <%= format_text_block value %>
-              <% end %>
-            </dd>
+            <%= product_field(key, value) %>
           <% end %>
         </dl>
       <% end %>
