@@ -36,7 +36,7 @@ RSpec.describe Sellers::SellerApplication::Tailor::Contract::BusinessDetails do
     subject.validate(atts.merge(abn: '10 123 456 789'))
 
     expect(subject).to_not be_valid
-    expect(subject.errors[:abn]).to be_present
+    expect(subject.errors[:abn].count).to eq(1)
   end
 
   it 'is also valid when the ABN has no spaces' do

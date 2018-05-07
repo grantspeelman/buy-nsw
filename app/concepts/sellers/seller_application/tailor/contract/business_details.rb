@@ -18,7 +18,7 @@ module Sellers::SellerApplication::Tailor::Contract
         end
 
         required(:name).filled
-        required(:abn).filled(:abn?, :unique_abn?)
+        required(:abn).filled(:unique_abn?, :abn?)
       end
     end
   end
