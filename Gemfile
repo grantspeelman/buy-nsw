@@ -42,6 +42,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'airbrake', '~> 7.2'
 gem 'fog-aws'
 gem 'active_elastic_job'
+gem 'abn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -54,6 +54,8 @@ en:
     same_password?: must match
     max_word_count?: exceeds the word count
     max_items?: has too many items
+    abn?: does not look like a valid ABN
+    unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
   helpers:
     label:
       seller_application:

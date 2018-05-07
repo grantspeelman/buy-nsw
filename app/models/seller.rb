@@ -12,6 +12,7 @@ class Seller < ApplicationRecord
   has_many :awards, class_name: 'SellerAward', dependent: :destroy
   has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
   has_many :products
+  before_save :normalise_abn
 
   aasm column: :state do
     state :inactive, initial: true
@@ -56,4 +57,10 @@ class Seller < ApplicationRecord
   def application_in_progress?
     applications.created.any?
   end
+
+  private
+
+    def normalise_abn
+      self.abn = ABN.new(abn).to_s
+    end
 end
