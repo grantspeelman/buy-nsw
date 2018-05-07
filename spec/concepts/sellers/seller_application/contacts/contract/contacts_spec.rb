@@ -36,6 +36,13 @@ RSpec.describe Sellers::SellerApplication::Contacts::Contract::Contacts do
     expect(subject.errors[:contact_email]).to be_present
   end
 
+  it 'is invalid when the contact email is not valid' do
+    subject.validate(atts.merge(contact_email: 'foo.com'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:contact_email]).to be_present
+  end
+
   it 'is invalid when the contact phone is blank' do
     subject.validate(atts.merge(contact_phone: nil))
 
@@ -52,6 +59,13 @@ RSpec.describe Sellers::SellerApplication::Contacts::Contract::Contacts do
 
   it 'is invalid when the representative email is blank' do
     subject.validate(atts.merge(representative_email: nil))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:representative_email]).to be_present
+  end
+
+  it 'is invalid when the representative email is not valid' do
+    subject.validate(atts.merge(representative_email: 'foo'))
 
     expect(subject).to_not be_valid
     expect(subject.errors[:representative_email]).to be_present

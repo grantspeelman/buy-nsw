@@ -10,12 +10,18 @@ module Sellers::SellerApplication::Contacts::Contract
 
     validation :default do
       required(:seller).schema do
+        configure do
+          def email?(value)
+            value.match?(URI::MailTo::EMAIL_REGEXP)
+          end
+        end
+
         required(:contact_name).filled(:str?)
-        required(:contact_email).filled(:str?)
+        required(:contact_email).filled(:str?, :email?)
         required(:contact_phone).filled(:str?)
 
         required(:representative_name).filled(:str?)
-        required(:representative_email).filled(:str?)
+        required(:representative_email).filled(:str?, :email?)
         required(:representative_phone).filled(:str?)
       end
     end
