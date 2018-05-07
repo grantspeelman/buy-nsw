@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<p>There's only one step left to create your <strong>buy.nsw</strong> account.</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Click the button below to confirm your email address.</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'button' %></p>
+
+<p>You must confirm your account within 3 days.</p>
