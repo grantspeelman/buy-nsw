@@ -65,9 +65,11 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
   end
 
   def complete_buyer_sign_up(user)
+    password = SecureRandom.hex(8)
+
     fill_in 'Email', with: user.email
-    fill_in 'Password', with: 'test password'
-    fill_in 'Confirm', with: 'test password'
+    fill_in 'Password', with: password
+    fill_in 'Confirm', with: password
     click_on 'Continue'
 
     expect(page).to have_content('Confirm your email')

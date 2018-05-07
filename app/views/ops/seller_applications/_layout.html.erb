@@ -11,7 +11,16 @@
             <%= nav_link_to 'Application', ops_seller_application_path(application), icon: 'ellipses' %>
             <%= nav_link_to 'Seller details', seller_details_ops_seller_application_path(application), icon: 'spreadsheet' %>
             <%= nav_link_to 'Documents', documents_ops_seller_application_path(application), icon: 'file' %>
-            <%= nav_link_to pluralize(application.seller.products.count, 'product'), '', icon: 'cart' %>
+          </ul>
+
+          <h3>
+            Cloud products and support:
+            <%= pluralize application.seller.products.count, 'product' %>
+          </h3>
+          <ul>
+            <% application.seller.products.each do |product| %>
+              <%= nav_link_to formatted_product_name(product), ops_seller_application_product_path(application, product), icon: 'cart' %>
+            <% end %>
           </ul>
         </nav>
       </aside>

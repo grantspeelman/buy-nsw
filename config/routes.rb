@@ -103,6 +103,8 @@ Rails.application.routes.draw do
         patch :decide
         post :notes
       end
+
+      resources :products, only: :show, controller: 'seller_applications/products'
     end
 
     root to: 'root#index'
