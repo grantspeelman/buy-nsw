@@ -47,5 +47,9 @@ module ProcurementHub
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.yml')]
+
+    config.to_prepare do
+      Devise::Mailer.layout 'mailer'
+    end
   end
 end
