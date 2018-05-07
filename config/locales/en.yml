@@ -57,6 +57,7 @@ en:
     abn?: does not look like a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
     email?: not a valid email address
+    url?: not a valid web address
   helpers:
     label:
       seller_application:

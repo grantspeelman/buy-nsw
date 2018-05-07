@@ -27,7 +27,7 @@ module Sellers::SellerApplication::Products::Contract
         end
 
         required(:free_trial).filled(:bool?)
-        required(:free_trial_url).maybe(:str?)
+        required(:free_trial_url).maybe(:str?, :url?)
 
         rule(free_trial_url: [:free_trial, :free_trial_url]) do |radio, field|
           radio.true?.then(field.filled?)

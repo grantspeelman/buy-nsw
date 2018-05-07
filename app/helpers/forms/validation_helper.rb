@@ -39,6 +39,13 @@ module Forms::ValidationHelper
         def email?(value)
           value.match?(URI::MailTo::EMAIL_REGEXP)
         end
+
+        def url?(value)
+          uri = URI.parse(value)
+          uri.is_a?(URI::HTTP) && !uri.host.nil?
+        rescue URI::InvalidURIError
+          false
+        end
       end
     end
   end
