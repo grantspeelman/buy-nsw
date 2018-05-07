@@ -7,7 +7,8 @@ module Sellers::SellerApplication::Profile::Contract
     validation :default, inherit: true  do
       required(:seller).schema do
         required(:summary).filled(max_word_count?: 50)
-        required(:website_url).filled
+        required(:website_url).filled(:url?)
+        optional(:linkedin_url).maybe(:str?, :url?)
       end
     end
   end
