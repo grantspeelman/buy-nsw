@@ -12,6 +12,10 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
       confirm_email_address(user)
 
       fill_in_buyer_details
+
+      # NOTE: All employees now must complete the application form
+      fill_in_application_body
+
       fill_in_employment_status(:employee)
       accept_terms_and_submit
 
@@ -25,6 +29,10 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
       confirm_email_address(user)
 
       fill_in_buyer_details
+
+      # NOTE: All employees now must complete the application form
+      fill_in_application_body
+      
       fill_in_employment_status(:contractor)
       fill_in_manager_details
       accept_terms_and_submit
