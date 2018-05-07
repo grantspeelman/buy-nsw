@@ -177,32 +177,6 @@ en:
           approve: Application approved
           reject: Application rejected
           return_to_applicant: Application returned to the seller
-  products:
-    search:
-      filters:
-        audiences:
-          name: Products for
-          options:
-            accounting-finance: Accounting and finance
-            audit-risk-compliance: Audit, risk and compliance
-            data-analytics: Data and analytics
-            developers: Developers
-            facilities: Facilities
-            human-resource-management: Human resource management
-            legal: Legal
-            operations-management: Operations management
-            projects-team-collaboration: Projects and team collaboration
-            sales-marketing: Sales and marketing
-            security-cyber: Security and cyber
-        business_identifiers:
-          name: Business identifiers
-          options:
-            disability: Australian disability enterprise
-            indigenous: Indigenous business
-            not_for_profit: Not for profit / social enterprise
-            regional: Regional
-            sme: SME
-            start_up: Start-up
   users:
     sessions:
       sign_up:
