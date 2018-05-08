@@ -30,7 +30,7 @@
     .overview {
       @extend .col-5;
     }
-    .data, .guidance {
+    .guidance {
       @extend .col-7;
     }
     .actions {
@@ -44,32 +44,6 @@
 
       margin-top: 1rem;
       margin-bottom: -1rem;
-    }
-
-    .data {
-      font-size: .9rem;
-
-      dl {
-        @extend .row;
-        border-bottom: 1px solid #eee;
-
-        dt, dd {
-          border-top: 1px solid #eee;
-          padding: .3rem 0;
-          margin: 0;
-
-          &:first-of-type {
-            border-top: none;
-          }
-        }
-
-        dt {
-          @extend .col-5;
-        }
-        dd {
-          @extend .col-7;
-        }
-      }
     }
 
     .guidance {
@@ -92,6 +66,54 @@
         @extend .btn;
         @extend .btn-primary;
         font-size: 1rem;
+      }
+    }
+
+    &.pathway-card {
+      .overview {
+        @extend .col-12;
+      }
+
+      .products-list {
+        @extend .col-12;
+
+        ul {
+          margin-bottom: .5rem;
+          padding-left: 0;
+        }
+
+        li {
+          list-style: none;
+          border-bottom: 1px solid #eee;
+          padding: .5rem 0;
+        }
+
+        .product-info {
+          @extend .col-8;
+        }
+        .product-actions {
+          @extend .col-4;
+          text-align: right;
+          padding-top: .75rem;
+
+          .action {
+            @extend .btn-primary;
+          }
+        }
+        .progress-indicator {
+          padding-bottom: 0;
+          margin-top: .3rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+          margin: .4rem 0 0;
+
+          em {
+            font-weight: normal;
+            font-style: italic;
+          }
+        }
       }
     }
   }
@@ -154,57 +176,6 @@
     @extend .btn-primary;
 
     font-size: 1rem;
-  }
-
-  .products-list {
-    ul {
-      padding-left: 0;
-      margin-bottom: .5rem;
-    }
-
-    li {
-      @extend .row;
-
-      list-style: none;
-      border-bottom: 1px solid #eee;
-      padding: .5rem 0;
-    }
-
-    .product-info {
-      @extend .col-8;
-      padding-left: 0;
-    }
-    .product-actions {
-      @extend .col-4;
-      text-align: right;
-
-      .action {
-        @extend .btn-light;
-        background: $grey-2;
-      }
-    }
-    .progress-indicator {
-      padding-bottom: 0;
-      margin-top: .3rem;
-    }
-
-    .action {
-      font-size: .8rem;
-    }
-
-    h3 {
-      font-size: 1rem;
-      margin: .4rem 0 0;
-
-      em {
-        font-weight: normal;
-        font-style: italic;
-      }
-    }
-
-    .new-product-action {
-      text-align: right;
-    }
   }
 
   .team {
