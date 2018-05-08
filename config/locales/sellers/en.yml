@@ -276,7 +276,7 @@ en:
           <p>This information will appear on your profile to interested buyers.</p>
         aside_html: |
           <p>The information here is available to all buyers.</p>
-          <p>The more information you provide, the more likely you will be to appear in search results.</p>
+          <p>The more information you provide, the easier it is for buyers to find you through site search.</p>
         steps:
           introduction:
             short: 'Introduction'
@@ -305,7 +305,7 @@ en:
         good_standing: Your seller account is active and in good standing
         awaiting_review_title: Your seller application is under review
         awaiting_review_message_html: |
-          <p>We are currently reviewing your seller application. You'll receive an email when we've made a decision.</p>
+          <p>We are currently reviewing your application. We'll let you know the outcome soon by email.</p>
           <p>In the meantime, you can <a href="">contact us</a> if you have any questions.</p>
       title: Seller dashboard
     search:
@@ -315,7 +315,7 @@ en:
           options:
             disability: Australian disability enterprise
             indigenous: Indigenous business
-            not_for_profit: Not for profit / social enterprise
+            not_for_profit: Not for profit/social enterprise
             regional: Regional
             sme: SME
             start_up: Start-up
@@ -324,14 +324,10 @@ en:
           options:
             advisory-consulting: Advisory and consulting
             cloud-services: Cloud products and support
-            data-analytics: Data and analytics
-            emerging-technology: Emerging technology and innovation
-            end-user-computing: End user computing and peripherals
+            end-user-computing: End-user computing and peripherals
             ict-workforce: ICT workforce
             infrastructure: Infrastructure and networks
             managed-services: Managed services
-            project-program-management: Project and program management
-            security-identity: Security and identity
             software-development: Software design and development
             software-licensing: Software licensing and maintenance
             telecommunications: Telecommunications
