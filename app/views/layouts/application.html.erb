@@ -31,6 +31,16 @@
     </header>
     <% end %>
 
+    <% if content_for?(:header) %>
+      <header class="application-header">
+        <div class="container">
+          <div class="row">
+            <%= content_for(:header) %>
+          </div>
+        </div>
+      </header>
+    <% end %>
+
     <% if notice.present? || alert.present? %>
       <div class="messages">
         <div class="message-container">
