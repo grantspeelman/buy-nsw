@@ -104,7 +104,7 @@ en:
         female_owned: Your business has at least 50% female ownership.
         indigenous_html: 'Your business is listed on <a href="https://www.supplynation.org.au/search">Supply Nation</a>.'
       'sellers/seller_application/documents/contract/documents':
-        financial_statement: 'Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business' financial viability.'
+        financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business' financial viability."
         financial_statement_expiry: We will ask you to upload a new document one year from now.
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
@@ -114,10 +114,10 @@ en:
         cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
         software-development: "The design, construction and delivery of bespoke software and software modifications, as well as implementation and configuration of vendor-owned software. Includes: user research; service, interaction and content design; coding and testing for stability, security and accessibility. Also includes managing technical environments and all technical skill sets and ways of working, together with supporting toolsets."
         software-licensing: "Licences for software applications and systems. Including those offered on a named or concurrent user, location, enterprise or any basis other than as a cloud-hosted subscription service. Maintenance and updates for these software licences."
-        end-user-computing: "All devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, peripherals such as keyboards and assistive technologies such as screen readers.
-        infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks  (such as racking, cabling, routers, switches, and their firmware)
+        end-user-computing: "All devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, peripherals such as keyboards and assistive technologies such as screen readers."
+        infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks  (such as racking, cabling, routers, switches, and their firmware)"
         telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the electronic exchange of voice, data or video over distance."
-        managed-services: "Outsourcing the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, corporate functions, network operations, security operations and desktop support. May also include infastructure associated with the service, such as printers or desktops.
+        managed-services: "Outsourcing the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, corporate functions, network operations, security operations and desktop support. May also include infastructure associated with the service, such as printers or desktops."
         advisory-consulting: "The provision of specialist ICT expertise, acting in an advisory capability to government. Includes building business cases and strategic roadmaps, developing enterprise architectures, providing policy analysis and advice."
         ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
         training-learning: "ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
