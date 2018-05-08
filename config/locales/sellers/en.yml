@@ -132,7 +132,7 @@ en:
         other: 'Other'
       number_of_employees:
         sole: '1'
-        micro: '2-4'
+        2to4: '2-4'
         5to19: '5-19'
         20to49: '20-49'
         50to99: '50-99'
