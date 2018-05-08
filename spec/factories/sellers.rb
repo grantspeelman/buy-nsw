@@ -57,7 +57,7 @@ FactoryBot.define do
 
       industry [ 'ict' ]
 
-      number_of_employees '2to19'
+      number_of_employees '2to4'
       start_up true
       regional true
       state_government_experience true
