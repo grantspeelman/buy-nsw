@@ -1,41 +1,41 @@
 .view-sellers-applications.flow-non-linear {
-  @extend .row;
-
-  > header {
-    @extend .col-4;
-    padding-right: 4rem;
-  }
   .steps-container {
-    @extend .col-8;
+    @extend .row;
+    margin-left: 0;
+    margin-top: 2rem;
+    border-top: 1px solid #ccc;
   }
 
   .steps-list {
-    @extend .row;
-    margin-bottom: 1rem;
+    @extend .col-md-3;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .steps-list ol {
-    @extend .col-12;
-    border-bottom: 1px solid #ccc;
+    padding-left: 0;
   }
   .steps-list li {
     list-style: none;
-    border: 1px solid #ccc;
-    float: left;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     position: relative;
-    top: 1px;
-    margin-right: .5rem;
+    left: 1px;
+    z-index: 1;
 
     &.current {
-      border-bottom-color: #fff;
+      border-right-color: #fff;
+      border-bottom-width: 2px;
     }
   }
+
   .steps-list li a {
     display: block;
     padding: .6em .6em .6em 2.6em;
     color: #000;
     text-decoration: none;
-    background: #f6f6f6;
+    background: #fafafa;
+    margin-left: -1px;
 
     &:hover {
       background: darken(#f6f6f6, 5%);
@@ -43,6 +43,8 @@
   }
   .steps-list li.current a {
     background: #fff;
+    border-left: 2px solid #ccc;
+    font-weight: 700;
   }
 
   .steps-list li a::before {
@@ -91,6 +93,14 @@
   }
 
   .current-step {
-    @extend .col-md-12;
+    @extend .col-md-9;
+    border-left: 1px solid #ccc;
+
+    padding-left: 2.5rem;
+    padding-top: 2rem;
+
+    fieldset:first-of-type {
+      margin-top: 0;
+    }
   }
 }
