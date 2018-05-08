@@ -9,14 +9,8 @@
       <% end %>
     </div>
 
-    <% if question_set_completed?(question_set) %>
-      <div class="data">
-        <%= render partial: "data_#{key}", locals: { application: application } %>
-      </div>
-    <% else %>
-      <div class="guidance">
-        <%= t("sellers.applications.#{key}.guidance_html") %>
-      </div>
-    <% end %>
+    <div class="guidance">
+      <%= t("sellers.applications.#{key}.guidance_html", default: '') %>
+    </div>
   </div>
 </li>
