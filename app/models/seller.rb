@@ -57,6 +57,6 @@ class Seller < ApplicationRecord
   private
 
     def normalise_abn
-      self.abn = ABN.new(abn).to_s
+      self.abn = ABN.new(abn).to_s if ABN.valid?(abn)
     end
 end

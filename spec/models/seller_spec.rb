@@ -13,6 +13,11 @@ RSpec.describe Seller do
       expect(seller.abn).to eq("24 138 089 942")
     end
 
+    it "should not normalise an invalid value" do
+      seller = create(:inactive_seller_with_full_profile, abn: "1234")
+      expect(seller.abn).to eq("1234")      
+    end
+
     # This is actually testing the factory
     it "should create consecutive valid ABNs" do
       seller1 = build(:inactive_seller_with_full_profile)
