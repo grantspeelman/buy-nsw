@@ -8,7 +8,12 @@ class Sellers::Applications::QuestionGroupController < Sellers::Applications::Ba
 
     @operation = run operation_class do |result|
       flash.notice = I18n.t('sellers.applications.messages.changes_saved')
-      return redirect_to result['result.step'].path
+
+      if result['result.completed']
+        return redirect_to sellers_application_path(result[:application_model])
+      else
+        return redirect_to result['result.next_step'].path
+      end
     end
 
     flash.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
