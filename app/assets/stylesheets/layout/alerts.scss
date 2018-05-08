@@ -1,4 +1,4 @@
-.messages {
+.message {
   background: $grey-1;
   border-bottom: 1px solid $grey-2;
 }
@@ -7,14 +7,9 @@
   @extend .container;
 }
 
-.messages ul {
+.message p {
   @extend .col-md-8;
-  padding-left: 0;
   margin-bottom: 0;
-}
-
-.messages li {
-  list-style: none;
   padding: 1rem;
 }
 
