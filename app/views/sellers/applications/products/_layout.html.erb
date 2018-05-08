@@ -1,5 +1,6 @@
 <% content_for(:without_container, true) %>
 <% content_for(:seller_breadcrumb, 'Your product details') %>
+<% content_for(:seller_application_class, 'flow-non-linear') %>
 
 <% content_for(:steps) do %>
   <%= render partial: 'sellers/applications/shared/step_list', locals: { operation: operation } %>
