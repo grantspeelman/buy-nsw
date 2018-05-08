@@ -69,4 +69,15 @@ module Sellers::Applications::RootHelper
     labels.sort.join('<br>').html_safe
   end
 
+  def legals_disabled_message(application)
+    if application.seller.representative_email.blank?
+      t('sellers.applications.legals.errors.no_representative')
+    elsif current_user.email != application.seller.representative_email
+      t('sellers.applications.legals.errors.incorrect_user_html',
+          invite_link: new_sellers_application_invitation_path(application)).html_safe
+    else
+      return false
+    end
+  end
+
 end

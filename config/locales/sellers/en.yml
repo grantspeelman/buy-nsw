@@ -208,6 +208,10 @@ en:
             short: 'Business address'
       legals:
         title: Your legals
+        errors:
+          no_representative: You can't start this until the authorised representative's details are provided
+          incorrect_user_html: |
+            Only the authorised representative can complete this step. <a href="%{invite_link}">Send them an invitation</a>
         guidance_html: |
           <p>This will take approximately 5 minutes.</p>
           <p>You will need your authorised representative to agree to the Core Terms on behalf of your organisation.</p>
@@ -237,6 +241,7 @@ en:
         invitation_invalid: This invitation code isn't valid. Please contact us for help.
         changes_saved: Your changes have been saved
         changes_saved_with_errors: Your changes have been saved. However there were errors.
+        authorised_representative_only: Only the authorised representative can make this change.
       tailor:
         title: Your company details
         steps:

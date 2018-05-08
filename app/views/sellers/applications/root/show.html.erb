@@ -15,7 +15,7 @@
     <%= display_question_set(application, progress_report, :profile) %>
     <%= display_question_set(application, progress_report, :documents) %>
     <%= display_question_set(application, progress_report, :disclosures) %>
-    <%= display_question_set(application, progress_report, :legals) %>
+    <%= display_question_set(application, progress_report, :legals, disable_section: legals_disabled_message(application)) %>
     <%= render partial: 'products', locals: { application: application } %>
   </ul>
 </section>
