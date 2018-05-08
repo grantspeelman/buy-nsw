@@ -12,6 +12,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_contacts_steps
     complete_profile_steps
     complete_documents_steps
+    complete_disclosures_steps
 
     invite_team_member
     accept_invitation
@@ -104,14 +105,19 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     upload_document(button_label: 'Save')
   end
 
+  def complete_disclosures_steps
+    within '#disclosures' do
+      click_on 'Start'
+    end
+
+    fill_in_disclosures
+  end
+
   def complete_legals_steps
     within '#legals' do
       click_on 'Start'
     end
 
-    fill_in_disclosures
-
-    click_on_step 'Agree terms'
     complete_declaration
   end
 

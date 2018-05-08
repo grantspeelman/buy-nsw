@@ -44,6 +44,10 @@ Rails.application.routes.draw do
         get '/contacts/:step', to: 'applications/contacts#show', as: :contacts_step
         patch '/contacts', to: 'applications/contacts#update'
 
+        get '/disclosures', to: 'applications/disclosures#show', as: :disclosures
+        get '/disclosures/:step', to: 'applications/disclosures#show', as: :disclosures_step
+        patch '/disclosures', to: 'applications/disclosures#update'
+
         get '/legals', to: 'applications/legals#show', as: :legals
         get '/legals/:step', to: 'applications/legals#show', as: :legals_step
         patch '/legals', to: 'applications/legals#update'

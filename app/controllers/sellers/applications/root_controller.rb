@@ -39,6 +39,7 @@ private
       Sellers::SellerApplication::Contacts::Update::Present,
       Sellers::SellerApplication::Documents::Update::Present,
       Sellers::SellerApplication::Profile::Update::Present,
+      Sellers::SellerApplication::Disclosures::Update::Present,
       Sellers::SellerApplication::Legals::Update::Present,
     ]
   end

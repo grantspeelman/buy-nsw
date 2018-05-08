@@ -9,7 +9,11 @@
       <%= t("sellers.applications.#{key}.guidance_html", default: '') %>
     </div>
 
-    <% unless local_assigns[:skip_button] %>
+    <% if local_assigns[:disable_section] %>
+      <div class="actions">
+        <p><%= disable_section %></p>
+      </div>
+    <% elsif !local_assigns[:skip_button] %>
       <div class="actions">
         <%= link_to question_step_button_label(question_set), send("#{key}_sellers_application_path", application), class: 'action' %>
       </div>
