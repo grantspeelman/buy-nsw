@@ -27,7 +27,7 @@ module Sellers::SellerApplication::Products::Contract
         end
 
         required(:free_trial).filled(:bool?)
-        required(:free_trial_url).maybe(:str?)
+        required(:free_trial_url).maybe(:str?, :url?)
 
         rule(free_trial_url: [:free_trial, :free_trial_url]) do |radio, field|
           radio.true?.then(field.filled?)
@@ -39,7 +39,7 @@ module Sellers::SellerApplication::Products::Contract
 
         required(:pricing_variables).value(one_of?: Product.pricing_variables.values)
         required(:pricing_variables_other).maybe(:str?)
-        required(:pricing_calculator_url).maybe(:str?)
+        required(:pricing_calculator_url).maybe(:str?, :url?)
 
         rule(pricing_variables_other: [:pricing_variables, :pricing_variables_other]) do |checkboxes, field|
           checkboxes.contains?('other').then(field.filled?)

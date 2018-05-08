@@ -26,6 +26,20 @@ RSpec.describe Sellers::SellerApplication::Profile::Contract::Basics do
     expect(subject.errors[:website_url]).to be_present
   end
 
+  it 'is invalid when a bad website URL is given' do
+    subject.validate(atts.merge(website_url: 'foo'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:website_url]).to be_present
+  end
+
+  it 'is invalid when a bad linkedin url is given' do
+    subject.validate(atts.merge(linkedin_url: 'foo'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:linkedin_url]).to be_present
+  end
+
   context 'summary' do
     it 'is invalid when blank' do
       subject.validate(atts.merge(summary: ''))
