@@ -234,6 +234,8 @@ en:
         invitation_sent: We've sent an invitation to %{email}.
         invitation_accepted: You've accepted the invitation and joined the seller profile.
         invitation_invalid: This invitation code isn't valid. Please contact us for help.
+        changes_saved: Your changes have been saved
+        changes_saved_with_errors: Your changes have been saved. However there were errors.
       tailor:
         title: Your company details
         steps:
