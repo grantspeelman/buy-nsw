@@ -7,9 +7,11 @@ class Sellers::Applications::QuestionGroupController < Sellers::Applications::Ba
     params[:seller_application] ||= {}
 
     @operation = run operation_class do |result|
+      flash.notice = I18n.t('sellers.applications.messages.changes_saved')
       return redirect_to result['result.step'].path
     end
 
+    flash.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

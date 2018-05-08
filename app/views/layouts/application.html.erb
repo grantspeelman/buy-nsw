@@ -31,17 +31,27 @@
     </header>
     <% end %>
 
-    <% if notice.present? || alert.present? %>
-      <div class="messages">
-        <div class="message-container">
+    <% if content_for?(:header) %>
+      <header class="application-header">
+        <div class="container">
           <div class="row">
-            <ul>
-              <% flash.each do |key, value| %>
-                <li><%= value %></li>
-              <% end %>
-            </ul>
+            <%= content_for(:header) %>
           </div>
         </div>
+      </header>
+    <% end %>
+
+    <% if notice.present? || alert.present? %>
+      <div class="messages">
+        <% flash.each do |key, value| %>
+          <div class="message message-<%= key %>">
+            <div class="message-container">
+              <div class="row justify-content-end">
+                <p><%= value %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
 

@@ -21,10 +21,12 @@ class Buyers::ApplicationsController < Buyers::BaseController
         flash.notice = I18n.t('buyers.applications.messages.submitted')
         return redirect_to root_path
       else
+        flash.notice = I18n.t('buyers.applications.messages.changes_saved')
         return redirect_to buyers_application_step_path(result[:application_model].id, result['result.next_step_slug'])
       end
     end
 
+    flash.alert = I18n.t('buyers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

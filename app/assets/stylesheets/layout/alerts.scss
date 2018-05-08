@@ -1,21 +1,15 @@
-.messages {
-  background: $grey-1;
+.message {
   border-bottom: 1px solid $grey-2;
+  animation: 0.5s forwards 1s 1 fadeOut;
 }
 
 .message-container {
   @extend .container;
 }
 
-.messages ul {
-  padding-left: 0;
+.message p {
+  @extend .col-md-8;
   margin-bottom: 0;
-}
-
-.messages li {
-  @extend .col-md-12;
-  list-style: none;
-  padding: 1rem;
 }
 
 .message-alert {
@@ -23,4 +17,20 @@
   @extend .alert-danger;
 
   border-radius: 0px;
+}
+
+.message-notice {
+  @extend .alert;
+  @extend .alert-success;
+
+  border-radius: 0px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
