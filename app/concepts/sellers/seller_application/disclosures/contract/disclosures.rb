@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Legals::Contract
+module Sellers::SellerApplication::Disclosures::Contract
   class Disclosures < Base
     property :structural_changes,    on: :seller
     property :investigations,        on: :seller

@@ -54,6 +54,11 @@ en:
                 workers_compensation_exempt: This business is not required to have Workers Compensation insurance
           legals:
             contract:
+              declaration:
+                agree_html: |
+                  I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
+          disclosures:
+            contract:
               disclosures:
                 structural_changes:
                   'false': 'No'
@@ -79,9 +84,6 @@ en:
                 insurance_claims_details: 'Please provide details'
                 conflicts_of_interest_details: 'Please provide details'
                 other_circumstances_details: 'Please provide details'
-              declaration:
-                agree_html: |
-                  I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
   activerecord:
     help:
       'sellers/seller_application/tailor/contract/business_details':
@@ -165,7 +167,7 @@ en:
       aside_html: |
         <p>Complete the steps in any order. Your progress is saved automatically, so you can return at any time.</p>
       documents:
-        title: Upload documents
+        title: Your documents
         guidance_html: |
           <p>This will take approximately 5 minutes.</p>
           <p>You will need:</p>
@@ -207,13 +209,20 @@ en:
       legals:
         title: Your legals
         guidance_html: |
-          <p>This will take approximately 15 minutes.</p>
+          <p>This will take approximately 5 minutes.</p>
           <p>You will need your authorised representative to agree to the Core Terms on behalf of your organisation.</p>
         aside_html: |
           <p>You'll need to complete the disclosures and accept the Core Terms to become a seller.</p>
         steps:
           declaration:
             short: 'Agree terms'
+      disclosures:
+        title: Your disclosures
+        guidance_html: |
+          <p>This will take approximately 10 minutes.</p>
+        aside_html: |
+          <p>You'll need to complete the disclosures.</p>
+        steps:
           disclosures:
             short: 'Disclosures'
         disclosures:

@@ -1,21 +1,21 @@
-class Sellers::SellerApplication::Legals::Update < Trailblazer::Operation
+class Sellers::SellerApplication::Disclosures::Update < Trailblazer::Operation
   module Steps
     extend ActiveSupport::Concern
     include Concerns::Operations::SellerApplicationForm
 
     included do
       step_configuration do |options|
-        i18n_key 'sellers.applications.legals'
+        i18n_key 'sellers.applications.disclosures'
         params_key :seller_application
 
         model :application, options[:application_model]
         model :seller, options[:seller_model]
 
-        path_route :legals_step_sellers_application_path, :application
+        path_route :disclosures_step_sellers_application_path, :application
       end
 
       step_flow do |application, seller|
-        step Sellers::SellerApplication::Legals::Contract::Declaration
+        step Sellers::SellerApplication::Disclosures::Contract::Disclosures
       end
     end
   end
