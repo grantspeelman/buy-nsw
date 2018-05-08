@@ -14,6 +14,8 @@ module Concerns::Operations::SellerApplicationForm::Persist
     success :steps!
     success :next_step!
 
+    success :complete_if_last_step!
+
     # NOTE: Invoking this again at the end of the flow means that we can add
     # validation errors and show the form again when the fields are invalid.
     #

@@ -71,8 +71,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on_step 'Business address'
     fill_in_address
-
-    go_back_to_application
   end
 
   def complete_profile_steps
@@ -90,8 +88,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on_step 'Recognition'
     fill_in_recognition
-
-    go_back_to_application
   end
 
   def complete_documents_steps
@@ -106,8 +102,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on_step 'Workers compensation'
     upload_document(button_label: 'Save')
-
-    go_back_to_application
   end
 
   def complete_legals_steps
@@ -119,8 +113,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on_step 'Agree terms'
     complete_declaration
-
-    go_back_to_application
   end
 
   def invite_team_member
@@ -251,10 +243,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def submit_application
     click_on 'Submit application'
-  end
-
-  def go_back_to_application
-    click_on 'Back to your application'
   end
 
   def click_on_step(label)
