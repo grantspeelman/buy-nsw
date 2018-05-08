@@ -13,7 +13,7 @@ class Sellers::Applications::TailorController < Sellers::Applications::QuestionG
       end
     end
 
-    flash.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
+    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

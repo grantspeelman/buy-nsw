@@ -21,7 +21,7 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
       return redirect_to result['result.next_step'].path
     end
 
-    flash.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
+    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

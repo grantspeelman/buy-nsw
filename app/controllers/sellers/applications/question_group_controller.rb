@@ -11,7 +11,7 @@ class Sellers::Applications::QuestionGroupController < Sellers::Applications::Ba
       return redirect_to result['result.step'].path
     end
 
-    flash.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
+    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :show
   end
 
