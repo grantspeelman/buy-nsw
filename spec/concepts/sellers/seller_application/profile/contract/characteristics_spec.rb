@@ -8,7 +8,7 @@ RSpec.describe Sellers::SellerApplication::Profile::Contract::Characteristics do
 
   let(:atts) {
     {
-      number_of_employees: '2to19',
+      number_of_employees: '2to4',
       start_up: true,
       sme: true,
       not_for_profit: false,

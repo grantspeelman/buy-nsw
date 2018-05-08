@@ -55,7 +55,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     # Services
     check 'Cloud products'
-    check 'Data and analytics'
     check 'Training and learning'
     click_on 'Save'
 
@@ -165,7 +164,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   end
 
   def fill_in_business_details
-    choose '2 to 19 employees'
+    choose '2-4'
     check 'Start-up'
     check 'Not for profit'
     check 'Regional'
