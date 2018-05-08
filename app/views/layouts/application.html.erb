@@ -44,7 +44,7 @@
     <% if notice.present? || alert.present? %>
       <div class="messages">
         <% flash.each do |key, value| %>
-          <div class="message">
+          <div class="message message-<%= key %>">
             <div class="message-container">
               <div class="row justify-content-end">
                 <p><%= value %></p>

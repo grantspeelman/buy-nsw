@@ -1,5 +1,4 @@
 .message {
-  background: $grey-1;
   border-bottom: 1px solid $grey-2;
 }
 
@@ -10,12 +9,18 @@
 .message p {
   @extend .col-md-8;
   margin-bottom: 0;
-  padding: 1rem;
 }
 
 .message-alert {
   @extend .alert;
   @extend .alert-danger;
+
+  border-radius: 0px;
+}
+
+.message-notice {
+  @extend .alert;
+  @extend .alert-success;
 
   border-radius: 0px;
 }
