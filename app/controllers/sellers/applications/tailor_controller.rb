@@ -8,7 +8,7 @@ class Sellers::Applications::TailorController < Sellers::Applications::QuestionG
       if result['result.completed'] == true
         return redirect_to sellers_application_path(result[:application_model])
       else
-        flash.alert = I18n.t('sellers.applications.messages.changes_saved')
+        flash.notice = I18n.t('sellers.applications.messages.changes_saved')
         return redirect_to result['result.next_step'].path
       end
     end

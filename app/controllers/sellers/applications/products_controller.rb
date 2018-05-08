@@ -17,7 +17,7 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
     if operation['result.completed'] == true
       return redirect_to sellers_application_path(result[:application_model])
     elsif operation.success?
-      flash.alert = I18n.t('sellers.applications.messages.changes_saved')
+      flash.notice = I18n.t('sellers.applications.messages.changes_saved')
       return redirect_to result['result.next_step'].path
     end
 
