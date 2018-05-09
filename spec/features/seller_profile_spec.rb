@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Seller profiles', type: :feature, js: true do
+RSpec.describe 'Seller profiles', type: :feature, js: true, user: :active_buyer_user do
 
   let(:abn) { '24 138 089 942' }
   let(:compact_abn) { abn.gsub(/\s/, '') }

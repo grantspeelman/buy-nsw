@@ -8,6 +8,14 @@ FactoryBot.define do
       roles ['buyer']
     end
 
+    trait :active_buyer do
+      roles ['buyer']
+
+      after :create do |user|
+        create(:active_buyer, user: user)
+      end
+    end
+
     trait :seller do
       roles ['seller']
     end
@@ -25,6 +33,7 @@ FactoryBot.define do
     end
 
     factory :buyer_user, traits: [:buyer]
+    factory :active_buyer_user, traits: [:active_buyer]
     factory :buyer_user_with_approved_email, traits: [:buyer, :with_approved_email]
     factory :buyer_user_without_approved_email, traits: [:buyer, :without_approved_email]
 

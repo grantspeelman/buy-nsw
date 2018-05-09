@@ -20,6 +20,12 @@ private
     end
   end
 
+  def authorize_buyer!
+    unless current_user.buyer.present? && current_user.buyer.active?
+      raise NotAuthorized
+    end
+  end
+
   def ssl_configured?
     ENV['FORCE_SSL'].present?
   end
@@ -29,7 +35,11 @@ private
   end
 
   def render_unauthorized
-    flash.alert = 'You are not permitted to access this page.'
-    redirect_to root_path
+    if current_user.present?
+      flash.alert = 'You are not permitted to access this page.'
+      redirect_to root_path
+    else
+      redirect_to new_session_path
+    end
   end
 end

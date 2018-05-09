@@ -1,4 +1,7 @@
 class Sellers::ProfilesController < Sellers::BaseController
+  before_action :authenticate_user!
+  before_action :authorize_buyer!
+
   def show
   end
 
