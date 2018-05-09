@@ -177,7 +177,7 @@ en:
           </ul>
         aside_html: |
           <p>Your corporate documents will appear on your seller profile to logged in buyers.</p>
-          <p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they are up to date.</p>
+          <p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.</p>
           <p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
         steps:
           financials:
@@ -192,7 +192,7 @@ en:
       contacts:
         title: Your contact details
         guidance_html: |
-          <p>This will take approximately 5 minutes.</p>
+          <p>This will take about 5 minutes.</p>
           <p>You will need:</p>
           <ul>
             <li>your contact details</li>
@@ -209,23 +209,23 @@ en:
       legals:
         title: Your legals
         errors:
-          no_representative: You can't start this until the authorised representative's details are provided
+          no_representative: You can't start this until you nominate an authorised representative.
           incorrect_user_html: |
             Only the authorised representative can complete this step. <a href="%{invite_link}">Send them an invitation</a>
         guidance_html: |
           <p>This will take approximately 5 minutes.</p>
-          <p>You will need your authorised representative to agree to the Core Terms on behalf of your organisation.</p>
+          <p>Your authorised representative needs to agree to the Core Terms on behalf of your organisation.</p>
         aside_html: |
-          <p>You'll need to complete the disclosures and accept the Core Terms to become a seller.</p>
+          <p>You need to complete the disclosures and accept the Core Terms to become a seller.</p>
         steps:
           declaration:
             short: 'Agree terms'
       disclosures:
         title: Your disclosures
         guidance_html: |
-          <p>This will take approximately 10 minutes.</p>
+          <p>This will take about 10 minutes.</p>
         aside_html: |
-          <p>You'll need to complete the disclosures.</p>
+          <p>You need to complete the disclosures.</p>
         steps:
           disclosures:
             short: 'Disclosures'
@@ -233,15 +233,15 @@ en:
           investigations: "Has your organisation — or any of its directors or principals — been or referred to investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
           legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
           insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability or fidelity insurance in the last 5 years?"
-          conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with the NSW Government?"
-          other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to the NSW Government?"
+          conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?"
+          other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?"
       messages:
         invitation_sent: We've sent an invitation to %{email}.
         invitation_accepted: You've accepted the invitation and joined the seller profile.
         invitation_invalid: This invitation code isn't valid. Please contact us for help.
-        changes_saved: Your changes have been saved
+        changes_saved: Your changes have been saved.
         changes_saved_with_errors: Your changes have been saved. However there were errors.
-        authorised_representative_only: Only the authorised representative can make this change.
+        authorised_representative_only: Only your authorised representative can make this change.
       tailor:
         title: Your company details
         steps:
@@ -251,39 +251,39 @@ en:
             button_label: 'Start application'
             body_html: |
               <p>To become a registered seller you need to tell us about your business.</p>
-              <p>The information you share will be used to create your seller profile and confirm your business meets the requirements to work with government.</p>
+              <p>The information you share will be used to create your seller profile and confirm your business meets the basic requirements to work with NSW government.</p>
               <p>It may take more than one visit to complete this application. But don't worry, your information is saved automatically if you need to come back later.</p>
-              <h3>You will need</h3>
+              <h3>You'll need</h3>
               <ul>
-                <li>Your basic business information</li>
-                <li>Recent financial records or a viability statement from your accountant</li>
-                <li>Details of your insurance cover</li>
+                <li>your basic business information</li>
+                <li>recent financial records or a viability statement from your accountant</li>
+                <li>current insurance documents</li>
               </ul>
-              <h3>You will be asked to</h3>
+              <h3>You'll be asked to</h3>
               <ul>
-                <li>Share details about services or products you offer</li>
-                <li>Provide detail about your offering that will support your application</li>
-                <li>Accept the Core Terms</li>
+                <li>share details about products and services you offer</li>
+                <li>provide details about your offering to support your application</li>
+                <li>accept the Core Terms</li>
               </ul>
           business_details:
             short: 'Business details'
             long: 'Tell us about your business'
           industry:
             short: 'Industry'
-            long: 'In which industry sectors do you provide services?'
+            long: 'Which industry are you in?'
             intro_html: |
           services:
             short: 'ICT categories'
             long: 'What products and services do you provide?'
             intro_html: |
-              <p>Select the ICT categories which are most relevant to your business.</p>
+              <p>Select the options that match your capabilities.</p>
           review:
             short: 'Review details'
             long: 'Review your details'
             button_label: 'Continue'
             intro_html: |
-              <p>The details you have given will determine the information you need to provide in your application.</p>
-              <p>Please check the information before continuing.</p>
+              <p>The options you've selected determine the information you need to provide later.</p>
+              <p>Please check the details below before continuing.</p>
             incomplete_message: Please complete all other steps before you continue.
       profile:
         title: Your seller profile
@@ -318,8 +318,8 @@ en:
         update_email: Update your email address
         contact_support: Contact support
       status:
-        good_standing: Your seller account is active and in good standing
-        awaiting_review_title: Your seller application is under review
+        good_standing: Your seller account is active and in good standing.
+        awaiting_review_title: Your seller application is being reviewed.
         awaiting_review_message_html: |
           <p>We are currently reviewing your application. We'll let you know the outcome soon by email.</p>
           <p>In the meantime, you can <a href="">contact us</a> if you have any questions.</p>
