@@ -39,7 +39,7 @@ private
       flash.alert = 'You are not permitted to access this page.'
       redirect_to root_path
     else
-      redirect_to new_session_path
+      redirect_to new_user_session_path
     end
   end
 end
