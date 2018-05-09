@@ -114,5 +114,6 @@ Rails.application.routes.draw do
     root to: 'root#index'
   end
 
+  get '/contact', to: 'static#contact'
   root to: 'static#index'
 end
