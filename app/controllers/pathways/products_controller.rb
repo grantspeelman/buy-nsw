@@ -6,7 +6,7 @@ private
 
   def product
     @product ||= ProductDecorator.new(
-      Product.with_section(section).find(params[:id]),
+      Product.active.with_section(section).find(params[:id]),
       view_context,
     )
   end
