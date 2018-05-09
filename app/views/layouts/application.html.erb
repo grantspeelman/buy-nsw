@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= render partial: 'layouts/google_analytics' %>
     <title>
       <%= "(#{deployment_env.try(:titleize)})" %> buy.nsw</title>
     <%= csrf_meta_tags %>
