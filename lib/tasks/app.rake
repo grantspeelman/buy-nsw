@@ -12,6 +12,7 @@ namespace :app do
         User.destroy_all
         SellerApplication.destroy_all
         Seller.destroy_all
+        Product.destroy_all
 
         contact_name = Faker::Name.name
         representative_name = Faker::Name.name
@@ -33,7 +34,7 @@ namespace :app do
         industry << 'other' if [false, true].sample
 
         (1..20).each do |i|
-          create(
+          seller = create(
             :active_seller,
             name: Faker::Company.unique.name,
             abn: Faker::Company.unique.australian_business_number,
@@ -75,6 +76,121 @@ namespace :app do
             rural_remote: [false, true].sample,
             workers_compensation_exempt: false
           )
+          # Each seller has between 1 and 5 products
+          (1..Faker::Number.between(1,5)).each do |i|
+            audiences = []
+            Product.audiences.values.each do |value|
+              audiences << value if [false, true].sample
+            end
+            pricing_min = Faker::Commerce.price
+
+            create(
+              :active_product,
+              seller: seller,
+              name: Faker::App.name,
+              audiences: audiences,
+              summary: Faker::Company.bs,
+              section: Product.section.values.sample,
+              reseller_type: Product.reseller_type.values.sample,
+              pricing_min: pricing_min,
+              pricing_max: pricing_min * Faker::Number.between(10, 1000),
+              pricing_unit: ['per user per month', 'per server', 'per hour'].sample
+            )
+
+            # t.text "pricing_variables", default: [], array: true
+            # t.text "pricing_variables_other"
+            # t.string "pricing_calculator_url"
+            # t.boolean "education_pricing"
+            # t.text "education_pricing_eligibility"
+            # t.text "education_pricing_differences"
+            # t.text "onboarding_assistance"
+            # t.text "offboarding_assistance"
+            # t.string "deployment_model"
+            # t.string "addon_extension_type"
+            # t.text "addon_extension_details"
+            # t.boolean "api"
+            # t.text "api_capabilities"
+            # t.text "api_automation"
+            # t.boolean "api_documentation"
+            # t.boolean "api_sandbox"
+            # t.text "government_network_type", default: [], array: true
+            # t.string "government_network_other"
+            # t.boolean "web_interface"
+            # t.text "web_interface_details"
+            # t.text "supported_browsers", default: [], array: true
+            # t.boolean "installed_application"
+            # t.text "supported_os", default: [], array: true
+            # t.text "supported_os_other"
+            # t.boolean "mobile_devices"
+            # t.text "mobile_desktop_differences"
+            # t.string "accessibility_type"
+            # t.text "accessibility_exclusions"
+            # t.string "scaling_type"
+            # t.text "guaranteed_availability"
+            # t.text "support_options", default: [], array: true
+            # t.text "support_hours"
+            # t.text "support_levels"
+            # t.text "data_import_formats", default: [], array: true
+            # t.text "data_import_formats_other"
+            # t.text "data_export_formats", default: [], array: true
+            # t.text "data_export_formats_other"
+            # t.string "data_access"
+            # t.string "audit_access_type"
+            # t.string "audit_storage_period"
+            # t.string "log_storage_period"
+            # t.string "data_location"
+            # t.text "data_location_other"
+            # t.boolean "data_storage_control_australia"
+            # t.boolean "third_party_infrastructure"
+            # t.text "third_party_infrastructure_details"
+            # t.text "backup_capability"
+            # t.string "disaster_recovery_type"
+            # t.string "backup_scheduling_type"
+            # t.string "backup_recovery_type"
+            # t.text "encryption_transit_user_types", default: [], array: true
+            # t.text "encryption_transit_user_other"
+            # t.text "encryption_transit_network_types", default: [], array: true
+            # t.text "encryption_transit_network_other"
+            # t.text "encryption_rest_types", default: [], array: true
+            # t.text "encryption_rest_other"
+            # t.boolean "authentication_required"
+            # t.text "authentication_types", default: [], array: true
+            # t.text "authentication_other"
+            # t.string "data_centre_security_standards"
+            # t.boolean "iso_27001"
+            # t.string "iso_27001_accreditor"
+            # t.date "iso_27001_date"
+            # t.text "iso_27001_exclusions"
+            # t.boolean "iso_27017"
+            # t.string "iso_27017_accreditor"
+            # t.date "iso_27017_date"
+            # t.text "iso_27017_exclusions"
+            # t.boolean "iso_27018"
+            # t.string "iso_27018_accreditor"
+            # t.date "iso_27018_date"
+            # t.text "iso_27018_exclusions"
+            # t.boolean "csa_star"
+            # t.string "csa_star_accreditor"
+            # t.date "csa_star_date"
+            # t.string "csa_star_level"
+            # t.text "csa_star_exclusions"
+            # t.boolean "pci_dss"
+            # t.string "pci_dss_accreditor"
+            # t.date "pci_dss_date"
+            # t.text "pci_dss_exclusions"
+            # t.boolean "soc_1"
+            # t.boolean "soc_2"
+            # t.string "secure_development_approach"
+            # t.string "penetration_testing_frequency"
+            # t.string "penetration_testing_approach"
+            # t.text "outage_channel_types", default: [], array: true
+            # t.text "outage_channel_other"
+            # t.text "metrics_contents"
+            # t.text "metrics_channel_types", default: [], array: true
+            # t.text "metrics_channel_other"
+            # t.text "usage_channel_types", default: [], array: true
+            # t.text "usage_channel_other"
+          end
         end
       end
     end
