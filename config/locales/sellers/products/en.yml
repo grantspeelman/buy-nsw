@@ -470,3 +470,29 @@ en:
             regional: Regional
             sme: SME
             start_up: Start-up
+        reseller_type:
+          name: Reseller type
+          options:
+            reseller: Reseller
+            not_reseller: Not a reseller
+        pricing:
+          name: Pricing
+          options:
+            free_version: Free version available
+            free_trial: Free trial available
+            education: Pricing for education
+        characteristics:
+          name: Product characteristics
+          options:
+            data_in_australia: Data hosted only in Australia
+            api: API available
+            mobile_devices: Works on mobile devices
+        security_standards:
+          name: Security standards
+          options:
+            iso_27001: ISO/IEC 27001
+            iso_27017: ISO/IEC 27017
+            iso_27018: ISO/IEC 27018
+            csa_star: CSA STAR
+            pci_dss: PCI DSS
+            soc_2: SOC II
