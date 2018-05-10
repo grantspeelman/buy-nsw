@@ -1,7 +1,24 @@
 require 'csv'
+require 'factory_bot'
+
+include FactoryBot::Syntax::Methods
 
 namespace :app do
   namespace :sellers do
+    namespace :create do
+
+      desc "Create fake sellers data - WARNING deletes MOST data in the database"
+      task fake: :environment do
+        User.destroy_all
+        SellerApplication.destroy_all
+        Seller.destroy_all
+
+        (1..20).each do |i|
+          create(:active_seller)
+        end
+      end
+    end
+
     namespace :export do
 
       #
