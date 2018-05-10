@@ -199,21 +199,22 @@ namespace :app do
 
       #
       # Exports data from the following tables:
-      # sellers, seller_addresses
+      # sellers, seller_addresses, products
       # Does NOT export:
       # seller_accreditations, seller_applications, seller_awards, seller_engagements
       #
       desc "Export all sellers as a csv file which can be loaded into a spreadsheet"
       task csv: :environment do
-        filename = 'exported_sellers.csv'
-        puts "Writing exported sellers to #{filename}..."
-        CSV.open(filename, 'w') do |csv|
-          headers = Seller.first.attributes.keys.map{|key| "seller.#{key}"}
+        filename_sellers = 'exported_sellers.csv'
+        filename_products = 'exported_products.csv'
+        puts "Writing exported sellers to #{filename_sellers}..."
+        CSV.open(filename_sellers, 'w') do |csv|
+          headers = Seller.new.attributes.keys.map{|key| "seller.#{key}"}
           # Figure out the maximum number of addresses that any seller has
           max_addresses = SellerAddress.group(:seller_id).count.values.max
           (1..max_addresses).each do |i|
             # TODO: Don't output seller_id attribute
-            headers += SellerAddress.first.attributes.keys.map{|key| "seller_address.#{i}.#{key}"}
+            headers += SellerAddress.new.attributes.keys.map{|key| "seller_address.#{i}.#{key}"}
           end
           csv << headers
           Seller.find_each do |seller|
@@ -223,6 +224,15 @@ namespace :app do
               # TODO: Don't output seller_id attribute
               values += address.attributes.values
             end
+            csv << values
+          end
+        end
+        puts "Writing exported products to #{filename_products}..."
+        CSV.open(filename_products, 'w') do |csv|
+          headers = Product.new.attributes.keys.map{|key| "product.#{key}"}
+          csv << headers
+          Product.find_each do |product|
+            values = product.attributes.values
             csv << values
           end
         end
