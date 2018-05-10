@@ -95,4 +95,20 @@ class Product < ApplicationRecord
   scope :regional, ->{ joins(:seller).where('sellers.regional' => true) }
   scope :sme, ->{ joins(:seller).where('sellers.sme' => true) }
   scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }
+
+  scope :reseller, -> { where(reseller_type: ['no-extras', 'extra-support', 'extra-features-support']) }
+  scope :not_reseller, -> { where(reseller_type: 'own-product') }
+  scope :free_version, -> { where(:free_version => true) }
+  scope :free_trial, -> { where(:free_trial => true) }
+  scope :education_pricing, -> { where(:education_pricing => true) }
+  scope :with_data_location, ->(location){ where(data_location: location) }
+  scope :api, ->{ where(api: true) }
+  scope :mobile_devices, ->{ where(mobile_devices: true) }
+
+  scope :iso_27001, ->{ where(iso_27001: true) }
+  scope :iso_27017, ->{ where(iso_27017: true) }
+  scope :iso_27018, ->{ where(iso_27018: true) }
+  scope :csa_star, ->{ where(csa_star: true) }
+  scope :pci_dss, ->{ where(pci_dss: true) }
+  scope :soc_2, ->{ where(soc_2: true) }
 end
