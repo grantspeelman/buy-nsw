@@ -1,9 +1,17 @@
 module CsvConvert
   def CsvConvert.import
-    filename_sellers = 'exported_sellers.csv'
-    filename_products = 'exported_products.csv'
-    puts "Reading in #{filename_sellers} and #{filename_products}..."
-    table = CSV.read(filename_sellers, headers: true)
+    import_sellers('exported_sellers.csv')
+    import_products('exported_products.csv')
+  end
+
+  def CsvConvert.export
+    export_sellers('exported_sellers.csv')
+    export_products('exported_products.csv')
+  end
+
+  def CsvConvert.import_sellers(filename)
+    puts "Reading in #{filename}..."
+    table = CSV.read(filename, headers: true)
     table.each do |row|
       atts = {}
       row.each do |k, v|
@@ -44,7 +52,11 @@ module CsvConvert
         end
       end
     end
-    table = CSV.read(filename_products, headers: true)
+  end
+
+  def CsvConvert.import_products(filename)
+    puts "Reading in #{filename}..."
+    table = CSV.read(filename, headers: true)
     table.each do |row|
       atts = {}
       row.each do |k, v|
@@ -78,11 +90,9 @@ module CsvConvert
     end
   end
 
-  def CsvConvert.export
-    filename_sellers = 'exported_sellers.csv'
-    filename_products = 'exported_products.csv'
-    puts "Writing exported sellers to #{filename_sellers}..."
-    CSV.open(filename_sellers, 'w') do |csv|
+  def CsvConvert.export_sellers(filename)
+    puts "Writing exported sellers to #{filename}..."
+    CSV.open(filename, 'w') do |csv|
       headers = Seller.new.attributes.keys.map{|key| "seller.#{key}"}
       # Figure out the maximum number of addresses that any seller has
       max_addresses = SellerAddress.group(:seller_id).count.values.max
@@ -101,8 +111,11 @@ module CsvConvert
         csv << values
       end
     end
-    puts "Writing exported products to #{filename_products}..."
-    CSV.open(filename_products, 'w') do |csv|
+  end
+
+  def CsvConvert.export_products(filename)
+    puts "Writing exported products to #{filename}..."
+    CSV.open(filename, 'w') do |csv|
       headers = Product.new.attributes.keys.map{|key| "product.#{key}"}
       csv << headers
       Product.find_each do |product|
