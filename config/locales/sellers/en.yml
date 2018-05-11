@@ -274,9 +274,9 @@ en:
             intro_html: |
           services:
             short: 'ICT categories'
-            long: 'What products and services do you provide?'
+            long: 'What products and services do you offer?'
             intro_html: |
-              <p>Select the options that match your capabilities.</p>
+              <p>Select the options that match your ICT capabilities.</p>
           review:
             short: 'Review details'
             long: 'Review your details'
