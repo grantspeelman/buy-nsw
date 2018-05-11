@@ -44,6 +44,7 @@ gem 'airbrake', '~> 7.2'
 gem 'fog-aws'
 gem 'active_elastic_job'
 gem 'abn'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
