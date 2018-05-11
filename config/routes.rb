@@ -115,5 +115,6 @@ Rails.application.routes.draw do
   end
 
   get '/contact', to: 'static#contact'
+  get '/privacy', to: 'static#privacy'
   root to: 'static#index'
 end
