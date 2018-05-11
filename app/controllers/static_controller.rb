@@ -4,4 +4,10 @@ class StaticController < ApplicationController
 
   def contact
   end
+
+  def privacy
+  end
+
+  def terms_of_use
+  end
 end

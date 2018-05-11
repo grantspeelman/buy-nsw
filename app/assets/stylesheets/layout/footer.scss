@@ -3,6 +3,15 @@ footer[role=global] {
     font-size: 0.76em;
     padding: 1.5em 1em;
     color: #888;
+    .footer-left, .footer-links {
+      @extend .col-md-6;
+    }
+    .footer-links {
+      text-align: right;
+      ul {
+        list-style: none;        
+      }
+    }
   }
 
   background: #fff;
