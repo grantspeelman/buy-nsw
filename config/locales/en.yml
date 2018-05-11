@@ -11,7 +11,7 @@ en:
               manager_name: "Your manager's full name"
               manager_email: "Your manager's email"
             terms:
-              terms_agreed: I agree to the Terms of Use
+              terms_agreed: I agree to the Terms of use
   buyers:
     applications:
       messages:
