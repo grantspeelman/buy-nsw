@@ -20,7 +20,7 @@ module CsvConvert
           atts[s[1]] = v
         end
       end
-      atts = unstringify_seller_atts(atts)
+      atts = unstringify_atts(Seller, atts)
 
       seller = Seller.find_by(id: atts['id'])
       if seller
@@ -60,7 +60,7 @@ module CsvConvert
           atts[s[1]] = v
         end
       end
-      atts = unstringify_product_atts(atts)
+      atts = unstringify_atts(Product, atts)
 
       product = Product.find_by(id: atts['id'])
       if product
@@ -71,32 +71,15 @@ module CsvConvert
     end
   end
 
-  def CsvConvert.unstringify_seller_atts(atts)
-    # Parse industry specially
-    # Note we're using eval WHICH IS USUALLY A VERY BAD THING
-    # but in this case the csv data will never be edited by
-    # anyone in the outside world
-    atts['industry'] = eval(atts['industry'])
-    atts['services'] = eval(atts['services'])
-    atts
-  end
-
-  def CsvConvert.unstringify_product_atts(atts)
-    atts['audiences'] = eval(atts['audiences'])
-    atts['pricing_variables'] = eval(atts['pricing_variables'])
-    atts['government_network_type'] = eval(atts['government_network_type'])
-    atts['supported_browsers'] = eval(atts['supported_browsers'])
-    atts['supported_os'] = eval(atts['supported_os'])
-    atts['support_options'] = eval(atts['support_options'])
-    atts['data_import_formats'] = eval(atts['data_import_formats'])
-    atts['data_export_formats'] = eval(atts['data_export_formats'])
-    atts['encryption_transit_user_types'] = eval(atts['encryption_transit_user_types'])
-    atts['encryption_transit_network_types'] = eval(atts['encryption_transit_network_types'])
-    atts['encryption_rest_types'] = eval(atts['encryption_rest_types'])
-    atts['authentication_types'] = eval(atts['authentication_types'])
-    atts['outage_channel_types'] = eval(atts['outage_channel_types'])
-    atts['metrics_channel_types'] = eval(atts['metrics_channel_types'])
-    atts['usage_channel_types'] = eval(atts['usage_channel_types'])
+  def CsvConvert.unstringify_atts(klass, atts)
+    object = klass.new
+    atts.each do |key, value|
+      # Check whether this attribute is an enumerize on the original record
+      # and if so parse the attribute as if it's been serialised as json
+      if object.send(key).kind_of?(Enumerize::Set)
+        atts[key] = JSON.parse(atts[key])
+      end
+    end
     atts
   end
 
