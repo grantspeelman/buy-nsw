@@ -45,6 +45,7 @@ gem 'fog-aws'
 gem 'active_elastic_job'
 gem 'abn'
 gem 'faker'
+gem 'factory_bot_rails', "~> 4.0"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,7 +54,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'dotenv-rails', '~> 2.4.0'
   gem 'foreman'
-  gem 'factory_bot_rails', "~> 4.0"
   gem 'i18n-debug'
   gem 'rspec-rails'
   gem 'simplecov'
