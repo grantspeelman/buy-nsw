@@ -107,11 +107,11 @@ en:
         indigenous_html: 'Your business is listed on <a href="https://www.supplynation.org.au/search">Supply Nation</a>.'
       'sellers/seller_application/documents/contract/documents':
         financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business' financial viability."
-        financial_statement_expiry: We will ask you to upload a new document one year from now.
+        financial_statement_expiry: We'll ask you to upload a new document when this one expires.
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
-        professional_indemnity_certificate_expiry: We will ask you to upload a new document when this document expires.
-        workers_compensation_certificate_expiry: We will ask you to upload a new document when this document expires.
+        professional_indemnity_certificate_expiry: We'll ask you to upload a new document when this one expires.
+        workers_compensation_certificate_expiry: We'll ask you to upload a new document when this one expires.
       'sellers/seller_application/tailor/contract/services':
         cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
         software-development: "The design, construction and delivery of bespoke software and software modifications, as well as implementation and configuration of vendor-owned software. Includes: user research; service, interaction and content design; coding and testing for stability, security and accessibility. Also includes managing technical environments and all technical skill sets and ways of working, together with supporting toolsets."
