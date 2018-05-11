@@ -45,7 +45,7 @@ en:
       employment_status:
         employee: "I'm a NSW Government employee and need access to buy.nsw to perform my role."
         contractor: "I'm a contractor working in state or local government."
-        other-eligible: "I'm an employee of another organisation that has <a> href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration" registered as an eligible buyer<a>."      
+        other-eligible: "I'm an employee of another organisation that has registered as an eligible buyer."
   errors:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
