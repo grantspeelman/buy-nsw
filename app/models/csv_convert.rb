@@ -1,14 +1,4 @@
 module CsvConvert
-  def CsvConvert.import
-    import_sellers('exported_sellers.csv')
-    import_products('exported_products.csv')
-  end
-
-  def CsvConvert.export
-    export_sellers('exported_sellers.csv')
-    export_products('exported_products.csv')
-  end
-
   def CsvConvert.import_sellers(filename)
     puts "Reading in #{filename}..."
     table = CSV.read(filename, headers: true)

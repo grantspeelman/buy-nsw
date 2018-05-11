@@ -198,7 +198,8 @@ namespace :app do
     namespace :import do
       desc "Import all sellers from a csv file - WARNING overwrites data in the database"
       task csv: :environment do
-        CsvConvert::import()
+        CsvConvert::import_sellers('exported_sellers.csv')
+        CsvConvert::import_products('exported_products.csv')
       end
     end
 
@@ -212,7 +213,8 @@ namespace :app do
       #
       desc "Export all sellers as a csv file which can be loaded into a spreadsheet"
       task csv: :environment do
-        CsvConvert::export()
+        CsvConvert::export_sellers('exported_sellers.csv')
+        CsvConvert::export_products('exported_products.csv')
       end
     end
   end
