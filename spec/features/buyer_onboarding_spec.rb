@@ -104,8 +104,8 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
   end
 
   def fill_in_employment_status(status)
-    choose 'I am a NSW Government employee' if status == :employee
-    choose 'I am a contractor' if status == :contractor
+    choose "I'm a NSW Government employee" if status == :employee
+    choose "I'm a contractor" if status == :contractor
 
     click_on 'Save and continue'
   end
