@@ -104,17 +104,5 @@
         </dd>
       </dl>
       <% end %>
-
-      <dl id="methods">
-        <h2>Methods</h2>
-        <dt>Tools</dt>
-        <dd><%= simple_format seller.tools %></dd>
-        <dt>Methodologies</dt>
-        <dd><%= simple_format seller.methodologies %></dd>
-        <% if seller.technologies.present? %>
-          <dt>Technologies</dt>
-          <dd><%= simple_format seller.technologies %></dd>
-        <% end %>
-      </dl>
     </div>
 </section>

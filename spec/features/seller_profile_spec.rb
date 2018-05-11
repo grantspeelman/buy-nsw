@@ -45,12 +45,6 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, user: :active_buyer_
     within '#recognition' do
       expect_list_entry('Awards', seller.awards.first.award)
     end
-
-    within '#methods' do
-      expect_list_entry('Tools', seller.tools)
-      expect_list_entry('Methodologies', seller.methodologies)
-      expect_list_entry('Technologies', seller.technologies)
-    end
   end
 
   def expect_list_entry(label, *contents)
