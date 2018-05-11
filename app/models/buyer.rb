@@ -7,7 +7,7 @@ class Buyer < ApplicationRecord
   belongs_to :user
   has_many :applications, class_name: 'BuyerApplication'
 
-  enumerize :employment_status, in: ['employee', 'contractor']
+  enumerize :employment_status, in: ['employee', 'contractor', 'other-eligible']
 
   aasm column: :state do
     state :inactive, initial: true

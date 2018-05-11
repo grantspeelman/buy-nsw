@@ -15,12 +15,12 @@ en:
   buyers:
     applications:
       messages:
-        already_submitted: You have already submitted a buyer application.
+        already_submitted: You've already submitted a buyer application.
         submitted: Your application has been submitted.
         manager_approve_success: Thanks for approving this application.
         manager_approve_failure: There was a problem approving this application. Please contact the support team for help.
         changes_saved: Your changes have been saved
-        changes_saved_with_errors: Your changes have been saved. However there were errors.
+        changes_saved_with_errors: Your changes have been saved. However there were some errors.
       steps:
         basic_details:
           short: 'Your details'
@@ -43,8 +43,9 @@ en:
   enumerize:
     buyer:
       employment_status:
-        employee: "I am a NSW Government employee and need access to buy.nsw to perform my role."
-        contractor: "I am a contractor working in state or local government."
+        employee: "I'm a NSW Government employee and need access to buy.nsw to perform my role."
+        contractor: "I'm a contractor working in state or local government."
+        other-eligible: "I'm an employee of another organisation that has registered as an eligible buyer."
   errors:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
@@ -56,12 +57,12 @@ en:
     same_password?: must match
     max_word_count?: exceeds the word count
     max_items?: has too many items
-    abn?: does not look like a valid ABN
+    abn?: That doesn't look like a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
     email?: not a valid email address
     url?: not a valid web address
     messages:
-      weak_password: "not strong enough. Consider adding a number, symbols or more letters to make it stronger."
+      weak_password: "That's not strong enough. Consider adding a number, symbols or more letters to make it stronger."
   helpers:
     label:
       seller_application:
@@ -140,7 +141,7 @@ en:
         start_up:
           name: 'Start-up'
         not_for_profit:
-          name: 'Not for profit / social enterprise'
+          name: 'Not for profit/social enterprise'
         female_owned:
           name: 'Female owned'
         australian_owned:
@@ -190,7 +191,7 @@ en:
         buyers:
           title: Buyers
           body_html: |
-            <p>Register for a buyer account if you work for a government organisation looking to buy from the marketplace.</p>
+            <p>You can create buyer account if you're a NSW Government employee or an employee of <a href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration">another eligible organisation<a>.</p>
           button_label: Create a buyer account
         sellers:
           title: Sellers
@@ -213,24 +214,24 @@ en:
       buyer:
         title: Create a buyer account
         body_html: |
-          <p>Once you have verified your details, you will be able to complete your buyer account.</p>
+          <p>Once you've verified your details, you'll be able to log into your buyer account.</p>
           <p>Already have an account? %{sign_in}.</p>
         sign_in_label: Sign in
         form:
-          email_help: If you have one, use your government email address. We will send an email to this address to verify it is yours.
+          email_help: If you have one, use your government email address. We'll send an email to this address to verify it's yours.
       seller:
         title: Create a seller account
         body_html: |
-          <p>Once you have verified your details, you will be able to start your seller application.</p>
+          <p>Once you've verified your details, you'll be able to start your seller application.</p>
           <p>Already have an account? %{sign_in}.</p>
         sign_in_label: Sign in
         form:
-          email_help: Please use your corporate email address. We will send an email to this address to verify it is yours.
+          email_help: Please use your work email address. We'll send an email to this address to verify it's yours.
       shared:
         form:
           email_label: Email address
           password_label: Password
-          password_help: A long password with multiple words is more secure, and easier to remember (eg. 'correct horse battery staple').
+          password_help: A long password with multiple words is more secure and easier to remember (eg. 'correct horse battery staple').
           password_confirmation_label: Confirm your password
           submit_label: Continue
         confirm:
