@@ -6,9 +6,9 @@ en:
           products:
             contract:
               basics:
-                name: Give your product or service a name
-                summary: Write a short summary of the need your product or service addresses
-                organisation_resold: Which organisation's product/services do you resell?
+                name: Product or service name
+                summary: Tell us briefly about the need it addresses 
+                organisation_resold: Who is the original supplier?
                 custom_contact:
                   'true': Somebody else
                   'false': The contact listed on your seller profile
@@ -31,15 +31,15 @@ en:
                   question: Do you provide a free trial option for your product or service?
                   'true': 'Yes'
                   'false': 'No'
-                free_trial_url: Please provide a link to the free trial for your product or service
+                free_trial_url: Please share a link to the free trial
                 pricing:
                   legend: Your pricing
                 pricing_unit: Price unit
-                pricing_min: Minimum price ($)
-                pricing_max: Maximum price ($)
+                pricing_min: Minimum price
+                pricing_max: Maximum price
                 pricing_calculator_url: Link to your pricing calculator (optional)
                 pricing_variables:
-                  question: What are the variables affecting your pricing?
+                  question: Which variables affect your pricing?
                 pricing_variables_other: Which other variables affect your pricing?
                 education_pricing:
                   question: Do you offer special pricing for educational organisations?
@@ -51,7 +51,7 @@ en:
                 onboarding_assistance: How do you help users start using your product or service?
                 offboarding_assistance: Describe your disengagement assistance
               environment:
-                deployment_model: Is the product or service deployed to public or private cloud?
+                deployment_model: How is the product or service deployed?
                 addon_extension_type:
                   question: Is the product or service an add-on or extension to other software services?
                 addon_extension_details: What other software is the product or service an extension to?
@@ -59,8 +59,8 @@ en:
                   question: Is there an API for your product or service?
                   'true': 'Yes'
                   'false': 'No'
-                api_capabilities: Describe what users can and can't do using the API
-                api_automation: Which standard automation tools work with your product or service's API?
+                api_capabilities: Describe what users can do using the API
+                api_automation: Which automation tools work with your product or service API?
                 api_documentation:
                   question: Do you provide API documentation for your product or service?
                   'true': 'Yes'
@@ -80,12 +80,12 @@ en:
                 supported_browsers:
                   question: Which browsers are supported?
                 installed_application:
-                  question: Is there an application for users to install to use your product or service?
+                  question: Do users need to download and install an application to use your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 supported_os:
                   question: Which operating systems are supported?
-                supported_os_other: Please specify the other operating systems supported
+                supported_os_other: Please specify other supported operating systems
                 mobile_devices:
                   question: Has your product or service been designed to work on mobile devices?
                   'true': 'Yes'
@@ -93,13 +93,13 @@ en:
                 mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
                 accessibility_type:
                   question: What aspects of your product or service are accessible WCAG 2.0 AA or above?
-                accessibility_exclusions: Please specify the areas which are accessible (including any exclusions which apply)
+                accessibility_exclusions: Please specify what is and isn't accessible
                 scaling_type:
                   question: How does your product or service scale?
               availability_support:
-                guaranteed_availability: Describe the level of availability you guarantee (excluding scheduled outages)
-                support_options: What are the core support options available?
-                support_hours: Specify the hours support is available (AEST time)
+                guaranteed_availability: Describe the level of availablity you guarantee and how buyers are compensated if you don't meet this level (excluding scheduled outages)
+                support_options: Outline your support options, availability hours (AEST) and if there are additional costs
+                support_hours: Specify the hours support is available
                 support_levels: Describe the support levels you provide, and how much different support levels cost
               user_data:
                 data_import_formats: What open data formats can users upload their data in?
@@ -223,14 +223,14 @@ en:
             short: Product category
             long: Which category best describes your product?
           basics:
-            short: Product basics
-            long: Basic information about the product
+            short: Basic information
+            long: Product or service basics
           commercials:
             short: Commercials
             long: Your product commercials
           onboarding_offboarding:
             short: On and offboarding
-            long: Onboarding and offboarding
+            long: On and offboarding
           environment:
             short: Environment
             long: Environment
@@ -241,7 +241,7 @@ en:
             short: User data
             long: User data
           identity_authentication:
-            short: Identity and auth
+            short: Identity and authentication
             long: Identity and authentication
           security_standards:
             short: Security standards
