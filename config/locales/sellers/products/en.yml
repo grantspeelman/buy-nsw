@@ -469,7 +469,7 @@ en:
             not_for_profit: Not for profit/social enterprise
             regional: Regional
             sme: SME
-            start_up: Startup
+            start_up: Start-up
         reseller_type:
           name: Reseller type
           options:
