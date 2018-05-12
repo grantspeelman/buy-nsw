@@ -102,18 +102,18 @@ en:
                 support_hours: Specify the hours support is available
                 support_levels: Describe the support levels you provide, and how much different support levels cost
               user_data:
-                data_import_formats: What open data formats can users upload their data in?
-                data_import_formats_other: List the other formats that users can upload their data in
-                data_export_formats: What open data formats can users export their data in?
-                data_export_formats_other: List the other formats that users can export their data in
-                data_access: Can users access and extract their data at any time?
+                data_import_formats: What data formats can be used to upload data?
+                data_import_formats_other: Please specify the other formats for uploading data
+                data_export_formats: What open data formats can be used to export data?
+                data_export_formats_other: Please specify the other formats for exporting data
+                data_access: Are there any restrictions on users accessing or extracting data?
                 audit_access_type: How do users access audit information about the actions their users have taken?
                 audit_storage_period: How long do you store user audit data for?
                 log_storage_period: How long are system logs stored for?
-                data_location: In which locations are user data stored, processed and managed?
-                data_location_other: List the other locations where user data is stored, processed and managed
+                data_location: Where is user data stored, processed and managed?
+                data_location_other: List the other known locations where user data is stored, processed and managed
                 data_storage_control_australia:
-                  question: Can users control where their data is stored, processed and managed in Australia?
+                  question: Can users control where their data is stored, processed and managed?
                   'true': 'Yes'
                   'false': 'No'
                 third_party_infrastructure:
@@ -125,12 +125,12 @@ en:
                 disaster_recovery_type: What's your data centre setup?
                 backup_scheduling_type: How do users schedule backups?
                 backup_recovery_type: How do users recover backups?
-                encryption_transit_user_types: How do you encrypt data between the end user and your product or service?
-                encryption_transit_user_other: Describe how else you encrypt data between the user and your product or service
-                encryption_transit_network_types: How do you encrypt data within your network?
-                encryption_transit_network_other: Describe how else you encrypt data within your network
-                encryption_rest_types: How do you encrypt data at rest?
-                encryption_rest_other: Describe how else you encrypt data at rest
+                encryption_transit_user_types: How do you protect data between the end user and your product or service?
+                encryption_transit_user_other: Describe how else you protect data between the user and your product or service
+                encryption_transit_network_types: How do you protect data within your network?
+                encryption_transit_network_other: Describe how else you protect data within your network
+                encryption_rest_types: How do you protect data at rest?
+                encryption_rest_other: Describe how else you protect data at rest
               identity_authentication:
                 authentication_required:
                   question: Do users need to be authenticated when using the product or service?
@@ -140,43 +140,43 @@ en:
                 authentication_other: Describe how else you authenticate users
                 access_testing_frequency: How often do you test your access controls?
               security_standards:
-                data_centre_security_standards: With which standards does your data centre security setup comply?
+                data_centre_security_standards: What standards does your data centre security setup comply with?
                 iso_27001:
-                  question: Do you have a current ISO/IEC 27001:2013 certification that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
-                iso_27001_accreditor: Who accredited the ISO/IEC 27001:2013 certification?
-                iso_27001_date: When was the certification accredited?
-                iso_27001_exclusions: What is not covered by your ISO/IEC 27001:2013 certification?
+                iso_27001_accreditor: Who accredited the certification?
+                iso_27001_date: When does the certification expire?
+                iso_27001_exclusions: What's not covered by the certification?
                 iso_27017:
-                  question: Do you have a current ISO/IEC 27017:2015 certification that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
                 iso_27017_accreditor: Who accredited the ISO/IEC 27017:2015 certification?
-                iso_27017_date: When was the certification accredited?
-                iso_27017_exclusions: What is not covered by your ISO/IEC 27017:2015 certification?
+                iso_27017_date: When does the certification expire?
+                iso_27017_exclusions: What's not covered by the certification?
                 iso_27018:
-                  question: Do you have a current ISO/IEC 27018:2014 certification that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
                 iso_27018_accreditor: Who accredited the ISO/IEC 27018:2014 certification?
-                iso_27018_date: When was the certification accredited?
-                iso_27018_exclusions: What is not covered by your ISO/IEC 27018:2014 certification?
+                iso_27018_date: When does the certification expire?
+                iso_27018_exclusions: What's not covered by the certification?
                 csa_star:
                   question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
                 csa_star_accreditor: Who accredited the CSA STAR certification?
-                csa_star_date: When was the certification accredited?
+                csa_star_date: When does the certification expire?
                 csa_star_level: What level is the certification?
-                csa_star_exclusions: What is not covered by your CSA STAR certification?
+                csa_star_exclusions: What's not covered by the certification?
                 pci_dss:
                   question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your service?
                   'true': 'Yes'
                   'false': 'No'
                 pci_dss_accreditor: Who accredited the PCI DSS certification?
-                pci_dss_date: When was the certification accredited?
-                pci_dss_exclusions: What is not covered by your PCI DSS certification?
+                pci_dss_date: When does the certification expire?
+                pci_dss_exclusions: What's not covered by your PCI DSS certification?
                 soc_1:
                   question: Do you have a current SSAE-18 SOC I certification that covers the security of your service?
                   'true': 'Yes'
@@ -186,17 +186,17 @@ en:
                   'true': 'Yes'
                   'false': 'No'
               security_practices:
-                secure_development_approach: How does your organisation demonstrate that it adheres to best practice in secure software development?
+                secure_development_approach: What practices does your organisation follow for secure software development?
                 penetration_testing_frequency: How often do you do penetration testing?
-                penetration_testing_approach: What is your approach to penetration testing?
+                penetration_testing_approach: What's your approach to penetration testing?
               reporting_analytics:
                 metrics_contents: What metrics does your product or service report?
                 metrics_channel_types: How do you provide these reports?
-                metrics_channel_other: Specify how you provide these reports
+                metrics_channel_other: Please specify how you provide these reports
                 outage_channel_types: How do you provide outage alerts?
-                outage_channel_other: Specify how you provide outage alerts
+                outage_channel_other: Please specify how you provide outage alerts
                 usage_channel_types: How are users notified if usage nears service limits?
-                usage_channel_other: Specify how users are notified if usage nears service limits
+                usage_channel_other: Please specify how users are notified if usage nears service limits
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -330,11 +330,11 @@ en:
         odf: ODF
         other: Other
       data_export_formats:
-        csv: CSV
-        odf: ODF
+        csv: Comma separated values (CSV)
+        odf: Open data format (ODF)
         other: Other
       data_access:
-        unrestricted: Yes, at all times
+        unrestricted: There are no restrictions
         restrictions: Yes, with restrictions
         'no': "No [breach of Core Terms]"
       audit_access_type:
@@ -342,18 +342,18 @@ en:
         regular: Users receive audit information on a regular basis
         manual: Users contact the support team to get audit information
       audit_storage_period:
-        user-defined: User-defined
-        12-months: At least 12 months
-        6-to-12-months: Between 6 months and 12 months
-        1-to-6-months: Between 1 month and 6 months
+        user-defined: User defined
+        12-months: 12 months or longer
+        6-to-12-months: 6-12 months
+        1-to-6-months: 1-6 months
         less-than-1-month: Less than 1 month
         supplier-controlled: Supplier controls when users can access audit information
         none: No audit information available
       log_storage_period:
         user-defined: User-defined
-        12-months: At least 12 months
-        6-to-12-months: Between 6 months and 12 months
-        1-to-6-months: Between 1 month and 6 months
+        12-months: 12 months or longer
+        6-to-12-months: 6-12 months
+        1-to-6-months: 1-6 months
         less-than-1-month: Less than 1 month
       data_location:
         only-australia: Only in Australia
@@ -405,8 +405,8 @@ en:
         never: Never
       data_centre_security_standards:
         recognised-standard: Complies with a recognised standard (eg. CSA CCM v3.0)
-        supplier-defined: Supplier defined controls
-        third-party: Managed by a third party
+        supplier-defined: Internal procedures
+        third-party: I don't know. It's not mine.
       csa_star_level:
         level-1: "Level 1 – CSA STAR Self-Assessment"
         level-2: "Level 2 – CSA STAR Attestation"
@@ -465,11 +465,11 @@ en:
           name: Business identifiers
           options:
             disability: Australian disability enterprise
-            indigenous: Indigenous business
-            not_for_profit: Not for profit / social enterprise
+            indigenous: Aboriginal or Torres Strait Islander business
+            not_for_profit: Not for profit/social enterprise
             regional: Regional
             sme: SME
-            start_up: Start-up
+            start_up: Startup
         reseller_type:
           name: Reseller type
           options:
