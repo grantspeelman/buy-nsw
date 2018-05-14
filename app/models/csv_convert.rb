@@ -31,7 +31,7 @@ module CsvConvert
         end
         address = SellerAddress.find_by(id: atts['id'])
         if address
-          address.update_attributes(atts)
+          address.update_attributes!(atts)
         else
           SellerAddress.create!(atts)
         end
@@ -54,7 +54,7 @@ module CsvConvert
 
       product = Product.find_by(id: atts['id'])
       if product
-        product.update_attributes(atts)
+        product.update_attributes!(atts)
       else
         Product.create!(atts)
       end
