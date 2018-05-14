@@ -45,9 +45,11 @@ module CsvConvert
     table.each do |row|
       atts = {}
       row.each do |k, v|
-        s = k.split('.')
-        if s[0] == 'product'
-          atts[s[1]] = v
+        if k
+          s = k.split('.')
+          if s[0] == 'product'
+            atts[s[1]] = v
+          end
         end
       end
       atts = unstringify_atts(Product, atts)
@@ -62,11 +64,11 @@ module CsvConvert
   end
 
   def CsvConvert.unstringify_atts(klass, atts)
-    object = klass.new
     atts.each do |key, value|
       # Check whether this attribute is an enumerize on the original record
       # and if so parse the attribute as if it's been serialised as json
-      if object.send(key).kind_of?(Enumerize::Set)
+      # Horrible hack
+      if value && value[0] == '['
         atts[key] = JSON.parse(atts[key])
       end
     end
