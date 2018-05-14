@@ -98,10 +98,10 @@ en:
         website_url: Provide a link to your website beginning with http
         linkedin_url: Provide a LinkedIn URL beginning with http
       'sellers/seller_application/profile/contract/characteristics':
-        start_up: It is not listed on any stock exchange and is less than 5 years old.
-        sme: You have less than 200 employees and are independent of any parent organisation.
+        start_up: Your business is not listed on any stock exchange and is less than 5 years old.
+        sme: Small and medium enterprises from NSW, other states and territories of Australia and New Zealand, with less than 200 full-time equivalent employees.
         not_for_profit: An organisation that applies commercial strategies to maximize improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
-        australian_owned: Your business is founded and headquartered in Australia, and owned by Australian nationals.
+        australian_owned: Your business is founded and headquartered in Australia and owned by Australian nationals.
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
         indigenous_html: 'An Aboriginal or Torres Strait Islander-owned business recognised by the <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a>, or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.
