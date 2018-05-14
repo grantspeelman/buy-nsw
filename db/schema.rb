@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503042408) do
+ActiveRecord::Schema.define(version: 20180514104538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -259,13 +259,11 @@ ActiveRecord::Schema.define(version: 20180503042408) do
     t.string "representative_name"
     t.string "representative_email"
     t.string "representative_phone"
-    t.boolean "structural_changes"
     t.boolean "investigations"
     t.boolean "legal_proceedings"
     t.boolean "insurance_claims"
     t.boolean "conflicts_of_interest"
     t.boolean "other_circumstances"
-    t.text "structural_changes_details"
     t.text "investigations_details"
     t.text "legal_proceedings_details"
     t.text "insurance_claims_details"

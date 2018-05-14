@@ -8,14 +8,12 @@ RSpec.describe Sellers::SellerApplication::Disclosures::Contract::Disclosures do
 
   let(:atts) {
     {
-      structural_changes: true,
       investigations: true,
       legal_proceedings: true,
       insurance_claims: true,
       conflicts_of_interest: true,
       other_circumstances: true,
 
-      structural_changes_details: 'Information',
       investigations_details: 'Information',
       legal_proceedings_details: 'Information',
       insurance_claims_details: 'Information',
@@ -29,21 +27,6 @@ RSpec.describe Sellers::SellerApplication::Disclosures::Contract::Disclosures do
 
     expect(subject).to be_valid
     expect(subject.save).to eq(true)
-  end
-
-  describe 'structural_changes' do
-    it 'is valid when false and the details field is blank' do
-      subject.validate(atts.merge(structural_changes: false, structural_changes_details: ''))
-
-      expect(subject).to be_valid
-    end
-
-    it 'is invalid when true and the details field is blank' do
-      subject.validate(atts.merge(structural_changes: true, structural_changes_details: ''))
-
-      expect(subject).to_not be_valid
-      expect(subject.errors[:structural_changes_details]).to be_present
-    end
   end
 
   describe 'investigations' do

@@ -1,13 +1,11 @@
 module Sellers::SellerApplication::Disclosures::Contract
   class Disclosures < Base
-    property :structural_changes,    on: :seller
     property :investigations,        on: :seller
     property :legal_proceedings,     on: :seller
     property :insurance_claims,      on: :seller
     property :conflicts_of_interest, on: :seller
     property :other_circumstances,   on: :seller
 
-    property :structural_changes_details,    on: :seller
     property :investigations_details,        on: :seller
     property :legal_proceedings_details,     on: :seller
     property :insurance_claims_details,      on: :seller
@@ -16,23 +14,18 @@ module Sellers::SellerApplication::Disclosures::Contract
 
     validation :default do
       required(:seller).schema do
-        required(:structural_changes).filled(:bool?)
         required(:investigations).filled(:bool?)
         required(:legal_proceedings).filled(:bool?)
         required(:insurance_claims).filled(:bool?)
         required(:conflicts_of_interest).filled(:bool?)
         required(:other_circumstances).filled(:bool?)
 
-        required(:structural_changes_details).maybe(:str?)
         required(:investigations_details).maybe(:str?)
         required(:legal_proceedings_details).maybe(:str?)
         required(:insurance_claims_details).maybe(:str?)
         required(:conflicts_of_interest_details).maybe(:str?)
         required(:other_circumstances_details).maybe(:str?)
 
-        rule(structural_changes_details: [:structural_changes, :structural_changes_details]) do |checkbox, details|
-          checkbox.true?.then(details.filled?)
-        end
         rule(investigations_details: [:investigations, :investigations_details]) do |checkbox, details|
           checkbox.true?.then(details.filled?)
         end
