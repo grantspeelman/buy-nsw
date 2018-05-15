@@ -104,7 +104,7 @@ en:
         australian_owned: Your business is founded and headquartered in Australia and owned by Australian nationals.
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
-        indigenous_html: 'An Aboriginal or Torres Strait Islander-owned business recognised by the <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a>, or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.
+        indigenous_html: 'Your business is recognised by the <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a>, or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.
 '
       'sellers/seller_application/documents/contract/documents':
         financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business' financial viability."
@@ -352,5 +352,5 @@ en:
     tags:
       start_up: Start-up
       sme: SME
-      indigenous: First Australians
+      indigenous: Aboriginal or Torres Strait Islander
       not_for_profit: Not-for-profit
