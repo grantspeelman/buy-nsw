@@ -20,7 +20,7 @@ en:
                 travel: 'Happy to travel for opportunities'
                 disability: 'Australian disability enterprise'
                 female_owned: 'Female owned'
-                indigenous: 'Indigenous'
+                indigenous: 'Aboriginal or Torres Strait Islander'
                 no_experience: "No, we're looking forward to working with government for the first time"
                 local_government_experience: 'Yes, with local government'
                 state_government_experience: 'Yes, with state or territory government'
@@ -330,7 +330,7 @@ en:
           name: Business identifiers
           options:
             disability: Australian disability enterprise
-            indigenous: Indigenous business
+            indigenous: Aboriginal or Torres Strait Islander
             not_for_profit: Not for profit/social enterprise
             regional: Regional
             sme: SME
