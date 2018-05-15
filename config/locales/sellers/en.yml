@@ -88,7 +88,7 @@ en:
     help:
       'sellers/seller_application/tailor/contract/business_details':
         name: Your business name must be listed under your ABN. You can leave out endings like PTY LTD.
-        abn_html: "You need an Australian Business Number to do business in Australia. <a href=\"https://abr.business.gov.au/\">Lookup the ABN of your business</a>."
+        abn_html: "You need an Australian Business Number to do business in Australia. <a href=\"https://abr.business.gov.au/\">Lookup your ABN</a> or <a href= "https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"> apply for an ABN</a>."
       'sellers/seller_application/contract/methods':
         tools: What delivery management software, tools or other artefacts do you use day-to-day?
         methodologies: What methodologies form the core of your practice?
@@ -284,7 +284,7 @@ en:
             button_label: 'Continue'
             intro_html: |
               <p>The options you've selected determine the information you need to provide later.</p>
-              <p>Please check the details below before continuing.</p>
+              <p>Please double-check the details below before continuing, you'll need to contact support if you want to change them later.</p>
             incomplete_message: Please complete all other steps before you continue.
       profile:
         title: Your seller profile
