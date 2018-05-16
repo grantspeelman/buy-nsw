@@ -8,7 +8,8 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
 
   let(:example_pdf) {
     Rack::Test::UploadedFile.new(
-      Rails.root.join('spec', 'fixtures', 'files', 'example.pdf')
+      Rails.root.join('spec', 'fixtures', 'files', 'example.pdf'),
+      'application/pdf'
     )
   }
   let(:future_date) { Date.today + 1.year }
@@ -28,11 +29,36 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
     expect(subject.save).to eq(true)
   end
 
-  it 'is invalid when the professional indemnity certificate is blank' do
-    subject.validate(atts.merge(professional_indemnity_certificate: nil))
+  context 'professional_indemnity_certificate' do
+    it 'is invalid when blank' do
+      subject.validate(atts.merge(professional_indemnity_certificate: nil))
 
-    expect(subject).to_not be_valid
-    expect(subject.errors[:professional_indemnity_certificate]).to be_present
+      expect(subject).to_not be_valid
+      expect(subject.errors[:professional_indemnity_certificate]).to be_present
+    end
+
+    it 'is invalid with an unsupported filetype' do
+      invalid_file = Rack::Test::UploadedFile.new(
+        Rails.root.join('spec', 'fixtures', 'files', 'invalid.html')
+      )
+      subject.validate(atts.merge(
+        professional_indemnity_certificate: invalid_file
+      ))
+
+      expect(subject.save).to be_falsey
+    end
+
+    it 'is invalid with an unsupported content type' do
+      invalid_file = Rack::Test::UploadedFile.new(
+        Rails.root.join('spec', 'fixtures', 'files', 'example.pdf'),
+        'text/html'
+      )
+      subject.validate(atts.merge(
+        professional_indemnity_certificate: invalid_file
+      ))
+
+      expect(subject.save).to be_falsey
+    end
   end
 
   context 'professional_indemnity_certificate_expiry' do

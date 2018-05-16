@@ -12,4 +12,8 @@ class SellerDocumentUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(jpg jpeg pdf png)
   end
+
+  def content_type_whitelist
+    ['image/jpeg', 'image/png', 'application/pdf']
+  end
 end
