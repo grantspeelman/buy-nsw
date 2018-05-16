@@ -21,7 +21,7 @@
     input[type=submit] {
       @extend .btn;
       @extend .btn-primary;
-      
+
       font-size: 1.2rem;
     }
   }
@@ -63,10 +63,10 @@
       li {
         list-style: none;
         position: relative;
-        margin-bottom: .4em;
+        min-height: 2rem;
 
         &:last-of-type {
-          margin-bottom: 0;
+          min-height: 0;
         }
       }
 
@@ -79,6 +79,7 @@
         padding: 0 0 0 32px;
         margin-bottom: 0;
         font-size: 0.8em;
+        line-height: 1.3rem;
 
         &::before {
           width: 24px;
