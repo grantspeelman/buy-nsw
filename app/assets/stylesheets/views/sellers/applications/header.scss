@@ -26,6 +26,12 @@
       @extend .btn;
       @extend .btn-primary;
       font-size: .9rem;
+
+      span {
+        @extend .oi;
+        @extend .oi-arrow-thick-top;
+        padding-left: .25rem;
+      }
     }
   }
 }
