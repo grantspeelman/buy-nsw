@@ -12,6 +12,13 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
     end
   end
 
+  def destroy
+    if product.destroy
+      flash.notice = I18n.t('sellers.applications.messages.product_destroyed')
+    end
+    redirect_to sellers_application_products_path(application)
+  end
+
 private
   def application
     @application ||= current_user.seller_applications.created.find(params[:application_id])
@@ -22,6 +29,11 @@ private
     application.seller.products.order('name ASC')
   end
   helper_method :products
+
+  def product
+    @product ||= products.find(params[:id])
+  end
+  helper_method :product
 
   def progress_report
     @progress_report ||= SellerApplicationProgressReport.new(
