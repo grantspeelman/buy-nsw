@@ -63,7 +63,6 @@ Rails.application.routes.draw do
         end
       end
     end
-    get '/applications/:id/:step', to: 'applications#show', as: :application_step
 
     resources :profiles, only: :show
     get '/search', to: 'search#search', as: :search
@@ -117,6 +116,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'static#contact'
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'
-  
+
   root to: 'static#index'
 end
