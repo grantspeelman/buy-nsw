@@ -214,10 +214,13 @@ en:
   sellers:
     applications:
       products:
-        title: 'Cloud products and support: your products'
+        title: 'Your cloud products'
         empty_name_label: No name
         new_product_action_label: Add a new product
+        manage_products_action_label: Add or edit your products
         edit_product_action_label: Edit
+        guidance_html: |
+          This will take about 30 minutes for each product.
         steps:
           type:
             short: Product category
