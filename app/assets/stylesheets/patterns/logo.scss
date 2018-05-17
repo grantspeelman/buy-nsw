@@ -16,11 +16,12 @@
     display: inline-block;
   }
   span.logo {
-    background: asset-data-url('nsw-logo.svg') no-repeat;
+    background: asset-data-url('nsw-logo.png') no-repeat;
     background-size: 4.5rem;
     text-indent: -9999px;
 
     height: 5rem;
+    width: 5.5rem;
   }
   span.site-title {
     margin-top: 3.2rem;
