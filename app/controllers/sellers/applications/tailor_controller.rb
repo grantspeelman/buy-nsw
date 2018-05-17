@@ -1,6 +1,9 @@
 class Sellers::Applications::TailorController < Sellers::Applications::QuestionGroupController
   layout '../sellers/applications/tailor/_layout'
 
+  skip_before_action :restrict_access_unless_tailored!
+  before_action :restrict_access_if_completed!
+
   def update
     params[:seller_application] ||= {}
 
@@ -18,6 +21,16 @@ class Sellers::Applications::TailorController < Sellers::Applications::QuestionG
   end
 
 private
+
+  # NOTE: Don't allow sellers to change their information once they have already
+  # completed the tailor question group
+  #
+  def restrict_access_if_completed!
+    if application.tailor_complete?
+      redirect_to sellers_application_path(application)
+    end
+  end
+
   def operation_class
     Sellers::SellerApplication::Tailor::Update
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514104538) do
+ActiveRecord::Schema.define(version: 20180516060816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 20180514104538) do
     t.datetime "decided_at"
     t.integer "seller_id", null: false
     t.integer "assigned_to_id"
+    t.boolean "tailor_complete", default: false
   end
 
   create_table "seller_awards", force: :cascade do |t|

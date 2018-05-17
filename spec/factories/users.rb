@@ -20,6 +20,13 @@ FactoryBot.define do
       roles ['seller']
     end
 
+    trait :with_seller do
+      after :create do |user, evaluator|
+        seller = evaluator.seller || create(:seller, owner: user)
+        user.update_attribute(:seller_id, seller.id)
+      end
+    end
+
     trait :admin do
       roles ['admin']
     end
@@ -38,6 +45,7 @@ FactoryBot.define do
     factory :buyer_user_without_approved_email, traits: [:buyer, :without_approved_email]
 
     factory :seller_user, traits: [:seller]
+    factory :seller_user_with_seller, traits: [:seller, :with_seller]
     factory :admin_user, traits: [:admin]
   end
 end

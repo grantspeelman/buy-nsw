@@ -28,11 +28,6 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
   end
 
 private
-  def application
-    @application ||= current_user.seller_applications.created.find(params[:id])
-  end
-  helper_method :application
-
   def question_sets
     [
       Sellers::SellerApplication::Tailor::Update::Present,
@@ -54,8 +49,7 @@ private
   helper_method :progress_report
 
   def tailor_step_valid?
-    tailor_step = progress_report.question_set_progress['sellers.applications.tailor']
-    tailor_step[:valid] == true
+    application.tailor_complete?
   end
 
   def can_submit_application?

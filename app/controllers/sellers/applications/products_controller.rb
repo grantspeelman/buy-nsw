@@ -12,6 +12,11 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
   end
 
 private
+  def application
+    @application ||= current_user.seller_applications.created.find(params[:application_id])
+  end
+  helper_method :application
+
   def operation_class
     Sellers::SellerApplication::Products::Update
   end

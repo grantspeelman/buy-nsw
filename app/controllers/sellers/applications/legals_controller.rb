@@ -11,11 +11,6 @@ private
     end
   end
 
-  def application
-    @application ||= current_user.seller_applications.created.find(params[:id])
-  end
-  helper_method :application
-
   def operation_class
     Sellers::SellerApplication::Legals::Update
   end

@@ -9,7 +9,7 @@ FactoryBot.define do
     end
 
     after(:create) do |seller, evaluator|
-      if evaluator.owner
+      if evaluator.owner && evaluator.owner.seller_id != seller.id
         evaluator.owner.update_attribute(:seller_id, seller.id)
       else
         create(:seller_user, seller: seller)
@@ -48,7 +48,7 @@ FactoryBot.define do
       end
     end
 
-    trait :with_full_profile do
+    trait :with_tailor_fields do
       name 'Seller Ltd'
       summary 'We sell things'
       sequence(:abn) do |n|
@@ -67,6 +67,11 @@ FactoryBot.define do
       linkedin_url 'http://linkedin.com/example'
 
       industry [ 'ict' ]
+      services [ 'cloud-services' ]
+    end
+
+    trait :with_full_profile do
+      with_tailor_fields
 
       number_of_employees '2to4'
       start_up true
@@ -95,6 +100,7 @@ FactoryBot.define do
 
     factory :active_seller, traits: [:active, :with_full_profile]
     factory :inactive_seller, traits: [:inactive]
+    factory :inactive_seller_with_tailor_fields, traits: [:inactive, :with_tailor_fields]
     factory :inactive_seller_with_full_profile, traits: [:inactive, :with_full_profile]
   end
 end

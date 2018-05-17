@@ -1,4 +1,6 @@
 class Sellers::Applications::QuestionGroupController < Sellers::Applications::BaseController
+  before_action :restrict_access_unless_tailored!
+
   def show
     @operation = run operation_present_class
   end
@@ -29,6 +31,15 @@ private
     raise('Sellers::Applications::QuestionGroupController invoked without defining operation_present_class')
   end
 
+  # NOTE: Don't allow sellers to change their information once they have already
+  # completed the tailor question group
+  #
+  def restrict_access_unless_tailored!
+    unless application.tailor_complete?
+      redirect_to tailor_sellers_application_path(application)
+    end
+  end
+
   def form
     operation["contract.default"]
   end
@@ -38,11 +49,6 @@ private
     @operation
   end
   helper_method :operation
-
-  def application
-    operation[:application_model]
-  end
-  helper_method :application
 
   def seller
     operation[:seller_model]
