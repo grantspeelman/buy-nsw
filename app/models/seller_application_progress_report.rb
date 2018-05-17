@@ -8,6 +8,8 @@ class SellerApplicationProgressReport
     @steps = {}
     @product_config = {}
     @product_steps = {}
+
+    @cache_length = 12.hours
   end
 
   def all_question_sets_valid?
@@ -21,7 +23,7 @@ class SellerApplicationProgressReport
   end
 
 private
-  attr_reader :application, :question_sets, :product_question_set
+  attr_reader :application, :cache_length, :product_question_set, :question_sets
 
   def build_progress
     build_question_set_progress.merge(
@@ -34,12 +36,15 @@ private
       question_sets.each do |question_set|
         config = build_configuration(question_set)
         key = config.get(:i18n_key)
-        steps = build_steps(question_set)
+        cache_key = "#{key}-#{application.id}"
 
-        output[key] = {
-          percent_complete: percent_complete(steps),
-          valid: all_steps_valid?(steps),
-        }
+        output[key] = Rails.cache.fetch(cache_key, expires_in: cache_length) do
+          steps = build_steps(question_set)
+          {
+            percent_complete: percent_complete(steps),
+            valid: all_steps_valid?(steps),
+          }
+        end
       end
     end
   end
@@ -47,12 +52,15 @@ private
   def build_product_question_set_progress
     {}.tap do |output|
       products.each do |product|
-        steps = build_product_steps(product)
+        key = "sellers.applications.products.#{product.id}"
 
-        output["sellers.applications.products.#{product.id}"] = {
-          percent_complete: percent_complete(steps),
-          valid: all_steps_valid?(steps),
-        }
+        output[key] = Rails.cache.fetch(key, expires_in: cache_length) do
+          steps = build_product_steps(product)
+          {
+            percent_complete: percent_complete(steps),
+            valid: all_steps_valid?(steps),
+          }
+        end
       end
     end
   end
