@@ -1,6 +1,9 @@
 <% content_for(:without_container, true) %>
-<% content_for(:seller_breadcrumb, 'Your product details') %>
-<% content_for(:seller_application_class, 'flow-non-linear') %>
+<% content_for(:seller_application_class, 'view-sellers-products-edit') %>
+
+<% content_for(:seller_breadcrumb) do %>
+  <%= link_to 'Your cloud products', sellers_application_products_path(application) %> &rarr; <%= operation[:product_model].name || 'Your product details' %>
+<% end %>
 
 <% content_for(:steps) do %>
   <%= render partial: 'sellers/applications/shared/step_list', locals: { operation: operation } %>
@@ -8,6 +11,10 @@
 
 <% content_for(:current_step) do %>
   <%= content_for?(:content) ? yield(:content) : yield %>
+<% end %>
+
+<% content_for(:step_container_header) do %>
+  <h1><%= product.name %></h1>
 <% end %>
 
 <%= render template: 'sellers/applications/shared/_layout' %>
