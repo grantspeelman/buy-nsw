@@ -1,30 +1,33 @@
-<h1>Products</h1>
+<% content_for(:seller_breadcrumb, 'Your cloud products') %>
 
-<p>Here you can list the products you wish to sell.</p>
+<section class="view-seller-products-list">
+  <header>
+    <h1>Your cloud products</h1>
 
-<fieldset>
-  <table class="products-list">
-    <thead>
-      <tr>
-        <th scope="col">Product Name</th>
-        <th scope="col">Status</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% products.each do |product| %>
-        <%= render partial: 'row', locals: { product: product, application: application } %>
+    <p>Here you can add details about your product offering.</p>
+    <p>Products are discrete goods or services which can be purchased by the unit.</p>
+  </header>
+
+  <div class="products-list">
+    <p class="product-add">
+      <%= link_to new_sellers_application_product_path(application) do %>
+        Add a product
       <% end %>
-    </tbody>
-  </table>
+    </p>
 
-  <p>
-    <%= link_to 'Add another product', new_sellers_application_product_path(application), class: 'product-add-link' %>
-  </p>
-</fieldset>
-
-<fieldset class="actions">
-  <p>
-    <%= link_to 'Save and continue', presenter.next_step_path, class: 'btn btn-primary' %>
-  </p>
-</fieldset>
+    <% if products.any? %>
+    <table class="products-list">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 45%;">Product Name</th>
+          <th scope="col" style="width: 30%;">Status</th>
+          <th style="width: 25%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'row', collection: products, as: :product %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</section>

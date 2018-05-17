@@ -1,17 +1,20 @@
-.view-sellers-applications {
+.view-seller-products-list {
+  @extend .row;
+
+  header {
+    @extend .col-4;
+    padding-right: 4rem;
+  }
   .products-list {
-    @extend .table;
-    @extend .table-striped;
+    @extend .col-8;
+
+    table {
+      @extend .table;
+      @extend .table-striped;
+    }
   }
 
   tr.product {
-    .btn {
-      @extend .btn-sm;
-    }
-    .actions {
-      text-align: right;
-      padding: 0.6rem;
-    }
     th em {
       font-weight: normal;
     }
@@ -19,10 +22,69 @@
       font-weight: normal;
       display: block;
     }
+
+    .progress-indicator {
+      @include progress-indicator;
+      padding-bottom: 0;
+    }
+
+    .actions {
+      text-align: right;
+      padding: 0.4rem;
+
+      .action {
+        @extend .btn;
+        @extend .btn-primary;
+
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .product-add {
+    padding: .5rem 0;
+    a {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: 1rem;
+
+      span {
+        @extend .oi;
+        @extend .oi-plus;
+      }
+    }
   }
 
   .with-enterprise-field .form-group {
     padding-bottom: 1rem;
     border-bottom: 1px solid $grey-2;
+  }
+}
+
+.view-sellers-applications.view-sellers-products-edit {
+  @extend .flow-non-linear;
+
+  .steps-container {
+    margin-top: 1rem;
+  }
+
+  > header {
+    @extend .row;
+
+    h1 {
+      @extend .col-md-8;
+    }
+  }
+
+  .product-actions {
+    @extend .col-md-4;
+    text-align: right;
+
+    .delete-action {
+      @extend .btn;
+      @extend .btn-danger;
+
+      font-size: 1rem;
+    }
   }
 }
