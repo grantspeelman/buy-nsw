@@ -15,11 +15,28 @@ module Concerns::Operations::SellerApplicationForm::Persist
     success :next_step!
 
     success :complete_if_last_step!
+    success :expire_progress_cache!
 
     # NOTE: Invoking this again at the end of the flow means that we can add
     # validation errors and show the form again when the fields are invalid.
     #
     step :prepopulate!
     step Trailblazer::Operation::Contract::Validate()
+  end
+
+  def expire_progress_cache!(options, **)
+    config = build_configuration_from_contracts(options)
+
+    application_id = options[:application_model].id
+    i18n_key = config.get(:i18n_key)
+
+    if i18n_key =~ /products$/
+      product_id = options[:product_model].id
+      cache_key = "#{i18n_key}.#{product_id}"
+    else
+      cache_key = "#{i18n_key}-#{application_id}"
+    end
+
+    Rails.cache.delete(cache_key)
   end
 end
