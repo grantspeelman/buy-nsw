@@ -242,6 +242,7 @@ en:
         changes_saved: Your changes have been saved.
         changes_saved_with_errors: Your changes have been saved. However there were errors.
         authorised_representative_only: Only your authorised representative can make this change.
+        product_destroyed: The product has been deleted
       tailor:
         title: Your company details
         steps:

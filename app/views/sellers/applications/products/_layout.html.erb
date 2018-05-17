@@ -15,6 +15,15 @@
 
 <% content_for(:step_container_header) do %>
   <h1><%= product.name %></h1>
+
+  <div class="product-actions">
+    <%= link_to 'Delete this product', sellers_application_product_path(application, product),
+                          method: :delete,
+                          data: {
+                            confirm: 'Are you sure?'
+                          },
+                          class: 'delete-action' %>
+  </div>
 <% end %>
 
 <%= render template: 'sellers/applications/shared/_layout' %>
