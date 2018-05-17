@@ -74,107 +74,11 @@
         font-size: 1rem;
       }
     }
-
-    &.pathway-card {
-      .overview {
-        @extend .col-12;
-      }
-
-      .products-list {
-        @extend .col-12;
-
-        ul {
-          margin-bottom: .5rem;
-          padding-left: 0;
-        }
-
-        li {
-          list-style: none;
-          border-bottom: 1px solid #eee;
-          padding: .5rem 0;
-        }
-
-        .product-info {
-          @extend .col-8;
-        }
-        .product-actions {
-          @extend .col-4;
-          text-align: right;
-          padding-top: .75rem;
-
-          .action {
-            @extend .btn-primary;
-          }
-        }
-        .progress-indicator {
-          padding-bottom: 0;
-          margin-top: .3rem;
-        }
-
-        h3 {
-          font-size: 1rem;
-          margin: .4rem 0 0;
-
-          em {
-            font-weight: normal;
-            font-style: italic;
-          }
-        }
-      }
-    }
   }
 
   .progress-indicator {
-    position: relative;
-    padding-left: 1.8rem;
+    @include progress-indicator;
     font-size: .9rem;
-    padding-bottom: 1.3rem;
-  }
-  .status {
-    &::before {
-      content: ' ';
-      display: inline-block;
-      position: absolute;
-      height: 1.5em;
-      width: 1.5em;
-      top: 0px;
-      left: 0px;
-      background: $grey-2;
-      border-radius: 50%;
-      margin-right: 0.75rem;
-      text-align: center;
-      vertical-align: top;
-      line-height: 1em;
-    }
-    &.started {
-      &::before {
-        background: $light-blue;
-        content: '...';
-        font-weight: bold;
-        color: #fff;
-      }
-    }
-    &.complete::before {
-      background: $green;
-    }
-    &.complete .inner::before {
-      content: '';
-      border: solid;
-      border-width: 0 0 3px 3px;
-      background: transparent;
-      border-top-color: transparent;
-      width: 12px;
-      height: 7px;
-      position: absolute;
-      top: 6px;
-      left: 5px;
-      -moz-transform: rotate(-45deg);
-      -o-transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-      color: #fff;
-    }
   }
 
   .action {

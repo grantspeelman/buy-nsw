@@ -1,0 +1,56 @@
+@mixin progress-indicator {
+  position: relative;
+  padding-left: 1.8rem;
+  padding-bottom: 1.3rem;
+
+  .status {
+    &::before {
+      content: ' ';
+      display: inline-block;
+      position: absolute;
+      height: 1.5em;
+      width: 1.5em;
+      top: 0px;
+      left: 0px;
+      background: $grey-2;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      text-align: center;
+      vertical-align: top;
+      line-height: 1em;
+    }
+    &.started {
+      &::before {
+        background: $light-blue;
+        content: '...';
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+    &.complete::before {
+      background: $green;
+    }
+    &.complete .inner::before {
+      content: '';
+      border: solid;
+      border-width: 0 0 3px 3px;
+      background: transparent;
+      border-top-color: transparent;
+      width: 12px;
+      height: 7px;
+      position: absolute;
+      top: 6px;
+      left: 5px;
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      color: #fff;
+    }
+
+    .inner {
+      padding-left: .25em;
+    }
+  }
+}

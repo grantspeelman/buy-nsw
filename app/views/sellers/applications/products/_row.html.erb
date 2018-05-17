@@ -3,26 +3,15 @@
     <% if product.name.present? %>
       <%= product.name %>
     <% else %>
-      <em>No product name</em>
-    <% end %>
-    <% if product.section.present? %>
-    <span class="product-section"><%= product.section_text %></span>
+      <em><%= t("sellers.applications.products.empty_name_label") %></em>
     <% end %>
   </th>
   <td>
-    <% if product.valid? %>
-      All details provided
-    <% else %>
-      <%= pluralize(product.errors.messages.keys.size, 'field') %> to review
-    <% end %>
+    <%= progress_indicator_for(
+          progress_report.question_set_progress["sellers.applications.products.#{product.id}"]
+        ) %>
   </td>
   <td class="actions">
-    <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'btn btn-primary' %>
-    <%= link_to 'Delete', sellers_application_product_path(application, product),
-                          method: :delete,
-                          data: {
-                            confirm: 'Are you sure?'
-                          },
-                          class: 'btn btn-danger' %>
+    <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'action' %>
   </td>
 </tr>
