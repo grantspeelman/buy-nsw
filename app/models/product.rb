@@ -21,7 +21,6 @@ class Product < ApplicationRecord
   enumerize :section, in: [
     'applications-software',
     'hosting-infrastructure',
-    'support-services',
   ]
   enumerize :audiences, multiple: true, in: [
     'accounting-finance',
