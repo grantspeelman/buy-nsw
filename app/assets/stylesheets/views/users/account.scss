@@ -1,0 +1,19 @@
+.view-edit-account {
+  @extend .row;
+
+  > header {
+    @extend .col-md-4;
+  }
+
+  form {
+    @extend .col-md-8;
+
+    fieldset:first-of-type {
+      margin-top: 0;
+    }
+
+    .actions p {
+      padding-top: 1rem;
+    }
+  }
+}

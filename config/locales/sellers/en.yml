@@ -60,9 +60,6 @@ en:
           disclosures:
             contract:
               disclosures:
-                structural_changes:
-                  'false': 'No'
-                  'true': 'Yes'
                 investigations:
                   'false': 'No'
                   'true': 'Yes'
@@ -78,7 +75,6 @@ en:
                 other_circumstances:
                   'false': 'No'
                   'true': 'Yes'
-                structural_changes_details: 'Please provide details'
                 investigations_details: 'Please provide details'
                 legal_proceedings_details: 'Please provide details'
                 insurance_claims_details: 'Please provide details'

@@ -22,7 +22,7 @@ module Ops::DetailHelper
     value = extract_enumerize_set(value) if value.is_a?(Enumerize::Set)
     value = format_timestamp(value) if value.is_a?(Time)
 
-    value = sanitize(value)
+    value = html_escape(value)
 
     if value.present?
       case field
