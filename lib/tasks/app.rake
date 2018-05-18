@@ -61,7 +61,6 @@ namespace :app do
             representative_name: representative_name,
             representative_email: Faker::Internet.email(representative_name),
             representative_phone: Faker::PhoneNumber.phone_number,
-            structural_changes: false,
             investigations: false,
             legal_proceedings: false,
             insurance_claims: false,

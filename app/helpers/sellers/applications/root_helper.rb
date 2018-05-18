@@ -35,7 +35,7 @@ module Sellers::Applications::RootHelper
   end
 
   def disclosures_text_for(application)
-    fields = [ :structural_changes, :investigations, :legal_proceedings, :insurance_claims, :conflicts_of_interest, :other_circumstances ]
+    fields = [ :investigations, :legal_proceedings, :insurance_claims, :conflicts_of_interest, :other_circumstances ]
 
     values = fields.select {|field| application.seller.send(field) == true }
 

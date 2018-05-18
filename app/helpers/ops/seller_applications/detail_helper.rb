@@ -30,8 +30,6 @@ module Ops::SellerApplications::DetailHelper
         :representative_phone
       ],
       disclosures: [
-        :structural_changes,
-        :structural_changes_details,
         :investigations,
         :investigations_details,
         :legal_proceedings,
