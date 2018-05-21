@@ -15,7 +15,9 @@
             <%= link_to 'Download file', upload.document.url %>
           </div>
         <% else %>
-          <span class="scan-status">Awaiting virus scan</span>
+          <span class="scan-status">
+            <%= upload.scan_status_text %>
+          </span>
         <% end %>
       </div>
 
