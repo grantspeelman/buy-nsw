@@ -18,6 +18,7 @@ gem 'puma', '~> 3.7'
 
 gem 'aasm'
 gem 'carrierwave', '~> 1.0'
+gem 'clamby'
 gem 'devise'
 gem 'devise-async'
 gem 'devise_zxcvbn'
