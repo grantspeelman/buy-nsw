@@ -19,7 +19,7 @@ private
         f.write(open(document.document.url))
       }
 
-      path
+      path.to_s
     else
       document.document.file.path
     end

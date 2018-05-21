@@ -26,7 +26,7 @@ RSpec.describe DocumentScanJob, type: :job do
 
     describe 'for a remote file (eg. S3)' do
       it 'downloads a remote file to the tmp folder' do
-        tmp_file_path = Rails.root.join('tmp', 'scan', document.to_param, 'example.pdf')
+        tmp_file_path = Rails.root.join('tmp', 'scan', document.to_param, 'example.pdf').to_s
         url = "http://example.org/uploads/document/#{document.to_param}/example.pdf"
 
         expect(CarrierWave::Uploader::Base).to receive(:storage).and_return(CarrierWave::Storage::Fog)
