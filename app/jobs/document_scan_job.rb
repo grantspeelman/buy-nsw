@@ -1,5 +1,5 @@
 class DocumentScanJob < ApplicationJob
-  queue_as :default
+  queue_as ENV.fetch('MAILER_QUEUE_NAME', :default)
 
   def perform(document)
     file = download_file(document)
