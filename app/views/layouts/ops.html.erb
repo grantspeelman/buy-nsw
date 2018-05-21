@@ -31,7 +31,11 @@
       </nav>
 
       <footer>
-        <p><%= current_user.email %></p>
+        <h3><%= current_user.email %></h3>
+        <ul>
+          <li><%= link_to 'Your account', account_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        </ul>
       </footer>
     </div>
 

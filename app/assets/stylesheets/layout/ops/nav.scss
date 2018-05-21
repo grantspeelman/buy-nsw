@@ -1,7 +1,9 @@
 body.ops {
 
   nav.vertical {
-    min-height: 70vh;
+    height: auto;
+    flex: 1;
+    overflow-y: scroll;
 
     ul {
       padding-left: 0;
@@ -47,10 +49,29 @@ body.ops {
 
   footer {
     color: $white;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 
     border-top: 1px solid lighten($grey-3, 10%);
-    padding-top: 1em;
+    padding-top: 1rem;
     text-align: center;
+
+    h3 {
+      font-size: 1em;
+    }
+    ul {
+      padding-left: 0;
+    }
+    li {
+      list-style: none;
+      display: inline;
+      padding-right: .5rem;
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+    }
+    a {
+      color: #fff;
+    }
   }
 }

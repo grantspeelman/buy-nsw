@@ -2,13 +2,10 @@ body.ops {
   .column-set {
     @include app-column-container;
 
-    .left-col, .right-col {
-      height: 100vh;
-      overflow: scroll-y;
-    }
-
     .left-col {
       @include app-column-fixed;
+      @extend .flex-column;
+      @extend .d-flex;
 
       background: $grey-3;
       border-right: 5px solid darken($grey-1, 5%);
