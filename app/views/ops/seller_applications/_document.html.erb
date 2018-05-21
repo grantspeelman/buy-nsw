@@ -1,26 +1,38 @@
 <li class="document">
-  <h3><%= t("ops.seller_applications.fields.#{key}.name", default: key) %></h3>
+  <header>
+    <h3><%= t("ops.seller_applications.fields.#{key}.name", default: key) %></h3>
+  </header>
 
-  <% if application.seller.send(key).present? %>
-    <p>
-      <% if local_assigns[:no_expiry] %>
-        Document date:
+  <div class="document-details">
+    <% if (expiry = application.seller.send("#{key}_expiry")) && expiry.present? %>
+      <p>
+        <% if local_assigns[:no_expiry] %>
+          Document date:
+        <% else %>
+          Expiry date:
+        <% end %>
+
+        <%= expiry.strftime('%d %b %Y') %>
+        (<%= time_ago_in_words(expiry) %> <%= expiry > Time.now ? 'from now' : 'ago' %>)
+      </p>
+    <% end %>
+
+    <% if (upload = application.seller.send(key)) && upload.present? %>
+      <p class="file-name"><%= upload.original_filename %></p>
+
+      <% if file_clean?(upload) %>
+        <p>
+          <%= link_to upload.url, class: 'btn btn-primary', target: '_blank' do %>
+            View document (<%= upload.mime_type.preferred_extension %>, <%= upload.document.size / 1000 %>KB)
+          <% end %>
+        </p>
       <% else %>
-        Expiry date:
+        <p class="scan-status">
+          <%= upload.scan_status_text %>
+        </p>
       <% end %>
-
-      <%= application.seller.send("#{key}_expiry").strftime('%d %b %Y') %>
-      (<%= time_ago_in_words(application.seller.send("#{key}_expiry")) %> <%= application.seller.send("#{key}_expiry") > Time.now ? 'from now' : 'ago' %>)
-    </p>
-  <% end %>
-
-  <% if (upload = application.seller.send(key)) && upload.present? %>
-    <p>
-      <%= link_to upload.url, class: 'btn btn-primary' do %>
-        View document (<%= upload.file.extension.upcase %>, <%= upload.size / 1000 %>KB)
-      <% end %>
-    </p>
-  <% else %>
-    <p>Not yet provided.</p>
-  <% end %>
+    <% else %>
+      <p>Not yet provided.</p>
+    <% end %>
+  </div>
 </li>

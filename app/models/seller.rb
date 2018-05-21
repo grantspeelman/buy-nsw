@@ -2,6 +2,7 @@ class Seller < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::Documentable
   include Concerns::StateScopes
 
   has_many :owners, class_name: 'User'
@@ -10,8 +11,13 @@ class Seller < ApplicationRecord
   has_many :addresses, class_name: 'SellerAddress', dependent: :destroy
   has_many :applications, class_name: 'SellerApplication'
   has_many :awards, class_name: 'SellerAward', dependent: :destroy
+  has_many :documents, as: :documentable, autosave: true, dependent: :destroy
   has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
   has_many :products
+
+  has_documents :financial_statement, :professional_indemnity_certificate,
+                :workers_compensation_certificate
+
   before_save :normalise_abn
 
   aasm column: :state do
@@ -37,10 +43,6 @@ class Seller < ApplicationRecord
     'ict-workforce',
     'training-learning',
   ]
-
-  mount_uploader :financial_statement, FinancialStatementUploader
-  mount_uploader :professional_indemnity_certificate, ProfessionalIndemnityCertificateUploader
-  mount_uploader :workers_compensation_certificate, WorkersCompensationCertificateUploader
 
   scope :disability, ->{ where(disability: true) }
   scope :indigenous, ->{ where(indigenous: true) }

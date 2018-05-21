@@ -24,7 +24,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
   context 'for a seller not exempt from workers compensation insurance' do
     let(:atts) {
       {
-        workers_compensation_certificate: example_pdf,
+        workers_compensation_certificate_file: example_pdf,
         workers_compensation_certificate_expiry: future_date,
         workers_compensation_exempt: false,
       }
@@ -37,12 +37,12 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
       expect(subject.save).to eq(true)
     end
 
-    context 'workers_compensation_certificate' do
+    context 'workers_compensation_certificate_file' do
       it 'is invalid when blank' do
-        subject.validate(atts.merge(workers_compensation_certificate: nil))
+        subject.validate(atts.merge(workers_compensation_certificate_file: nil))
 
         expect(subject).to_not be_valid
-        expect(subject.errors[:workers_compensation_certificate]).to be_present
+        expect(subject.errors[:workers_compensation_certificate_file]).to be_present
       end
 
       it 'is invalid with an unsupported filetype' do
@@ -50,7 +50,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
           Rails.root.join('spec', 'fixtures', 'files', 'invalid.html')
         )
         subject.validate(atts.merge(
-          workers_compensation_certificate: invalid_file
+          workers_compensation_certificate_file: invalid_file
         ))
 
         expect(subject.save).to be_falsey
@@ -62,7 +62,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
           'text/html'
         )
         subject.validate(atts.merge(
-          workers_compensation_certificate: invalid_file
+          workers_compensation_certificate_file: invalid_file
         ))
 
         expect(subject.save).to be_falsey
@@ -89,7 +89,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensat
   context 'for a seller exempt from workers compensation insurance' do
     let(:atts) {
       {
-        workers_compensation_certificate: nil,
+        workers_compensation_certificate_file: nil,
         workers_compensation_certificate_expiry: nil,
         workers_compensation_exempt: true,
       }

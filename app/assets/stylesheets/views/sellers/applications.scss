@@ -2,29 +2,6 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 
-  .current-document {
-    @extend .alert;
-    @extend .alert-success;
-    border-radius: 0px;
-
-    margin: 2rem 0;
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-
-    .file {
-      display: block;
-      padding: .3rem 0 0;
-      vertical-align: middle;
-
-      .icon {
-        @extend .oi;
-        @extend .oi-document;
-        padding-right: .3rem;
-        vertical-align: middle;
-      }
-    }
-  }
-
   .agreement-text {
     display: block;
     border: 2px solid $grey-2;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516060816) do
+ActiveRecord::Schema.define(version: 20180518043803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20180516060816) do
     t.string "employment_status"
     t.boolean "terms_agreed"
     t.datetime "terms_agreed_at"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.integer "documentable_id", null: false
+    t.string "documentable_type", null: false
+    t.string "document"
+    t.string "kind", null: false
+    t.string "scan_status", default: "unscanned", null: false
+    t.string "original_filename"
+    t.string "content_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -274,9 +286,6 @@ ActiveRecord::Schema.define(version: 20180516060816) do
     t.text "methodologies"
     t.text "technologies"
     t.text "services", default: [], array: true
-    t.string "financial_statement"
-    t.string "professional_indemnity_certificate"
-    t.string "workers_compensation_certificate"
     t.date "financial_statement_expiry"
     t.date "professional_indemnity_certificate_expiry"
     t.date "workers_compensation_certificate_expiry"

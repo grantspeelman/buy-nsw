@@ -18,6 +18,8 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       expect_flash_message('Application assigned')
       expect_application_state('ready_for_review')
 
+      browse_application_details
+
       decide_on_application(decision: 'Approve', response: 'Response text')
       expect_flash_message('Application approved')
 
@@ -50,6 +52,14 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   def expect_flash_message(message)
     within '.messages' do
       expect(page).to have_content(message)
+    end
+  end
+
+  def browse_application_details
+    within '.right-col nav' do
+      click_on 'Seller details'
+      click_on 'Documents'
+      click_on 'Application'
     end
   end
 
