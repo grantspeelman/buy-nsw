@@ -42,19 +42,7 @@
       </header>
     <% end %>
 
-    <% if notice.present? || alert.present? %>
-      <div class="messages">
-        <% flash.each do |key, value| %>
-          <div class="message message-<%= key %>">
-            <div class="message-container">
-              <div class="row justify-content-end">
-                <p><%= value %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: 'layouts/notices' %>
 
     <main<% unless content_for?(:without_container) %> class="with-container" <% end %>>
       <%= content_for?(:content) ? yield(:content) : yield %>

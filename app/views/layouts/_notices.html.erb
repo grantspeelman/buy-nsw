@@ -1,0 +1,26 @@
+<% if notice.present? || alert.present? %>
+  <div class="messages">
+    <% flash.each do |key, value| %>
+      <%
+      # NOTE: Devise sets a flash entry called 'timedout' when the user
+      # session times out. It is set to 'true' and causes the word "true" to be
+      # shown to the user in a banner.
+      #
+      # We don't want this behaviour as there's already a notice displayed to
+      # the user, so instead skip this entry.
+      #
+      # More details here: https://github.com/plataformatec/devise/issues/1777
+      #
+      next if key == 'timedout'
+      %>
+
+      <div class="message message-<%= key %>">
+        <div class="message-container">
+          <div class="row justify-content-end">
+            <p><%= value %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
