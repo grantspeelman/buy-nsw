@@ -57,7 +57,7 @@ class SellerApplication < ApplicationRecord
     ! assignee_present?
   end
 
-  scope :for_review, -> { submitted.or(assigned) }
+  scope :for_review, -> { awaiting_assignment.or(ready_for_review) }
 
   scope :unassigned, -> { where('assigned_to_id IS NULL') }
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }

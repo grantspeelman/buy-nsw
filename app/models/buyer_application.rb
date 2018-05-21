@@ -85,4 +85,5 @@ class BuyerApplication < ApplicationRecord
   end
 
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
+  scope :for_review, -> { awaiting_assignment.or(ready_for_review) }
 end
