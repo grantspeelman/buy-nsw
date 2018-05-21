@@ -13,8 +13,10 @@
     </fieldset>
 
     <fieldset>
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off", hide_label: true %>
+      <div data-module="password-strength">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off", hide_label: true %>
+      </div>
 
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </fieldset>

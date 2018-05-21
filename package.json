@@ -1,7 +1,8 @@
 {
   "name": "procurement-hub",
   "dependencies": {
-    "open-iconic": "^1.1.1"
+    "open-iconic": "^1.1.1",
+    "zxcvbn": "^4.4.2"
   },
   "standard": {
     "globals": [
