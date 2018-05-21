@@ -51,5 +51,10 @@ module ProcurementHub
     config.to_prepare do
       Devise::Mailer.layout 'mailer'
     end
+
+    # Doing this here so it's added after premailer
+    config.after_initialize do
+      ActionMailer::Base.register_interceptor(StyleTagRemoverInterceptor)
+    end
   end
 end
