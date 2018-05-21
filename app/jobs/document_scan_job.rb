@@ -23,7 +23,7 @@ private
 
       path = directory.join(document.original_filename)
       File.open(path, 'w+') {|f|
-        f.write(open(document.document.url))
+        f.write(open(document.document.url).read)
       }
 
       path.to_s

@@ -6,7 +6,7 @@ RSpec.describe DocumentScanJob, type: :job do
   let(:document) { create(:unscanned_document) }
   let(:file_path) { document.document.file.path }
   let(:example_file_body) {
-    File.read(Rails.root.join('spec','fixtures','files','example.pdf'))
+    File.open(Rails.root.join('spec','fixtures','files','example.pdf'))
   }
 
   describe '#perform' do
