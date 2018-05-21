@@ -1,2 +1,0 @@
-class WorkersCompensationCertificateUploader < SellerDocumentUploader
-end

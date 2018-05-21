@@ -1,0 +1,46 @@
+.view-sellers-applications {
+
+  .current-document {
+    margin: 2rem 0;
+    padding: 0.5rem 1rem;
+
+    border-left: .5rem solid #ccc;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .icon {
+      @extend .oi;
+      @extend .oi-document;
+
+      padding: .2rem .2rem 0 0;
+      vertical-align: top;
+    }
+
+    .file {
+      display: inline-block;
+
+      .file-name, .scan-status, .download-action {
+        display: block;
+      }
+
+      .file-name {
+        font-weight: 600;
+      }
+
+      .download-action a {
+        @extend .btn;
+        @extend .btn-primary;
+
+        font-size: .9rem;
+        margin-top: .4rem;
+      }
+    }
+
+    .form-group {
+      margin: 1.5rem 0 0;
+    }
+  }
+
+}

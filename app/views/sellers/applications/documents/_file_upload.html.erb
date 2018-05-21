@@ -2,17 +2,29 @@
   <legend><%= t("activemodel.attributes.sellers.seller_application.documents.contract.documents.#{key}") %></legend>
   <p><%= t("activerecord.help.sellers/seller_application/documents/contract/documents.#{key}") %></p>
 
-  <% if (upload = f.object.upload_for(key)) && upload&.url.present? %>
+  <% if (upload = f.object.upload_for(key)) && file_attached?(upload) %>
     <div class="current-document">
-      Your current uploaded file:
+      <h3>Currently uploaded file:</h3>
+
+      <span class="icon" aria-hidden="true"></span>
       <div class="file">
-        <span class="icon" aria-hidden="true"></span>
-        <%= link_to upload.file.filename, upload.url %>
+        <span class="file-name"><%= upload.original_filename %></span>
+
+        <% if file_clean?(upload) %>
+          <div class="download-action">
+            <%= link_to 'Download file', upload.document.url %>
+          </div>
+        <% else %>
+          <span class="scan-status">Awaiting virus scan</span>
+        <% end %>
       </div>
+
+      <%= f.file_field "#{key}_file", help: false, label: 'Replace this file' %>
     </div>
+  <% else %>
+    <%= f.file_field "#{key}_file", help: false, label: 'Upload a file' %>
   <% end %>
 
-  <%= f.file_field key, help: false, label: (upload&.url.present? ? 'Replace this file' : 'Upload a file') %>
   <%= date_field_from_value f, "#{key}_expiry", f.object.send("#{key}_expiry") %>
 
   <small class="form-text text-muted">

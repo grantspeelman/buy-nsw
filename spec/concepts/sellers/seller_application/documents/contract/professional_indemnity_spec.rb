@@ -17,7 +17,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
 
   let(:atts) {
     {
-      professional_indemnity_certificate: example_pdf,
+      professional_indemnity_certificate_file: example_pdf,
       professional_indemnity_certificate_expiry: future_date,
     }
   }
@@ -29,12 +29,12 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
     expect(subject.save).to eq(true)
   end
 
-  context 'professional_indemnity_certificate' do
+  context 'professional_indemnity_certificate_file' do
     it 'is invalid when blank' do
-      subject.validate(atts.merge(professional_indemnity_certificate: nil))
+      subject.validate(atts.merge(professional_indemnity_certificate_file: nil))
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:professional_indemnity_certificate]).to be_present
+      expect(subject.errors[:professional_indemnity_certificate_file]).to be_present
     end
 
     it 'is invalid with an unsupported filetype' do
@@ -42,7 +42,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
         Rails.root.join('spec', 'fixtures', 'files', 'invalid.html')
       )
       subject.validate(atts.merge(
-        professional_indemnity_certificate: invalid_file
+        professional_indemnity_certificate_file: invalid_file
       ))
 
       expect(subject.save).to be_falsey
@@ -54,7 +54,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::ProfessionalInde
         'text/html'
       )
       subject.validate(atts.merge(
-        professional_indemnity_certificate: invalid_file
+        professional_indemnity_certificate_file: invalid_file
       ))
 
       expect(subject.save).to be_falsey

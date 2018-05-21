@@ -16,7 +16,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::Financials do
 
   let(:atts) {
     {
-      financial_statement: example_pdf,
+      financial_statement_file: example_pdf,
       financial_statement_expiry: historical_date,
     }
   }
@@ -28,12 +28,12 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::Financials do
     expect(subject.save).to eq(true)
   end
 
-  context 'financial_statement' do
+  context 'financial_statement_file' do
     it 'is invalid when blank' do
-      subject.validate(atts.merge(financial_statement: nil))
+      subject.validate(atts.merge(financial_statement_file: nil))
 
       expect(subject).to_not be_valid
-      expect(subject.errors[:financial_statement]).to be_present
+      expect(subject.errors[:financial_statement_file]).to be_present
     end
 
     it 'is invalid with an unsupported filetype' do
@@ -41,7 +41,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::Financials do
         Rails.root.join('spec', 'fixtures', 'files', 'invalid.html')
       )
       subject.validate(atts.merge(
-        financial_statement: invalid_file
+        financial_statement_file: invalid_file
       ))
 
       expect(subject.save).to be_falsey
@@ -53,7 +53,7 @@ RSpec.describe Sellers::SellerApplication::Documents::Contract::Financials do
         'text/html'
       )
       subject.validate(atts.merge(
-        financial_statement: invalid_file
+        financial_statement_file: invalid_file
       ))
 
       expect(subject.save).to be_falsey
