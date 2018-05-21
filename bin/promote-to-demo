@@ -1,17 +1,2 @@
 #!/bin/bash
-
-# Promote a build from development to demo
-
-# Usage: ./bin/promote-to-demo build-66
-
-build=$1
-
-if [[ $build == "build-"* ]]
-then
-  echo "Deploying application $build to demo..."
-  eb deploy --version $build app-demo
-  echo "Deploying worker $build to demo..."
-  eb deploy --version $build worker-demo
-else
-  echo "Expect the build number to start with 'build-'"
-fi
+$(dirname "$0")/promote-to-environment $1 demo
