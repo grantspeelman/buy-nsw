@@ -1,11 +1,13 @@
 module Ops::SellerApplication::Contract
   class Assign < Reform::Form
+    include Forms::ValidationHelper
+
     model :seller_application
 
     property :assigned_to_id
 
-    validation :default do
-      required(:assigned_to_id).filled(:int?)
+    validation :default, inherit: true do
+      required(:assigned_to_id).filled(:int?, in_list?: ->{ User.admin.map(&:id) })
     end
   end
 end

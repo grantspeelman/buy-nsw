@@ -26,4 +26,16 @@ RSpec.describe Ops::BuyerApplication::Contract::Assign do
     expect(form.errors[:assigned_to_id]).to be_present
   end
 
+  it 'is invalid with a non-admin assignee' do
+    form = Ops::BuyerApplication::Contract::Assign.new(application)
+    other_user = create(:buyer_user)
+
+    form.validate(
+       assigned_to_id: other_user.id,
+    )
+
+    expect(form).to_not be_valid
+    expect(form.errors[:assigned_to_id]).to be_present
+  end
+
 end

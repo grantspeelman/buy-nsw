@@ -13,6 +13,7 @@ module Forms::ValidationHelper
         end
 
         def in_list?(list, value)
+          list = list.call if list.is_a?(Proc)
           value.present? && list.include?(value)
         end
 
