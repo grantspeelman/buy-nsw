@@ -10,6 +10,14 @@ class Document < ApplicationRecord
 
   enumerize :scan_status, in: ['unscanned', 'clean', 'infected']
 
+  def url
+    document.url
+  end
+
+  def mime_type
+    MIME::Types[content_type].first
+  end
+
   def update_document_attributes
     if document.present? && document_changed?
       self.scan_status = 'unscanned'

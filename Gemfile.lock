@@ -457,6 +457,7 @@ DEPENDENCIES
   jquery-rails (~> 4.3.1)
   kaminari
   listen (>= 3.0.5, < 3.2)
+  mime-types
   nokogiri
   pg (>= 0.18, < 2.0)
   premailer-rails
