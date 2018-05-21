@@ -1,9 +1,16 @@
 class DocumentScanJob < ApplicationJob
   queue_as ENV.fetch('MAILER_QUEUE_NAME', :default)
 
+  class ScanFailure < StandardError; end
+
   def perform(document)
     file = download_file(document)
-    status = Clamby.safe?(file) ? 'clean' : 'infected'
+    status = case Clamby.safe?(file)
+              when true then 'clean'
+              when false then 'infected'
+              else
+                raise ScanFailure
+              end
 
     document.update_attribute(:scan_status, status)
   end
