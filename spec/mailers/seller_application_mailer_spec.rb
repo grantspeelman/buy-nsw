@@ -23,6 +23,13 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     it 'should include the feedback from the reviewer' do
       expect(mail.body.encoded).to match(application.response)
     end
+
+    it 'should not have a style tag in the html after running premailer' do
+      Premailer::Rails::Hook.perform(mail)
+      StyleTagRemoverInterceptor.delivering_email(mail)
+      doc = Nokogiri::HTML(mail.html_part.body.to_s)
+      expect(doc.search('style')).to be_empty
+    end
   end
 
   describe "#application_rejected_email" do
