@@ -3,7 +3,7 @@ module Sellers::SellerApplication::Documents::Contract
     feature Reform::Form::ActiveModel::FormBuilderMethods
     feature Reform::Form::MultiParameterAttributes
 
-    property :workers_compensation_certificate,        on: :seller
+    property :workers_compensation_certificate_file,   on: :seller
     property :workers_compensation_certificate_expiry, on: :seller, multi_params: true
     property :workers_compensation_exempt,             on: :seller
 
@@ -65,10 +65,10 @@ module Sellers::SellerApplication::Documents::Contract
         # If you miss an attribute, it will quietly fail and ignore it.
         #
         required(:workers_compensation_exempt, Types::Bool).filled
-        required(:workers_compensation_certificate, Types::File).maybe(:file_uploaded?)
+        required(:workers_compensation_certificate_file, Types::File).maybe(:file_uploaded?)
         required(:workers_compensation_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
 
-        rule(workers_compensation_certificate: [:workers_compensation_exempt, :workers_compensation_certificate]) do |exempt, document|
+        rule(workers_compensation_certificate_file: [:workers_compensation_exempt, :workers_compensation_certificate_file]) do |exempt, document|
           exempt.false?.then(document.filled?)
         end
         rule(workers_compensation_certificate_expiry: [:workers_compensation_exempt, :workers_compensation_certificate_expiry]) do |exempt, expiry|
