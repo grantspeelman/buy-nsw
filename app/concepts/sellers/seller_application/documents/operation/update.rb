@@ -18,6 +18,7 @@ class Sellers::SellerApplication::Documents::Update < Trailblazer::Operation
         step Sellers::SellerApplication::Documents::Contract::Financials
         step Sellers::SellerApplication::Documents::Contract::ProfessionalIndemnity
         step Sellers::SellerApplication::Documents::Contract::WorkersCompensation
+        step Sellers::SellerApplication::Documents::Contract::ProductLiability
       end
     end
   end

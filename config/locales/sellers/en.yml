@@ -47,6 +47,7 @@ en:
                 financial_statement: 'Financial statement'
                 professional_indemnity_certificate: 'Professional indemnity certificate'
                 workers_compensation_certificate: 'Workers compensation insurance'
+                product_liability_certificate: 'Product liability certificate (optional)'
               financials:
                 financial_statement_expiry: Date of document
               professional_indemnity:
@@ -54,6 +55,8 @@ en:
               workers_compensation:
                 workers_compensation_certificate_expiry: Expiry date
                 workers_compensation_exempt: This business is not required to have Workers Compensation insurance
+              product_liability:
+                product_liability_certificate_expiry: Expiry date
           legals:
             contract:
               declaration:
@@ -108,8 +111,10 @@ en:
         financial_statement_expiry: We'll ask you to upload a new document when this one expires.
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
+        product_liability_certificate: 'Your insurer can issue a certificate of currency.'
         professional_indemnity_certificate_expiry: We'll ask you to upload a new document when this one expires.
         workers_compensation_certificate_expiry: We'll ask you to upload a new document when this one expires.
+        product_liability_certificate_expiry: We'll ask you to upload a new document when this one expires.
       'sellers/seller_application/tailor/contract/services':
         cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
         software-development: "The design, construction and delivery of bespoke software and software modifications, as well as implementation and configuration of vendor-owned software. Includes: user research; service, interaction and content design; coding and testing for stability, security and accessibility. Also includes managing technical environments and all technical skill sets and ways of working, together with supporting toolsets."
@@ -182,6 +187,9 @@ en:
             button_label: 'Upload document'
           workers_compensation:
             short: 'Workers compensation'
+            button_label: 'Save'
+          product_liability:
+            short: 'Product liability'
             button_label: 'Save'
           professional_indemnity:
             short: 'Professional indemnity'

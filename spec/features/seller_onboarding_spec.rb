@@ -99,6 +99,9 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on_step 'Workers compensation'
     upload_document(button_label: 'Save')
+
+    click_on_step 'Product liability'
+    click_on 'Save'
   end
 
   def complete_disclosures_steps
