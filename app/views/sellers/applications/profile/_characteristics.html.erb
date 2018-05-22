@@ -1,5 +1,6 @@
 <fieldset class="multiple-choice-group radio-group">
   <%= f.collection_radio_buttons(:number_of_employees, Seller.number_of_employees.options, :last, :first) %>
+  <p>For part-time employees, add their hours to estimate the number of full-time equivalent staff.</p>
 </fieldset>
 
 
