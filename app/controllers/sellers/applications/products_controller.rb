@@ -12,6 +12,14 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
     end
   end
 
+  def clone
+    run Sellers::SellerApplication::Products::Clone do |result|
+      flash.notice = I18n.t('sellers.applications.messages.product_cloned')
+    end
+
+    redirect_to sellers_application_products_path(application)
+  end
+
   def destroy
     if product.destroy
       flash.notice = I18n.t('sellers.applications.messages.product_destroyed')

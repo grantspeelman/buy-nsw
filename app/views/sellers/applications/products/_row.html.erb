@@ -12,6 +12,7 @@
         ) %>
   </td>
   <td class="actions">
+    <%= link_to 'Clone', clone_sellers_application_product_path(application, product), data: { method: 'post' }, class: 'action' %>
     <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'action' %>
   </td>
 </tr>

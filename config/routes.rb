@@ -53,7 +53,11 @@ Rails.application.routes.draw do
         patch '/legals', to: 'applications/legals#update'
       end
 
-      resources :products, controller: 'applications/products'
+      resources :products, controller: 'applications/products' do
+        member do
+          post :clone
+        end
+      end
       get '/products/:id/:step', to: 'applications/products#show', as: :product_step
 
       resources :invitations, controller: 'applications/invitations', only: [:new, :create] do
