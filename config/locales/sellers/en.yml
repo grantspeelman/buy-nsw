@@ -259,7 +259,7 @@ en:
               <ul>
                 <li>share details about products and services you offer</li>
                 <li>provide details about your offering to support your application</li>
-                <li>accept the Core Terms</li>
+                <li>accept the <a href="#">Core Terms</a></li>
               </ul>
           business_details:
             short: 'Business details'
