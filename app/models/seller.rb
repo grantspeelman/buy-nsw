@@ -29,7 +29,6 @@ class Seller < ApplicationRecord
     end
   end
 
-  enumerize :industry, multiple: true, in: ['ict', 'construction', 'other']
   enumerize :number_of_employees, in: ['sole', '2to4', '5to19', '20to49', '50to99', '100to199', '200plus']
   enumerize :services, multiple: true, in: [
     'cloud-services',

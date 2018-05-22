@@ -66,7 +66,6 @@ FactoryBot.define do
       website_url 'http://example.org'
       linkedin_url 'http://linkedin.com/example'
 
-      industry [ 'ict' ]
       services [ 'cloud-services' ]
     end
 

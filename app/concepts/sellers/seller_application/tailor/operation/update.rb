@@ -17,12 +17,7 @@ class Sellers::SellerApplication::Tailor::Update < Trailblazer::Operation
       step_flow do |application, seller|
         step Sellers::SellerApplication::Tailor::Contract::Introduction
         step Sellers::SellerApplication::Tailor::Contract::BusinessDetails
-        step Sellers::SellerApplication::Tailor::Contract::Industry
-
-        if seller.industry.include?(:ict)
-          step Sellers::SellerApplication::Tailor::Contract::Services
-        end
-
+        step Sellers::SellerApplication::Tailor::Contract::Services
         step Sellers::SellerApplication::Tailor::Contract::Review
       end
     end

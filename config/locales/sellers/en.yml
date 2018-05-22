@@ -40,6 +40,7 @@ en:
                 representative_name: Name
                 representative_email: Email address
                 representative_phone: Phone
+                representative_position: Position in organisation
           documents:
             contract:
               financials:
@@ -126,7 +127,6 @@ en:
     seller:
       industry:
         ict: 'ICT'
-        construction: 'Building and Construction'
         other: 'Other'
       number_of_employees:
         sole: '1'
@@ -248,7 +248,7 @@ en:
             long: 'Apply to sell to NSW Government'
             button_label: 'Start application'
             body_html: |
-              <p>To become a registered seller you need to tell us about your business.</p>
+              <p>To become a registered seller you need to tell us about your ICT business.</p>
               <p>The information you share will be used to create your seller profile and confirm your business meets the basic requirements to work with NSW government.</p>
               <p>It may take more than one visit to complete this application. But don't worry, your information is saved automatically if you need to come back later.</p>
               <h3>You'll need</h3>
@@ -261,7 +261,7 @@ en:
               <ul>
                 <li>share details about products and services you offer</li>
                 <li>provide details about your offering to support your application</li>
-                <li>accept the Core Terms</li>
+                <li>accept the <a href="#">Core Terms</a></li>
               </ul>
           business_details:
             short: 'Business details'

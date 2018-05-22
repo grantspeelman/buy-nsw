@@ -18,7 +18,6 @@ module Ops::SellerApplications::DetailHelper
         :linkedin_url
       ],
       industry: [
-        :industry,
         :services,
       ],
       contacts: [

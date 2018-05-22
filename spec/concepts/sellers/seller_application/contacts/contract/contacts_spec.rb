@@ -14,6 +14,7 @@ RSpec.describe Sellers::SellerApplication::Contacts::Contract::Contacts do
       representative_name: 'Representative User',
       representative_email: 'representative@example.org',
       representative_phone: '02 9765 4321',
+      representative_position: 'CEO'
     }
   }
 
