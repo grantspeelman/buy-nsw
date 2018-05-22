@@ -1,0 +1,32 @@
+.view-ops-waiting-sellers {
+  @include ops-resource-list-column-set;
+
+  .upload-form {
+    @include operation-box;
+
+    .column-headings-list {
+      padding-left: 0;
+
+      li {
+        font-family: monospace;
+        color: #D53880;
+        list-style: none;
+        display: inline;
+
+        &::after {
+          content: ',';
+          color: #000;
+        }
+
+        &:last-of-type::after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  table.uploaded-sellers {
+    font-size: .8rem;
+  }
+
+}

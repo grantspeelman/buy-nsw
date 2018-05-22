@@ -1,0 +1,29 @@
+<section class="upload-form" data-module="collapsible-section">
+  <h2>Upload sellers to the waitlist</h2>
+  <div class="inner">
+    <%= bootstrap_form_tag url: upload_ops_waiting_sellers_path, method: :post do |f| %>
+      <p>You can bulk upload sellers to the waitlist as a comma-separated values (CSV) file.</p>
+
+      <ul class="column-headings-list">
+        The CSV file should contain the following headers:
+
+        <li>name</li>
+        <li>abn</li>
+        <li>address</li>
+        <li>suburb</li>
+        <li>postcode</li>
+        <li>state</li>
+        <li>country</li>
+        <li>contact_name</li>
+        <li>contact_email</li>
+        <li>contact_position</li>
+        <li>website_url</li>
+      </ul>
+
+      <p>You will have chance to preview the data before completing the import.</p>
+
+      <%= f.file_field :file, class: 'form-control' %>
+      <%= f.submit 'Upload sellers', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</section>
