@@ -184,6 +184,13 @@ en:
           approve: Application approved
           reject: Application rejected
           return_to_applicant: Application returned to the seller
+    waiting_sellers:
+      search:
+        filters:
+          invitation_state:
+            name: Invitation status
+          term:
+            name: Search
   users:
     sessions:
       sign_up:

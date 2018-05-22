@@ -16,4 +16,6 @@ class WaitingSeller < ApplicationRecord
       transitions from: :invited, to: :joined
     end
   end
+
+  scope :in_invitation_state, ->(state) { where(invitation_state: state) }
 end
