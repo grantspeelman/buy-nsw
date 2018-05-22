@@ -50,10 +50,6 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     fill_in 'ABN', with: '24 138 089 942'
     click_on 'Save'
 
-    # Industry
-    check 'ICT'
-    click_on 'Save'
-
     # Services
     check 'Cloud products'
     check 'Training and learning'
