@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522050122) do
+ActiveRecord::Schema.define(version: 20180522052644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -297,6 +297,8 @@ ActiveRecord::Schema.define(version: 20180522050122) do
     t.boolean "workers_compensation_exempt", default: false
     t.string "representative_position"
     t.date "product_liability_certificate_expiry"
+    t.boolean "receivership"
+    t.text "receivership_details"
   end
 
   create_table "users", force: :cascade do |t|

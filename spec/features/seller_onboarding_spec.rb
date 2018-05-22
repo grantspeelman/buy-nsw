@@ -187,6 +187,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   end
 
   def fill_in_disclosures
+    fill_in_disclosure :receivership, 'No'
     fill_in_disclosure :investigations, 'Yes', 'Further details'
     fill_in_disclosure :legal_proceedings, 'No'
     fill_in_disclosure :insurance_claims, 'Yes', 'Further details'

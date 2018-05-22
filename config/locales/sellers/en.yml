@@ -65,6 +65,9 @@ en:
           disclosures:
             contract:
               disclosures:
+                receivership:
+                  'false': 'No'
+                  'true': 'Yes'
                 investigations:
                   'false': 'No'
                   'true': 'Yes'
@@ -80,6 +83,7 @@ en:
                 other_circumstances:
                   'false': 'No'
                   'true': 'Yes'
+                receivership_details: 'Please provide details'
                 investigations_details: 'Please provide details'
                 legal_proceedings_details: 'Please provide details'
                 insurance_claims_details: 'Please provide details'
@@ -235,6 +239,7 @@ en:
           disclosures:
             short: 'Disclosures'
         disclosures:
+          receivership: "Is your organisation in receivership, administration or unable to meet its debts as they fall due?"
           investigations: "Has your organisation — or any of its directors or principals — been or referred to investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
           legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
           insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability, directors or fidelity insurance in the last 5 years?"
