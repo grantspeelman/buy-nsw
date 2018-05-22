@@ -31,4 +31,11 @@ private
   end
   helper_method :search
 
+  def statistics
+    @statistics ||= WaitingSeller.aasm.states.map {|state|
+      [state.name, WaitingSeller.in_invitation_state(state.name).count]
+    }
+  end
+  helper_method :statistics
+
 end
