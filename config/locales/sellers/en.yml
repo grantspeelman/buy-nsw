@@ -225,7 +225,7 @@ en:
           <p>This will take approximately 5 minutes.</p>
           <p>Your authorised representative needs to agree to the Core Terms on behalf of your organisation.</p>
         aside_html: |
-          <p>You need to complete the disclosures and accept the Core Terms to become a seller.</p>
+          <p>You need to complete the disclosures and accept the Core Terms to become a seller. If these terms are updated we will ask you to accept the new terms by email or when you next log in.</p>
         steps:
           declaration:
             short: 'Agree terms'
