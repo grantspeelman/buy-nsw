@@ -114,6 +114,12 @@ Rails.application.routes.draw do
       resources :products, only: :show, controller: 'seller_applications/products'
     end
 
+    resources :waiting_sellers, path: 'waiting-sellers' do
+      collection do
+        post :upload, to: 'waiting_sellers#upload'
+      end
+    end
+
     root to: 'root#index'
   end
 
