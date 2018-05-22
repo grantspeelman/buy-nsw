@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522020233) do
+ActiveRecord::Schema.define(version: 20180522042452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -320,6 +320,27 @@ ActiveRecord::Schema.define(version: 20180522020233) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "waiting_sellers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "abn", null: false
+    t.string "address"
+    t.string "suburb"
+    t.string "postcode"
+    t.string "state"
+    t.string "country"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "contact_position"
+    t.string "website_url"
+    t.string "invitation_state", null: false
+    t.string "invitation_token"
+    t.datetime "invited_at"
+    t.datetime "joined_at"
+    t.integer "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "seller_accreditations", "sellers"
