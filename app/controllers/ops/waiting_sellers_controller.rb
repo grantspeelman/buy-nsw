@@ -22,4 +22,13 @@ private
   end
   helper_method :operation
 
+  def search
+    @search ||= WaitingSellerSearch.new(
+      selected_filters: params,
+      page: params.fetch(:page, 1),
+      per_page: 25,
+    )
+  end
+  helper_method :search
+
 end
