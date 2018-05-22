@@ -43,14 +43,15 @@ en:
                 representative_position: Position in organisation
           documents:
             contract:
-              financials:
+              documents:
                 financial_statement: 'Financial statement'
+                professional_indemnity_certificate: 'Professional indemnity certificate'
+                workers_compensation_certificate: 'Workers compensation insurance'
+              financials:
                 financial_statement_expiry: Date of document
               professional_indemnity:
-                professional_indemnity_certificate: 'Professional Indemnity and Public Liability Insurance'
                 professional_indemnity_certificate_expiry: Expiry date
               workers_compensation:
-                workers_compensation_certificate: 'Workers Compensation Insurance'
                 workers_compensation_certificate_expiry: Expiry date
                 workers_compensation_exempt: This business is not required to have Workers Compensation insurance
           legals:
