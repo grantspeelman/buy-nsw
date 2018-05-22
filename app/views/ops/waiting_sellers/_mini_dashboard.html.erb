@@ -1,0 +1,8 @@
+<ul class="mini-dashboard">
+  <% statistics.each do |(state, number)| %>
+    <li class="dashboard-section-<%= state %>">
+      <span class="big-number"><%= number %></span>
+      <%= state %>
+    </li>
+  <% end %>
+</ul>
