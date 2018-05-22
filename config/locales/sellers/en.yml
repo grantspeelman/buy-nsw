@@ -54,7 +54,7 @@ en:
                 professional_indemnity_certificate_expiry: Expiry date
               workers_compensation:
                 workers_compensation_certificate_expiry: Expiry date
-                workers_compensation_exempt: This business is not required to have Workers Compensation insurance
+                workers_compensation_exempt: This business is not required to have workers compensation insurance.
               product_liability:
                 product_liability_certificate_expiry: Expiry date
           legals:
