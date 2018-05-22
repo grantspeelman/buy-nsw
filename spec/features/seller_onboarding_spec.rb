@@ -178,6 +178,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
       fill_in 'Name', with: 'Churchill Smith-Winston'
       fill_in 'Email address', with: 'authorised@test.org'
       fill_in 'Phone', with: '0487 654 321'
+      fill_in 'Position', with: 'CEO'
     end
     click_on 'Save'
   end

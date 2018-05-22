@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522013636) do
+ActiveRecord::Schema.define(version: 20180522020233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -295,6 +295,7 @@ ActiveRecord::Schema.define(version: 20180522013636) do
     t.boolean "australian_owned"
     t.boolean "rural_remote"
     t.boolean "workers_compensation_exempt", default: false
+    t.string "representative_position"
   end
 
   create_table "users", force: :cascade do |t|

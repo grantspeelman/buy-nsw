@@ -40,6 +40,7 @@ en:
                 representative_name: Name
                 representative_email: Email address
                 representative_phone: Phone
+                representative_position: Position in organisation
           documents:
             contract:
               financials:
