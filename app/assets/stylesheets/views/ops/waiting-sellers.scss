@@ -1,0 +1,66 @@
+.view-ops-waiting-sellers {
+  @include ops-resource-list-column-set;
+
+  .upload-form {
+    @include operation-box;
+
+    .column-headings-list {
+      padding-left: 0;
+
+      li {
+        font-family: monospace;
+        color: #D53880;
+        list-style: none;
+        display: inline;
+
+        &::after {
+          content: ',';
+          color: #000;
+        }
+
+        &:last-of-type::after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  ul.mini-dashboard {
+    margin: -15px -15px 0 -15px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    display: flex;
+
+    li {
+      padding: .5rem 1rem 1rem;
+      flex: 1;
+      text-align: center;
+      list-style: none;
+
+      .big-number {
+        display: block;
+        font-weight: 600;
+        font-size: 3rem;
+        line-height: 1.1em;
+      }
+    }
+  }
+
+  table.uploaded-sellers {
+    font-size: .8rem;
+  }
+
+  .invite-check-box {
+    padding: .5rem 1.3rem 1.2rem;
+    label {
+      /* NOTE: We can't hide the full label as it contains the custom checkbox
+      styling. */
+      font-size: 0;
+    }
+  }
+}
+
+.view-ops-waiting-sellers-edit {
+  @extend .view-padded;
+}

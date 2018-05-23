@@ -1,0 +1,23 @@
+<section class="view-ops-waiting-sellers">
+  <div class="column-set">
+    <aside>
+      <h1>Seller waitlist</h1>
+
+      <%= render partial: 'ops/shared/filters', locals: { search: search, controller_name: :waiting_sellers } %>
+    </aside>
+
+    <div class="current-view">
+      <%= render partial: 'mini_dashboard' %>
+      <%= render partial: 'upload_form' %>
+
+      <section class="record-list">
+        <h2><%= pluralize(search.result_count, 'application') %></h2>
+        <%= render partial: 'list', locals: {
+              results: search.paginated_results,
+              empty_message: 'No applications',
+            } %>
+        <%= paginate search.paginated_results %>
+      </section>
+    </div>
+  </div>
+</section>

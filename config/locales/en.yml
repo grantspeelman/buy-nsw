@@ -65,6 +65,8 @@ en:
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
     email?: not a valid email address
     url?: not a valid web address
+    waiting_seller_not_existing_user?: An account already exists for this email address, they may have already been invited
+    waiting_seller_unique_contact_email?: A seller with this email address is already on the waitlist
     messages:
       weak_password: "That's not strong enough. Consider adding a number, symbols or more letters to make it stronger."
   helpers:
@@ -184,6 +186,13 @@ en:
           approve: Application approved
           reject: Application rejected
           return_to_applicant: Application returned to the seller
+    waiting_sellers:
+      search:
+        filters:
+          invitation_state:
+            name: Invitation status
+          term:
+            name: Search
   users:
     sessions:
       sign_up:

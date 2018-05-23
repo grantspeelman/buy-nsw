@@ -1,0 +1,22 @@
+<div class="filters">
+  <h2>Filter results</h2>
+
+  <%= form_tag '', method: :get, enforce_utf8: false do %>
+    <ul class="filters">
+      <% search.available_filters.each do |key, options| %>
+        <li class="filter">
+          <%= label_tag key do %>
+            <%= t("ops.#{controller_name}.search.filters.#{key}.name") %>
+            <% if options == :term_filter %>
+              <%= text_field_tag key, search.filter_value(key), class: 'form-control' %>
+            <% else %>
+              <%= select_tag key, options_for_select(prepare_filter_options(controller_name, key, options), search.selected_filters[key]), class: 'form-control' %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= submit_tag 'Apply filters', name: nil, class: 'btn btn-primary' %>
+  <% end %>
+</div>

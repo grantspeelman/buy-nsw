@@ -1,0 +1,48 @@
+<section class="view-ops-waiting-sellers">
+  <header class="view-header">
+    <h1>Upload seller waitlist</h1>
+  </header>
+
+  <p>This is a preview of the sellers to add to the waitlist.</p>
+
+  <table class="table uploaded-sellers">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">ABN</th>
+        <th scope="col">Address</th>
+        <th scope="col">Suburb</th>
+        <th scope="col">Postcode</th>
+        <th scope="col">State</th>
+        <th scope="col">Country</th>
+        <th scope="col">Contact Name</th>
+        <th scope="col">Contact Email</th>
+        <th scope="col">Contact Position</th>
+        <th scope="col">Website URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% operation['result.waiting_sellers'].each do |seller| %>
+        <tr>
+          <td><%= seller.name %></td>
+          <td><%= formatted_abn seller.abn %></td>
+          <td><%= seller.address %></td>
+          <td><%= seller.suburb %></td>
+          <td><%= seller.postcode %></td>
+          <td><%= seller.state %></td>
+          <td><%= seller.country %></td>
+          <td><%= seller.contact_name %></td>
+          <td><%= seller.contact_email %></td>
+          <td><%= seller.contact_position %></td>
+          <td><%= seller.website_url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= bootstrap_form_tag url: upload_ops_waiting_sellers_path, method: :post do |f| %>
+    <%= f.hidden_field :file_contents, value: Base64.encode64(operation['result.file_contents']) %>
+    <%= f.hidden_field :complete, value: 'true' %>
+    <%= f.submit 'Complete upload' %>
+  <% end %>
+</section>

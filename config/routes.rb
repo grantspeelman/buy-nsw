@@ -69,6 +69,10 @@ Rails.application.routes.draw do
     end
 
     resources :profiles, only: :show
+    resources :waitlist_invitations, path: 'waitlist', only: :show do
+      patch :accept, on: :member
+    end
+
     get '/search', to: 'search#search', as: :search
     get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
@@ -112,6 +116,14 @@ Rails.application.routes.draw do
       end
 
       resources :products, only: :show, controller: 'seller_applications/products'
+    end
+
+    resources :waiting_sellers, path: 'waiting-sellers' do
+      collection do
+        post :upload, to: 'waiting_sellers#upload'
+        get :invite, to: 'waiting_sellers#invite'
+        post :invite, to: 'waiting_sellers#do_invite'
+      end
     end
 
     root to: 'root#index'

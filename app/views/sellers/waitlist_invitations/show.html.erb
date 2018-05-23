@@ -1,0 +1,27 @@
+<section class="view-user-registrations-new">
+  <header>
+    <h1><%= t("users.registrations.seller.title") %></h1>
+    <%= t("users.registrations.seller.body_html",
+      sign_in: link_to(t("users.registrations.seller.sign_in_label"), new_session_path(:user))
+    ) %>
+  </header>
+
+  <%= bootstrap_form_for(operation['contract.default'], as: :invitation, url: accept_sellers_waitlist_invitation_path(operation['model'].invitation_token)) do |f| %>
+    <div data-module="password-strength">
+      <%= f.password_field :password, autocomplete: "off",
+                                      label: t('users.registrations.shared.form.password_label'),
+                                      help: t('users.registrations.shared.form.password_help') %>
+    </div>
+
+    <%= f.password_field :password_confirmation, autocomplete: "off",
+                                                 label: t('users.registrations.shared.form.password_confirmation_label') %>
+
+    <fieldset class="actions">
+      <p>
+        By creating an account you confirm your acceptance of the
+        <%= link_to "terms of use", terms_of_use_path %>.
+      </p>
+      <%= f.submit t('users.registrations.shared.form.submit_label') %>
+    </fieldset>
+  <% end %>
+</section>

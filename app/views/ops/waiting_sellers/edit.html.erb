@@ -1,0 +1,36 @@
+<section class="view-ops-waiting-sellers-edit">
+  <header class="view-header">
+    <h1>Edit waitlisted seller</h1>
+  </header>
+
+  <p>You can manually amend the details of this waitlisted seller. Once you have invited a seller, the details here can't be changed anymore.</p>
+
+  <%= bootstrap_form_for operation['contract.default'], url: ops_waiting_seller_path(operation['contract.default']), as: :waiting_seller do |f| %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.text_field :name %>
+        <%= f.text_field :abn %>
+
+        <%= f.text_field :contact_name %>
+        <%= f.text_field :contact_email %>
+        <%= f.text_field :contact_position %>
+        <%= f.text_field :website_url %>
+      </div>
+      <div class="col-md-6">
+        <%= f.text_field :address %>
+        <%= f.text_field :suburb %>
+        <%= f.text_field :postcode %>
+        <%= f.collection_select :state, SellerAddress.state.options, :last, :first, include_blank: true %>
+        <%= f.text_field :country %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <p><%= f.submit 'Save waitlisted seller' %></p>
+      <p>
+        <%= link_to 'Go back to the list', ops_waiting_sellers_path %>
+      </p>
+    </div>
+  <% end %>
+</section>

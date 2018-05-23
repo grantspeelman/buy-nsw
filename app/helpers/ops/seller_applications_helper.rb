@@ -3,7 +3,6 @@ module Ops::SellerApplicationsHelper
 
   include Ops::AssigneesHelper
   include Ops::DetailHelper
-  include Ops::FiltersHelper
 
   include Ops::SellerApplications::DetailHelper
 
