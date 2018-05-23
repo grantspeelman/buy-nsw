@@ -1,6 +1,7 @@
 module Sellers::SellerApplication::Profile::Contract
   class Characteristics < Base
     property :number_of_employees, on: :seller
+    property :corporate_structure, on: :seller
 
     property :start_up,                            on: :seller
     property :sme,                                 on: :seller
@@ -23,8 +24,12 @@ module Sellers::SellerApplication::Profile::Contract
 
     validation :default do
       required(:seller).schema do
+        # TODO: These don't currently return a nice human-friendly
+        # error message currently
         required(:number_of_employees).
           value(included_in?: Seller.number_of_employees.values)
+        required(:corporate_structure).
+          value(included_in?: Seller.corporate_structure.values)
       end
     end
   end

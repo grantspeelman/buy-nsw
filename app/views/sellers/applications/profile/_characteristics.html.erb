@@ -3,6 +3,9 @@
   <p>For part-time employees, add their hours to estimate the number of full-time equivalent staff.</p>
 </fieldset>
 
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:corporate_structure, Seller.corporate_structure.options, :last, :first) %>
+</fieldset>
 
 <p>The following fields are optional but will help buyers find you.</p>
 
