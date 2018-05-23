@@ -69,6 +69,10 @@ Rails.application.routes.draw do
     end
 
     resources :profiles, only: :show
+    resources :waitlist_invitations, path: 'waitlist', only: :show do
+      patch :accept, on: :member
+    end
+
     get '/search', to: 'search#search', as: :search
     get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
