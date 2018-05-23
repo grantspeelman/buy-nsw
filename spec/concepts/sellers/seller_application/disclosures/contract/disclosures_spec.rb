@@ -8,12 +8,14 @@ RSpec.describe Sellers::SellerApplication::Disclosures::Contract::Disclosures do
 
   let(:atts) {
     {
+      receivership: true,
       investigations: true,
       legal_proceedings: true,
       insurance_claims: true,
       conflicts_of_interest: true,
       other_circumstances: true,
 
+      receivership_details: 'Information',
       investigations_details: 'Information',
       legal_proceedings_details: 'Information',
       insurance_claims_details: 'Information',

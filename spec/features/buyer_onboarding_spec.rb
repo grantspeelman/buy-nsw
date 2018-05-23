@@ -17,7 +17,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
       fill_in_application_body
 
       fill_in_employment_status(:employee)
-      accept_terms_and_submit
+      review_and_submit
 
       expect_submission_message
     end
@@ -32,10 +32,10 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
 
       # NOTE: All employees now must complete the application form
       fill_in_application_body
-      
+
       fill_in_employment_status(:contractor)
       fill_in_manager_details
-      accept_terms_and_submit
+      review_and_submit
 
       expect_submission_message
     end
@@ -53,7 +53,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
       fill_in_buyer_details
       fill_in_application_body
       fill_in_employment_status(:employee)
-      accept_terms_and_submit
+      review_and_submit
     end
 
     it 'submits a valid contractor application' do
@@ -66,7 +66,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
       fill_in_application_body
       fill_in_employment_status(:contractor)
       fill_in_manager_details
-      accept_terms_and_submit
+      review_and_submit
 
       expect_submission_message
     end
@@ -117,9 +117,7 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
     click_on 'Save and continue'
   end
 
-  def accept_terms_and_submit
-    check 'I agree'
-
+  def review_and_submit
     click_on 'Submit application'
   end
 

@@ -16,7 +16,8 @@ class Seller < ApplicationRecord
   has_many :products
 
   has_documents :financial_statement, :professional_indemnity_certificate,
-                :workers_compensation_certificate
+                :workers_compensation_certificate,
+                :product_liability_certificate
 
   before_save :normalise_abn
 

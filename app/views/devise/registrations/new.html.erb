@@ -22,6 +22,10 @@
                                                  label: t('users.registrations.shared.form.password_confirmation_label') %>
 
     <fieldset class="actions">
+      <p>
+        By creating an account you confirm your acceptance of the
+        <%= link_to "terms of use", terms_of_use_path %>.
+      </p>
       <%= f.submit t('users.registrations.shared.form.submit_label') %>
     </fieldset>
   <% end %>
