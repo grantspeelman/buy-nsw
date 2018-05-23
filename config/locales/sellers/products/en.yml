@@ -27,12 +27,12 @@ en:
                   question: Is this product or service available as freeware?
                   'true': 'Yes'
                   'false': 'No'
-                free_version_details: Describe the free version of your product or service
+                free_version_details: Describe the free version of your product or service (200 words)
                 free_trial:
                   question: Do you provide a free trial option for your product or service?
                   'true': 'Yes'
                   'false': 'No'
-                free_trial_url: Please share a link to the free trial
+                free_trial_url: Please provide a link to the free trial for your product or service
                 pricing:
                   legend: Your pricing
                 pricing_unit: Price unit
