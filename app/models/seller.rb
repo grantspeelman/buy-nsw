@@ -31,6 +31,7 @@ class Seller < ApplicationRecord
   end
 
   enumerize :number_of_employees, in: ['sole', '2to4', '5to19', '20to49', '50to99', '100to199', '200plus']
+  enumerize :corporate_structure, in: ['standalone', 'subsidiary']
   enumerize :services, multiple: true, in: [
     'cloud-services',
     'software-development',

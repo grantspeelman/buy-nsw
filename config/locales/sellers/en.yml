@@ -11,6 +11,7 @@ en:
                 linkedin_url: 'LinkedIn URL (optional)'
               characteristics:
                 number_of_employees: 'Number of employees'
+                corporate_structure: "Corporate structure"
                 start_up: 'Start-up'
                 sme: 'Small to medium-sized enterprise (SME)'
                 not_for_profit: 'Not for profit/social enterprise'
@@ -146,6 +147,9 @@ en:
         50to99: '50-99'
         100to199: '100-199'
         200plus: 'More than 200 employees'
+      corporate_structure:
+        standalone: "Standalone organisation"
+        subsidiary: "Local subsidiary of a multinational corporation"
       services:
         cloud-services: Cloud products and support
         advisory-consulting: Advisory and consulting

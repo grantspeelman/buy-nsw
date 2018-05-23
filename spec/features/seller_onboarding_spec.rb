@@ -162,6 +162,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def fill_in_business_details
     choose '2-4'
+    choose 'Standalone organisation'
     check 'Start-up'
     check 'Not for profit'
     check 'Regional'
