@@ -1,5 +1,18 @@
 class Ops::WaitingSellersController < Ops::BaseController
 
+  def edit
+    @operation = run Ops::WaitingSeller::Update::Present
+  end
+
+  def update
+    @operation = run Ops::WaitingSeller::Update do |result|
+      flash.notice = 'Saved'
+      return redirect_to edit_ops_waiting_seller_path(result['model'])
+    end
+
+    render :edit
+  end
+
   def upload
     @operation = run Ops::WaitingSeller::Upload
 

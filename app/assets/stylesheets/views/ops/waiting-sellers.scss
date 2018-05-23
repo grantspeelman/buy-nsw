@@ -50,5 +50,8 @@
   table.uploaded-sellers {
     font-size: .8rem;
   }
+}
 
+.view-ops-waiting-sellers-edit {
+  @extend .view-padded;
 }
