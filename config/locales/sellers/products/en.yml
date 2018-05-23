@@ -35,8 +35,8 @@ en:
                 pricing:
                   legend: Your pricing
                 pricing_unit: Price unit
-                pricing_min: Minimum price
-                pricing_max: Maximum price
+                pricing_min: Minimum price (excluding GST)
+                pricing_max: Maximum price (excluding GST)
                 pricing_calculator_url: Link to your pricing calculator (optional)
                 pricing_variables:
                   question: Which variables affect your pricing?
@@ -200,7 +200,7 @@ en:
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
-        pricing_unit: "eg. per user per month"
+        pricing_unit: "eg. per user per month excluding GST"
       'sellers/seller_application/products/contract/onboarding_offboarding':
         onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
         offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
