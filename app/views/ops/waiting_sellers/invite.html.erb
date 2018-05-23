@@ -1,0 +1,26 @@
+<section class="view-ops-waiting-sellers-edit">
+  <header class="view-header">
+    <h1>Send invitations to waitlisted sellers</h1>
+  </header>
+
+  <%= bootstrap_form_tag url: invite_ops_waiting_sellers_path, method: :post, as: :invite do |f| %>
+
+    <p>Send invites to the following sellers?</p>
+
+    <ul>
+    <% operation['models'].each do |model| %>
+      <li>
+        <%= model.name %>
+        <%= f.hidden_field "invite[ids][]", value: model.id %>
+      </li>
+    <% end %>
+    </ul>
+
+    <div class="actions">
+      <%= f.submit 'Send invitations' %>
+      <span style="padding-left: 1rem">
+        or <%= link_to 'cancel and go back', ops_waiting_sellers_path %>
+      </span>
+    </div>
+  <% end %>
+</section>
