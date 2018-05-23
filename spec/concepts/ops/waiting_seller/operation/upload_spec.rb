@@ -29,12 +29,18 @@ RSpec.describe Ops::WaitingSeller::Upload do
         expect(seller.abn).to eq('10123456789')
         expect(seller.address).to eq('123 Test Street')
         expect(seller.suburb).to eq('Sydney')
-        expect(seller.state).to eq('NSW')
         expect(seller.country).to eq('Australia')
         expect(seller.contact_name).to eq('Winston Smith-Churchill')
         expect(seller.contact_email).to eq('test-1@test.buy.nsw.gov.au')
         expect(seller.contact_position).to eq('Test')
         expect(seller.website_url).to eq('http://example.org')
+      end
+
+      it 'downcases the state field' do
+        result = subject.({ file: csv_file })
+        seller = result['result.waiting_sellers'].first
+
+        expect(seller.state).to eq('nsw')
       end
     end
 
@@ -57,12 +63,18 @@ RSpec.describe Ops::WaitingSeller::Upload do
         expect(seller.abn).to eq('10123456789')
         expect(seller.address).to eq('123 Test Street')
         expect(seller.suburb).to eq('Sydney')
-        expect(seller.state).to eq('NSW')
         expect(seller.country).to eq('Australia')
         expect(seller.contact_name).to eq('Winston Smith-Churchill')
         expect(seller.contact_email).to eq('test-1@test.buy.nsw.gov.au')
         expect(seller.contact_position).to eq('Test')
         expect(seller.website_url).to eq('http://example.org')
+      end
+
+      it 'downcases the state field' do
+        result = subject.({ file_contents: string })
+        seller = result['result.waiting_sellers'].first
+
+        expect(seller.state).to eq('nsw')
       end
     end
 

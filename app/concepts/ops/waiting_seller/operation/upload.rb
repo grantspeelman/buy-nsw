@@ -25,7 +25,7 @@ class Ops::WaitingSeller::Upload < Trailblazer::Operation
 
   def build_seller_objects!(options, **)
     options['result.waiting_sellers'] = options['result.file'].map {|row|
-      WaitingSeller.new(row.to_hash.slice(*fields))
+      WaitingSeller.new(prepare_fields(row))
     }
   end
 
@@ -38,6 +38,12 @@ class Ops::WaitingSeller::Upload < Trailblazer::Operation
 
     options['result.waiting_sellers'].map(&:save!)
     options['result.persisted?'] = true
+  end
+
+  def prepare_fields(row)
+    row.to_hash.slice(*fields).tap {|atts|
+      atts['state'].downcase!
+    }
   end
 
   def fields
