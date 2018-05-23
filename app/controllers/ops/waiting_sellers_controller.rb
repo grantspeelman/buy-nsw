@@ -29,6 +29,19 @@ class Ops::WaitingSellersController < Ops::BaseController
     end
   end
 
+  def invite
+    @operation = run Ops::WaitingSeller::Invite::Present
+  end
+
+  def do_invite
+    @operation = run Ops::WaitingSeller::Invite do |result|
+      flash.notice = 'Invitations sent'
+      return redirect_to ops_waiting_sellers_path
+    end
+
+    render :invite
+  end
+
 private
   def operation
     @operation

@@ -50,6 +50,15 @@
   table.uploaded-sellers {
     font-size: .8rem;
   }
+
+  .invite-check-box {
+    padding: .5rem 1.3rem 1.2rem;
+    label {
+      /* NOTE: We can't hide the full label as it contains the custom checkbox
+      styling. */
+      font-size: 0;
+    }
+  }
 }
 
 .view-ops-waiting-sellers-edit {

@@ -117,6 +117,8 @@ Rails.application.routes.draw do
     resources :waiting_sellers, path: 'waiting-sellers' do
       collection do
         post :upload, to: 'waiting_sellers#upload'
+        get :invite, to: 'waiting_sellers#invite'
+        post :invite, to: 'waiting_sellers#do_invite'
       end
     end
 

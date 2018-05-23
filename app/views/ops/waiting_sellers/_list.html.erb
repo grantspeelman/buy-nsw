@@ -1,6 +1,9 @@
+<%= bootstrap_form_tag url: invite_ops_waiting_sellers_path, method: :get do |f| %>
+
 <table class="table">
   <thead>
     <tr>
+      <th scope="col" style="width: 5%">Invite?</th>
       <th scope="col" style="width: 30%;">Name</th>
       <th scope="col" style="width: 30%;">Contact name</th>
       <th scope="col" style="width: 15%;">Invitation status</th>
@@ -10,14 +13,24 @@
   <tbody>
     <% results.each do |seller| %>
       <tr>
+        <td class="invite-check-box">
+          <% if seller.invitable? %>
+            <%= f.check_box 'invite[ids][]', { label: 'Invite', include_hidden: false }, seller.id.to_s %>
+          <% end %>
+        </td>
         <th scope="row"><%= seller.name %></th>
         <td><%= seller.contact_name %></td>
         <td><%= seller.invitation_state %></td>
         <td class="actions">
-          <%= link_to 'Edit', edit_ops_waiting_seller_path(seller) %>
-          <%= link_to 'Send invitation', edit_ops_waiting_seller_path(seller) %>
+          <% if seller.editable? %>
+            <%= link_to 'Edit', edit_ops_waiting_seller_path(seller) %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= f.submit 'Invite sellers' %>
+
+<% end %>

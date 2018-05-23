@@ -17,5 +17,13 @@ class WaitingSeller < ApplicationRecord
     end
   end
 
+  def editable?
+    invitation_state == 'created'
+  end
+
+  def invitable?
+    may_mark_as_invited?
+  end
+  
   scope :in_invitation_state, ->(state) { where(invitation_state: state) }
 end
