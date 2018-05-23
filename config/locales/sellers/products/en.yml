@@ -35,6 +35,8 @@ en:
                 free_trial_url: Please provide a link to the free trial for your product or service
                 pricing:
                   legend: Your pricing
+                pricing_currency: Currency
+                pricing_currency_other: Please specify the currency
                 pricing_unit: Unit of pricing
                 pricing_min: Minimum price
                 pricing_max: Maximum price
@@ -286,6 +288,10 @@ en:
         no-extras: Reseller (no extras)
         extra-support: Reseller providing extra support
         extra-features-support: Reseller providing extra features and support not available from the original supplier
+      pricing_currency:
+        aud: Australian dollars
+        usd: US dollars
+        other: Other
       deployment_model:
         public-cloud: Public cloud
         private-cloud: Private cloud

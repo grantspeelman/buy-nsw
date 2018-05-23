@@ -6,6 +6,8 @@ module Sellers::SellerApplication::Products::Contract
     property :free_trial, on: :product
     property :free_trial_url, on: :product
 
+    property :pricing_currency, on: :product
+    property :pricing_currency_other, on: :product
     property :pricing_min, on: :product
     property :pricing_max, on: :product
     property :pricing_unit, on: :product
@@ -31,6 +33,13 @@ module Sellers::SellerApplication::Products::Contract
 
         rule(free_trial_url: [:free_trial, :free_trial_url]) do |radio, field|
           radio.true?.then(field.filled?)
+        end
+
+        required(:pricing_currency).filled
+        required(:pricing_currency_other).maybe(:str?)
+
+        rule(pricing_currency_other: [:pricing_currency, :pricing_currency_other]) do |type, field|
+          type.eql?('other').then(field.filled?)
         end
 
         required(:pricing_min).filled(:number?)

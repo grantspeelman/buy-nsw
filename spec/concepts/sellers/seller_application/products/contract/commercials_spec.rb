@@ -11,6 +11,7 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
     {
       free_version: false,
       free_trial: false,
+      pricing_currency: 'aud',
       pricing_min: 10,
       pricing_max: 20,
       pricing_unit: "per user per month",

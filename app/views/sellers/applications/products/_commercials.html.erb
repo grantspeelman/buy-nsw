@@ -35,6 +35,13 @@
 <fieldset>
   <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.pricing.legend') %></legend>
 
+  <div class="multiple-choice-group radio-group" data-module="further-details-fields" data-further-details-values="other">
+    <%= f.collection_radio_buttons(:pricing_currency, Product.pricing_currency.options, :last, :first, data: { further_details: 'input' }) %>
+    <div class="additional-fields" data-further-details="fields">
+      <%= f.text_field :pricing_currency_other %>
+    </div>
+  </div>
+  
   <%= f.text_field :pricing_unit %>
   <%= f.text_field :pricing_min %>
   <%= f.text_field :pricing_max %>

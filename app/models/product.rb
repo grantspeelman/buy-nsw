@@ -37,6 +37,7 @@ class Product < ApplicationRecord
     'other'
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
+  enumerize :pricing_currency, in: ['aud', 'usd', 'other']
   enumerize :pricing_variables, multiple: true, in: [
     'user-numbers',
     'volumes',
