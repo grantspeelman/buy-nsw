@@ -6,8 +6,9 @@ en:
           products:
             contract:
               basics:
-                name: Product or service name
-                summary: Tell us briefly about the need it addresses
+                name: Tell us the name of your product or service
+                summary: Tell us briefly about the need it addresses (200 words)
+                audiences_other: 'Please specify other buyer group (50 words)'
                 organisation_resold: Who is the original supplier?
                 custom_contact:
                   'true': Somebody else
