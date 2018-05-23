@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523043754) do
+ActiveRecord::Schema.define(version: 20180523061053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,7 @@ ActiveRecord::Schema.define(version: 20180523043754) do
     t.text "metrics_channel_other"
     t.text "usage_channel_types", default: [], array: true
     t.text "usage_channel_other"
+    t.text "audiences_other"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|
