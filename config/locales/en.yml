@@ -67,6 +67,8 @@ en:
     url?: not a valid web address
     waiting_seller_not_existing_user?: An account already exists for this email address, they may have already been invited
     waiting_seller_unique_contact_email?: A seller with this email address is already on the waitlist
+    waiting_seller_not_existing_seller_abn?: A seller application has already been started with this ABN, they may have already been invited
+    waiting_seller_unique_abn?: A seller with this ABN is already on the waitlist
     messages:
       weak_password: "That's not strong enough. Consider adding a number, symbols or more letters to make it stronger."
   helpers:

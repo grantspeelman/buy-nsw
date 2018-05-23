@@ -63,4 +63,26 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
     expect(form.errors[:contact_email]).to be_present
   end
 
+  it "is invalid when the ABN already exists for another WaitingSeller" do
+    existing_waiting_seller = create(:waiting_seller)
+
+    form = described_class.new(waiting_seller)
+    form.validate(atts.merge(
+      abn: existing_waiting_seller.abn
+    ))
+
+    expect(form).to_not be_valid
+    expect(form.errors[:abn]).to be_present
+  end
+
+  it "is invalid when the ABN already exists for a seller" do
+    existing_seller = create(:active_seller)
+
+    form = described_class.new(waiting_seller)
+    form.validate(atts.merge(abn: existing_seller.abn))
+
+    expect(form).to_not be_valid
+    expect(form.errors[:abn]).to be_present
+  end
+
 end
