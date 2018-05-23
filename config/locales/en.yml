@@ -35,6 +35,8 @@ en:
         terms:
           short: 'Review and submit'
           long: 'Review and submit'
+          intro_html: |
+            <p>Please double-check the details below before submitting your application.</p>
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
