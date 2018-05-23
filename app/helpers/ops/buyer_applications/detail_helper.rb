@@ -21,10 +21,6 @@ module Ops::BuyerApplications::DetailHelper
       manager: [
         :manager_name,
         :manager_email,
-      ],
-      terms: [
-        :terms_agreed,
-        :terms_agreed_at,
       ]
     }
   end

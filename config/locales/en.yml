@@ -10,8 +10,6 @@ en:
             manager_approval:
               manager_name: "Your manager's full name"
               manager_email: "Your manager's email"
-            terms:
-              terms_agreed: I agree to the Terms of use
   buyers:
     applications:
       messages:
@@ -35,8 +33,8 @@ en:
           short: Employment status
           long: 'What is your employment status?'
         terms:
-          short: 'Review terms'
-          long: 'Terms'
+          short: 'Review and submit'
+          long: 'Review and submit'
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."
@@ -104,10 +102,6 @@ en:
           name: "Manager's name"
         manager_email:
           name: "Manager's email"
-        terms_agreed:
-          name: "Terms agreed?"
-        terms_agreed_at:
-          name: "Terms agreed at"
       messages:
         update_assign_success: Application assigned
         decision_success:

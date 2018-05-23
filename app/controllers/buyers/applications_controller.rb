@@ -16,6 +16,8 @@ class Buyers::ApplicationsController < Buyers::BaseController
   end
 
   def update
+    params[:buyer_application] ||= {}
+
     @operation = run Buyers::BuyerApplication::Update do |result|
       if result['result.submitted'] == true
         flash.notice = I18n.t('buyers.applications.messages.submitted')

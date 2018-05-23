@@ -20,8 +20,7 @@ RSpec.describe 'Reviewing buyer applications', type: :feature, js: true do
 
       expect_buyer_details(
         'Buyer name' => application.buyer.name,
-        'Organisation name' => application.buyer.organisation,
-        'Terms agreed?' => 'yes',
+        'Organisation name' => application.buyer.organisation
       )
 
       decide_on_application(decision: 'Approve', decision_body: 'Response text')

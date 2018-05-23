@@ -60,7 +60,6 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
   #
   success Contract::Validate( key: :buyer_application )
 
-  success :set_terms_agreed_at!
   step Contract::Persist()
 
   success :steps!
@@ -73,18 +72,6 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
   # validation errors and show the form again when the fields are invalid.
   #
   step Contract::Validate( key: :buyer_application )
-
-  def set_terms_agreed_at!(options, **)
-    return true unless options['result.step'].key == 'terms'
-
-    form = options['contract.default']
-
-    if form.terms_agreed == '1' && form.model[:buyer].terms_agreed.blank?
-      form.terms_agreed_at = Time.now
-    elsif !! form.terms_agreed
-      form.terms_agreed_at = nil
-    end
-  end
 
   def submit_if_valid_and_last_step!(options, **)
     current_step = options['result.step']

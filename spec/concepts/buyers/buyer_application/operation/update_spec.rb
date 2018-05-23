@@ -30,56 +30,12 @@ RSpec.describe Buyers::BuyerApplication::Update do
     expect(result[:buyer_model].name).to eq('John Doe')
   end
 
-  context '#set_terms_agreed_at!' do
-    it 'sets the timestamp when `terms_agreed` is newly-checked' do
-      time = 1.day.ago
-
-      Timecop.freeze(time) do
-        result = Buyers::BuyerApplication::Update.(
-                   build_params(application, 'terms', terms_agreed: '1'),
-                   'current_user' => user
-                 )
-        model = result[:buyer_model].reload
-
-        expect(model.terms_agreed).to be_truthy
-        expect(model.terms_agreed_at.to_i).to eq(time.to_i)
-      end
-    end
-
-    it 'does not update the timestamp when already checked' do
-      buyer.terms_agreed = '1'
-      buyer.save
-
-      result = Buyers::BuyerApplication::Update.(
-                 build_params(application, 'terms', terms_agreed: '1'),
-                 'current_user' => user,
-               )
-      model = result[:buyer_model].reload
-
-      expect(model.terms_agreed_at).to be_nil
-    end
-
-    it 'unsets the timestamp when unchecked' do
-      buyer.terms_agreed = '1'
-      buyer.terms_agreed_at = 1.hour.ago
-      buyer.save
-
-      result = Buyers::BuyerApplication::Update.(
-                 build_params(application, 'terms', terms_agreed: '0'),
-                 'current_user' => user,
-               )
-      model = result[:buyer_model].reload
-
-      expect(model.terms_agreed_at).to be_nil
-    end
-  end
-
   context '#submit_if_valid_and_last_step!' do
     it 'does not submit an application when a contract is invalid' do
       # NOTE: The application here is inherited from above but is invalid for
       # submission
       result = Buyers::BuyerApplication::Update.(
-                 build_params(application, 'terms', terms_agreed: '1'),
+                 build_params(application, 'terms'),
                  'current_user' => user,
                )
       result[:application_model].reload
@@ -97,7 +53,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
       application = create(:created_buyer_application, buyer: buyer)
 
       result = Buyers::BuyerApplication::Update.(
-                 build_params(application, 'terms', terms_agreed: '1'),
+                 build_params(application, 'terms'),
                  'current_user' => user,
                )
       result[:application_model].reload
@@ -114,7 +70,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
       application = create(:created_manager_approval_buyer_application, buyer: buyer)
 
       result = Buyers::BuyerApplication::Update.(
-                 build_params(application, 'terms', terms_agreed: '1'),
+                 build_params(application, 'terms'),
                  'current_user' => user,
                )
       result[:application_model].reload
@@ -130,7 +86,7 @@ RSpec.describe Buyers::BuyerApplication::Update do
       expect {
         perform_enqueued_jobs do
           Buyers::BuyerApplication::Update.(
-            build_params(application, 'terms', terms_agreed: '1'),
+            build_params(application, 'terms'),
             'current_user' => user,
           )
         end
