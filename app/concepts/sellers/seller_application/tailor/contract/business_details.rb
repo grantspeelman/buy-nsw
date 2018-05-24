@@ -18,7 +18,14 @@ module Sellers::SellerApplication::Tailor::Contract
         end
 
         required(:name).filled
-        required(:abn).filled(:unique_abn?, :abn?)
+        required(:abn).filled
+
+        rule(abn: [:abn]) do |abn|
+          abn.filled? > abn.unique_abn?
+        end
+        rule(abn: [:abn]) do |abn|
+          abn.filled? > abn.abn?
+        end
       end
     end
   end
