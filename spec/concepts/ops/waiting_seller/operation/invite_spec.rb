@@ -67,6 +67,15 @@ RSpec.describe Ops::WaitingSeller::Invite do
         described_class.({ invite: { ids: [ waiting_seller.id ] }})
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
+
+    it 'fails when a waiting seller is invalid' do
+      waiting_seller.update_attribute(:name, '')
+      result = perform_operation
+
+      expect(result).to be_failure
+      expect(result['result.invalid_model_ids']).to contain_exactly(waiting_seller.id)
+      expect(waiting_seller.reload.invitation_state).to eq('created')
+    end
   end
 
 end

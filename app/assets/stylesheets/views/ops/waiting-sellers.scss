@@ -64,3 +64,24 @@
 .view-ops-waiting-sellers-edit {
   @extend .view-padded;
 }
+.view-ops-waiting-sellers-invite {
+  @include ops-list;
+  @extend .view-padded;
+
+  .invalid {
+    color: $red;
+    font-weight: bold;
+  }
+
+  a.refresh-action {
+    @extend .btn;
+    @extend .btn-primary;
+
+    span {
+      @extend .oi;
+      @extend .oi-loop-circular;
+      margin: .35rem .3rem 0 0;
+      vertical-align: top;
+    }
+  }
+}
