@@ -36,7 +36,7 @@ class Ops::WaitingSeller::Upload < Trailblazer::Operation
   def persist_rows!(options, params:, **)
     return true if params[:complete].blank?
 
-    options['result.waiting_sellers'].map(&:save!)
+    options['result.waiting_sellers'].each(&:save!)
     options['result.persisted?'] = true
   end
 

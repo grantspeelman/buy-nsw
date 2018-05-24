@@ -1,26 +1,61 @@
-<section class="view-ops-waiting-sellers-edit">
+<section class="view-ops-waiting-sellers-invite">
   <header class="view-header">
     <h1>Send invitations to waitlisted sellers</h1>
   </header>
 
   <%= bootstrap_form_tag url: invite_ops_waiting_sellers_path, method: :post, as: :invite do |f| %>
-
     <p>Send invites to the following sellers?</p>
 
-    <ul>
-    <% operation['models'].each do |model| %>
-      <li>
-        <%= model.name %>
-        <%= f.hidden_field "invite[ids][]", value: model.id %>
-      </li>
-    <% end %>
-    </ul>
+    <div class="record-list">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact name</th>
+            <th scope="col">Contact email</th>
+            <th scope="col">Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% operation['models'].each do |model| %>
+            <tr>
+              <td><%= model.name %></td>
+              <td><%= model.contact_name %></td>
+              <td><%= model.contact_email %></td>
+              <td>
+                <% if operation['result.invalid_model_ids'].include?(model.id) %>
+                  <span class="invalid">Invalid</span>
+                <% else %>
+                  OK
+                <% end %>
+              </td>
+              <td class="actions">
+                <% if operation['result.invalid_model_ids'].include?(model.id) %>
+                  <%= link_to 'Fix errors', edit_ops_waiting_seller_path(model), target: '_blank' %>
+                <% end %>
+                <%= f.hidden_field "invite[ids][]", value: model.id %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-    <div class="actions">
-      <%= f.submit 'Send invitations' %>
+    <fieldset class="actions">
+      <% if operation.success? %>
+        <%= f.submit 'Send invitations' %>
+      <% else %>
+        <p>You need to fix errors before continuing.</p>
+        <%= link_to '', class: 'refresh-action' do %>
+          <span aria-hidden="true"></span>
+          Refresh status
+        <% end %>
+      <% end %>
+
       <span style="padding-left: 1rem">
         or <%= link_to 'cancel and go back', ops_waiting_sellers_path %>
       </span>
-    </div>
+    </fieldset>
   <% end %>
 </section>

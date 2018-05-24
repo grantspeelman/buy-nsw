@@ -25,19 +25,20 @@ module Ops::WaitingSeller::Contract
         def waiting_seller_unique_contact_email?(value)
           WaitingSeller.where.not(id: form.model.id).where(contact_email: value).empty?
         end
+
+        def waiting_seller_not_existing_seller_abn?(value)
+          Seller.where(abn: value).empty?
+        end
+
+        def waiting_seller_unique_abn?(value)
+          WaitingSeller.where.not(id: form.model.id).where(abn: value).empty?
+        end
       end
 
       required(:name).filled(:str?)
-      required(:abn).filled(:str?)
-      required(:address).filled(:str?)
-      required(:suburb).filled(:str?)
-      required(:postcode).filled(:str?)
-      required(:state).filled(in_list?: SellerAddress.state.values)
-      required(:country).filled(:str?)
+      required(:abn).maybe(:str?)
+      required(:state).maybe(in_list?: SellerAddress.state.values)
       required(:contact_name).filled(:str?)
-      required(:contact_position).filled(:str?)
-      required(:website_url).filled(:str?)
-
       required(:contact_email).filled(:str?)
 
       rule(contact_email: [:contact_email]) do |email|
@@ -45,6 +46,12 @@ module Ops::WaitingSeller::Contract
       end
       rule(contact_email: [:contact_email]) do |email|
         email.filled? > email.waiting_seller_unique_contact_email?
+      end
+      rule(abn: [:abn]) do |abn|
+        abn.filled? > abn.waiting_seller_not_existing_seller_abn?
+      end
+      rule(abn: [:abn]) do |abn|
+        abn.filled? > abn.waiting_seller_unique_abn?
       end
     end
   end

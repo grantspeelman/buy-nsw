@@ -3,11 +3,22 @@ class Ops::WaitingSeller::Invite < Trailblazer::Operation
     step :models!
     step Contract::Build( constant: Ops::WaitingSeller::Contract::Invite )
     success Contract::Validate( key: :invite )
+    step :validate_models!, fail_fast: true
 
     def models!(options, params:, **)
       options['models'] = params[:invite][:ids].map {|id|
         WaitingSeller.created.find(id)
       }
+    end
+
+    def validate_models!(options, **)
+      contract = Ops::WaitingSeller::Contract::Update
+
+      options['result.invalid_model_ids'] = options['models'].reject {|model|
+        contract.new(model).valid?
+      }.map(&:id)
+
+      options['result.invalid_model_ids'].empty?
     end
   end
 

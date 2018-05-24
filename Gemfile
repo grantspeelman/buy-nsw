@@ -27,7 +27,7 @@ gem 'enumerize'
 gem 'kaminari'
 gem 'mime-types'
 gem 'nokogiri'
-gem 'premailer-rails'
+gem 'premailer-rails', group: [:development, :production]
 gem 'rack-attack'
 gem 'reform-rails', '~> 0.1.7'
 gem 'textacular', '~> 5.0'

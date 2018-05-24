@@ -23,15 +23,8 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
   end
 
   assert_invalidity_of_blank_field :name
-  assert_invalidity_of_blank_field :abn
-  assert_invalidity_of_blank_field :address
-  assert_invalidity_of_blank_field :suburb
-  assert_invalidity_of_blank_field :state
-  assert_invalidity_of_blank_field :country
   assert_invalidity_of_blank_field :contact_name
   assert_invalidity_of_blank_field :contact_email
-  assert_invalidity_of_blank_field :contact_position
-  assert_invalidity_of_blank_field :website_url
 
   it "is invalid when 'state' is not in the list" do
     form = described_class.new(waiting_seller)
@@ -61,6 +54,28 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
 
     expect(form).to_not be_valid
     expect(form.errors[:contact_email]).to be_present
+  end
+
+  it "is invalid when the ABN already exists for another WaitingSeller" do
+    existing_waiting_seller = create(:waiting_seller)
+
+    form = described_class.new(waiting_seller)
+    form.validate(atts.merge(
+      abn: existing_waiting_seller.abn
+    ))
+
+    expect(form).to_not be_valid
+    expect(form.errors[:abn]).to be_present
+  end
+
+  it "is invalid when the ABN already exists for a seller" do
+    existing_seller = create(:active_seller)
+
+    form = described_class.new(waiting_seller)
+    form.validate(atts.merge(abn: existing_seller.abn))
+
+    expect(form).to_not be_valid
+    expect(form.errors[:abn]).to be_present
   end
 
 end

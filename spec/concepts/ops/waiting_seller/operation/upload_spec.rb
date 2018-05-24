@@ -26,7 +26,7 @@ RSpec.describe Ops::WaitingSeller::Upload do
         seller = result['result.waiting_sellers'].first
 
         expect(seller.name).to eq('Smith-Churchill Enterprises')
-        expect(seller.abn).to eq('10123456789')
+        expect(seller.abn).to eq('42002780289')
         expect(seller.address).to eq('123 Test Street')
         expect(seller.suburb).to eq('Sydney')
         expect(seller.country).to eq('Australia')
@@ -60,7 +60,7 @@ RSpec.describe Ops::WaitingSeller::Upload do
         seller = result['result.waiting_sellers'].first
 
         expect(seller.name).to eq('Smith-Churchill Enterprises')
-        expect(seller.abn).to eq('10123456789')
+        expect(seller.abn).to eq('42002780289')
         expect(seller.address).to eq('123 Test Street')
         expect(seller.suburb).to eq('Sydney')
         expect(seller.country).to eq('Australia')
@@ -120,6 +120,13 @@ RSpec.describe Ops::WaitingSeller::Upload do
       expect(result).to be_success
       expect(result['result.persisted?']).to be_truthy
       expect(WaitingSeller.count).to eq(2)
+    end
+
+    it 'normalises the ABN on save' do
+      result = subject.({ file: csv_file, complete: true })
+      seller = result['result.waiting_sellers'].first
+
+      expect(seller.abn).to eq('42 002 780 289')
     end
   end
 
