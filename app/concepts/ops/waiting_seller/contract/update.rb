@@ -36,16 +36,9 @@ module Ops::WaitingSeller::Contract
       end
 
       required(:name).filled(:str?)
-      required(:abn).filled(:str?)
-      required(:address).filled(:str?)
-      required(:suburb).filled(:str?)
-      required(:postcode).filled(:str?)
-      required(:state).filled(in_list?: SellerAddress.state.values)
-      required(:country).filled(:str?)
+      required(:abn).maybe(:str?)
+      required(:state).maybe(in_list?: SellerAddress.state.values)
       required(:contact_name).filled(:str?)
-      required(:contact_position).filled(:str?)
-      required(:website_url).filled(:str?)
-
       required(:contact_email).filled(:str?)
 
       rule(contact_email: [:contact_email]) do |email|

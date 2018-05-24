@@ -23,15 +23,8 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
   end
 
   assert_invalidity_of_blank_field :name
-  assert_invalidity_of_blank_field :abn
-  assert_invalidity_of_blank_field :address
-  assert_invalidity_of_blank_field :suburb
-  assert_invalidity_of_blank_field :state
-  assert_invalidity_of_blank_field :country
   assert_invalidity_of_blank_field :contact_name
   assert_invalidity_of_blank_field :contact_email
-  assert_invalidity_of_blank_field :contact_position
-  assert_invalidity_of_blank_field :website_url
 
   it "is invalid when 'state' is not in the list" do
     form = described_class.new(waiting_seller)
