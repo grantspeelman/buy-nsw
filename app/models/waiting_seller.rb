@@ -2,8 +2,9 @@ class WaitingSeller < ApplicationRecord
   include AASM
 
   before_save :normalise_abn
-  
   belongs_to :seller, optional: true
+
+  default_scope -> { order('name ASC') }
 
   aasm column: :invitation_state do
     state :created, initial: true
