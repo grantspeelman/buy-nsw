@@ -94,7 +94,7 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       seller = Seller.last
 
       expect(seller.name).to eq(waiting_seller.name)
-      expect(seller.abn.gsub(/\s+/, '')).to eq(waiting_seller.abn)
+      expect(seller.abn).to eq(waiting_seller.abn)
       expect(seller.contact_name).to eq(waiting_seller.contact_name)
       expect(seller.contact_email).to eq(waiting_seller.contact_email)
       expect(seller.website_url).to eq(waiting_seller.website_url)
