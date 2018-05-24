@@ -34,8 +34,10 @@ class Product < ApplicationRecord
     'projects-team-collaboration',
     'sales-marketing',
     'security-cyber',
+    'other'
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
+  enumerize :pricing_currency, in: ['aud', 'usd', 'other']
   enumerize :pricing_variables, multiple: true, in: [
     'user-numbers',
     'volumes',

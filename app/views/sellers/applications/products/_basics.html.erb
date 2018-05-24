@@ -4,15 +4,22 @@
   <%= f.text_area :summary, rows: 8 %>
 </div>
 
-<fieldset class="multiple-choice-group checkbox-group with-enterprise-field">
-  <legend>Which buyers would use your product?</legend>
-  <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true) %>
+<fieldset class="multiple-choice-group checkbox-group with-enterprise-field"
+          data-module="further-details-fields"
+          data-further-details-values="other">
+  <legend>Which groups of buyers are most interested in your product or service?</legend>
+  <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
 
   <div class="form-check">
     <%= check_box_tag 'enterprise', nil, false, id: "enterprise_check" %>
     <%= label_tag "enterprise_check", "Enterprise", class: 'form-check-label' %>
     <small class="form-text text-muted">More than 3 of the selections in the above list</small>
   </div>
+
+  <div class="additional-fields" data-further-details="fields" data-module="max-word-count" data-max-word-count="50">
+    <%= f.text_area :audiences_other, rows: 8 %>
+  </div>
+
 </fieldset>
 
 <%= render partial: 'expanding_list', locals: {
@@ -45,7 +52,7 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend>If buyers have questions, who should they contact?</legend>
+  <legend>If potential buyers have questions, who should they contact?</legend>
 
   <%= f.form_group :custom_contact do %>
     <%= f.radio_button :custom_contact, 'false', data: { further_details: 'input' } %>

@@ -6,8 +6,9 @@ en:
           products:
             contract:
               basics:
-                name: Product or service name
-                summary: Tell us briefly about the need it addresses
+                name: Tell us the name of your product or service
+                summary: Tell us briefly about the need it addresses (200 words)
+                audiences_other: 'Please specify other buyer group (50 words)'
                 organisation_resold: Who is the original supplier?
                 custom_contact:
                   'true': Somebody else
@@ -26,15 +27,17 @@ en:
                   question: Is this product or service available as freeware?
                   'true': 'Yes'
                   'false': 'No'
-                free_version_details: Describe the free version of your product or service
+                free_version_details: Describe the free version of your product or service (200 words)
                 free_trial:
                   question: Do you provide a free trial option for your product or service?
                   'true': 'Yes'
                   'false': 'No'
-                free_trial_url: Please share a link to the free trial
+                free_trial_url: Please provide a link to the free trial for your product or service
                 pricing:
                   legend: Your pricing
-                pricing_unit: Price unit
+                pricing_currency: Currency
+                pricing_currency_other: Please specify the currency
+                pricing_unit: Unit of pricing
                 pricing_min: Minimum price (excluding GST)
                 pricing_max: Maximum price (excluding GST)
                 pricing_calculator_url: Link to your pricing calculator (optional)
@@ -201,6 +204,8 @@ en:
     help:
       'sellers/seller_application/products/contract/commercials':
         pricing_unit: "eg. per user per month excluding GST"
+        pricing_min: "eg. what is the cost for one user for one month of the basic product."
+        pricing_max: "eg. what is the cost for one user for one month of the comprehensive product."
       'sellers/seller_application/products/contract/onboarding_offboarding':
         onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
         offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
@@ -279,10 +284,14 @@ en:
         applications-software: Applications and software
         hosting-infrastructure: Hosting and infrastructure
       reseller_type:
-        own-product: Your own product/service
+        own-product: Your own
         no-extras: Reseller (no extras)
         extra-support: Reseller providing extra support
         extra-features-support: Reseller providing extra features and support not available from the original supplier
+      pricing_currency:
+        aud: Australian dollars
+        usd: US dollars
+        other: Other
       deployment_model:
         public-cloud: Public cloud
         private-cloud: Private cloud
