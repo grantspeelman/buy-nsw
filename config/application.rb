@@ -54,7 +54,9 @@ module ProcurementHub
 
     # Doing this here so it's added after premailer
     config.after_initialize do
-      ActionMailer::Base.register_interceptor(StyleTagRemoverInterceptor)
+      unless Rails.env.test?
+        ActionMailer::Base.register_interceptor(StyleTagRemoverInterceptor)
+      end
     end
   end
 end

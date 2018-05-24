@@ -24,7 +24,10 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
       expect(mail.body.encoded).to match(application.response)
     end
 
-    it 'should not have a style tag in the html after running premailer' do
+    # NOTE: This spec is skipped as we've removed Premailer from the test
+    # environment for performance reasons.
+    #
+    skip 'should not have a style tag in the html after running premailer' do
       Premailer::Rails::Hook.perform(mail)
       StyleTagRemoverInterceptor.delivering_email(mail)
       doc = Nokogiri::HTML(mail.html_part.body.to_s)
