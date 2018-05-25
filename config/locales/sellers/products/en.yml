@@ -264,7 +264,7 @@ en:
             short: Reporting and analytics
             long: Reporting and analytics
         sections:
-          check: All the things
+          details: Your product
           security: Your security approach
   enumerize:
     product:

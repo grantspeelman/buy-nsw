@@ -8,7 +8,7 @@ module Sellers::Applications
 
     def task_list
       {
-        section('check') => [
+        section('details') => [
           step('type'),
           step('basics'),
           step('commercials'),
