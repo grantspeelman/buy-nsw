@@ -1,4 +1,6 @@
-.view-sellers-applications.flow-linear {
+.view-buyers-applications {
+  padding-top: 3rem;
+
   .steps-container {
     @extend .row;
   }
@@ -81,5 +83,69 @@
   .current-step {
     @extend .col-md-8;
     @extend .offset-md-1;
+  }
+
+  .detail-review dl {
+    @extend .row;
+
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+
+    dt, dd {
+      border-bottom: 1px solid $grey-1;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+      margin-bottom: 0;
+    }
+
+    dt {
+      @extend .col-4;
+    }
+
+    dd {
+      @extend .col-8;
+    }
+  }
+
+  .detail-review h3 {
+    font-size: 1.4rem;
+  }
+}
+
+.buyer-application-header {
+  padding: 1em;
+  background: $grey-1;
+  border-bottom: 1px solid $grey-2;
+
+  h1 {
+    @extend .col-6;
+
+    font-size: 1.4rem;
+    margin-bottom: 0;
+
+    .type-label {
+      font-size: 0.9rem;
+      color: #555;
+      display: block;
+      font-weight: normal;
+    }
+  }
+
+  .action {
+    @extend .col-6;
+    text-align: right;
+    padding-top: .3rem;
+
+    a {
+      @extend .btn;
+      @extend .btn-primary;
+      font-size: .9rem;
+
+      span {
+        @extend .oi;
+        @extend .oi-arrow-thick-top;
+        padding-left: .25rem;
+      }
+    }
   }
 }
