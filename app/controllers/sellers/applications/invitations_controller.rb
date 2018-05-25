@@ -46,6 +46,11 @@ private
   helper_method :form
 
   def application
-    operation[:application_model]
+    @application ||= current_user.seller_applications.created.find(params[:application_id])
   end
+
+  def owners
+    application.owners
+  end
+  helper_method :owners
 end

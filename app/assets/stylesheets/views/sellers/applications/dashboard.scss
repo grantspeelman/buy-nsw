@@ -1,125 +1,77 @@
-.view-sellers-applications .application-dashboard {
-  @extend .row;
-
-  > aside {
-    @extend .col-4;
-    padding-right: 2rem;
+.view-sellers-applications.application-dashboard {
+  @include media-breakpoint-up(md) {
+    width: 65%;
   }
 
-  h1 {
-    font-size: 1.6rem;
+  h2.product-name {
+    font-weight: normal;
+    color: #6F777B;
   }
 
-  h2 {
-    font-size: 1.3rem;
+  .list-container {
+    padding-top: 1rem;
   }
 
-  ul.cards {
-    @extend .col-8;
+  .team-action {
+    margin: 1rem 0 2.5rem 3rem;
+    font-size: 1.1rem;
   }
 
-  li.card {
+  ol.task-list {
+    padding-left: 0;
+    padding-bottom: 3rem;
     list-style: none;
-    border: 1px solid #BFC1C3;
-    border-bottom-width: 3px;
-    border-radius: 0px;
 
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+    > li {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
 
-    .overview {
-      @extend .col-5;
-    }
-    .guidance {
-      @extend .col-7;
-    }
-    .actions {
-      @extend .col-12;
+      h2 {
+        .step-number {
+          display: inline-block;
+          width: 2.6rem;
+        }
 
-      background: #f5f5f5;
-      text-align: right;
-
-      padding-top: .5rem;
-      padding-bottom: .5rem;
-
-      margin-top: 1rem;
-      margin-bottom: -1rem;
-
-      p {
-        font-size: .8rem;
-        padding: .3rem 0;
-        margin-bottom: 0;
+        font-size: 1.6rem;
+        font-weight: bold;
       }
     }
-
-    .guidance {
-      /* NOTE: set the left padding to 0 to bring in horizontal alignment with
-      the data tables */
-      padding-left: 0;
-
-      color: $grey-3;
-      font-size: 0.9rem;
-    }
-
-    &.submit {
-      background: #fefde7;
-
-      form {
-        text-align: right;
-      }
-
-      input[type=submit] {
-        @extend .btn;
-        @extend .btn-primary;
-        font-size: 1rem;
-      }
-    }
-  }
-
-  .progress-indicator {
-    @include progress-indicator;
-    font-size: .9rem;
-  }
-
-  .action {
-    @extend .btn;
-    @extend .btn-primary;
-
-    font-size: 1rem;
-  }
-
-  .team {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
 
     ul {
-      padding-left: 0;
-    }
+      padding-left: 3rem;
+      font-size: 1.1rem;
+      font-weight: normal;
 
-    li {
-      list-style: none;
-      font-size: .9rem;
-      padding: .2rem 0;
+      li {
+        list-style: none;
+        padding: .6rem 0;
 
-      .icon {
-        @extend .oi;
-        @extend .oi-person;
-        padding-right: .4rem;
+        border-bottom: 1px solid $grey-3;
+
+        &:first-of-type {
+          border-top: 1px solid $grey-3;
+        }
+
+        .completed {
+          display: inline-block;
+          float: right;
+          padding: 0.3rem 0.4rem;
+
+          background: $dark-blue;
+          color: #fff;
+
+          text-transform: uppercase;
+          font-size: 0.95rem;
+          line-height: 1.1rem;
+          font-weight: 600;
+        }
       }
     }
+  }
 
-    .invite-action a {
-      @extend .btn;
-      @extend .btn-primary;
-      font-size: .9rem;
-    }
-
-    .unconfirmed {
-      display: block;
-      padding-left: 1.6rem;
-      font-size: .8rem;
-      color: #666;
-    }
+  .delete-action {
+    @extend .btn;
+    @extend .btn-danger;
   }
 }

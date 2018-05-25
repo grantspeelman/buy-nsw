@@ -1,0 +1,21 @@
+<% content_for(:seller_application_class, 'submit-application') %>
+
+<h1>Submit your application</h1>
+
+<% if operation.success? %>
+  <p>Your application is complete and ready for submission.</p>
+  <%= bootstrap_form_tag url: '', method: 'post' do |f| %>
+    <%= f.submit 'Submit application', name: '' %>
+    <%= f.hidden_field :complete, value: '1' %>
+  <% end %>
+<% else %>
+
+  <%= p operation %>
+
+  <p>You need to complete all other steps before you can submit your application.</p>
+
+  <%= p operation['result.progress'].base_progress %>
+  <%= p operation['result.progress'].products_progress %>
+
+  <%= link_to 'Return to your application', sellers_application_path(application), class: 'btn btn-primary' %>
+<% end %>
