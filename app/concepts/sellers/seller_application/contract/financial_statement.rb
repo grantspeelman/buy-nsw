@@ -1,5 +1,5 @@
-module Sellers::SellerApplication::Documents::Contract
-  class Financials < Base
+module Sellers::SellerApplication::Contract
+  class FinancialStatement < Base
     feature Reform::Form::ActiveModel::FormBuilderMethods
     feature Reform::Form::MultiParameterAttributes
 

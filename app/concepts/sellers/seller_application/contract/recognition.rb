@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Profile::Contract
+module Sellers::SellerApplication::Contract
   class Recognition < Base
     include Concerns::Contracts::Populators
 

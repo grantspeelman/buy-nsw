@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Legals::Contract
+module Sellers::SellerApplication::Contract
   class Declaration < Base
     property :agree, on: :seller
 

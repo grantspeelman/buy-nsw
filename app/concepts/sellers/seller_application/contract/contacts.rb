@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Contacts::Contract
+module Sellers::SellerApplication::Contract
   class Contacts < Base
     property :contact_name,          on: :seller
     property :contact_email,         on: :seller

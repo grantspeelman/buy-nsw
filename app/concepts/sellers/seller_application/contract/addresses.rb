@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Contacts::Contract
+module Sellers::SellerApplication::Contract
   class Addresses < Base
     include Concerns::Contracts::Populators
 

@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Documents::Contract
+module Sellers::SellerApplication::Contract
   class WorkersCompensation < Base
     feature Reform::Form::ActiveModel::FormBuilderMethods
     feature Reform::Form::MultiParameterAttributes

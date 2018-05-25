@@ -1,5 +1,5 @@
-module Sellers::SellerApplication::Profile::Contract
-  class Basics < Base
+module Sellers::SellerApplication::Contract
+  class ProfileBasics < Base
     property :summary,      on: :seller
     property :website_url,  on: :seller
     property :linkedin_url, on: :seller

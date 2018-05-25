@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Documents::Contract
+module Sellers::SellerApplication::Contract
   class Base < Reform::Form
     include Concerns::Contracts::Composition
     include Concerns::Contracts::MultiStepForm
