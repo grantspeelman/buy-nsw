@@ -3,107 +3,91 @@ en:
     attributes:
       sellers:
         seller_application:
-          profile:
-            contract:
-              basics:
-                summary: 'Summary'
-                website_url: 'Website URL (optional)'
-                linkedin_url: 'LinkedIn URL (optional)'
-              characteristics:
-                number_of_employees: 'Number of employees'
-                corporate_structure: "Corporate structure"
-                start_up: 'Start-up'
-                sme: 'Small to medium-sized enterprise (SME)'
-                not_for_profit: 'Not for profit/social enterprise'
-                australian_owned: 'Australian owned'
-                rural_remote: 'Rural or remote business'
-                regional: 'Regional or non-metropolitan business'
-                travel: 'Happy to travel for opportunities'
-                disability: 'Australian disability enterprise'
-                female_owned: 'Female owned'
-                indigenous: 'Aboriginal or Torres Strait Islander'
-                no_experience: "No, we're looking forward to working with government for the first time"
-                local_government_experience: 'Yes, with local government'
-                state_government_experience: 'Yes, with state or territory government'
-                federal_government_experience: 'Yes, with federal government'
-                international_government_experience: 'Yes, with government outside Australia'
-          tailor:
-            contract:
-              business_details:
-                name: 'Business name'
-                abn: 'ABN'
-          contacts:
-            contract:
-              contacts:
-                contact_name: Name
-                contact_email: Email address
-                contact_phone: Phone
-                representative_name: Name
-                representative_email: Email address
-                representative_phone: Phone
-                representative_position: Position in organisation
-          documents:
-            contract:
-              documents:
-                financial_statement: 'Financial statement'
-                professional_indemnity_certificate: 'Professional indemnity certificate'
-                workers_compensation_certificate: 'Workers compensation insurance'
-                product_liability_certificate: 'Product liability certificate (optional)'
-              financials:
-                financial_statement_expiry: Date of document
-              professional_indemnity:
-                professional_indemnity_certificate_expiry: Expiry date
-              workers_compensation:
-                workers_compensation_certificate_expiry: Expiry date
-                workers_compensation_exempt: This business is not required to have workers compensation insurance.
-              product_liability:
-                product_liability_certificate_expiry: Expiry date
-          legals:
-            contract:
-              declaration:
-                agree_html: |
-                  I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
-          disclosures:
-            contract:
-              disclosures:
-                receivership:
-                  'false': 'No'
-                  'true': 'Yes'
-                investigations:
-                  'false': 'No'
-                  'true': 'Yes'
-                legal_proceedings:
-                  'false': 'No'
-                  'true': 'Yes'
-                insurance_claims:
-                  'false': 'No'
-                  'true': 'Yes'
-                conflicts_of_interest:
-                  'false': 'No'
-                  'true': 'Yes'
-                other_circumstances:
-                  'false': 'No'
-                  'true': 'Yes'
-                receivership_details: 'Please provide details'
-                investigations_details: 'Please provide details'
-                legal_proceedings_details: 'Please provide details'
-                insurance_claims_details: 'Please provide details'
-                conflicts_of_interest_details: 'Please provide details'
-                other_circumstances_details: 'Please provide details'
+          contract:
+            profile_basics:
+              summary: 'Summary'
+              website_url: 'Website URL (optional)'
+              linkedin_url: 'LinkedIn URL (optional)'
+            characteristics:
+              number_of_employees: 'Number of employees'
+              corporate_structure: "Corporate structure"
+              start_up: 'Start-up'
+              sme: 'Small to medium-sized enterprise (SME)'
+              not_for_profit: 'Not for profit/social enterprise'
+              australian_owned: 'Australian owned'
+              rural_remote: 'Rural or remote business'
+              regional: 'Regional or non-metropolitan business'
+              travel: 'Happy to travel for opportunities'
+              disability: 'Australian disability enterprise'
+              female_owned: 'Female owned'
+              indigenous: 'Aboriginal or Torres Strait Islander'
+              no_experience: "No, we're looking forward to working with government for the first time"
+              local_government_experience: 'Yes, with local government'
+              state_government_experience: 'Yes, with state or territory government'
+              federal_government_experience: 'Yes, with federal government'
+              international_government_experience: 'Yes, with government outside Australia'
+            business_details:
+              name: 'Business name'
+              abn: 'ABN'
+            contacts:
+              contact_name: Name
+              contact_email: Email address
+              contact_phone: Phone
+              representative_name: Name
+              representative_email: Email address
+              representative_phone: Phone
+              representative_position: Position in organisation
+            financial_statement:
+              financial_statement: 'Financial statement'
+              financial_statement_expiry: Date of document
+            professional_indemnity:
+              professional_indemnity_certificate: 'Professional indemnity certificate'
+              professional_indemnity_certificate_expiry: Expiry date
+            workers_compensation:
+              workers_compensation_certificate: 'Workers compensation insurance'
+              workers_compensation_certificate_expiry: Expiry date
+              workers_compensation_exempt: This business is not required to have workers compensation insurance.
+            product_liability:
+              product_liability_certificate: 'Product liability certificate (optional)'
+              product_liability_certificate_expiry: Expiry date
+            declaration:
+              agree_html: |
+                I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
+            disclosures:
+              receivership:
+                'false': 'No'
+                'true': 'Yes'
+              investigations:
+                'false': 'No'
+                'true': 'Yes'
+              legal_proceedings:
+                'false': 'No'
+                'true': 'Yes'
+              insurance_claims:
+                'false': 'No'
+                'true': 'Yes'
+              conflicts_of_interest:
+                'false': 'No'
+                'true': 'Yes'
+              other_circumstances:
+                'false': 'No'
+                'true': 'Yes'
+              receivership_details: 'Please provide details'
+              investigations_details: 'Please provide details'
+              legal_proceedings_details: 'Please provide details'
+              insurance_claims_details: 'Please provide details'
+              conflicts_of_interest_details: 'Please provide details'
+              other_circumstances_details: 'Please provide details'
   activerecord:
     help:
-      'sellers/seller_application/tailor/contract/business_details':
+      'sellers/seller_application/contract/business_details':
         name: Your business name must be listed under your ABN. You can leave out endings like PTY LTD.
         abn_html: "You need an Australian Business Number to do business in Australia. <a href=\"https://abr.business.gov.au/\">Lookup your ABN</a> or <a href=\"https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/\">apply for an ABN</a>."
-      'sellers/seller_application/contract/methods':
-        tools: What delivery management software, tools or other artefacts do you use day-to-day?
-        methodologies: What methodologies form the core of your practice?
-        technologies: What technologies or programming languages do you use?
-      'sellers/seller_application/profile/contract/basics':
+      'sellers/seller_application/contract/profile_basics':
         summary: 3-4 sentences that describe your business. This can be seen by anyone without signing in.
         website_url: Provide a link to your website beginning with http
         linkedin_url: Provide a LinkedIn URL beginning with http
-      'sellers/seller_application/profile/contract/characteristics':
+      'sellers/seller_application/contract/characteristics':
         start_up: Your business is not listed on any stock exchange and is less than 5 years old.
         sme: Your business has less than 200 full-time equivalent employees and if from Australia or New Zealand.
         not_for_profit: Your organisation applies applies commercial strategies to maximise improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
@@ -111,16 +95,19 @@ en:
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
         indigenous_html: 'Your business is recognised by the <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a>, or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.'
-      'sellers/seller_application/documents/contract/documents':
+      'sellers/seller_application/contract/financial_statement':
         financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business' financial viability."
         financial_statement_expiry: We'll ask you to upload a new document when this one expires.
+      'sellers/seller_application/contract/professional_indemnity':
         professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
-        workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
-        product_liability_certificate: 'Your insurer can issue a certificate of currency.'
         professional_indemnity_certificate_expiry: We'll ask you to upload a new document when this one expires.
+      'sellers/seller_application/contract/workers_compensation':
+        workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
         workers_compensation_certificate_expiry: We'll ask you to upload a new document when this one expires.
+      'sellers/seller_application/contract/product_liability':
+        product_liability_certificate: 'Your insurer can issue a certificate of currency.'
         product_liability_certificate_expiry: We'll ask you to upload a new document when this one expires.
-      'sellers/seller_application/tailor/contract/services':
+      'sellers/seller_application/contract/services':
         cloud-services: "Includes off-premise, cloud-hosted software and platforms as well as infrastructure as a service and cloud hosting and broker services. Also includes services to transition to cloud and manage and monitor cloud environments."
         software-development: "The design, construction and delivery of bespoke software and software modifications, as well as implementation and configuration of vendor-owned software. Includes: user research; service, interaction and content design; coding and testing for stability, security and accessibility. Also includes managing technical environments and all technical skill sets and ways of working, together with supporting toolsets."
         software-licensing: "Licences for software applications and systems. Including those offered on a named or concurrent user, location, enterprise or any basis other than as a cloud-hosted subscription service. Maintenance and updates for these software licences."
@@ -131,9 +118,6 @@ en:
         advisory-consulting: "The provision of specialist ICT expertise, acting in an advisory capability to government. Includes building business cases and strategic roadmaps, developing enterprise architectures, providing policy analysis and advice."
         ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
         training-learning: "ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
-      'sellers/seller_application/contract/product/info_form':
-        name: This is how your product will appear in the listing.
-        summary: 3-4 sentences that describe your product. This can be seen by anyone without signing in.
   enumerize:
     seller:
       industry:
@@ -176,32 +160,53 @@ en:
       title: Your application
       aside_html: |
         <p>Complete the steps in any order. Your progress is saved automatically, so you can return at any time.</p>
-      documents:
-        title: Your documents
-        guidance_html: |
-          <p>This will take approximately 5 minutes.</p>
-          <p>You will need:</p>
-          <ul>
-            <li>your financial documents</li>
-            <li>your insurance documents</li>
-          </ul>
-        aside_html: |
-          <p>Your corporate documents will appear on your seller profile to logged in buyers.</p>
-          <p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.</p>
-          <p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
-        steps:
-          financials:
-            short: 'Financials'
-            button_label: 'Upload document'
-          workers_compensation:
-            short: 'Workers compensation'
-            button_label: 'Save'
-          product_liability:
-            short: 'Product liability'
-            button_label: 'Save'
-          professional_indemnity:
-            short: 'Professional indemnity'
-            button_label: 'Upload document'
+      steps:
+        financial_statement:
+          short: 'Your financial statement'
+          button_label: 'Upload document'
+        workers_compensation:
+          short: 'Workers compensation insurance'
+          button_label: 'Save'
+        product_liability:
+          short: 'Product liability insurance'
+          button_label: 'Upload document'
+        professional_indemnity:
+          short: 'Professional indemnity insurance'
+          button_label: 'Upload document'
+        contacts:
+          short: 'Your contact details'
+        addresses:
+          short: 'Your address'
+        declaration:
+          short: 'Accept the Core Terms'
+        disclosures:
+          short: 'Complete disclosures'
+          long: 'Disclosures'
+        business_details:
+          short: 'Company information'
+          long: 'Tell us about your business'
+        services:
+          short: 'Your categories'
+          long: 'What products and services do you offer?'
+          intro_html: |
+            <p>Select the options that match your ICT capabilities.</p>
+        profile_basics:
+          short: 'Summary and website links'
+          long: 'Your profile summary'
+        characteristics:
+          short: 'Company type and size'
+        recognition:
+          short: 'List awards and accreditations'
+        products:
+          short: 'Your cloud products'
+        submit:
+          short: 'Submit your application'
+      sections:
+        check: Check before you start
+        business: About your business
+        documents: Provide documents
+        offering: Describe your offering
+        apply: Apply
       contacts:
         title: Your contact details
         guidance_html: |
@@ -214,34 +219,15 @@ en:
           </ul>
         aside_html: |
           <p>The information here is available to all buyers.</p>
-        steps:
-          contacts:
-            short: 'People'
-          addresses:
-            short: 'Business address'
       legals:
         title: Your legals
         errors:
           no_representative: You can't start this until you nominate an authorised representative.
           incorrect_user_html: |
             Only the authorised representative can complete this step. <a href="%{invite_link}">Send them an invitation</a>
-        guidance_html: |
-          <p>This will take approximately 5 minutes.</p>
-          <p>Your authorised representative needs to agree to the Core Terms on behalf of your organisation.</p>
-        aside_html: |
-          <p>You need to complete the disclosures and accept the Core Terms to become a seller. If these terms are updated we will ask you to accept the new terms by email or when you next log in.</p>
         steps:
-          declaration:
-            short: 'Agree terms'
       disclosures:
         title: Your disclosures
-        guidance_html: |
-          <p>This will take about 10 minutes.</p>
-        aside_html: |
-          <p>You need to complete the disclosures.</p>
-        steps:
-          disclosures:
-            short: 'Disclosures'
         disclosures:
           receivership: "Is your organisation in receivership, administration or unable to meet its debts as they fall due?"
           investigations: "Has your organisation — or any of its directors or principals — been or referred to investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
@@ -281,26 +267,6 @@ en:
                 <li>provide details about your offering to support your application</li>
                 <li>accept the <a href="#">Core Terms</a></li>
               </ul>
-          business_details:
-            short: 'Business details'
-            long: 'Tell us about your business'
-          industry:
-            short: 'Industry'
-            long: 'Which industry are you in?'
-            intro_html: |
-          services:
-            short: 'ICT categories'
-            long: 'What products and services do you offer?'
-            intro_html: |
-              <p>Select the options that match your ICT capabilities.</p>
-          review:
-            short: 'Review details'
-            long: 'Review your details'
-            button_label: 'Continue'
-            intro_html: |
-              <p>The options you've selected determine the information you need to provide later.</p>
-              <p>Please double-check the details below before continuing, you'll need to contact support if you want to change them later.</p>
-            incomplete_message: Please complete all other steps before you continue.
       profile:
         title: Your seller profile
         guidance_html: |
@@ -309,24 +275,6 @@ en:
         aside_html: |
           <p>The information here is available to all buyers.</p>
           <p>The more information you provide, the easier it is for buyers to find you through site search.</p>
-        steps:
-          introduction:
-            short: 'Introduction'
-            long: 'Create your seller profile'
-            button_label: 'Continue'
-          basics:
-            short: 'Profile basics'
-            long: 'Your seller profile basics'
-          characteristics:
-            short: 'Business details'
-            long: 'More about your business'
-          recognition:
-            short: 'Recognition'
-            long: 'Awards and accreditations'
-          review:
-            short: 'Review details'
-            long: 'Review your details'
-            button_label: 'Continue'
     dashboard:
       actions:
         label: Account actions

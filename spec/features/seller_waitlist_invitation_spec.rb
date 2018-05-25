@@ -17,7 +17,7 @@ RSpec.describe 'Seller waitlist invitations', type: :feature, js: true, skip_log
       expect(page).to have_content(seller.contact_email)
     end
 
-    click_on 'Start application'
+    click_on I18n.t("sellers.applications.steps.business_details.short")
 
     expect(page).to have_field('Business name', with: seller.name)
 
