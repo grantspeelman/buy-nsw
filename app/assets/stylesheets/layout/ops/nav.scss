@@ -22,7 +22,7 @@ body.ops {
           font-weight: 500;
 
           &:hover {
-            background: darken($grey-3, 5%);
+            background: darken($grey-4, 5%);
           }
 
           .oi {
@@ -32,7 +32,7 @@ body.ops {
         }
 
         &.selected a {
-          background: darken($grey-3, 10%);
+          background: darken($grey-4, 10%);
         }
       }
     }
@@ -51,7 +51,7 @@ body.ops {
     color: $white;
     font-size: 0.85rem;
 
-    border-top: 1px solid lighten($grey-3, 10%);
+    border-top: 1px solid lighten($grey-4, 10%);
     padding-top: 1rem;
     text-align: center;
 

@@ -5,6 +5,7 @@
   font-size: 1.3rem;
   padding: 0.4em 1.2em;
   text-decoration: none;
+  transition: none;
 }
 
 .btn-primary, .btn-secondary {
@@ -12,5 +13,19 @@
 
   &:hover {
     background: darken($light-blue, 15%);
+    border-bottom-color: darken($light-blue, 20%);
   }
+
+  border-bottom: 4px solid darken($light-blue, 8%);
+}
+
+.btn-danger {
+  background: $red;
+
+  &:hover {
+    background: darken($red, 15%);
+    border-bottom-color: darken($red, 20%);
+  }
+
+  border-bottom: 4px solid darken($red, 8%);
 }
