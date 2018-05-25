@@ -26,31 +26,8 @@ Rails.application.routes.draw do
   namespace :sellers do
     resources :applications, only: [:new, :show, :update], controller: 'applications/root' do
       member do
-        post :submit
-
-        get '/tailor', to: 'applications/tailor#show', as: :tailor
-        get '/tailor/:step', to: 'applications/tailor#show', as: :tailor_step
-        patch '/tailor', to: 'applications/tailor#update'
-
-        get '/profile', to: 'applications/profile#show', as: :profile
-        get '/profile/:step', to: 'applications/profile#show', as: :profile_step
-        patch '/profile', to: 'applications/profile#update'
-
-        get '/documents', to: 'applications/documents#show', as: :documents
-        get '/documents/:step', to: 'applications/documents#show', as: :documents_step
-        patch '/documents', to: 'applications/documents#update'
-
-        get '/contacts', to: 'applications/contacts#show', as: :contacts
-        get '/contacts/:step', to: 'applications/contacts#show', as: :contacts_step
-        patch '/contacts', to: 'applications/contacts#update'
-
-        get '/disclosures', to: 'applications/disclosures#show', as: :disclosures
-        get '/disclosures/:step', to: 'applications/disclosures#show', as: :disclosures_step
-        patch '/disclosures', to: 'applications/disclosures#update'
-
-        get '/legals', to: 'applications/legals#show', as: :legals
-        get '/legals/:step', to: 'applications/legals#show', as: :legals_step
-        patch '/legals', to: 'applications/legals#update'
+        get :submit
+        post :submit, to: 'applications/root#do_submit'
       end
 
       resources :products, controller: 'applications/products' do
@@ -58,15 +35,18 @@ Rails.application.routes.draw do
           post :clone
         end
       end
-      get '/products/:id/:step', to: 'applications/products#show', as: :product_step
+      get '/products/:id/:step', to: 'applications/products#edit', as: :product_step
+      patch '/products/:id/:step', to: 'applications/products#update'
 
-      resources :invitations, controller: 'applications/invitations', only: [:new, :create] do
+      resources :invitations, controller: 'applications/invitations', only: [:index, :new, :create] do
         collection do
           get :accept
           patch '/accept', to: 'applications/invitations#update_accept', as: :update_accept
         end
       end
     end
+    get '/applications/:id/:step', to: 'applications/steps#show', as: :application_step
+    patch '/applications/:id/:step', to: 'applications/steps#update'
 
     resources :profiles, only: :show
     resources :waitlist_invitations, path: 'waitlist', only: :show do
