@@ -23,11 +23,12 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
     expect(subject.save).to eq(true)
   end
 
-  it 'is invalid when no services are provided' do
-    subject.validate(atts.merge(services: nil))
+  it 'is valid when no other non-cloud services are selected' do
+    subject.validate(atts.merge(services: ['']))
+    expect(subject).to be_valid
 
-    expect(subject).to_not be_valid
-    expect(subject.errors[:services]).to be_present
+    subject.save
+    expect(seller.reload.services).to eq(['cloud-services'])
   end
 
   it 'is invalid given a service that is not in the pre-existing list' do

@@ -17,7 +17,7 @@
         <p>You can optionally select additional categories where you provide services.</p>
         <p>This will appear on your profile and make it easier for buyers to find you.</p>
 
-        <%= hidden_field_tag "application[services][]" %>
+        <%= hidden_field_tag "seller_application[services][]" %>
 
         <% other_service_options.each do |(label, value)| %>
           <%= f.check_box "services", { multiple: true, include_hidden: false }, value do %>
