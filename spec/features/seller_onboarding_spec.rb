@@ -53,9 +53,9 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   def complete_services
     click_on_step 'services'
 
-    # Services
-    check 'Cloud products'
+    choose 'Yes'
     check 'Training and learning'
+
     click_on 'Save'
   end
 

@@ -4,6 +4,10 @@ en:
       sellers:
         seller_application:
           contract:
+            services:
+              offers_cloud:
+                'true': 'Yes'
+                'false': 'No'
             profile_basics:
               summary: 'Summary'
               website_url: 'Website URL (optional)'
@@ -189,7 +193,8 @@ en:
           short: 'Your categories'
           long: 'What products and services do you offer?'
           intro_html: |
-            <p>Select the options that match your ICT capabilities.</p>
+            <p>For now, <strong>buy.nsw</strong> is only open to sellers who provide cloud products and support services.</p>
+            <p>We will be opening up to additional categories soon.</p>
         profile_basics:
           short: 'Summary and website links'
           long: 'Your profile summary'

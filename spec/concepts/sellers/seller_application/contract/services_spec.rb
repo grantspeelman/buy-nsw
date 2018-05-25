@@ -8,8 +8,8 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
 
   let(:atts) {
     {
+      offers_cloud: 'true',
       services: [
-        'cloud-services',
         'managed-services',
         'software-development',
       ]
@@ -44,5 +44,35 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
 
     expect(subject).to be_valid
     expect(subject.save).to eq(true)
+  end
+
+  it 'appends "cloud-services" to the list when "offers_cloud" is true' do
+    subject.validate(atts)
+    subject.save
+
+    expect(seller.reload.services).to include('cloud-services')
+  end
+
+  it 'does not append "cloud-services" to the list when "offers_cloud" is false' do
+    subject.validate(atts.merge(offers_cloud: 'false'))
+    subject.save
+
+    expect(seller.reload.services).to_not include('cloud-services')
+  end
+
+  it 'removes "cloud-services" from the list when "offers_cloud" is false' do
+    seller.update_attribute(:services, ['cloud-services', 'managed-services'])
+
+    subject.validate(atts.merge(offers_cloud: 'false'))
+    subject.save!
+
+    expect(seller.reload.services).to_not include('cloud-services')
+  end
+
+  it 'is invalid when "offers_cloud" is false' do
+    subject.validate(atts.merge(offers_cloud: 'false'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:offers_cloud]).to be_present
   end
 end
