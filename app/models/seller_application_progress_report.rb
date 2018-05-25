@@ -1,119 +1,67 @@
 class SellerApplicationProgressReport
-  def initialize(application:, question_sets:, product_question_set:)
+  def initialize(application:, base_steps: nil, product_steps: nil, validate_optional_steps: false)
     @application = application
-    @question_sets = question_sets
-    @product_question_set = product_question_set
+    @base_steps = base_steps
+    @product_steps = product_steps
+    @validate_optional_steps = validate_optional_steps
 
-    @config = {}
-    @steps = {}
-    @product_config = {}
-    @product_steps = {}
-
-    @cache_length = 12.hours
+    @cache_length = 1.second
   end
 
-  def all_question_sets_valid?
-    question_set_progress.reject {|key, question_set|
-      question_set[:valid] == true
+  def all_steps_valid?
+    base_valid = base_progress.reject {|_, valid|
+      valid == true
     }.empty?
+
+    products_valid = products_progress.reject {|id, product|
+      product['_overall'] == true
+    }.empty?
+
+    base_valid && products_valid
   end
 
-  def question_set_progress
-    @question_set_progress ||= build_progress
+  def base_progress
+    @base_progress ||= build_base_progress
+  end
+
+  def products_progress
+    @products_progress ||= build_products_progress
   end
 
 private
-  attr_reader :application, :cache_length, :product_question_set, :question_sets
+  attr_reader :application, :cache_length, :base_steps, :product_steps,
+    :validate_optional_steps
 
-  def build_progress
-    build_question_set_progress.merge(
-      build_product_question_set_progress
-    )
-  end
+  def build_base_progress
+    cache_key = "sellers.applications.#{application.id}.#{validate_optional_steps.to_s}"
 
-  def build_question_set_progress
-    {}.tap do |output|
-      question_sets.each do |question_set|
-        config = build_configuration(question_set)
-        key = config.get(:i18n_key)
-        cache_key = "#{key}-#{application.id}"
-
-        output[key] = Rails.cache.fetch(cache_key, expires_in: cache_length) do
-          steps = build_steps(question_set)
-          {
-            percent_complete: percent_complete(steps),
-            valid: all_steps_valid?(steps),
-          }
-        end
-      end
+    Rails.cache.fetch(cache_key, expires_in: cache_length) do
+      build_step_progress(base_steps, application)
     end
   end
 
-  def build_product_question_set_progress
-    {}.tap do |output|
-      products.each do |product|
-        key = "sellers.applications.products.#{product.id}"
+  def build_products_progress
+    tuples = application.seller.products.map do |product|
+      cache_key = "sellers.products.#{product.id}.#{validate_optional_steps.to_s}"
 
-        output[key] = Rails.cache.fetch(key, expires_in: cache_length) do
-          steps = build_product_steps(product)
-          {
-            percent_complete: percent_complete(steps),
-            valid: all_steps_valid?(steps),
-          }
-        end
+      progress = Rails.cache.fetch(cache_key, expires_in: cache_length) do
+        build_step_progress(product_steps, application, product)
+      end
+      progress['_overall'] = progress.reject {|_,v| v == true }.empty?
+
+      [product.id, progress]
+    end
+
+    progress = Hash[tuples]
+  end
+
+  def build_step_progress(steps, application, product = nil)
+    {}.tap do |output|
+      steps.each do |step|
+        output[step.key] = product.present? ?
+          step.complete?(application, product, validate_optional_steps: validate_optional_steps) :
+          step.complete?(application, validate_optional_steps: validate_optional_steps)
       end
     end
-  end
-
-  def percent_complete(steps)
-    required_fields_to_complete = steps.map(&:required_fields_to_complete).inject(&:+).to_f
-    required_fields_completed = steps.map(&:required_fields_completed).inject(&:+).to_f
-
-    return 100 if required_fields_to_complete == 0
-
-    (required_fields_completed / required_fields_to_complete * 100).round
-  end
-
-  def all_steps_valid?(steps)
-    steps.reject(&:valid?).empty?
-  end
-
-  def build_configuration(question_set)
-    @config[question_set] ||= Concerns::Operations::MultiStepForm::Configuration.new(
-      question_set.step_configuration_block, models
-    )
-  end
-
-  def build_product_configuration(product)
-    @product_config[product.id] ||= Concerns::Operations::MultiStepForm::Configuration.new(
-      product_question_set.step_configuration_block, models.merge(product_model: product)
-    )
-  end
-
-  def build_steps(question_set)
-    @steps[question_set] ||= Concerns::Operations::MultiStepForm::Builder.new(
-      question_set.step_contract_block,
-      operation_result: models,
-      config: build_configuration(question_set),
-    ).steps
-  end
-
-  def build_product_steps(product)
-    @product_steps[product.id] ||= Concerns::Operations::MultiStepForm::Builder.new(
-      product_question_set.step_contract_block,
-      operation_result: models.merge(product_model: product),
-      config: build_product_configuration(product),
-    ).steps
-  end
-
-  def models
-    {
-      application_model: application,
-      seller_model: application.seller,
-    }
-  end
-
-  def products
-    application.seller.products
   end
 end

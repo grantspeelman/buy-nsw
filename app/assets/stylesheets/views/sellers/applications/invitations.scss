@@ -1,13 +1,37 @@
-.view-sellers-applications {
-  .new-invitation, .accept-invitation {
-    @extend .row;
+.view-sellers-applications.invitations {
+  @include media-breakpoint-up(md) {
+    width: 65%;
+  }
 
-    header {
-      @extend .col-4;
-      padding-right: 4rem;
+  ul.current-team {
+    margin-top: 2rem;
+    padding-left: 0;
+
+    h2 {
+      font-size: 1.4rem;
     }
-    form {
-      @extend .col-8;
+
+    li {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      list-style: none;
+
+      border-bottom: 1px solid $grey-3;
+
+      &:first-of-type {
+        border-top: 1px solid $grey-3;
+      }
     }
+  }
+
+  .invite-action a {
+    @extend .btn;
+    @extend .btn-primary;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  form {
+    margin-top: 3rem;
   }
 }

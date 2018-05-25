@@ -1,21 +1,20 @@
-<section class="application-dashboard">
-  <aside>
-    <h1><%= t('sellers.applications.title') %></h1>
-    <%= t('sellers.applications.aside_html') %>
+<% content_for(:seller_application_class, 'application-dashboard') %>
 
-    <%= render partial: 'team', locals: { application: application } %>
-  </aside>
+<h1>Your seller application</h1>
 
-  <ul class="cards">
-    <% if can_submit_application? %>
-      <%= render partial: 'submit', locals: { application: application } %>
-    <% end %>
-    <%= display_question_set(application, progress_report, :tailor, skip_button: true) %>
-    <%= display_question_set(application, progress_report, :contacts) %>
-    <%= display_question_set(application, progress_report, :profile) %>
-    <%= display_question_set(application, progress_report, :documents) %>
-    <%= display_question_set(application, progress_report, :disclosures) %>
-    <%= display_question_set(application, progress_report, :legals, disable_section: legals_disabled_message(application)) %>
-    <%= render partial: 'products', locals: { application: application } %>
-  </ul>
-</section>
+<p>Some introductory text to the seller application here, and what you need to
+  complete as a seller.</p>
+
+<div class="list-container">
+  <p class="team-action">
+    <%= link_to 'Invite your team members', sellers_application_invitations_path(application) %>
+  </p>
+
+  <%= render partial: 'task_list',
+             locals: {
+               task_list: presenter.task_list,
+               resources: {
+                 application: application,
+               }
+             } %>
+</div>

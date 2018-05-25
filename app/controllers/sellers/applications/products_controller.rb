@@ -1,19 +1,33 @@
-class Sellers::Applications::ProductsController < Sellers::Applications::QuestionGroupController
-  layout -> {
-    action_name == 'index' ? '../sellers/applications/shared/_layout' : '../sellers/applications/products/_layout'
-  }
+class Sellers::Applications::ProductsController < Sellers::Applications::BaseController
+  layout '../sellers/applications/shared/_layout'
 
   def index
   end
 
   def new
-    run Sellers::SellerApplication::Products::Create do |result|
+    @operation = run Sellers::SellerApplication::Products::Create do |result|
       return redirect_to sellers_application_product_path(result[:application_model], result[:product_model])
     end
   end
 
+  def edit
+    @operation = run Sellers::SellerApplication::Products::Update::Present
+  end
+
+  def update
+    params[:seller_application] ||= {}
+
+    @operation = run Sellers::SellerApplication::Products::Update do |result|
+      flash.notice = I18n.t('sellers.applications.messages.changes_saved')
+      return redirect_to sellers_application_product_path(result['model.application'], result['model.product'])
+    end
+
+    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
+    render :edit
+  end
+
   def clone
-    run Sellers::SellerApplication::Products::Clone do |result|
+    @operation = run Sellers::SellerApplication::Products::Clone do |result|
       flash.notice = I18n.t('sellers.applications.messages.product_cloned')
     end
 
@@ -27,7 +41,51 @@ class Sellers::Applications::ProductsController < Sellers::Applications::Questio
     redirect_to sellers_application_products_path(application)
   end
 
+  def self.contracts
+    [
+      Sellers::SellerApplication::Products::Contract::Type,
+      Sellers::SellerApplication::Products::Contract::Basics,
+      Sellers::SellerApplication::Products::Contract::Commercials,
+      Sellers::SellerApplication::Products::Contract::OnboardingOffboarding,
+      Sellers::SellerApplication::Products::Contract::Environment,
+      Sellers::SellerApplication::Products::Contract::AvailabilitySupport,
+      Sellers::SellerApplication::Products::Contract::UserData,
+      Sellers::SellerApplication::Products::Contract::IdentityAuthentication,
+      Sellers::SellerApplication::Products::Contract::SecurityStandards,
+      Sellers::SellerApplication::Products::Contract::SecurityPractices,
+      Sellers::SellerApplication::Products::Contract::OperationalSecurity,
+      Sellers::SellerApplication::Products::Contract::ReportingAnalytics,
+    ]
+  end
+
+  def self.steps
+    contracts.map {|contract|
+      Sellers::Applications::ProductStepPresenter.new(contract)
+    }
+  end
+
 private
+  def _run_options(options)
+    if ['edit', 'update'].include?(action_name)
+      options = options.merge(
+        'config.contract_class' => contract_class,
+      )
+    end
+
+    options.merge(
+      'config.current_user' => current_user,
+    )
+  end
+
+  def step
+    self.class.steps.find {|step| step.slug == params[:step] } || raise(NotFound)
+  end
+  helper_method :step
+
+  def contract_class
+    step.contract_class if step.present?
+  end
+
   def application
     @application ||= current_user.seller_applications.created.find(params[:application_id])
   end
@@ -46,17 +104,26 @@ private
   def progress_report
     @progress_report ||= SellerApplicationProgressReport.new(
       application: application,
-      question_sets: [],
-      product_question_set: operation_present_class,
+      product_steps: self.class.steps,
+      validate_optional_steps: true,
     )
   end
   helper_method :progress_report
 
-  def operation_class
-    Sellers::SellerApplication::Products::Update
+  def presenter
+    @presenter ||= Sellers::Applications::ProductDashboardPresenter.new(
+      application, product, self.class.steps,
+    )
   end
+  helper_method :presenter
 
-  def operation_present_class
-    Sellers::SellerApplication::Products::Update::Present
+  def operation
+    @operation
   end
+  helper_method :operation
+
+  def form
+    operation["contract.default"]
+  end
+  helper_method :form
 end

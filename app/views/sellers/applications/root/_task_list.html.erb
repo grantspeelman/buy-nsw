@@ -1,0 +1,20 @@
+<ol class="task-list">
+  <% task_list.each_with_index do |(section, steps), index| %>
+  <li>
+    <h2>
+      <span class="step-number"><%= index+1 %>.</span>
+      <%= section.name %>
+    </h2>
+    <ul>
+      <% steps.each do |step| %>
+        <li>
+          <%= link_to step.name, step.path(resources) %>
+          <% if presenter.step_complete?(step) %>
+            <span class="completed">Completed</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
+</ol>

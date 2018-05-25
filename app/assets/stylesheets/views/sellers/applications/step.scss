@@ -1,0 +1,21 @@
+.view-sellers-applications.application-step {
+  @include media-breakpoint-up(md) {
+    width: 65%;
+  }
+
+  form {
+    margin-top: 2.5rem;
+  }
+
+  form > fieldset:first-of-type {
+    margin-top: 3rem;
+  }
+
+  fieldset .skip-link {
+    padding-top: 2rem;
+  }
+
+  .return-link {
+    margin: 2rem 0 3rem;
+  }
+}
