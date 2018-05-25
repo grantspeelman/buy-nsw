@@ -8,7 +8,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Create do
   let(:current_user) { create(:seller_user, seller: application.seller) }
 
   it 'creates a new user' do
-    result = subject.({ application_id: application.id, invitation: { email: 'blah@example.org' } }, 'current_user' => current_user)
+    result = subject.({ application_id: application.id, invitation: { email: 'blah@example.org' } }, 'config.current_user' => current_user)
 
     new_user = User.find_by_email('blah@example.org')
 
@@ -18,7 +18,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Create do
 
     expect(new_user.roles).to contain_exactly('seller')
     expect(new_user.seller).to eq(application.seller)
-    
+
     expect(new_user.confirmation_token).to be_present
     expect(new_user.confirmed_at).to be_blank
   end

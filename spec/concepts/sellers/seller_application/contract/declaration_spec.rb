@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Sellers::SellerApplication::Legals::Contract::Declaration do
+RSpec.describe Sellers::SellerApplication::Contract::Declaration do
   let(:seller) { create(:inactive_seller) }
   let(:application) { create(:seller_application, seller: seller) }
 
-  subject { Sellers::SellerApplication::Legals::Contract::Declaration.new(application: application, seller: seller) }
+  subject { Sellers::SellerApplication::Contract::Declaration.new(application: application, seller: seller) }
 
   it 'can save with terms acceptance' do
     subject.validate({

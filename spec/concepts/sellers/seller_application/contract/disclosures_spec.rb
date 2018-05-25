@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Sellers::SellerApplication::Disclosures::Contract::Disclosures do
+RSpec.describe Sellers::SellerApplication::Contract::Disclosures do
   let(:seller) { create(:inactive_seller) }
   let(:application) { create(:seller_application, seller: seller) }
 
-  subject { Sellers::SellerApplication::Disclosures::Contract::Disclosures.new(application: application, seller: seller) }
+  subject { Sellers::SellerApplication::Contract::Disclosures.new(application: application, seller: seller) }
 
   let(:atts) {
     {
@@ -23,6 +23,13 @@ RSpec.describe Sellers::SellerApplication::Disclosures::Contract::Disclosures do
       other_circumstances_details: 'Information',
     }
   }
+
+  context '#started?' do
+    it 'returns true when a radio button is false' do
+      subject.receivership = false
+      expect(subject.started?).to be_truthy
+    end
+  end
 
   it 'can save with valid attributes' do
     subject.validate(atts)
