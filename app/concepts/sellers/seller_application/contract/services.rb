@@ -4,7 +4,7 @@ module Sellers::SellerApplication::Contract
     property :services, on: :seller
 
     def offers_cloud
-      self.services.include?('cloud-services')
+      self.services.any? ? self.services.include?('cloud-services') : nil
     end
 
     def deserialize!(document)
