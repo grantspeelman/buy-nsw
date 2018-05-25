@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Profile::Contract
+module Sellers::SellerApplication::Contract
   class Characteristics < Base
     property :number_of_employees, on: :seller
     property :corporate_structure, on: :seller

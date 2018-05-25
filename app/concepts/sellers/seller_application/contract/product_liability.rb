@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Documents::Contract
+module Sellers::SellerApplication::Contract
   class ProductLiability < Base
     feature Reform::Form::ActiveModel::FormBuilderMethods
     feature Reform::Form::MultiParameterAttributes

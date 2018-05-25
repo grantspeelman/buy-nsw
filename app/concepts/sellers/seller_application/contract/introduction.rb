@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Documents::Contract
+module Sellers::SellerApplication::Contract
   class Introduction < Base
     def started?
       true

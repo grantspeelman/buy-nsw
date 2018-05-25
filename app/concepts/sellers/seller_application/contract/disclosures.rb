@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Disclosures::Contract
+module Sellers::SellerApplication::Contract
   class Disclosures < Base
     property :receivership,          on: :seller
     property :investigations,        on: :seller

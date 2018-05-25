@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Tailor::Contract
+module Sellers::SellerApplication::Contract
   class Services < Base
     property :services, on: :seller
 

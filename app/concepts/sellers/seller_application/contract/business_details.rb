@@ -1,4 +1,4 @@
-module Sellers::SellerApplication::Tailor::Contract
+module Sellers::SellerApplication::Contract
   class BusinessDetails < Base
     property :name,         on: :seller
     property :abn,          on: :seller
