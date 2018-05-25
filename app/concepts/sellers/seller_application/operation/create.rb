@@ -5,7 +5,7 @@ class Sellers::SellerApplication::Create < Trailblazer::Operation
   step :log_event!
 
   def model!(options, **)
-    options[:seller_model] = options['current_user'].seller || Seller.new
+    options[:seller_model] = options['config.current_user'].seller || Seller.new
 
     options[:application_model] = options[:seller_model].applications.first ||
                                     SellerApplication.new(started_at: Time.now)
@@ -18,16 +18,16 @@ class Sellers::SellerApplication::Create < Trailblazer::Operation
   def persist_with_relations!(options, **)
     options[:seller_model].save!
 
-    options['current_user'].seller = options[:seller_model]
+    options['config.current_user'].seller = options[:seller_model]
     options[:application_model].seller = options[:seller_model]
 
-    options['current_user'].save!
+    options['config.current_user'].save!
     options[:application_model].save!
   end
 
   def log_event!(options, **)
     Event::StartedApplication.create(
-      user: options['current_user'],
+      user: options['config.current_user'],
       eventable: options[:application_model]
     )
   end

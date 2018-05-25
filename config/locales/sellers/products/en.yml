@@ -258,9 +258,9 @@ en:
           reporting_analytics:
             short: Reporting and analytics
             long: Reporting and analytics
-          review:
-            short: Review
-            long: Review your product details
+        sections:
+          check: All the things
+          security: Your security approach
   enumerize:
     product:
       audiences:

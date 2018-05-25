@@ -24,19 +24,5 @@ module Concerns::Operations::SellerApplicationForm::Persist
     step Trailblazer::Operation::Contract::Validate()
   end
 
-  def expire_progress_cache!(options, **)
-    config = build_configuration_from_contracts(options)
-
-    application_id = options[:application_model].id
-    i18n_key = config.get(:i18n_key)
-
-    if i18n_key =~ /products$/
-      product_id = options[:product_model].id
-      cache_key = "#{i18n_key}.#{product_id}"
-    else
-      cache_key = "#{i18n_key}-#{application_id}"
-    end
-
-    Rails.cache.delete(cache_key)
-  end
+  
 end
