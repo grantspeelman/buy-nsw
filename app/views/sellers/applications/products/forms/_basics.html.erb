@@ -22,14 +22,14 @@
 
 </fieldset>
 
-<%= render partial: 'expanding_list', locals: {
+<%= render partial: 'sellers/applications/products/forms/shared/expanding_list', locals: {
   form: f,
   association: :features,
   field: :feature,
   i18n_base: 'activemodel.attributes.sellers.seller_application.products.contract.basics.features',
 } %>
 
-<%= render partial: 'expanding_list', locals: {
+<%= render partial: 'sellers/applications/products/forms/shared/expanding_list', locals: {
   form: f,
   association: :benefits,
   field: :benefit,
