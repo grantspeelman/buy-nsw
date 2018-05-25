@@ -1,6 +1,38 @@
-<%= render partial: 'sellers/applications/shared/step', locals: {
-  form: form,
-  form_path: sellers_application_product_path(operation[:application_model], operation[:product_model]),
-  application: operation[:application_model],
-  operation: operation,
-} %>
+<% content_for(:seller_application_class, 'application-dashboard product-dashboard') %>
+
+<ul class="breadcrumbs">
+  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
+  <li><%= link_to 'Your cloud products', sellers_application_products_path(application) %></li>
+  <li><%= product.name.present? ? product.name : "Product" %></li>
+</ul>
+
+<h1>Provide details about your cloud product</h1>
+
+<% if product.name.present? %>
+  <h2 class="product-name"><%= product.name %></h2>
+<% end %>
+
+<div class="list-container">
+  <div class="col-8">
+    <%= render partial: 'sellers/applications/root/task_list',
+               locals: {
+                 task_list: presenter.task_list,
+                 resources: {
+                   application: application,
+                   product: product
+                 }
+               } %>
+  </div>
+
+  <div class="col-4">
+    <div class="product-actions">
+       <p>You can permanently remove this product.</p>
+       <%= link_to 'Delete this product', sellers_application_product_path(application, product),
+                             method: :delete,
+                             data: {
+                               confirm: 'Are you sure?'
+                             },
+                             class: 'delete-action' %>
+    </div>
+  </div>
+</div>
