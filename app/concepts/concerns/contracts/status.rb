@@ -10,7 +10,7 @@ module Concerns::Contracts::Status
           item.respond_to?(:id) ? item.id.present? : item.present?
         }
       else
-        value.present?
+        value.present? || value == false
       end
     }.compact.any?
   end

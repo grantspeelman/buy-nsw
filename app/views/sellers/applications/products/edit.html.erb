@@ -1,0 +1,19 @@
+<% content_for(:seller_application_class, 'application-step') %>
+
+<ul class="breadcrumbs">
+  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
+  <li><%= link_to 'Your cloud products', sellers_application_products_path(application) %></li>
+  <li>
+    <%= link_to (product.name.present? ? product.name : "Product"), sellers_application_product_path(application, product) %>
+  </li>
+  <li><%= step.name(:short) %></li>
+</ul>
+
+<%= render partial: 'sellers/applications/steps/step', locals: {
+  form: form,
+  form_path: sellers_application_product_step_path(application, product, step.slug),
+  form_partial_path: "sellers/applications/products/forms/#{step.key}",
+  skip_button: false,
+  operation: operation,
+  step: step,
+} %>

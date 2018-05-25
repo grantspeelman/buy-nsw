@@ -1,18 +1,21 @@
-<tr class="product">
-  <th scope="row">
-    <% if product.name.present? %>
-      <%= product.name %>
-    <% else %>
-      <em><%= t("sellers.applications.products.empty_name_label") %></em>
-    <% end %>
-  </th>
-  <td>
-    <%= progress_indicator_for(
-          progress_report.question_set_progress["sellers.applications.products.#{product.id}"]
-        ) %>
-  </td>
-  <td class="actions">
+<li class="product">
+  <div class="details">
+    <h2>
+      <% if product.name.present? %>
+        <%= product.name %>
+      <% else %>
+        <em><%= t("sellers.applications.products.empty_name_label") %></em>
+      <% end %>
+    </h2>
+
+    <p class="status">
+      <% if progress_report.products_progress[product.id]['_overall'] == true %>
+        Completed
+      <% end %>
+    </p>
+  </div>
+  <div class="actions">
     <%= link_to 'Clone', clone_sellers_application_product_path(application, product), data: { method: 'post' }, class: 'action' %>
     <%= link_to 'Edit', sellers_application_product_path(application, product), class: 'action' %>
-  </td>
-</tr>
+  </div>
+</li>

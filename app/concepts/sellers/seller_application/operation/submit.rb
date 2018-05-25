@@ -1,9 +1,21 @@
 class Sellers::SellerApplication::Submit < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step :model!
+    step :ensure_complete!
 
     def model!(options, params:, **)
-      options['model'] = options['current_user'].seller_applications.find(params[:id])
+      options['model'] = options['config.current_user'].seller_applications.find(params[:id])
+    end
+
+    def ensure_complete!(options, **)
+      options['result.progress'] = SellerApplicationProgressReport.new(
+        application: options['model'],
+        base_steps: Sellers::Applications::StepsController.steps,
+        product_steps: Sellers::Applications::ProductsController.steps,
+        validate_optional_steps: true,
+      )
+
+      options['result.progress'].all_steps_valid?
     end
   end
 
@@ -32,7 +44,7 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
 
   def log_event!(options, model:, **)
     Event::SubmittedApplication.create(
-      user: options['current_user'],
+      user: options['config.current_user'],
       eventable: model
     )
   end

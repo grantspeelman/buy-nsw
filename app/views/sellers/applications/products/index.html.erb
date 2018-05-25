@@ -1,33 +1,23 @@
-<% content_for(:seller_breadcrumb, 'Your cloud products') %>
+<% content_for(:seller_application_class, 'products-list') %>
 
-<section class="view-seller-products-list">
-  <header>
-    <h1>Your cloud products</h1>
+<ul class="breadcrumbs">
+  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
+  <li>Your cloud products</li>
+</ul>
 
-    <p>Here you can add details about your product offering.</p>
-    <p>Products are discrete goods or services which can be purchased by the unit.</p>
-  </header>
+<h1>Your cloud products</h1>
 
-  <div class="products-list">
-    <p class="product-add">
-      <%= link_to new_sellers_application_product_path(application) do %>
-        Add a product
-      <% end %>
-    </p>
+<p>Here you can add details about your product offering.</p>
+<p>Products are discrete goods or services which can be purchased by the unit.</p>
 
-    <% if products.any? %>
-    <table class="products-list">
-      <thead>
-        <tr>
-          <th scope="col" style="width: 45%;">Product Name</th>
-          <th scope="col" style="width: 30%;">Status</th>
-          <th style="width: 25%;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'row', collection: products, as: :product %>
-      </tbody>
-    </table>
-    <% end %>
-  </div>
-</section>
+<p class="product-add">
+  <%= link_to new_sellers_application_product_path(application) do %>
+    Add a product
+  <% end %>
+</p>
+
+<% if products.any? %>
+  <ul class="products">
+    <%= render partial: 'row', collection: products, as: :product %>
+  </ul>
+<% end %>

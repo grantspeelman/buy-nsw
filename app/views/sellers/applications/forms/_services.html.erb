@@ -1,0 +1,32 @@
+<%= t('sellers.applications.steps.services.intro_html') %>
+
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="true">
+
+  <legend>Do you provide cloud products or support?</legend>
+
+  <%= f.form_group :offers_cloud do %>
+    <%= f.radio_button :offers_cloud, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :offers_cloud, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <div class="multiple-choice-group checkbox-group">
+      <div class="form-group <%= error_class_for(f, :services) %>">
+        <p>You can optionally select additional categories where you provide services.</p>
+        <p>This will appear on your profile and make it easier for buyers to find you.</p>
+
+        <%= hidden_field_tag "application[services][]" %>
+
+        <% other_service_options.each do |(label, value)| %>
+          <%= f.check_box "services", { multiple: true, include_hidden: false }, value do %>
+            <%= label %>
+            <small class="form-text text-muted"><%= service_description_text(value) %></small>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</fieldset>

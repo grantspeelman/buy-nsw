@@ -1,0 +1,15 @@
+<% content_for(:seller_application_class, 'application-step') %>
+
+<ul class="breadcrumbs">
+  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
+  <li><%= step.name(:short) %></li>
+</ul>
+
+<%= render partial: 'step', locals: {
+  form: form,
+  form_path: sellers_application_step_path(application, step.slug),
+  form_partial_path: "sellers/applications/forms/#{step.key}",
+  skip_button: (step.slug == 'declaration'),
+  operation: operation,
+  step: step,
+} %>

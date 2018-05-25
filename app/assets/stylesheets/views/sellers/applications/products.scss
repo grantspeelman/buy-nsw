@@ -1,36 +1,45 @@
-.view-seller-products-list {
-  @extend .row;
-
-  header {
-    @extend .col-4;
-    padding-right: 4rem;
-  }
-  .products-list {
-    @extend .col-8;
-
-    table {
-      @extend .table;
-      @extend .table-striped;
-    }
+.view-sellers-applications.products-list {
+  @include media-breakpoint-up(md) {
+    width: 65%;
   }
 
-  tr.product {
-    th em {
-      font-weight: normal;
-    }
-    .product-section {
-      font-weight: normal;
-      display: block;
+  ul.products {
+    padding-left: 0;
+
+    li {
+      @extend .row;
+      @extend .no-gutters;
+
+      list-style: none;
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+
+      border-bottom: 1px solid $grey-3;
+
+      &:first-of-type {
+        border-top: 1px solid $grey-3;
+      }
+
+      .details, .actions {
+        padding-right: 0;
+        padding-left: 0;
+      }
     }
 
-    .progress-indicator {
-      @include progress-indicator;
-      padding-bottom: 0;
-    }
+    .details {
+      @extend .col-md-8;
 
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
     .actions {
+      @extend .col-md-4;
       text-align: right;
-      padding: 0.4rem;
 
       .action {
         @extend .btn;
@@ -61,24 +70,20 @@
   }
 }
 
-.view-sellers-applications.view-sellers-products-edit {
-  @extend .flow-non-linear;
+.view-sellers-applications.product-dashboard {
+  width: auto;
 
-  .steps-container {
-    margin-top: 1rem;
+  ol.task-list {
+    width: 90%;
   }
 
-  > header {
+  .list-container {
     @extend .row;
-
-    h1 {
-      @extend .col-md-8;
-    }
   }
 
   .product-actions {
-    @extend .col-md-4;
-    text-align: right;
+    background: $light-purple;
+    padding: 1rem;
 
     .delete-action {
       @extend .btn;

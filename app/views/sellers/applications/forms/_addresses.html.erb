@@ -1,0 +1,13 @@
+<fieldset class="multiple-child-objects with-nested-blocks" data-module="expanding-list" data-object-name="address">
+  <ol>
+  <%= f.fields_for :addresses do |a| %>
+    <li>
+      <%= a.text_field :address %>
+      <%= a.text_field :suburb %>
+      <%= a.collection_select :state, SellerAddress.state.options, :last, :first, include_blank: true %>
+      <%= a.text_field :postcode %>
+      <%= a.hidden_field :id %>
+    </li>
+  <% end %>
+  </ol>
+</fieldset>

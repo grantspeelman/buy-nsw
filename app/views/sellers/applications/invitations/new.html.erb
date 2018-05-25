@@ -1,19 +1,23 @@
-<section class="new-invitation">
-  <header>
-    <h1>Invite a team member</h1>
+<% content_for(:seller_application_class, 'invitations') %>
 
-    <p>You can invite other members of your team to your seller profile.</p>
-    <p>Team members get full access to view and edit your company's profile and application.</p>
-    <p>We will send an invitation to them by email with further instructions.</p>
-  </header>
+<ul class="breadcrumbs">
+  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
+  <li><%= link_to 'Your team members', sellers_application_invitations_path(application) %></li>
+  <li>Invite a team member</li>
+</ul>
 
-  <%= bootstrap_form_for form,
-                         url: sellers_application_invitations_path(operation[:application_model]),
-                         as: :invitation do |f| %>
+<h1>Invite a team member</h1>
 
-    <%= user_error_messages_for_model(operation['model']) %>
+<p>You can invite other members of your team to your seller profile.</p>
+<p>Team members get full access to view and edit your company's profile and application.</p>
+<p>We will send an invitation to them by email with further instructions.</p>
 
-    <%= f.text_field :email %>
-    <%= f.submit 'Send invitation' %>
-  <% end %>
-</section>
+<%= bootstrap_form_for form,
+                       url: sellers_application_invitations_path(operation[:application_model]),
+                       as: :invitation do |f| %>
+
+  <%= user_error_messages_for_model(operation['model']) %>
+
+  <%= f.text_field :email %>
+  <%= f.submit 'Send invitation' %>
+<% end %>

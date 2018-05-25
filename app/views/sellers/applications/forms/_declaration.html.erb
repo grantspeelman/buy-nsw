@@ -1,0 +1,48 @@
+<p>You need to accept the Core Terms to become a seller. If these terms are updated, we will ask you to accept the new terms by email or when you next log in.</p>
+
+<%= link_to 'Download Core Terms (PDF 229KB)', '' %>
+
+<section class="agreement-text">
+  <h1>ICT Agreement Core Terms</h1>
+  <h4>1. Role of the Core Terms</h4>
+  <p>Each agreement between us (the buyer) and you (the supplier) consists of:</p>
+  <ol>
+    <li>these core terms</li>
+    <li>the relevant solution requirements</li>
+    <li>any documents attached to those solution requirements</li>
+  </ol>
+
+  <p>The core terms are first in the list, and take priority over all other documents. They govern performance of the agreement, including how the solution described in the solution requirements will be supplied.</p>
+  <p>Any terms contained in other parts of the agreement that conflict with, or limit the operation of, these core terms have no legal effect.</p>
+</section>
+
+<% if f.object.seller.agree == true %>
+
+  <p>The Core Terms were agreed to at <%= f.object.seller.agreed_at.localtime.to_formatted_s(:long) %>.</p>
+  <p class="return-link">
+    <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
+  </p>
+
+<% elsif operation.success? %>
+
+  <%= f.check_box :agree,
+        label: t('activemodel.attributes.sellers.seller_application.contract.declaration.agree_html',
+          name: f.object.seller.representative_name,
+          organisation: f.object.seller.name,
+          abn: f.object.seller.abn) %>
+
+  <fieldset class="actions">
+    <%= f.submit step.button_label(default: 'Save and continue'), class: 'btn btn-primary' %>
+  </fieldset>
+
+<% else %>
+
+  <p>Only the authorised representative
+    <%= f.object.seller.representative_email.present? ? "(#{f.object.seller.representative_email})" : nil %>
+    can accept the terms.</p>
+
+  <p class="return-link">
+    <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
+  </p>
+
+<% end %>

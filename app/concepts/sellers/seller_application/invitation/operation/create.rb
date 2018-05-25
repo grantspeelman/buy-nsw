@@ -5,7 +5,7 @@ class Sellers::SellerApplication::Invitation::Create < Trailblazer::Operation
     step Contract::Build( constant: Sellers::SellerApplication::Invitation::Contract::Create )
 
     def application_model!(options, params:, **)
-      options[:application_model] = options['current_user'].seller_applications.find(params[:application_id])
+      options[:application_model] = options['config.current_user'].seller_applications.find(params[:application_id])
     end
 
     def build_user!(options, **)

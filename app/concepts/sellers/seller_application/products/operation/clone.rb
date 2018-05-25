@@ -7,9 +7,9 @@ class Sellers::SellerApplication::Products::Clone < Trailblazer::Operation
   step :copy_features_and_benefits!
 
   def model!(options, params:, **)
-    return false unless options['current_user'].present?
+    return false unless options['config.current_user'].present?
 
-    options[:application_model] = options['current_user'].seller_applications.find(params[:application_id])
+    options[:application_model] = options['config.current_user'].seller_applications.find(params[:application_id])
     options[:seller_model] = options[:application_model].seller
     options[:product_model] = options[:seller_model].products.find(params[:id])
   end

@@ -16,6 +16,7 @@ def seed_user_account(email, role)
   user.password = seed_demo_password
   user.password_confirmation = seed_demo_password
   user.roles << role
+  user.confirmed_at = Time.now
   user.save!
 
   puts "\nUser created!\n"

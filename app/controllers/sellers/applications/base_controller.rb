@@ -3,9 +3,8 @@ class Sellers::Applications::BaseController < Sellers::BaseController
   layout '../sellers/applications/shared/_layout'
 
 private
-
   def _run_options(options)
-    options.merge( "current_user" => current_user )
+    options.merge( 'config.current_user' => current_user )
   end
 
   def application

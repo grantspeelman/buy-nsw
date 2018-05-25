@@ -1,15 +1,21 @@
 <% content_for(:without_container, true) %>
 
 <% content_for :header do %>
-  <h1>
-    <span class="type-label">Sign up as a buyer<span class="visually-hidden">:</span></span>
-    <%= application.buyer.user.email %>
-  </h1>
+  <header class="buyer-application-header">
+    <div class="container">
+      <div class="row">
+        <h1>
+          <span class="type-label">Sign up as a buyer<span class="visually-hidden">:</span></span>
+          <%= application.buyer.user.email %>
+        </h1>
+      </div>
+    </div>
+  </header>
 <% end %>
 
 <% content_for(:content) do %>
   <div class="container">
-    <section class="view-sellers-applications flow-linear">
+    <section class="view-buyers-applications">
       <div class="steps-container">
         <div class="steps-list">
           <%= render partial: 'buyers/applications/step_list', locals: { operation: operation } %>
