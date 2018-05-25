@@ -32,15 +32,7 @@
     </header>
     <% end %>
 
-    <% if content_for?(:header) %>
-      <header class="application-header">
-        <div class="container">
-          <div class="row">
-            <%= content_for(:header) %>
-          </div>
-        </div>
-      </header>
-    <% end %>
+    <%= yield(:header) %>
 
     <%= render partial: 'layouts/notices' %>
 
