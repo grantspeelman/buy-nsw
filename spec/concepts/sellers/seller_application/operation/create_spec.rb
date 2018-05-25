@@ -5,8 +5,12 @@ RSpec.describe Sellers::SellerApplication::Create do
   subject { Sellers::SellerApplication::Create }
   let(:user) { create(:seller_user) }
 
+  def perform_operation
+    subject.({ }, 'config.current_user' => user)
+  end
+
   it 'creates a seller and seller application' do
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
 
     expect(result).to be_success
 
@@ -22,7 +26,7 @@ RSpec.describe Sellers::SellerApplication::Create do
 
   it 'does not create an additional seller when one exists' do
     seller = create(:seller, owner: user)
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
 
     expect(Seller.count).to eq(1)
     expect(SellerApplication.count).to eq(1)
@@ -32,7 +36,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     seller = create(:seller, owner: user)
     application = create(:seller_application, seller: seller)
 
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
 
     expect(Seller.count).to eq(1)
     expect(SellerApplication.count).to eq(1)
@@ -42,13 +46,13 @@ RSpec.describe Sellers::SellerApplication::Create do
     time = 1.hour.ago
 
     Timecop.freeze(time) do
-      result = subject.({ }, 'current_user' => user)
+      result = perform_operation
       expect(result[:application_model].started_at.to_i).to eq(time.to_i)
     end
   end
 
   it 'logs an event when the application is started' do
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
     expect(result[:application_model].events.last.message).to eq("Started application")
     expect(result[:application_model].events.last.user).to eq(user)
   end
@@ -57,7 +61,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     seller = create(:seller, owner: user)
     application = create(:seller_application, seller: seller, started_at: 1.hour.ago)
 
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
     expect(result[:application_model].started_at.to_i).to eq(application.started_at.to_i)
   end
 
@@ -65,7 +69,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     seller = create(:seller, owner: user)
     application = create(:awaiting_assignment_seller_application, seller: seller)
 
-    result = subject.({ }, 'current_user' => user)
+    result = perform_operation
 
     expect(result).to be_failure
   end

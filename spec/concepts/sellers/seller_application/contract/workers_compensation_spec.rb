@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Sellers::SellerApplication::Documents::Contract::WorkersCompensation do
+RSpec.describe Sellers::SellerApplication::Contract::WorkersCompensation do
   let(:seller) { create(:inactive_seller) }
   let(:application) { create(:seller_application, seller: seller) }
 
-  subject { Sellers::SellerApplication::Documents::Contract::WorkersCompensation.new(application: application, seller: seller) }
+  subject { Sellers::SellerApplication::Contract::WorkersCompensation.new(application: application, seller: seller) }
 
   let(:example_pdf) {
     Rack::Test::UploadedFile.new(

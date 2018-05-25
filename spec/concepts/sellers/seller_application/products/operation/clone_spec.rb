@@ -20,21 +20,19 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
   let!(:features) { create_list(:product_feature, 5, product: product) }
   let!(:benefits) { create_list(:product_benefit, 5, product: product) }
 
+  def perform_operation
+    subject.({
+      application_id: application.id,
+      id: product.id
+    }, 'config.current_user' => current_user)
+  end
+
   it 'creates a new product' do
-    expect {
-      subject.({
-        application_id: application.id,
-        id: product.id
-      }, 'current_user' => current_user)
-    }.to change { Product.count }.from(1).to(2)
+    expect { perform_operation }.to change { Product.count }.from(1).to(2)
   end
 
   it 'copies attributes from the existing product to the new product' do
-    result = subject.({
-      application_id: application.id,
-      id: product.id
-    }, 'current_user' => current_user)
-
+    result = perform_operation
     new_product = result[:new_product_model]
 
     expect(new_product.summary).to eq(product.summary)
@@ -44,11 +42,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
   end
 
   it 'sets a new name for the product' do
-    result = subject.({
-      application_id: application.id,
-      id: product.id
-    }, 'current_user' => current_user)
-
+    result = perform_operation
     new_product = result[:new_product_model]
 
     expect(new_product.name).to eq("#{product.name} copy")
@@ -59,11 +53,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
     # products will be set differently
     #
     Timecop.freeze(1.day.from_now) do
-      result = subject.({
-        application_id: application.id,
-        id: product.id
-      }, 'current_user' => current_user)
-
+      result = perform_operation
       new_product = result[:new_product_model]
 
       expect(new_product.created_at.to_i).to_not eq(product.created_at.to_i)
@@ -74,22 +64,14 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
   it 'does not copy the "state" field' do
     product.make_active!
 
-    result = subject.({
-      application_id: application.id,
-      id: product.id
-    }, 'current_user' => current_user)
-
+    result = perform_operation
     new_product = result[:new_product_model]
 
     expect(new_product.state).to eq('inactive')
   end
 
   it 'copies the features and benefits' do
-    result = subject.({
-      application_id: application.id,
-      id: product.id
-    }, 'current_user' => current_user)
-
+    result = perform_operation
     new_product = result[:new_product_model]
 
     expect(new_product.features.count).to eq(features.count)
@@ -101,7 +83,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
       result = subject.({
         application_id: application.id,
         id: product.id
-      }, 'current_user' => nil)
+      }, 'config.current_user' => nil)
 
       expect(result).to be_failure
       expect(Product.count).to eq(1)
@@ -114,7 +96,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
         subject.({
           application_id: application.id,
           id: product.id
-        }, 'current_user' => other_user)
+        }, 'config.current_user' => other_user)
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
@@ -125,7 +107,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
         subject.({
           application_id: application.id,
           id: other_product.id
-        }, 'current_user' => current_user)
+        }, 'config.current_user' => current_user)
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end

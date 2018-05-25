@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Sellers::SellerApplication::Tailor::Contract::BusinessDetails do
+RSpec.describe Sellers::SellerApplication::Contract::BusinessDetails do
   let(:seller) { create(:inactive_seller) }
   let(:application) { create(:seller_application, seller: seller) }
 
-  subject { Sellers::SellerApplication::Tailor::Contract::BusinessDetails.new(application: application, seller: seller) }
+  subject { Sellers::SellerApplication::Contract::BusinessDetails.new(application: application, seller: seller) }
 
   let(:atts) {
     {
