@@ -29,7 +29,11 @@ module Sellers::SellerApplication::Contract
       end
 
       required(:seller).schema do
-        required(:services).value(any_checked?: true, one_of?: Seller.services.values)
+        required(:services).maybe(one_of?: Seller.services.values)
+
+        rule(services: [:offers_cloud, :services]) do |offers_cloud, services|
+          offers_cloud.true?.then(services.filled?)
+        end
 
         rule(offers_cloud: [:services]) do |services|
           services.offers_cloud?
