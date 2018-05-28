@@ -36,6 +36,7 @@ private
       "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
+      "Separation between users" => user_separation,
       "Reporting and analytics" => reporting_and_analytics,
     }
   end
@@ -314,8 +315,30 @@ private
     {
       "Approach to secure software development best practice" => product.secure_development_approach_text,
       "How often the supplier conducts penetration testing" => product.penetration_testing_frequency_text,
-      "The supplier's approach to penetration testing" => product.penetration_testing_approach_text,
+      "The supplier's approach to penetration testing" => product.penetration_testing_approach.texts,
     }
+  end
+
+  def user_separation
+    attributes do |a|
+      a["Virtualisation used to keep users sharing the same infrastructure apart"] = product.virtualisation
+
+      if product.virtualisation
+        a["Who implements the virtualisation technology"] = product.virtualisation_implementor
+
+        if product.virtualisation_implementor == 'third-party'
+          a["Third party providing virtualisation"] = product.virtualisation_third_party
+        end
+
+        a["Technologies used to provide virtualisation"] = product.virtualisation_technologies.texts
+
+        if product.virtualisation_technologies.include?('other')
+          a["Other technologies used to provide virtualisation"] = product.virtualisation_technologies_other
+        end
+
+        a["Approach to separating different organisations on the same infrastructure"] = product.user_separation_details
+      end
+    end
   end
 
   def reporting_and_analytics
