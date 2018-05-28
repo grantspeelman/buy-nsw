@@ -117,14 +117,17 @@ en:
                   'false': 'No'
                 third_party_involved_details: List the third parties involved
               user_data:
-                data_import_formats: What data formats can be used to upload data?
-                data_import_formats_other: Please specify the other formats for uploading data
-                data_export_formats: What open data formats can be used to export data?
-                data_export_formats_other: Please specify the other formats for exporting data
-                data_access: Are there any restrictions on users accessing or extracting data?
-                audit_access_type: How do users access audit information about the actions their users have taken?
-                audit_storage_period: How long do you store user audit data for?
-                log_storage_period: How long are system logs stored for?
+                data_import_formats: Which data formats can be used to upload data?
+                data_import_formats_other: List the other formats for uploading data
+                data_export_formats: Which data formats can be used to export data?
+                data_export_formats_other: List the other formats for exporting data
+                data_access_restrictions:
+                  question: Are there any restrictions on users accessing or extracting data?
+                  'true': 'Yes'
+                  'false': 'No'
+                data_access_restrictions_details: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
+                audit_storage_period: What is the maximum time audit information data is stored?
+                log_storage_period: What is the maximum time system logs are stored?
                 backup_capability: List what the service can backup
                 disaster_recovery_type: What's your data centre setup?
                 backup_scheduling_type: How do users schedule backups?
@@ -348,12 +351,16 @@ en:
         web-chat: Web chat
         onsite: Onsite
       data_import_formats:
-        csv: CSV
-        odf: ODF
+        csv: Comma-separated values (CSV)
+        odf: Open document format (ODF)
+        json: JSON
+        xml: XML
         other: Other
       data_export_formats:
-        csv: Comma separated values (CSV)
-        odf: Open data format (ODF)
+        csv: Comma-separated values (CSV)
+        odf: Open document format (ODF)
+        json: JSON
+        xml: XML
         other: Other
       data_access:
         unrestricted: There are no restrictions

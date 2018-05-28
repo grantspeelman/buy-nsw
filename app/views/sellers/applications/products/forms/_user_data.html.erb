@@ -22,24 +22,25 @@
   </div>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_access') %></legend>
-  <%= f.collection_radio_buttons(:data_access, Product.data_access.options, :last, :first, skip_label: true) %>
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-multiple-options="true">
+
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_access_restrictions.question') %></legend>
+
+  <%= f.form_group :data_access_restrictions do %>
+    <%= f.radio_button :data_access_restrictions, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :data_access_restrictions, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields" data-further-details-value="true">
+    <%= f.text_area :data_access_restrictions_details, rows: 5 %>
+  </div>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_access_type') %></legend>
-  <%= f.collection_radio_buttons(:audit_access_type, Product.audit_access_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_storage_period') %></legend>
-  <%= f.collection_radio_buttons(:audit_storage_period, Product.audit_storage_period.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.log_storage_period') %></legend>
-  <%= f.collection_radio_buttons(:log_storage_period, Product.log_storage_period.options, :last, :first, skip_label: true) %>
+<fieldset>
+  <%= f.text_field :audit_storage_period %>
+  <%= f.text_field :log_storage_period %>
 </fieldset>
 
 <fieldset>

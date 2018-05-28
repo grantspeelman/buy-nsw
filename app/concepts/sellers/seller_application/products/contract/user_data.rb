@@ -4,9 +4,10 @@ module Sellers::SellerApplication::Products::Contract
     property :data_import_formats_other, on: :product
     property :data_export_formats, on: :product
     property :data_export_formats_other, on: :product
-    property :data_access, on: :product
 
-    property :audit_access_type, on: :product
+    property :data_access_restrictions, on: :product
+    property :data_access_restrictions_details, on: :product
+    property :audit_information, on: :product
     property :audit_storage_period, on: :product
     property :log_storage_period, on: :product
 
@@ -38,11 +39,11 @@ module Sellers::SellerApplication::Products::Contract
           checkboxes.contains?('other').then(field.filled?)
         end
 
-        required(:data_access).filled(in_list?: Product.data_access.values)
-
-        required(:audit_access_type).filled(in_list?: Product.audit_access_type.values)
-        required(:audit_storage_period).filled(in_list?: Product.audit_storage_period.values)
-        required(:log_storage_period).filled(in_list?: Product.log_storage_period.values)
+        required(:data_access).filled(:bool?)
+        required(:data_access_restrictions).maybe(:str?)
+        required(:audit_information).filled(:bool?)
+        required(:audit_storage_period).filled(:str?)
+        required(:log_storage_period).filled(:str?)
 
         required(:backup_capability).filled(:str?)
         required(:disaster_recovery_type).filled(in_list?: Product.disaster_recovery_type.values)
