@@ -70,10 +70,10 @@ en:
                   question: Is your product or service connected to a government network?
                 government_network_other: Specify the other government network
                 web_interface:
-                  question: Is there a web interface for your product or service?
+                  question: Is there a web browser interface for your product or service?
                   'true': 'Yes'
                   'false': 'No'
-                web_interface_details: Describe what users can and can't do using your web interface
+                web_interface_details: Describe what users can do using your web browser interface
                 supported_browsers:
                   question: Which browsers are supported?
                 installed_application:
@@ -82,7 +82,7 @@ en:
                   'false': 'No'
                 supported_os:
                   question: Which operating systems are supported?
-                supported_os_other: Please specify other supported operating systems
+                supported_os_other: Specify the other operating systems
                 mobile_devices:
                   question: Has your product or service been designed to work on mobile devices?
                   'true': 'Yes'
@@ -90,7 +90,7 @@ en:
                 mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
                 accessibility_type:
                   question: What aspects of your product or service are accessible WCAG 2.0 AA or above?
-                accessibility_exclusions: Please specify what is and isn't accessible
+                accessibility_exclusions: Specify the exclusions
                 scaling_type:
                   question: How does your product or service scale?
               availability_support:
