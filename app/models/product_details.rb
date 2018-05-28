@@ -90,6 +90,10 @@ private
   def environment
     attributes do |a|
       a["Cloud deployment model"] = product.deployment_model_text
+      if product.deployment_model == 'other-cloud'
+        a["Other deployment model"] = product.deployment_model_other
+      end
+
       a["Software add-on or extension"] = product.addon_extension_type_text
 
       if ['yes', 'yes-and-standalone'].include?(product.addon_extension_type)

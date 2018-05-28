@@ -1,5 +1,13 @@
-<fieldset class="multiple-choice-group radio-group">
-  <%= f.collection_radio_buttons(:deployment_model, Product.deployment_model.options, :last, :first) %>
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="other-cloud">
+  <%= f.collection_radio_buttons(:deployment_model, Product.deployment_model.options, :last, :first, data: { further_details: 'input' }) %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <div data-module="max-word-count" data-max-word-count="50">
+      <%= f.text_area :deployment_model_other, rows: 3 %>
+    </div>
+  </div>
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group"

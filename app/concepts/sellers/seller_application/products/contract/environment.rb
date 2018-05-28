@@ -1,6 +1,7 @@
 module Sellers::SellerApplication::Products::Contract
   class Environment < Base
     property :deployment_model, on: :product
+    property :deployment_model_other, on: :product
 
     property :addon_extension_type, on: :product
     property :addon_extension_details, on: :product
@@ -33,6 +34,11 @@ module Sellers::SellerApplication::Products::Contract
     validation :default, inherit: true do
       required(:product).schema do
         required(:deployment_model).filled(in_list?: Product.deployment_model.values)
+        required(:deployment_model_other).maybe(:str?)
+
+        rule(deployment_model_other: [:deployment_model, :deployment_model_other]) do |radio, field|
+          radio.eql?('other-cloud').then(field.filled?)
+        end
 
         required(:addon_extension_type).filled(in_list?: Product.addon_extension_type.values)
         required(:addon_extension_details).maybe(:str?)

@@ -59,6 +59,7 @@ en:
                 offboarding_assistance: What assistance do you provide when a buyer no longer needs your product or service?
               environment:
                 deployment_model: How is the product or service deployed?
+                deployment_model_other: Specify the other cloud model
                 addon_extension_type:
                   question: Is the product or service an add-on or extension to other software services?
                 addon_extension_details: What other software is the product or service an extension to?
@@ -297,8 +298,9 @@ en:
         usd: US dollars
         other: Other
       deployment_model:
+        govdc: GovDC
         public-cloud: Public cloud
-        private-cloud: Private cloud
+        other-cloud: Other cloud model
       addon_extension_type:
         'yes': 'Yes'
         'yes-and-standalone': 'Yes, but can also be used as a standalone service'
