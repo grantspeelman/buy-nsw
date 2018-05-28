@@ -132,12 +132,14 @@ en:
                   'false': 'No'
                 audit_storage_period: What is the maximum time audit information data is stored?
                 log_storage_period: What is the maximum time system logs are stored?
-                encryption_transit_user_types: How do you protect data between the end user and your product or service?
-                encryption_transit_user_other: Describe how else you protect data between the user and your product or service
+              data_protection:
+                encryption_transit_user_types: How do you protect data between the end user and your network
+                encryption_transit_user_other: Describe how else you protect data between users and your network
                 encryption_transit_network_types: How do you protect data within your network?
                 encryption_transit_network_other: Describe how else you protect data within your network
                 encryption_rest_types: How do you protect data at rest?
                 encryption_rest_other: Describe how else you protect data at rest
+                encryption_keys_controller: If you are storing encrypted data, who controls encryption keys?
               backup_recovery:
                 backup_capability: What is backed up?
                 backup_scheduling_type: How often are backups performed?
@@ -261,6 +263,9 @@ en:
           backup_recovery:
             short: Backup and recovery
             long: Backup and recovery
+          data_protection:
+            short: Data protection
+            long: Data protection
           identity_authentication:
             short: Identity and authentication
             long: Identity and authentication
@@ -389,7 +394,6 @@ en:
         tls: TLS (v1.2 or above)
         legacy-ssl-tls: Legacy SSL and TLS (under v1.2)
         vpn: IPSec or TLS VPN gateway
-        bonded-fibre: Bonded fibre optic connections
         other: Other
       encryption_transit_network_types:
         tls: TLS (v1.2 or above)
@@ -403,6 +407,10 @@ en:
         encryption-physical-media: Encryption of all physical media
         obfuscating: Scale, obfuscating techniques, or data storage sharding
         other: Other
+      encryption_keys_controller:
+        none: Not applicable
+        supplier: Supplier controller
+        buyer: Buyer controlled
       authentication_types:
         username-password: Username and password
         2fa: Two-factor authentication

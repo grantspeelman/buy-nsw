@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528073237) do
+ActiveRecord::Schema.define(version: 20180528075747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 20180528073237) do
     t.boolean "audit_information"
     t.boolean "data_access_restrictions"
     t.text "data_access_restrictions_details"
+    t.string "encryption_keys_controller"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

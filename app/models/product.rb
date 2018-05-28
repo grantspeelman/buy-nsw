@@ -60,9 +60,10 @@ class Product < ApplicationRecord
   enumerize :backup_scheduling_type, in: ['user-controlled', 'supplier-controlled']
   enumerize :backup_recovery_type, in: ['self-managed', 'contact-support']
 
-  enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'bonded-fibre', 'other']
+  enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_transit_network_types, multiple: true, in: ['tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_rest_types, multiple: true, in: ['physical-csa-ccm-v3', 'physical-ssae-16', 'physical-other', 'encryption-physical-media', 'obfuscating', 'other']
+  enumerize :encryption_keys_controller, in: ['none', 'supplier', 'buyer']
 
   enumerize :authentication_types, multiple: true, in: ['username-password', '2fa', 'public-key', 'federation', 'government-network', 'dedicated-link', 'other']
   enumerize :access_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']

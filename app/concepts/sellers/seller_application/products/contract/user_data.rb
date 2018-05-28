@@ -11,13 +11,6 @@ module Sellers::SellerApplication::Products::Contract
     property :audit_storage_period, on: :product
     property :log_storage_period, on: :product
 
-    property :encryption_transit_user_types, on: :product
-    property :encryption_transit_user_other, on: :product
-    property :encryption_transit_network_types, on: :product
-    property :encryption_transit_network_other, on: :product
-    property :encryption_rest_types, on: :product
-    property :encryption_rest_other, on: :product
-
     validation :default, inherit: true do
       required(:product).schema do
         required(:data_import_formats).maybe(one_of?: Product.data_import_formats.values)
@@ -44,27 +37,6 @@ module Sellers::SellerApplication::Products::Contract
         required(:audit_information).filled(:bool?)
         required(:audit_storage_period).filled(:str?)
         required(:log_storage_period).filled(:str?)
-
-        required(:encryption_transit_user_types).filled(any_checked?: true, one_of?: Product.encryption_transit_user_types.values)
-        required(:encryption_transit_user_other).maybe(:str?)
-
-        rule(encryption_transit_user_other: [:encryption_transit_user_types, :encryption_transit_user_other]) do |checkboxes, field|
-          checkboxes.contains?('other').then(field.filled?)
-        end
-
-        required(:encryption_transit_network_types).filled(any_checked?: true, one_of?: Product.encryption_transit_network_types.values)
-        required(:encryption_transit_network_other).maybe(:str?)
-
-        rule(encryption_transit_network_other: [:encryption_transit_network_types, :encryption_transit_network_other]) do |checkboxes, field|
-          checkboxes.contains?('other').then(field.filled?)
-        end
-
-        required(:encryption_rest_types).filled(any_checked?: true, one_of?: Product.encryption_rest_types.values)
-        required(:encryption_rest_other).maybe(:str?)
-
-        rule(encryption_rest_other: [:encryption_rest_types, :encryption_rest_other]) do |checkboxes, field|
-          checkboxes.contains?('other').then(field.filled?)
-        end
       end
     end
   end

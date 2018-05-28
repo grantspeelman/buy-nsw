@@ -32,6 +32,7 @@ private
       "Locations" => locations,
       "User data" => user_data,
       "Backup and recovery" => backup_and_recovery,
+      "Data protection" => data_protection,
       "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
@@ -204,7 +205,19 @@ private
       a["Whether users can access audit information about activities and transactions"] = product.audit_information
       a["The maximum time audit information data is stored"] = product.audit_storage_period
       a["The maximum time system logs are stored"] = product.log_storage_period
+    end
+  end
 
+  def backup_and_recovery
+    {
+      "What is backed up" => product.backup_capability_text,
+      "How often backups are performed" => product.backup_scheduling_type_text,
+      "How users recover backups" => product.backup_recovery_type_text,
+    }
+  end
+
+  def data_protection
+    attributes do |a|
       a["Data protection between buyer and supplier networks"] = product.encryption_transit_user_types.texts
 
       if product.encryption_transit_user_types.include?('other')
@@ -222,15 +235,9 @@ private
       if product.encryption_rest_types.include?('other')
         a["Other data protection at rest"] = product.encryption_rest_other
       end
-    end
-  end
 
-  def backup_and_recovery
-    {
-      "What is backed up" => product.backup_capability_text,
-      "How often backups are performed" => product.backup_scheduling_type_text,
-      "How users recover backups" => product.backup_recovery_type_text,
-    }
+      a["Who controls encryption keys"] = product.encryption_keys_controller_text
+    end
   end
 
   def identity_and_authentication
