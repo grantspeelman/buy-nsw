@@ -9,7 +9,7 @@
     <%= f.radio_button field, 'false', data: { further_details: 'input' } %>
   <% end %>
 
-  <div data-further-details="fields">
+  <div class="additional-fields" data-further-details="fields">
     <%= f.text_area "#{field.to_s}_details", rows: 5 %>
   </div>
 </fieldset>
