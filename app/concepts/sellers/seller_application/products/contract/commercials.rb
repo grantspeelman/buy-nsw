@@ -20,6 +20,16 @@ module Sellers::SellerApplication::Products::Contract
     property :education_pricing_differences, on: :product
 
     validation :default, inherit: true do
+      configure do
+        def currency?(value)
+          begin
+            Money::Currency.new(value)
+          rescue Money::Currency::UnknownCurrency
+            false
+          end
+        end
+      end
+
       required(:product).schema do
         required(:free_version).filled(:bool?)
         required(:free_version_details).maybe(max_word_count?: 50)
@@ -36,7 +46,7 @@ module Sellers::SellerApplication::Products::Contract
         end
 
         required(:pricing_currency).filled
-        required(:pricing_currency_other).maybe(:str?)
+        required(:pricing_currency_other).maybe(:str?, :currency?)
 
         rule(pricing_currency_other: [:pricing_currency, :pricing_currency_other]) do |type, field|
           type.eql?('other').then(field.filled?)

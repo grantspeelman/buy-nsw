@@ -36,7 +36,7 @@ en:
                 pricing:
                   legend: Your pricing
                 pricing_currency: Currency
-                pricing_currency_other: Please specify the currency
+                pricing_currency_other: Please specify the currency as a three-letter code (as per ISO 4217)
                 pricing_unit: Unit of pricing
                 pricing_min: Minimum price (excluding GST)
                 pricing_max: Maximum price (excluding GST)

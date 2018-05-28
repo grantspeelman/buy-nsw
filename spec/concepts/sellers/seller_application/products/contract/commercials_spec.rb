@@ -44,4 +44,10 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
 
     expect(subject).to_not be_valid
   end
+
+  it 'is not valid with an invalid currency' do
+    subject.validate(atts.merge(pricing_currency: 'other', pricing_currency_other: 'blah'))
+
+    expect(subject).to_not be_valid
+  end
 end
