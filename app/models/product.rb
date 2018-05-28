@@ -41,7 +41,7 @@ class Product < ApplicationRecord
   enumerize :deployment_model, in: ['govdc', 'public-cloud', 'other-cloud']
   enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
   enumerize :api, in: ['rest', 'non-rest', 'no']
-  enumerize :government_network_type, multiple: true, in: ['govdc', 'id-hub', 'other']
+  enumerize :government_network_type, multiple: true, in: ['govdc', 'govlink', 'aarnet', 'id-hub', 'icon', 'other']
   enumerize :supported_browsers, multiple: true, in: [
     'ie7', 'ie8', 'ie9', 'ie10', 'ie11', 'ms-edge', 'firefox', 'chrome', 'safari9', 'opera'
   ]

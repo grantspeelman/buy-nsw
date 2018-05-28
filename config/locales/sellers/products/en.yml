@@ -68,7 +68,7 @@ en:
                 api_automation: What automation tools work with your product or service's API?
                 government_network_type:
                   question: Is your product or service connected to a government network?
-                government_network_other: Which other government network is your product or service connected to?
+                government_network_other: Specify the other government network
                 web_interface:
                   question: Is there a web interface for your product or service?
                   'true': 'Yes'
@@ -300,7 +300,10 @@ en:
         'no': 'No'
       government_network_type:
         govdc: GovDC
+        govlink: GovLink
+        aarnet: AARNET
         id-hub: ID Hub
+        icon: ICON
         other: Other
       supported_browsers:
         ie7: Internet Explorer 7
