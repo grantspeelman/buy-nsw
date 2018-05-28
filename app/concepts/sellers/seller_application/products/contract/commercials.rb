@@ -18,6 +18,10 @@ module Sellers::SellerApplication::Products::Contract
     property :education_pricing_eligibility, on: :product
     property :education_pricing_differences, on: :product
 
+    property :not_for_profit_pricing, on: :product
+    property :not_for_profit_pricing_eligibility, on: :product
+    property :not_for_profit_pricing_differences, on: :product
+
     validation :default, inherit: true do
       configure do
         def currency?(value)
@@ -66,6 +70,17 @@ module Sellers::SellerApplication::Products::Contract
           radio.true?.then(field.filled?)
         end
         rule(education_pricing_differences: [:education_pricing, :education_pricing_differences]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+
+        required(:not_for_profit_pricing).filled(:bool?)
+        required(:not_for_profit_pricing_eligibility).maybe(:str?)
+        required(:not_for_profit_pricing_differences).maybe(:str?)
+
+        rule(not_for_profit_pricing_eligibility: [:not_for_profit_pricing, :not_for_profit_pricing_eligibility]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+        rule(not_for_profit_pricing_differences: [:not_for_profit_pricing, :not_for_profit_pricing_differences]) do |radio, field|
           radio.true?.then(field.filled?)
         end
       end

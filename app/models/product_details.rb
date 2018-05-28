@@ -74,6 +74,9 @@ private
       "Education pricing available" => product.education_pricing,
       "Education pricing eligibility" => product.education_pricing_eligibility,
       "Education pricing differences" => product.education_pricing_differences,
+      "Not-for-profit pricing available" => product.not_for_profit_pricing,
+      "Not-for-profit pricing eligibility" => product.not_for_profit_pricing_eligibility,
+      "Not-for-profit pricing differences" => product.not_for_profit_pricing_differences,
     }
   end
 

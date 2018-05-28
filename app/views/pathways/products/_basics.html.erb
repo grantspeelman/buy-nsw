@@ -78,6 +78,17 @@
           </dl>
         </dd>
       <% end %>
+      <% if product.not_for_profit_pricing? %>
+        <dt>Not-for-profit pricing</dt>
+        <dd>
+          <dl class="nested">
+            <dt>Eligibility</dt>
+            <dd><%= format_text_block product.not_for_profit_pricing_eligibility %></dd>
+            <dt>Pricing differences</dt>
+            <dd><%= format_text_block product.not_for_profit_pricing_differences %></dd>
+          </dl>
+        </dd>
+      <% end %>
     </dl>
   </div>
 

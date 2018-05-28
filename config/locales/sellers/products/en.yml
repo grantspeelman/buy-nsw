@@ -48,6 +48,12 @@ en:
                   'false': 'No'
                 education_pricing_eligibility: Who is eligible for your pricing?
                 education_pricing_differences: How does the pricing differ?
+                not_for_profit_pricing:
+                  question: Do you offer special pricing for not-for-profit organisations?
+                  'true': 'Yes'
+                  'false': 'No'
+                not_for_profit_pricing_eligibility: Who is eligible for your pricing?
+                not_for_profit_pricing_differences: How does the pricing differ?
               onboarding_offboarding:
                 onboarding_assistance: How do you help users start using your product or service?
                 offboarding_assistance: Describe your disengagement assistance

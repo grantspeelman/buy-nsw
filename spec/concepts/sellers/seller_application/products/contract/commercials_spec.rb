@@ -17,6 +17,7 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
       pricing_unit: "per user per month",
       pricing_variables: "no variables",
       education_pricing: false,
+      not_for_profit_pricing: false,
       free_trial_url: 'https://foo.com/blah',
       pricing_calculator_url: 'https://foo.com/blah'
     }
@@ -30,6 +31,7 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
   assert_invalidity_of_blank_field :pricing_unit
   assert_invalidity_of_blank_field :pricing_variables
   assert_invalidity_of_blank_field :education_pricing
+  assert_invalidity_of_blank_field :not_for_profit_pricing
 
   it 'is valid with valid attributes' do
     subject.validate(atts)

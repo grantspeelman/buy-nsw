@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528044227) do
+ActiveRecord::Schema.define(version: 20180528050701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,9 @@ ActiveRecord::Schema.define(version: 20180528044227) do
     t.text "audiences_other"
     t.string "pricing_currency"
     t.string "pricing_currency_other"
+    t.boolean "not_for_profit_pricing"
+    t.text "not_for_profit_pricing_eligibility"
+    t.text "not_for_profit_pricing_differences"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|
