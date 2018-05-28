@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528051832) do
+ActiveRecord::Schema.define(version: 20180528054327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,11 +113,9 @@ ActiveRecord::Schema.define(version: 20180528051832) do
     t.string "deployment_model"
     t.string "addon_extension_type"
     t.text "addon_extension_details"
-    t.boolean "api"
+    t.string "api"
     t.text "api_capabilities"
     t.text "api_automation"
-    t.boolean "api_documentation"
-    t.boolean "api_sandbox"
     t.text "government_network_type", default: [], array: true
     t.string "government_network_other"
     t.boolean "web_interface"

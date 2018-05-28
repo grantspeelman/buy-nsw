@@ -40,6 +40,7 @@ class Product < ApplicationRecord
   enumerize :pricing_currency, in: ['aud', 'usd', 'other']
   enumerize :deployment_model, in: ['govdc', 'public-cloud', 'other-cloud']
   enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
+  enumerize :api, in: ['rest', 'non-rest', 'no']
   enumerize :government_network_type, multiple: true, in: ['govdc', 'id-hub', 'other']
   enumerize :supported_browsers, multiple: true, in: [
     'ie7', 'ie8', 'ie9', 'ie10', 'ie11', 'ms-edge', 'firefox', 'chrome', 'safari9', 'opera'
@@ -95,7 +96,7 @@ class Product < ApplicationRecord
   scope :free_trial, -> { where(:free_trial => true) }
   scope :education_pricing, -> { where(:education_pricing => true) }
   scope :with_data_location, ->(location){ where(data_location: location) }
-  scope :api, ->{ where(api: true) }
+  scope :with_api, ->{ where(api: ['rest', 'non-rest']) }
   scope :mobile_devices, ->{ where(mobile_devices: true) }
 
   scope :iso_27001, ->{ where(iso_27001: true) }

@@ -102,11 +102,9 @@ private
 
       a["API"] = product.api
 
-      if product.api
+      if ['rest','non-rest'].include?(product.api)
         a["What users can and can't do using the API"] = product.api_capabilities
         a["Compatible API automation tools"] = product.api_automation
-        a["API documentation provided"] = product.api_documentation
-        a["API sandbox provided"] = product.api_sandbox
       end
 
       a["Connected government networks"] = product.government_network_type.texts

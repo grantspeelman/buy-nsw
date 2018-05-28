@@ -63,20 +63,9 @@ en:
                 addon_extension_type:
                   question: Is the product or service an add-on or extension to other software services?
                 addon_extension_details: Specify the software service
-                api:
-                  question: Is there an API for your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                api_capabilities: Describe what users can do using the API
-                api_automation: Which automation tools work with your product or service API?
-                api_documentation:
-                  question: Do you provide API documentation for your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                api_sandbox:
-                  question: Is there a sandbox or test environment for your API?
-                  'true': 'Yes'
-                  'false': 'No'
+                api: Is there an API for your product or service?
+                api_capabilities: Describe what users can do using your API
+                api_automation: What automation tools work with your product or service's API?
                 government_network_type:
                   question: Is your product or service connected to a government network?
                 government_network_other: Which other government network is your product or service connected to?
@@ -304,6 +293,10 @@ en:
       addon_extension_type:
         'yes': 'Yes'
         'yes-and-standalone': 'Yes, but can also be used as a standalone service'
+        'no': 'No'
+      api:
+        rest: Yes - REST API
+        non-rest: Yes – non-REST API
         'no': 'No'
       government_network_type:
         govdc: GovDC

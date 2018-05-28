@@ -9,8 +9,6 @@ module Sellers::SellerApplication::Products::Contract
     property :api, on: :product
     property :api_capabilities, on: :product
     property :api_automation, on: :product
-    property :api_documentation, on: :product
-    property :api_sandbox, on: :product
 
     property :government_network_type, on: :product
     property :government_network_other, on: :product
@@ -47,23 +45,15 @@ module Sellers::SellerApplication::Products::Contract
           ( radio.eql?('yes') | radio.eql?('yes-and-standalone') ).then(field.filled?)
         end
 
-        required(:api).filled(:bool?)
+        required(:api).filled(in_list?: Product.api.values)
         required(:api_capabilities).maybe(:str?)
         required(:api_automation).maybe(:str?)
-        required(:api_documentation).maybe(:bool?)
-        required(:api_sandbox).maybe(:bool?)
 
         rule(api_capabilities: [:api, :api_capabilities]) do |radio, field|
-          radio.true?.then(field.filled?)
+          ( radio.eql?('rest') | radio.eql?('non-rest') ).then(field.filled?)
         end
         rule(api_automation: [:api, :api_automation]) do |radio, field|
-          radio.true?.then(field.filled?)
-        end
-        rule(api_documentation: [:api, :api_documentation]) do |radio, field|
-          radio.true?.then(field.filled?)
-        end
-        rule(api_sandbox: [:api, :api_sandbox]) do |radio, field|
-          radio.true?.then(field.filled?)
+          ( radio.eql?('rest') | radio.eql?('non-rest') ).then(field.filled?)
         end
 
         required(:government_network_type).filled(one_of?: Product.government_network_type.values)
