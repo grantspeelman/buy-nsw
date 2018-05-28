@@ -70,6 +70,8 @@ class Product < ApplicationRecord
 
   enumerize :data_centre_security_standards, in: ['recognised-standard', 'supplier-defined', 'third-party']
   enumerize :csa_star_level, in: ['level-1', 'level-2', 'level-3', 'level-4', 'level-5']
+  enumerize :irap_type, in: ['stages-1-and-2', 'stage-1', 'not-assessed']
+  enumerize :security_classification_types, multiple: true, in: ['unclassified-dlm', 'protected', 'secret', 'top-secret']
 
   enumerize :secure_development_approach, in: ['independently-assessed', 'self-assessed', 'supplier-defined']
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']

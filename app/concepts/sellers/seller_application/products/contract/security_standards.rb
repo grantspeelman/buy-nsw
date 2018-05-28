@@ -31,8 +31,15 @@ module Sellers::SellerApplication::Products::Contract
     property :pci_dss_date, on: :product, multi_params: true
     property :pci_dss_exclusions, on: :product
 
-    property :soc_1, on: :product
     property :soc_2, on: :product
+    property :soc_2_accreditor, on: :product
+    property :soc_2_date, on: :product, multi_params: true
+    property :soc_2_exclusions, on: :product
+
+    property :irap_type, on: :product
+    property :asd_certified, on: :product
+    property :security_classification_types, on: :product
+    property :security_information_url, on: :product
 
     validation :default, inherit: true do
       required(:product).schema do
@@ -117,8 +124,25 @@ module Sellers::SellerApplication::Products::Contract
           radio.true?.then(field.filled?)
         end
 
-        required(:soc_1).filled(:bool?)
         required(:soc_2).filled(:bool?)
+        required(:soc_2_accreditor).maybe(:str?)
+        required(:soc_2_date).maybe(:date?)
+        required(:soc_2_exclusions).maybe(:str?, max_word_count?: 200)
+
+        rule(soc_2_accreditor: [:soc_2, :soc_2_accreditor]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+        rule(soc_2_date: [:soc_2, :soc_2_date]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+        rule(soc_2_exclusions: [:soc_2, :soc_2_exclusions]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+
+        required(:irap_type).filled(:str?, in_list?: Product.irap_type.values)
+        required(:asd_certified).filled(:bool?)
+        required(:security_classification_types).filled(one_of?: Product.security_classification_types.values)
+        required(:security_information_url).maybe(:str?, :url?)
       end
     end
   end

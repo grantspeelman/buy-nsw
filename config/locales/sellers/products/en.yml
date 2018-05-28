@@ -155,28 +155,28 @@ en:
               security_standards:
                 data_centre_security_standards: What standards does your data centre security setup comply with?
                 iso_27001:
-                  question: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 iso_27001_accreditor: Who accredited the certification?
                 iso_27001_date: When does the certification expire?
                 iso_27001_exclusions: What's not covered by the certification?
                 iso_27017:
-                  question: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 iso_27017_accreditor: Who accredited the ISO/IEC 27017:2015 certification?
                 iso_27017_date: When does the certification expire?
                 iso_27017_exclusions: What's not covered by the certification?
                 iso_27018:
-                  question: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your service?
+                  question: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 iso_27018_accreditor: Who accredited the ISO/IEC 27018:2014 certification?
                 iso_27018_date: When does the certification expire?
                 iso_27018_exclusions: What's not covered by the certification?
                 csa_star:
-                  question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your service?
+                  question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 csa_star_accreditor: Who accredited the CSA STAR certification?
@@ -184,20 +184,26 @@ en:
                 csa_star_level: What level is the certification?
                 csa_star_exclusions: What's not covered by the certification?
                 pci_dss:
-                  question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your service?
+                  question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
                 pci_dss_accreditor: Who accredited the PCI DSS certification?
                 pci_dss_date: When does the certification expire?
                 pci_dss_exclusions: What's not covered by your PCI DSS certification?
-                soc_1:
-                  question: Do you have a current SSAE-18 SOC I certification that covers the security of your service?
-                  'true': 'Yes'
-                  'false': 'No'
                 soc_2:
-                  question: Do you have a current SOC II certification that covers the security of your service?
+                  question: Do you have a current SOC II certification that covers the security of your product or service?
                   'true': 'Yes'
                   'false': 'No'
+                soc_2_accreditor: Who accredited the SOC II certification?
+                soc_2_date: When does the certification expire?
+                soc_2_exclusions: What's not covered by your SOC II certification?
+                irap_type: Are you Information Security Registered Assessors Program (IRAP) assessed?
+                asd_certified:
+                  question: Is your cloud product or service certified by the Australian Signals Directorate (ASD)?
+                  'true': 'Yes'
+                  'false': 'No'
+                security_classification_types: What data security classificiation is your cloud service certified to in Australia?
+                security_information_url: Include a link to further information about your security assessments (optional)
               security_practices:
                 secure_development_approach: What practices does your organisation follow for secure software development?
                 penetration_testing_frequency: How often do you do penetration testing?
@@ -434,6 +440,15 @@ en:
         level-3: "Level 3 – CSA STAR Certification"
         level-4: "Level 4 – CSA C-STAR Assessment"
         level-5: "Level 5 – CSA STAR Continuous Monitoring"
+      irap_type:
+        stages-1-and-2: Yes, successful at stage 1 and stage 2
+        stage-1: Yes, successful at stage 1
+        not-assessed: Not assessed
+      security_classification_types:
+        unclassified-dlm: Unclassified DLM
+        protected: Protected
+        secret: Secret
+        top-secret: Top Secret
       secure_development_approach:
         independently-assessed: "Independent review of processes (eg. ISO/IEC 27034, ISO/IEC 27001, or CSA CCM v3.0)"
         self-assessed: Conforms to a recognised standard, but self-assessed

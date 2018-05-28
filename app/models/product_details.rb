@@ -295,8 +295,18 @@ private
         a["What the PCI DSS certification doesn't cover"] = product.pci_dss_exclusions
       end
 
-      a["SOC I certification"] = product.soc_1
       a["SOC II certification"] = product.soc_2
+
+      if product.soc_2
+        a["Who accredited the SOC II certification"] = product.soc_2_accreditor
+        a["When the SOC II certification was accredited"] = product.soc_2_date
+        a["What the SOC II certification doesn't cover"] = product.soc_2_exclusions
+      end
+
+      a["IRAP assessed"] = product.irap_type_text
+      a["Certified by the Australian Signals Directorate (ASD)"] = product.asd_certified
+      a["Australian data security classification certification"] = product.security_classification_types.texts
+      a["Further information about security assessments"] = product.security_information_url
     end
   end
 

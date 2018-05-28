@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528075747) do
+ActiveRecord::Schema.define(version: 20180528081203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,7 +178,6 @@ ActiveRecord::Schema.define(version: 20180528075747) do
     t.string "pci_dss_accreditor"
     t.date "pci_dss_date"
     t.text "pci_dss_exclusions"
-    t.boolean "soc_1"
     t.boolean "soc_2"
     t.string "secure_development_approach"
     t.string "penetration_testing_frequency"
@@ -204,6 +203,13 @@ ActiveRecord::Schema.define(version: 20180528075747) do
     t.boolean "data_access_restrictions"
     t.text "data_access_restrictions_details"
     t.string "encryption_keys_controller"
+    t.string "soc_2_accreditor"
+    t.date "soc_2_date"
+    t.text "soc_2_exclusions"
+    t.string "irap_type"
+    t.boolean "asd_certified"
+    t.text "security_classification_types", default: [], array: true
+    t.string "security_information_url"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

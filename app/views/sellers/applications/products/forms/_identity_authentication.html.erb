@@ -18,7 +18,7 @@
       <%= f.collection_check_boxes(:authentication_types, Product.authentication_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
 
       <div class="additional-fields" data-further-details="fields">
-        <div data-module="max-word-count" data-max-word-count="50">
+        <div data-module="max-word-count" data-max-word-count="200">
           <%= f.text_area :authentication_other, rows: 5 %>
         </div>
       </div>
