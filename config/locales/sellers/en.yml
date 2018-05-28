@@ -190,7 +190,7 @@ en:
           short: 'Company information'
           long: 'Tell us about your business'
         services:
-          short: 'Your categories'
+          short: 'Your offering'
           long: 'What products and services do you offer?'
           intro_html: |
             <p>For now, <strong>buy.nsw</strong> is only open to sellers who provide cloud products and support services.</p>
@@ -210,7 +210,7 @@ en:
         check: Check before you start
         business: About your business
         documents: Provide documents
-        offering: Describe your offering
+        offering: Describe your products
         apply: Apply
       contacts:
         title: Your contact details
