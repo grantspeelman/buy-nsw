@@ -62,7 +62,7 @@ en:
                 deployment_model_other: Specify the other cloud model
                 addon_extension_type:
                   question: Is the product or service an add-on or extension to other software services?
-                addon_extension_details: What other software is the product or service an extension to?
+                addon_extension_details: Specify the software service
                 api:
                   question: Is there an API for your product or service?
                   'true': 'Yes'
