@@ -94,10 +94,10 @@ en:
                 scaling_type:
                   question: How does your product or service scale?
               availability_support:
-                guaranteed_availability: Describe the level of availablity you guarantee and how buyers are compensated if you don't meet this level (excluding scheduled outages)
-                support_options: Outline your support options, availability hours (AEST) and if there are additional costs
-                support_hours: Specify the hours support is available
-                support_levels: Describe the support levels you provide, and how much different support levels cost
+                guaranteed_availability: What level of availability do you guarantee and how are buyers compensated if you don't meet this level?
+                support_options: Which support options are available?
+                support_options_additional_cost: Which options come at additional cost?
+                support_levels: Describe the support levels you provide, availability hours (AEST time) and whether there are additional costs involved
               user_data:
                 data_import_formats: What data formats can be used to upload data?
                 data_import_formats_other: Please specify the other formats for uploading data
@@ -207,7 +207,6 @@ en:
         web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
       'sellers/seller_application/products/contract/availability_support':
         guaranteed_availability: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
-        support_hours: 'Include hours for business critical incidents, non business-critical incidents, and for enhancements.'
       'sellers/seller_application/products/contract/user_data':
         log_storage_period: Buyers may want reassurance about your ability to investigate security incidents
   sellers:

@@ -149,12 +149,11 @@ private
   def availability_and_support
     {
       "Guaranteed availability (excluding scheduled outages)" => product.guaranteed_availability,
-      "Core support options available" => product.support_options.texts,
-      "Support hours" => product.support_hours,
-      "Support levels" => product.support_levels,
+      "Support options available" => product.support_options.texts,
+      "Which options come at additional cost" => product.support_options_additional_cost,
+      "Support levels, availability hours (AEST) and whether additional costs are involved" => product.support_levels,
     }
   end
-
 
   def user_data
     attributes do |a|
