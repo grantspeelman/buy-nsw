@@ -53,7 +53,7 @@
           <%= product.pricing_unit %>
         </p>
 
-        <% if product.pricing_calculator_url.present? || product.pricing_variables.any? %>
+        <% if product.pricing_calculator_url.present? || product.pricing_variables.present? %>
         <dl class="nested">
           <% if product.pricing_calculator_url.present? %>
             <dt>Pricing calculator</dt>
