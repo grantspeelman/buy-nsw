@@ -55,8 +55,8 @@ en:
                 not_for_profit_pricing_eligibility: Who is eligible for your pricing?
                 not_for_profit_pricing_differences: How does the pricing differ?
               onboarding_offboarding:
-                onboarding_assistance: How do you help users start using your product or service?
-                offboarding_assistance: Describe your disengagement assistance
+                onboarding_assistance: How do you help buyers get started with your product or service?
+                offboarding_assistance: What assistance do you provide when a buyer no longer needs your product or service?
               environment:
                 deployment_model: How is the product or service deployed?
                 addon_extension_type:
@@ -211,8 +211,8 @@ en:
         pricing_min: "eg. what is the cost for one user for one month of the basic product."
         pricing_max: "eg. what is the cost for one user for one month of the comprehensive product."
       'sellers/seller_application/products/contract/onboarding_offboarding':
-        onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation
-        offboarding_assistance: Describe what's included in the price of the contract and what's an additional cost.
+        onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation, and whether there is an additional cost for any elements.
+        offboarding_assistance: Do you provide any assistance in addition to your contractual obligations, and is there any additional cost?
       'sellers/seller_application/products/contract/environment':
         web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
       'sellers/seller_application/products/contract/availability_support':
