@@ -194,10 +194,15 @@ private
         a["Other data export formats"] = product.data_export_formats_other
       end
 
-      a["Whether users can access and extract their data at any time"] = product.data_access_text
-      a["How users access audit information about the actions their users have taken"] = product.audit_access_type_text
-      a["How long user audit data is stored for"] = product.audit_storage_period_text
-      a["How long system logs are stored for"] = product.log_storage_period_text
+      a["Whether there are restrictions on users accessing or extracting data"] = product.data_access_restrictions
+
+      if product.data_access_restrictions
+        a["The restrictions on users accessing or extracting data"] = product.data_access_restrictions
+      end
+
+      a["Whether users can access audit information about activities and transactions"] = product.audit_information
+      a["The maximum time audit information data is stored"] = product.audit_storage_period
+      a["The maximum time system logs are stored"] = product.log_storage_period
 
       a["What the service can backup"] = product.backup_capability
       a["Disaster recovery set up"] = product.disaster_recovery_type_text
