@@ -259,7 +259,7 @@ private
 
       if product.iso_27001
         a["Who accredited the ISO/IEC 27001:2013 certification"] = product.iso_27001_accreditor
-        a["When the ISO/IEC 27001:2013 certification was accredited"] = product.iso_27001_date
+        a["When the ISO/IEC 27001:2013 certification expires"] = product.iso_27001_date
         a["What the ISO/IEC 27001:2013 certification doesn't cover"] = product.iso_27001_exclusions
       end
 
@@ -267,7 +267,7 @@ private
 
       if product.iso_27017
         a["Who accredited the ISO/IEC 27017:2015 certification"] = product.iso_27017_accreditor
-        a["When the ISO/IEC 27017:2015 certification was accredited"] = product.iso_27017_date
+        a["When the ISO/IEC 27017:2015 certification expires"] = product.iso_27017_date
         a["What the ISO/IEC 27017:2015 certification doesn't cover"] = product.iso_27017_exclusions
       end
 
@@ -275,7 +275,7 @@ private
 
       if product.iso_27018
         a["Who accredited the ISO/IEC 27018:2014 certification"] = product.iso_27018_accreditor
-        a["When the ISO/IEC 27018:2014 certification was accredited"] = product.iso_27018_date
+        a["When the ISO/IEC 27018:2014 certification expires"] = product.iso_27018_date
         a["What the ISO/IEC 27018:2014 certification doesn't cover"] = product.iso_27018_exclusions
       end
 
@@ -283,7 +283,7 @@ private
 
       if product.csa_star
         a["Who accredited the CSA STAR certification"] = product.csa_star_accreditor
-        a["When the CSA STAR certification was accredited"] = product.csa_star_date
+        a["When the CSA STAR certification expires"] = product.csa_star_date
         a["CSA STAR level"] = product.csa_star_level_text
         a["What the CSA STAR certification doesn't cover"] = product.csa_star_exclusions
       end
@@ -292,7 +292,7 @@ private
 
       if product.pci_dss
         a["Who accredited the PCI DSS certification"] = product.pci_dss_accreditor
-        a["When the PCI DSS certification was accredited"] = product.pci_dss_date
+        a["When the PCI DSS certification expires"] = product.pci_dss_date
         a["What the PCI DSS certification doesn't cover"] = product.pci_dss_exclusions
       end
 
@@ -300,7 +300,7 @@ private
 
       if product.soc_2
         a["Who accredited the SOC II certification"] = product.soc_2_accreditor
-        a["When the SOC II certification was accredited"] = product.soc_2_date
+        a["When the SOC II certification expires"] = product.soc_2_date
         a["What the SOC II certification doesn't cover"] = product.soc_2_exclusions
       end
 
