@@ -10,12 +10,6 @@ module Sellers::SellerApplication::Products::Contract
     property :audit_storage_period, on: :product
     property :log_storage_period, on: :product
 
-    property :data_location, on: :product
-    property :data_location_other, on: :product
-    property :data_storage_control_australia, on: :product
-    property :third_party_infrastructure, on: :product
-    property :third_party_infrastructure_details, on: :product
-
     property :backup_capability, on: :product
     property :disaster_recovery_type, on: :product
     property :backup_scheduling_type, on: :product
@@ -49,21 +43,6 @@ module Sellers::SellerApplication::Products::Contract
         required(:audit_access_type).filled(in_list?: Product.audit_access_type.values)
         required(:audit_storage_period).filled(in_list?: Product.audit_storage_period.values)
         required(:log_storage_period).filled(in_list?: Product.log_storage_period.values)
-
-        required(:data_location).filled(in_list?: Product.data_location.values)
-        required(:data_location_other).maybe(:str?)
-
-        rule(data_location_other: [:data_location, :data_location_other]) do |radio, field|
-          radio.eql?('other-known').then(field.filled?)
-        end
-
-        required(:data_storage_control_australia).filled(:bool?)
-        required(:third_party_infrastructure).filled(:bool?)
-        required(:third_party_infrastructure_details).maybe(:str?)
-
-        rule(third_party_infrastructure_details: [:third_party_infrastructure, :third_party_infrastructure_details]) do |radio, field|
-          radio.true?.then(field.filled?)
-        end
 
         required(:backup_capability).filled(:str?)
         required(:disaster_recovery_type).filled(in_list?: Product.disaster_recovery_type.values)

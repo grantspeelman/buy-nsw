@@ -29,6 +29,7 @@ private
       "Onboarding and offboarding" => onboarding_and_offboarding,
       "Environment" => environment,
       "Availability and support" => availability_and_support,
+      "Locations" => locations,
       "User data" => user_data,
       "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
@@ -155,6 +156,30 @@ private
     }
   end
 
+  def locations
+    attributes do |a|
+      a["Whether users can control where their data is stored, processed and managed in Australia"] = product.data_location_control
+      a["Locations where user data is stored, processed and managed"] = product.data_location_text
+
+      if product.data_location == 'other-known'
+        a["Other known locations"] = product.data_location_other
+      end
+      if product.data_location == 'dont-know'
+        a["Why the seller doesn't know"] = product.data_location_unknown_reason
+      end
+
+      a["Whether the seller operates their own data centres"] = product.own_data_centre
+      if product.own_data_centre
+        a["About the seller's data centre"] = product.own_data_centre_details
+      end
+
+      a["Whether third parties are involved in storing, processing or managing buyer data"] = product.third_party_involved
+      if product.third_party_involved
+        a["The third parties involved"] = product.third_party_involved_details
+      end
+    end
+  end
+
   def user_data
     attributes do |a|
       a["Data import formats"] = product.data_import_formats.texts
@@ -173,18 +198,6 @@ private
       a["How users access audit information about the actions their users have taken"] = product.audit_access_type_text
       a["How long user audit data is stored for"] = product.audit_storage_period_text
       a["How long system logs are stored for"] = product.log_storage_period_text
-      a["Locations where user data is stored, processed and managed"] = product.data_location_text
-
-      if product.data_location == 'other-known'
-        a["Other known locations"] = product.data_location_other
-      end
-
-      a["Whether users can control where their data is stored, processed and managed in Australia"] = product.data_storage_control_australia
-      a["Whether third parties manage the data centres used to provide this product or service"] = product.third_party_infrastructure
-
-      if product.third_party_infrastructure
-        a["The third parties managing the data centres"] = product.third_party_infrastructure_details
-      end
 
       a["What the service can backup"] = product.backup_capability
       a["Disaster recovery set up"] = product.disaster_recovery_type_text

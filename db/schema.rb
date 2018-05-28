@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528060138) do
+ActiveRecord::Schema.define(version: 20180528060957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,9 +143,9 @@ ActiveRecord::Schema.define(version: 20180528060138) do
     t.string "log_storage_period"
     t.string "data_location"
     t.text "data_location_other"
-    t.boolean "data_storage_control_australia"
-    t.boolean "third_party_infrastructure"
-    t.text "third_party_infrastructure_details"
+    t.boolean "data_location_control"
+    t.boolean "third_party_involved"
+    t.text "third_party_involved_details"
     t.text "backup_capability"
     t.string "disaster_recovery_type"
     t.string "backup_scheduling_type"
@@ -200,6 +200,9 @@ ActiveRecord::Schema.define(version: 20180528060138) do
     t.text "not_for_profit_pricing_eligibility"
     t.text "not_for_profit_pricing_differences"
     t.text "deployment_model_other"
+    t.text "data_location_unknown_reason"
+    t.boolean "own_data_centre"
+    t.text "own_data_centre_details"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

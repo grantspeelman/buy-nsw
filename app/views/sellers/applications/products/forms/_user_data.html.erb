@@ -42,44 +42,6 @@
   <%= f.collection_radio_buttons(:log_storage_period, Product.log_storage_period.options, :last, :first, skip_label: true) %>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group"
-          data-module="further-details-fields"
-          data-further-details-values="other-known">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_location') %></legend>
-  <%= f.collection_radio_buttons(:data_location, Product.data_location.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :data_location_other, rows: 5 %>
-  </div>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_storage_control_australia.question') %></legend>
-
-  <%= f.form_group :data_storage_control_australia do %>
-    <%= f.radio_button :data_storage_control_australia, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :data_storage_control_australia, 'false', data: { further_details: 'input' } %>
-  <% end %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group"
-          data-module="further-details-fields"
-          data-further-details-values="true">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.third_party_infrastructure.question') %></legend>
-
-  <%= f.form_group :third_party_infrastructure do %>
-    <%= f.radio_button :third_party_infrastructure, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :third_party_infrastructure, 'false', data: { further_details: 'input' } %>
-  <% end %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :third_party_infrastructure_details, rows: 5 %>
-  </div>
-</fieldset>
-
 <fieldset>
   <%= f.text_area :backup_capability, rows: 5 %>
 </fieldset>

@@ -15,6 +15,7 @@ module Sellers::Applications
           step('onboarding_offboarding'),
           step('environment'),
           step('availability_support'),
+          step('locations'),
           step('user_data'),
           step('identity_authentication'),
           step('reporting_analytics'),

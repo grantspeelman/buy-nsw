@@ -98,6 +98,24 @@ en:
                 support_options: Which support options are available?
                 support_options_additional_cost: Which options come at additional cost?
                 support_levels: Describe the support levels you provide, availability hours (AEST time) and whether there are additional costs involved
+              locations:
+                data_location_control:
+                  question: Can buyers choose where their data is stored, processed and managed?
+                  'true': 'Yes'
+                  'false': 'No'
+                data_location: Where is buyer data stored, processed and managed?
+                data_location_other: Specify the locations
+                data_location_unknown_reason: Tell us why you don't know
+                own_data_centre:
+                  question: Do you operate your own data centres?
+                  'true': 'Yes'
+                  'false': 'No'
+                own_data_centre_details: Tell us about your data centres, including standards and certifications achieved
+                third_party_involved:
+                  question: Are there any third parties involved in storing, processing or managing buyer data?
+                  'true': 'Yes'
+                  'false': 'No'
+                third_party_involved_details: List the third parties involved
               user_data:
                 data_import_formats: What data formats can be used to upload data?
                 data_import_formats_other: Please specify the other formats for uploading data
@@ -107,17 +125,6 @@ en:
                 audit_access_type: How do users access audit information about the actions their users have taken?
                 audit_storage_period: How long do you store user audit data for?
                 log_storage_period: How long are system logs stored for?
-                data_location: Where is user data stored, processed and managed?
-                data_location_other: List the other known locations where user data is stored, processed and managed
-                data_storage_control_australia:
-                  question: Can users control where their data is stored, processed and managed?
-                  'true': 'Yes'
-                  'false': 'No'
-                third_party_infrastructure:
-                  question: Are there any third parties managing the data centres used to provide this product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                third_party_infrastructure_details: List the third parties managing the data centres
                 backup_capability: List what the service can backup
                 disaster_recovery_type: What's your data centre setup?
                 backup_scheduling_type: How do users schedule backups?
@@ -238,6 +245,9 @@ en:
           availability_support:
             short: Availability and support
             long: Availability and support
+          locations:
+            short: Locations
+            long: Locations
           user_data:
             short: User data
             long: User data
@@ -368,7 +378,8 @@ en:
         1-to-6-months: 1-6 months
         less-than-1-month: Less than 1 month
       data_location:
-        only-australia: Only in Australia
+        australia-default: In Australia by default
+        australia-request: In Australia by request
         other-known: Other known locations
         dont-know: "Don't know"
       disaster_recovery_type:

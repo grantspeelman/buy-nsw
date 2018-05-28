@@ -58,7 +58,7 @@ class Product < ApplicationRecord
   enumerize :audit_access_type, in: ['real-time', 'regular', 'manual']
   enumerize :audit_storage_period, in: ['user-defined', '12-months', '6-to-12-months', '1-to-6-months', 'less-than-1-month', 'supplier-controlled', 'none']
   enumerize :log_storage_period, in: ['user-defined', '12-months', '6-to-12-months', '1-to-6-months', 'less-than-1-month']
-  enumerize :data_location, in: ['only-australia', 'other-known', 'dont-know']
+  enumerize :data_location, in: ['australia-default', 'australia-request', 'other-known', 'dont-know']
   enumerize :disaster_recovery_type, in: ['multiple-dc-with-dr', 'single-dc-with-copies', 'multiple-dc', 'single-dc']
   enumerize :backup_scheduling_type, in: ['web-interface', 'contact-support', 'supplier-controlled']
   enumerize :backup_recovery_type, in: ['self-managed', 'contact-support']
