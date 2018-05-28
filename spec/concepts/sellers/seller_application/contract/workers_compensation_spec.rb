@@ -19,6 +19,11 @@ RSpec.describe Sellers::SellerApplication::Contract::WorkersCompensation do
     it 'returns false when all fields are empty' do
       expect(subject.started?).to be_falsey
     end
+
+    it 'returns false when all fields are empty and workers_compensation_exempt is false' do
+      subject.workers_compensation_exempt = false
+      expect(subject.started?).to be_falsey
+    end
   end
 
   context 'for a seller not exempt from workers compensation insurance' do

@@ -49,6 +49,26 @@ module Sellers::SellerApplication::Contract
       end
     end
 
+    # NOTE: This is a fix for when a user has unchecked the 'exempt' box but
+    # the rest of the form is empty. This should be the 'unstarted' state however
+    # the code (in app/concepts/concerns/contracts/status.rb) does a check for
+    # "value == false" to support cases like the disclosures form, where every
+    # field could be false (when a user selects 'no' in each radio button).
+    #
+    # We will need to find a more elegant solution to this problem over time. In
+    # the short term, we can override the method with a block which removes the
+    # check for the `false` field in this case.
+    #
+    # There are test cases for this behaviour in the specs:
+    #   - spec/concepts/sellers/seller_application/contract/disclosures_spec.rb
+    #   - spec/concepts/sellers/seller_application/contract/workers_compensation_spec.rb
+    #
+    def started?
+      super do |key, value|
+        value.present?
+      end
+    end
+
     validation :default, inherit: true do
       configure do
         config.type_specs = true

@@ -1,7 +1,7 @@
 module Concerns::Contracts::Status
   extend ActiveSupport::Concern
 
-  def started?
+  def started?(&block)
     schema.keys.map {|key|
       value = send(key)
 
@@ -10,7 +10,11 @@ module Concerns::Contracts::Status
           item.respond_to?(:id) ? item.id.present? : item.present?
         }
       else
-        value.present? || value == false
+        if block_given?
+          yield(key, value)
+        else
+          value.present? || value == false
+        end
       end
     }.compact.any?
   end
