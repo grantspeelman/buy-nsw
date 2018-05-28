@@ -60,22 +60,10 @@
             <dd><%= link_to product.pricing_calculator_url %></dd>
           <% end %>
 
-          <% if product.pricing_variables.any? %>
-            <dt>Variables affecting pricing</dt>
-            <dd>
-              <ul>
-                <% product.pricing_variables.texts.each do |variable| %>
-                  <li><%= variable %></li>
-                <% end %>
-              </ul>
-
-              <% if product.pricing_variables_other? %>
-              <div class="other-text">
-                <%= format_text_block product.pricing_variables_other %>
-              </div>
-              <% end %>
-            </dd>
-          <% end %>
+          <dt>Variables affecting pricing</dt>
+          <dd>
+            <%= format_text_block product.pricing_variables %>
+          </dd>
         </dl>
         <% end %>
       </dd>

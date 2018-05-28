@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525020341) do
+ActiveRecord::Schema.define(version: 20180528044227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,7 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.decimal "pricing_min"
     t.decimal "pricing_max"
     t.string "pricing_unit"
-    t.text "pricing_variables", default: [], array: true
-    t.text "pricing_variables_other"
+    t.text "pricing_variables"
     t.string "pricing_calculator_url"
     t.boolean "education_pricing"
     t.text "education_pricing_eligibility"

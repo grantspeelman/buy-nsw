@@ -15,11 +15,21 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Commercials do
       pricing_min: 10,
       pricing_max: 20,
       pricing_unit: "per user per month",
+      pricing_variables: "no variables",
       education_pricing: false,
       free_trial_url: 'https://foo.com/blah',
       pricing_calculator_url: 'https://foo.com/blah'
     }
   }
+
+  assert_invalidity_of_blank_field :free_version
+  assert_invalidity_of_blank_field :free_trial
+  assert_invalidity_of_blank_field :pricing_currency
+  assert_invalidity_of_blank_field :pricing_min
+  assert_invalidity_of_blank_field :pricing_max
+  assert_invalidity_of_blank_field :pricing_unit
+  assert_invalidity_of_blank_field :pricing_variables
+  assert_invalidity_of_blank_field :education_pricing
 
   it 'is valid with valid attributes' do
     subject.validate(atts)

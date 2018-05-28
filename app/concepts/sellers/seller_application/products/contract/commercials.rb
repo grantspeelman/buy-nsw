@@ -12,7 +12,6 @@ module Sellers::SellerApplication::Products::Contract
     property :pricing_max, on: :product
     property :pricing_unit, on: :product
     property :pricing_variables, on: :product
-    property :pricing_variables_other, on: :product
     property :pricing_calculator_url, on: :product
 
     property :education_pricing, on: :product
@@ -56,13 +55,8 @@ module Sellers::SellerApplication::Products::Contract
         required(:pricing_max).filled(:number?)
         required(:pricing_unit).filled(:str?)
 
-        required(:pricing_variables).value(one_of?: Product.pricing_variables.values)
-        required(:pricing_variables_other).maybe(:str?)
+        required(:pricing_variables).filled(:str?)
         required(:pricing_calculator_url).maybe(:str?, :url?)
-
-        rule(pricing_variables_other: [:pricing_variables, :pricing_variables_other]) do |checkboxes, field|
-          checkboxes.contains?('other').then(field.filled?)
-        end
 
         required(:education_pricing).filled(:bool?)
         required(:education_pricing_eligibility).maybe(:str?)
