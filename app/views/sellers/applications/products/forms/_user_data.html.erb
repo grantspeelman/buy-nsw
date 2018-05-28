@@ -38,6 +38,16 @@
   </div>
 </fieldset>
 
+<fieldset class="multiple-choice-group radio-group">
+
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_information.question') %></legend>
+
+  <%= f.form_group :audit_information do %>
+    <%= f.radio_button :audit_information, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :audit_information, 'false', data: { further_details: 'input' } %>
+  <% end %>
+</fieldset>
+
 <fieldset>
   <%= f.text_field :audit_storage_period %>
   <%= f.text_field :log_storage_period %>

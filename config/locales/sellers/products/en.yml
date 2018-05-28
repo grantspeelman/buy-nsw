@@ -126,6 +126,10 @@ en:
                   'true': 'Yes'
                   'false': 'No'
                 data_access_restrictions_details: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
+                audit_information:
+                  question: Can users access audit information about activities and transactions performed using your product or service?
+                  'true': 'Yes'
+                  'false': 'No'
                 audit_storage_period: What is the maximum time audit information data is stored?
                 log_storage_period: What is the maximum time system logs are stored?
                 encryption_transit_user_types: How do you protect data between the end user and your product or service?

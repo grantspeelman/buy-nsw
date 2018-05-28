@@ -34,13 +34,16 @@ module Sellers::SellerApplication::Products::Contract
           checkboxes.contains?('other').then(field.filled?)
         end
 
-        required(:data_access).filled(:bool?)
-        required(:data_access_restrictions).maybe(:str?)
+        required(:data_access_restrictions).filled(:bool?)
+        required(:data_access_restrictions_details).maybe(:str?)
+
+        rule(data_access_restrictions_details: [:data_access_restrictions, :data_access_restrictions_details]) do |radio, field|
+          radio.true?.then(field.filled?)
+        end
+
         required(:audit_information).filled(:bool?)
         required(:audit_storage_period).filled(:str?)
         required(:log_storage_period).filled(:str?)
-
-        # TODO: Add conditional validations for data access
 
         required(:encryption_transit_user_types).filled(any_checked?: true, one_of?: Product.encryption_transit_user_types.values)
         required(:encryption_transit_user_other).maybe(:str?)
