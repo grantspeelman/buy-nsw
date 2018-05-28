@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528070152) do
+ActiveRecord::Schema.define(version: 20180528073237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,8 +144,7 @@ ActiveRecord::Schema.define(version: 20180528070152) do
     t.boolean "data_location_control"
     t.boolean "third_party_involved"
     t.text "third_party_involved_details"
-    t.text "backup_capability"
-    t.string "disaster_recovery_type"
+    t.string "backup_capability"
     t.string "backup_scheduling_type"
     t.string "backup_recovery_type"
     t.text "encryption_transit_user_types", default: [], array: true

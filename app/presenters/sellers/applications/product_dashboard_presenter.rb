@@ -17,6 +17,7 @@ module Sellers::Applications
           step('availability_support'),
           step('locations'),
           step('user_data'),
+          step('backup_recovery'),
           step('identity_authentication'),
           step('reporting_analytics'),
         ],

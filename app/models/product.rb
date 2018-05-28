@@ -55,9 +55,11 @@ class Product < ApplicationRecord
   enumerize :data_import_formats, multiple: true, in: ['csv', 'odf', 'json', 'xml', 'other']
   enumerize :data_export_formats, multiple: true, in: ['csv', 'odf', 'json', 'xml', 'other']
   enumerize :data_location, in: ['australia-default', 'australia-request', 'other-known', 'dont-know']
-  enumerize :disaster_recovery_type, in: ['multiple-dc-with-dr', 'single-dc-with-copies', 'multiple-dc', 'single-dc']
-  enumerize :backup_scheduling_type, in: ['web-interface', 'contact-support', 'supplier-controlled']
+
+  enumerize :backup_capability, in: ['everything', 'user-controlled', 'supplier-controlled']
+  enumerize :backup_scheduling_type, in: ['user-controlled', 'supplier-controlled']
   enumerize :backup_recovery_type, in: ['self-managed', 'contact-support']
+
   enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'bonded-fibre', 'other']
   enumerize :encryption_transit_network_types, multiple: true, in: ['tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_rest_types, multiple: true, in: ['physical-csa-ccm-v3', 'physical-ssae-16', 'physical-other', 'encryption-physical-media', 'obfuscating', 'other']

@@ -43,25 +43,6 @@
   <%= f.text_field :log_storage_period %>
 </fieldset>
 
-<fieldset>
-  <%= f.text_area :backup_capability, rows: 5 %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.disaster_recovery_type') %></legend>
-  <%= f.collection_radio_buttons(:disaster_recovery_type, Product.disaster_recovery_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.backup_scheduling_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_scheduling_type, Product.backup_scheduling_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.backup_recovery_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_recovery_type, Product.backup_recovery_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">

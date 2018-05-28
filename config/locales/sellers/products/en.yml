@@ -128,16 +128,16 @@ en:
                 data_access_restrictions_details: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
                 audit_storage_period: What is the maximum time audit information data is stored?
                 log_storage_period: What is the maximum time system logs are stored?
-                backup_capability: List what the service can backup
-                disaster_recovery_type: What's your data centre setup?
-                backup_scheduling_type: How do users schedule backups?
-                backup_recovery_type: How do users recover backups?
                 encryption_transit_user_types: How do you protect data between the end user and your product or service?
                 encryption_transit_user_other: Describe how else you protect data between the user and your product or service
                 encryption_transit_network_types: How do you protect data within your network?
                 encryption_transit_network_other: Describe how else you protect data within your network
                 encryption_rest_types: How do you protect data at rest?
                 encryption_rest_other: Describe how else you protect data at rest
+              backup_recovery:
+                backup_capability: What is backed up?
+                backup_scheduling_type: How often are backups performed?
+                backup_recovery_type: How do users recover backups?
               identity_authentication:
                 authentication_required:
                   question: Do users need to be authenticated when using the product or service?
@@ -254,6 +254,9 @@ en:
           user_data:
             short: User data
             long: User data
+          backup_recovery:
+            short: Backup and recovery
+            long: Backup and recovery
           identity_authentication:
             short: Identity and authentication
             long: Identity and authentication
@@ -362,44 +365,20 @@ en:
         json: JSON
         xml: XML
         other: Other
-      data_access:
-        unrestricted: There are no restrictions
-        restrictions: Yes, with restrictions
-        'no': "No [breach of Core Terms]"
-      audit_access_type:
-        real-time: Users have access to real-time audit information
-        regular: Users receive audit information on a regular basis
-        manual: Users contact the support team to get audit information
-      audit_storage_period:
-        user-defined: User defined
-        12-months: 12 months or longer
-        6-to-12-months: 6-12 months
-        1-to-6-months: 1-6 months
-        less-than-1-month: Less than 1 month
-        supplier-controlled: Supplier controls when users can access audit information
-        none: No audit information available
-      log_storage_period:
-        user-defined: User-defined
-        12-months: 12 months or longer
-        6-to-12-months: 6-12 months
-        1-to-6-months: 1-6 months
-        less-than-1-month: Less than 1 month
       data_location:
         australia-default: In Australia by default
         australia-request: In Australia by request
         other-known: Other known locations
         dont-know: "Don't know"
-      disaster_recovery_type:
-        multiple-dc-with-dr: Multiple data centres with disaster recovery
-        single-dc-with-copies: Single data centre with multiple copies
-        multiple-dc: Multiple data centres
-        single-dc: Single data centre
+      backup_capability:
+        everything: Everything by default
+        user-controlled: Users control what is backed up
+        supplier-controlled: Supplier controls what is backed up
       backup_scheduling_type:
-        web-interface: Users schedule backups through a web interface
-        contact-support: Users contact the support team to schedule
-        supplier-controlled: Supplier controls the frequency of backups
+        user-controlled: Users control frequency
+        supplier-controlled: Supplier controls frequency
       backup_recovery_type:
-        self-managed: Users can recover backups themselves, eg. through a web interface
+        self-managed: Users can recover backups themselves
         contact-support: Users contact the support team
       encryption_transit_user_types:
         private-or-gov-network: Private network or government network

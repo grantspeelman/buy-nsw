@@ -31,6 +31,7 @@ private
       "Availability and support" => availability_and_support,
       "Locations" => locations,
       "User data" => user_data,
+      "Backup and recovery" => backup_and_recovery,
       "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
@@ -204,10 +205,6 @@ private
       a["The maximum time audit information data is stored"] = product.audit_storage_period
       a["The maximum time system logs are stored"] = product.log_storage_period
 
-      a["What the service can backup"] = product.backup_capability
-      a["Disaster recovery set up"] = product.disaster_recovery_type_text
-      a["How users can schedule backups"] = product.backup_scheduling_type_text
-      a["How users can recover backups"] = product.backup_recovery_type_text
       a["Data protection between buyer and supplier networks"] = product.encryption_transit_user_types.texts
 
       if product.encryption_transit_user_types.include?('other')
@@ -226,6 +223,14 @@ private
         a["Other data protection at rest"] = product.encryption_rest_other
       end
     end
+  end
+
+  def backup_and_recovery
+    {
+      "What is backed up" => product.backup_capability_text,
+      "How often backups are performed" => product.backup_scheduling_type_text,
+      "How users recover backups" => product.backup_recovery_type_text,
+    }
   end
 
   def identity_and_authentication

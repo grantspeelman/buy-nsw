@@ -11,11 +11,6 @@ module Sellers::SellerApplication::Products::Contract
     property :audit_storage_period, on: :product
     property :log_storage_period, on: :product
 
-    property :backup_capability, on: :product
-    property :disaster_recovery_type, on: :product
-    property :backup_scheduling_type, on: :product
-    property :backup_recovery_type, on: :product
-
     property :encryption_transit_user_types, on: :product
     property :encryption_transit_user_other, on: :product
     property :encryption_transit_network_types, on: :product
@@ -45,10 +40,7 @@ module Sellers::SellerApplication::Products::Contract
         required(:audit_storage_period).filled(:str?)
         required(:log_storage_period).filled(:str?)
 
-        required(:backup_capability).filled(:str?)
-        required(:disaster_recovery_type).filled(in_list?: Product.disaster_recovery_type.values)
-        required(:backup_scheduling_type).filled(in_list?: Product.backup_scheduling_type.values)
-        required(:backup_recovery_type).filled(in_list?: Product.backup_recovery_type.values)
+        # TODO: Add conditional validations for data access
 
         required(:encryption_transit_user_types).filled(any_checked?: true, one_of?: Product.encryption_transit_user_types.values)
         required(:encryption_transit_user_other).maybe(:str?)
