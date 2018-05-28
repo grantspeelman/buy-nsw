@@ -73,6 +73,9 @@ class Product < ApplicationRecord
   enumerize :irap_type, in: ['stages-1-and-2', 'stage-1', 'not-assessed']
   enumerize :security_classification_types, multiple: true, in: ['unclassified-dlm', 'protected', 'secret', 'top-secret']
 
+  enumerize :virtualisation_implementor, in: ['supplier', 'third-party']
+  enumerize :virtualisation_technologies, multiple: true, in: ['vmware','hyper-v','citrix-xenserver','oracle-vm','red-hat-virtualisation','kvm-hypervisor','other']
+
   enumerize :secure_development_approach, in: ['independently-assessed', 'self-assessed', 'supplier-defined']
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
   enumerize :penetration_testing_approach, multiple: true, in: ['crest-approved', 'other-external', 'in-house', 'none']

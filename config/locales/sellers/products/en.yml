@@ -208,6 +208,16 @@ en:
                 secure_development_approach: What practices does your organisation follow for secure software development?
                 penetration_testing_frequency: How often do you do penetration testing?
                 penetration_testing_approach: What's your approach to penetration testing?
+              user_separation:
+                virtualisation:
+                  question: 'Do you rely on virtualisation technology to keep applications and users sharing the same infrastructure apart?'
+                  'true': 'Yes'
+                  'false': 'No'
+                virtualisation_implementor: Who implements the virtualisation technology?
+                virtualisation_third_party: Specify the third party
+                virtualisation_technologies: What virtualisation technologies are used?
+                virtualisation_technologies_other: Specify other virtualisation technologies used
+                user_separation_details: Describe how different organisations sharing the same infrastructure are kept apart
               reporting_analytics:
                 metrics_contents: What metrics does your product or service report?
                 metrics_channel_types: How do you provide these reports?
@@ -280,7 +290,10 @@ en:
             long: Security standards and certifications
           security_practices:
             short: Security practices
-            long: Security practices and staff
+            long: Security practices
+          user_separation:
+            short: Separation between users
+            long: Separation between users
           operational_security:
             short: Operational security
             long: Operational security
@@ -463,6 +476,17 @@ en:
         other-external: Performed by another external penetration testing organisation
         in-house: Performed in-house
         none: No penetration testing approach
+      virtualisation_implementor:
+        supplier: Supplier
+        third-party: A third party
+      virtualisation_technologies:
+        vmware: VMware
+        hyper-v: Hyper-V
+        citrix-xenserver: Citrix XenServer
+        oracle-vm: Oracle VM
+        red-hat-virtualisation: Red Hat Virtualisation
+        kvm-hypervisor: KVM hypervisor
+        other: Other
       outage_channel_types:
         email: Email alerts
         sms: SMS alerts

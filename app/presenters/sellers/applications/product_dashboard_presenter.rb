@@ -25,6 +25,7 @@ module Sellers::Applications
         section('security') => [
           step('security_standards'),
           step('security_practices'),
+          step('user_separation'),
           step('operational_security'),
         ],
       }
