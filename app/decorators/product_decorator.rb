@@ -16,10 +16,6 @@ class ProductDecorator < BaseDecorator
     custom_contact? ? super : seller.contact_phone
   end
 
-  def pricing_variables_other?
-    pricing_variables.include?('other')
-  end
-
   def details
     ProductDetails.new(__getobj__).details
   end

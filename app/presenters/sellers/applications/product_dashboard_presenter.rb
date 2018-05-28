@@ -15,13 +15,17 @@ module Sellers::Applications
           step('onboarding_offboarding'),
           step('environment'),
           step('availability_support'),
+          step('locations'),
           step('user_data'),
+          step('backup_recovery'),
+          step('data_protection'),
           step('identity_authentication'),
           step('reporting_analytics'),
         ],
         section('security') => [
           step('security_standards'),
           step('security_practices'),
+          step('user_separation'),
           step('operational_security'),
         ],
       }

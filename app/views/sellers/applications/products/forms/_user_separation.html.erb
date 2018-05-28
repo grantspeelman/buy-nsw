@@ -1,0 +1,46 @@
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="true">
+
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_separation.virtualisation.question') %></legend>
+
+  <%= f.form_group :virtualisation do %>
+    <%= f.radio_button :virtualisation, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :virtualisation, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <fieldset class="multiple-choice-group checkbox-group"
+              data-module="further-details-fields"
+              data-further-details-values="third-party">
+
+      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_separation.virtualisation_implementor') %></legend>
+      <%= f.collection_radio_buttons(:virtualisation_implementor, Product.virtualisation_implementor.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+
+      <div class="additional-fields" data-further-details="fields">
+        <%= f.text_field :virtualisation_third_party %>
+      </div>
+    </fieldset>
+
+
+    <fieldset class="multiple-choice-group checkbox-group"
+              data-module="further-details-fields"
+              data-further-details-values="other">
+
+      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_separation.virtualisation_technologies') %></legend>
+      <%= f.collection_check_boxes(:virtualisation_technologies, Product.virtualisation_technologies.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+
+      <div class="additional-fields" data-further-details="fields">
+        <div data-module="max-word-count" data-max-word-count="100">
+          <%= f.text_area :virtualisation_technologies_other, rows: 5 %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div data-module="max-word-count" data-max-word-count="100">
+        <%= f.text_area :user_separation_details, rows: 5 %>
+      </div>
+    </fieldset>
+  </div>
+</fieldset>

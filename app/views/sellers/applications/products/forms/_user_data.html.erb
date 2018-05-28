@@ -22,121 +22,33 @@
   </div>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_access') %></legend>
-  <%= f.collection_radio_buttons(:data_access, Product.data_access.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_access_type') %></legend>
-  <%= f.collection_radio_buttons(:audit_access_type, Product.audit_access_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_storage_period') %></legend>
-  <%= f.collection_radio_buttons(:audit_storage_period, Product.audit_storage_period.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.log_storage_period') %></legend>
-  <%= f.collection_radio_buttons(:log_storage_period, Product.log_storage_period.options, :last, :first, skip_label: true) %>
-</fieldset>
-
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
-          data-further-details-values="other-known">
+          data-further-details-multiple-options="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_location') %></legend>
-  <%= f.collection_radio_buttons(:data_location, Product.data_location.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_access_restrictions.question') %></legend>
 
-  <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :data_location_other, rows: 5 %>
+  <%= f.form_group :data_access_restrictions do %>
+    <%= f.radio_button :data_access_restrictions, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :data_access_restrictions, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields" data-further-details-value="true">
+    <%= f.text_area :data_access_restrictions_details, rows: 5 %>
   </div>
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.data_storage_control_australia.question') %></legend>
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.audit_information.question') %></legend>
 
-  <%= f.form_group :data_storage_control_australia do %>
-    <%= f.radio_button :data_storage_control_australia, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :data_storage_control_australia, 'false', data: { further_details: 'input' } %>
+  <%= f.form_group :audit_information do %>
+    <%= f.radio_button :audit_information, 'true' %>
+    <%= f.radio_button :audit_information, 'false' %>
   <% end %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group"
-          data-module="further-details-fields"
-          data-further-details-values="true">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.third_party_infrastructure.question') %></legend>
-
-  <%= f.form_group :third_party_infrastructure do %>
-    <%= f.radio_button :third_party_infrastructure, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :third_party_infrastructure, 'false', data: { further_details: 'input' } %>
-  <% end %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :third_party_infrastructure_details, rows: 5 %>
-  </div>
 </fieldset>
 
 <fieldset>
-  <%= f.text_area :backup_capability, rows: 5 %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.disaster_recovery_type') %></legend>
-  <%= f.collection_radio_buttons(:disaster_recovery_type, Product.disaster_recovery_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.backup_scheduling_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_scheduling_type, Product.backup_scheduling_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.backup_recovery_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_recovery_type, Product.backup_recovery_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group checkbox-group"
-          data-module="further-details-fields"
-          data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.encryption_transit_user_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_transit_user_types, Product.encryption_transit_user_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_transit_user_other, rows: 5 %>
-    </div>
-  </div>
-</fieldset>
-
-<fieldset class="multiple-choice-group checkbox-group"
-          data-module="further-details-fields"
-          data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.encryption_transit_network_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_transit_network_types, Product.encryption_transit_network_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_transit_network_other, rows: 5 %>
-    </div>
-  </div>
-</fieldset>
-
-<fieldset class="multiple-choice-group checkbox-group"
-          data-module="further-details-fields"
-          data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_data.encryption_rest_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_rest_types, Product.encryption_rest_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_rest_other, rows: 5 %>
-    </div>
-  </div>
+  <%= f.text_field :audit_storage_period %>
+  <%= f.text_field :log_storage_period %>
 </fieldset>

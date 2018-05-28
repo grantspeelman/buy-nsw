@@ -53,29 +53,17 @@
           <%= product.pricing_unit %>
         </p>
 
-        <% if product.pricing_calculator_url.present? || product.pricing_variables.any? %>
+        <% if product.pricing_calculator_url.present? || product.pricing_variables.present? %>
         <dl class="nested">
           <% if product.pricing_calculator_url.present? %>
             <dt>Pricing calculator</dt>
             <dd><%= link_to product.pricing_calculator_url %></dd>
           <% end %>
 
-          <% if product.pricing_variables.any? %>
-            <dt>Variables affecting pricing</dt>
-            <dd>
-              <ul>
-                <% product.pricing_variables.texts.each do |variable| %>
-                  <li><%= variable %></li>
-                <% end %>
-              </ul>
-
-              <% if product.pricing_variables_other? %>
-              <div class="other-text">
-                <%= format_text_block product.pricing_variables_other %>
-              </div>
-              <% end %>
-            </dd>
-          <% end %>
+          <dt>Variables affecting pricing</dt>
+          <dd>
+            <%= format_text_block product.pricing_variables %>
+          </dd>
         </dl>
         <% end %>
       </dd>
@@ -87,6 +75,17 @@
             <dd><%= format_text_block product.education_pricing_eligibility %></dd>
             <dt>Pricing differences</dt>
             <dd><%= format_text_block product.education_pricing_differences %></dd>
+          </dl>
+        </dd>
+      <% end %>
+      <% if product.not_for_profit_pricing? %>
+        <dt>Not-for-profit pricing</dt>
+        <dd>
+          <dl class="nested">
+            <dt>Eligibility</dt>
+            <dd><%= format_text_block product.not_for_profit_pricing_eligibility %></dd>
+            <dt>Pricing differences</dt>
+            <dd><%= format_text_block product.not_for_profit_pricing_differences %></dd>
           </dl>
         </dd>
       <% end %>

@@ -53,6 +53,7 @@ en:
   errors:
     addresses_present?: must provide at least one address
     any_checked?: must select at least one option
+    currency?: must be a three-letter currency code (eg. AUD)
     file?: must be provided
     file_uploaded?: file file must be provided
     in_future?: must be in the future

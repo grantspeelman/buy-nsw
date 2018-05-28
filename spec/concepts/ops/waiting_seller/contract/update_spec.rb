@@ -5,21 +5,13 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
   let(:waiting_seller) { create(:waiting_seller) }
   let(:atts) { attributes_for(:waiting_seller) }
 
+  subject { described_class.new(waiting_seller) }
+
   it 'is valid with all required atts' do
     form = described_class.new(waiting_seller)
     form.validate(atts)
 
     expect(form).to be_valid
-  end
-
-  def self.assert_invalidity_of_blank_field(field)
-    it "is invalid when '#{field}' is blank" do
-      form = described_class.new(waiting_seller)
-      form.validate(atts.merge(field => nil))
-
-      expect(form).to_not be_valid
-      expect(form.errors[field]).to be_present
-    end
   end
 
   assert_invalidity_of_blank_field :name

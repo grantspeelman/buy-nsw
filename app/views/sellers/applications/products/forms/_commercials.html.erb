@@ -41,24 +41,14 @@
       <%= f.text_field :pricing_currency_other %>
     </div>
   </div>
-  
+
   <%= f.text_field :pricing_unit %>
   <%= f.text_field :pricing_min %>
   <%= f.text_field :pricing_max %>
   <%= f.text_field :pricing_calculator_url %>
 </fieldset>
 
-<fieldset class="multiple-choice-group checkbox-group"
-          data-module="further-details-fields"
-          data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.pricing_variables.question') %></legend>
-  <%= f.collection_check_boxes(:pricing_variables, Product.pricing_variables.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-
-  <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :pricing_variables_other, rows: 5 %>
-  </div>
-</fieldset>
+<%= f.text_area :pricing_variables, rows: 5 %>
 
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
@@ -74,5 +64,22 @@
   <div class="additional-fields" data-further-details="fields">
     <%= f.text_area :education_pricing_eligibility, rows: 3 %>
     <%= f.text_area :education_pricing_differences, rows: 3 %>
+  </div>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group"
+          data-module="further-details-fields"
+          data-further-details-values="true">
+
+  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.not_for_profit_pricing.question') %></legend>
+
+  <%= f.form_group :not_for_profit_pricing do %>
+    <%= f.radio_button :not_for_profit_pricing, 'true', data: { further_details: 'input' } %>
+    <%= f.radio_button :not_for_profit_pricing, 'false', data: { further_details: 'input' } %>
+  <% end %>
+
+  <div class="additional-fields" data-further-details="fields">
+    <%= f.text_area :not_for_profit_pricing_eligibility, rows: 3 %>
+    <%= f.text_area :not_for_profit_pricing_differences, rows: 3 %>
   </div>
 </fieldset>

@@ -6,7 +6,8 @@
     this.$el = options.$el
     this.$input = this.$el.find('*[data-further-details=input]')
     this.$fields = this.$el.find('> *[data-further-details=fields]')
-    this.showValues = this.$el.attr('data-further-details-values').split(',')
+    this.showValues = this.fetchValues()
+    this.multipleOptions = (this.$el.attr('data-further-details-multiple-options') === 'true')
 
     this.registerEvents()
     this.refreshFields()
@@ -14,6 +15,16 @@
 
   FurtherDetailsFieldsModule.prototype.registerEvents = function registerEvents () {
     this.$input.on('change', $.proxy(this.refreshFields, this))
+  }
+
+  FurtherDetailsFieldsModule.prototype.fetchValues = function fetchValues () {
+    var string = this.$el.attr('data-further-details-values')
+
+    if (string === undefined) {
+      return []
+    }
+
+    return string.split(',')
   }
 
   FurtherDetailsFieldsModule.prototype.refreshFields = function refreshFields () {
@@ -24,14 +35,26 @@
       values.push($(this).val())
     })
 
-    var matching = this.showValues.filter(function (item) {
-      return (values.includes(item))
-    })
+    if (this.multipleOptions === true) {
+      $.each(this.$fields, function (i, field) {
+        var matchingValue = $(field).attr('data-further-details-value')
 
-    if (matching.length > 0) {
-      this.$fields.show()
+        if (values.includes(matchingValue)) {
+          $(field).show()
+        } else {
+          $(field).hide()
+        }
+      })
     } else {
-      this.$fields.hide()
+      var matching = this.showValues.filter(function (item) {
+        return (values.includes(item))
+      })
+
+      if (matching.length > 0) {
+        this.$fields.show()
+      } else {
+        this.$fields.hide()
+      }
     }
   }
 

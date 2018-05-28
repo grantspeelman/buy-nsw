@@ -38,17 +38,10 @@ class Product < ApplicationRecord
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
   enumerize :pricing_currency, in: ['aud', 'usd', 'other']
-  enumerize :pricing_variables, multiple: true, in: [
-    'user-numbers',
-    'volumes',
-    'term-commitment',
-    'geographic-location',
-    'data-extraction',
-    'other',
-  ]
-  enumerize :deployment_model, in: ['private-cloud', 'public-cloud']
+  enumerize :deployment_model, in: ['govdc', 'public-cloud', 'other-cloud']
   enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
-  enumerize :government_network_type, multiple: true, in: ['govdc', 'id-hub', 'other']
+  enumerize :api, in: ['rest', 'non-rest', 'no']
+  enumerize :government_network_type, multiple: true, in: ['govdc', 'govlink', 'aarnet', 'id-hub', 'icon', 'other']
   enumerize :supported_browsers, multiple: true, in: [
     'ie7', 'ie8', 'ie9', 'ie10', 'ie11', 'ms-edge', 'firefox', 'chrome', 'safari9', 'opera'
   ]
@@ -59,29 +52,33 @@ class Product < ApplicationRecord
   enumerize :scaling_type, in: ['automatic', 'manual', 'none']
   enumerize :support_options, multiple: true, in: ['phone', 'email', 'web-chat', 'online', 'onsite']
 
-  enumerize :data_import_formats, multiple: true, in: ['csv', 'odf', 'other']
-  enumerize :data_export_formats, multiple: true, in: ['csv', 'odf', 'other']
-  enumerize :data_access, in: ['unrestricted', 'restrictions', 'no']
-  enumerize :audit_access_type, in: ['real-time', 'regular', 'manual']
-  enumerize :audit_storage_period, in: ['user-defined', '12-months', '6-to-12-months', '1-to-6-months', 'less-than-1-month', 'supplier-controlled', 'none']
-  enumerize :log_storage_period, in: ['user-defined', '12-months', '6-to-12-months', '1-to-6-months', 'less-than-1-month']
-  enumerize :data_location, in: ['only-australia', 'other-known', 'dont-know']
-  enumerize :disaster_recovery_type, in: ['multiple-dc-with-dr', 'single-dc-with-copies', 'multiple-dc', 'single-dc']
-  enumerize :backup_scheduling_type, in: ['web-interface', 'contact-support', 'supplier-controlled']
+  enumerize :data_import_formats, multiple: true, in: ['csv', 'odf', 'json', 'xml', 'other']
+  enumerize :data_export_formats, multiple: true, in: ['csv', 'odf', 'json', 'xml', 'other']
+  enumerize :data_location, in: ['australia-default', 'australia-request', 'other-known', 'dont-know']
+
+  enumerize :backup_capability, in: ['everything', 'user-controlled', 'supplier-controlled']
+  enumerize :backup_scheduling_type, in: ['user-controlled', 'supplier-controlled']
   enumerize :backup_recovery_type, in: ['self-managed', 'contact-support']
-  enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'bonded-fibre', 'other']
+
+  enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_transit_network_types, multiple: true, in: ['tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_rest_types, multiple: true, in: ['physical-csa-ccm-v3', 'physical-ssae-16', 'physical-other', 'encryption-physical-media', 'obfuscating', 'other']
+  enumerize :encryption_keys_controller, in: ['none', 'supplier', 'buyer']
 
   enumerize :authentication_types, multiple: true, in: ['username-password', '2fa', 'public-key', 'federation', 'government-network', 'dedicated-link', 'other']
   enumerize :access_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
 
   enumerize :data_centre_security_standards, in: ['recognised-standard', 'supplier-defined', 'third-party']
   enumerize :csa_star_level, in: ['level-1', 'level-2', 'level-3', 'level-4', 'level-5']
+  enumerize :irap_type, in: ['stages-1-and-2', 'stage-1', 'not-assessed']
+  enumerize :security_classification_types, multiple: true, in: ['unclassified-dlm', 'protected', 'secret', 'top-secret']
+
+  enumerize :virtualisation_implementor, in: ['supplier', 'third-party']
+  enumerize :virtualisation_technologies, multiple: true, in: ['vmware','hyper-v','citrix-xenserver','oracle-vm','red-hat-virtualisation','kvm-hypervisor','other']
 
   enumerize :secure_development_approach, in: ['independently-assessed', 'self-assessed', 'supplier-defined']
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
-  enumerize :penetration_testing_approach, in: ['crest-approved', 'other-external', 'in-house', 'none']
+  enumerize :penetration_testing_approach, multiple: true, in: ['crest-approved', 'other-external', 'in-house', 'none']
 
   enumerize :outage_channel_types, multiple: true, in: ['email', 'sms', 'dashboard', 'api', 'other']
   enumerize :metrics_channel_types, multiple: true, in: ['api', 'real-time', 'regular', 'on-request', 'other']
@@ -103,7 +100,7 @@ class Product < ApplicationRecord
   scope :free_trial, -> { where(:free_trial => true) }
   scope :education_pricing, -> { where(:education_pricing => true) }
   scope :with_data_location, ->(location){ where(data_location: location) }
-  scope :api, ->{ where(api: true) }
+  scope :with_api, ->{ where(api: ['rest', 'non-rest']) }
   scope :mobile_devices, ->{ where(mobile_devices: true) }
 
   scope :iso_27001, ->{ where(iso_27001: true) }

@@ -29,10 +29,14 @@ private
       "Onboarding and offboarding" => onboarding_and_offboarding,
       "Environment" => environment,
       "Availability and support" => availability_and_support,
+      "Locations" => locations,
       "User data" => user_data,
+      "Backup and recovery" => backup_and_recovery,
+      "Data protection" => data_protection,
       "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
+      "Separation between users" => user_separation,
       "Reporting and analytics" => reporting_and_analytics,
     }
   end
@@ -69,12 +73,14 @@ private
       "Minimum price" => product.pricing_min,
       "Maximum price" => product.pricing_max,
       "Pricing unit" => product.pricing_unit,
-      "Variables affecting pricing" => product.pricing_variables.texts,
-      "Other variables affecting pricing" => product.pricing_variables_other,
+      "Variables affecting pricing" => product.pricing_variables,
       "Pricing calculator URL" => product.pricing_calculator_url,
       "Education pricing available" => product.education_pricing,
       "Education pricing eligibility" => product.education_pricing_eligibility,
       "Education pricing differences" => product.education_pricing_differences,
+      "Not-for-profit pricing available" => product.not_for_profit_pricing,
+      "Not-for-profit pricing eligibility" => product.not_for_profit_pricing_eligibility,
+      "Not-for-profit pricing differences" => product.not_for_profit_pricing_differences,
     }
   end
 
@@ -88,6 +94,10 @@ private
   def environment
     attributes do |a|
       a["Cloud deployment model"] = product.deployment_model_text
+      if product.deployment_model == 'other-cloud'
+        a["Other deployment model"] = product.deployment_model_other
+      end
+
       a["Software add-on or extension"] = product.addon_extension_type_text
 
       if ['yes', 'yes-and-standalone'].include?(product.addon_extension_type)
@@ -96,11 +106,9 @@ private
 
       a["API"] = product.api
 
-      if product.api
+      if ['rest','non-rest'].include?(product.api)
         a["What users can and can't do using the API"] = product.api_capabilities
         a["Compatible API automation tools"] = product.api_automation
-        a["API documentation provided"] = product.api_documentation
-        a["API sandbox provided"] = product.api_sandbox
       end
 
       a["Connected government networks"] = product.government_network_type.texts
@@ -145,12 +153,35 @@ private
   def availability_and_support
     {
       "Guaranteed availability (excluding scheduled outages)" => product.guaranteed_availability,
-      "Core support options available" => product.support_options.texts,
-      "Support hours" => product.support_hours,
-      "Support levels" => product.support_levels,
+      "Support options available" => product.support_options.texts,
+      "Which options come at additional cost" => product.support_options_additional_cost,
+      "Support levels, availability hours (AEST) and whether additional costs are involved" => product.support_levels,
     }
   end
 
+  def locations
+    attributes do |a|
+      a["Whether users can control where their data is stored, processed and managed in Australia"] = product.data_location_control
+      a["Locations where user data is stored, processed and managed"] = product.data_location_text
+
+      if product.data_location == 'other-known'
+        a["Other known locations"] = product.data_location_other
+      end
+      if product.data_location == 'dont-know'
+        a["Why the seller doesn't know"] = product.data_location_unknown_reason
+      end
+
+      a["Whether the seller operates their own data centres"] = product.own_data_centre
+      if product.own_data_centre
+        a["About the seller's data centre"] = product.own_data_centre_details
+      end
+
+      a["Whether third parties are involved in storing, processing or managing buyer data"] = product.third_party_involved
+      if product.third_party_involved
+        a["The third parties involved"] = product.third_party_involved_details
+      end
+    end
+  end
 
   def user_data
     attributes do |a|
@@ -166,27 +197,28 @@ private
         a["Other data export formats"] = product.data_export_formats_other
       end
 
-      a["Whether users can access and extract their data at any time"] = product.data_access_text
-      a["How users access audit information about the actions their users have taken"] = product.audit_access_type_text
-      a["How long user audit data is stored for"] = product.audit_storage_period_text
-      a["How long system logs are stored for"] = product.log_storage_period_text
-      a["Locations where user data is stored, processed and managed"] = product.data_location_text
+      a["Whether there are restrictions on users accessing or extracting data"] = product.data_access_restrictions
 
-      if product.data_location == 'other-known'
-        a["Other known locations"] = product.data_location_other
+      if product.data_access_restrictions
+        a["The restrictions on users accessing or extracting data"] = product.data_access_restrictions
       end
 
-      a["Whether users can control where their data is stored, processed and managed in Australia"] = product.data_storage_control_australia
-      a["Whether third parties manage the data centres used to provide this product or service"] = product.third_party_infrastructure
+      a["Whether users can access audit information about activities and transactions"] = product.audit_information
+      a["The maximum time audit information data is stored"] = product.audit_storage_period
+      a["The maximum time system logs are stored"] = product.log_storage_period
+    end
+  end
 
-      if product.third_party_infrastructure
-        a["The third parties managing the data centres"] = product.third_party_infrastructure_details
-      end
+  def backup_and_recovery
+    {
+      "What is backed up" => product.backup_capability_text,
+      "How often backups are performed" => product.backup_scheduling_type_text,
+      "How users recover backups" => product.backup_recovery_type_text,
+    }
+  end
 
-      a["What the service can backup"] = product.backup_capability
-      a["Disaster recovery set up"] = product.disaster_recovery_type_text
-      a["How users can schedule backups"] = product.backup_scheduling_type_text
-      a["How users can recover backups"] = product.backup_recovery_type_text
+  def data_protection
+    attributes do |a|
       a["Data protection between buyer and supplier networks"] = product.encryption_transit_user_types.texts
 
       if product.encryption_transit_user_types.include?('other')
@@ -204,6 +236,8 @@ private
       if product.encryption_rest_types.include?('other')
         a["Other data protection at rest"] = product.encryption_rest_other
       end
+
+      a["Who controls encryption keys"] = product.encryption_keys_controller_text
     end
   end
 
@@ -225,7 +259,7 @@ private
 
       if product.iso_27001
         a["Who accredited the ISO/IEC 27001:2013 certification"] = product.iso_27001_accreditor
-        a["When the ISO/IEC 27001:2013 certification was accredited"] = product.iso_27001_date
+        a["When the ISO/IEC 27001:2013 certification expires"] = product.iso_27001_date
         a["What the ISO/IEC 27001:2013 certification doesn't cover"] = product.iso_27001_exclusions
       end
 
@@ -233,7 +267,7 @@ private
 
       if product.iso_27017
         a["Who accredited the ISO/IEC 27017:2015 certification"] = product.iso_27017_accreditor
-        a["When the ISO/IEC 27017:2015 certification was accredited"] = product.iso_27017_date
+        a["When the ISO/IEC 27017:2015 certification expires"] = product.iso_27017_date
         a["What the ISO/IEC 27017:2015 certification doesn't cover"] = product.iso_27017_exclusions
       end
 
@@ -241,7 +275,7 @@ private
 
       if product.iso_27018
         a["Who accredited the ISO/IEC 27018:2014 certification"] = product.iso_27018_accreditor
-        a["When the ISO/IEC 27018:2014 certification was accredited"] = product.iso_27018_date
+        a["When the ISO/IEC 27018:2014 certification expires"] = product.iso_27018_date
         a["What the ISO/IEC 27018:2014 certification doesn't cover"] = product.iso_27018_exclusions
       end
 
@@ -249,7 +283,7 @@ private
 
       if product.csa_star
         a["Who accredited the CSA STAR certification"] = product.csa_star_accreditor
-        a["When the CSA STAR certification was accredited"] = product.csa_star_date
+        a["When the CSA STAR certification expires"] = product.csa_star_date
         a["CSA STAR level"] = product.csa_star_level_text
         a["What the CSA STAR certification doesn't cover"] = product.csa_star_exclusions
       end
@@ -258,12 +292,22 @@ private
 
       if product.pci_dss
         a["Who accredited the PCI DSS certification"] = product.pci_dss_accreditor
-        a["When the PCI DSS certification was accredited"] = product.pci_dss_date
+        a["When the PCI DSS certification expires"] = product.pci_dss_date
         a["What the PCI DSS certification doesn't cover"] = product.pci_dss_exclusions
       end
 
-      a["SOC I certification"] = product.soc_1
       a["SOC II certification"] = product.soc_2
+
+      if product.soc_2
+        a["Who accredited the SOC II certification"] = product.soc_2_accreditor
+        a["When the SOC II certification expires"] = product.soc_2_date
+        a["What the SOC II certification doesn't cover"] = product.soc_2_exclusions
+      end
+
+      a["IRAP assessed"] = product.irap_type_text
+      a["Certified by the Australian Signals Directorate (ASD)"] = product.asd_certified
+      a["Australian data security classification certification"] = product.security_classification_types.texts
+      a["Further information about security assessments"] = product.security_information_url
     end
   end
 
@@ -271,8 +315,30 @@ private
     {
       "Approach to secure software development best practice" => product.secure_development_approach_text,
       "How often the supplier conducts penetration testing" => product.penetration_testing_frequency_text,
-      "The supplier's approach to penetration testing" => product.penetration_testing_approach_text,
+      "The supplier's approach to penetration testing" => product.penetration_testing_approach.texts,
     }
+  end
+
+  def user_separation
+    attributes do |a|
+      a["Virtualisation used to keep users sharing the same infrastructure apart"] = product.virtualisation
+
+      if product.virtualisation
+        a["Who implements the virtualisation technology"] = product.virtualisation_implementor
+
+        if product.virtualisation_implementor == 'third-party'
+          a["Third party providing virtualisation"] = product.virtualisation_third_party
+        end
+
+        a["Technologies used to provide virtualisation"] = product.virtualisation_technologies.texts
+
+        if product.virtualisation_technologies.include?('other')
+          a["Other technologies used to provide virtualisation"] = product.virtualisation_technologies_other
+        end
+
+        a["Approach to separating different organisations on the same infrastructure"] = product.user_separation_details
+      end
+    end
   end
 
   def reporting_and_analytics

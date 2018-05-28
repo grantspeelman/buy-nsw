@@ -26,6 +26,7 @@ gem 'dry-validation'
 gem 'enumerize'
 gem 'kaminari'
 gem 'mime-types'
+gem 'money'
 gem 'nokogiri'
 gem 'premailer-rails', group: [:development, :production]
 gem 'rack-attack'

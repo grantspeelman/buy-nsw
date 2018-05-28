@@ -109,7 +109,7 @@ private
 
   def api_filter(relation)
     if filter_selected?(:characteristics, :api)
-      relation = relation.api
+      relation = relation.with_api
     else
       relation
     end

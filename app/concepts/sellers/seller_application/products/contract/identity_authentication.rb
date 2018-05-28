@@ -9,7 +9,7 @@ module Sellers::SellerApplication::Products::Contract
         required(:authentication_required).filled(:bool?)
 
         required(:authentication_types).maybe(one_of?: Product.authentication_types.values)
-        required(:authentication_other).maybe(:str?)
+        required(:authentication_other).maybe(:str?, max_word_count?: 200)
 
         rule(authentication_types: [:authentication_required, :authentication_types]) do |radio, field|
           radio.true?.then(field.filled?.any_checked?)

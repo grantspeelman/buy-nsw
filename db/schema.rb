@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525020341) do
+ActiveRecord::Schema.define(version: 20180528084536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,7 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.decimal "pricing_min"
     t.decimal "pricing_max"
     t.string "pricing_unit"
-    t.text "pricing_variables", default: [], array: true
-    t.text "pricing_variables_other"
+    t.text "pricing_variables"
     t.string "pricing_calculator_url"
     t.boolean "education_pricing"
     t.text "education_pricing_eligibility"
@@ -114,11 +113,9 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.string "deployment_model"
     t.string "addon_extension_type"
     t.text "addon_extension_details"
-    t.boolean "api"
+    t.string "api"
     t.text "api_capabilities"
     t.text "api_automation"
-    t.boolean "api_documentation"
-    t.boolean "api_sandbox"
     t.text "government_network_type", default: [], array: true
     t.string "government_network_other"
     t.boolean "web_interface"
@@ -134,23 +131,20 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.string "scaling_type"
     t.text "guaranteed_availability"
     t.text "support_options", default: [], array: true
-    t.text "support_hours"
+    t.text "support_options_additional_cost"
     t.text "support_levels"
     t.text "data_import_formats", default: [], array: true
     t.text "data_import_formats_other"
     t.text "data_export_formats", default: [], array: true
     t.text "data_export_formats_other"
-    t.string "data_access"
-    t.string "audit_access_type"
     t.string "audit_storage_period"
     t.string "log_storage_period"
     t.string "data_location"
     t.text "data_location_other"
-    t.boolean "data_storage_control_australia"
-    t.boolean "third_party_infrastructure"
-    t.text "third_party_infrastructure_details"
-    t.text "backup_capability"
-    t.string "disaster_recovery_type"
+    t.boolean "data_location_control"
+    t.boolean "third_party_involved"
+    t.text "third_party_involved_details"
+    t.string "backup_capability"
     t.string "backup_scheduling_type"
     t.string "backup_recovery_type"
     t.text "encryption_transit_user_types", default: [], array: true
@@ -184,11 +178,9 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.string "pci_dss_accreditor"
     t.date "pci_dss_date"
     t.text "pci_dss_exclusions"
-    t.boolean "soc_1"
     t.boolean "soc_2"
     t.string "secure_development_approach"
     t.string "penetration_testing_frequency"
-    t.string "penetration_testing_approach"
     t.text "outage_channel_types", default: [], array: true
     t.text "outage_channel_other"
     t.text "metrics_contents"
@@ -199,6 +191,31 @@ ActiveRecord::Schema.define(version: 20180525020341) do
     t.text "audiences_other"
     t.string "pricing_currency"
     t.string "pricing_currency_other"
+    t.boolean "not_for_profit_pricing"
+    t.text "not_for_profit_pricing_eligibility"
+    t.text "not_for_profit_pricing_differences"
+    t.text "deployment_model_other"
+    t.text "data_location_unknown_reason"
+    t.boolean "own_data_centre"
+    t.text "own_data_centre_details"
+    t.boolean "audit_information"
+    t.boolean "data_access_restrictions"
+    t.text "data_access_restrictions_details"
+    t.string "encryption_keys_controller"
+    t.string "soc_2_accreditor"
+    t.date "soc_2_date"
+    t.text "soc_2_exclusions"
+    t.string "irap_type"
+    t.boolean "asd_certified"
+    t.text "security_classification_types", default: [], array: true
+    t.string "security_information_url"
+    t.text "penetration_testing_approach", array: true
+    t.boolean "virtualisation"
+    t.string "virtualisation_implementor"
+    t.string "virtualisation_third_party"
+    t.text "virtualisation_technologies", default: [], array: true
+    t.text "virtualisation_technologies_other"
+    t.text "user_separation_details"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|
