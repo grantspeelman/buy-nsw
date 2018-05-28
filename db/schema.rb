@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528081203) do
+ActiveRecord::Schema.define(version: 20180528083202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,7 +181,6 @@ ActiveRecord::Schema.define(version: 20180528081203) do
     t.boolean "soc_2"
     t.string "secure_development_approach"
     t.string "penetration_testing_frequency"
-    t.string "penetration_testing_approach"
     t.text "outage_channel_types", default: [], array: true
     t.text "outage_channel_other"
     t.text "metrics_contents"
@@ -210,6 +209,7 @@ ActiveRecord::Schema.define(version: 20180528081203) do
     t.boolean "asd_certified"
     t.text "security_classification_types", default: [], array: true
     t.string "security_information_url"
+    t.text "penetration_testing_approach", array: true
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

@@ -75,7 +75,7 @@ class Product < ApplicationRecord
 
   enumerize :secure_development_approach, in: ['independently-assessed', 'self-assessed', 'supplier-defined']
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
-  enumerize :penetration_testing_approach, in: ['crest-approved', 'other-external', 'in-house', 'none']
+  enumerize :penetration_testing_approach, multiple: true, in: ['crest-approved', 'other-external', 'in-house', 'none']
 
   enumerize :outage_channel_types, multiple: true, in: ['email', 'sms', 'dashboard', 'api', 'other']
   enumerize :metrics_channel_types, multiple: true, in: ['api', 'real-time', 'regular', 'on-request', 'other']
