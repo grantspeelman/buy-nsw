@@ -16,14 +16,23 @@
       <section class="feature half-width">
         <div class="inner">
           <h1>Buyers</h1>
-          <h2>Buy cloud software, hosting, infrastructure and support services.</h2>
-          <p>You can buy products and services here if you're in NSW Government or <a href="">another eligible organisation</a>.</p>
-          <p><%= link_to 'Start now &gt;'.html_safe, cloud_path, class: 'btn btn-primary' %></p>
+          <h2>Buy applications and software</h2>
+          <p> Cloud applications and software that you can access over the internet.</p>
+          <%= link_to 'Find applications and software', pathway_search_path('applications-software'), class: 'btn btn-primary' %>
+        </div>
+      </section>
+
+      <section class="feature half-width">
+        <div class="inner">
+          <h1>Buyers</h1>
+          <h2>Buy hosting and infrastructure</h2>
+          <p>Hosting and infrastructure services to help you deploy, manage and run software.</p>
+          <%= link_to 'Find hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'btn btn-primary' %>
         </div>
       </section>
       <% end %>
 
-      <section class="feature <%= feature_flag_hide_buyer_pathway ? 'full-width' : 'half-width' %>">
+      <section class="feature full-width">
         <div class="inner">
           <h1>Sellers</h1>
 
