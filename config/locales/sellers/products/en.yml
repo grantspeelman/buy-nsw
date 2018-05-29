@@ -233,7 +233,7 @@ en:
         pricing_min: "eg. what is the cost for one user for one month of the basic product."
         pricing_max: "eg. what is the cost for one user for one month of the comprehensive product."
       'sellers/seller_application/products/contract/onboarding_offboarding':
-        onboarding_assistance: Include, for example, whether you provide onsite training, online training, or user documentation, and whether there is an additional cost for any elements.
+        onboarding_assistance: Include, for example, whether you provide professional services to support adoption of your product, online or onsite training, documentation and if there's an additional cost.
         offboarding_assistance: Do you provide any assistance in addition to your contractual obligations, and is there any additional cost?
       'sellers/seller_application/products/contract/environment':
         web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
