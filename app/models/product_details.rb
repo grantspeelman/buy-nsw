@@ -206,6 +206,8 @@ private
       a["Whether users can access audit information about activities and transactions"] = product.audit_information
       a["The maximum time audit information data is stored"] = product.audit_storage_period
       a["The maximum time system logs are stored"] = product.log_storage_period
+
+      a["Approach to secure data disposal"] = product.data_disposal_approach
     end
   end
 

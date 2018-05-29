@@ -5,6 +5,7 @@ class Sellers::SellerApplication::Products::Clone < Trailblazer::Operation
   step :set_new_product_name!
   step :persist_new_product!
   step :copy_features_and_benefits!
+  step :copy_documents!
 
   def model!(options, params:, **)
     return false unless options['config.current_user'].present?
@@ -41,6 +42,15 @@ class Sellers::SellerApplication::Products::Clone < Trailblazer::Operation
     options[:product_model].benefits.each do |record|
       options[:new_product_model].benefits.create!(
         benefit: record.benefit,
+      )
+    end
+  end
+
+  def copy_documents!(options, **)
+    options[:product_model].documents.each do |document|
+      options[:new_product_model].documents.create!(
+        kind: document.kind,
+        document: document.document,
       )
     end
   end

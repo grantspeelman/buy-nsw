@@ -78,6 +78,20 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
     expect(new_product.benefits.count).to eq(benefits.count)
   end
 
+  it 'copies documents' do
+    product.terms_file = Rack::Test::UploadedFile.new(
+      Rails.root.join('spec', 'fixtures', 'files', 'example.pdf'),
+      'application/pdf'
+    )
+    product.save!
+
+    result = perform_operation
+    new_product = result[:new_product_model]
+
+    expect(new_product.documents.count).to eq(product.documents.count)
+    expect(new_product.documents.first.kind).to eq(product.documents.first.kind)
+  end
+
   describe 'finding the product' do
     it 'fails with an empty user' do
       result = subject.({
