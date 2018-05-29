@@ -145,8 +145,17 @@
     $hiddenInput.val('')
 
     // Reset the selected value in any dropdown boxes
-    $selectInput.find('option').removeAttr('selected')
-    $selectInput.find('option:first').attr('selected', true)
+    $.each($selectInput, function (i, item) {
+      var $item = $(item)
+      var defaultVal = $item.attr('data-expanding-list-default')
+
+      $item.find('option').removeAttr('selected')
+      if (defaultVal !== undefined) {
+        $item.find('option[value="' + defaultVal + '"]').attr('selected', true)
+      } else {
+        $item.find('option:first').attr('selected', true)
+      }
+    })
 
     return $templateForm
   }
