@@ -442,7 +442,7 @@ en:
         other: Other
       encryption_keys_controller:
         none: Not applicable
-        supplier: Supplier controller
+        supplier: Supplier controlled
         buyer: Buyer controlled
       authentication_types:
         username-password: Username and password
@@ -450,7 +450,7 @@ en:
         public-key: Public key authentication (including by TLS client certificate)
         federation: Identity federation with existing provider (eg. Google Apps)
         government-network: Limited access over a government network
-        dedicated-link: Dedicated link (eg. VPN or bonded fibre)
+        dedicated-link: Dedicated link (eg. VPN)
         other: Other
       access_testing_frequency:
         at-least-6-months: At least every 6 months
@@ -502,18 +502,18 @@ en:
         kvm-hypervisor: KVM hypervisor
         other: Other
       change_management_processes:
-        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 or SSAE-18/ISAE 3402"
         supplier-defined: "Supplier-defined process"
       vulnerability_processes:
-        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 or SSAE-18/ISAE 3402"
         supplier-defined: "Supplier-defined process"
         undisclosed: Undisclosed
       protective_monitoring_processes:
-        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 or SSAE-18/ISAE 3402"
         supplier-defined: "Supplier-defined process"
         undisclosed: Undisclosed
       incident_management_processes:
-        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 or SSAE-18/ISAE 3402"
         supplier-defined: "Supplier-defined process"
       access_control_testing_frequency:
         6-months: "At least every 6 months"
