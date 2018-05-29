@@ -93,12 +93,12 @@ en:
         linkedin_url: Provide a LinkedIn URL beginning with http
       'sellers/seller_application/contract/characteristics':
         start_up: Your business is not listed on any stock exchange and is less than 5 years old.
-        sme: Your business has less than 200 full-time equivalent employees and if from Australia or New Zealand.
-        not_for_profit: Your organisation applies applies commercial strategies to maximise improvements in human or environmental wellbeing and reinvests profit to fulfil its mission.
+        sme: Your business has less than 200 full-time equivalent employees and is from Australia or New Zealand.
+        not_for_profit: Your organisation's purpose is to improve human or environmental wellbeing and reinvests profit to fulfil its mission.
         australian_owned: Your business is founded and headquartered in Australia and owned by Australian nationals.
         disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
         female_owned: Your business has at least 50% female ownership.
-        indigenous_html: 'Your business is recognised by the <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a>, or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.'
+        indigenous_html: 'Your business is recognised by an appropriate organisation such as <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a> or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.'
       'sellers/seller_application/contract/financial_statement':
         financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming that your business is financially viable and, in their professional opinion, able to complete any contracts you may be awarded."
         financial_statement_expiry: We'll ask you to upload a new document when this one expires.
@@ -118,8 +118,8 @@ en:
         end-user-computing: "Provision, installation, configuration or maintenance of devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
         infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks, such as racking, cabling, routers and switches."
         telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
-        managed-services: "Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops associated."
-        advisory-consulting: "Specialist ICT expertise acting in an advisory capability to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
+        managed-services: "Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops."
+        advisory-consulting: "Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
         ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
         training-learning: "ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
   enumerize:
@@ -236,9 +236,9 @@ en:
         title: Your disclosures
         disclosures:
           receivership: "Is your organisation in receivership, administration or unable to meet its debts as they fall due?"
-          investigations: "Has your organisation — or any of its directors or principals — been or referred to investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
+          investigations: "Has your organisation — or any of its directors or principals — been or referred to or investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
           legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
-          insurance_claims: "Has your organisation made any claims on your professional indemnity, personal liability, directors or fidelity insurance in the last 5 years?"
+          insurance_claims: "Has your organisation made any claims on your professional indemnity, public liability, cyber, directors or fidelity insurance in the last 5 years?"
           conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?"
           other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?"
       messages:
