@@ -229,13 +229,13 @@ en:
                 incident_management_approach: Describe your crisis and incident management plan
                 access_control_testing_frequency: How often do you test your access controls?
               reporting_analytics:
-                metrics_contents: What metrics does your product or service report?
-                metrics_channel_types: How do you provide these reports?
-                metrics_channel_other: Please specify how you provide these reports
-                outage_channel_types: How do you provide outage alerts?
-                outage_channel_other: Please specify how you provide outage alerts
-                usage_channel_types: How are users notified if usage nears service limits?
-                usage_channel_other: Please specify how users are notified if usage nears service limits
+                metrics_contents: What metrics does your product or service report to users?
+                metrics_channel_types: How do you provide these reporting metrics to users?
+                metrics_channel_other: Specify how else you provide these reports
+                outage_channel_types: How do you provide outage alerts to users?
+                outage_channel_other: Specify how else you provide outage alerts
+                usage_channel_types: How are users notified when nearing service limits?
+                usage_channel_other: Specify how else users are notified when nearing service limits
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
