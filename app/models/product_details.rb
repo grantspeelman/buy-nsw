@@ -93,8 +93,8 @@ private
 
   def environment
     attributes do |a|
-      a["Cloud deployment model"] = product.deployment_model_text
-      if product.deployment_model == 'other-cloud'
+      a["Cloud deployment model"] = product.deployment_model.texts
+      if product.deployment_model.include?('other-cloud')
         a["Other deployment model"] = product.deployment_model_other
       end
 

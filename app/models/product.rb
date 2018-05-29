@@ -41,7 +41,7 @@ class Product < ApplicationRecord
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
   enumerize :pricing_currency, in: ['aud', 'usd', 'other']
-  enumerize :deployment_model, in: ['govdc', 'public-cloud', 'other-cloud']
+  enumerize :deployment_model, multiple: true, in: ['govdc', 'public-cloud', 'other-cloud']
   enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
   enumerize :api, in: ['rest', 'non-rest', 'no']
   enumerize :government_network_type, multiple: true, in: ['govdc', 'govlink', 'aarnet', 'id-hub', 'icon', 'other']

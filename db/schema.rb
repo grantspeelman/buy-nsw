@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528234850) do
+ActiveRecord::Schema.define(version: 20180529022929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20180528234850) do
     t.text "education_pricing_differences"
     t.text "onboarding_assistance"
     t.text "offboarding_assistance"
-    t.string "deployment_model"
     t.string "addon_extension_type"
     t.text "addon_extension_details"
     t.string "api"
@@ -225,6 +224,7 @@ ActiveRecord::Schema.define(version: 20180528234850) do
     t.string "incident_management_processes"
     t.text "incident_management_approach"
     t.string "access_control_testing_frequency"
+    t.text "deployment_model", default: [], array: true
   end
 
   create_table "seller_accreditations", force: :cascade do |t|
