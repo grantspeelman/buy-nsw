@@ -56,6 +56,7 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
       Sellers::SellerApplication::Products::Contract::ReportingAnalytics,
       Sellers::SellerApplication::Products::Contract::SecurityPractices,
       Sellers::SellerApplication::Products::Contract::SecurityStandards,
+      Sellers::SellerApplication::Products::Contract::Terms,
       Sellers::SellerApplication::Products::Contract::Type,
       Sellers::SellerApplication::Products::Contract::UserData,
       Sellers::SellerApplication::Products::Contract::UserSeparation,

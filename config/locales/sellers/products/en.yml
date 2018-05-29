@@ -310,6 +310,9 @@ en:
           reporting_analytics:
             short: Reporting and analytics
             long: Reporting and analytics
+          terms:
+            short: Your additional terms
+            long: Your additional terms
         sections:
           details: Your product
           security: Your security approach

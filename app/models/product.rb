@@ -2,9 +2,12 @@ class Product < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::Documentable
   include Concerns::StateScopes
 
   belongs_to :seller
+
+  has_documents :terms
 
   has_many :benefits, class_name: 'ProductBenefit'
   has_many :features, class_name: 'ProductFeature'

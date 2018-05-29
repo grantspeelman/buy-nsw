@@ -21,6 +21,7 @@ module Sellers::Applications
           step('data_protection'),
           step('identity_authentication'),
           step('reporting_analytics'),
+          step('terms'),
         ],
         section('security') => [
           step('security_standards'),
