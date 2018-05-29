@@ -1,10 +1,9 @@
 <p>
-  Your application for <%= @application.seller.name %> to sell on the
-  NSW Marketplace needs some changes before it can be approved.
+  Your application for <%= @application.seller.name %> to become a seller on <strong>buy.nsw</strong> needs to be updated before it can be approved.
 </p>
 
 <p>
-  Feedback from the reviewer: "<%= @application.response %>"
+  Here's the feedback you need to address: "<%= @application.response %>"
 </p>
 
 <p><%= link_to "Update application", sellers_application_url(@application) %></p>
