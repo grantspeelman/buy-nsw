@@ -2,8 +2,10 @@
   Your application for <%= @application.seller.name %> to become a seller on <strong>buy.nsw</strong> needs to be updated before it can be approved.
 </p>
 
+<% if @application.response.present? %>
 <p>
   Here's the feedback you need to address: "<%= @application.response %>"
 </p>
+<% end %>
 
 <p><%= link_to "Update application", sellers_application_url(@application) %></p>

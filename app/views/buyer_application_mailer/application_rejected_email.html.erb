@@ -1,8 +1,9 @@
 <p>
   Your application to become a buyer on <strong>buy.nsw</strong> wasn't approved.
 </p>
+<% if @application.decision_body.present? %>
 <p>
   The reason is because: "<%= @application.decision_body %>"
 </p>
+<% end %>
 <p> You can apply again in future if the situation changes. Thanks for your interest in <strong>buy.nsw</strong>.</p>
-
