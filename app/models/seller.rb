@@ -11,7 +11,6 @@ class Seller < ApplicationRecord
   has_many :addresses, class_name: 'SellerAddress', dependent: :destroy
   has_many :applications, class_name: 'SellerApplication'
   has_many :awards, class_name: 'SellerAward', dependent: :destroy
-  has_many :documents, as: :documentable, autosave: true, dependent: :destroy
   has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
   has_many :products
 
