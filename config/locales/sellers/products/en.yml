@@ -89,7 +89,7 @@ en:
                   'false': 'No'
                 mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
                 accessibility_type:
-                  question: What aspects of your product or service are accessible WCAG 2.0 AA or above?
+                  question: What aspects of your product or service meet WCAG 2.0 AA or EN 301 549 standards?
                 accessibility_exclusions: Specify the exclusions
                 scaling_type:
                   question: How does your product or service scale?
