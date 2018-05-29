@@ -36,7 +36,7 @@ en:
                 pricing:
                   legend: Your pricing
                 pricing_currency: Currency
-                pricing_currency_other: Please specify the currency as a three-letter code (as per ISO 4217)
+                pricing_currency_other: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD 
                 pricing_unit: Unit of pricing
                 pricing_min: Minimum price (excluding GST)
                 pricing_max: Maximum price (excluding GST)
@@ -352,8 +352,8 @@ en:
         'yes-and-standalone': 'Yes, but can also be used as a standalone service'
         'no': 'No'
       api:
-        rest: Yes - REST API
-        non-rest: Yes – non-REST API
+        rest: Yes — REST API
+        non-rest: Yes — non-REST API
         'no': 'No'
       government_network_type:
         govdc: GovDC
@@ -435,7 +435,7 @@ en:
         other: Other
       encryption_rest_types:
         physical-csa-ccm-v3: Physical access control, complying with CSA CCM v3.0
-        physical-ssae-16: Physical access control, complying with SSAE-16/ISAE 3402
+        physical-ssae-18: Physical access control, complying with SSAE-18/ISAE 3402
         physical-other: Physical access control, complying with another standard
         encryption-physical-media: Encryption of all physical media
         obfuscating: Scale, obfuscating techniques, or data storage sharding
