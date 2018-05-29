@@ -64,7 +64,7 @@ class Product < ApplicationRecord
 
   enumerize :encryption_transit_user_types, multiple: true, in: ['private-or-gov-network', 'tls', 'legacy-ssl-tls', 'vpn', 'other']
   enumerize :encryption_transit_network_types, multiple: true, in: ['tls', 'legacy-ssl-tls', 'vpn', 'other']
-  enumerize :encryption_rest_types, multiple: true, in: ['physical-csa-ccm-v3', 'physical-ssae-16', 'physical-other', 'encryption-physical-media', 'obfuscating', 'other']
+  enumerize :encryption_rest_types, multiple: true, in: ['physical-csa-ccm-v3', 'physical-ssae-18', 'physical-other', 'encryption-physical-media', 'obfuscating', 'other']
   enumerize :encryption_keys_controller, in: ['none', 'supplier', 'buyer']
 
   enumerize :authentication_types, multiple: true, in: ['username-password', '2fa', 'public-key', 'federation', 'government-network', 'dedicated-link', 'other']
