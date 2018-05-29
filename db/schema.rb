@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528084536) do
+ActiveRecord::Schema.define(version: 20180528234850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,15 @@ ActiveRecord::Schema.define(version: 20180528084536) do
     t.text "virtualisation_technologies", default: [], array: true
     t.text "virtualisation_technologies_other"
     t.text "user_separation_details"
+    t.string "change_management_processes"
+    t.text "change_management_approach"
+    t.string "vulnerability_processes"
+    t.text "vulnerability_approach"
+    t.string "protective_monitoring_processes"
+    t.text "protective_monitoring_approach"
+    t.string "incident_management_processes"
+    t.text "incident_management_approach"
+    t.string "access_control_testing_frequency"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

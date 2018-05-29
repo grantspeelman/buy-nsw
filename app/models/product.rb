@@ -80,6 +80,12 @@ class Product < ApplicationRecord
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
   enumerize :penetration_testing_approach, multiple: true, in: ['crest-approved', 'other-external', 'in-house', 'none']
 
+  enumerize :change_management_processes, in: ['recognised-standard', 'supplier-defined']
+  enumerize :vulnerability_processes, in: ['recognised-standard', 'supplier-defined', 'undisclosed']
+  enumerize :protective_monitoring_processes, in: ['recognised-standard', 'supplier-defined', 'undisclosed']
+  enumerize :incident_management_processes, in: ['recognised-standard', 'supplier-defined']
+  enumerize :access_control_testing_frequency, in: ['6-months', 'yearly', 'less-than-yearly', 'never']
+
   enumerize :outage_channel_types, multiple: true, in: ['email', 'sms', 'dashboard', 'api', 'other']
   enumerize :metrics_channel_types, multiple: true, in: ['api', 'real-time', 'regular', 'on-request', 'other']
   enumerize :usage_channel_types, multiple: true, in: ['email', 'sms', 'api', 'other']
