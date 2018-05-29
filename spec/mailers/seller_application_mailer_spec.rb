@@ -69,7 +69,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     end
 
     it 'lets them know that they need to make changes' do
-      expect(mail.body.encoded).to match('needs some changes')
+      expect(mail.body.encoded).to match('needs to be updated')
     end
 
     it 'should include the name of the seller' do
