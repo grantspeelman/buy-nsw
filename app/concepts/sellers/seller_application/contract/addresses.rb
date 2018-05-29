@@ -1,6 +1,7 @@
 module Sellers::SellerApplication::Contract
   class Addresses < Base
     include Concerns::Contracts::Populators
+    include Forms::ValidationHelper
 
     AddressPopulator = -> (options) {
       return NestedChildPopulator.call(options.merge(
@@ -12,7 +13,7 @@ module Sellers::SellerApplication::Contract
     }
     AddressPrepopulator = ->(_) {
       if self.addresses.size < 1
-        self.addresses << SellerAddress.new(seller_id: seller_id)
+        self.addresses << SellerAddress.new(seller_id: seller_id, country: 'AU')
       end
     }
 
@@ -21,16 +22,18 @@ module Sellers::SellerApplication::Contract
       property :suburb
       property :state
       property :postcode
+      property :country
 
-      validation :default do
+      validation :default, inherit: true do
         required(:address).filled
         required(:suburb).filled
         required(:state).filled
         required(:postcode).filled
+        required(:country).filled(included_in?: ISO3166::Country.translations.keys)
       end
     end
 
-    validation :default do
+    validation :default, inherit: true do
       required(:seller).schema do
         optional(:addresses).each do
           schema do
@@ -38,6 +41,7 @@ module Sellers::SellerApplication::Contract
             required(:suburb).filled
             required(:state).filled
             required(:postcode).filled
+            required(:country).filled(included_in?: ISO3166::Country.translations.keys)
           end
         end
 
@@ -47,6 +51,7 @@ module Sellers::SellerApplication::Contract
             required(:suburb).filled
             required(:state).filled
             required(:postcode).filled
+            required(:country).filled(included_in?: ISO3166::Country.translations.keys)
           end
         end
 

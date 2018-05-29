@@ -159,6 +159,7 @@ en:
         tas: Tasmania
         vic: Victoria
         wa: Western Australia
+        outside_au: Outside Australia
   sellers:
     applications:
       title: Your application

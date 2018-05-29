@@ -50,7 +50,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
       suburb: model.suburb,
       state: model.state,
       postcode: model.postcode,
-      # TODO: Add country here once country support is added
+      country: model.country,
     )
     options['seller_address'].save!
   end
