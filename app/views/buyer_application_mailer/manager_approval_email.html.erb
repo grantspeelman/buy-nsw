@@ -1,11 +1,9 @@
 <p>Hello,</p>
 
-<p>
-  <strong><%= @application.buyer.name %></strong> (<%= @application.user.email %>) has requested a buyer account on the <strong>buy.nsw</strong>.
-</p>
+<p><%= @application.buyer.name %> (<%= @application.user.email %>) has just applied for a buyer account on <strong>buy.nsw</strong>.</p>
 
-<p>Accounts for contractors require manager approval, and you have been nominated as their manager.</p>
+<p>Accounts for contractors need approval from their manager.</p>
 
-<p>If you are happy to approve the account, please click the link below.</p>
+<p>To approve the account, please click the link below.</p>
 
 <p><%= link_to 'Approve account', buyers_manager_approve_application_url(@application, token: @application.manager_approval_token), class: 'button' %></p>
