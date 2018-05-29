@@ -8,6 +8,8 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_seller_sign_up
     confirm_email_address
 
+    click_on I18n.t('sellers.applications.introduction.button_label')
+
     complete_services
     complete_business_details
     complete_contacts

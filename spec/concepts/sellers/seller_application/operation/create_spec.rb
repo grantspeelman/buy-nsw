@@ -17,11 +17,11 @@ RSpec.describe Sellers::SellerApplication::Create do
     expect(Seller.count).to eq(1)
     expect(SellerApplication.count).to eq(1)
 
-    expect(result[:application_model]).to be_persisted
-    expect(result[:seller_model]).to be_persisted
+    expect(result['model.application']).to be_persisted
+    expect(result['model.seller']).to be_persisted
 
-    expect(result[:seller_model].owners).to contain_exactly(user)
-    expect(user.seller).to eq(result[:seller_model])
+    expect(result['model.seller'].owners).to contain_exactly(user)
+    expect(user.seller).to eq(result['model.seller'])
   end
 
   it 'does not create an additional seller when one exists' do
@@ -47,14 +47,14 @@ RSpec.describe Sellers::SellerApplication::Create do
 
     Timecop.freeze(time) do
       result = perform_operation
-      expect(result[:application_model].started_at.to_i).to eq(time.to_i)
+      expect(result['model.application'].started_at.to_i).to eq(time.to_i)
     end
   end
 
   it 'logs an event when the application is started' do
     result = perform_operation
-    expect(result[:application_model].events.last.message).to eq("Started application")
-    expect(result[:application_model].events.last.user).to eq(user)
+    expect(result['model.application'].events.last.message).to eq("Started application")
+    expect(result['model.application'].events.last.user).to eq(user)
   end
 
   it 'does not update the started_at timestamp for an existing application' do
@@ -62,7 +62,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     application = create(:seller_application, seller: seller, started_at: 1.hour.ago)
 
     result = perform_operation
-    expect(result[:application_model].started_at.to_i).to eq(application.started_at.to_i)
+    expect(result['model.application'].started_at.to_i).to eq(application.started_at.to_i)
   end
 
   it 'fails when an application has already been submitted' do

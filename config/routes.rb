@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :sellers do
-    resources :applications, only: [:new, :show, :update], controller: 'applications/root' do
+    resources :applications, only: [:new, :create, :show, :update], controller: 'applications/root' do
       member do
         get :submit
         post :submit, to: 'applications/root#do_submit'
