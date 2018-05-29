@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <%= render partial: 'layouts/google_analytics' %>
-    <title>
-      <%= "(#{deployment_env.try(:titleize)})" %> buy.nsw</title>
+    <title><%= title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
