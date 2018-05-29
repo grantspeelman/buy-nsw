@@ -12,6 +12,7 @@
     <div class="audiences">
       <h2>What you can do now</h2>
 
+      <% unless feature_flag_hide_buyer_pathway %>
       <section class="feature half-width">
         <div class="inner">
           <h1>Buyers</h1>
@@ -20,8 +21,9 @@
           <p><%= link_to 'Start now &gt;'.html_safe, cloud_path, class: 'btn btn-primary' %></p>
         </div>
       </section>
+      <% end %>
 
-      <section class="feature half-width">
+      <section class="feature <%= feature_flag_hide_buyer_pathway ? 'full-width' : 'half-width' %>">
         <div class="inner">
           <h1>Sellers</h1>
 
@@ -31,6 +33,7 @@
         </div>
       </section>
 
+      <% unless feature_flag_hide_buyer_pathway %>
       <div class="feature full-width">
         <div class="inner">
           <h1>Search for approved sellers</h1>
@@ -38,6 +41,7 @@
           <%= render partial: 'inline_search_form' %>
         </div>
       </div>
+      <% end %>
     </div>
     <div class="audiences">
       <h2>What you can do soon</h2>

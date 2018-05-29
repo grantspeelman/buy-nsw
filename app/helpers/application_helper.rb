@@ -12,4 +12,8 @@ module ApplicationHelper
     end
   end
 
+  # Super crude way of doing a feature flag
+  def feature_flag_hide_buyer_pathway
+    ENV['FEATURE_FLAG_HIDE_BUYER_PATHWAY'].present?
+  end
 end
