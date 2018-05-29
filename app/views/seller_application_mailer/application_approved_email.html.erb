@@ -4,9 +4,11 @@
   Your application for <%= @application.seller.name %> to become a seller on <strong>buy.nsw</strong> has been approved.
 </p>
 
+<% if @application.response.present? %>
 <p>
   Feedback from the reviewer: "<%= @application.response %>"
 </p>
+<% end %>
 
 <p>
   You can view and update your seller profile now.

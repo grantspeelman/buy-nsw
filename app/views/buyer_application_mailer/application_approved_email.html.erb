@@ -1,3 +1,4 @@
+<% if @application.decision_body.present? %>
 <p>
  Your application to become a buyer on <strong>buy.nsw</strong> has been approved, with this feedback from our team:
 </p>
@@ -5,6 +6,11 @@
 <p> 
  "<%= @application.decision_body %>"
 </p>
+<% else %>
+<p>
+ Your application to become a buyer on <strong>buy.nsw</strong> has been approved.
+</p>
+<% end %>
 
 <p> You're free to begin browsing <strong>buy.nsw</strong>.  
 
