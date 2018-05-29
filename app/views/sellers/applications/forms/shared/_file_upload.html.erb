@@ -1,39 +1,24 @@
-<p>Your corporate documents will appear on your seller profile to logged in buyers.</p>
-<p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.</p>
-<p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
+<% if (upload = f.object.upload_for(field)) && file_attached?(upload) %>
+  <div class="current-document">
+    <h3>Currently uploaded file:</h3>
 
-<fieldset class="file-upload">
-  <legend><%= t("activemodel.attributes.sellers.seller_application.contract.#{step.key}.#{field}") %></legend>
-  <p><%= t("activerecord.help.sellers/seller_application/contract/#{step.key}.#{field}") %></p>
+    <span class="icon" aria-hidden="true"></span>
+    <div class="file">
+      <span class="file-name"><%= upload.original_filename %></span>
 
-  <% if (upload = f.object.upload_for(field)) && file_attached?(upload) %>
-    <div class="current-document">
-      <h3>Currently uploaded file:</h3>
-
-      <span class="icon" aria-hidden="true"></span>
-      <div class="file">
-        <span class="file-name"><%= upload.original_filename %></span>
-
-        <% if file_clean?(upload) %>
-          <div class="download-action">
-            <%= link_to 'Download file', upload.document.url, target: '_blank' %>
-          </div>
-        <% else %>
-          <span class="scan-status">
-            <%= upload.scan_status_text %>
-          </span>
-        <% end %>
-      </div>
-
-      <%= f.file_field "#{field}_file", help: false, label: 'Replace this file' %>
+      <% if file_clean?(upload) %>
+        <div class="download-action">
+          <%= link_to 'Download file', upload.document.url, target: '_blank' %>
+        </div>
+      <% else %>
+        <span class="scan-status">
+          <%= upload.scan_status_text %>
+        </span>
+      <% end %>
     </div>
-  <% else %>
-    <%= f.file_field "#{field}_file", help: false, label: 'Upload a file' %>
-  <% end %>
 
-  <%= date_field_from_value f, "#{field}_expiry", f.object.send("#{field}_expiry") %>
-
-  <small class="form-text text-muted">
-    <%= t("activerecord.help.sellers/seller_application/contract/#{step.key}.#{field}_expiry") %>
-  </small>
-</fieldset>
+    <%= f.file_field "#{field}_file", help: false, label: 'Replace this file' %>
+  </div>
+<% else %>
+  <%= f.file_field "#{field}_file", help: false, label: 'Upload a file' %>
+<% end %>
