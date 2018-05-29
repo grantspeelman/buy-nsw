@@ -31,7 +31,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     submit_application
 
     expect(page).to have_content('Seller dashboard')
-    expect(page).to have_content('Your seller application is being reviewed')
+    expect(page).to have_content("We'll be in touch by email soon with the outcome of your application")
   end
 
   def complete_seller_sign_up
