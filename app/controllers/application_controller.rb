@@ -31,7 +31,7 @@ private
   end
 
   def render_not_found
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: nil
+    errors_controller.process(:not_found)
   end
 
   def render_unauthorized
@@ -41,5 +41,12 @@ private
     else
       redirect_to new_user_session_path
     end
+  end
+
+  def errors_controller
+    ErrorsController.new.tap {|controller|
+      controller.request = request
+      controller.response = response
+    }
   end
 end
