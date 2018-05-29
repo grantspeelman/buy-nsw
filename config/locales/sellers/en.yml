@@ -10,7 +10,7 @@ en:
                 'false': 'No'
             profile_basics:
               summary: 'Summary'
-              website_url: 'Website URL (optional)'
+              website_url: 'Website URL'
               linkedin_url: 'LinkedIn URL (optional)'
             characteristics:
               number_of_employees: 'Number of employees'
