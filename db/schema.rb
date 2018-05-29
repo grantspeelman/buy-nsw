@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180529025310) do
+ActiveRecord::Schema.define(version: 20180529030915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,7 +187,6 @@ ActiveRecord::Schema.define(version: 20180529025310) do
     t.text "metrics_channel_other"
     t.text "usage_channel_types", default: [], array: true
     t.text "usage_channel_other"
-    t.text "audiences_other"
     t.string "pricing_currency"
     t.string "pricing_currency_other"
     t.boolean "not_for_profit_pricing"
