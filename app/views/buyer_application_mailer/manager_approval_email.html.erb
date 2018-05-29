@@ -2,8 +2,8 @@
 
 <p><%= @application.buyer.name %> (<%= @application.user.email %>) has just applied for a buyer account on <strong>buy.nsw</strong>.</p>
 
-<p>Accounts for contractors need approval from their manager.</p>
+<p>However, accounts for contractors need approval from their manager.</p> 
 
-<p>To approve the account, please click the link below.</p>
+<p>To confirm you are their manager and approve the account, please click the link below.</p>
 
 <p><%= link_to 'Approve account', buyers_manager_approve_application_url(@application, token: @application.manager_approval_token), class: 'button' %></p>
