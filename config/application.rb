@@ -52,6 +52,8 @@ module ProcurementHub
       Devise::Mailer.layout 'mailer'
     end
 
+    config.exceptions_app = self.routes
+
     # Doing this here so it's added after premailer
     config.after_initialize do
       unless Rails.env.test?

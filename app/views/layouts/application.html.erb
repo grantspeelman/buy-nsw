@@ -24,7 +24,9 @@
             <% end %>
           </h1>
 
-          <%= render partial: 'layouts/user_links' %>
+          <% unless content_for(:skip_user_links) %>
+            <%= render partial: 'layouts/user_links' %>
+          <% end %>
         </div>
       </div>
 
