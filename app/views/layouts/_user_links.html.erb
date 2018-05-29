@@ -8,7 +8,7 @@
     <% if current_user.is_seller? %>
       <% if current_user.seller&.application_in_progress? %>
         <li><%= link_to 'Continue application', new_sellers_application_path %></li>
-      <% else %>
+      <% elsif current_user.seller.present? %>
         <li><%= link_to 'Seller dashboard', sellers_dashboard_path %></li>
       <% end %>
     <% end %>

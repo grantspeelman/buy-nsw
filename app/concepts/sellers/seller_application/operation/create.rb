@@ -1,34 +1,41 @@
 class Sellers::SellerApplication::Create < Trailblazer::Operation
-  step :model!
-  step :check_application_state!
+  class Present < Trailblazer::Operation
+    step :model!
+    step :check_application_state!
+
+    def model!(options, **)
+      options['model.seller'] = options['config.current_user'].seller || Seller.new
+
+      options['model.application'] = options['model.seller'].applications.first ||
+                                      SellerApplication.new(started_at: Time.now)
+    end
+
+    def check_application_state!(options, **)
+      options['application_created'] = options['model.application'].persisted?
+      options['application_submitted'] = (options['model.application'].state != 'created')
+
+      options['application_created'] == false && options['application_submitted'] == false
+    end
+  end
+
+  step Nested(Present)
   step :persist_with_relations!
   step :log_event!
 
-  def model!(options, **)
-    options[:seller_model] = options['config.current_user'].seller || Seller.new
-
-    options[:application_model] = options[:seller_model].applications.first ||
-                                    SellerApplication.new(started_at: Time.now)
-  end
-
-  def check_application_state!(options, **)
-    options[:application_model].created?
-  end
-
   def persist_with_relations!(options, **)
-    options[:seller_model].save!
+    options['model.seller'].save!
 
-    options['config.current_user'].seller = options[:seller_model]
-    options[:application_model].seller = options[:seller_model]
+    options['config.current_user'].seller = options['model.seller']
+    options['model.application'].seller = options['model.seller']
 
     options['config.current_user'].save!
-    options[:application_model].save!
+    options['model.application'].save!
   end
 
   def log_event!(options, **)
     Event::StartedApplication.create(
       user: options['config.current_user'],
-      eventable: options[:application_model]
+      eventable: options['model.application']
     )
   end
 end
