@@ -3,8 +3,10 @@
   NSW Marketplace needs some changes before it can be approved.
 </p>
 
+<% if @application.response.present? %>
 <p>
   Feedback from the reviewer: "<%= @application.response %>"
 </p>
+<% end %>
 
 <p><%= link_to "Update application", sellers_application_url(@application) %></p>

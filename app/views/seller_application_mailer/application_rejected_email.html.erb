@@ -1,9 +1,15 @@
 <p>
   Sorry, your application for <%= @application.seller.name %> to sell on <strong>buy.nsw</strong> wasn't approved.
 </p>
+<% if @application.response.present? %>
 <p>
   After a careful review, we decided the application wasn't right at this time because of the following reasons: "<%= @application.response %>"
 </p>
-<p> 
+<% else %>
+<p>
+  After a careful review, we decided the application wasn't right at this time.
+</p>
+<% end %>
+<p>
   You can apply again in future if the situation changes.
 </p>
