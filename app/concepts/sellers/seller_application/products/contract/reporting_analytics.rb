@@ -12,7 +12,7 @@ module Sellers::SellerApplication::Products::Contract
 
     validation :default, inherit: true do
       required(:product).schema do
-        required(:metrics_contents).filled(:str?, max_word_count?: 100)
+        required(:metrics_contents).filled(:str?, max_word_count?: 200)
         required(:metrics_channel_types).filled(any_checked?: true, one_of?: Product.metrics_channel_types.values)
         required(:metrics_channel_other).maybe(:str?)
 

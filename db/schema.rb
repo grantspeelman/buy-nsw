@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528084536) do
+ActiveRecord::Schema.define(version: 20180529030915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20180528084536) do
     t.text "education_pricing_differences"
     t.text "onboarding_assistance"
     t.text "offboarding_assistance"
-    t.string "deployment_model"
     t.string "addon_extension_type"
     t.text "addon_extension_details"
     t.string "api"
@@ -188,7 +187,6 @@ ActiveRecord::Schema.define(version: 20180528084536) do
     t.text "metrics_channel_other"
     t.text "usage_channel_types", default: [], array: true
     t.text "usage_channel_other"
-    t.text "audiences_other"
     t.string "pricing_currency"
     t.string "pricing_currency_other"
     t.boolean "not_for_profit_pricing"
@@ -216,6 +214,17 @@ ActiveRecord::Schema.define(version: 20180528084536) do
     t.text "virtualisation_technologies", default: [], array: true
     t.text "virtualisation_technologies_other"
     t.text "user_separation_details"
+    t.string "change_management_processes"
+    t.text "change_management_approach"
+    t.string "vulnerability_processes"
+    t.text "vulnerability_approach"
+    t.string "protective_monitoring_processes"
+    t.text "protective_monitoring_approach"
+    t.string "incident_management_processes"
+    t.text "incident_management_approach"
+    t.string "access_control_testing_frequency"
+    t.text "deployment_model", default: [], array: true
+    t.text "data_disposal_approach"
   end
 
   create_table "seller_accreditations", force: :cascade do |t|

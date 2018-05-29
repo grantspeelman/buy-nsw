@@ -132,6 +132,7 @@ en:
                   'false': 'No'
                 audit_storage_period: What is the maximum time audit information data is stored?
                 log_storage_period: What is the maximum time system logs are stored?
+                data_disposal_approach: How do you securely dispose of user data?
               data_protection:
                 encryption_transit_user_types: How do you protect data between the end user and your network
                 encryption_transit_user_other: Describe how else you protect data between users and your network
@@ -218,14 +219,24 @@ en:
                 virtualisation_technologies: What virtualisation technologies are used?
                 virtualisation_technologies_other: Specify other virtualisation technologies used
                 user_separation_details: Describe how different organisations sharing the same infrastructure are kept apart
+              operational_security:
+                change_management_processes: Which configuration and change management processes does your organisation follow?
+                change_management_approach: Describe your configuration and change management approach
+                vulnerability_processes: Which vulnerability management processes does your organisation follow?
+                vulnerability_approach: Describe your vulnerability management process
+                protective_monitoring_processes: Which protective monitoring processes does your organisation follow?
+                protective_monitoring_approach: Describe your protective monitoring process
+                incident_management_processes: Which crisis and incident managemewnt processes does your organisation follow?
+                incident_management_approach: Describe your crisis and incident management plan
+                access_control_testing_frequency: How often do you test your access controls?
               reporting_analytics:
-                metrics_contents: What metrics does your product or service report?
-                metrics_channel_types: How do you provide these reports?
-                metrics_channel_other: Please specify how you provide these reports
-                outage_channel_types: How do you provide outage alerts?
-                outage_channel_other: Please specify how you provide outage alerts
-                usage_channel_types: How are users notified if usage nears service limits?
-                usage_channel_other: Please specify how users are notified if usage nears service limits
+                metrics_contents: What metrics does your product or service report to users?
+                metrics_channel_types: How do you provide these reporting metrics to users?
+                metrics_channel_other: Specify how else you provide these reports
+                outage_channel_types: How do you provide outage alerts to users?
+                outage_channel_other: Specify how else you provide outage alerts
+                usage_channel_types: How are users notified when nearing service limits?
+                usage_channel_other: Specify how else users are notified when nearing service limits
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
@@ -300,6 +311,9 @@ en:
           reporting_analytics:
             short: Reporting and analytics
             long: Reporting and analytics
+          terms:
+            short: Your additional terms
+            long: Your additional terms
         sections:
           details: Your product
           security: Your security approach
@@ -487,6 +501,25 @@ en:
         red-hat-virtualisation: Red Hat Virtualisation
         kvm-hypervisor: KVM hypervisor
         other: Other
+      change_management_processes:
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        supplier-defined: "Supplier-defined process"
+      vulnerability_processes:
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        supplier-defined: "Supplier-defined process"
+        undisclosed: Undisclosed
+      protective_monitoring_processes:
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        supplier-defined: "Supplier-defined process"
+        undisclosed: Undisclosed
+      incident_management_processes:
+        recognised-standard: "A recognised standard, for example CSA CCM v3.0 (or later) or SSAE-18/ISAE 3402"
+        supplier-defined: "Supplier-defined process"
+      access_control_testing_frequency:
+        6-months: "At least every 6 months"
+        yearly: "At least once a year"
+        less-than-yearly: "Less than once a year"
+        never: "Never"
       outage_channel_types:
         email: Email alerts
         sms: SMS alerts

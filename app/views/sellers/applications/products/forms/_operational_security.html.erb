@@ -1,1 +1,35 @@
-<p>TODO</p>
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:change_management_processes, Product.change_management_processes.options, :last, :first) %>
+</fieldset>
+
+<fieldset>
+  <%= f.text_area :change_management_approach, rows: 5 %>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:vulnerability_processes, Product.vulnerability_processes.options, :last, :first) %>
+</fieldset>
+
+<fieldset>
+  <%= f.text_area :vulnerability_approach, rows: 5 %>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:protective_monitoring_processes, Product.protective_monitoring_processes.options, :last, :first) %>
+</fieldset>
+
+<fieldset>
+  <%= f.text_area :protective_monitoring_approach, rows: 5 %>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:incident_management_processes, Product.incident_management_processes.options, :last, :first) %>
+</fieldset>
+
+<fieldset>
+  <%= f.text_area :incident_management_approach, rows: 5 %>
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+  <%= f.collection_radio_buttons(:access_control_testing_frequency, Product.access_control_testing_frequency.options, :last, :first) %>
+</fieldset>

@@ -10,5 +10,9 @@ module Sellers::SellerApplication::Products::Contract
     def product_id
       model[:product].id
     end
+
+    def upload_for(key)
+      self.model[:product].public_send(key)
+    end
   end
 end

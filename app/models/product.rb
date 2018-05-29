@@ -2,9 +2,12 @@ class Product < ApplicationRecord
   include AASM
   extend Enumerize
 
+  include Concerns::Documentable
   include Concerns::StateScopes
 
   belongs_to :seller
+
+  has_documents :terms
 
   has_many :benefits, class_name: 'ProductBenefit'
   has_many :features, class_name: 'ProductFeature'
@@ -34,11 +37,10 @@ class Product < ApplicationRecord
     'projects-team-collaboration',
     'sales-marketing',
     'security-cyber',
-    'other'
   ]
   enumerize :reseller_type, in: ['own-product', 'no-extras', 'extra-support', 'extra-features-support']
   enumerize :pricing_currency, in: ['aud', 'usd', 'other']
-  enumerize :deployment_model, in: ['govdc', 'public-cloud', 'other-cloud']
+  enumerize :deployment_model, multiple: true, in: ['govdc', 'public-cloud', 'other-cloud']
   enumerize :addon_extension_type, in: ['yes', 'yes-and-standalone', 'no']
   enumerize :api, in: ['rest', 'non-rest', 'no']
   enumerize :government_network_type, multiple: true, in: ['govdc', 'govlink', 'aarnet', 'id-hub', 'icon', 'other']
@@ -79,6 +81,12 @@ class Product < ApplicationRecord
   enumerize :secure_development_approach, in: ['independently-assessed', 'self-assessed', 'supplier-defined']
   enumerize :penetration_testing_frequency, in: ['at-least-6-months', 'at-least-once-year', 'less-than-once-year', 'never']
   enumerize :penetration_testing_approach, multiple: true, in: ['crest-approved', 'other-external', 'in-house', 'none']
+
+  enumerize :change_management_processes, in: ['recognised-standard', 'supplier-defined']
+  enumerize :vulnerability_processes, in: ['recognised-standard', 'supplier-defined', 'undisclosed']
+  enumerize :protective_monitoring_processes, in: ['recognised-standard', 'supplier-defined', 'undisclosed']
+  enumerize :incident_management_processes, in: ['recognised-standard', 'supplier-defined']
+  enumerize :access_control_testing_frequency, in: ['6-months', 'yearly', 'less-than-yearly', 'never']
 
   enumerize :outage_channel_types, multiple: true, in: ['email', 'sms', 'dashboard', 'api', 'other']
   enumerize :metrics_channel_types, multiple: true, in: ['api', 'real-time', 'regular', 'on-request', 'other']

@@ -29,10 +29,13 @@ module Sellers::SellerApplication::Products::Contract
       end
     }
 
+    def audiences=(values)
+      super(values.reject(&:blank?))
+    end
+
     property :name, on: :product
     property :summary, on: :product
     property :audiences, on: :product
-    property :audiences_other, on: :product
 
     property :reseller_type, on: :product
     property :organisation_resold, on: :product
@@ -54,12 +57,7 @@ module Sellers::SellerApplication::Products::Contract
         required(:name).filled
         required(:summary).filled(max_word_count?: 200)
 
-        required(:audiences).filled
-        required(:audiences_other).maybe(:str?)
-
-        rule(audiences_other: [:audiences, :audiences_other]) do |type, field|
-          type.contains?('other').then(field.filled?)
-        end
+        required(:audiences).filled(one_of?: Product.audiences.values, max_size?: 3)
 
         required(:reseller_type).filled
         required(:organisation_resold).maybe(:str?)

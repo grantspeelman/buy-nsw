@@ -11,6 +11,8 @@ module Sellers::SellerApplication::Products::Contract
     property :audit_storage_period, on: :product
     property :log_storage_period, on: :product
 
+    property :data_disposal_approach, on: :product
+
     validation :default, inherit: true do
       required(:product).schema do
         required(:data_import_formats).maybe(one_of?: Product.data_import_formats.values)
@@ -37,6 +39,7 @@ module Sellers::SellerApplication::Products::Contract
         required(:audit_information).filled(:bool?)
         required(:audit_storage_period).filled(:str?)
         required(:log_storage_period).filled(:str?)
+        required(:data_disposal_approach).filled(:str?)
       end
     end
   end

@@ -31,11 +31,11 @@ module Sellers::SellerApplication::Products::Contract
 
     validation :default, inherit: true do
       required(:product).schema do
-        required(:deployment_model).filled(in_list?: Product.deployment_model.values)
+        required(:deployment_model).filled(one_of?: Product.deployment_model.values)
         required(:deployment_model_other).maybe(:str?)
 
-        rule(deployment_model_other: [:deployment_model, :deployment_model_other]) do |radio, field|
-          radio.eql?('other-cloud').then(field.filled?)
+        rule(deployment_model_other: [:deployment_model, :deployment_model_other]) do |checkboxes, field|
+          checkboxes.contains?('other-cloud').then(field.filled?)
         end
 
         required(:addon_extension_type).filled(in_list?: Product.addon_extension_type.values)

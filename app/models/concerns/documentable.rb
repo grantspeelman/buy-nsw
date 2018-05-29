@@ -10,7 +10,7 @@ module Concerns::Documentable
 
         after_save do
           @documents.each {|key, doc|
-            doc.save! if doc.document_changed?
+            doc.save! if doc.document_changed? && !doc.destroyed?
           }
         end
 
@@ -23,7 +23,17 @@ module Concerns::Documentable
         end
 
         define_method("#{field}_file=") do |file|
-          self.public_send("#{field}").document = file
+          # NOTE: Check that this is actually an uploaded file
+          # (eg. ActionDispatch::Http::UploadedFile) and not just an instance
+          # of the Carrierwave uploader object being re-assigned.
+          #
+          if file.respond_to?(:tempfile)
+            self.public_send("#{field}").document = file
+          end
+        end
+
+        define_method("remove_#{field}") do
+          false
         end
 
         define_method("remove_#{field}=") do |value|
@@ -35,6 +45,8 @@ module Concerns::Documentable
 
   included do
     private_class_method :has_documents
+
+    has_many :documents, as: :documentable, autosave: true, dependent: :destroy
   end
 
 end

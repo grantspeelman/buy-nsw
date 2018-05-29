@@ -3,8 +3,9 @@ module Sellers::SellerApplication::Contract
     feature Reform::Form::ActiveModel::FormBuilderMethods
     feature Reform::Form::MultiParameterAttributes
 
-    property :product_liability_certificate_file,        on: :seller
+    property :product_liability_certificate_file,   on: :seller
     property :product_liability_certificate_expiry, on: :seller, multi_params: true
+    property :remove_product_liability_certificate, on: :seller
 
     module Types
       include Dry::Types.module
@@ -45,6 +46,13 @@ module Sellers::SellerApplication::Contract
         rule(product_liability_certificate_expiry: [:product_liability_certificate_file, :product_liability_certificate_expiry]) do |file, expiry|
           file.filled?.then(expiry.filled?)
         end
+      end
+    end
+
+    def started?
+      super do |key, value|
+        next if key == 'product_liability_certificate'
+        value.present?
       end
     end
   end

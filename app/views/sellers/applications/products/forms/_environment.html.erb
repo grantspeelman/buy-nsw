@@ -1,7 +1,7 @@
-<fieldset class="multiple-choice-group radio-group"
+<fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other-cloud">
-  <%= f.collection_radio_buttons(:deployment_model, Product.deployment_model.options, :last, :first, data: { further_details: 'input' }) %>
+  <%= f.collection_check_boxes(:deployment_model, Product.deployment_model.options, :last, :first, data: { further_details: 'input' }) %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
