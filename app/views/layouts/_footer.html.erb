@@ -1,0 +1,18 @@
+<footer role="global">
+  <div class="container">
+    <div class="row">
+      <div class="footer-left">
+        <%= deployment_env.try(:titleize) %>
+        <% if defined?(APP_VERSION) %>
+          (<%= APP_VERSION %>, created <%= time_ago_in_words(APP_VERSION_TIME) %> ago)
+        <% end %>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><%= link_to "Privacy statement", privacy_path %></li>
+          <li><%= link_to "Terms of use", terms_of_use_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
