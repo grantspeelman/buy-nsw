@@ -6,7 +6,7 @@ FactoryBot.define do
     suburb 'Test Suburb'
     postcode '2000'
     state 'nsw'
-    country 'Australia'
+    country 'AU'
     contact_name 'Joe Bloggs'
     sequence(:contact_email) {|n| "waiting-seller-#{n}@test.buy.nsw.gov.au" }
     contact_position 'Chief of Staff'

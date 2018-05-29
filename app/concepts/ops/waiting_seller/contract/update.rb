@@ -38,6 +38,7 @@ module Ops::WaitingSeller::Contract
       required(:name).filled(:str?)
       required(:abn).maybe(:str?)
       required(:state).maybe(in_list?: SellerAddress.state.values)
+      required(:country).maybe(in_list?: ISO3166::Country.translations.keys)
       required(:contact_name).filled(:str?)
       required(:contact_email).filled(:str?)
 

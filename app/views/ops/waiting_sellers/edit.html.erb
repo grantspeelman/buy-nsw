@@ -22,7 +22,7 @@
         <%= f.text_field :suburb %>
         <%= f.text_field :postcode %>
         <%= f.collection_select :state, SellerAddress.state.options, :last, :first, include_blank: true %>
-        <%= f.text_field :country %>
+        <%= f.collection_select :country, ISO3166::Country.translations, :first, :last, include_blank: true %>
       </div>
     </div>
 

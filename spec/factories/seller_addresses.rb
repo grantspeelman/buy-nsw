@@ -4,5 +4,6 @@ FactoryBot.define do
     suburb 'Sydney'
     state 'nsw'
     postcode '2000'
+    country 'AU'
   end
 end
