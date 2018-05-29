@@ -132,6 +132,7 @@ en:
                   'false': 'No'
                 audit_storage_period: What is the maximum time audit information data is stored?
                 log_storage_period: What is the maximum time system logs are stored?
+                data_disposal_approach: How do you securely dispose of user data?
               data_protection:
                 encryption_transit_user_types: How do you protect data between the end user and your network
                 encryption_transit_user_other: Describe how else you protect data between users and your network
