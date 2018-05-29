@@ -10,7 +10,7 @@ module Concerns::Documentable
 
         after_save do
           @documents.each {|key, doc|
-            doc.save! if doc.document_changed?
+            doc.save! if doc.document_changed? && !doc.destroyed?
           }
         end
 
@@ -30,6 +30,10 @@ module Concerns::Documentable
           if file.respond_to?(:tempfile)
             self.public_send("#{field}").document = file
           end
+        end
+
+        define_method("remove_#{field}") do
+          false
         end
 
         define_method("remove_#{field}=") do |value|

@@ -6,6 +6,7 @@ module Sellers::SellerApplication::Contract
     property :workers_compensation_certificate_file,   on: :seller
     property :workers_compensation_certificate_expiry, on: :seller, multi_params: true
     property :workers_compensation_exempt,             on: :seller
+    property :remove_workers_compensation_certificate, on: :seller
 
     # NOTE: Trying to implement conditional validation on this model has been
     # painstaking, but the following does work.
@@ -65,6 +66,7 @@ module Sellers::SellerApplication::Contract
     #
     def started?
       super do |key, value|
+        next if value == 'remove_workers_compensation_certificate'
         value.present?
       end
     end

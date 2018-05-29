@@ -18,6 +18,10 @@
     </div>
 
     <%= f.file_field "#{field}_file", help: false, label: 'Replace this file' %>
+
+    <div class="remove-file-action">
+      <%= f.check_box "remove_#{field}", label: "Remove file" %>
+    </div>
   </div>
 <% else %>
   <%= f.file_field "#{field}_file", help: false, label: 'Upload a file' %>
