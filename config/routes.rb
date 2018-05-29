@@ -113,5 +113,5 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'
 
-  root to: 'static#index'
+  root to: redirect('/cloud')
 end
