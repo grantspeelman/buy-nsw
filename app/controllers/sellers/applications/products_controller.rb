@@ -43,22 +43,22 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
 
   def self.contracts
     [
-      Sellers::SellerApplication::Products::Contract::Type,
+      Sellers::SellerApplication::Products::Contract::AvailabilitySupport,
+      Sellers::SellerApplication::Products::Contract::BackupRecovery,
       Sellers::SellerApplication::Products::Contract::Basics,
       Sellers::SellerApplication::Products::Contract::Commercials,
-      Sellers::SellerApplication::Products::Contract::OnboardingOffboarding,
-      Sellers::SellerApplication::Products::Contract::Environment,
-      Sellers::SellerApplication::Products::Contract::AvailabilitySupport,
-      Sellers::SellerApplication::Products::Contract::UserData,
-      Sellers::SellerApplication::Products::Contract::Locations,
-      Sellers::SellerApplication::Products::Contract::BackupRecovery,
       Sellers::SellerApplication::Products::Contract::DataProtection,
+      Sellers::SellerApplication::Products::Contract::Environment,
       Sellers::SellerApplication::Products::Contract::IdentityAuthentication,
-      Sellers::SellerApplication::Products::Contract::SecurityStandards,
-      Sellers::SellerApplication::Products::Contract::SecurityPractices,
-      Sellers::SellerApplication::Products::Contract::UserSeparation,
+      Sellers::SellerApplication::Products::Contract::Locations,
+      Sellers::SellerApplication::Products::Contract::OnboardingOffboarding,
       Sellers::SellerApplication::Products::Contract::OperationalSecurity,
       Sellers::SellerApplication::Products::Contract::ReportingAnalytics,
+      Sellers::SellerApplication::Products::Contract::SecurityPractices,
+      Sellers::SellerApplication::Products::Contract::SecurityStandards,
+      Sellers::SellerApplication::Products::Contract::Type,
+      Sellers::SellerApplication::Products::Contract::UserData,
+      Sellers::SellerApplication::Products::Contract::UserSeparation,
     ]
   end
 
