@@ -103,6 +103,11 @@ brew install awsebcli
 All commits to `master` are automatically deployed to the staging environment if
 the tests pass.
 
+## Promoting a build in staging to production
+
+```
+bin/promote-to-production build-nnn
+```
 ## Licence
 
 [MIT License](LICENCE)
