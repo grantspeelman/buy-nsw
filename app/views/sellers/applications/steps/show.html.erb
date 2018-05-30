@@ -10,6 +10,7 @@
   form_path: sellers_application_step_path(application, step.slug),
   form_partial_path: "sellers/applications/forms/#{step.key}",
   skip_button: (step.slug == 'declaration'),
+  skip_link: sellers_application_path(application),
   operation: operation,
   step: step,
 } %>
