@@ -16,4 +16,7 @@ class StaticController < ApplicationController
 
   def buyer_guide
   end
+
+  def seller_guide
+  end
 end
