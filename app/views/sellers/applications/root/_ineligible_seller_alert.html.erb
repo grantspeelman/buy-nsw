@@ -1,0 +1,10 @@
+<h1><%= t('sellers.applications.steps.services.ineligible_header') %></h1>
+
+<%= t('sellers.applications.steps.services.ineligible_body_html') %>
+
+<div class="change-action">
+  <%= t('sellers.applications.steps.services.ineligible_change_message_html') %>
+  <p>
+    <%= link_to t('sellers.applications.steps.services.ineligible_change_button_label'),  
+                sellers_application_step_path(application, 'services'), class: 'btn btn-primary' %></p>
+</div>

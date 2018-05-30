@@ -48,6 +48,10 @@ module Sellers::Applications
       end
     end
 
+    def started?(application)
+      build_contract(application).started?
+    end
+
   private
     def build_contract(application)
       contract_class.new(
