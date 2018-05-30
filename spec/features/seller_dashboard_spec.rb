@@ -10,7 +10,7 @@ RSpec.describe 'Seller dashboard', type: :feature do
     click_on 'Seller dashboard'
 
     expect(page).to have_content('Seller dashboard')
-    expect(page).to have_content('Your seller application is being reviewed')
+    expect(page).to have_content("We'll be in touch by email soon with the outcome of your application")
   end
 
   it 'shows a message to sellers with an active profile' do
