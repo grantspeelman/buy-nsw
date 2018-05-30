@@ -2,7 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="footer-left">
-        <p><%= link_to "Contact us", contact_path %></p>
+        <ul>
+          <li><%= link_to "Buyer guide", guides_buyer_path %></li>
+          <li><%= link_to "Seller guide", guides_seller_path %></li>
+          <li><%= link_to "Contact us", contact_path %></li>
+        </ul>
         <% if show_development_info %>
           <%= deployment_env.try(:titleize) %>
           <% if defined?(APP_VERSION) %>
@@ -10,7 +14,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="footer-links">
+      <div class="footer-right">
         <ul>
           <li><%= link_to "Privacy statement", privacy_path %></li>
           <li><%= link_to "Terms of use", terms_of_use_path %></li>

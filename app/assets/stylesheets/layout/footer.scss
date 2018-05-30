@@ -1,16 +1,17 @@
 footer[role=global] {
   .container {
-    font-size: 0.76em;
+    font-size: 1em;
     padding: 1.5em 1em;
     color: #888;
-    .footer-left, .footer-links {
+    .footer-left, .footer-right {
       @extend .col-md-6;
-    }
-    .footer-links {
-      text-align: right;
       ul {
-        list-style: none;        
+        list-style: none;
+        padding-left: 0;
       }
+    }
+    .footer-right {
+      text-align: right;
     }
   }
 
