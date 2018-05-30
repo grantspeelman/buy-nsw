@@ -49,6 +49,11 @@ module Sellers::Applications
       progress_report.base_progress[step.key] == true
     end
 
+    def ineligible?
+      step('services').started?(application) &&
+        (application.seller.govdc == false && ! application.seller.services.include?('cloud-services'))
+    end
+
   private
     attr_reader :steps, :application
 

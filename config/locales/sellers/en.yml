@@ -205,10 +205,19 @@ en:
               <li>provide physical infrastructure services in GovDC</li>
             </ul>
             <p>We will be opening up to additional categories soon.</p>
-          ineligible_header: Unfortunately, you cannot join buy.nsw at this time
+          ineligible_header: You aren't yet eligible to apply to buy.nsw
           ineligible_body_html: |
-            <p>You don't meet the criteria to join <strong>buy.nsw</strong>.</p>
+            <p>Based on the answers you have given, you don't meet the criteria to join <strong>buy.nsw</strong>.</p>
+            <p>For now, <strong>buy.nsw</strong> is only open to sellers who either:</p>
+            <ul>
+              <li>provide cloud products, services and support</li>
+              <li>provide physical infrastructure services in GovDC</li>
+            </ul>
+            <p>We will be opening up to more categories soon.</p>
             <p>Please <a href="/">sign up for updates</a> and we'll let you know when you can join in the future.</p>
+          ineligible_change_message_html: |
+            <p>If you do meet the above criteria, you can change the details provided.</p>
+          ineligible_change_button_label: Change your details
         profile_basics:
           short: 'Summary and website links'
           long: 'Your profile summary'

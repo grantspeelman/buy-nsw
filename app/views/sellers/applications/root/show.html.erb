@@ -1,19 +1,23 @@
 <% content_for(:seller_application_class, 'application-dashboard') %>
 
-<h1>Your seller application</h1>
+<% if presenter.ineligible? %>
+  <%= render partial: 'ineligible_seller_alert', locals: { application: application } %>
+<% else %>
+  <h1>Your seller application</h1>
 
-<p>Follow the steps below to complete your application. Your progress is saved as you go, so you can complete it in more than one session. You can also invite additional team members to work on this application with you.</p>
+  <p>Follow the steps below to complete your application. Your progress is saved as you go, so you can complete it in more than one session. You can also invite additional team members to work on this application with you.</p>
 
-<div class="list-container">
-  <p class="team-action">
-    <%= link_to 'Invite your team members', sellers_application_invitations_path(application) %>
-  </p>
+  <div class="list-container">
+    <p class="team-action">
+      <%= link_to 'Invite your team members', sellers_application_invitations_path(application) %>
+    </p>
 
-  <%= render partial: 'task_list',
-             locals: {
-               task_list: presenter.task_list,
-               resources: {
-                 application: application,
-               }
-             } %>
-</div>
+    <%= render partial: 'task_list',
+               locals: {
+                 task_list: presenter.task_list,
+                 resources: {
+                   application: application,
+                 }
+               } %>
+  </div>
+<% end %>
