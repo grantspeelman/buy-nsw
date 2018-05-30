@@ -100,7 +100,6 @@ class Product < ApplicationRecord
   scope :not_for_profit, ->{ joins(:seller).where('sellers.not_for_profit' => true) }
   scope :regional, ->{ joins(:seller).where('sellers.regional' => true) }
   scope :sme, ->{ joins(:seller).where('sellers.sme' => true) }
-  scope :start_up, ->{ joins(:seller).where('sellers.start_up' => true) }
 
   scope :reseller, -> { where(reseller_type: ['no-extras', 'extra-support', 'extra-features-support']) }
   scope :not_reseller, -> { where(reseller_type: 'own-product') }
