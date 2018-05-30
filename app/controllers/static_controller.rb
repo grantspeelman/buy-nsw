@@ -10,4 +10,7 @@ class StaticController < ApplicationController
 
   def terms_of_use
   end
+
+  def accessibility
+  end
 end
