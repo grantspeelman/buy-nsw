@@ -113,6 +113,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'
   get '/accessibility', to: 'static#accessibility'
+  get '/core-terms', to: 'static#core_terms'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all

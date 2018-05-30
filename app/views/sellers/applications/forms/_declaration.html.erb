@@ -2,11 +2,7 @@
 
 <p>Please note these initial terms will be updated soon. We will let you know when they change, what the changes are, and ask you to agree once more when finalised.</p>
 
-<%= link_to 'Download Core Terms (PDF 229KB)', '' %>
-
-<section class="agreement-text">
-  <%= render partial: 'sellers/applications/forms/shared/core_terms' %>
-</section>
+<%= render partial: 'sellers/applications/forms/shared/core_terms' %>
 
 <% if f.object.seller.agree == true %>
 
