@@ -1,7 +1,5 @@
 .view-sellers-applications.application-dashboard {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   h2.product-name {
     font-weight: normal;

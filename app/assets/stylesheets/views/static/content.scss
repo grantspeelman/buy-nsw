@@ -1,7 +1,5 @@
 .view-static-content {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   h1 {
     font-size: 1.8rem;

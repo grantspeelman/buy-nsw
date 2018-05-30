@@ -1,7 +1,5 @@
 .view-sellers-applications.invitations {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   ul.current-team {
     margin-top: 2rem;
