@@ -287,7 +287,7 @@ en:
           <ul>
             <li>share details about products and services you offer</li>
             <li>provide details about your offering to support your application</li>
-            <li>accept the <a href="#">Core Terms</a></li>
+            <li>accept the <a href="/core-terms">Core Terms</a></li>
           </ul>
       profile:
         title: Your seller profile
