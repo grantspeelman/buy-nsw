@@ -9,15 +9,36 @@
 
   .agreement-text {
     display: block;
-    border: 2px solid $grey-2;
+    border: 2px solid $grey-4;
     font-family: $font-family-sans-serif;
     padding: 1rem;
     margin: 1.5rem auto;
-    height: 20rem;
-    overflow: scroll;
+    line-height: 1.6em;
+    height: 40rem;
+    font-size: 0.9rem;
+    overflow-y: scroll;
 
-    h1, h2, h3, h4, p {
-      margin: 0 0 0.5em;
+    h1, h2, h3, h4 {
+      margin: 1.5rem 0 0.5rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    p, ul, ol {
+      margin: 0 0 .5rem;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+    }
+    h2 {
+      font-size: 1rem;
+      background: $light-purple;
+      padding: .3rem;
+    }
+    h3, h4 {
+      font-size: .9rem;
     }
   }
 
