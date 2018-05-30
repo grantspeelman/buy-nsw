@@ -55,8 +55,14 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   def complete_services
     click_on_step 'services'
 
-    choose 'Yes'
-    check 'Training and learning'
+    within_fieldset(form_label('services.offers_cloud.question')) do
+      choose 'Yes'
+      check 'Training and learning'
+    end
+
+    within_fieldset(form_label('services.govdc.question')) do
+      choose 'No'
+    end
 
     click_on 'Save'
   end

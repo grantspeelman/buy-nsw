@@ -1,10 +1,17 @@
+<% if f.object.errors[:eligible_seller].present? %>
+  <div class="block-error">
+    <h2><%= t('sellers.applications.steps.services.ineligible_header') %></h2>
+    <%= t('sellers.applications.steps.services.ineligible_body_html') %>
+  </div>
+<% end %>
+
 <%= t('sellers.applications.steps.services.intro_html') %>
 
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend>Do you provide cloud products or support?</legend>
+  <legend><%= seller_application_field_label('services.offers_cloud.question') %></legend>
 
   <%= f.form_group :offers_cloud do %>
     <%= f.radio_button :offers_cloud, 'true', data: { further_details: 'input' } %>
@@ -29,4 +36,14 @@
     </div>
   </div>
 
+</fieldset>
+
+<fieldset class="multiple-choice-group radio-group">
+
+  <legend><%= seller_application_field_label('services.govdc.question') %></legend>
+
+  <%= f.form_group :govdc do %>
+    <%= f.radio_button :govdc, 'true' %>
+    <%= f.radio_button :govdc, 'false' %>
+  <% end %>
 </fieldset>

@@ -2,6 +2,7 @@ module Sellers::SellerApplication::Contract
   class Services < Base
     property :offers_cloud, virtual: true
     property :services, on: :seller
+    property :govdc, on: :seller
 
     def offers_cloud
       self.services.any? ? self.services.include?('cloud-services') : nil
@@ -15,6 +16,10 @@ module Sellers::SellerApplication::Contract
           hash[:services] << 'cloud-services'
         else
           services.delete('cloud-services')
+        end
+
+        if hash[:govdc] == 'true'
+          hash[:services] << 'infrastructure'
         end
       end
 
@@ -30,13 +35,14 @@ module Sellers::SellerApplication::Contract
 
       required(:seller).schema do
         required(:services).maybe(one_of?: Seller.services.values)
+        required(:govdc).filled(:bool?)
 
         rule(services: [:offers_cloud, :services]) do |offers_cloud, services|
           offers_cloud.true?.then(services.filled?)
         end
 
-        rule(offers_cloud: [:services]) do |services|
-          services.offers_cloud?
+        rule(eligible_seller: [:services, :govdc]) do |services, govdc|
+          services.offers_cloud? | govdc.true?
         end
       end
     end

@@ -134,10 +134,10 @@ en:
           name: 'Website URL'
         linkedin_url:
           name: 'LinkedIn URL'
-        industry:
-          name: 'Industries'
         services:
           name: 'ICT services categories'
+        govdc:
+          name: 'GovDC infrastructure provider?'
         agree:
           name: 'Agreement to the Core Terms'
         number_of_employees_text:
