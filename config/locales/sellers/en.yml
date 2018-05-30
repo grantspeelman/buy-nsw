@@ -6,6 +6,11 @@ en:
           contract:
             services:
               offers_cloud:
+                question: Do you provide cloud products, services or support?
+                'true': 'Yes'
+                'false': 'No'
+              govdc:
+                question: Do you offer physical infrastructure services in GovDC?
                 'true': 'Yes'
                 'false': 'No'
             profile_basics:
@@ -194,8 +199,16 @@ en:
           short: 'Your offering'
           long: 'What products and services do you offer?'
           intro_html: |
-            <p>For now, <strong>buy.nsw</strong> is only open to sellers who provide cloud products and support services.</p>
+            <p>For now, <strong>buy.nsw</strong> is only open to sellers who either:</p>
+            <ul>
+              <li>provide cloud products, services and support</li>
+              <li>provide physical infrastructure services in GovDC</li>
+            </ul>
             <p>We will be opening up to additional categories soon.</p>
+          ineligible_header: Unfortunately, you cannot join buy.nsw at this time
+          ineligible_body_html: |
+            <p>You don't meet the criteria to join <strong>buy.nsw</strong>.</p>
+            <p>Please <a href="/">sign up for updates</a> and we'll let you know when you can join in the future.</p>
         profile_basics:
           short: 'Summary and website links'
           long: 'Your profile summary'
