@@ -9,6 +9,7 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
   let(:atts) {
     {
       offers_cloud: 'true',
+      govdc: 'false',
       services: [
         'managed-services',
         'software-development',
@@ -47,33 +48,51 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
     expect(subject.save).to eq(true)
   end
 
-  it 'appends "cloud-services" to the list when "offers_cloud" is true' do
-    subject.validate(atts)
-    subject.save
+  describe 'cloud-services' do
+    it 'appends "cloud-services" to the list when "offers_cloud" is true' do
+      subject.validate(atts)
+      subject.save
 
-    expect(seller.reload.services).to include('cloud-services')
+      expect(seller.reload.services).to include('cloud-services')
+    end
+
+    it 'does not append "cloud-services" to the list when "offers_cloud" is false' do
+      subject.validate(atts.merge(offers_cloud: 'false'))
+      subject.save
+
+      expect(seller.reload.services).to_not include('cloud-services')
+    end
+
+    it 'removes "cloud-services" from the list when "offers_cloud" is false' do
+      seller.update_attribute(:services, ['cloud-services', 'managed-services'])
+
+      subject.validate(atts.merge(offers_cloud: 'false'))
+      subject.save!
+
+      expect(seller.reload.services).to_not include('cloud-services')
+    end
   end
 
-  it 'does not append "cloud-services" to the list when "offers_cloud" is false' do
-    subject.validate(atts.merge(offers_cloud: 'false'))
-    subject.save
+  describe 'infrastructure' do
+    it 'appends "infrastructure" to the list when "govdc" is true' do
+      subject.validate(atts.merge(govdc: 'true'))
+      subject.save
 
-    expect(seller.reload.services).to_not include('cloud-services')
+      expect(seller.reload.services).to include('infrastructure')
+    end
+
+    it 'does not append "infrastructure" to the list when "govdc" is false' do
+      subject.validate(atts.merge(govdc: 'false'))
+      subject.save
+
+      expect(seller.reload.services).to_not include('infrastructure')
+    end
   end
 
-  it 'removes "cloud-services" from the list when "offers_cloud" is false' do
-    seller.update_attribute(:services, ['cloud-services', 'managed-services'])
-
-    subject.validate(atts.merge(offers_cloud: 'false'))
-    subject.save!
-
-    expect(seller.reload.services).to_not include('cloud-services')
-  end
-
-  it 'is invalid when "offers_cloud" is false' do
-    subject.validate(atts.merge(offers_cloud: 'false'))
+  it 'is invalid when both "govdc" and "offers_cloud" is false' do
+    subject.validate(atts.merge(offers_cloud: 'false', govdc: 'false'))
 
     expect(subject).to_not be_valid
-    expect(subject.errors[:offers_cloud]).to be_present
+    expect(subject.errors[:eligible_seller]).to be_present
   end
 end
