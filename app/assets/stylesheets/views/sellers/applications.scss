@@ -9,16 +9,13 @@
 
   .agreement-text {
     display: block;
-    border: 2px solid $grey-2;
+    border: 2px solid $grey-4;
     font-family: $font-family-sans-serif;
     padding: 1rem;
-    margin: 1.5rem auto;
-    height: 20rem;
-    overflow: scroll;
-
-    h1, h2, h3, h4, p {
-      margin: 0 0 0.5em;
-    }
+    line-height: 1.6em;
+    height: 40rem;
+    font-size: 0.9rem;
+    overflow-y: scroll;
   }
 
   .alert-box {
@@ -38,5 +35,10 @@
 
   .change-action {
     margin-top: 3rem;
+  }
+
+  .new-application {
+    @include two-thirds;
+    margin-top: 2rem;
   }
 }
