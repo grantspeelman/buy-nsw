@@ -36,4 +36,9 @@
   .change-action {
     margin-top: 3rem;
   }
+
+  .new-application {
+    @include two-thirds;
+    margin-top: 2rem;
+  }
 }
