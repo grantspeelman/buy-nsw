@@ -95,4 +95,12 @@ RSpec.describe Sellers::SellerApplication::Contract::Services do
     expect(subject).to_not be_valid
     expect(subject.errors[:eligible_seller]).to be_present
   end
+
+  it 'is invalid when "offers_cloud" is false and there are products' do
+    create(:product, seller: seller)
+    subject.validate(atts.merge(offers_cloud: 'false', govdc: 'true'))
+
+    expect(subject).to_not be_valid
+    expect(subject.errors[:offers_cloud]).to be_present
+  end
 end
