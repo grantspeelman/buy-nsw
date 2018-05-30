@@ -10,6 +10,6 @@ class DeviseMailerWithAttachment < Devise::Mailer
   private
 
   def add_image_attachment
-    attachments.inline['nsw-logo.png'] = File.read(File.join(Rails.root, "app", "assets", path_to_image("nsw-logo.png")))
+    attachments.inline['nsw-logo-80x85.png'] = File.read(File.join(Rails.root, "app", "assets", path_to_image("nsw-logo-80x85.png")))
   end
 end
