@@ -10,7 +10,7 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
     def ensure_complete!(options, **)
       options['result.progress'] = SellerApplicationProgressReport.new(
         application: options['model'],
-        base_steps: Sellers::Applications::StepsController.steps,
+        base_steps: Sellers::Applications::StepsController.steps(options['model']),
         product_steps: Sellers::Applications::ProductsController.steps,
         validate_optional_steps: true,
       )
