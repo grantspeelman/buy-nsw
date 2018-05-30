@@ -1,4 +1,4 @@
-module InvitationHelper
+module Sellers::InvitationHelper
   def owner_name(application)
     if application.seller.name.present?
       application.seller.name
