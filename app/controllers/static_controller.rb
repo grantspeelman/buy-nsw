@@ -13,4 +13,7 @@ class StaticController < ApplicationController
 
   def accessibility
   end
+
+  def buyer_guide
+  end
 end
