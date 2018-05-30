@@ -226,14 +226,14 @@ en:
         recognition:
           short: 'List awards and accreditations'
         products:
-          short: 'Your cloud products'
+          short: 'Your cloud products and services'
         submit:
           short: 'Submit your application'
       sections:
         check: Check before you start
         business: About your business
         documents: Provide documents
-        offering: Describe your products
+        offering: Describe your offering
         apply: Apply
       contacts:
         title: Your contact details

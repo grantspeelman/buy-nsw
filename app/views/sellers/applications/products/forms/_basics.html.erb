@@ -7,7 +7,7 @@
 <fieldset class="multiple-choice-group checkbox-group with-enterprise-field"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <legend>Select up to 3 groups of buyers who would be most interested in your product or service?</legend>
+  <legend>Select up to 3 groups of buyers who would be most interested in your product or service</legend>
   <%= f.collection_check_boxes(:audiences, Product.audiences.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
 </fieldset>
 
