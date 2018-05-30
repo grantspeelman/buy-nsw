@@ -1,7 +1,5 @@
 .view-sellers-applications.application-step {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   form {
     margin-top: 2.5rem;
