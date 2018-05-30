@@ -33,3 +33,9 @@
     margin-top: 3rem;
   }
 }
+
+.view-sellers-applications .accept-invitation {
+  padding-top: 2rem;
+
+  @include two-thirds;
+}
