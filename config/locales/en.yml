@@ -62,6 +62,7 @@ en:
     same_password?: must match
     max_word_count?: exceeds the word count
     max_items?: has too many items
+    no_cloud_products?: You need to remove all your cloud products from your application first
     abn?: That doesn't look like a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
     email?: not a valid email address

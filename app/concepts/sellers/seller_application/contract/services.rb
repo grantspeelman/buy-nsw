@@ -26,19 +26,31 @@ module Sellers::SellerApplication::Contract
       hash
     end
 
-    validation :default, inherit: true do
+    validation :default, inherit: true, with: {form: true} do
       configure do
+        option :form
+
         def offers_cloud?(list)
           list.include?('cloud-services')
+        end
+
+        def has_no_products?
+          form.seller.products.empty?
+
         end
       end
 
       required(:seller).schema do
         required(:services).maybe(one_of?: Seller.services.values)
         required(:govdc).filled(:bool?)
+        optional(:offers_cloud).filled(:bool?)
 
         rule(services: [:offers_cloud, :services]) do |offers_cloud, services|
           offers_cloud.true?.then(services.filled?)
+        end
+
+        validate(no_cloud_products?: [:services, :offers_cloud]) do |services, offers_cloud|
+          services.include?('cloud-services') || has_no_products?
         end
 
         rule(eligible_seller: [:services, :govdc]) do |services, govdc|
