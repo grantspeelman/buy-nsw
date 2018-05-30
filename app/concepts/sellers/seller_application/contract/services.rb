@@ -36,7 +36,6 @@ module Sellers::SellerApplication::Contract
 
         def has_no_products?
           form.seller.products.empty?
-
         end
       end
 

@@ -1,19 +1,11 @@
-<p>You need to accept the Core Terms to become a seller. If these terms are updated, we will ask you to accept the new terms by email or when you next log in.</p>
+<p>You need to accept the Core Terms to become a seller.</p>
+
+<p>Please note these initial terms will be updated soon. We will let you know when they change, what the changes are, and ask you to agree once more when finalised.</p>
 
 <%= link_to 'Download Core Terms (PDF 229KB)', '' %>
 
 <section class="agreement-text">
-  <h1>ICT Agreement Core Terms</h1>
-  <h4>1. Role of the Core Terms</h4>
-  <p>Each agreement between us (the buyer) and you (the supplier) consists of:</p>
-  <ol>
-    <li>these core terms</li>
-    <li>the relevant solution requirements</li>
-    <li>any documents attached to those solution requirements</li>
-  </ol>
-
-  <p>The core terms are first in the list, and take priority over all other documents. They govern performance of the agreement, including how the solution described in the solution requirements will be supplied.</p>
-  <p>Any terms contained in other parts of the agreement that conflict with, or limit the operation of, these core terms have no legal effect.</p>
+  <%= render partial: 'sellers/applications/forms/shared/core_terms' %>
 </section>
 
 <% if f.object.seller.agree == true %>
