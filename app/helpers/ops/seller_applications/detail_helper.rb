@@ -19,6 +19,7 @@ module Ops::SellerApplications::DetailHelper
       ],
       industry: [
         :services,
+        :govdc,
       ],
       contacts: [
         :contact_name,
