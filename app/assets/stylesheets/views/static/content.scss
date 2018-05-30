@@ -1,0 +1,17 @@
+.view-static-content {
+  @include two-thirds;
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 1.5em 0 0.6em;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin: 1.5em 0 0.6em;
+  }
+}

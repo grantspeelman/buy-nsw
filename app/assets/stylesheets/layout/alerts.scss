@@ -1,6 +1,5 @@
 .message {
   border-bottom: 1px solid $grey-2;
-  animation: 0.5s forwards 1s 1 fadeOut;
 }
 
 .message-container {
@@ -24,13 +23,4 @@
   @extend .alert-success;
 
   border-radius: 0px;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1.0;
-  }
-  100% {
-    opacity: 0.5;
-  }
 }

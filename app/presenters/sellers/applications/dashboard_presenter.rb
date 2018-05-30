@@ -16,6 +16,14 @@ module Sellers::Applications
     end
 
     def task_list
+      tuples = all_tasks.map {|section, steps|
+        [section, steps.compact] if steps.compact.any?
+      }.compact
+
+      Hash[tuples]
+    end
+
+    def all_tasks
       {
         section('check') => [
           step('services'),
@@ -36,7 +44,7 @@ module Sellers::Applications
           step('workers_compensation'),
         ],
         section('offering') => [
-          InlineStep.new(:products, :sellers_application_products_path),
+          product_step,
         ],
         section('apply') => [
           step('declaration'),
@@ -49,11 +57,16 @@ module Sellers::Applications
       progress_report.base_progress[step.key] == true
     end
 
+    def ineligible?
+      step('services').started?(application) &&
+        (application.seller.govdc == false && !provides_cloud_services?)
+    end
+
   private
     attr_reader :steps, :application
 
     def step(key)
-      steps.find {|s| s.key == key } || raise('Step not found')
+      steps.find {|s| s.key == key }
     end
 
     def section(key)
@@ -65,6 +78,16 @@ module Sellers::Applications
         application: application,
         base_steps: steps,
       )
+    end
+
+    def provides_cloud_services?
+      application.seller.services.include?('cloud-services')
+    end
+
+    def product_step
+      if provides_cloud_services?
+        InlineStep.new(:products, :sellers_application_products_path)
+      end
     end
 
   end

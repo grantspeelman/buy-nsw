@@ -17,13 +17,12 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
     render :show
   end
 
-  def self.contracts
-    [
+  def self.contracts(application)
+    base_contracts = [
       Sellers::SellerApplication::Contract::BusinessDetails,
       Sellers::SellerApplication::Contract::Addresses,
       Sellers::SellerApplication::Contract::Characteristics,
       Sellers::SellerApplication::Contract::Contacts,
-      Sellers::SellerApplication::Contract::Declaration,
       Sellers::SellerApplication::Contract::Disclosures,
       Sellers::SellerApplication::Contract::FinancialStatement,
       Sellers::SellerApplication::Contract::ProductLiability,
@@ -33,10 +32,15 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
       Sellers::SellerApplication::Contract::Services,
       Sellers::SellerApplication::Contract::WorkersCompensation,
     ]
+    base_contracts.tap {|contracts|
+      if application.seller.services.include?('cloud-services')
+        contracts << Sellers::SellerApplication::Contract::Declaration
+      end
+    }
   end
 
-  def self.steps
-    contracts.map {|contract|
+  def self.steps(application)
+    contracts(application).map {|contract|
       Sellers::Applications::StepPresenter.new(contract)
     }
   end
@@ -50,7 +54,7 @@ private
   end
 
   def step
-    self.class.steps.find {|step| step.slug == params[:step] } || raise(NotFound)
+    self.class.steps(application).find {|step| step.slug == params[:step] } || raise(NotFound)
   end
   helper_method :step
 

@@ -205,10 +205,19 @@ en:
               <li>provide physical infrastructure services in GovDC</li>
             </ul>
             <p>We will be opening up to additional categories soon.</p>
-          ineligible_header: Unfortunately, you cannot join buy.nsw at this time
+          ineligible_header: You aren't yet eligible to apply to buy.nsw
           ineligible_body_html: |
-            <p>You don't meet the criteria to join <strong>buy.nsw</strong>.</p>
+            <p>Based on the answers you have given, you don't meet the criteria to join <strong>buy.nsw</strong>.</p>
+            <p>For now, <strong>buy.nsw</strong> is only open to sellers who either:</p>
+            <ul>
+              <li>provide cloud products, services and support</li>
+              <li>provide physical infrastructure services in GovDC</li>
+            </ul>
+            <p>We will be opening up to more categories soon.</p>
             <p>Please <a href="/">sign up for updates</a> and we'll let you know when you can join in the future.</p>
+          ineligible_change_message_html: |
+            <p>If you do meet the above criteria, you can change the details provided.</p>
+          ineligible_change_button_label: Change your details
         profile_basics:
           short: 'Summary and website links'
           long: 'Your profile summary'
@@ -217,14 +226,14 @@ en:
         recognition:
           short: 'List awards and accreditations'
         products:
-          short: 'Your cloud products'
+          short: 'Your cloud products and services'
         submit:
           short: 'Submit your application'
       sections:
         check: Check before you start
         business: About your business
         documents: Provide documents
-        offering: Describe your products
+        offering: Describe your offering
         apply: Apply
       contacts:
         title: Your contact details
@@ -293,14 +302,15 @@ en:
     dashboard:
       actions:
         label: Account actions
-        change_password: Change your password
-        update_email: Update your email address
+        change_account: Change your email address or password
         contact_support: Contact support
       status:
         good_standing: Your seller account is active and in good standing.
         awaiting_review_title: Your application is now being reviewed.
         awaiting_review_message_html: |
-          <p> We'll be in touch by email soon with the outcome of your application. In the meantime, you can <a href="">contact us</a> if you have any questions.</p>
+          <p>We'll be in touch by email soon with the outcome of your application.</p>
+          <p>In the meantime, you can %{contact_us_link} if you have any questions.</p>
+        awaiting_review_contact_us_label: contact us
       title: Seller dashboard
     search:
       filters:

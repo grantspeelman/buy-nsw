@@ -1,7 +1,5 @@
 .view-sellers-applications.products-list {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   ul.products {
     padding-left: 0;

@@ -3,9 +3,9 @@
     <h2><%= t('sellers.applications.steps.services.ineligible_header') %></h2>
     <%= t('sellers.applications.steps.services.ineligible_body_html') %>
   </div>
+<% else %>
+  <%= t('sellers.applications.steps.services.intro_html') %>
 <% end %>
-
-<%= t('sellers.applications.steps.services.intro_html') %>
 
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"

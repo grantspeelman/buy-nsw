@@ -8,7 +8,6 @@ en:
               basics:
                 name: Tell us the name of your product or service
                 summary: Tell us briefly about the need it addresses (200 words)
-                audiences_other: 'Please specify other buyer group (50 words)'
                 organisation_resold: Who is the original supplier?
                 custom_contact:
                   'true': Somebody else
@@ -36,7 +35,7 @@ en:
                 pricing:
                   legend: Your pricing
                 pricing_currency: Currency
-                pricing_currency_other: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD 
+                pricing_currency_other: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD
                 pricing_unit: Unit of pricing
                 pricing_min: Minimum price (excluding GST)
                 pricing_max: Maximum price (excluding GST)
@@ -255,23 +254,22 @@ en:
   sellers:
     applications:
       products:
-        title: 'Your cloud products'
+        title: 'Your cloud products and services'
         empty_name_label: No name
-        new_product_action_label: Add a new product
-        manage_products_action_label: Add or edit your products
+        new_product_action_label: Add a product or service
         edit_product_action_label: Edit
         guidance_html: |
           This will take about 30 minutes for each product.
         steps:
           type:
-            short: Product category
-            long: Which category best describes your product?
+            short: Product or service category
+            long: Which category best describes your product or service?
           basics:
             short: Basic information
             long: Product or service basics
           commercials:
             short: Commercials
-            long: Your product commercials
+            long: Your product or service commercials
           onboarding_offboarding:
             short: On and offboarding
             long: On and offboarding

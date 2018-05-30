@@ -1,7 +1,5 @@
 .view-sellers-applications.invitations {
-  @include media-breakpoint-up(md) {
-    width: 65%;
-  }
+  @include two-thirds;
 
   ul.current-team {
     margin-top: 2rem;
@@ -34,4 +32,10 @@
   form {
     margin-top: 3rem;
   }
+}
+
+.view-sellers-applications .accept-invitation {
+  padding-top: 2rem;
+
+  @include two-thirds;
 }

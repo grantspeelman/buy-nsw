@@ -1,7 +1,7 @@
 <% content_for(:without_container, true) %>
 
 <% content_for(:content) do %>
-  <header class="application-header">
+  <header class="section-header">
     <div class="container">
       <div class="row">
         <h1>
@@ -23,15 +23,18 @@
         <div class="current-application">
           <span class="under-review-icon" aria-hidden="true"></span>
           <h2><%= t 'sellers.dashboard.status.awaiting_review_title' %></h2>
-          <%= t 'sellers.dashboard.status.awaiting_review_message_html' %>
+          <%=
+            t('sellers.dashboard.status.awaiting_review_message_html',
+              contact_us_link: link_to(t('sellers.dashboard.status.awaiting_review_contact_us_label'), contact_path)
+            )
+          %>
         </div>
       <% end %>
 
       <section class="account-actions">
         <h2><%= t 'sellers.dashboard.actions.label' %></h2>
         <ul>
-          <li><%= link_to t('sellers.dashboard.actions.change_password'), edit_account_path %></li>
-          <li><%= link_to t('sellers.dashboard.actions.update_email'), edit_account_path %></li>
+          <li><%= link_to t('sellers.dashboard.actions.change_account'), edit_account_path %></li>
           <li><%= link_to t('sellers.dashboard.actions.contact_support'), contact_path %></li>
         </ul>
       </section>

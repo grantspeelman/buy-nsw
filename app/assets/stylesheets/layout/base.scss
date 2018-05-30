@@ -11,3 +11,9 @@ main {
     padding-bottom: 2rem;
   }
 }
+
+@mixin two-thirds {
+  @include media-breakpoint-up(md) {
+    width: 65%;
+  }
+}

@@ -1,5 +1,6 @@
 class Sellers::Applications::ProductsController < Sellers::Applications::BaseController
   layout '../sellers/applications/shared/_layout'
+  before_action :ensure_cloud_services_provided!
 
   def index
   end
@@ -131,4 +132,10 @@ private
     operation["contract.default"]
   end
   helper_method :form
+
+  def ensure_cloud_services_provided!
+    unless application.seller.services.include?('cloud-services')
+      return redirect_to sellers_application_path(application)
+    end
+  end
 end

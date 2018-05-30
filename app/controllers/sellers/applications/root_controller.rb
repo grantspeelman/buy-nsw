@@ -35,7 +35,7 @@ private
   helper_method :operation
 
   def steps
-    Sellers::Applications::StepsController.steps
+    Sellers::Applications::StepsController.steps(application)
   end
   helper_method :steps
 

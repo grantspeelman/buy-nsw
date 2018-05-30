@@ -2,7 +2,11 @@
   <header>
     <h1>Your invitation to join this seller</h1>
 
-    <p>You have been invited to join the seller profile for <strong><%= operation[:application_model].seller.name %></strong>.</p>
+    <p>You have been invited to join the seller profile
+      <% if operation[:application_model].seller.name.present? %>
+        for <strong><%= operation[:application_model].seller.name %></strong>.
+      <% end %>
+    </p>
     <p>Before you join, set a password. You'll need this when you sign in again.</p>
   </header>
 
@@ -11,8 +15,14 @@
 
     <%= user_error_messages_for_model(operation['model']) %>
 
-    <%= f.password_field :password %>
-    <%= f.password_field :password_confirmation %>
+    <div data-module="password-strength">
+      <%= f.password_field :password, autocomplete: "off",
+                                      label: t('users.registrations.shared.form.password_label'),
+                                      help: t('users.registrations.shared.form.password_help') %>
+    </div>
+
+    <%= f.password_field :password_confirmation, autocomplete: 'off',
+                                                 label: t('users.registrations.shared.form.password_confirmation_label') %>
     <%= hidden_field_tag :confirmation_token, params[:confirmation_token] %>
 
     <%= f.submit 'Accept invitation' %>
