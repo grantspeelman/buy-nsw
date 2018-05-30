@@ -315,6 +315,8 @@ en:
         sections:
           details: Your product
           security: Your security approach
+          data: How data is managed
+          support: User support
   enumerize:
     product:
       audiences:
