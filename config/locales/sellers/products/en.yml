@@ -41,7 +41,7 @@ en:
                 pricing_min: Minimum price (excluding GST)
                 pricing_max: Maximum price (excluding GST)
                 pricing_calculator_url: Link to your pricing calculator (optional)
-                pricing_variables: Which variables affect your pricing?
+                pricing_variables: Which variables affect your pricing? Specify the things that make the price increase or decrease, eg. user numbers, volumes, storage, geographic location.
                 education_pricing:
                   question: Do you offer special pricing for educational organisations?
                   'true': 'Yes'
