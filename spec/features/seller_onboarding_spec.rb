@@ -217,7 +217,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     visit accept_sellers_application_invitations_path(application_id, confirmation_token: token)
 
     fill_in 'Password', with: 'foo bar baz'
-    fill_in 'Password confirmation', with: 'foo bar baz'
+    fill_in 'Confirm', with: 'foo bar baz'
 
     click_on 'Accept'
 
