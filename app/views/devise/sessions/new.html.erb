@@ -5,12 +5,10 @@
     </header>
 
     <ul class="accounts">
-      <% unless feature_flag_hide_buyer_pathway %>
       <li class="buyer-account">
         <%= t('users.sessions.sign_up.buyers.body_html') %>
         <p><%= link_to t('users.sessions.sign_up.buyers.button_label'), registration_path('buyer'), class: 'action' %></p>
       </li>
-      <% end %>
       <li class="seller-account">
         <%= t('users.sessions.sign_up.sellers.body_html') %>
         <p><%= link_to t('users.sessions.sign_up.sellers.button_label'), registration_path('seller'), class: 'action' %></p>

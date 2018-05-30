@@ -13,6 +13,7 @@ module ApplicationHelper
   end
 
   # Super crude way of doing a feature flag
+  # This allows buyer registration but hides other parts of the buyer pathway
   def feature_flag_hide_buyer_pathway
     ENV['FEATURE_FLAG_HIDE_BUYER_PATHWAY'].present?
   end
