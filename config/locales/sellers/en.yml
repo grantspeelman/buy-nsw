@@ -50,7 +50,7 @@ en:
               financial_statement: 'Financial statement'
               financial_statement_expiry: Date of document
             professional_indemnity:
-              professional_indemnity_certificate: 'Professional indemnity certificate'
+              professional_indemnity_certificate: 'Professional indemnity and public liability certificate'
               professional_indemnity_certificate_expiry: Expiry date
             workers_compensation:
               workers_compensation_certificate: 'Workers compensation insurance'
@@ -181,7 +181,7 @@ en:
           short: 'Product liability insurance'
           button_label: 'Upload document'
         professional_indemnity:
-          short: 'Professional indemnity insurance'
+          short: 'Professional indemnity and public liability insurance'
           button_label: 'Upload document'
         contacts:
           short: 'Your contact details'
