@@ -6,15 +6,19 @@ class ProductDetails
   end
 
   def details
-    sections.tap {|sections|
-      # Filter out empty fields from the list – eg. conditional fields
-      #
-      sections.each {|key, fields|
-        fields.delete_if {|label, value|
-          value.nil? || (value.is_a?(Array) && value.empty?)
+    if include_all
+      sections
+    else
+      sections.tap {|sections|
+        # Filter out empty fields from the list – eg. conditional fields
+        #
+        sections.each {|key, fields|
+          fields.delete_if {|label, value|
+            value.nil? || (value.is_a?(Array) && value.empty?)
+          }
         }
       }
-    }
+    end
   end
 
 private
