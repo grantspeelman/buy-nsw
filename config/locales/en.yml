@@ -74,6 +74,17 @@ en:
     waiting_seller_unique_abn?: A seller with this ABN is already on the waitlist
     messages:
       weak_password: "That's not strong enough. Consider adding a number, symbols or more letters to make it stronger."
+  feedback:
+    problem_report:
+      label: Is there anything wrong with this page?
+      title: Help us improve buy.nsw
+      task: What were you doing?
+      issue: What went wrong?
+      action: Send feedback
+      messages:
+        success: Thank you for your feedback.
+        error: Sorry, we’re unable to receive your message right now. If the problem persists, we have other ways for you to provide feedback on the contact page.
+        invalid: Please fill in the form
   helpers:
     label:
       seller_application:
