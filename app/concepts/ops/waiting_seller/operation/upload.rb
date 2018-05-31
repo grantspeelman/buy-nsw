@@ -42,7 +42,7 @@ class Ops::WaitingSeller::Upload < Trailblazer::Operation
 
   def prepare_fields(row)
     row.to_hash.slice(*fields).tap {|atts|
-      atts['state'].downcase!
+      atts['state'].downcase! if atts['state'].present?
     }
   end
 
