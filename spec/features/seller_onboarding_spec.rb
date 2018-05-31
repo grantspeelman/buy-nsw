@@ -24,6 +24,8 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     complete_professional_indemnity
     complete_workers_compensation
 
+    create_and_remove_product
+
     invite_team_member
     accept_invitation
     complete_declaration
@@ -188,6 +190,18 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     click_on_step 'workers_compensation'
     check form_label('workers_compensation.workers_compensation_exempt')
     click_on 'Save'
+  end
+
+  def create_and_remove_product
+    click_on_step 'products'
+
+    click_on 'Add a product'
+
+    accept_alert do
+      click_on 'Delete this product'
+    end
+    
+    click_on 'Your application'
   end
 
   def complete_declaration
