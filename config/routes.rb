@@ -119,6 +119,7 @@ Rails.application.routes.draw do
   get '/license', to: 'static#license'
 
   match '/404', to: 'errors#not_found', via: :all
+  match '/429', to: 'errors#too_many_requests', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
 
   root to: redirect('/cloud')
