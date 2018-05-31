@@ -53,39 +53,69 @@ private
   end
 
   def product_basics
-    {
-      "Name" => product.name,
-      "Summary" => product.summary,
-      "Audiences" => product.audiences.texts,
-      "Features" => product.features.map(&:feature),
-      "Benefits" => product.benefits.map(&:benefit),
-      "Reseller status" => product.reseller_type_text,
-      "Organisation resold" => product.organisation_resold,
-      "Product-specific contact details" => product.custom_contact,
-      "Product contact name" => product.contact_name,
-      "Product contact email" => product.contact_email,
-      "Product contact phone" => product.contact_phone,
-    }
+    attributes do |a|
+      a["Name"] = product.name
+      a["Summary"] = product.summary
+      a["Audiences"] = product.audiences.texts
+      a["Features"] = product.features.map(&:feature)
+      a["Benefits"] = product.benefits.map(&:benefit)
+
+      a["Reseller status"] = product.reseller_type_text
+
+      unless product.reseller_type == 'own-product'
+        a["Organisation resold"] = product.organisation_resold
+      end
+
+      a["Product-specific contact details"] = product.custom_contact
+
+      if product.custom_contact
+        a["Product contact name"] = product.contact_name
+        a["Product contact email"] = product.contact_email
+        a["Product contact phone"] = product.contact_phone
+      end
+    end
   end
 
   def commercials
-    {
-      "Free version available" => product.free_version,
-      "Free version details" => product.free_version_details,
-      "Free trial available" => product.free_trial,
-      "Free trial URL" => product.free_trial_url,
-      "Minimum price" => product.pricing_min,
-      "Maximum price" => product.pricing_max,
-      "Pricing unit" => product.pricing_unit,
-      "Variables affecting pricing" => product.pricing_variables,
-      "Pricing calculator URL" => product.pricing_calculator_url,
-      "Education pricing available" => product.education_pricing,
-      "Education pricing eligibility" => product.education_pricing_eligibility,
-      "Education pricing differences" => product.education_pricing_differences,
-      "Not-for-profit pricing available" => product.not_for_profit_pricing,
-      "Not-for-profit pricing eligibility" => product.not_for_profit_pricing_eligibility,
-      "Not-for-profit pricing differences" => product.not_for_profit_pricing_differences,
-    }
+    attributes do |a|
+      a["Free version available"] = product.free_version
+
+      if product.free_version
+        a["Free version details"] = product.free_version_details
+      end
+
+      a["Free trial available"] = product.free_trial
+
+      if product.free_trial
+        a["Free trial URL"] = product.free_trial_url
+      end
+
+      a["Minimum price"] = product.pricing_min
+      a["Maximum price"] = product.pricing_max
+      a["Pricing currency"] = product.pricing_currency
+
+      if product.pricing_currency == 'other'
+        a["Other pricing currency"] = product.pricing_currency_other
+      end
+
+      a["Pricing unit"] = product.pricing_unit
+      a["Variables affecting pricing"] = product.pricing_variables
+      a["Pricing calculator URL"] = product.pricing_calculator_url
+
+      a["Education pricing available"] = product.education_pricing
+
+      if product.education_pricing
+        a["Education pricing eligibility"] = product.education_pricing_eligibility
+        a["Education pricing differences"] = product.education_pricing_differences
+      end
+
+      a["Not-for-profit pricing available"] = product.not_for_profit_pricing
+
+      if product.not_for_profit_pricing
+        a["Not-for-profit pricing eligibility"] = product.not_for_profit_pricing_eligibility
+        a["Not-for-profit pricing differences"] = product.not_for_profit_pricing_differences
+      end
+    end
   end
 
   def onboarding_and_offboarding
