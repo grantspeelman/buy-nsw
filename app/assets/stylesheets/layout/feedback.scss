@@ -1,0 +1,25 @@
+.problem-report-container {
+  @extend .container;
+  padding: 1rem;
+
+  form {
+    @include two-thirds;
+
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    .block-error {
+      margin-top: 0;
+    }
+
+    .mini-error {
+      margin-bottom: 1rem;
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}
