@@ -55,6 +55,7 @@ private
   def product_basics
     attributes do |a|
       a["Name"] = product.name
+      a["Category"] = product.section_text
       a["Summary"] = product.summary
       a["Audiences"] = product.audiences.texts
       a["Features"] = product.features.map(&:feature)
