@@ -109,6 +109,10 @@ Rails.application.routes.draw do
     root to: 'root#index'
   end
 
+  namespace :feedback do
+    resources :problem_reports, path: 'problem-reports', only: [:new, :create]
+  end
+
   get '/contact', to: 'static#contact'
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'
