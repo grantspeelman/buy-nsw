@@ -19,4 +19,7 @@ class StaticController < ApplicationController
 
   def seller_guide
   end
+
+  def license
+  end
 end
