@@ -49,14 +49,7 @@
       font-size: 1.4em;
       font-weight: 500;
     }
-
-    // .btn {
-    //   font-size: 1em;
-    //   @include media-breakpoint-up(md) {
-    //     font-size: 1.3em;
-    //   }
-    // }
-
+    
     &.half-width {
       @extend .col-md-6;
 
