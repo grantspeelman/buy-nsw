@@ -1,12 +1,13 @@
 .problem-report-container {
-  @extend .container;
-  padding: 1rem;
+  border-top: 1px solid $grey-3;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   form {
-    @include two-thirds;
-
     padding-top: 1rem;
     padding-bottom: 1.5rem;
+
+    @include two-thirds;
 
     h1 {
       font-size: 1.7rem;

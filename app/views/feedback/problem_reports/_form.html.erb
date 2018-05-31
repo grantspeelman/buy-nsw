@@ -1,13 +1,15 @@
-<aside class="problem-report-container" data-module="problem-report"
-        data-problem-report-label="<%= t('feedback.problem_report.label') %>"
-        data-problem-report-error="<%= t('feedback.problem_report.messages.error') %>"
-        data-problem-report-invalid="<%= t('feedback.problem_report.messages.invalid') %>">
-  <div class="problem-report-link"></div>
-  <%= bootstrap_form_tag url: feedback_problem_reports_path, html: { aria: { hidden: true } } do |f| %>
-    <h1><%= t('feedback.problem_report.title') %></h1>
-    <%= f.text_field :task, label: t('feedback.problem_report.task') %>
-    <%= f.text_field :issue, label: t('feedback.problem_report.issue') %>
-    <%= f.submit t('feedback.problem_report.action') %>
-  <% end %>
-  <div class="problem-report-response"></div>
-</aside>
+<div class="container">
+  <aside class="problem-report-container" data-module="problem-report"
+          data-problem-report-label="<%= t('feedback.problem_report.label') %>"
+          data-problem-report-error="<%= t('feedback.problem_report.messages.error') %>"
+          data-problem-report-invalid="<%= t('feedback.problem_report.messages.invalid') %>">
+    <div class="problem-report-link"></div>
+    <%= bootstrap_form_tag url: feedback_problem_reports_path do |f| %>
+      <h1><%= t('feedback.problem_report.title') %></h1>
+      <%= f.text_field :task, label: t('feedback.problem_report.task') %>
+      <%= f.text_field :issue, label: t('feedback.problem_report.issue') %>
+      <%= f.submit t('feedback.problem_report.action') %>
+    <% end %>
+    <div class="problem-report-response"></div>
+  </aside>
+</div>

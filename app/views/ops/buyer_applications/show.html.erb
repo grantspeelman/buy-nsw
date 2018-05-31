@@ -16,11 +16,19 @@
 
   <section class="application-details">
     <dl>
+      <% if application.started_at.present? %>
+        <dt>Started at</dt>
+        <dd><%= application.started_at.localtime.to_formatted_s(:long) %></dd>
+      <% end %>
       <% if application.submitted_at.present? %>
         <dt>Submitted by</dt>
         <dd><%= application.user.email %></dd>
         <dt>Submitted at</dt>
         <dd><%= application.submitted_at.localtime.to_formatted_s(:long) %></dd>
+      <% end %>
+      <% if application.decided_at.present? %>
+        <dt>Decided at</dt>
+        <dd><%= application.decided_at.localtime.to_formatted_s(:long) %></dd>
       <% end %>
     </dl>
   </section>

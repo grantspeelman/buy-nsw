@@ -57,7 +57,7 @@ module Ops::SellerApplications::DetailHelper
       terms: [
         :agree,
         :agreed_at,
-        :agreed_by,
+        :agreed_by_email,
       ]
     }
   end

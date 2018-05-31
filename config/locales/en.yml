@@ -172,6 +172,18 @@ en:
           name: 'Happy to travel for regional or interstate opportunities'
         disability:
           name: 'Australian disability enterprise'
+        contact_name:
+          name: 'Business contact name'
+        contact_email:
+          name: 'Business contact email'
+        contact_phone:
+          name: 'Business contact phone'
+        representative_name:
+          name: 'Authorised representative name'
+        representative_email:
+          name: 'Authorised representative email'
+        representative_phone:
+          name: 'Authorised representative phone'
         government_experience:
           name: 'Government experience'
           values:
@@ -182,7 +194,7 @@ en:
             international_government_experience: 'Government outside Australia'
         agreed_at:
           name: 'Agreed at'
-        agreed_by:
+        agreed_by_email:
           name: 'Agreed by'
         workers_compensation_certificate:
           name: Workers Compensation Insurance

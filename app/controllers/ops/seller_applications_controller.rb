@@ -56,6 +56,11 @@ private
   end
   helper_method :application
 
+  def decorated_seller
+    SellerDecorator.new(application.seller, view_context)
+  end
+  helper_method :decorated_seller
+
   def forms
     @forms ||= {
       assign: ops[:assign]['contract.default'],
