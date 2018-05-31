@@ -11,7 +11,9 @@ footer[role=global] {
       }
     }
     .footer-right {
-      text-align: right;
+      @include media-breakpoint-up(md) {
+        text-align: right;
+      }
     }
     a {
       color: #acacac;
@@ -21,5 +23,5 @@ footer[role=global] {
 
   background: #1d1d1d;
   min-height: 10vh;
-  border-top: 8px solid $dark-blue;
+  border-top: 8px solid lighten(#1d1d1d, 25%);
 }

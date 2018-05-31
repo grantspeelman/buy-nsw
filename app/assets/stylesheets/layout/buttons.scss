@@ -2,10 +2,15 @@
   border: none;
   border-radius: 0px;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 0.4em 1.2em;
   text-decoration: none;
   transition: none;
+  display: block;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.3rem;
+  }
 }
 
 .btn-primary, .btn-secondary {

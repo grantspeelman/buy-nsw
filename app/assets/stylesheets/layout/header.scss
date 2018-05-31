@@ -1,18 +1,71 @@
 header[role=global] {
   background: $dark-blue;
-  height: 100px;
   color: #fff;
 
+  @include media-breakpoint-up(md) {
+    height: 100px;
+  }
+
   h1 {
-    @extend .col-md-6;
+    @extend .col-sm-5;
     @include logo;
+
+    font-size: 1.4rem;
+    margin-bottom: 0;
+
+    /* TODO: Update this in the future to be consistent with email logo */
+
+    .logo-container {
+      height: 2.86em;
+      width: auto;
+      padding: .35em;
+    }
+
+    span.logo {
+      height: 2.14em;
+      width: 2em;
+    }
+    span.site-title {
+      margin-top: 1.25em;
+      margin-left: .8em;
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: 2.2rem;
+
+      span.site-title {
+        font-size: 1.8rem;
+        margin-top: 3.2rem;
+      }
+    }
   }
 
   aside {
-    @extend .col-md-6;
-    text-align: right;
-    margin-top: 1.9rem;
-    font-size: 1rem;
+    @extend .col-sm-7;
+    font-size: .9rem;
+    background: $light-purple;
+    border-bottom: 1px solid darken($light-purple, 5%);
+    color: $black;
+    padding: .5rem 1rem;
+
+    @include media-breakpoint-up(sm) {
+      background: transparent;
+      border-bottom: none;
+      color: $white;
+      text-align: right;
+      font-size: .8rem;
+      margin-top: 1rem;
+      padding: 0 15px;
+
+      a {
+        color: $white;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: 1rem;
+      margin-top: 1.9rem;
+    }
 
     h2 {
       display: block;
@@ -24,15 +77,20 @@ header[role=global] {
       padding-left: 0;
       display: inline-block;
       font-weight: 400;
+      margin-bottom: 0;
     }
     li {
       display: inline-block;
       list-style: none;
-      padding-left: 1em;
-    }
-    a {
-      color: #fff;
+      padding-right: 1em;
+
+      @include media-breakpoint-up(sm) {
+        padding-left: 1em;
+        padding-right: 0;
+      }
     }
   }
+
+
 
 }

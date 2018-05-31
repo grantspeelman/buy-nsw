@@ -11,39 +11,48 @@
   }
 
   .team-action {
-    margin: 1rem 0 2.5rem 3rem;
-    font-size: 1.1rem;
+    margin: 1em 0 2.5em 3em;
+    font-size: .85rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.1rem;
+    }
   }
 
   ol.task-list {
     padding-left: 0;
     padding-bottom: 3rem;
     list-style: none;
+    font-size: .85rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.1rem;
+    }
 
     > li {
-      font-size: 1.6rem;
+      font-size: 1em;
       font-weight: bold;
-      margin-bottom: 3rem;
+      margin-bottom: 3em;
 
       h2 {
         .step-number {
           display: inline-block;
-          width: 2.6rem;
+          width: 1.75em;
         }
 
-        font-size: 1.6rem;
+        font-size: 1.6em;
         font-weight: bold;
       }
     }
 
     ul {
-      padding-left: 3rem;
-      font-size: 1.1rem;
+      padding-left: 3em;
       font-weight: normal;
 
       li {
         list-style: none;
-        padding: .6rem 0;
+        padding: .6em 0;
+        overflow: auto;
 
         border-bottom: 1px solid $grey-3;
 
@@ -54,14 +63,14 @@
         .completed {
           display: inline-block;
           float: right;
-          padding: 0.3rem 0.4rem;
+          padding: 0.3em 0.4em;
 
           background: $dark-blue;
           color: #fff;
 
           text-transform: uppercase;
-          font-size: 0.95rem;
-          line-height: 1.1rem;
+          font-size: 0.95em;
+          line-height: 1.1em;
           font-weight: 600;
         }
       }
