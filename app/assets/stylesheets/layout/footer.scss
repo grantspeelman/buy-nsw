@@ -2,7 +2,7 @@ footer[role=global] {
   .container {
     font-size: 1em;
     padding: 1.5em 1em;
-    color: #888;
+    color: #acacac;
     .footer-left, .footer-right {
       @extend .col-md-6;
       ul {
@@ -13,9 +13,13 @@ footer[role=global] {
     .footer-right {
       text-align: right;
     }
+    a {
+      color: #acacac;
+      text-decoration: none;
+    }
   }
 
-  background: #fff;
+  background: #1d1d1d;
   min-height: 10vh;
   border-top: 8px solid $dark-blue;
 }
