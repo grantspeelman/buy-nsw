@@ -114,6 +114,8 @@ Rails.application.routes.draw do
   get '/terms-of-use', to: 'static#terms_of_use'
   get '/accessibility', to: 'static#accessibility'
   get '/core-terms', to: 'static#core_terms'
+  get '/guides/seller', to: 'static#seller_guide'
+  get '/guides/buyer', to: 'static#buyer_guide'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all

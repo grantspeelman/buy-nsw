@@ -1,20 +1,25 @@
 footer[role=global] {
   .container {
-    font-size: 0.76em;
+    font-size: 1em;
     padding: 1.5em 1em;
-    color: #888;
-    .footer-left, .footer-links {
+    color: #acacac;
+    .footer-left, .footer-right {
       @extend .col-md-6;
-    }
-    .footer-links {
-      text-align: right;
       ul {
-        list-style: none;        
+        list-style: none;
+        padding-left: 0;
       }
+    }
+    .footer-right {
+      text-align: right;
+    }
+    a {
+      color: #acacac;
+      text-decoration: none;
     }
   }
 
-  background: #fff;
+  background: #1d1d1d;
   min-height: 10vh;
   border-top: 8px solid $dark-blue;
 }
