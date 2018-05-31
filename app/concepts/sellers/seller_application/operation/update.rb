@@ -66,6 +66,7 @@ class Sellers::SellerApplication::Update < Trailblazer::Operation
 
     if contract.changed.keys.include?('agree') && contract.agree == '1'
       seller.agreed_at = Time.now
+      seller.agreed_by = options['config.current_user']
     end
   end
 
