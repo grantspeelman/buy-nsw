@@ -1,4 +1,7 @@
 class StaticController < ApplicationController
+  # We don't want the health check page ever to have basic auth in front of it
+  skip_before_action :authenticate!, only: [:health]
+
   def index
   end
 
@@ -21,5 +24,8 @@ class StaticController < ApplicationController
   end
 
   def license
+  end
+
+  def health
   end
 end
