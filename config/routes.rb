@@ -121,6 +121,8 @@ Rails.application.routes.draw do
   get '/guides/seller', to: 'static#seller_guide'
   get '/guides/buyer', to: 'static#buyer_guide'
   get '/license', to: 'static#license'
+  # Health check page for load balancer - never use basic auth
+  get '/health', to: 'static#health'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
