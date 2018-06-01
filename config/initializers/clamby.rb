@@ -1,3 +1,3 @@
 Clamby.configure(
-  daemonize: (ENV['CLAMAV_DAEMONIZE'] == true)
+  daemonize: (ENV['CLAMAV_DAEMONIZE'].present?)
 )
