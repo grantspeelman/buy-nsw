@@ -37,7 +37,7 @@ module Concerns::Documentable
         end
 
         define_method("remove_#{field}=") do |value|
-          self.public_send("#{field}").destroy unless value.blank?
+          self.public_send("#{field}").destroy unless (value.blank? || value == '0')
         end
       end
     end
