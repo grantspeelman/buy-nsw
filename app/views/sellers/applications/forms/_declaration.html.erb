@@ -6,7 +6,7 @@
 
 <% if f.object.seller.agree == true %>
 
-  <p>The Core Terms were agreed to at <%= f.object.seller.agreed_at.localtime.to_formatted_s(:long) %>.</p>
+  <p>The Core Terms were agreed to at <strong><%= f.object.seller.agreed_at.localtime.to_formatted_s(:long) %></strong><% if f.object.seller.agreed_by.present? %> by <strong><%= f.object.seller.agreed_by.email %></strong><% end %>.</p>
   <p class="return-link">
     <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
   </p>
