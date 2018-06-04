@@ -43,7 +43,7 @@ private
   helper_method :applications
 
   def search
-    @search ||= SellerApplicationSearch.new(
+    @search ||= Search::SellerApplication.new(
       selected_filters: params,
       page: params.fetch(:page, 1),
       per_page: 25,

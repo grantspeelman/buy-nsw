@@ -2,7 +2,7 @@ class Pathways::SearchController < ApplicationController
 
 private
   def search
-    @search ||= ProductSearch.new(
+    @search ||= Search::Product.new(
       term: params[:q],
       section: params[:section],
       selected_filters: params.except(:q, :section),

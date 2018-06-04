@@ -1,0 +1,38 @@
+<section class="record-list">
+  <h2><%= pluralize(search.result_count, 'problem report') %></h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 5%">ID</th>
+        <th scope="col" style="width: 5%">Status</th>
+        <th scope="col" style="width: 15%">URL</th>
+        <th scope="col" style="width: 30%">Issue</th>
+        <th scope="col" style="width: 15%">Tags</th>
+        <th scope="col" style="width: 15%">Reported</th>
+        <th scope="col" style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% search.paginated_results.each do |report| %>
+        <tr>
+          <td><%= report.id %></td>
+          <td><%= report.state %></td>
+          <td><%= report.url.sub(/\Ahttps?\:\/\/[a-z0-9:\.]+\//, '/') %></td>
+          <td><%= report.issue %></td>
+          <td>
+            <%= report.tags.join(', ') %>
+          </td>
+          <td>
+            <%= distance_of_time_in_words_to_now(report.created_at) %> ago
+          </td>
+          <td class="actions">
+            <%= link_to 'View', ops_problem_report_path(report) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate search.paginated_results %>
+</section>

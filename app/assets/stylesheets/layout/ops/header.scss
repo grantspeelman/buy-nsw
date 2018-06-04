@@ -2,13 +2,13 @@ body.ops {
   header.ops {
     background: darken($grey-4, 10%);
     color: #fff;
-    border-bottom: 5px solid darken($grey-4, 5%);
+    border-bottom: 3px solid darken($grey-4, 5%);
 
     padding: 0.7rem 1rem;
     margin-bottom: 0;
 
     h1 {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0;
 
@@ -24,6 +24,10 @@ body.ops {
         margin-right: 9px;
         width: 34px;
         height: 40px;
+      }
+
+      .title {
+        padding-top: .1rem;
       }
     }
 

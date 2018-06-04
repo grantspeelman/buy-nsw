@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe BuyerSearch do
+RSpec.describe Search::Buyer do
 
   it 'returns all buyers by default' do
     create_list(:buyer, 10)
 
-    search = BuyerSearch.new(
+    search = Search::Buyer.new(
       selected_filters: {}
     )
 
@@ -16,7 +16,7 @@ RSpec.describe BuyerSearch do
     create_list(:buyer, 5, state: 'inactive')
     create_list(:buyer, 3, state: 'active')
 
-    search = BuyerSearch.new(
+    search = Search::Buyer.new(
       selected_filters: {
         state: 'inactive'
       }
@@ -29,7 +29,7 @@ RSpec.describe BuyerSearch do
     buyer_1 = create(:buyer, name: 'John')
     buyer_2 = create(:buyer, name: 'Jane')
 
-    search = BuyerSearch.new(
+    search = Search::Buyer.new(
       selected_filters: {
         term: 'Jane'
       }

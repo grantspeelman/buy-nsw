@@ -10,7 +10,7 @@
       <header class="ops">
         <h1>
           <span class="logo">NSW Government</span>
-          <span class="title">Procurement Ops</span>
+          <span class="title">Procurement<br> Ops</span>
         </h1>
       </header>
 
@@ -33,6 +33,11 @@
         <h3>Entities</h3>
         <ul>
           <%= nav_link_to 'Buyers', ops_buyers_path, icon: 'person', match_prefix: true %>
+        </ul>
+
+        <h3>Performance</h3>
+        <ul>
+          <%= nav_link_to 'Problem reports', ops_problem_reports_path, icon: 'bug', match_prefix: true %>
         </ul>
       </nav>
 

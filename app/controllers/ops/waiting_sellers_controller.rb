@@ -49,7 +49,7 @@ private
   helper_method :operation
 
   def search
-    @search ||= WaitingSellerSearch.new(
+    @search ||= Search::WaitingSeller.new(
       selected_filters: params,
       page: params.fetch(:page, 1),
       per_page: 25,

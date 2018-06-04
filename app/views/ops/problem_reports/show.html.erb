@@ -1,0 +1,113 @@
+<section class="view-ops-problem-reports-show">
+
+  <header class="view-header">
+    <h1>Problem report: #<%= problem_report.id %></h1>
+  </header>
+
+  <div class="ops-details">
+    <h2>Information from the user</h2>
+
+    <dl>
+      <dt>Reported at</dt>
+      <dd>
+        <%= problem_report.created_at.localtime.to_formatted_s(:long) %>
+        (<%= distance_of_time_in_words_to_now(problem_report.created_at) %> ago)
+      </dd>
+
+      <dt>URL</dt>
+      <dd><%= problem_report.url %></dd>
+
+      <dt>What the user was trying to do</dt>
+      <dd>
+        <% if problem_report.task.present? %>
+          <%= problem_report.task %>
+        <% else %>
+          <em>Empty</em>
+        <% end %>
+      </dd>
+
+      <dt>What went wrong</dt>
+      <dd>
+        <% if problem_report.issue.present? %>
+          <%= problem_report.issue %>
+        <% else %>
+          <em>Empty</em>
+        <% end %>
+      </dd>
+
+      <% if problem_report.user.present? %>
+        <dt>Logged in user</dt>
+        <dd>
+          <%= problem_report.user.email %>
+          (<%= problem_report.user.roles.join(',') %>)
+        </dd>
+      <% end %>
+
+      <dt>The previous page visited by the user</dt>
+      <dd>
+        <% if problem_report.referer.present? %>
+          <%= problem_report.referer %>
+        <% else %>
+          <em>None</em>
+        <% end %>
+      </dd>
+
+      <dt>The user's browser</dt>
+      <dd><%= problem_report.browser %></dd>
+    </dl>
+  </div>
+
+  <div class="ops-details">
+    <h2>Our response</h2>
+
+    <dl>
+      <dt>Status</dt>
+      <dd class="report-state"><%= problem_report.state %></dd>
+
+      <dt>Tags</dt>
+      <dd>
+        <% if problem_report.tags.any? %>
+          <%= problem_report.tags.join(', ') %>
+        <% else %>
+          <em>No tags</em>
+        <% end %>
+      </dd>
+
+      <% if problem_report.resolved_at.present? %>
+        <dt>Resolved at</dt>
+        <dd>
+          <%= problem_report.resolved_at.localtime.to_formatted_s(:long) %>
+          (<%= distance_of_time_in_words_to_now(problem_report.resolved_at) %> ago)
+        </dd>
+      <% end %>
+
+      <% if problem_report.resolved_by.present? %>
+        <dt>Resolved by</dt>
+        <dd><%= problem_report.resolved_by.email %></dd>
+      <% end %>
+    </dl>
+  </div>
+
+  <% if problem_report.open? %>
+    <section class="box" data-module="collapsible-section">
+      <h2>Mark this problem as resolved</h2>
+
+      <div class="inner">
+        <p>If this problem has been fixed, you can mark this report as resolved.</p>
+        <%= button_to 'Mark as resolved', resolve_ops_problem_report_path(problem_report), class: 'btn btn-primary' %>
+      </div>
+    </section>
+  <% end %>
+
+  <section class="box" data-module="collapsible-section">
+    <h2>Edit the tags on this report</h2>
+
+    <div class="inner">
+      <%= bootstrap_form_for operations[:tag]['contract.default'], url: tag_ops_problem_report_path(problem_report), method: :put, as: :problem_report do |f| %>
+        <%= f.text_field :tags %>
+        <%= f.submit "Save" %>
+      <% end %>
+    </div>
+  </section>
+
+</section>
