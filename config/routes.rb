@@ -106,6 +106,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :problem_reports, path: 'problem-reports', only: [:index, :show]
+
     root to: 'root#index'
   end
 
