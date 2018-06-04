@@ -6,8 +6,8 @@
 
 @mixin app-column-fixed {
   @include app-column;
-  width: 20vw;
-  min-width: 230px;
+  width: 17vw;
+  min-width: 200px;
 }
 
 @mixin app-column-container {

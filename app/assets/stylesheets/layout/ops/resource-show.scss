@@ -1,8 +1,11 @@
 @mixin ops-resource-show-column-set {
+  @include ops-details;
+  
   aside {
     @include app-column-fixed;
     background: #f2f5f6;
-    border-right: 5px solid #e4eaec;
+    border-right: 3px solid #e4eaec;
+    width: 20vw;
 
     h1 {
       font-size: 1.4rem;
@@ -67,38 +70,6 @@
       &:last-of-type {
         text-align: right;
       }
-    }
-  }
-
-  dl {
-    @extend .row;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    dt, dd {
-      border-bottom: 1px solid $grey-1;
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-      margin-bottom: 0;
-
-      ul, p:last-of-type {
-        margin-bottom: 0;
-      }
-      ul {
-        padding-left: 1rem;
-      }
-    }
-
-    dt {
-      @extend .col-4;
-    }
-
-    dd {
-      @extend .col-8;
-    }
-
-    em {
-      color: #888;
     }
   }
 }
