@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe BuyerApplicationSearch do
+RSpec.describe Search::SellerApplication do
 
   describe '#available_filters' do
     it 'returns all admin users in the assigned_to filter' do
       user = create(:admin_user)
-      search = BuyerApplicationSearch.new(
+      search = Search::SellerApplication.new(
         selected_filters: {}
       )
 
@@ -17,10 +17,10 @@ RSpec.describe BuyerApplicationSearch do
     end
   end
 
-  it 'returns all buyer applications by default' do
-    create_list(:buyer_application, 10)
+  it 'returns all seller applications by default' do
+    create_list(:seller_application, 10)
 
-    search = BuyerApplicationSearch.new(
+    search = Search::SellerApplication.new(
       selected_filters: {}
     )
 
@@ -30,10 +30,10 @@ RSpec.describe BuyerApplicationSearch do
   it 'filters by assignee' do
     user = create(:admin_user)
 
-    create_list(:buyer_application, 5)
-    create_list(:buyer_application, 3, assigned_to: user)
+    create_list(:seller_application, 5)
+    create_list(:seller_application, 3, assigned_to: user)
 
-    search = BuyerApplicationSearch.new(
+    search = Search::SellerApplication.new(
       selected_filters: {
         assigned_to: user.id,
       }
@@ -43,10 +43,10 @@ RSpec.describe BuyerApplicationSearch do
   end
 
   it 'filters by state' do
-    create_list(:buyer_application, 5, state: 'created')
-    create_list(:buyer_application, 3, state: 'ready_for_review')
+    create_list(:seller_application, 5, state: 'created')
+    create_list(:seller_application, 3, state: 'ready_for_review')
 
-    search = BuyerApplicationSearch.new(
+    search = Search::SellerApplication.new(
       selected_filters: {
         state: 'created'
       }

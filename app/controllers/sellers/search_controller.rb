@@ -4,7 +4,7 @@ class Sellers::SearchController < Sellers::BaseController
 
 private
   def search
-    @search ||= SellerSearch.new(
+    @search ||= Search::Seller.new(
       term: params[:q],
       selected_filters: params.except(:q),
       page: params.fetch(:page, 1),
