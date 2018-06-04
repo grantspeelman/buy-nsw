@@ -106,7 +106,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :problem_reports, path: 'problem-reports', only: [:index, :show]
+    resources :problem_reports, path: 'problem-reports', only: [:index, :show] do
+      member do
+        post :resolve
+        put :tag
+      end
+    end
 
     root to: 'root#index'
   end

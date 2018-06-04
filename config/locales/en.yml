@@ -136,6 +136,20 @@ en:
               awaiting_assignment: Awaiting assignment
           assigned_to:
             name: Assigned to
+    problem_reports:
+      messages:
+        resolved: 'The problem report has been resolved'
+        resolve_failed: 'There was a problem resolving this report'
+        updated: 'The problem report was saved'
+        update_failed: 'There was a problem saving this report'
+      search:
+        filters:
+          url:
+            name: URL
+          state:
+            name: Status
+          tag:
+            name: Tag
     seller_applications:
       fields:
         name:

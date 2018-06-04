@@ -1,0 +1,6 @@
+.view-ops-problem-reports-list {
+  @include ops-resource-list-column-set;
+}
+.view-ops-problem-reports-show {
+  @extend .view-padded;
+}
