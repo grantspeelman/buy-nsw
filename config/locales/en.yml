@@ -235,6 +235,21 @@ en:
             name: Invitation status
           term:
             name: Search
+  performance:
+    seller_applications:
+      progress:
+        offering: Completed offering
+        business_details: Provided business details
+        contact_details: Provided contact details
+        characteristics: Completed business identifiers
+        addresses: Provided at least one address
+        disclosures: Completed disclosures
+        financial_statement: Provided financial statement
+        product_liability: Provided product liability certificate
+        professional_indemnity: Provided professional indemnity certificate
+        workers_compensation: Provided or exempt from workers compensation
+        products: Started at least one product
+        terms_agreed: Agreed to the Core Terms
   users:
     sessions:
       sign_up:
