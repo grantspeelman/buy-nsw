@@ -120,6 +120,9 @@ Rails.application.routes.draw do
     resources :problem_reports, path: 'problem-reports', only: [:new, :create]
   end
 
+  get '/performance', to: 'performance#index'
+  get '/performance/seller-applications', to: 'performance#seller_applications'
+
   get '/contact', to: 'static#contact'
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'

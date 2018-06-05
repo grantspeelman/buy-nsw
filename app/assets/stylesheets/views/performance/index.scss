@@ -1,0 +1,54 @@
+.view-performance-index {
+
+  > h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
+  }
+
+  .application-count {
+    padding: 2rem 0;
+    border-bottom: 1px solid $grey-3;
+
+    @extend .row;
+    @extend .no-gutters;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
+    header {
+      @extend .col-md-4;
+      padding: 0 10% 0 0;
+
+      h1 {
+        margin: 0 0 .3rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    ul {
+      @extend .col-md-8;
+      padding: 0;
+      margin: 0;
+
+      display: flex;
+    }
+
+    li {
+      display: inline-block;
+      flex: 1;
+      font-size: 1.3rem;
+    }
+
+    em {
+      font-size: 4rem;
+      line-height: 1.1em;
+
+      font-weight: bold;
+      font-style: normal;
+      display: block;
+    }
+
+  }
+
+}
