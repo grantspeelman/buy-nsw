@@ -143,9 +143,9 @@ private
   end
 
   def products
-    (
-      in_progress_sellers.joins(:products).count.to_f / divisor * 100
-    ).round
+    sellers_with_products = in_progress_sellers.joins(:products).group('sellers.id').having('count(seller_id) >= 1').to_a.size
+
+    (sellers_with_products.to_f / divisor * 100).round
   end
 
   def terms_agreed
