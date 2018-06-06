@@ -1,5 +1,5 @@
 <fieldset class="multiple-child-objects with-nested-blocks" data-module="expanding-list" data-object-name="address">
-  <ol>
+  <ol class="addresses">
   <%= f.fields_for :addresses do |a| %>
     <li>
       <%= a.text_field :address %>

@@ -1,10 +1,6 @@
 <% content_for(:seller_application_class, 'application-dashboard product-dashboard') %>
 
-<ul class="breadcrumbs">
-  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
-  <li><%= link_to 'Your cloud products and services', sellers_application_products_path(application) %></li>
-  <li><%= product.name.present? ? product.name : "Product" %></li>
-</ul>
+<%= render_breadcrumbs(seller_application_product_breadcrumbs) %>
 
 <h1>Provide details about your cloud product or service</h1>
 

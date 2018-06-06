@@ -1,0 +1,8 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <% links[0..-2].each do |(label, url)| %>
+      <li aria-current="false"><%= link_to label, url %></li>
+    <% end %>
+    <li aria-current="page"><%= links.last.is_a?(Array) ? links.last[0] : links.last %></li>
+  </ol>
+</nav>

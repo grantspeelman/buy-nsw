@@ -5,6 +5,30 @@ module Sellers::ApplicationsHelper
     }
   end
 
+  def seller_application_root_breadcrumbs
+    [
+      [ 'Your application', sellers_application_path(application) ]
+    ]
+  end
+
+  def seller_application_invitations_breadcrumbs
+    seller_application_root_breadcrumbs + [
+      [ 'Your team members', sellers_application_invitations_path(application) ]
+    ]
+  end
+
+  def seller_application_products_list_breadcrumbs
+    seller_application_root_breadcrumbs + [
+      ['Your cloud products and services', sellers_application_products_path(application)],
+    ]
+  end
+
+  def seller_application_product_breadcrumbs
+    seller_application_products_list_breadcrumbs + [
+      [ (product.name.present? ? product.name : 'Product'), sellers_application_product_path(application, product) ]
+    ]
+  end
+
   def disclosures_text_for(application)
     fields = [ :investigations, :legal_proceedings, :insurance_claims, :conflicts_of_interest, :other_circumstances ]
 

@@ -105,7 +105,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
     click_on 'Add another address'
 
-    within 'ol li:last-of-type' do
+    within 'ol.addresses li:last-of-type' do
       fill_in 'Address', with: '321 Test Street'
       fill_in 'Suburb', with: 'Millers Point'
       select 'New South Wales', from: 'State'
@@ -200,7 +200,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     accept_alert do
       click_on 'Delete this product'
     end
-    
+
     click_on 'Your application'
   end
 

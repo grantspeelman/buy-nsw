@@ -3,6 +3,7 @@ module ApplicationHelper
   include Forms::DocumentHelper
   include Forms::ErrorHelper
   include Forms::LabelHelper
+  include Layout::BreadcrumbsHelper
 
   def deployment_env
     if Rails.env.development?

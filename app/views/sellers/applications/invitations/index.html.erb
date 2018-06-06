@@ -1,10 +1,6 @@
 <% content_for(:seller_application_class, 'invitations') %>
 
-<ul class="breadcrumbs">
-  <li><%= link_to 'Your application', sellers_application_path(application) %></li>
-  <li>Your team members</li>
-</ul>
-
+<%= render_breadcrumbs(seller_application_invitations_breadcrumbs) %>
 
 <h1>Your team members</h1>
 
