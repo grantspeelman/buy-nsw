@@ -7,7 +7,12 @@ header.global {
   }
 
   h1 {
-    @extend .col-sm-5;
+    @include make-col-ready();
+
+    @include media-breakpoint-up(sm) {
+      @include make-col(5);
+    }
+
     @include logo;
 
     font-size: 1.4rem;
@@ -41,7 +46,8 @@ header.global {
   }
 
   aside {
-    @extend .col-sm-7;
+    @include make-col-ready();
+
     font-size: .9rem;
     background: $light-purple;
     border-bottom: 1px solid darken($light-purple, 5%);
@@ -49,6 +55,8 @@ header.global {
     padding: .5rem 1rem;
 
     @include media-breakpoint-up(sm) {
+      @include make-col(7);
+
       background: transparent;
       border-bottom: none;
       color: $white;

@@ -3,8 +3,14 @@ footer.global {
     font-size: 1em;
     padding: 1.5em 1em;
     color: #acacac;
+
     .footer-left, .footer-right {
-      @extend .col-md-6;
+      @include make-col-ready();
+      
+      @include media-breakpoint-up(md) {
+        @include make-col(6);
+      }
+
       ul {
         list-style: none;
         padding-left: 0;

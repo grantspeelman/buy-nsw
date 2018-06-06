@@ -15,7 +15,7 @@
   }
 
   .document {
-    @extend .row;
+    @include make-row();
 
     list-style: none;
     padding-top: 1rem;
@@ -28,7 +28,9 @@
     }
 
     header {
-      @extend .col-4;
+      @include make-col-ready();
+      @include make-col(4);
+
       padding-right: 10%;
 
       h3 {
@@ -37,7 +39,8 @@
     }
 
     .document-details {
-      @extend .col-8;
+      @include make-col-ready();
+      @include make-col(8);
     }
 
     .file-name {
@@ -57,7 +60,8 @@
     font-size: 0.9rem;
 
     h2 {
-      @extend .col-12;
+      @include make-col-ready();
+      @include make-col(12);
     }
   }
 

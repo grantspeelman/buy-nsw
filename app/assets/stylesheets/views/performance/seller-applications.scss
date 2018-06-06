@@ -22,7 +22,8 @@
   }
 
   dl.chart {
-    @extend .row;
+    @include make-row();
+
     padding-top: 1rem;
     padding-bottom: 3rem;
 
@@ -35,9 +36,11 @@
     }
 
     dt {
-      @extend .col-md-3;
+      @include make-col-ready();
 
       @include media-breakpoint-up(md) {
+        @include make-col(3);
+
         display: flex;
         align-items: center;
         text-align: right;
@@ -50,7 +53,11 @@
       }
     }
     dd {
-      @extend .col-md-9;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(9);
+      }
+
       padding-right: 5rem;
 
       .bar {
@@ -68,7 +75,5 @@
         }
       }
     }
-
   }
-
 }

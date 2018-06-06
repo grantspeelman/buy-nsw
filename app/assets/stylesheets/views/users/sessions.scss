@@ -1,14 +1,21 @@
 .view-user-sessions-new {
   .registration, .sign-in-form {
-    @extend .row;
+    @include make-row();
 
     header {
-      @extend .col-md-4;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
       padding-right: 3em;
     }
 
     form, .accounts {
-      @extend .col-md-8;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
     }
   }
 

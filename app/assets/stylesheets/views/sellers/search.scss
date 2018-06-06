@@ -27,8 +27,7 @@
   }
 
   .search-results {
-    @extend .row;
-
+    @include make-row();
     padding-top: 1em;
   }
 
@@ -37,7 +36,10 @@
   }
 
   .filters {
-    @extend .col-md-4;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
 
     h2 {
       font-size: 1em;
@@ -98,12 +100,18 @@
   }
 
   .results {
-    @extend .col-md-8;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(8);
+    }
   }
 
   .search-pagination {
-    @extend .col-md-8;
-    @extend .offset-md-4;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(8);
+      @include make-col-offset(4);
+    }
   }
 
   .result-count {

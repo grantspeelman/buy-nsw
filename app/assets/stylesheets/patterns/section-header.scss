@@ -4,7 +4,8 @@
   border-bottom: 1px solid $grey-2;
 
   h1 {
-    @extend .col-6;
+    @include make-col-ready();
+    @include make-col(6);
 
     font-size: 1.4rem;
     margin-bottom: 0;
@@ -18,7 +19,9 @@
   }
 
   .action {
-    @extend .col-6;
+    @include make-col-ready();
+    @include make-col(6);
+    
     text-align: right;
     padding-top: .3rem;
 

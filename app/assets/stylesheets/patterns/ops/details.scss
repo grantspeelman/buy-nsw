@@ -1,6 +1,7 @@
 @mixin ops-details {
   dl {
-    @extend .row;
+    @include make-row();
+
     padding-top: 1rem;
     padding-bottom: 1rem;
 
@@ -19,11 +20,13 @@
     }
 
     dt {
-      @extend .col-4;
+      @include make-col-ready();
+      @include make-col(4);
     }
 
     dd {
-      @extend .col-8;
+      @include make-col-ready();
+      @include make-col(8);
     }
 
     em {

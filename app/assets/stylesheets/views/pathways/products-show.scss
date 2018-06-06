@@ -42,11 +42,18 @@
       margin-bottom: 1rem;
 
       dt {
-        @extend .col-md-3;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(3);
+        }
+
         font-weight: bold;
       }
       dd {
-        @extend .col-md-9;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(9);
+        }
 
         p:last-of-type {
           margin-bottom: 0;
@@ -64,7 +71,7 @@
     }
 
     .features-benefits {
-      @extend .row;
+      @include make-row();
 
       border-top: 1px solid #eee;
       padding-top: 1.5rem;
@@ -72,7 +79,11 @@
       margin-bottom: 1rem;
 
       ul {
-        @extend .col-md-6;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(6);
+        }
+
         margin-bottom: 1rem;
       }
       li {

@@ -119,11 +119,16 @@ legend.with-label {
     }
 
     li {
-      @extend .row;
+      @include make-row();
     }
 
     .form-group {
-      @extend .col-md-8;
+      @include make-col-ready();
+
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
+
       margin-top: 0.4rem;
       margin-bottom: 0.4rem;
     }
@@ -140,7 +145,11 @@ legend.with-label {
     }
 
     .delete-action {
-      @extend .col-md-3;
+      @include make-col-ready();
+
+      @include media-breakpoint-up(md) {
+        @include make-col(3);
+      }
 
       a {
         display: inline-block;
