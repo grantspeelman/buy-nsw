@@ -328,6 +328,11 @@ input[type=radio]:checked + label::after {
 
 // Custom file input
 
+input[type=file]:focus, input[type=file]:focus + .custom-file-label {
+  outline: 3px solid $focus-colour;
+  outline-offset: 0;
+}
+
 .custom-file-label {
   color: #888;
 }
