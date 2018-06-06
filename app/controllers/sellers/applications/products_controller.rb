@@ -1,6 +1,7 @@
 class Sellers::Applications::ProductsController < Sellers::Applications::BaseController
   layout '../sellers/applications/shared/_layout'
   before_action :ensure_cloud_services_provided!
+  helper Sellers::ApplicationsHelper
 
   def index
   end

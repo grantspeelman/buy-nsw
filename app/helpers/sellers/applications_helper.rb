@@ -1,37 +1,8 @@
-module Sellers::Applications::RootHelper
-  def progress_indicator_for(question_set)
-    render partial: 'sellers/applications/shared/progress_indicator',
-           locals: {
-             question_set: question_set,
-           }
-  end
-
-  def question_set_completed?(question_set)
-    question_set[:valid] == true
-  end
-
-  def question_set_started?(question_set)
-    question_set[:percent_complete] > 0
-  end
-
-  def display_question_set(application, progress_report, key, options = {})
-    render(
-      partial: 'question_set',
-      locals: options.merge(
-        application: application,
-        question_set: progress_report.question_set_progress["sellers.applications.#{key}"],
-        key: key,
-      )
-    )
-  end
-
-  def question_step_button_label(question_set)
-    case
-    when question_set_completed?(question_set) then 'Edit'
-    when question_set_started?(question_set) then 'Complete'
-    else
-      'Start'
-    end
+module Sellers::ApplicationsHelper
+  def other_service_options
+    Seller.services.options.reject {|(_, key)|
+      key == 'cloud-services'
+    }
   end
 
   def disclosures_text_for(application)
@@ -79,5 +50,5 @@ module Sellers::Applications::RootHelper
       return false
     end
   end
-
+  
 end
