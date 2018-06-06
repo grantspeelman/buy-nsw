@@ -1,4 +1,4 @@
-.btn {
+.btn, a.btn:link {
   border: none;
   border-radius: 0px;
   font-weight: 600;
@@ -19,26 +19,26 @@
     outline: 3px solid $focus-colour;
     color: $white;
   }
-}
 
-.btn-primary, .btn-secondary {
-  background: $light-blue;
+  &.btn-primary, &.btn-secondary {
+    background: $light-blue;
 
-  &:hover, &:focus {
-    background: darken($light-blue, 15%);
-    border-bottom-color: darken($light-blue, 20%);
+    &:hover, &:focus {
+      background: darken($light-blue, 15%);
+      border-bottom-color: darken($light-blue, 20%);
+    }
+
+    border-bottom: 4px solid darken($light-blue, 8%);
   }
 
-  border-bottom: 4px solid darken($light-blue, 8%);
-}
+  &.btn-danger {
+    background: $red;
 
-.btn-danger {
-  background: $red;
+    &:hover, &:focus {
+      background: darken($red, 15%);
+      border-bottom-color: darken($red, 20%);
+    }
 
-  &:hover, &:focus {
-    background: darken($red, 15%);
-    border-bottom-color: darken($red, 20%);
+    border-bottom: 4px solid darken($red, 8%);
   }
-
-  border-bottom: 4px solid darken($red, 8%);
 }
