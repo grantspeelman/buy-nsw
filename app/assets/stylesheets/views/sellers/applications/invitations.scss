@@ -23,8 +23,8 @@
   }
 
   .invite-action a {
-    @extend .btn;
-    @extend .btn-primary;
+    @include button;
+    
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
   }

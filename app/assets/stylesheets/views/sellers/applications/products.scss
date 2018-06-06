@@ -49,8 +49,7 @@
       text-align: right;
 
       .action {
-        @extend .btn;
-        @extend .btn-primary;
+        @include button-primary;
 
         font-size: 1rem;
       }
@@ -60,8 +59,8 @@
   .product-add {
     padding: .5rem 0;
     a {
-      @extend .btn;
-      @extend .btn-primary;
+      @include button-primary;
+
       font-size: 1rem;
 
       span {
@@ -93,8 +92,7 @@
     padding: 1rem;
 
     .delete-action {
-      @extend .btn;
-      @extend .btn-danger;
+      @include button-danger;
 
       font-size: 1rem;
     }

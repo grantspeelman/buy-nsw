@@ -38,8 +38,8 @@
     }
 
     a.action {
-      @extend .btn;
-      @extend .btn-primary;
+      @include button-primary;
+      
       font-size: 1.1rem;
     }
   }

@@ -19,8 +19,7 @@
       vertical-align: top;
     }
     input[type=submit] {
-      @extend .btn;
-      @extend .btn-primary;
+      @include button-primary;
 
       font-size: 1.2rem;
     }
