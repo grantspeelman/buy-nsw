@@ -1,0 +1,35 @@
+/*
+  The styling for the skip link is based on the GOV.UK Template:
+    https://github.com/alphagov/govuk_template/blob/master/source/assets/stylesheets/_accessibility.scss
+*/
+
+.skip-link {
+  position: absolute;
+  left: -9999em;
+
+  &:focus,
+  &:visited {
+    color: $white;
+  }
+}
+
+.skip-link:focus {
+  left: 0;
+  z-index: 1;
+}
+
+#skip-link-container {
+  text-align: center;
+  background: $dark-blue;
+
+  div {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+
+  .skiplink {
+    display: inline-block;
+    margin: 0.75em 0 0 30px;
+  }
+}
