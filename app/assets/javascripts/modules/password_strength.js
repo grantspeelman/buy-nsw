@@ -44,6 +44,9 @@
 
       if (password.length < 8) {
         $label.text('Password is too short')
+      } else if (score < 3) {
+        $label.text('Password is not strong enough')
+        this.$strengthOMeter.attr('class', 'strength-o-meter score-' + score)
       } else {
         $label.text('Password strength: ' + label)
         this.$strengthOMeter.attr('class', 'strength-o-meter score-' + score)

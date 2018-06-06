@@ -73,7 +73,7 @@ en:
     waiting_seller_not_existing_seller_abn?: A seller application has already been started with this ABN, they may have already been invited
     waiting_seller_unique_abn?: A seller with this ABN is already on the waitlist
     messages:
-      weak_password: "That's not strong enough. Consider adding a number, symbols or more letters to make it stronger."
+      weak_password: "That's not strong enough. You must use a strong unique password for your account. Try a longer password with multiple words – it's more secure and easier to remember."
   feedback:
     problem_report:
       label: Is there anything wrong with this page?
@@ -297,7 +297,7 @@ en:
         form:
           email_label: Email address
           password_label: Password
-          password_help: A long password with multiple words is more secure and easier to remember (eg. 'correct horse battery staple').
+          password_help: You must use a strong unique password for your account. Try a longer password with multiple words – it's more secure and easier to remember.
           password_confirmation_label: Confirm your password
           submit_label: Continue
         confirm:
