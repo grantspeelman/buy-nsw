@@ -81,6 +81,11 @@
 
     padding: 1em;
 
+    .action {
+      @include button-primary;
+      font-size: 1.3rem;
+    }
+
     h1 {
       font-size: 1.8em;
     }
