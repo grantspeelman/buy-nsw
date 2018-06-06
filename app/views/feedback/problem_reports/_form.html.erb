@@ -8,6 +8,11 @@
       <h1><%= t('feedback.problem_report.title') %></h1>
       <%= f.text_field :task, label: t('feedback.problem_report.task') %>
       <%= f.text_field :issue, label: t('feedback.problem_report.issue') %>
+
+      <% if user_signed_in? %>
+        <p>Your details (<%= current_user.email %>) will be included in the report.</p>
+      <% end %>
+
       <%= f.submit t('feedback.problem_report.action') %>
     <% end %>
     <div class="problem-report-response"></div>
