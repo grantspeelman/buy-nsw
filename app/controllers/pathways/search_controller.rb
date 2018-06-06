@@ -1,4 +1,5 @@
 class Pathways::SearchController < ApplicationController
+  helper Sellers::ProfilesHelper
 
 private
   def search

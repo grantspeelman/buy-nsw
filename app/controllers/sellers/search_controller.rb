@@ -1,4 +1,6 @@
 class Sellers::SearchController < Sellers::BaseController
+  helper Sellers::ProfilesHelper
+
   def search
   end
 
