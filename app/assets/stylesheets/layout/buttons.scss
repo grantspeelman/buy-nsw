@@ -14,12 +14,16 @@
     display: inline-block;
     width: auto;
   }
+
+  &:focus {
+    outline: 3px solid $focus-colour;
+  }
 }
 
 .btn-primary, .btn-secondary {
   background: $light-blue;
 
-  &:hover {
+  &:hover, &:focus {
     background: darken($light-blue, 15%);
     border-bottom-color: darken($light-blue, 20%);
   }
@@ -30,7 +34,7 @@
 .btn-danger {
   background: $red;
 
-  &:hover {
+  &:hover, &:focus {
     background: darken($red, 15%);
     border-bottom-color: darken($red, 20%);
   }

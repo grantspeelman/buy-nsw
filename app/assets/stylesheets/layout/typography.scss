@@ -18,4 +18,12 @@ a {
   &:hover {
     color: darken($dark-blue, 10%);
   }
+
+  &:focus {
+    background-color: $focus-colour;
+    outline: 3px solid $focus-colour;
+  }
+  &:link:focus {
+    color: $black;
+  }
 }

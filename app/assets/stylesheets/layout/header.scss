@@ -16,7 +16,7 @@ header[role=global] {
     /* TODO: Update this in the future to be consistent with email logo */
 
     .logo-container {
-      height: 2.86em;
+      height: 2.85em;
       width: auto;
       padding: .35em;
     }
@@ -59,6 +59,10 @@ header[role=global] {
 
       a {
         color: $white;
+
+        &:focus {
+          color: $black;
+        }
       }
     }
 
@@ -90,7 +94,4 @@ header[role=global] {
       }
     }
   }
-
-
-
 }

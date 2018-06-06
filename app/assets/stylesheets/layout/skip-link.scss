@@ -3,21 +3,6 @@
     https://github.com/alphagov/govuk_template/blob/master/source/assets/stylesheets/_accessibility.scss
 */
 
-.skip-link {
-  position: absolute;
-  left: -9999em;
-
-  &:focus,
-  &:visited {
-    color: $white;
-  }
-}
-
-.skip-link:focus {
-  left: 0;
-  z-index: 1;
-}
-
 #skip-link-container {
   text-align: center;
   background: $dark-blue;
@@ -28,8 +13,20 @@
     max-width: 1020px;
   }
 
-  .skiplink {
+  .skip-link {
     display: inline-block;
     margin: 0.75em 0 0 30px;
+    position: absolute;
+    left: -9999em;
+
+    &:focus,
+    &:visited {
+      color: $black;
+    }
+
+    &:focus {
+      left: 0;
+      z-index: 1;
+    }
   }
 }

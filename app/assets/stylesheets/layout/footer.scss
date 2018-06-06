@@ -18,6 +18,10 @@ footer[role=global] {
     a {
       color: #acacac;
       text-decoration: none;
+
+      &:focus {
+        color: $black;
+      }
     }
   }
 

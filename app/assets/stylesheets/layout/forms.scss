@@ -172,11 +172,12 @@ form .actions {
 textarea, input[type=text], input[type=password], input[type=email], select {
   &.form-control {
     border-radius: 0px;
-    border-width: 2px;
+    border: 2px solid $black;
 
     &:focus {
       box-shadow: none !important;
-      border-color: #444;
+      outline: 3px solid $focus-colour;
+      outline-offset: 0;
     }
   }
 
@@ -199,6 +200,11 @@ input[type=checkbox], input[type=radio] {
   zoom: 1;
   filter: alpha(opacity=0);
   opacity: 0;
+
+  &:focus {
+    outline: 3px solid $focus-colour;
+    outline-offset: 0;
+  }
 }
 input[type=checkbox] + label, input[type=radio] + label {
   padding: 6px 10px 0 25px;
@@ -210,6 +216,9 @@ input[type=checkbox]:checked + label, input[type=radio]:checked + label{
   strong {
     font-weight: 700;
   }
+}
+input[type=checkbox]:focus + label::before, input[type=radio]:focus + label::before {
+  box-shadow: 0 0 0 4px $focus-colour;
 }
 
 input[type=checkbox] + label::before {
