@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  force_ssl if: :ssl_configured?
   before_action :authenticate!
 
   class NotAuthorized < StandardError; end
@@ -24,10 +23,6 @@ private
     unless current_user.buyer.present? && current_user.buyer.active?
       raise NotAuthorized
     end
-  end
-
-  def ssl_configured?
-    ENV['FORCE_SSL'].present?
   end
 
   def render_not_found
