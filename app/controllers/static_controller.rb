@@ -27,5 +27,6 @@ class StaticController < ApplicationController
   end
 
   def health
+    render plain: 'Yes, the application is running'
   end
 end
