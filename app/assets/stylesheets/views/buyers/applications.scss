@@ -2,11 +2,14 @@
   padding-top: 3rem;
 
   .steps-container {
-    @extend .row;
+    @include make-row();
   }
 
   .steps-list {
-    @extend .col-md-3;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(3);
+    }
   }
 
   .steps-list ol {
@@ -81,12 +84,15 @@
   }
 
   .current-step {
-    @extend .col-md-8;
-    @extend .offset-md-1;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(8);
+      @include make-col-offset(1);
+    }
   }
 
   .detail-review dl {
-    @extend .row;
+    @include make-row();
 
     padding-top: .5rem;
     padding-bottom: 1rem;
@@ -99,11 +105,13 @@
     }
 
     dt {
-      @extend .col-4;
+      @include make-col-ready();
+      @include make-col(4);
     }
 
     dd {
-      @extend .col-8;
+      @include make-col-ready();
+      @include make-col(8);
     }
   }
 

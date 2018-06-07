@@ -5,7 +5,9 @@
 }
 
 .main-title h1 {
-  @extend .col-md-12;
+  @include make-col-ready();
+  @include make-col(12);
+
   font-size: 2.2rem;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
@@ -32,11 +34,13 @@
   }
 
   .audiences {
-    @extend .row;
+    @include make-row();
     padding-bottom: 1em;
 
     > h2 {
-      @extend .col-md-12;
+      @include make-col-ready();
+      @include make-col(12);
+
       font-size: 1.6em;
       margin: 2em 0 .5em;
     }
@@ -49,11 +53,13 @@
       font-size: 1.4em;
       font-weight: 500;
     }
-    
+
     &.half-width {
-      @extend .col-md-6;
+      @include make-col-ready();
 
       @include media-breakpoint-up(md) {
+        @include make-col(6);
+
         .inner {
           p:first-of-type {
             min-height: 5em;
@@ -62,7 +68,8 @@
       }
     }
     &.full-width {
-      @extend .col-12;
+      @include make-col-ready();
+      @include make-col(12);
     }
 
     .inner {
@@ -73,6 +80,11 @@
     }
 
     padding: 1em;
+
+    .action {
+      @include button-primary;
+      font-size: 1.3rem;
+    }
 
     h1 {
       font-size: 1.8em;

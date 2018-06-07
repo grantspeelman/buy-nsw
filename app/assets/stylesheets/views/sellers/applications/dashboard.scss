@@ -78,7 +78,6 @@
   }
 
   .delete-action {
-    @extend .btn;
-    @extend .btn-danger;
+    @include button-danger;
   }
 }

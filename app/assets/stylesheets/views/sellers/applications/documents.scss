@@ -30,8 +30,7 @@
       }
 
       .download-action a {
-        @extend .btn;
-        @extend .btn-primary;
+        @include button-primary;
 
         font-size: .9rem;
         margin-top: .4rem;

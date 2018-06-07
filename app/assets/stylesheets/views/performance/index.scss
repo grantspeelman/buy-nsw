@@ -9,15 +9,21 @@
     padding: 2rem 0;
     border-bottom: 1px solid $grey-3;
 
-    @extend .row;
-    @extend .no-gutters;
+    @include make-row();
+
+    margin-right: 0;
+    margin-left: 0;
 
     &:last-of-type {
       border-bottom: 0;
     }
 
     header {
-      @extend .col-md-4;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
       padding: 0 10% 0 0;
 
       h1 {
@@ -27,7 +33,11 @@
     }
 
     ul {
-      @extend .col-md-8;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
+
       padding: 0;
       margin: 0;
 

@@ -1,0 +1,94 @@
+@mixin base-button {
+  border-radius: 0px;
+  border: none;
+  display: block;
+  color: $white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.4em 1.2em;
+  text-align: center;
+  text-decoration: none;
+  transition: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    display: inline-block;
+    width: auto;
+  }
+
+  &:focus {
+    outline: 3px solid $focus-colour;
+    color: $white;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background-image: none;
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+}
+
+@mixin button-block {
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+
+@mixin button-primary {
+  @include base-button;
+
+  background: $light-blue;
+
+  &:hover, &:focus {
+    background: darken($light-blue, 15%);
+    border-bottom-color: darken($light-blue, 20%);
+  }
+
+  border-bottom: 4px solid darken($light-blue, 8%);
+}
+
+@mixin button-danger {
+  @include base-button;
+
+  background: $red;
+
+  &:hover, &:focus {
+    background: darken($red, 15%);
+    border-bottom-color: darken($red, 20%);
+  }
+
+  border-bottom: 4px solid darken($red, 8%);
+}
+
+@mixin button {
+  @include button-primary;
+}
+
+.btn, a.btn:link, button, input[type=submit] {
+  @include button-primary;
+}
+
+.btn-primary, .btn-secondary {
+  @include button-primary;
+}
+
+.btn-danger {
+  @include button-danger;
+}

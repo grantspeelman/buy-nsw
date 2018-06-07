@@ -1,29 +1,43 @@
+@import 'buttons';
+
 @mixin profile {
   .intro {
-    @extend .row;
+    @include make-row();
+
     padding: 1.5em 0 0.5em;
 
     .summary {
-      @extend .col-md-9;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(9);
+      }
+
       padding-right: 3em;
     }
     .actions {
-      @extend .col-md-3;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(3);
+      }
       text-align: right;
 
       a {
-        @extend .btn;
-        @extend .btn-block;
+        @include button;
+        @include button-block;
       }
     }
   }
 
   .profile-container {
-    @extend .row;
+    @include make-row();
+
     padding-top: 1em;
   }
   .contents-container {
-    @extend .col-md-4;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
   }
   .contents {
     @extend .sticky-top;
@@ -49,16 +63,23 @@
     }
   }
   .profile {
-    @extend .col-md-8;
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(8);
+    }
   }
 
   dl {
-    @extend .row;
+    @include make-row();
+
     margin-bottom: 3em;
     border-bottom: 1px solid #eee;
 
     h2 {
-      @extend .col-md-12;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(12);
+      }
     }
 
     dt, dd {
@@ -69,11 +90,18 @@
     }
 
     dt {
-      @extend .col-md-4;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
       font-weight: 500;
     }
     dd {
-      @extend .col-md-8;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
 
       p:last-of-type {
         margin-bottom: 0;
@@ -104,7 +132,11 @@
       }
 
       h3 {
-        @extend .col-md-12;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(12);
+        }
+
         font-size: 1rem;
       }
       dt, dd {
@@ -112,10 +144,16 @@
         padding-bottom: .3em;
       }
       dt {
-        @extend .col-md-5;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(5);
+        }
       }
       dd {
-        @extend .col-md-7;
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+          @include make-col(7);
+        }
       }
     }
   }

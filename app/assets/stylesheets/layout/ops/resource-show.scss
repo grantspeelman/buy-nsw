@@ -1,6 +1,6 @@
 @mixin ops-resource-show-column-set {
   @include ops-details;
-  
+
   aside {
     @include app-column-fixed;
     background: #f2f5f6;
@@ -49,13 +49,14 @@
   }
 
   .status-overview {
-    @extend .row;
+    @include make-row();
 
     padding-bottom: 1rem;
     border-bottom: 1px solid $grey-1;
 
     > div {
-      @extend .col-6;
+      @include make-col-ready();
+      @include make-col(6);
 
       font-size: 1.3rem;
       font-weight: 700;

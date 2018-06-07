@@ -46,19 +46,29 @@
   }
 
   .account-actions {
-    @extend .row;
-    @extend .no-gutters;
+    @include make-row();
+
+    margin-left: 0;
+    margin-right: 0;
 
     border-top: 1px solid $grey-2;
     padding-top: 1.5rem;
 
     h2 {
-      @extend .col-md-3;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(3);
+      }
+
       font-size: 1.3rem;
       padding-left: 0;
     }
     ul {
-      @extend .col-md-9;
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(9);
+      }
+
       padding-right: 0;
     }
     li {
