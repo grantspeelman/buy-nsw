@@ -1,8 +1,8 @@
 //= require jquery3
 //= require rails-ujs
-//= require zxcvbn/dist/zxcvbn
 //= require airbrake-js-client
-//= require_tree .
+//= require_tree "."
+//= stub zxcvbn
 
 <% unless Rails.env.development? || Rails.env.test? %>
   var airbrake = new airbrakeJs.Client({ projectId: '<%= ENV['AIRBRAKE_JS_PROJECT_ID'] %>', projectKey: '<%= ENV['AIRBRAKE_JS_API_KEY'] %>' });

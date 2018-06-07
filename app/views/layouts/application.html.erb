@@ -52,5 +52,7 @@
     <% unless content_for(:skip_footer) %>
       <%= render partial: 'layouts/footer' %>
     <% end %>
+
+    <%= yield(:footer_javascript) %>
   </body>
 </html>
