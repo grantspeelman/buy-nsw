@@ -339,3 +339,8 @@ en:
       sme: SME
       indigenous: Aboriginal or Torres Strait Islander
       not_for_profit: Not-for-profit
+    waitlist_invitations:
+      accept:
+        errors:
+          user_exists: A user account already exists with the email address %{email}
+          seller_exists: A seller has already been created with the ABN %{abn}
