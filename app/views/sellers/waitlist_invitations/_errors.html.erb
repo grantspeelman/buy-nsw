@@ -1,0 +1,11 @@
+<div class="block-error">
+  <h2>Unfortunately we can't automatically sign you up to buy.nsw</h2>
+
+  <ul>
+    <% errors.each do |error| %>
+      <li><%= t(error, scope: [:sellers, :waitlist_invitations, :accept, :errors], abn: operation['model'].abn, email: operation['model'].contact_email) %></li>
+    <% end %>
+  </ul>
+
+  <p>Our support team can help. Please <%= link_to 'contact us', contact_path %> and we'll get your account set up.</p>
+</div>
