@@ -73,6 +73,14 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       expect(result['user'].confirmed_at).to be_present
     end
 
+    it 'fails when the user already exists' do
+      create(:user, email: waiting_seller.contact_email)
+      result = perform_operation(default_params)
+
+      expect(result).to be_failure
+      expect(result['errors']).to include('user_exists')
+    end
+
     it 'fails and passes through Devise errors when the user is invalid' do
       # Cause an error to be returned from Devise
       result = perform_operation({
@@ -98,6 +106,14 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       expect(seller.contact_name).to eq(waiting_seller.contact_name)
       expect(seller.contact_email).to eq(waiting_seller.contact_email)
       expect(seller.website_url).to eq(waiting_seller.website_url)
+    end
+
+    it 'fails when the ABN already exists' do
+      create(:seller, abn: waiting_seller.abn)
+      result = perform_operation(default_params)
+
+      expect(result).to be_failure
+      expect(result['errors']).to include('seller_exists')
     end
   end
 

@@ -2,9 +2,35 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step :model!
     step Contract::Build( constant: Sellers::WaitingSeller::Contract::Accept )
+    success :setup_errors
+    step :check_user_does_not_exist!
+    step :check_seller_does_not_exist!, fail_fast: true
+    failure :check_seller_does_not_exist!, fail_fast: true
 
     def model!(options, params:, **)
       options['model'] = WaitingSeller.invited.find_by!(invitation_token: params[:id])
+    end
+
+    def setup_errors(options, **)
+      options['errors'] = []
+    end
+
+    def check_user_does_not_exist!(options, model:, **)
+      if User.where(email: model.contact_email).any?
+        options['errors'] << 'user_exists'
+        return false
+      end
+
+      true
+    end
+
+    def check_seller_does_not_exist!(options, model:, **)
+      if Seller.where(abn: model.abn).any?
+        options['errors'] << 'seller_exists'
+        return false
+      end
+
+      true
     end
   end
 
@@ -83,6 +109,8 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   end
 
   def include_devise_errors!(options, **)
+    return if options['user'].blank?
+
     unless options['user'].valid?
       options['user'].errors.each do |key, message|
         options['contract.default'].errors.add(key, message)
