@@ -39,7 +39,7 @@
       $.each(this.$fields, function (i, field) {
         var matchingValue = $(field).attr('data-further-details-value')
 
-        if (values.includes(matchingValue)) {
+        if (values.indexOf(matchingValue) >= 0) {
           $(field).show()
         } else {
           $(field).hide()
@@ -47,7 +47,7 @@
       })
     } else {
       var matching = this.showValues.filter(function (item) {
-        return (values.includes(item))
+        return (values.indexOf(item) >= 0)
       })
 
       if (matching.length > 0) {
