@@ -196,6 +196,8 @@ en:
           name: 'Happy to travel for regional or interstate opportunities'
         disability:
           name: 'Australian disability enterprise'
+        addresses:
+          name: 'Business address'
         contact_name:
           name: 'Business contact name'
         contact_email:

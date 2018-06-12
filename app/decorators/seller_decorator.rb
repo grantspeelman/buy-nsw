@@ -4,4 +4,10 @@ class SellerDecorator < BaseDecorator
     agreed_by.email if agreed_by.present?
   end
 
+  def addresses
+    super.map {|address|
+      SellerAddressDecorator.new(address, view_context)
+    }
+  end
+
 end

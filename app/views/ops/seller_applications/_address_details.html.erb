@@ -1,0 +1,16 @@
+<dl>
+  <dt><%= t('ops.seller_applications.fields.addresses.name') %></dt>
+  <dd>
+    <ul>
+      <% seller.addresses.each do |address| %>
+        <li>
+          <%= address.address %><br>
+          <%= address.suburb %><br>
+          <%= address.state_text %><br>
+          <%= address.postcode %><br>
+          <%= address.country %>
+        </li>
+      <% end %>
+    </ul>
+  </dd>
+</dl>

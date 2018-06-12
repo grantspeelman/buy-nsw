@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :seller_address do
+    association :seller
+    
     address '123 Test Street'
     suburb 'Sydney'
     state 'nsw'

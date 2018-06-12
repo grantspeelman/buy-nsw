@@ -2,6 +2,7 @@
 
 <%= display_seller_list(type: :basic, resource: decorated_seller) %>
 <%= display_seller_list(type: :industry, resource: decorated_seller) %>
+<%= render partial: 'address_details', locals: { seller: decorated_seller } %>
 <%= display_seller_list(type: :contacts, resource: decorated_seller) %>
 <%= display_seller_list(type: :disclosures, resource: decorated_seller) %>
 <%= display_seller_list(type: :details, resource: decorated_seller) %>
