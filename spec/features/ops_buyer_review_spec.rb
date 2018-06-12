@@ -8,6 +8,7 @@ RSpec.describe 'Reviewing buyer applications', type: :feature, js: true do
 
       visit '/ops'
       click_on 'Buyer applications'
+      click_on 'Reset filters'
 
       select_application_from_list(application.buyer.name)
 

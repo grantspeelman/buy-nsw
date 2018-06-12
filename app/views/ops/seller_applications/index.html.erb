@@ -4,15 +4,15 @@
     <aside>
       <h1>Seller applications</h1>
 
-      <%= render partial: 'filters', locals: { search: search } %>
+      <%= render partial: 'ops/shared/filters', locals: { search: search } %>
     </aside>
 
     <div class="current-view">
       <section class="record-list">
         <h2><%= pluralize(search.result_count, 'application') %></h2>
         <%= render partial: 'list', locals: {
+              search: search,
               applications: search.paginated_results,
-              empty_message: 'No applications',
             } %>
         <%= paginate search.paginated_results %>
       </section>

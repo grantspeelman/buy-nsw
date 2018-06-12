@@ -31,6 +31,9 @@ private
   def search
     @search ||= Search::ProblemReport.new(
       selected_filters: params,
+      default_values: {
+        state: 'open',
+      },
       page: params.fetch(:page, 1),
       per_page: 25,
     )

@@ -129,6 +129,10 @@ en:
           reject: Application rejected
       search:
         filters:
+          name:
+            name: Buyer name
+          email:
+            name: Email address
           state:
             name: Status
             options:
@@ -136,6 +140,12 @@ en:
               awaiting_assignment: Awaiting assignment
           assigned_to:
             name: Assigned to
+          sort:
+            name: 'Sort by'
+            options:
+              started_at: 'Date started (recent first)'
+              submitted_at: 'Date submitted (recent first)'
+              decided_at: 'Date decided (recent first)'
     problem_reports:
       messages:
         resolved: 'The problem report has been resolved'
@@ -218,10 +228,20 @@ en:
           name: Financial statement
       search:
         filters:
+          name:
+            name: Seller name
+          email:
+            name: Email address
           state:
             name: Status
           assigned_to:
             name: Assigned to
+          sort:
+            name: 'Sort by'
+            options:
+              started_at: 'Date started (recent first)'
+              submitted_at: 'Date submitted (recent first)'
+              decided_at: 'Date decided (recent first)'
       messages:
         update_assign_success: Application assigned
         decision_success:

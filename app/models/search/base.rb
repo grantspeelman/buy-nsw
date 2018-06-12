@@ -1,10 +1,11 @@
 module Search
   class MissingBaseRelation < StandardError; end
   class MissingPaginationArgument < StandardError; end
-  
+
   class Base
-    def initialize(selected_filters: {}, page: nil, per_page: nil)
+    def initialize(selected_filters: {}, default_values: {}, page: nil, per_page: nil)
       @selected_filters = selected_filters
+      @default_values = default_values
       @page = page
       @per_page = per_page
     end
@@ -26,7 +27,8 @@ module Search
     end
 
     def selected_filters
-      @selected_filters.slice(*available_filters.keys)
+      filters = @selected_filters.slice(*available_filters.keys)
+      filters.keys.any? ? filters : default_values
     end
 
     def filter_selected?(filter, option = nil)
@@ -43,8 +45,12 @@ module Search
       selected_filters[filter]
     end
 
+    def active_filters?
+      selected_filters.keys.any?
+    end
+
   private
-    attr_reader :page, :per_page
+    attr_reader :page, :per_page, :default_values
 
     def base_relation
       raise(MissingBaseRelation, 'Missing base_relation method. You need to override this in your Search subclass.')
