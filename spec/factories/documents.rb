@@ -17,11 +17,15 @@ FactoryBot.define do
     end
 
     trait :clean do
-      scan_status 'clean'
+      after(:create) { |document|
+        document.update_attribute(:scan_status, 'clean')
+      }
     end
 
     trait :infected do
-      scan_status 'infected'
+      after(:create) { |document|
+        document.update_attribute(:scan_status, 'infected')
+      }
     end
 
     factory :unscanned_document, traits: [:unscanned]

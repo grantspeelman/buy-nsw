@@ -28,6 +28,36 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
       expect_application_state('approved')
     end
+
+    it 'can see uploaded documents' do
+      application = create(:awaiting_assignment_seller_application)
+
+      create(:clean_document, documentable: application.seller, kind: 'financial_statement')
+      create(:unscanned_document, documentable: application.seller, kind: 'professional_indemnity_certificate')
+      create(:infected_document, documentable: application.seller, kind: 'workers_compensation_certificate')
+
+      visit '/ops'
+      click_on 'Seller applications'
+      click_on 'Reset filters'
+
+      select_application_from_list(application.seller.name)
+
+      within '.right-col nav' do
+        click_on 'Documents'
+      end
+
+      save_page
+
+      within_document ops_field_label(:financial_statement) do
+        expect(page).to have_link('View document')
+      end
+      within_document ops_field_label(:professional_indemnity_certificate) do
+        expect(page).to have_content('Awaiting virus scan')
+      end
+      within_document ops_field_label(:workers_compensation_certificate) do
+        expect(page).to have_content('Infected')
+      end
+    end
   end
 
   def select_application_from_list(seller_name)
@@ -83,6 +113,19 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     fill_in 'Feedback', with: response
 
     click_on 'Make decision'
+  end
+
+  def within_document(heading_text, &block)
+    within 'ul.documents' do
+      header = page.find('header', text: heading_text)
+      content = header.sibling('.document-details')
+
+      within(content, &block)
+    end
+  end
+
+  def ops_field_label(key)
+    I18n.t("#{key}.name", scope: [ :ops, :seller_applications, :fields ])
   end
 
 end

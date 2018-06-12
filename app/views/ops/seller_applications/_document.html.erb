@@ -17,7 +17,7 @@
       </p>
     <% end %>
 
-    <% if (upload = application.seller.send(key)) && upload.present? %>
+    <% if (upload = application.seller.send(key)) && upload.document.present? %>
       <p class="file-name"><%= upload.original_filename %></p>
 
       <% if file_clean?(upload) %>
