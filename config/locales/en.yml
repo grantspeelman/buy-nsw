@@ -129,6 +129,10 @@ en:
           reject: Application rejected
       search:
         filters:
+          name:
+            name: Buyer name
+          email:
+            name: Email address
           state:
             name: Status
             options:
@@ -224,6 +228,10 @@ en:
           name: Financial statement
       search:
         filters:
+          name:
+            name: Seller name
+          email:
+            name: Email address
           state:
             name: Status
           assigned_to:
