@@ -5,6 +5,7 @@ module Search
       {
         assigned_to: assigned_to_keys,
         state: state_keys,
+        sort: sort_keys,
       }
     end
 
@@ -27,7 +28,8 @@ module Search
 
     def apply_filters(scope)
       scope.yield_self(&method(:state_filter)).
-            yield_self(&method(:assigned_to_filter))
+            yield_self(&method(:assigned_to_filter)).
+            yield_self(&method(:sort_filter))
     end
   end
 end

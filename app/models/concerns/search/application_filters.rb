@@ -15,4 +15,18 @@ module Concerns::Search::ApplicationFilters
       relation
     end
   end
+
+  def sort_filter(relation)
+    case filter_value(:sort)
+    when 'started_at' then relation.order_by_started_at
+    when 'submitted_at' then relation.order_by_submitted_at
+    when 'decided_at' then relation.order_by_decided_at
+    else
+      relation
+    end
+  end
+
+  def sort_keys
+    [ 'started_at', 'submitted_at', 'decided_at' ]
+  end
 end
