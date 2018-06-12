@@ -1,9 +1,19 @@
 class Ops::WaitingSeller::Invite < Trailblazer::Operation
   class Present < Trailblazer::Operation
+    step :check_params_present!, fail_fast: true
     step :models!
     step Contract::Build( constant: Ops::WaitingSeller::Contract::Invite )
     success Contract::Validate( key: :invite )
     step :validate_models!, fail_fast: true
+
+    def check_params_present!(options, params:, **)
+      if (ids = params.dig(:invite, :ids)) && ids.any?
+        true
+      else
+        options['result.error'] = :no_ids
+        false
+      end
+    end
 
     def models!(options, params:, **)
       options['models'] = params[:invite][:ids].map {|id|

@@ -54,6 +54,13 @@ RSpec.describe Ops::WaitingSeller::Invite do
   end
 
   describe 'failure states' do
+    it 'fails when no parameters are present' do
+      result = described_class.({})
+
+      expect(result).to be_failure
+      expect(result['result.error']).to eq(:no_ids)
+    end
+
     it 'fails when a waiting seller does not exist' do
       expect {
         described_class.({ invite: { ids: ['abc'] }})
