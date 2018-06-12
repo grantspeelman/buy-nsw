@@ -25,4 +25,42 @@ RSpec.describe Search::Base do
     }.to raise_error(Search::MissingPaginationArgument)
   end
 
+  describe '#selected_filters' do
+    class TestSearch < Search::Base
+      def available_filters
+        {
+          filter_one: ['one', 'two', 'three'],
+          filter_two: ['four', 'five', 'six'],
+        }
+      end
+    end
+
+    let(:defaults) {
+      {
+        filter_one: 'one',
+        filter_two: 'five',
+      }
+    }
+
+    it 'returns default values when no filters are set' do
+      search = TestSearch.new(
+        selected_filters: {},
+        default_values: defaults,
+      )
+
+      expect(search.selected_filters).to eq(defaults)
+    end
+
+    it 'returns only selected values when filters are set' do
+      search = TestSearch.new(
+        selected_filters: {
+          filter_one: 'three'
+        },
+        default_values: defaults,
+      )
+
+      expect(search.selected_filters.keys).to contain_exactly(:filter_one)
+    end
+  end
+
 end
