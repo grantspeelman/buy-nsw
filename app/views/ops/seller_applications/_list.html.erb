@@ -14,7 +14,13 @@
       <% applications.each do |application| %>
       <tr>
         <td><%= application.id %></td>
-        <td><%= application.seller.name %></td>
+        <td>
+          <% if application.seller.name.present? %>
+            <%= application.seller.name %>
+          <% else %>
+            <em>Unnamed seller (<%= application.seller.owners.first.email %>)</em>
+          <% end %>
+        </td>
         <td><%= application.state %></td>
         <td>
           <% if application.submitted_at.present? %>
