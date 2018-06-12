@@ -19,11 +19,23 @@ module Event
 
   class StartedApplication < Event; end
 
-  class ApprovedApplication < Event; end
+  class ApprovedApplication < Event
+    def message
+      I18n.t(locale_name, note: note)
+    end
+  end
 
-  class RejectedApplication < Event; end
+  class RejectedApplication < Event
+    def message
+      I18n.t(locale_name, note: note)
+    end
+  end
 
-  class ReturnedApplication < Event; end
+  class ReturnedApplication < Event
+    def message
+      I18n.t(locale_name, note: note)
+    end
+  end
 
   class ManagerApproved < Event
     def message

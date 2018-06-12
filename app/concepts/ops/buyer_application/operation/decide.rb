@@ -30,7 +30,8 @@ class Ops::BuyerApplication::Decide < Trailblazer::Operation
   def log_event(options, model:, **)
     params = {
       user: options['current_user'],
-      eventable: model
+      eventable: model,
+      note: options['contract.default'].decision_body,
     }
     case options['contract.default'].decision
     when 'approve' then Event::ApprovedApplication.create(params)

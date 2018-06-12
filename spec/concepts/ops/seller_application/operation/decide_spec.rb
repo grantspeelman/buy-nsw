@@ -49,7 +49,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
-    expect(application.events.first.message).to eq("Approved application")
+    expect(application.events.first.message).to eq("Approved application. Response: Response")
   end
 
   it 'sends an email when an application is approved' do
@@ -76,7 +76,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
-    expect(application.events.first.message).to eq("Rejected application")
+    expect(application.events.first.message).to eq("Rejected application. Response: Response")
   end
 
   it 'sends an email when the application is rejected' do
@@ -103,7 +103,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
-    expect(application.events.first.message).to eq("Returned application to seller")
+    expect(application.events.first.message).to eq("Returned application to seller. Response: Response")
   end
 
   it 'sends an email when the application is returned to the seller' do
