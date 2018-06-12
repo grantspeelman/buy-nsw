@@ -12,7 +12,7 @@
         <h2><%= pluralize(search.result_count, 'application') %></h2>
         <%= render partial: 'list', locals: {
               applications: search.paginated_results,
-              empty_message: 'No applications',
+              search: search,
             } %>
         <%= paginate search.paginated_results %>
       </section>

@@ -12,4 +12,8 @@ module Ops::FiltersHelper
 
     empty_value + options
   end
+
+  def reset_filters_path(search)
+    "?" + search.available_filters.map {|key, value| "#{key}=" }.join('&')
+  end
 end

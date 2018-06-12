@@ -42,7 +42,5 @@
     </tbody>
   </table>
 <% else %>
-  <p class="no-records">
-    <%= local_assigns[:empty_message].present? ? local_assigns[:empty_message] : 'No applications' %>
-  </p>
+  <%= render partial: 'ops/shared/no_records_message', locals: local_assigns.slice(:search) %>
 <% end %>

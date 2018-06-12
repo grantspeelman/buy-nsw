@@ -45,6 +45,10 @@ module Search
       selected_filters[filter]
     end
 
+    def active_filters?
+      selected_filters.keys.any?
+    end
+
   private
     attr_reader :page, :per_page, :default_values
 
