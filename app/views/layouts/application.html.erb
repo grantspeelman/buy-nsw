@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <%= render partial: 'layouts/google_analytics' %>
-    <title><%= title %></title>
+    <title>
+      <% if content_for :title %>
+        <%= title %>: <%= content_for :title %>
+      <% else %>
+        <%= title %>
+      <% end %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>

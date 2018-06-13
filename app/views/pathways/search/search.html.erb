@@ -1,5 +1,7 @@
+<% content_for :title, t("enumerize.product.section.#{section}") %>
+
 <section class="view-sellers-search">
-  <h1><%= t("enumerize.product.section.#{section}") %></h1>
+  <h1><%= content_for :title %></h1>
 
   <%= render partial: 'shared/search/form', locals: { search: search } %>
 

@@ -1,4 +1,6 @@
-<% content_for(:skip_user_links, true) %>
-<h1>Sorry, we're experiencing technical difficulties</h1>
+<% content_for :skip_user_links, true %>
+<% content_for :title, "Sorry, we're experiencing technical difficulties" %>
+
+<h1><%= content_for :title %></h1>
 
 <p>Please try again in a few moments.</p>

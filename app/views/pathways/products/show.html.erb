@@ -1,6 +1,8 @@
+<% content_for :title, product.name %>
+
 <section class="view-pathways-products-show">
   <header class="with-seller-details">
-    <h1><%= product.name %></h1>
+    <h1><%= content_for :title %></h1>
     <div class="seller">
       by <%= link_to product.seller.name, sellers_profile_path(product.seller) %>
       <% if product.is_reselling? %>
