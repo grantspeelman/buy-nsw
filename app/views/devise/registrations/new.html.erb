@@ -1,7 +1,9 @@
+<% content_for :title, t("users.registrations.#{user_type}.title") %>
+
 <%= render partial: 'shared/zxcvbn' %>
 <section class="view-user-registrations-new">
   <header>
-    <h1><%= t("users.registrations.#{user_type}.title") %></h1>
+    <h1><%= content_for :title %></h1>
     <%= t("users.registrations.#{user_type}.body_html",
       sign_in: link_to(t("users.registrations.#{user_type}.sign_in_label"), new_session_path(resource_name))
     ) %>

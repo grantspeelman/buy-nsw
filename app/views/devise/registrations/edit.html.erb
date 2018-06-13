@@ -1,7 +1,9 @@
+<% content_for :title, 'Your account' %>
+
 <%= render partial: 'shared/zxcvbn' %>
 <section class="view-edit-account">
   <header>
-    <h2>Your account</h2>
+    <h2><%= content_for :title %></h2>
   </header>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: account_path, html: { method: :put }) do |f| %>

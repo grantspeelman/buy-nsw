@@ -1,5 +1,7 @@
+<% content_for :title, seller.name %>
+
 <section class="view-sellers-profiles">
-  <h1><%= seller.name %></h1>
+  <h1><%= content_for :title %></h1>
   <div class="tags"><%= seller_profile_tags(seller) %></div>
 
   <div class="intro">
