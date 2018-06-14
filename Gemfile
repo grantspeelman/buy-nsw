@@ -32,6 +32,7 @@ gem 'nokogiri'
 gem 'premailer-rails', group: [:development, :production]
 gem 'rack-attack'
 gem 'reform-rails', '~> 0.1.7'
+gem 'simple_form'
 gem 'textacular', '~> 5.0'
 gem 'trailblazer', '~> 2.0.0'
 gem 'trailblazer-rails', '~> 1.0.4'
