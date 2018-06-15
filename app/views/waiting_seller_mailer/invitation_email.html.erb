@@ -1,7 +1,40 @@
 <p>Hi <%= @waiting_seller.contact_name %>,</p>
 
-<p><%= @waiting_seller.name %> is invited to onboard to <strong>buy.nsw</strong>.</p>
+<p>
+  You’re already approved to work with NSW Government.
+</p>
 
-<p>Click the button below to begin.</p>
+<p>
+  As a seller of cloud on the ICT services scheme it's easier
+  for you to join Australia's first government marketplace for cloud.
+  This is because you're already approved to work with NSW Government
+  and so we only need to do a quick check of any extra details you share.
+</p>
 
-<p><%= link_to "Start", sellers_waitlist_invitation_url(@waiting_seller.invitation_token), class: 'button' %></p>
+<p>Your details are pre-loaded. To give you a head start on you application
+  we’ve used your details you’ve already shared when you applied to join the
+  ICT services scheme.
+</p>
+
+<p>Simply fill in the blanks with your team</p>
+
+<p>
+  <%= link_to "Apply now (with your details pre-filled)", sellers_waitlist_invitation_url(@waiting_seller.invitation_token), class: 'button' %>
+</p>
+
+<p>
+  To complete your application check your details are correct and fill in the blanks.
+  If you need a hand, you can invite members of your team. Progress is saved
+  automatically and you can all work at the same time.
+</p>
+
+<p>Be part of <strong>buy.nsw</strong> from the start</p>
+
+<p>
+  If you complete your application within the next week you can be among the
+  first sellers our 50+ buyers will see.
+</p>
+
+<p>
+  <%= link_to 'Let us know if you have any questions', contact_url %>.
+  We’re here to help.</p>
