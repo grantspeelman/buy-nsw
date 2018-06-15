@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Forms::FormBuilderHelper
   include Forms::DateHelper
   include Forms::DocumentHelper
   include Forms::ErrorHelper
