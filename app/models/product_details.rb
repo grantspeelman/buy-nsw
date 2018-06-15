@@ -31,17 +31,18 @@ private
   def core_sections
     {
       "Onboarding and offboarding" => onboarding_and_offboarding,
-      "Environment" => environment,
       "Availability and support" => availability_and_support,
+      "Reporting and analytics" => reporting_and_analytics,
+      "Identity and authentication" => identity_and_authentication,
+      "Environment" => environment,
       "Locations" => locations,
       "User data" => user_data,
       "Backup and recovery" => backup_and_recovery,
       "Data protection" => data_protection,
-      "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
       "Separation between users" => user_separation,
-      "Reporting and analytics" => reporting_and_analytics,
+      "Operational security" => operational_security,
     }
   end
 
@@ -399,6 +400,20 @@ private
         a["Other usage reporting"] = product.usage_channel_other
       end
     end
+  end
+
+  def operational_security
+    {
+      'Configuration and change management processes' => product.change_management_processes_text,
+      'Configuration and change management approach' => product.change_management_approach,
+      'Vulnerability management processes' => product.vulnerability_processes_text,
+      'Vulnerability management approach' => product.vulnerability_approach,
+      'Protective monitoring processes' => product.protective_monitoring_processes_text,
+      'Protective monitoring approach' => product.protective_monitoring_approach,
+      'Crisis and incident management processes' => product.incident_management_processes_text,
+      'Crisis and incident management plan' => product.incident_management_approach,
+      'How often access controls are tested' => product.access_control_testing_frequency_text
+    }
   end
 
   def attributes(&block)

@@ -225,7 +225,7 @@ en:
                 vulnerability_approach: Describe your vulnerability management process
                 protective_monitoring_processes: Which protective monitoring processes does your organisation follow?
                 protective_monitoring_approach: Describe your protective monitoring process
-                incident_management_processes: Which crisis and incident managemewnt processes does your organisation follow?
+                incident_management_processes: Which crisis and incident management processes does your organisation follow?
                 incident_management_approach: Describe your crisis and incident management plan
                 access_control_testing_frequency: How often do you test your access controls?
               reporting_analytics:
