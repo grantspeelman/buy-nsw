@@ -10,7 +10,7 @@
         <% if show_development_info %>
           <%= deployment_env.try(:titleize) %>
           <% if defined?(APP_VERSION) %>
-            (<%= link_to 'APP_VERSION', "https://github.com/hyperealhq/nsw-procurement-hub/commits/#{APP_VERSION}" %>, created <%= time_ago_in_words(APP_VERSION_TIME) %> ago)
+            (<%= link_to APP_VERSION, "https://github.com/hyperealhq/nsw-procurement-hub/commits/#{APP_VERSION}" %>, created <%= time_ago_in_words(APP_VERSION_TIME) %> ago)
           <% end %>
         <% end %>
       </div>
