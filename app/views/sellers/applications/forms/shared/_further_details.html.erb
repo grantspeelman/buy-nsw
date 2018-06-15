@@ -2,14 +2,12 @@
             id="field-<%= field.to_s.dasherize %>"
             data-module="further-details-fields"
             data-further-details-values="true">
-  <legend><%= t("sellers.applications.disclosures.disclosures.#{field}") %></legend>
 
-  <%= f.form_group field do %>
-    <%= f.radio_button field, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button field, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input field, as: :radio_buttons,
+                     input_html: { data: { further_details: 'input' } },
+                     wrapper: false %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area "#{field.to_s}_details", rows: 5 %>
+    <%= f.input "#{field.to_s}_details", as: :text, input_html: { rows: 5 } %>
   </div>
 </fieldset>

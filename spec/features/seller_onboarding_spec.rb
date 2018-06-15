@@ -57,12 +57,12 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   def complete_services
     click_on_step 'services'
 
-    within_fieldset(form_label('services.offers_cloud.question')) do
+    within_fieldset(form_label('services.offers_cloud.label')) do
       choose 'Yes'
       check 'Training and learning'
     end
 
-    within_fieldset(form_label('services.govdc.question')) do
+    within_fieldset(form_label('services.govdc.label')) do
       choose 'No'
     end
 
@@ -188,7 +188,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def complete_workers_compensation
     click_on_step 'workers_compensation'
-    check form_label('workers_compensation.workers_compensation_exempt')
+    check form_label('workers_compensation.workers_compensation_exempt.label')
     click_on 'Save'
   end
 
@@ -276,7 +276,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
   end
 
   def form_label(key)
-    I18n.t("activemodel.attributes.sellers.seller_application.contract.#{key}")
+    I18n.t("sellers.applications.steps.#{key}")
   end
 
 end

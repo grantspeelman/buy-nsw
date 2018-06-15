@@ -1,5 +1,3 @@
 <%= render partial: 'sellers/applications/forms/shared/document_upload', locals: { f: f, step: step, field: :workers_compensation_certificate } %>
 
-<%= f.form_group :workers_compensation_exempt do %>
-  <%= f.check_box :workers_compensation_exempt %>
-<% end %>
+<%= f.input :workers_compensation_exempt, as: :boolean %>

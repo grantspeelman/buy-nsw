@@ -4,129 +4,14 @@ en:
       sellers:
         seller_application:
           contract:
-            services:
-              offers_cloud:
-                question: Do you provide cloud products, services or support?
-                'true': 'Yes'
-                'false': 'No'
-              govdc:
-                question: Do you offer physical infrastructure services in GovDC?
-                'true': 'Yes'
-                'false': 'No'
-            profile_basics:
-              summary: 'Summary'
-              website_url: 'Website URL'
-              linkedin_url: 'LinkedIn URL (optional)'
-            characteristics:
-              number_of_employees: 'Number of employees'
-              corporate_structure: "Corporate structure"
-              start_up: 'Start-up'
-              sme: 'Small to medium-sized enterprise (SME)'
-              not_for_profit: 'Not for profit/social enterprise'
-              australian_owned: 'Australian owned'
-              rural_remote: 'Rural or remote business'
-              regional: 'Regional or non-metropolitan business'
-              travel: 'Happy to travel for opportunities'
-              disability: 'Australian disability enterprise'
-              female_owned: 'Female owned'
-              indigenous: 'Aboriginal or Torres Strait Islander'
-              no_experience: "No, we're looking forward to working with government for the first time"
-              local_government_experience: 'Yes, with local government'
-              state_government_experience: 'Yes, with state or territory government'
-              federal_government_experience: 'Yes, with federal government'
-              international_government_experience: 'Yes, with government outside Australia'
-            business_details:
-              name: 'Business name'
-              abn: 'ABN'
-            contacts:
-              contact_name: Name
-              contact_email: Email address
-              contact_phone: Phone
-              representative_name: Name
-              representative_email: Email address
-              representative_phone: Phone
-              representative_position: Position in organisation
             financial_statement:
               financial_statement: 'Financial statement'
-              financial_statement_expiry: Date of document
             professional_indemnity:
               professional_indemnity_certificate: 'Professional indemnity and public liability certificate'
-              professional_indemnity_certificate_expiry: Expiry date
             workers_compensation:
               workers_compensation_certificate: 'Workers compensation insurance'
-              workers_compensation_certificate_expiry: Expiry date
-              workers_compensation_exempt: This business is not required to have workers compensation insurance.
             product_liability:
               product_liability_certificate: 'Product liability certificate (optional)'
-              product_liability_certificate_expiry: Expiry date
-            declaration:
-              agree_html: |
-                I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
-            disclosures:
-              receivership:
-                'false': 'No'
-                'true': 'Yes'
-              investigations:
-                'false': 'No'
-                'true': 'Yes'
-              legal_proceedings:
-                'false': 'No'
-                'true': 'Yes'
-              insurance_claims:
-                'false': 'No'
-                'true': 'Yes'
-              conflicts_of_interest:
-                'false': 'No'
-                'true': 'Yes'
-              other_circumstances:
-                'false': 'No'
-                'true': 'Yes'
-              receivership_details: 'Please provide details'
-              investigations_details: 'Please provide details'
-              legal_proceedings_details: 'Please provide details'
-              insurance_claims_details: 'Please provide details'
-              conflicts_of_interest_details: 'Please provide details'
-              other_circumstances_details: 'Please provide details'
-  activerecord:
-    help:
-      'sellers/seller_application/contract/business_details':
-        name: Your business name must be listed under your ABN. You can leave out endings like PTY LTD.
-        abn_html: "You need an Australian Business Number to do business in Australia. <a href=\"https://abr.business.gov.au/\">Lookup your ABN</a> or <a href=\"https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/\">apply for an ABN</a>."
-      'sellers/seller_application/contract/profile_basics':
-        summary: 3-4 sentences that describe your business. This can be seen by anyone without signing in.
-        website_url: Provide a link to your website beginning with http
-        linkedin_url: Provide a LinkedIn URL beginning with http
-      'sellers/seller_application/contract/characteristics':
-        start_up: Your business is not listed on any stock exchange and is less than 5 years old.
-        sme: Your business has less than 200 full-time equivalent employees and is from Australia or New Zealand.
-        not_for_profit: Your organisation's purpose is to improve human or environmental wellbeing and reinvests profit to fulfil its mission.
-        australian_owned: Your business is founded and headquartered in Australia and owned by Australian nationals.
-        disability_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
-        female_owned: Your business has at least 50% female ownership.
-        indigenous_html: 'Your business is recognised by an appropriate organisation such as <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a> or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.'
-      'sellers/seller_application/contract/financial_statement':
-        financial_statement: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services."
-        financial_statement_expiry: We'll ask you to upload a new document one year from now.
-      'sellers/seller_application/contract/professional_indemnity':
-        professional_indemnity_certificate: 'Your insurer can issue a certificate of currency.'
-        professional_indemnity_certificate_expiry: We'll ask you to upload a new document when this one expires.
-      'sellers/seller_application/contract/workers_compensation':
-        workers_compensation_certificate: 'Your insurer can issue a certificate of currency.'
-        workers_compensation_certificate_expiry: We'll ask you to upload a new document when this one expires.
-      'sellers/seller_application/contract/product_liability':
-        product_liability_certificate: 'Your insurer can issue a certificate of currency.'
-        product_liability_certificate_expiry: We'll ask you to upload a new document when this one expires.
-      'sellers/seller_application/contract/services':
-        cloud-services: "Cloud software, hosting and infrastructure. Also includes support services for transitioning to cloud and for monitoring and managing cloud environments."
-        software-development: "Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software. Includes all disciplines that support the delivery of software, including design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
-        software-licensing: "Software licensed on any basis other than as a cloud-hosted subscription service. Includes the maintenance and updates of these software licences."
-        end-user-computing: "Provision, installation, configuration or maintenance of devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
-        infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks, such as racking, cabling, routers and switches."
-        telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
-        managed-services: "Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops."
-        advisory-consulting: "Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
-        ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
-        training-learning: "ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
   enumerize:
     seller:
       industry:
@@ -174,27 +59,112 @@ en:
         financial_statement:
           short: 'Your financial statement'
           button_label: 'Upload document'
+          instruction: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services."
+          financial_statement_file:
+            hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
+          financial_statement_expiry:
+            label: Date of document
+            hint: We'll ask you to upload a new document one year from now.
         workers_compensation:
           short: 'Workers compensation insurance'
           button_label: 'Save'
+          instruction: "Your insurer can issue a certificate of currency."
+          workers_compensation_certificate_file:
+            hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
+          workers_compensation_certificate_expiry:
+            label: Expiry date
+            hint: We'll ask you to upload a new document when this one expires.
+          workers_compensation_exempt:
+            label: This business is not required to have workers compensation insurance.
         product_liability:
           short: 'Product liability insurance'
           button_label: 'Upload document'
+          instruction: "Your insurer can issue a certificate of currency."
+          product_liability_certificate_file:
+            hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
+          product_liability_certificate_expiry:
+            label: Expiry date
+            hint: We'll ask you to upload a new document when this one expires.
         professional_indemnity:
           short: 'Professional indemnity and public liability insurance'
           button_label: 'Upload document'
+          instruction: "Your insurer can issue a certificate of currency."
+          professional_indemnity_certificate_file:
+            hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
+          professional_indemnity_certificate_expiry:
+            label: Expiry date
+            hint: We'll ask you to upload a new document when this one expires.
         contacts:
           short: 'Your contact details'
+          contact_name:
+            label: Name
+          contact_email:
+            label: Email address
+          contact_phone:
+            label: Phone
+          representative_name:
+            label: Name
+          representative_email:
+            label: Email address
+          representative_phone:
+            label: Phone
+          representative_position:
+            label: Position in organisation
         addresses:
           short: 'Your address'
+          address:
+            address:
+              label: Address
+            suburb:
+              label: Suburb
+            state:
+              label: State or territory
+            postcode:
+              label: Postcode
+            country:
+              label: Country
         declaration:
           short: 'Accept the Core Terms'
+          agree_html: |
+            I am <strong>%{name}</strong>, an authorised representative of <strong>%{organisation}</strong> (ABN: %{abn}) and I agree to the ICT Agreement Core Terms
         disclosures:
           short: 'Complete disclosures'
           long: 'Disclosures'
+          receivership:
+            label: "Is your organisation in receivership, administration or unable to meet its debts as they fall due?"
+          receivership_details:
+            label:
+          investigations:
+            label: "Has your organisation — or any of its directors or principals — been or referred to or investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
+          legal_proceedings:
+            label: "Has your organisation been involved in any legal proceedings in the last 5 years?"
+          insurance_claims:
+            label: "Has your organisation made any claims on your professional indemnity, public liability, cyber, directors or fidelity insurance in the last 5 years?"
+          conflicts_of_interest:
+            label: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?"
+          other_circumstances:
+            label: "Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?"
+          receivership_details:
+            label: 'Please provide details'
+          investigations_details:
+            label: 'Please provide details'
+          legal_proceedings_details:
+            label: 'Please provide details'
+          insurance_claims_details:
+            label: 'Please provide details'
+          conflicts_of_interest_details:
+            label: 'Please provide details'
+          other_circumstances_details:
+            label: 'Please provide details'
         business_details:
           short: 'Company information'
           long: 'Tell us about your business'
+          name:
+            label: Business name
+            hint: Your business name must be listed under your ABN. You can leave out endings like PTY LTD.
+          abn:
+            label: ABN
+            hint_html: "You need an Australian Business Number to do business in Australia. <a href=\"https://abr.business.gov.au/\">Lookup your ABN</a> or <a href=\"https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/\">apply for an ABN</a>."
         services:
           short: 'Your offering'
           long: 'What products and services do you offer?'
@@ -216,11 +186,78 @@ en:
           ineligible_change_message_html: |
             <p>If you do meet the above criteria, you can change your details and continue with your application. If not, we have your details and will keep you updated, so you'll know when to join.</p>
           ineligible_change_button_label: Change your details
+          offers_cloud:
+            label: Do you provide cloud products, services or support?
+          govdc:
+            label: Do you offer physical infrastructure services in GovDC?
+          descriptions:
+            cloud-services: "Cloud software, hosting and infrastructure. Also includes support services for transitioning to cloud and for monitoring and managing cloud environments."
+            software-development: "Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software. Includes all disciplines that support the delivery of software, including design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
+            software-licensing: "Software licensed on any basis other than as a cloud-hosted subscription service. Includes the maintenance and updates of these software licences."
+            end-user-computing: "Provision, installation, configuration or maintenance of devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
+            infrastructure: "Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks, such as racking, cabling, routers and switches."
+            telecommunications: "Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
+            managed-services: "Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops."
+            advisory-consulting: "Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
+            ict-workforce: "Contractors and contingent workers working under the direction of a line manager within government."
+            training-learning: "ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
         profile_basics:
           short: 'Summary and website links'
           long: 'Your profile summary'
+          summary:
+            label: 'Summary'
+            hint: 3-4 sentences that describe your business. This can be seen by anyone without signing in.
+          website_url:
+            label: 'Website URL'
+            hint: Provide a link to your website beginning with http
+          linkedin_url:
+            label: 'LinkedIn URL (optional)'
+            hint: Provide a LinkedIn URL beginning with http
         characteristics:
           short: 'Company type and size'
+          number_of_employees:
+            label: 'Number of employees'
+            hint: For part-time employees, add their hours to estimate the number of full-time equivalent staff.
+          corporate_structure:
+            label: "Corporate structure"
+          start_up:
+            label: 'Start-up'
+            hint: Your business is not listed on any stock exchange and is less than 5 years old.
+          sme:
+            label: 'Small to medium-sized enterprise (SME)'
+            hint: Your business has less than 200 full-time equivalent employees and is from Australia or New Zealand.
+          not_for_profit:
+            label: 'Not for profit/social enterprise'
+            hint: Your organisation's purpose is to improve human or environmental wellbeing and reinvests profit to fulfil its mission.
+          australian_owned:
+            label: 'Australian owned'
+            hint: Your business is founded and headquartered in Australia and owned by Australian nationals.
+          rural_remote:
+            label: 'Rural or remote business'
+          regional:
+            label: 'Regional or non-metropolitan business'
+          travel:
+            label: 'Happy to travel for opportunities'
+          disability:
+            label: 'Australian disability enterprise'
+            hint_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
+          female_owned:
+            label: 'Female owned'
+            hint: Your business has at least 50% female ownership.
+          indigenous:
+            label: 'Aboriginal or Torres Strait Islander'
+            hint_html: |
+              'Your business is recognised by an appropriate organisation such as <a href="https://nswicc.com.au/"> NSW Indigenous Chamber of Commerce</a>, <a href="https://www.supplynation.org.au/search">Supply Nation</a> or the <a href="https://www.linkedin.com/company/firstaustbiz/"> First Australians Chamber of Commerce and Industry</a>.'
+          no_experience:
+            label: "No, we're looking forward to working with government for the first time"
+          local_government_experience:
+            label: 'Yes, with local government'
+          state_government_experience:
+            label: 'Yes, with state or territory government'
+          federal_government_experience:
+            label: 'Yes, with federal government'
+          international_government_experience:
+            label: 'Yes, with government outside Australia'
         recognition:
           short: 'List awards and accreditations'
         products:
@@ -252,15 +289,6 @@ en:
           incorrect_user_html: |
             Only the authorised representative can complete this step. <a href="%{invite_link}">Send them an invitation</a>
         steps:
-      disclosures:
-        title: Your disclosures
-        disclosures:
-          receivership: "Is your organisation in receivership, administration or unable to meet its debts as they fall due?"
-          investigations: "Has your organisation — or any of its directors or principals — been or referred to or investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?"
-          legal_proceedings: "Has your organisation been involved in any legal proceedings in the last 5 years?"
-          insurance_claims: "Has your organisation made any claims on your professional indemnity, public liability, cyber, directors or fidelity insurance in the last 5 years?"
-          conflicts_of_interest: "Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?"
-          other_circumstances: "Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?"
       messages:
         invitation_sent: We've sent an invitation to %{email}.
         invitation_accepted: You've accepted the invitation and joined the seller profile.

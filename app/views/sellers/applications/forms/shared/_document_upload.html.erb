@@ -1,16 +1,10 @@
 <p>Your corporate documents will appear on your seller profile to logged in buyers.</p>
 <p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.</p>
-<p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
+
+<p><%= t('instruction', scope: [:sellers, :applications, :steps, step.key]) %></p>
 
 <fieldset class="file-upload">
-  <legend><%= t("activemodel.attributes.sellers.seller_application.contract.#{step.key}.#{field}") %></legend>
-  <p><%= t("activerecord.help.sellers/seller_application/contract/#{step.key}.#{field}") %></p>
-
   <%= render partial: 'sellers/applications/forms/shared/file_upload', locals: { f: f, field: field } %>
-
-  <%= date_field_from_value f, "#{field}_expiry", f.object.send("#{field}_expiry") %>
-
-  <small class="form-text text-muted">
-    <%= t("activerecord.help.sellers/seller_application/contract/#{step.key}.#{field}_expiry") %>
-  </small>
 </fieldset>
+
+<%= f.input "#{field}_expiry", as: :text_field_date, wrapper: :text_field_date %>

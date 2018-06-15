@@ -3,7 +3,7 @@
     <h3>Currently uploaded file:</h3>
 
     <span class="icon" aria-hidden="true"></span>
-    <div class="file">
+    <div class="uploaded-file">
       <span class="file-name"><%= upload.original_filename %></span>
 
       <% if file_clean?(upload) %>
@@ -15,14 +15,12 @@
           <%= upload.scan_status_text %>
         </span>
       <% end %>
-    </div>
 
-    <%= f.file_field "#{field}_file", help: false, label: 'Replace this file' %>
-
-    <div class="remove-file-action">
-      <%= f.check_box "remove_#{field}", label: "Remove file" %>
+      <div class="remove-file-action" data-module="remove-file">
+        <%= f.input "remove_#{field}", as: :boolean, label: "Remove file", wrapper: false, include_hidden: false %>
+      </div>
     </div>
   </div>
 <% else %>
-  <%= f.file_field "#{field}_file", help: false, label: 'Upload a file' %>
+  <%= f.input "#{field}_file", as: :file, label: 'Upload a file' %>
 <% end %>

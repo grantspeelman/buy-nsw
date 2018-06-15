@@ -18,6 +18,10 @@ module Sellers::SellerApplication::Contract
     }
 
     collection :addresses, on: :seller, prepopulator: AddressPrepopulator, populator: AddressPopulator do
+      def i18n_base
+        'sellers.applications.steps.addresses'
+      end
+
       property :address
       property :suburb
       property :state

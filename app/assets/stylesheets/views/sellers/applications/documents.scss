@@ -18,10 +18,10 @@
       vertical-align: top;
     }
 
-    .file {
+    .uploaded-file {
       display: inline-block;
 
-      .file-name, .scan-status, .download-action {
+      .file-name, .scan-status {
         display: block;
       }
 
@@ -29,16 +29,36 @@
         font-weight: 600;
       }
 
-      .download-action a {
-        @include button-primary;
+      .download-action {
+        display: inline-block;
 
-        font-size: .9rem;
-        margin-top: .4rem;
+        a {
+          @include button-primary;
+
+          font-size: .9rem;
+          margin-top: .4rem;
+        }
       }
-    }
 
-    .remove-file-action {
-      padding-top: 1rem;
+      .remove-file-action {
+        padding-top: 1rem;
+      }
+
+      .remove-file-action.js-enabled {
+        display: inline-block;
+        padding-top: 0;
+
+        .form-check {
+          padding-bottom: 0;
+        }
+
+        button {
+          @include button-danger;
+
+          font-size: .9rem;
+          margin-top: .4rem;
+        }
+      }
     }
 
     .form-group {
