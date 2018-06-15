@@ -239,7 +239,7 @@ en:
   activerecord:
     help:
       'sellers/seller_application/products/contract/commercials':
-        pricing_unit: "eg. per user per month excluding GST"
+        pricing_unit: "eg. per user per month"
         pricing_min: "eg. what is the cost for one user for one month of the basic product."
         pricing_max: "eg. what is the cost for one user for one month of the comprehensive product."
       'sellers/seller_application/products/contract/onboarding_offboarding':
