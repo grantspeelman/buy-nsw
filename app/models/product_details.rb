@@ -31,17 +31,17 @@ private
   def core_sections
     {
       "Onboarding and offboarding" => onboarding_and_offboarding,
-      "Environment" => environment,
       "Availability and support" => availability_and_support,
+      "Reporting and analytics" => reporting_and_analytics,
+      "Identity and authentication" => identity_and_authentication,
+      "Environment" => environment,
       "Locations" => locations,
       "User data" => user_data,
       "Backup and recovery" => backup_and_recovery,
       "Data protection" => data_protection,
-      "Identity and authentication" => identity_and_authentication,
       "Security standards" => security_standards,
       "Security practices" => security_practices,
       "Separation between users" => user_separation,
-      "Reporting and analytics" => reporting_and_analytics,
     }
   end
 
