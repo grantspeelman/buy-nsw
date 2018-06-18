@@ -91,10 +91,10 @@ module Sellers::SellerApplication::Contract
         required(:workers_compensation_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
 
         rule(workers_compensation_certificate_file: [:workers_compensation_exempt, :workers_compensation_certificate_file]) do |exempt, document|
-          exempt.false?.then(document.filled?)
+          (exempt.false? | exempt.eql?('0')).then(document.filled?)
         end
         rule(workers_compensation_certificate_expiry: [:workers_compensation_exempt, :workers_compensation_certificate_expiry]) do |exempt, expiry|
-          exempt.false?.then(expiry.filled?)
+          (exempt.false? | exempt.eql?('0')).then(expiry.filled?)
         end
       end
     end

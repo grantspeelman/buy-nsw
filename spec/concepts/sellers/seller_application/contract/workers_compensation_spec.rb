@@ -26,6 +26,17 @@ RSpec.describe Sellers::SellerApplication::Contract::WorkersCompensation do
     end
   end
 
+  it 'is invalid when all blank' do
+    subject.validate({
+      "workers_compensation_exempt": '0',
+      "workers_compensation_certificate_expiry(3i)": '',
+      "workers_compensation_certificate_expiry(2i)": '',
+      "workers_compensation_certificate_expiry(1i)": '',
+    })
+
+    expect(subject).to_not be_valid
+  end
+
   context 'for a seller not exempt from workers compensation insurance' do
     let(:atts) {
       {
