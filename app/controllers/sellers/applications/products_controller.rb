@@ -24,7 +24,6 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
       return redirect_to sellers_application_product_path(result['model.application'], result['model.product'])
     end
 
-    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :edit
   end
 

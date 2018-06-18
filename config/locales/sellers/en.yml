@@ -48,18 +48,22 @@ en:
           button_label: 'Upload document'
           instruction: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services."
           financial_statement_file:
+            error_label: Your insurance document
             hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
           financial_statement_expiry:
             label: Date of document
+            error_label: Your insurance expiry date
             hint: We'll ask you to upload a new document one year from now.
         workers_compensation:
           short: 'Workers compensation insurance'
           button_label: 'Save'
           instruction: "Your insurer can issue a certificate of currency."
           workers_compensation_certificate_file:
+            error_label: Your insurance document
             hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
           workers_compensation_certificate_expiry:
             label: Expiry date
+            error_label: Your insurance expiry date
             hint: We'll ask you to upload a new document when this one expires.
           workers_compensation_exempt:
             label: This business is not required to have workers compensation insurance.
@@ -68,35 +72,46 @@ en:
           button_label: 'Upload document'
           instruction: "Your insurer can issue a certificate of currency."
           product_liability_certificate_file:
+            error_label: Your insurance document
             hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
           product_liability_certificate_expiry:
             label: Expiry date
+            error_label: Your insurance expiry date
             hint: We'll ask you to upload a new document when this one expires.
         professional_indemnity:
           short: 'Professional indemnity and public liability insurance'
           button_label: 'Upload document'
           instruction: "Your insurer can issue a certificate of currency."
           professional_indemnity_certificate_file:
+            error_label: Your insurance document
             hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
           professional_indemnity_certificate_expiry:
             label: Expiry date
+            error_label: Your insurance expiry date
             hint: We'll ask you to upload a new document when this one expires.
         contacts:
           short: 'Your contact details'
           contact_name:
             label: Name
+            error_label: Business contact name
           contact_email:
             label: Email address
+            error_label: Business contact email address
           contact_phone:
             label: Phone
+            error_label: Business contact phone
           representative_name:
             label: Name
+            error_label: Authorised representative name
           representative_email:
             label: Email address
+            error_label: Authorised representative email address
           representative_phone:
             label: Phone
+            error_label: Authorised representative phone
           representative_position:
             label: Position in organisation
+            error_label: Authorised representative position in organisation
         addresses:
           short: 'Your address'
           address:
@@ -257,34 +272,19 @@ en:
         documents: Provide documents
         offering: Describe your offering
         apply: Apply
-      contacts:
-        title: Your contact details
-        guidance_html: |
-          <p>This will take about 5 minutes.</p>
-          <p>You will need:</p>
-          <ul>
-            <li>your contact details</li>
-            <li>your business address</li>
-            <li>contact details of someone authorised to act on behalf of your business</li>
-          </ul>
-        aside_html: |
-          <p>The information here is available to all buyers.</p>
-      legals:
-        title: Your legals
-        errors:
-          no_representative: You can't start this until you nominate an authorised representative.
-          incorrect_user_html: |
-            Only the authorised representative can complete this step. <a href="%{invite_link}">Send them an invitation</a>
-        steps:
       messages:
         invitation_sent: We've sent an invitation to %{email}.
         invitation_accepted: You've accepted the invitation and joined the seller profile.
         invitation_invalid: This invitation code isn't valid. Please contact us for help.
         changes_saved: Your changes have been saved.
-        changes_saved_with_errors: Your changes have been saved. However there were errors.
         authorised_representative_only: Only your authorised representative can make this change.
         product_destroyed: The product has been deleted
         product_cloned: The product has been copied
+      errors:
+        title_with_error_list: "There was a problem with your answers to:"
+        title_without_error_list: There was a problem with your answers
+        guidance: "Your answers have been saved, so you can %{return_later_link} to correct."
+        return_later_link_label: "skip and come back later"
       introduction:
         title: 'Apply to sell to NSW Government'
         button_label: 'Start application'
@@ -304,14 +304,6 @@ en:
             <li>provide details about your offering to support your application</li>
             <li>accept the <a href="/core-terms">Core Terms</a></li>
           </ul>
-      profile:
-        title: Your seller profile
-        guidance_html: |
-          <p>This will take approximately 10 minutes.</p>
-          <p>This information will appear on your profile to interested buyers.</p>
-        aside_html: |
-          <p>The information here is available to all buyers.</p>
-          <p>The more information you provide, the easier it is for buyers to find you through site search.</p>
     dashboard:
       actions:
         label: Account actions

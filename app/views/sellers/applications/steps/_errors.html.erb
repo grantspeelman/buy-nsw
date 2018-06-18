@@ -1,0 +1,18 @@
+<% if f.object.errors.present? %>
+  <div class="block-error" role="alert" tabindex="-1">
+
+    <% if f.errors_with_messages.any? %>
+      <h2><%= t('sellers.applications.errors.title_with_error_list') %></h2>
+
+      <ul class="invalid-fields-list">
+        <% f.errors_with_messages.each do |(message, anchor)| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h2><%= t('sellers.applications.errors.title_without_error_list') %></h2>
+    <% end %>
+    <p><%= t('sellers.applications.errors.guidance',
+        return_later_link: link_to(t('sellers.applications.errors.return_later_link_label'), skip_link)).html_safe %></p>
+  </div>
+<% end %>

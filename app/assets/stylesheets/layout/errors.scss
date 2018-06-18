@@ -1,0 +1,32 @@
+.block-error {
+  border: .4rem solid $red;
+
+  padding: 1rem;
+  margin: 2rem 0;
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul.invalid-fields-list {
+    li {
+      padding: .2rem 0;
+    }
+  }
+}
+
+.form-group-invalid.file {
+  border-left: .4rem solid $red;
+  padding-left: 1rem;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 100%;
+  color: $red;
+  font-weight: bold;
+}

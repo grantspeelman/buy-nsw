@@ -3,6 +3,24 @@ class ReformFormBuilder < SimpleForm::FormBuilder
     super(attribute_name, custom_input_options(attribute_name, options), &block)
   end
 
+  def translate_label(attribute_name)
+    I18n.t(:label, scope: [i18n_scope, attribute_name])
+  end
+
+  def field_id(attribute_name)
+    key = options[:as] || object.model_name
+    "#{key}_#{attribute_name}"
+  end
+
+  def errors_with_messages
+    errors = HashWithIndifferentAccess.new(object.errors.messages)
+    errors.keys.map {|field, _|
+      error_message_for_field(field)
+    }.compact.map {|field|
+      [field, field_id(field)]
+    }
+  end
+
 private
   def custom_input_options(attribute_name, options)
     hint_text = translate_hint(attribute_name)
@@ -29,15 +47,11 @@ private
   def translate_hint(attribute_name)
     scope = [i18n_scope, attribute_name]
 
-    if I18n.exists?([scope, :hint_html].join('.'))
-      I18n.t(:hint_html, scope: [i18n_scope, attribute_name]).html_safe
-    elsif I18n.exists?([scope, :hint].join('.'))
-      I18n.t(:hint, scope: [i18n_scope, attribute_name])
+    if html = translate_if_exists(:hint_html, scope)
+      html.html_safe
+    else
+      translate_if_exists(:hint, scope)
     end
-  end
-
-  def translate_label(attribute_name)
-    I18n.t(:label, scope: [i18n_scope, attribute_name])
   end
 
   def i18n_scope
@@ -45,5 +59,16 @@ private
     key = object.class.name.demodulize.underscore
 
     [base, key]
+  end
+
+  def error_message_for_field(field_name)
+    translate_if_exists(:error_label, [i18n_scope, field_name]) ||
+      translate_if_exists(:label, [i18n_scope, field_name])
+  end
+
+  def translate_if_exists(key, scope)
+    if I18n.exists?([scope, key].flatten.join('.'))
+      I18n.t(key, scope: scope)
+    end
   end
 end

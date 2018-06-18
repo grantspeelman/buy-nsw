@@ -1,7 +1,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :data_import_formats, as: :radio_buttons, collection: Product.data_import_formats.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :data_import_formats, as: :check_boxes, collection: Product.data_import_formats.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :data_import_formats_other, as: :text, input_html: { rows: 3 } %>
@@ -11,7 +11,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :data_export_formats, as: :radio_buttons, collection: Product.data_export_formats.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :data_export_formats, as: :check_boxes, collection: Product.data_export_formats.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :data_export_formats_other, as: :text, input_html: { rows: 3 } %>

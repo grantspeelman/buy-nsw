@@ -6,8 +6,6 @@ en:
         empty_name_label: No name
         new_product_action_label: Add a product or service
         edit_product_action_label: Edit
-        guidance_html: |
-          This will take about 30 minutes for each product.
         steps:
           type:
             short: Product or service category

@@ -9,7 +9,7 @@ Dry::Validation::Schema::Form.configure do |config|
 end
 
 class Reform::Contract::Errors
-  def full_messages_for(key)
-    messages[key]
+  def full_messages_for(name)
+    @errors[name]
   end
 end
