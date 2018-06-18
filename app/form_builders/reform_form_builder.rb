@@ -8,16 +8,21 @@ private
     hint_text = translate_hint(attribute_name)
     label_text = translate_label(attribute_name)
 
+    hint_id = "hint_#{attribute_name}" if hint_text.present?
+    error_id = "error_#{attribute_name}" if object.errors[attribute_name].any?
+
     input_html = {
       aria: {
-        describedby: hint_text.present? ? "hint_#{attribute_name}" : nil,
-      }
+        describedby: [ hint_id, error_id ].compact.join(' '),
+      },
     }
 
     options.merge({
       label: options.fetch(:label, label_text),
       hint: hint_text,
       input_html: options.fetch(:input_html, {}).merge(input_html),
+      hint_id: hint_id,
+      error_id: error_id,
     })
   end
 
