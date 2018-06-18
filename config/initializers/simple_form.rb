@@ -186,8 +186,8 @@ SimpleForm.setup do |config|
     b.wrapper :legend_tag, tag: 'legend' do |ba|
       ba.use :label_text
     end
+    b.use :accessible_hint, tag: 'small', class: 'form-text text-muted'
     b.use :input, class: 'form-control', error_class: 'is-invalid'
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-    b.use :accessible_hint, tag: 'small', class: 'form-text text-muted'
   end
 end
