@@ -45,7 +45,6 @@ en:
       steps:
         financial_statement:
           short: 'Your financial statement'
-          button_label: 'Upload document'
           instruction: "Please provide an up-to-date financial statement. If you don't have this, ask your accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services."
           financial_statement_file:
             error_label: Your insurance document
@@ -56,7 +55,6 @@ en:
             hint: We'll ask you to upload a new document one year from now.
         workers_compensation:
           short: 'Workers compensation insurance'
-          button_label: 'Save'
           instruction: "Your insurer can issue a certificate of currency."
           workers_compensation_certificate_file:
             error_label: Your insurance document
@@ -68,8 +66,7 @@ en:
           workers_compensation_exempt:
             label: This business is not required to have workers compensation insurance.
         product_liability:
-          short: 'Product liability insurance'
-          button_label: 'Upload document'
+          short: 'Product liability insurance (optional)'
           instruction: "Your insurer can issue a certificate of currency."
           product_liability_certificate_file:
             error_label: Your insurance document
@@ -80,7 +77,6 @@ en:
             hint: We'll ask you to upload a new document when this one expires.
         professional_indemnity:
           short: 'Professional indemnity and public liability insurance'
-          button_label: 'Upload document'
           instruction: "Your insurer can issue a certificate of currency."
           professional_indemnity_certificate_file:
             error_label: Your insurance document

@@ -249,7 +249,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     end
   end
 
-  def upload_document(button_label: 'Upload document')
+  def upload_document(button_label: 'Save and upload document')
     expiry_date = 1.year.from_now
 
     attach_file 'Upload a file', example_pdf, make_visible: true
