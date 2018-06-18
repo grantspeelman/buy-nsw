@@ -11,12 +11,7 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= seller_application_field_label('services.offers_cloud.question') %></legend>
-
-  <%= f.form_group :offers_cloud do %>
-    <%= f.radio_button :offers_cloud, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :offers_cloud, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :offers_cloud, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div class="multiple-choice-group checkbox-group">
@@ -27,10 +22,19 @@
         <%= hidden_field_tag "seller_application[services][]" %>
 
         <% other_service_options.each do |(label, value)| %>
-          <%= f.check_box "services", { multiple: true, include_hidden: false }, value do %>
-            <%= label %>
-            <small class="form-text text-muted"><%= service_description_text(value) %></small>
-          <% end %>
+          <div class="form-check">
+            <%= f.check_box "services", { multiple: true,
+                                          label: false,
+                                          include_hidden: false,
+                                          id: "services_#{value}",
+                                          aria: {
+                                            describedby: "hint_services_#{value}",
+                                          },
+                                        },
+                                        value %>
+            <label for="services_<%= value %>"><%= label %></label>
+            <small class="form-text text-muted" id="hint_services_<%= value %>"><%= service_description_text(value) %></small>
+          </div>
         <% end %>
       </div>
     </div>
@@ -40,10 +44,5 @@
 
 <fieldset class="multiple-choice-group radio-group">
 
-  <legend><%= seller_application_field_label('services.govdc.question') %></legend>
-
-  <%= f.form_group :govdc do %>
-    <%= f.radio_button :govdc, 'true' %>
-    <%= f.radio_button :govdc, 'false' %>
-  <% end %>
+  <%= f.input :govdc, as: :radio_buttons %>
 </fieldset>

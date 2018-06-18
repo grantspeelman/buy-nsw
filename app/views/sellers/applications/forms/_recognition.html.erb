@@ -5,9 +5,9 @@
   <small class="form-text text-muted">Does your business have any formal accreditations you want to share?</small>
 
   <ol>
-  <%= f.fields_for :accreditations do |a| %>
+  <%= f.simple_fields_for :accreditations do |a| %>
     <li>
-      <%= a.text_field :accreditation, label: "#{a.options[:child_index]+1}." %>
+      <%= a.input :accreditation, label: "#{a.options[:child_index]+1}." %>
       <%= a.hidden_field :id %>
     </li>
   <% end %>
@@ -19,9 +19,9 @@
   <small class="form-text text-muted">Are you involved in any boards, committees or groups for your industry?</small>
 
   <ol>
-  <%= f.fields_for :awards do |a| %>
+  <%= f.simple_fields_for :awards do |a| %>
     <li>
-      <%= a.text_field :award, label: "#{a.options[:child_index]+1}." %>
+      <%= a.input :award, label: "#{a.options[:child_index]+1}." %>
       <%= a.hidden_field :id %>
     </li>
   <% end %>
@@ -33,9 +33,9 @@
   <small class="form-text text-muted">Has your work been recognised and awarded within your industry or by others?</small>
 
   <ol>
-  <%= f.fields_for :engagements do |a| %>
+  <%= f.simple_fields_for :engagements do |a| %>
     <li>
-      <%= a.text_field :engagement, label: "#{a.options[:child_index]+1}." %>
+      <%= a.input :engagement, label: "#{a.options[:child_index]+1}." %>
       <%= a.hidden_field :id %>
     </li>
   <% end %>

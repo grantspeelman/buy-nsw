@@ -8,7 +8,7 @@
   <ol>
   <%= form.fields_for association do |object| %>
     <li>
-      <%= object.text_field field, label: "#{object.options[:child_index]+1}." %>
+      <%= object.input field, label: "#{object.options[:child_index]+1}." %>
       <%= object.hidden_field :id %>
     </li>
   <% end %>

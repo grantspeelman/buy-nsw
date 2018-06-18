@@ -5,28 +5,26 @@
   function FileInputModule (options) {
     this.el = options.el
     this.$el = $(this.el)
-    this.$label = this.$el.siblings('label').first()
+    this.$button = this.$el.closest('form').find('input[type=submit]')
+    this.updatedText = 'Save and upload document'
 
     this.bindEvents()
   }
 
-  FileInputModule.prototype.bindEvents = function bindEvents () {
-    this.$el.on('change', $.proxy(this.updateLabelText, this))
+  FileInputModule.prototype.bindEvents = function () {
+    this.$el.on('change', $.proxy(this.updateButtonText, this))
   }
 
-  FileInputModule.prototype.updateLabelText = function updateLabelText () {
-    var file = this.el.files[0]
-    var size = Math.round(file.size / 1000)
-
-    this.$label.text(file.name + ' (' + size + ' kB)')
-    this.$el.addClass('with-attached-file')
+  FileInputModule.prototype.updateButtonText = function () {
+    this.$button.val(this.updatedText).attr('data-disable-with', this.updatedText)
   }
 
   window.ProcurementHub.FileInputModule = FileInputModule
 }())
 
 $(function () {
-  $('input.custom-file-input').each(function (i, element) {
+  $('input[type=file]').each(function (i, element) {
+    // eslint-disable-next-line no-new
     new ProcurementHub.FileInputModule({
       el: element
     })

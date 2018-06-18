@@ -1,39 +1,33 @@
 <div data-module="max-word-count" data-max-word-count="100">
-  <%= f.text_area :metrics_contents, rows: 5 %>
+  <%= f.input :metrics_contents, as: :text, input_html: { rows: 5 } %>
 </div>
 
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.reporting_analytics.metrics_channel_types') %></legend>
-  <%= f.collection_check_boxes(:metrics_channel_types, Product.metrics_channel_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :metrics_channel_types, as: :check_boxes, collection: Product.metrics_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :metrics_channel_other, rows: 3 %>
+    <%= f.input :metrics_channel_other, as: :text, input_html: { rows: 3 } %>
   </div>
 </fieldset>
 
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.reporting_analytics.outage_channel_types') %></legend>
-  <%= f.collection_check_boxes(:outage_channel_types, Product.outage_channel_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :outage_channel_types, as: :check_boxes, collection: Product.outage_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :outage_channel_other, rows: 3 %>
+    <%= f.input :outage_channel_other, as: :text, input_html: { rows: 3 } %>
   </div>
 </fieldset>
 
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.reporting_analytics.usage_channel_types') %></legend>
-  <%= f.collection_check_boxes(:usage_channel_types, Product.usage_channel_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :usage_channel_types, as: :check_boxes, collection: Product.usage_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :usage_channel_other, rows: 3 %>
+    <%= f.input :usage_channel_other, as: :text, input_html: { rows: 3 } %>
   </div>
 </fieldset>

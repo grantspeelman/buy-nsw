@@ -1,16 +1,13 @@
 <fieldset data-module="max-word-count" data-max-word-count="200">
-  <%= f.text_area :guaranteed_availability, rows: 5 %>
+  <%= f.input :guaranteed_availability, as: :text, input_html: { rows: 5 } %>
 </fieldset>
 
-<fieldset class="multiple-choice-group checkbox-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.availability_support.support_options') %></legend>
-  <%= f.collection_check_boxes(:support_options, Product.support_options.options, :last, :first, skip_label: true) %>
-</fieldset>
+<%= f.input :support_options, as: :check_boxes, collection: Product.support_options.options %>
 
 <fieldset>
-  <%= f.text_area :support_options_additional_cost, rows: 5 %>
+  <%= f.input :support_options_additional_cost, as: :text, input_html: { rows: 5 } %>
 </fieldset>
 
 <fieldset data-module="max-word-count" data-max-word-count="200">
-  <%= f.text_area :support_levels, rows: 5 %>
+  <%= f.input :support_levels, as: :text, input_html: { rows: 5 } %>
 </fieldset>

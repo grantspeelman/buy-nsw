@@ -51,22 +51,25 @@ en:
         unscanned: Awaiting virus scan
         infected: Infected file, cannot download
   errors:
-    addresses_present?: must provide at least one address
-    any_checked?: must select at least one option
-    currency?: must be a three-letter currency code (eg. AUD)
-    file?: must be provided
-    file_uploaded?: file file must be provided
-    in_future?: must be in the future
+    addresses_present?: Give at least one address
+    any_checked?: Please select at least one option
+    currency?: Enter a three-letter currency code (eg. AUD)
+    file?: Please upload a file
+    file_uploaded?: Please upload a file
+    filled?: Please answer this question
+    in_future?: Please enter a date in the future
+    max_size?: "Please choose no more than %{num} options"
     one_of?: ''
     in_list?: ''
     same_password?: must match
     max_word_count?: exceeds the word count
-    max_items?: has too many items
-    no_cloud_products?: You need to remove all your cloud products from your application first
-    abn?: That doesn't look like a valid ABN
+    max_items?: You have entered too many items
+    number?: Please enter a number
+    no_cloud_products?: Please remove all your cloud products from your application first
+    abn?: Please enter a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
-    email?: not a valid email address
-    url?: not a valid web address
+    email?: Please enter a valid email address
+    url?: Please enter a valid web address
     offers_cloud?: At present, you must offer cloud products or support to join buy.nsw.
     waiting_seller_not_existing_user?: An account already exists for this email address, they may have already been invited
     waiting_seller_unique_contact_email?: A seller with this email address is already on the waitlist

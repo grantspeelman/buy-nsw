@@ -1,5 +1,10 @@
 label {
   font-weight: 700;
+  margin-bottom: 0;
+}
+
+label ~ .form-control {
+  margin-top: .5rem;
 }
 
 fieldset {
@@ -12,31 +17,10 @@ fieldset {
   }
 }
 
-.invalid-feedback {
-  display: block;
-  font-size: 100%;
-  color: $red;
-}
-
-.block-error {
-  border: .4rem solid $red;
-
-  padding: 1rem;
-  margin: 2rem 0;
-
-  h2 {
-    font-size: 1.4rem;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-}
-
 small.form-text {
   font-size: 100%;
   line-height: 1.3;
-  margin: 0.6em 0 1em;
+  margin: 0 0 0.6rem;
 }
 
 legend, .multiple-choice-group .form-group > label {
@@ -69,17 +53,12 @@ legend.with-label {
   }
 }
 
-.multiple-choice-group {
-  small {
-    padding-left: 47px;
-    margin: 0;
-  }
-}
-.radio-group .form-check, .checkbox-group .form-check {
+.form-check {
   padding-bottom: 1rem;
 
   small {
-    padding-left: 26px;
+    margin: 0;
+    padding-left: 1.6rem;
   }
 
   label small {
@@ -138,6 +117,10 @@ legend.with-label {
       padding: 0.46rem 0 0 0.8rem;
       z-index: 1;
       font-size: 16px;
+
+      & + .form-control {
+        margin-top: 0;
+      }
     }
 
     li.removed .previous-value {
@@ -178,7 +161,7 @@ form .actions {
 
 /* Text boxes */
 
-textarea, input[type=text], input[type=password], input[type=email], select {
+textarea, input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], input[type=url], select {
   &.form-control {
     border-radius: 0px;
     border: 2px solid $black;
@@ -188,10 +171,11 @@ textarea, input[type=text], input[type=password], input[type=email], select {
       outline: 3px solid $focus-colour;
       outline-offset: 0;
     }
-  }
 
-  &.is-invalid {
-    // border-width: 2px;
+    &.is-invalid {
+      border-color: $red;
+      border-width: 3px;
+    }
   }
 }
 
@@ -218,6 +202,7 @@ input[type=checkbox], input[type=radio] {
 input[type=checkbox] + label, input[type=radio] + label {
   padding: 6px 10px 0 25px;
   font-weight: normal;
+  margin-bottom: 0;
 }
 input[type=checkbox]:checked + label, input[type=radio]:checked + label{
   font-weight: 700;
@@ -312,10 +297,16 @@ input[type=radio]:checked + label::after {
 
 .date-field {
   padding-top: .5rem;
+
   .form-group {
     display: inline-block;
     padding-right: 1em;
+    margin-bottom: .5rem;
   }
+  legend {
+    margin-bottom: 0;
+  }
+
   label {
     display: block;
     margin-bottom: .2rem;
@@ -332,6 +323,13 @@ input[type=radio]:checked + label::after {
   }
   .year {
     width: 5em;
+  }
+
+  &.form-group-invalid {
+    input[type=text] {
+      border-color: $red;
+      border-width: 3px;
+    }
   }
 }
 

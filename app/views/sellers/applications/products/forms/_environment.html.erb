@@ -1,11 +1,11 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other-cloud">
-  <%= f.collection_check_boxes(:deployment_model, Product.deployment_model.options, :last, :first, data: { further_details: 'input' }) %>
+  <%= f.input :deployment_model, as: :check_boxes, collection: Product.deployment_model.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :deployment_model_other, rows: 3 %>
+      <%= f.input :deployment_model_other, as: :text, input_html: { rows: 3 } %>
     </div>
   </div>
 </fieldset>
@@ -14,13 +14,11 @@
           data-module="further-details-fields"
           data-further-details-values="yes,yes-and-standalone">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.addon_extension_type.question') %></legend>
-
-  <%= f.collection_radio_buttons(:addon_extension_type, Product.addon_extension_type.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :addon_extension_type, as: :radio_buttons, collection: Product.addon_extension_type.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :addon_extension_details, rows: 3 %>
+      <%= f.input :addon_extension_details, as: :text, input_html: { rows: 3 } %>
     </div>
   </div>
 </fieldset>
@@ -29,14 +27,14 @@
           data-module="further-details-fields"
           data-further-details-values="rest,non-rest">
 
-  <%= f.collection_radio_buttons(:api, Product.api.options, :last, :first, data: { further_details: 'input' }) %>
+  <%= f.input :api, as: :radio_buttons, collection: Product.api.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :api_capabilities, rows: 3 %>
+      <%= f.input :api_capabilities, as: :text, input_html: { rows: 3 } %>
     </div>
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :api_automation, rows: 3 %>
+      <%= f.input :api_automation, as: :text, input_html: { rows: 3 } %>
     </div>
   </div>
 </fieldset>
@@ -45,11 +43,10 @@
           data-module="further-details-fields"
           data-further-details-values="other">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.government_network_type.question') %></legend>
-  <%= f.collection_check_boxes(:government_network_type, Product.government_network_type.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :government_network_type, as: :check_boxes, collection: Product.government_network_type.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_field :government_network_other %>
+    <%= f.input :government_network_other %>
   </div>
 </fieldset>
 
@@ -57,22 +54,14 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.web_interface.question') %></legend>
-
-  <%= f.form_group :web_interface do %>
-    <%= f.radio_button :web_interface, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :web_interface, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :web_interface, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="200">
-      <%= f.text_area :web_interface_details, rows: 5 %>
+      <%= f.input :web_interface_details, as: :text, input_html: { rows: 5 } %>
     </div>
 
-    <fieldset>
-      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.supported_browsers.question') %></legend>
-      <%= f.collection_check_boxes(:supported_browsers, Product.supported_browsers.options, :last, :first, skip_label: true) %>
-    </fieldset>
+    <%= f.input :supported_browsers, as: :check_boxes, collection: Product.supported_browsers.options %>
   </div>
 </fieldset>
 
@@ -80,16 +69,11 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.mobile_devices.question') %></legend>
-
-  <%= f.form_group :mobile_devices do %>
-    <%= f.radio_button :mobile_devices, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :mobile_devices, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :mobile_devices, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :mobile_desktop_differences, rows: 5 %>
+      <%= f.input :mobile_desktop_differences, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>
@@ -98,23 +82,17 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.installed_application.question') %></legend>
-
-  <%= f.form_group :installed_application do %>
-    <%= f.radio_button :installed_application, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :installed_application, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :installed_application, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <fieldset class="multiple-choice-group checkbox-group"
               data-module="further-details-fields"
               data-further-details-values="other">
-      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.supported_os.question') %></legend>
-      <%= f.collection_check_boxes(:supported_os, Product.supported_os.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+      <%= f.input :supported_os, as: :check_boxes, collection: Product.supported_os.options, input_html: { data: { further_details: 'input' } } %>
 
       <div class="additional-fields" data-further-details="fields">
         <div data-module="max-word-count" data-max-word-count="50">
-          <%= f.text_area :supported_os_other, rows: 5 %>
+          <%= f.input :supported_os_other, as: :text, input_html: { rows: 5 } %>
         </div>
       </div>
     </fieldset>
@@ -124,19 +102,13 @@
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="exclusions">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.accessibility_type.question') %></legend>
-
-  <%= f.collection_radio_buttons(:accessibility_type, Product.accessibility_type.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :accessibility_type, as: :radio_buttons, collection: Product.accessibility_type.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="50">
-      <%= f.text_area :accessibility_exclusions, rows: 5 %>
+      <%= f.input :accessibility_exclusions, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.environment.scaling_type.question') %></legend>
-  <%= f.collection_radio_buttons(:scaling_type, Product.scaling_type.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-</fieldset>
+<%= f.input :scaling_type, as: :radio_buttons, collection: Product.scaling_type.options, input_html: { data: { further_details: 'input' } } %>

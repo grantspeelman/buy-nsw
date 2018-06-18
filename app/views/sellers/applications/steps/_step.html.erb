@@ -1,9 +1,10 @@
 <h1><%= step.name(:long) %></h1>
 
-<%= bootstrap_form_for(form,
+<%= reform_form_for(form,
                         url: form_path,
                         as: :seller_application) do |f| %>
 
+  <%= render partial: 'sellers/applications/steps/errors', locals: local_assigns.slice(:skip_link).merge(f: f) %>
   <%= render partial: form_partial_path, locals: { f: f, operation: operation } %>
 
   <% unless local_assigns[:skip_button] %>

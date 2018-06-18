@@ -13,7 +13,6 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
       return redirect_to sellers_application_path(result['model.application'])
     end
 
-    flash.now.alert = I18n.t('sellers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

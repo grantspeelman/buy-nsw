@@ -1,14 +1,3 @@
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.backup_recovery.backup_capability') %></legend>
-  <%= f.collection_radio_buttons(:backup_capability, Product.backup_capability.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.backup_recovery.backup_scheduling_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_scheduling_type, Product.backup_scheduling_type.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.backup_recovery.backup_recovery_type') %></legend>
-  <%= f.collection_radio_buttons(:backup_recovery_type, Product.backup_recovery_type.options, :last, :first, skip_label: true) %>
-</fieldset>
+<%= f.input :backup_capability, as: :radio_buttons, collection: Product.backup_capability.options %>
+<%= f.input :backup_scheduling_type, as: :radio_buttons, collection: Product.backup_scheduling_type.options %>
+<%= f.input :backup_recovery_type, as: :radio_buttons, collection: Product.backup_recovery_type.options %>
