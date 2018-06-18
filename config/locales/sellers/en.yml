@@ -1,17 +1,4 @@
 en:
-  activemodel:
-    attributes:
-      sellers:
-        seller_application:
-          contract:
-            financial_statement:
-              financial_statement: 'Financial statement'
-            professional_indemnity:
-              professional_indemnity_certificate: 'Professional indemnity and public liability certificate'
-            workers_compensation:
-              workers_compensation_certificate: 'Workers compensation insurance'
-            product_liability:
-              product_liability_certificate: 'Product liability certificate (optional)'
   enumerize:
     seller:
       industry:

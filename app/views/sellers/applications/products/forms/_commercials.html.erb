@@ -1,17 +1,11 @@
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.free_version.question') %></legend>
-
-  <%= f.form_group :free_version do %>
-    <%= f.radio_button :free_version, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :free_version, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :free_version, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="200">
-      <%= f.text_area :free_version_details, rows: 5 %>
+      <%= f.input :free_version_details, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>
@@ -19,51 +13,38 @@
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.free_trial.question') %></legend>
-
-  <%= f.form_group :free_trial do %>
-    <%= f.radio_button :free_trial, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :free_trial, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :free_trial, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_field :free_trial_url %>
+    <%= f.input :free_trial_url %>
   </div>
 </fieldset>
+
+<div class="multiple-choice-group radio-group" data-module="further-details-fields" data-further-details-values="other">
+  <%= f.input :pricing_currency, as: :radio_buttons, collection: Product.pricing_currency.options, input_html: { data: { further_details: 'input' } } %>
+  <div class="additional-fields" data-further-details="fields">
+    <%= f.input :pricing_currency_other %>
+  </div>
+</div>
 
 <fieldset>
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.pricing.legend') %></legend>
-
-  <div class="multiple-choice-group radio-group" data-module="further-details-fields" data-further-details-values="other">
-    <%= f.collection_radio_buttons(:pricing_currency, Product.pricing_currency.options, :last, :first, data: { further_details: 'input' }) %>
-    <div class="additional-fields" data-further-details="fields">
-      <%= f.text_field :pricing_currency_other %>
-    </div>
-  </div>
-
-  <%= f.text_field :pricing_unit %>
-  <%= f.text_field :pricing_min %>
-  <%= f.text_field :pricing_max %>
-  <%= f.text_field :pricing_calculator_url %>
+  <%= f.input :pricing_unit %>
+  <%= f.input :pricing_min %>
+  <%= f.input :pricing_max %>
+  <%= f.input :pricing_calculator_url %>
 </fieldset>
 
-<%= f.text_area :pricing_variables, rows: 5 %>
+<%= f.input :pricing_variables, as: :text, input_html: { rows: 5 } %>
 
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.education_pricing.question') %></legend>
-
-  <%= f.form_group :education_pricing do %>
-    <%= f.radio_button :education_pricing, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :education_pricing, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :education_pricing, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :education_pricing_eligibility, rows: 3 %>
-    <%= f.text_area :education_pricing_differences, rows: 3 %>
+    <%= f.input :education_pricing_eligibility, as: :text, input_html: { rows: 3 } %>
+    <%= f.input :education_pricing_differences, as: :text, input_html: { rows: 3 } %>
   </div>
 </fieldset>
 
@@ -71,15 +52,10 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.commercials.not_for_profit_pricing.question') %></legend>
-
-  <%= f.form_group :not_for_profit_pricing do %>
-    <%= f.radio_button :not_for_profit_pricing, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :not_for_profit_pricing, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :not_for_profit_pricing, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :not_for_profit_pricing_eligibility, rows: 3 %>
-    <%= f.text_area :not_for_profit_pricing_differences, rows: 3 %>
+    <%= f.input :not_for_profit_pricing_eligibility, as: :text, input_html: { rows: 3 } %>
+    <%= f.input :not_for_profit_pricing_differences, as: :text, input_html: { rows: 3 } %>
   </div>
 </fieldset>

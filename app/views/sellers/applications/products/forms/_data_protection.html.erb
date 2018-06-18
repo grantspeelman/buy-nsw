@@ -1,9 +1,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.data_protection.encryption_transit_user_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_transit_user_types, Product.encryption_transit_user_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :encryption_transit_user_types, as: :check_boxes, collection: Product.encryption_transit_user_types.options, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
@@ -15,9 +13,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.data_protection.encryption_transit_network_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_transit_network_types, Product.encryption_transit_network_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :encryption_transit_network_types, as: :check_boxes, collection: Product.encryption_transit_network_types.options, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
@@ -29,9 +25,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.data_protection.encryption_rest_types') %></legend>
-  <%= f.collection_check_boxes(:encryption_rest_types, Product.encryption_rest_types.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :encryption_rest_types, as: :check_boxes, collection: Product.encryption_rest_types.options, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
@@ -40,8 +34,4 @@
   </div>
 </fieldset>
 
-<fieldset class="multiple-choice-group radio-group">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.data_protection.encryption_keys_controller') %></legend>
-  <%= f.collection_radio_buttons(:encryption_keys_controller, Product.encryption_keys_controller.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
-</fieldset>
+<%= f.input :encryption_keys_controller, as: :radio_buttons, collection: Product.encryption_keys_controller.options, input_html: { data: { further_details: 'input' } } %>

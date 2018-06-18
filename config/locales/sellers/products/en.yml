@@ -1,256 +1,4 @@
 en:
-  activemodel:
-    attributes:
-      sellers:
-        seller_application:
-          products:
-            contract:
-              basics:
-                name: Tell us the name of your product or service
-                summary: Tell us briefly about the need it addresses (200 words)
-                organisation_resold: Who is the original supplier?
-                custom_contact:
-                  'true': Somebody else
-                  'false': The contact listed on your seller profile
-                contact_name: Contact name
-                contact_email: Contact email
-                contact_phone: Contact phone number (optional)
-                features:
-                  title: Features
-                  hint_text: List up to 10 features of your product or service
-                benefits:
-                  title: Benefits
-                  hint_text: List up to 10 benefits of your product or service
-              commercials:
-                free_version:
-                  question: Is this product or service available as freeware?
-                  'true': 'Yes'
-                  'false': 'No'
-                free_version_details: Describe the free version of your product or service (200 words)
-                free_trial:
-                  question: Do you provide a free trial option for your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                free_trial_url: Please provide a link to the free trial for your product or service
-                pricing:
-                  legend: Your pricing
-                pricing_currency: Currency
-                pricing_currency_other: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD
-                pricing_unit: Unit of pricing
-                pricing_min: Minimum price (excluding GST)
-                pricing_max: Maximum price (excluding GST)
-                pricing_calculator_url: Link to your pricing calculator (optional)
-                pricing_variables: Which variables affect your pricing? Specify the things that make the price increase or decrease, eg. user numbers, volumes, storage, geographic location.
-                education_pricing:
-                  question: Do you offer special pricing for educational organisations?
-                  'true': 'Yes'
-                  'false': 'No'
-                education_pricing_eligibility: Who is eligible for your pricing?
-                education_pricing_differences: How does the pricing differ?
-                not_for_profit_pricing:
-                  question: Do you offer special pricing for not-for-profit organisations?
-                  'true': 'Yes'
-                  'false': 'No'
-                not_for_profit_pricing_eligibility: Who is eligible for your pricing?
-                not_for_profit_pricing_differences: How does the pricing differ?
-              onboarding_offboarding:
-                onboarding_assistance: How do you help buyers get started with your product or service?
-                offboarding_assistance: What assistance do you provide when a buyer no longer needs your product or service?
-              environment:
-                deployment_model: How is the product or service deployed?
-                deployment_model_other: Specify the other cloud model
-                addon_extension_type:
-                  question: Is the product or service an add-on or extension to other software services?
-                addon_extension_details: Specify the software service
-                api: Is there an API for your product or service?
-                api_capabilities: Describe what users can do using your API
-                api_automation: What automation tools work with your product or service's API?
-                government_network_type:
-                  question: Is your product or service connected to a government network?
-                government_network_other: Specify the other government network
-                web_interface:
-                  question: Is there a web browser interface for your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                web_interface_details: Describe what users can do using your web browser interface
-                supported_browsers:
-                  question: Which browsers are supported?
-                installed_application:
-                  question: Do users need to download and install an application to use your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                supported_os:
-                  question: Which operating systems are supported?
-                supported_os_other: Specify the other operating systems
-                mobile_devices:
-                  question: Has your product or service been designed to work on mobile devices?
-                  'true': 'Yes'
-                  'false': 'No'
-                mobile_desktop_differences: Describe any differences between the mobile and desktop functionality
-                accessibility_type:
-                  question: What aspects of your product or service meet WCAG 2.0 AA or EN 301 549 standards?
-                accessibility_exclusions: Specify the exclusions
-                scaling_type:
-                  question: How does your product or service scale?
-              availability_support:
-                guaranteed_availability: What level of availability do you guarantee and how are buyers compensated if you don't meet this level?
-                support_options: Which support options are available?
-                support_options_additional_cost: Which options come at additional cost?
-                support_levels: Describe the support levels you provide, availability hours (AEST time) and whether there are additional costs involved
-              locations:
-                data_location_control:
-                  question: Can buyers choose where their data is stored, processed and managed?
-                  'true': 'Yes'
-                  'false': 'No'
-                data_location: Where is buyer data stored, processed and managed?
-                data_location_other: Specify the locations
-                data_location_unknown_reason: Tell us why you don't know
-                own_data_centre:
-                  question: Do you operate your own data centres?
-                  'true': 'Yes'
-                  'false': 'No'
-                own_data_centre_details: Tell us about your data centres, including standards and certifications achieved
-                third_party_involved:
-                  question: Are there any third parties involved in storing, processing or managing buyer data?
-                  'true': 'Yes'
-                  'false': 'No'
-                third_party_involved_details: List the third parties involved
-              user_data:
-                data_import_formats: Which data formats can be used to upload data?
-                data_import_formats_other: List the other formats for uploading data
-                data_export_formats: Which data formats can be used to export data?
-                data_export_formats_other: List the other formats for exporting data
-                data_access_restrictions:
-                  question: Are there any restrictions on users accessing or extracting data?
-                  'true': 'Yes'
-                  'false': 'No'
-                data_access_restrictions_details: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
-                audit_information:
-                  question: Can users access audit information about activities and transactions performed using your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                audit_storage_period: What is the maximum time audit information data is stored?
-                log_storage_period: What is the maximum time system logs are stored?
-                data_disposal_approach: How do you securely dispose of user data?
-              data_protection:
-                encryption_transit_user_types: How do you protect data between the end user and your network
-                encryption_transit_user_other: Describe how else you protect data between users and your network
-                encryption_transit_network_types: How do you protect data within your network?
-                encryption_transit_network_other: Describe how else you protect data within your network
-                encryption_rest_types: How do you protect data at rest?
-                encryption_rest_other: Describe how else you protect data at rest
-                encryption_keys_controller: If you are storing encrypted data, who controls encryption keys?
-              backup_recovery:
-                backup_capability: What is backed up?
-                backup_scheduling_type: How often are backups performed?
-                backup_recovery_type: How do users recover backups?
-              identity_authentication:
-                authentication_required:
-                  question: Do users need to be authenticated when using the product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                authentication_types: How do you authenticate users when they access the product or service?
-                authentication_other: Describe how else you authenticate users
-                access_testing_frequency: How often do you test your access controls?
-              security_standards:
-                data_centre_security_standards: What standards does your data centre security setup comply with?
-                iso_27001:
-                  question: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                iso_27001_accreditor: Who accredited the certification?
-                iso_27001_date: When does the certification expire?
-                iso_27001_exclusions: What's not covered by the certification?
-                iso_27017:
-                  question: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                iso_27017_accreditor: Who accredited the ISO/IEC 27017:2015 certification?
-                iso_27017_date: When does the certification expire?
-                iso_27017_exclusions: What's not covered by the certification?
-                iso_27018:
-                  question: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                iso_27018_accreditor: Who accredited the ISO/IEC 27018:2014 certification?
-                iso_27018_date: When does the certification expire?
-                iso_27018_exclusions: What's not covered by the certification?
-                csa_star:
-                  question: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                csa_star_accreditor: Who accredited the CSA STAR certification?
-                csa_star_date: When does the certification expire?
-                csa_star_level: What level is the certification?
-                csa_star_exclusions: What's not covered by the certification?
-                pci_dss:
-                  question: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                pci_dss_accreditor: Who accredited the PCI DSS certification?
-                pci_dss_date: When does the certification expire?
-                pci_dss_exclusions: What's not covered by your PCI DSS certification?
-                soc_2:
-                  question: Do you have a current SOC II certification that covers the security of your product or service?
-                  'true': 'Yes'
-                  'false': 'No'
-                soc_2_accreditor: Who accredited the SOC II certification?
-                soc_2_date: When does the certification expire?
-                soc_2_exclusions: What's not covered by your SOC II certification?
-                irap_type: Are you Information Security Registered Assessors Program (IRAP) assessed?
-                asd_certified:
-                  question: Is your cloud product or service certified by the Australian Signals Directorate (ASD)?
-                  'true': 'Yes'
-                  'false': 'No'
-                security_classification_types: What data security classificiation is your cloud service certified to in Australia?
-                security_information_url: Include a link to further information about your security assessments (optional)
-              security_practices:
-                secure_development_approach: What practices does your organisation follow for secure software development?
-                penetration_testing_frequency: How often do you do penetration testing?
-                penetration_testing_approach: What's your approach to penetration testing?
-              user_separation:
-                virtualisation:
-                  question: 'Do you rely on virtualisation technology to keep applications and users sharing the same infrastructure apart?'
-                  'true': 'Yes'
-                  'false': 'No'
-                virtualisation_implementor: Who implements the virtualisation technology?
-                virtualisation_third_party: Specify the third party
-                virtualisation_technologies: What virtualisation technologies are used?
-                virtualisation_technologies_other: Specify other virtualisation technologies used
-                user_separation_details: Describe how different organisations sharing the same infrastructure are kept apart
-              operational_security:
-                change_management_processes: Which configuration and change management processes does your organisation follow?
-                change_management_approach: Describe your configuration and change management approach
-                vulnerability_processes: Which vulnerability management processes does your organisation follow?
-                vulnerability_approach: Describe your vulnerability management process
-                protective_monitoring_processes: Which protective monitoring processes does your organisation follow?
-                protective_monitoring_approach: Describe your protective monitoring process
-                incident_management_processes: Which crisis and incident managemewnt processes does your organisation follow?
-                incident_management_approach: Describe your crisis and incident management plan
-                access_control_testing_frequency: How often do you test your access controls?
-              reporting_analytics:
-                metrics_contents: What metrics does your product or service report to users?
-                metrics_channel_types: How do you provide these reporting metrics to users?
-                metrics_channel_other: Specify how else you provide these reports
-                outage_channel_types: How do you provide outage alerts to users?
-                outage_channel_other: Specify how else you provide outage alerts
-                usage_channel_types: How are users notified when nearing service limits?
-                usage_channel_other: Specify how else users are notified when nearing service limits
-  activerecord:
-    help:
-      'sellers/seller_application/products/contract/commercials':
-        pricing_unit: "eg. per user per month excluding GST"
-        pricing_min: "eg. what is the cost for one user for one month of the basic product."
-        pricing_max: "eg. what is the cost for one user for one month of the comprehensive product."
-      'sellers/seller_application/products/contract/onboarding_offboarding':
-        onboarding_assistance: Include, for example, whether you provide professional services to support adoption of your product, online or onsite training, documentation and if there's an additional cost.
-        offboarding_assistance: Do you provide any assistance in addition to your contractual obligations, and is there any additional cost?
-      'sellers/seller_application/products/contract/environment':
-        web_interface_details: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
-      'sellers/seller_application/products/contract/availability_support':
-        guaranteed_availability: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
-      'sellers/seller_application/products/contract/user_data':
-        log_storage_period: Buyers may want reassurance about your ability to investigate security incidents
   sellers:
     applications:
       products:
@@ -267,48 +15,342 @@ en:
           basics:
             short: Basic information
             long: Product or service basics
+            name:
+              label: Tell us the name of your product or service
+            summary:
+              label: Tell us briefly about the need it addresses (200 words)
+            audiences:
+              label: Select up to 3 groups of buyers who would be most interested in your product or service
+            reseller_type:
+              label: Is this product or service your own, or are you reselling?
+            organisation_resold:
+              label: Who is the original supplier?
+            custom_contact:
+              label: If potential buyers have questions, who should they contact?
+            contact_name:
+              label: Contact name
+            contact_email:
+              label: Contact email
+            contact_phone:
+              label: Contact phone number (optional)
+            features:
+              title: Features
+              hint_text: List up to 10 features of your product or service
+            benefits:
+              title: Benefits
+              hint_text: List up to 10 benefits of your product or service
           commercials:
             short: Commercials
             long: Your product or service commercials
+            free_version:
+              label: Is this product or service available as freeware?
+            free_version_details:
+              label: Describe the free version of your product or service (200 words)
+            free_trial:
+              label: Do you provide a free trial option for your product or service?
+            free_trial_url:
+              label: Please provide a link to the free trial for your product or service
+            pricing:
+              legend: Your pricing
+            pricing_currency:
+              label: Currency
+            pricing_currency_other:
+              label: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD
+            pricing_unit:
+              label: Unit of pricing
+              hint: "eg. per user per month excluding GST"
+            pricing_min:
+              label: Minimum price (excluding GST)
+              hint: "eg. what is the cost for one user for one month of the basic product."
+            pricing_max:
+              label: Maximum price (excluding GST)
+              hint: "eg. what is the cost for one user for one month of the comprehensive product."
+            pricing_calculator_url:
+              label: Link to your pricing calculator (optional)
+            pricing_variables:
+              label: Which variables affect your pricing? Specify the things that make the price increase or decrease, eg. user numbers, volumes, storage, geographic location.
+            education_pricing:
+              label: Do you offer special pricing for educational organisations?
+            education_pricing_eligibility:
+              label: Who is eligible for your pricing?
+            education_pricing_differences:
+              label: How does the pricing differ?
+            not_for_profit_pricing:
+              label: Do you offer special pricing for not-for-profit organisations?
+            not_for_profit_pricing_eligibility:
+              label: Who is eligible for your pricing?
+            not_for_profit_pricing_differences:
+              label: How does the pricing differ?
           onboarding_offboarding:
             short: On and offboarding
             long: On and offboarding
+            onboarding_assistance:
+              label: How do you help buyers get started with your product or service?
+              hint: Include, for example, whether you provide professional services to support adoption of your product, online or onsite training, documentation and if there's an additional cost.
+            offboarding_assistance:
+              label: What assistance do you provide when a buyer no longer needs your product or service?
+              hint: Do you provide any assistance in addition to your contractual obligations, and is there any additional cost?
           environment:
             short: Environment
             long: Environment
+            deployment_model:
+              label: How is the product or service deployed?
+            deployment_model_other:
+              label: Specify the other cloud model
+            addon_extension_type:
+              label: Is the product or service an add-on or extension to other software services?
+            addon_extension_details:
+              label: Specify the software service
+            api:
+              label: Is there an API for your product or service?
+            api_capabilities:
+              label: Describe what users can do using your API
+            api_automation:
+              label: What automation tools work with your product or service's API?
+            government_network_type:
+              label: Is your product or service connected to a government network?
+            government_network_other:
+              label: Specify the other government network
+            web_interface:
+              label: Is there a web browser interface for your product or service?
+            web_interface_details:
+              label: Describe what users can do using your web browser interface
+              hint: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
+            supported_browsers:
+              label: Which browsers are supported?
+            installed_application:
+              label: Do users need to download and install an application to use your product or service?
+            supported_os:
+              label: Which operating systems are supported?
+            supported_os_other:
+              label: Specify the other operating systems
+            mobile_devices:
+              label: Has your product or service been designed to work on mobile devices?
+            mobile_desktop_differences:
+              label: Describe any differences between the mobile and desktop functionality
+            accessibility_type:
+              label: What aspects of your product or service meet WCAG 2.0 AA or EN 301 549 standards?
+            accessibility_exclusions:
+              label: Specify the exclusions
+            scaling_type:
+              label: How does your product or service scale?
           availability_support:
             short: Availability and support
             long: Availability and support
+            guaranteed_availability:
+              label: What level of availability do you guarantee and how are buyers compensated if you don't meet this level?
+              hint: "Include any service level agreements (SLAs) you have for availability and how users are refunded if you don't meet guaranteed levels of availability"
+            support_options:
+              label: Which support options are available?
+            support_options_additional_cost:
+              label: Which options come at additional cost?
+            support_levels:
+              label: Describe the support levels you provide, availability hours (AEST time) and whether there are additional costs involved
           locations:
             short: Locations
             long: Locations
+            data_location_control:
+              label: Can buyers choose where their data is stored, processed and managed?
+            data_location:
+              label: Where is buyer data stored, processed and managed?
+            data_location_other:
+              label: Specify the locations
+            data_location_unknown_reason:
+              label: Tell us why you don't know
+            own_data_centre:
+              label: Do you operate your own data centres?
+            own_data_centre_details:
+              label: Tell us about your data centres, including standards and certifications achieved
+            third_party_involved:
+              label: Are there any third parties involved in storing, processing or managing buyer data?
+            third_party_involved_details:
+              label: List the third parties involved
           user_data:
             short: User data
             long: User data
+            data_import_formats:
+              label: Which data formats can be used to upload data?
+            data_import_formats_other:
+              label: List the other formats for uploading data
+            data_export_formats:
+              label: Which data formats can be used to export data?
+            data_export_formats_other:
+              label: List the other formats for exporting data
+            data_access_restrictions:
+              label: Are there any restrictions on users accessing or extracting data?
+            data_access_restrictions_details:
+              label: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
+            audit_information:
+              label: Can users access audit information about activities and transactions performed using your product or service?
+            audit_storage_period:
+              label: What is the maximum time audit information data is stored?
+            log_storage_period:
+              label: What is the maximum time system logs are stored?
+              hint: Buyers may want reassurance about your ability to investigate security incidents
+            data_disposal_approach:
+              label: How do you securely dispose of user data?
           backup_recovery:
             short: Backup and recovery
             long: Backup and recovery
+            backup_capability:
+              label: What is backed up?
+            backup_scheduling_type:
+              label: How often are backups performed?
+            backup_recovery_type:
+              label: How do users recover backups?
           data_protection:
             short: Data protection
             long: Data protection
+            encryption_transit_user_types:
+              label: How do you protect data between the end user and your network
+            encryption_transit_user_other:
+              label: Describe how else you protect data between users and your network
+            encryption_transit_network_types:
+              label: How do you protect data within your network?
+            encryption_transit_network_other:
+              label: Describe how else you protect data within your network
+            encryption_rest_types:
+              label: How do you protect data at rest?
+            encryption_rest_other:
+              label: Describe how else you protect data at rest
+            encryption_keys_controller:
+              label: If you are storing encrypted data, who controls encryption keys?
           identity_authentication:
             short: Identity and authentication
             long: Identity and authentication
+            authentication_required:
+              label: Do users need to be authenticated when using the product or service?
+            authentication_types:
+              label: How do you authenticate users when they access the product or service?
+            authentication_other:
+              label: Describe how else you authenticate users
+            access_testing_frequency:
+              label: How often do you test your access controls?
           security_standards:
             short: Security standards
             long: Security standards and certifications
+            data_centre_security_standards:
+              label: What standards does your data centre security setup comply with?
+            iso_27001:
+              label: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your product or service?
+            iso_27001_accreditor:
+              label: Who accredited the certification?
+            iso_27001_date:
+              label: When does the certification expire?
+            iso_27001_exclusions:
+              label: What's not covered by the certification?
+            iso_27017:
+              label: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your product or service?
+            iso_27017_accreditor:
+              label: Who accredited the ISO/IEC 27017:2015 certification?
+            iso_27017_date:
+              label: When does the certification expire?
+            iso_27017_exclusions:
+              label: What's not covered by the certification?
+            iso_27018:
+              label: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your product or service?
+            iso_27018_accreditor:
+              label: Who accredited the ISO/IEC 27018:2014 certification?
+            iso_27018_date:
+              label: When does the certification expire?
+            iso_27018_exclusions:
+              label: What's not covered by the certification?
+            csa_star:
+              label: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your product or service?
+            csa_star_accreditor:
+              label: Who accredited the CSA STAR certification?
+            csa_star_date:
+              label: When does the certification expire?
+            csa_star_level:
+              label: What level is the certification?
+            csa_star_exclusions:
+              label: What's not covered by the certification?
+            pci_dss:
+              label: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your product or service?
+            pci_dss_accreditor:
+              label: Who accredited the PCI DSS certification?
+            pci_dss_date:
+              label: When does the certification expire?
+            pci_dss_exclusions:
+              label: What's not covered by your PCI DSS certification?
+            soc_2:
+              label: Do you have a current SOC II certification that covers the security of your product or service?
+            soc_2_accreditor:
+              label: Who accredited the SOC II certification?
+            soc_2_date:
+              label: When does the certification expire?
+            soc_2_exclusions:
+              label: What's not covered by your SOC II certification?
+            irap_type:
+              label: Are you Information Security Registered Assessors Program (IRAP) assessed?
+            asd_certified:
+              label: Is your cloud product or service certified by the Australian Signals Directorate (ASD)?
+            security_classification_types:
+              label: What data security classificiation is your cloud service certified to in Australia?
+            security_information_url:
+              label: Include a link to further information about your security assessments (optional)
           security_practices:
             short: Security practices
             long: Security practices
+            secure_development_approach:
+              label: What practices does your organisation follow for secure software development?
+            penetration_testing_frequency:
+              label: How often do you do penetration testing?
+            penetration_testing_approach:
+              label: What's your approach to penetration testing?
           user_separation:
             short: Separation between users
             long: Separation between users
+            virtualisation:
+              label: 'Do you rely on virtualisation technology to keep applications and users sharing the same infrastructure apart?'
+            virtualisation_implementor:
+              label: Who implements the virtualisation technology?
+            virtualisation_third_party:
+              label: Specify the third party
+            virtualisation_technologies:
+              label: What virtualisation technologies are used?
+            virtualisation_technologies_other:
+              label: Specify other virtualisation technologies used
+            user_separation_details:
+              label: Describe how different organisations sharing the same infrastructure are kept apart
           operational_security:
             short: Operational security
             long: Operational security
+            change_management_processes:
+              label: Which configuration and change management processes does your organisation follow?
+            change_management_approach:
+              label: Describe your configuration and change management approach
+            vulnerability_processes:
+              label: Which vulnerability management processes does your organisation follow?
+            vulnerability_approach:
+              label: Describe your vulnerability management process
+            protective_monitoring_processes:
+              label: Which protective monitoring processes does your organisation follow?
+            protective_monitoring_approach:
+              label: Describe your protective monitoring process
+            incident_management_processes:
+              label: Which crisis and incident managemewnt processes does your organisation follow?
+            incident_management_approach:
+              label: Describe your crisis and incident management plan
+            access_control_testing_frequency:
+              label: How often do you test your access controls?
           reporting_analytics:
             short: Reporting and analytics
             long: Reporting and analytics
+            metrics_contents:
+              label: What metrics does your product or service report to users?
+            metrics_channel_types:
+              label: How do you provide these reporting metrics to users?
+            metrics_channel_other:
+              label: Specify how else you provide these reports
+            outage_channel_types:
+              label: How do you provide outage alerts to users?
+            outage_channel_other:
+              label: Specify how else you provide outage alerts
+            usage_channel_types:
+              label: How are users notified when nearing service limits?
+            usage_channel_other:
+              label: Specify how else users are notified when nearing service limits
           terms:
             short: Your additional terms
             long: Your additional terms

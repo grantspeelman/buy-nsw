@@ -1,7 +1,4 @@
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.data_centre_security_standards') %></legend>
-  <%= f.collection_radio_buttons(:data_centre_security_standards, Product.data_centre_security_standards.options, :last, :first, skip_label: true) %>
-</fieldset>
+<%= f.input :data_centre_security_standards, as: :radio_buttons, collection: Product.data_centre_security_standards.options %>
 
 <%= render partial: 'sellers/applications/products/forms/shared/certification', locals: { f: f, certification: :iso_27001 } %>
 <%= render partial: 'sellers/applications/products/forms/shared/certification', locals: { f: f, certification: :iso_27017 } %>
@@ -10,24 +7,7 @@
 <%= render partial: 'sellers/applications/products/forms/shared/certification', locals: { f: f, certification: :pci_dss } %>
 <%= render partial: 'sellers/applications/products/forms/shared/certification', locals: { f: f, certification: :soc_2 } %>
 
-<fieldset class="multiple-choice-group radio-group">
-  <%= f.collection_radio_buttons(:irap_type, Product.irap_type.options, :last, :first) %>
-</fieldset>
-
-<fieldset class="multiple-choice-group radio-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.asd_certified.question') %></legend>
-
-  <%= f.form_group :asd_certified do %>
-    <%= f.radio_button :asd_certified, 'true' %>
-    <%= f.radio_button :asd_certified, 'false' %>
-  <% end %>
-</fieldset>
-
-<fieldset class="multiple-choice-group checkbox-group">
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.security_standards.security_classification_types') %></legend>
-  <%= f.collection_check_boxes(:security_classification_types, Product.security_classification_types.options, :last, :first, skip_label: true) %>
-</fieldset>
-
-<fieldset>
-  <%= f.text_field :security_information_url %>
-</fieldset>
+<%= f.input :irap_type, as: :radio_buttons, collection: Product.irap_type.options %>
+<%= f.input :asd_certified, as: :radio_buttons %>
+<%= f.input :security_classification_types, as: :check_boxes, collection: Product.security_classification_types.options %>
+<%= f.input :security_information_url %>

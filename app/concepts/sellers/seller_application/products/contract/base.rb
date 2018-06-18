@@ -14,5 +14,9 @@ module Sellers::SellerApplication::Products::Contract
     def upload_for(key)
       self.model[:product].public_send(key)
     end
+
+    def i18n_base
+      'sellers.applications.products.steps'
+    end
   end
 end

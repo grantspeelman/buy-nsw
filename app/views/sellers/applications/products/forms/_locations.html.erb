@@ -1,25 +1,16 @@
-<fieldset class="multiple-choice-group radio-group">
-
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.locations.data_location_control.question') %></legend>
-
-  <%= f.form_group :data_location_control do %>
-    <%= f.radio_button :data_location_control, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :data_location_control, 'false', data: { further_details: 'input' } %>
-  <% end %>
-</fieldset>
+<%= f.input :data_location_control, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-multiple-options="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.locations.data_location') %></legend>
-  <%= f.collection_radio_buttons(:data_location, Product.data_location.options, :last, :first, skip_label: true, data: { further_details: 'input' }) %>
+  <%= f.input :data_location, as: :radio_buttons, collection: Product.data_location.options, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields" data-further-details-value="other-known">
-    <%= f.text_area :data_location_other, rows: 5 %>
+    <%= f.input :data_location_other, as: :text, input_html: { rows: 5 } %>
   </div>
   <div class="additional-fields" data-further-details="fields" data-further-details-value="dont-know">
-    <%= f.text_area :data_location_unknown_reason, rows: 5 %>
+    <%= f.input :data_location_unknown_reason, as: :text, input_html: { rows: 5 } %>
   </div>
 </fieldset>
 
@@ -27,15 +18,10 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.locations.own_data_centre.question') %></legend>
-
-  <%= f.form_group :own_data_centre do %>
-    <%= f.radio_button :own_data_centre, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :own_data_centre, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :own_data_centre, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :own_data_centre_details, rows: 5 %>
+    <%= f.input :own_data_centre_details, as: :text, input_html: { rows: 5 } %>
   </div>
 </fieldset>
 
@@ -43,14 +29,9 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.locations.third_party_involved.question') %></legend>
-
-  <%= f.form_group :third_party_involved do %>
-    <%= f.radio_button :third_party_involved, 'true', data: { further_details: 'input' } %>
-    <%= f.radio_button :third_party_involved, 'false', data: { further_details: 'input' } %>
-  <% end %>
+  <%= f.input :third_party_involved, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
-    <%= f.text_area :third_party_involved_details, rows: 5 %>
+    <%= f.input :third_party_involved_details, as: :text, input_html: { rows: 5 } %>
   </div>
 </fieldset>
