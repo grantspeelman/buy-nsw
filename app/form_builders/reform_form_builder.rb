@@ -21,6 +21,10 @@ class ReformFormBuilder < SimpleForm::FormBuilder
     }
   end
 
+  def object
+    FormObjectDecorator.new(super, self)
+  end
+
 private
   def custom_input_options(attribute_name, options)
     hint_text = translate_hint(attribute_name)

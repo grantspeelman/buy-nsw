@@ -57,13 +57,14 @@ en:
     file?: Please upload a file
     file_uploaded?: Please upload a file
     filled?: Please answer this question
-    in_future?: Enter a date in the future
-    max_size?: "Choose no more than %{num} options"
+    in_future?: Please enter a date in the future
+    max_size?: "Please choose no more than %{num} options"
     one_of?: ''
     in_list?: ''
     same_password?: must match
     max_word_count?: exceeds the word count
-    max_items?: has too many items
+    max_items?: You have entered too many items
+    number?: Please enter a number
     no_cloud_products?: Please remove all your cloud products from your application first
     abn?: Please enter a valid ABN
     unique_abn?: This ABN has already been used on another application. Please contact us so that we can help you resolve this.
