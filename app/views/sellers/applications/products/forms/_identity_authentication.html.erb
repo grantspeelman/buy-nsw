@@ -1,13 +1,13 @@
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
-  <%= f.input :authentication_required, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :authentication_required, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <fieldset class="multiple-choice-group checkbox-group"
               data-module="further-details-fields"
               data-further-details-values="other">
-      <%= f.input :authentication_types, as: :check_boxes, collection: Product.authentication_types.options, input_html: { data: { further_details: 'input' } } %>
+      <%= f.input :authentication_types, as: :check_boxes, collection: Product.authentication_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
       <div class="additional-fields" data-further-details="fields">
         <div data-module="max-word-count" data-max-word-count="200">

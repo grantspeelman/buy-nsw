@@ -4,7 +4,7 @@
           data-module="further-details-fields"
           data-further-details-multiple-options="true">
 
-  <%= f.input :data_location, as: :radio_buttons, collection: Product.data_location.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :data_location, as: :radio_buttons, collection: Product.data_location.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields" data-further-details-value="other-known">
     <%= f.input :data_location_other, as: :text, input_html: { rows: 5 } %>
@@ -18,7 +18,7 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <%= f.input :own_data_centre, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :own_data_centre, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :own_data_centre_details, as: :text, input_html: { rows: 5 } %>
@@ -29,7 +29,7 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <%= f.input :third_party_involved, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :third_party_involved, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :third_party_involved_details, as: :text, input_html: { rows: 5 } %>

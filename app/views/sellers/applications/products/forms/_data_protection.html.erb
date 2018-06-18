@@ -1,11 +1,11 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :encryption_transit_user_types, as: :check_boxes, collection: Product.encryption_transit_user_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :encryption_transit_user_types, as: :check_boxes, collection: Product.encryption_transit_user_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_transit_user_other, rows: 5 %>
+      <%= f.input :encryption_transit_user_other, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>
@@ -13,11 +13,11 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :encryption_transit_network_types, as: :check_boxes, collection: Product.encryption_transit_network_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :encryption_transit_network_types, as: :check_boxes, collection: Product.encryption_transit_network_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_transit_network_other, rows: 5 %>
+      <%= f.input :encryption_transit_network_other, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>
@@ -25,11 +25,11 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :encryption_rest_types, as: :check_boxes, collection: Product.encryption_rest_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :encryption_rest_types, as: :check_boxes, collection: Product.encryption_rest_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <div data-module="max-word-count" data-max-word-count="100">
-      <%= f.text_area :encryption_rest_other, rows: 5 %>
+      <%= f.input :encryption_rest_other, as: :text, input_html: { rows: 5 } %>
     </div>
   </div>
 </fieldset>

@@ -1,5 +1,5 @@
 <fieldset class="multiple-choice-group radio-group">
-  <%= f.input :change_management_processes, as: :radio_buttons, collection: Product.change_management_processes.options %>
+  <%= f.input :change_management_processes, as: :radio_buttons, wrapper: false, collection: Product.change_management_processes.options %>
 </fieldset>
 
 <fieldset>
@@ -7,7 +7,7 @@
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group">
-  <%= f.input :vulnerability_processes, as: :radio_buttons, collection: Product.vulnerability_processes.options %>
+  <%= f.input :vulnerability_processes, as: :radio_buttons, wrapper: false, collection: Product.vulnerability_processes.options %>
 </fieldset>
 
 <fieldset>
@@ -15,7 +15,7 @@
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group">
-  <%= f.input :protective_monitoring_processes, as: :radio_buttons, collection: Product.protective_monitoring_processes.options %>
+  <%= f.input :protective_monitoring_processes, as: :radio_buttons, wrapper: false, collection: Product.protective_monitoring_processes.options %>
 </fieldset>
 
 <fieldset>
@@ -23,7 +23,7 @@
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group">
-  <%= f.input :incident_management_processes, as: :radio_buttons, collection: Product.incident_management_processes.options %>
+  <%= f.input :incident_management_processes, as: :radio_buttons, wrapper: false, collection: Product.incident_management_processes.options %>
 </fieldset>
 
 <fieldset>
@@ -31,5 +31,5 @@
 </fieldset>
 
 <fieldset class="multiple-choice-group radio-group">
-  <%= f.input :access_control_testing_frequency, as: :radio_buttons, collection: Product.access_control_testing_frequency.options %>
+  <%= f.input :access_control_testing_frequency, as: :radio_buttons, wrapper: false, collection: Product.access_control_testing_frequency.options %>
 </fieldset>

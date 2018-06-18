@@ -1,13 +1,13 @@
 <fieldset class="multiple-choice-group radio-group"
           data-module="further-details-fields"
           data-further-details-values="true">
-  <%= f.input :virtualisation, as: :radio_buttons, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :virtualisation, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <fieldset class="multiple-choice-group checkbox-group"
               data-module="further-details-fields"
               data-further-details-values="third-party">
-      <%= f.input :virtualisation_implementor, as: :radio_buttons, collection: Product.virtualisation_implementor.options, input_html: { data: { further_details: 'input' } } %>
+      <%= f.input :virtualisation_implementor, as: :radio_buttons, collection: Product.virtualisation_implementor.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
       <div class="additional-fields" data-further-details="fields">
         <%= f.input :virtualisation_third_party %>
@@ -18,9 +18,7 @@
     <fieldset class="multiple-choice-group checkbox-group"
               data-module="further-details-fields"
               data-further-details-values="other">
-
-      <legend><%= t('activemodel.attributes.sellers.seller_application.products.contract.user_separation.virtualisation_technologies') %></legend>
-      <%= f.input :virtualisation_technologies, as: :radio_buttons, collection: Product.virtualisation_technologies.options, input_html: { data: { further_details: 'input' } } %>
+      <%= f.input :virtualisation_technologies, as: :check_boxes, collection: Product.virtualisation_technologies.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
       <div class="additional-fields" data-further-details="fields">
         <div data-module="max-word-count" data-max-word-count="100">

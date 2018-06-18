@@ -5,7 +5,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :metrics_channel_types, as: :check_boxes, collection: Product.metrics_channel_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :metrics_channel_types, as: :check_boxes, collection: Product.metrics_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :metrics_channel_other, as: :text, input_html: { rows: 3 } %>
@@ -15,7 +15,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :outage_channel_types, as: :check_boxes, collection: Product.outage_channel_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :outage_channel_types, as: :check_boxes, collection: Product.outage_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :outage_channel_other, as: :text, input_html: { rows: 3 } %>
@@ -25,7 +25,7 @@
 <fieldset class="multiple-choice-group checkbox-group"
           data-module="further-details-fields"
           data-further-details-values="other">
-  <%= f.input :usage_channel_types, as: :check_boxes, collection: Product.usage_channel_types.options, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :usage_channel_types, as: :check_boxes, collection: Product.usage_channel_types.options, wrapper: false, input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :usage_channel_other, as: :text, input_html: { rows: 3 } %>
