@@ -35,7 +35,6 @@
 
     <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= f.email_field :email, autocomplete: "email",
-                                autofocus: true,
                                 label: t('users.sessions.sign_in.form.email_label') %>
       <%= f.password_field :password, autocomplete: "off",
                                       label: t('users.sessions.sign_in.form.password_label')%>
