@@ -20,6 +20,9 @@ private
   def search
     @search ||= Search::Buyer.new(
       selected_filters: params,
+      default_values: {
+        state: 'active',
+      },
       page: params.fetch(:page, 1),
       per_page: 25,
     )

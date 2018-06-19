@@ -10,7 +10,7 @@
     <div class="current-view">
       <section class="record-list">
         <h2><%= pluralize(search.result_count, 'buyer') %></h2>
-        <%= render partial: 'list', locals: { results: search.paginated_results } %>
+        <%= render partial: 'list', locals: { search: search, results: search.paginated_results } %>
         <%= paginate search.paginated_results %>
       </section>
     </div>

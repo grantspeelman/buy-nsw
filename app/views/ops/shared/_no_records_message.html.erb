@@ -1,8 +1,8 @@
 <div class="no-records">
-  <p>No applications matching your search.</p>
+  <p>No items matching your search.</p>
 
   <% if local_assigns[:search].active_filters? %>
-    <p>There may be more applications if you reset filters and show all results.</p>
+    <p>There may be more items if you reset filters and show all results.</p>
     <p><%= link_to 'Reset filters and show all results', reset_filters_path(local_assigns[:search]) %></p>
   <% end %>
 </div>
