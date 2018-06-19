@@ -7,6 +7,25 @@
   .record-list {
     margin-bottom: 2rem;
 
+    > header {
+      @include make-row();
+      padding-bottom: .5rem;
+
+      h2, .list-actions {
+        @include make-col-ready();
+        @include make-col(6);
+      }
+
+      .list-actions {
+        text-align: right;
+
+        > a {
+          @include button;
+          font-size: .85rem;
+        }
+      }
+    }
+
     table {
       font-size: 0.9rem;
 

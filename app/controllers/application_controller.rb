@@ -44,4 +44,8 @@ private
       controller.response = response
     }
   end
+
+  def csv_request?
+    request.format.symbol == :csv
+  end
 end

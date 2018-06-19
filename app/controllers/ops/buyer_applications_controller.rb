@@ -4,9 +4,6 @@ class Ops::BuyerApplicationsController < Ops::BaseController
     action_name == 'index' ? 'ops' : '../ops/buyer_applications/_layout'
   }
 
-  def show
-  end
-
   def assign
     run Ops::BuyerApplication::Assign do |result|
       flash.notice = I18n.t('ops.buyer_applications.messages.update_assign_success')
