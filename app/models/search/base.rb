@@ -27,8 +27,16 @@ module Search
     end
 
     def selected_filters
-      filters = @selected_filters.slice(*available_filters.keys)
+      if @selected_filters.keys.map(&:to_s).include?('skip_filters')
+        return { skip_filters: true }
+      end
+
+      filters = extract_filters_from_parameters(@selected_filters)
       filters.keys.any? ? filters : default_values
+    end
+
+    def selected_filters_string
+      selected_filters.to_a.flatten.join('-').dasherize.parameterize
     end
 
     def filter_selected?(filter, option = nil)
@@ -68,5 +76,20 @@ module Search
       end
     end
 
+    # When parameters are passed to an instance of a Search class directly from
+    # a controller, they are an instance of `ActionController::Parameters`. When
+    # this happens, we turn this into an unsafe hash, but restrict only to the
+    # filter keys that have been defined.
+    #
+    # (When this is a plain old hash, we still slice out only the filters we
+    # want, which gives us the same outcome.)
+    #
+    def extract_filters_from_parameters(parameters)
+      if parameters.is_a?(ActionController::Parameters)
+        parameters.to_unsafe_h.slice(*available_filters.keys).symbolize_keys
+      else
+        parameters.slice(*available_filters.keys)
+      end
+    end
   end
 end
