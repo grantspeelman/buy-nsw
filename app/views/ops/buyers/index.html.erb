@@ -9,7 +9,17 @@
 
     <div class="current-view">
       <section class="record-list">
-        <h2><%= pluralize(search.result_count, 'buyer') %></h2>
+        <header>
+          <h2><%= pluralize(search.result_count, 'buyer') %></h2>
+          <% if search.results.any? %>
+            <div class="list-actions">
+              <%= link_to(
+                    t(:export_csv, scope: [:ops, :buyers, :search, :labels]),
+                    ops_buyers_path({ format: :csv }.merge(search.selected_filters)),
+                  ) %>
+            </div>
+          <% end %>
+        </header>
         <%= render partial: 'list', locals: { search: search, results: search.paginated_results } %>
         <%= paginate search.paginated_results %>
       </section>

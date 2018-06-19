@@ -1,10 +1,16 @@
 class Ops::BuyersController < Ops::BaseController
 
+  after_action :set_content_disposition, if: :csv_request?, only: :index
+
   layout ->{
     action_name == 'index' ? 'ops' : '../ops/buyers/_layout'
   }
 
-  def show
+  def index
+    respond_to do |format|
+      format.html
+      format.csv
+    end
   end
 
   def deactivate
@@ -33,4 +39,12 @@ private
     @buyer ||= Buyer.find(params[:id])
   end
   helper_method :buyer
+
+  def csv_filename
+    "buyers-#{search.selected_filters_string}-#{Time.now.to_i}.csv"
+  end
+
+  def set_content_disposition
+    response.headers['Content-Disposition'] = "attachment; filename=#{csv_filename}"
+  end
 end
