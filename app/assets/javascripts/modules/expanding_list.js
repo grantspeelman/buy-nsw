@@ -76,6 +76,7 @@
     ))
 
     $newRow.appendTo(this.$container)
+    $visibleInputs.first().focus()
 
     if (this.listFull()) {
       this.removeAddLink()
