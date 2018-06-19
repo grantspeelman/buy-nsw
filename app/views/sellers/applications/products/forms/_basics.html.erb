@@ -38,7 +38,13 @@
           data-module="further-details-fields"
           data-further-details-values="true">
 
-  <%= f.input :custom_contact, as: :radio_buttons, wrapper: false, input_html: { data: { further_details: 'input' } } %>
+  <%= f.input :custom_contact, as: :radio_buttons,
+                               collection: [
+                                 [t(:false_label, scope: [:sellers, :applications, :products, :steps, :basics, :custom_contact]),'false'],
+                                 [t(:true_label, scope: [:sellers, :applications, :products, :steps, :basics, :custom_contact]),'true'],
+                               ],
+                               wrapper: false,
+                               input_html: { data: { further_details: 'input' } } %>
 
   <div class="additional-fields" data-further-details="fields">
     <%= f.input :contact_name %>

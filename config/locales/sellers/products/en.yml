@@ -25,6 +25,8 @@ en:
               label: Who is the original supplier?
             custom_contact:
               label: If potential buyers have questions, who should they contact?
+              false_label: The contact listed on your seller profile
+              true_label: Somebody else
             contact_name:
               label: Contact name
             contact_email:
