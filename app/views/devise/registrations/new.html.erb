@@ -10,8 +10,7 @@
   </header>
 
   <%= reform_form_for(resource, as: resource_name, url: registration_path(user_type)) do |f| %>
-    <%= f.input :email, autofocus: true,
-                        autocomplete: "email",
+    <%= f.input :email, autocomplete: "email",
                         label: t('users.registrations.shared.form.email_label'),
                         hint: t("users.registrations.#{user_type}.form.email_help") %>
 
