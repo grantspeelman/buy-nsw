@@ -14,6 +14,6 @@ module Ops::FiltersHelper
   end
 
   def reset_filters_path(search)
-    "?" + search.available_filters.map {|key, value| "#{key}=" }.join('&')
+    '?skip_filters'
   end
 end

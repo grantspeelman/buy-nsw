@@ -61,6 +61,31 @@ RSpec.describe Search::Base do
 
       expect(search.selected_filters.keys).to contain_exactly(:filter_one)
     end
+
+    it 'returns no filters when `skip_filters` is set' do
+      search = TestSearch.new(
+        selected_filters: {
+          skip_filters: true,
+          filter_one: 'three', # Test that this is ignored
+        },
+        default_values: defaults,
+      )
+
+      expect(search.selected_filters.keys).to be_empty
+    end
+
+    it 'permits parameters when an instance of ActionController::Parameters' do
+      search = TestSearch.new(
+        selected_filters: ActionController::Parameters.new(
+          filter_one: 'three',
+          unknown_filter: 'evil',
+        ),
+        default_values: defaults,
+      )
+
+      expect(search.selected_filters).to be_a(Hash)
+      expect(search.selected_filters.keys).to contain_exactly(:filter_one)
+    end
   end
 
 end
