@@ -322,7 +322,7 @@ en:
         form:
           email_label: Email address
           password_label: Password
-          password_help: You must use a strong unique password for your account. Try a longer password with multiple words – it's more secure and easier to remember.
+          password_help: You must use a strong unique password for your account. Passwords must be at least 8 characters long, but try a longer password with multiple words – it's more secure and easier to remember.
           password_confirmation_label: Confirm your password
           submit_label: Continue
         confirm:
@@ -332,6 +332,19 @@ en:
             Please click the link to verify your email address and continue your registration.</p>
           resend_html: If you don't receive a link, you can %{resend_action}.
           resend_label: request we send it again
+      edit:
+        email:
+          label: Your email address
+        password:
+          label: Your new password
+          hint_html: |
+            Leave blank if you don't want to change it. <br>
+            You must use a strong unique password for your account. Passwords must be at least 8 characters long, but try a longer password with multiple words – it's more secure and easier to remember.
+        password_confirmation:
+          label: Confirm your new password
+        current_password:
+          label: Enter your current password
+          hint: We need this to confirm your changes
   events:
     messages:
       submitted_application: Submitted application

@@ -33,14 +33,15 @@
       ) %>
     </header>
 
-    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, autocomplete: "email",
-                                label: t('users.sessions.sign_in.form.email_label') %>
-      <%= f.password_field :password, autocomplete: "off",
-                                      label: t('users.sessions.sign_in.form.password_label')%>
+    <%= reform_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.input :email, autocomplete: "email",
+                          label: t('users.sessions.sign_in.form.email_label') %>
+      <%= f.input :password, autocomplete: "off",
+                             label: t('users.sessions.sign_in.form.password_label')%>
 
       <% if devise_mapping.rememberable? -%>
-        <%= f.check_box :remember_me, label: t('users.sessions.sign_in.form.remember_me_label') %>
+        <%= f.input :remember_me, as: :boolean,
+                                  label: t('users.sessions.sign_in.form.remember_me_label') %>
       <% end -%>
 
       <fieldset class="actions">

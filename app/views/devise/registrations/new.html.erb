@@ -9,20 +9,20 @@
     ) %>
   </header>
 
-  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(user_type)) do |f| %>
-    <%= f.email_field :email, autofocus: true,
-                              autocomplete: "email",
-                              label: t('users.registrations.shared.form.email_label'),
-                              help: t("users.registrations.#{user_type}.form.email_help") %>
+  <%= reform_form_for(resource, as: resource_name, url: registration_path(user_type)) do |f| %>
+    <%= f.input :email, autofocus: true,
+                        autocomplete: "email",
+                        label: t('users.registrations.shared.form.email_label'),
+                        hint: t("users.registrations.#{user_type}.form.email_help") %>
 
     <div data-module="password-strength">
-      <%= f.password_field :password, autocomplete: "off",
-                                      label: t('users.registrations.shared.form.password_label'),
-                                      help: t('users.registrations.shared.form.password_help') %>
+      <%= f.input :password, autocomplete: "off",
+                              label: t('users.registrations.shared.form.password_label'),
+                              hint: t('users.registrations.shared.form.password_help') %>
     </div>
 
-    <%= f.password_field :password_confirmation, autocomplete: "off",
-                                                 label: t('users.registrations.shared.form.password_confirmation_label') %>
+    <%= f.input :password_confirmation, autocomplete: "off",
+                                        label: t('users.registrations.shared.form.password_confirmation_label') %>
 
     <fieldset class="actions">
       <p>

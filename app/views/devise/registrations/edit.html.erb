@@ -6,9 +6,9 @@
     <h2><%= content_for :title %></h2>
   </header>
 
-  <%= bootstrap_form_for(resource, as: resource_name, url: account_path, html: { method: :put }) do |f| %>
+  <%= reform_form_for(resource, as: resource_name, url: account_path, i18n_scope: 'users.registrations.edit', html: { method: :put }) do |f| %>
     <fieldset>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.input :email, autocomplete: "email" %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -17,16 +17,14 @@
 
     <fieldset>
       <div data-module="password-strength">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off", hide_label: true %>
+        <%= f.input :password, autocomplete: "off" %>
       </div>
 
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.input :password_confirmation, autocomplete: "off" %>
     </fieldset>
 
     <fieldset class="actions">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off", hide_label: true %>
+      <%= f.input :current_password, autocomplete: "off" %>
 
       <p><%= f.submit "Update account details" %></p>
     </fieldset>

@@ -59,6 +59,10 @@ private
   end
 
   def i18n_scope
+    if options.key?(:i18n_scope)
+      return options[:i18n_scope]
+    end
+    
     base = object.respond_to?(:i18n_base) ? object.i18n_base : ''
     key = object.class.name.demodulize.underscore
 
