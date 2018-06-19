@@ -27,8 +27,8 @@ class ReformFormBuilder < SimpleForm::FormBuilder
 
 private
   def custom_input_options(attribute_name, options)
-    hint_text = translate_hint(attribute_name)
-    label_text = translate_label(attribute_name)
+    hint_text = options[:hint] || translate_hint(attribute_name)
+    label_text = options[:label] || translate_label(attribute_name)
 
     hint_id = "hint_#{attribute_name}" if hint_text.present?
     error_id = "error_#{attribute_name}" if object.errors[attribute_name].any?
