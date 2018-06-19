@@ -11,10 +11,9 @@
       <%= render partial: 'upload_form' %>
 
       <section class="record-list">
-        <h2><%= pluralize(search.result_count, 'application') %></h2>
+        <h2><%= pluralize(search.result_count, 'sellers') %></h2>
         <%= render partial: 'list', locals: {
               results: search.paginated_results,
-              empty_message: 'No applications',
             } %>
         <%= paginate search.paginated_results %>
       </section>
