@@ -58,7 +58,7 @@ en:
               label: Please specify the currency with its international standard 3 letter code, eg. AUD, USD or HKD
             pricing_unit:
               label: Unit of pricing
-              hint: "eg. per user per month excluding GST"
+              hint: "eg. per user per month"
             pricing_min:
               label: Minimum price (excluding GST)
               hint: "eg. what is the cost for one user for one month of the basic product."
