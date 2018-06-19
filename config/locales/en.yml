@@ -149,6 +149,8 @@ en:
               started_at: 'Date started (recent first)'
               submitted_at: 'Date submitted (recent first)'
               decided_at: 'Date decided (recent first)'
+        labels:
+          export_csv: Download results as CSV
     problem_reports:
       messages:
         resolved: 'The problem report has been resolved'

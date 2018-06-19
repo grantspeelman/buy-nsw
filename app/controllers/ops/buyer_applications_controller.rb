@@ -1,8 +1,17 @@
 class Ops::BuyerApplicationsController < Ops::BaseController
 
+  after_action :set_content_disposition, if: :csv_request?, only: :index
+
   layout ->{
     action_name == 'index' ? 'ops' : '../ops/buyer_applications/_layout'
   }
+
+  def index
+    respond_to do |format|
+      format.html
+      format.csv
+    end
+  end
 
   def show
   end
@@ -78,4 +87,12 @@ private
   def _run_options(options)
     options.merge( "current_user" => current_user )
   end
+
+  def csv_filename
+     "buyer-applications-#{Time.now.to_i}.csv"
+   end
+
+   def set_content_disposition
+     response.headers['Content-Disposition'] = "attachment; filename=#{csv_filename}"
+   end
 end
