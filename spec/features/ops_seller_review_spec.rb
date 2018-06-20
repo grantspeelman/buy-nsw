@@ -46,8 +46,6 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
         click_on 'Documents'
       end
 
-      save_page
-
       within_document ops_field_label(:financial_statement) do
         expect(page).to have_link('View document')
       end
@@ -56,6 +54,20 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       end
       within_document ops_field_label(:workers_compensation_certificate) do
         expect(page).to have_content('Infected')
+      end
+    end
+
+    it 'tells the user when a seller is exempt from workers compensation insurance' do
+      seller = create(:seller, workers_compensation_exempt: true)
+      application = create(:awaiting_assignment_seller_application, seller: seller)
+      visit ops_seller_application_path(application)
+
+      within '.right-col nav' do
+        click_on 'Documents'
+      end
+
+      within_document ops_field_label(:workers_compensation_certificate) do
+        expect(page).to have_content('Not required')
       end
     end
   end
