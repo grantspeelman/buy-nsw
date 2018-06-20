@@ -4,35 +4,39 @@
   </header>
 
   <div class="document-details">
-    <% if (expiry = application.seller.send("#{key}_expiry")) && expiry.present? %>
-      <p>
-        <% if local_assigns[:no_expiry] %>
-          Document date:
-        <% else %>
-          Expiry date:
-        <% end %>
-
-        <%= expiry.strftime('%d %b %Y') %>
-        (<%= time_ago_in_words(expiry) %> <%= expiry > Time.now ? 'from now' : 'ago' %>)
-      </p>
-    <% end %>
-
-    <% if (upload = application.seller.send(key)) && upload.document.present? %>
-      <p class="file-name"><%= upload.original_filename %></p>
-
-      <% if file_clean?(upload) %>
+    <% if key == :workers_compensation_certificate && application.seller.workers_compensation_exempt %>
+      <p>Not required to have workers compensation insurance.</p>
+    <% else %>
+      <% if (expiry = application.seller.send("#{key}_expiry")) && expiry.present? %>
         <p>
-          <%= link_to upload.url, class: 'btn btn-primary', target: '_blank' do %>
-            View document (<%= upload.mime_type.preferred_extension %>, <%= upload.document.size / 1000 %>KB)
+          <% if local_assigns[:no_expiry] %>
+            Document date:
+          <% else %>
+            Expiry date:
           <% end %>
-        </p>
-      <% else %>
-        <p class="scan-status">
-          <%= upload.scan_status_text %>
+
+          <%= expiry.strftime('%d %b %Y') %>
+          (<%= time_ago_in_words(expiry) %> <%= expiry > Time.now ? 'from now' : 'ago' %>)
         </p>
       <% end %>
-    <% else %>
-      <p>Not yet provided.</p>
+
+      <% if (upload = application.seller.send(key)) && upload.document.present? %>
+        <p class="file-name"><%= upload.original_filename %></p>
+
+        <% if file_clean?(upload) %>
+          <p>
+            <%= link_to upload.url, class: 'btn btn-primary', target: '_blank' do %>
+              View document (<%= upload.mime_type.preferred_extension %>, <%= upload.document.size / 1000 %>KB)
+            <% end %>
+          </p>
+        <% else %>
+          <p class="scan-status">
+            <%= upload.scan_status_text %>
+          </p>
+        <% end %>
+      <% else %>
+        <p>Document not provided.</p>
+      <% end %>
     <% end %>
   </div>
 </li>
