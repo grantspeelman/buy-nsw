@@ -1,0 +1,162 @@
+en:
+  ops:
+    buyers:
+      messages:
+        deactivate_success: Buyer deactivated
+      search:
+        filters:
+          term:
+            name: Search by
+          state:
+            name: Status
+        labels:
+          export_csv: Download results as CSV
+    buyer_applications:
+      fields:
+        name:
+          name: 'Buyer name'
+        organisation:
+          name: 'Organisation name'
+        employment_status:
+          name: 'Employment status'
+        application_body:
+          name: 'Application text'
+        manager_name:
+          name: "Manager's name"
+        manager_email:
+          name: "Manager's email"
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+      search:
+        filters:
+          name:
+            name: Buyer name
+          email:
+            name: Email address
+          state:
+            name: Status
+            options:
+              awaiting_manager_approval: Awaiting manager approval
+              awaiting_assignment: Awaiting assignment
+          assigned_to:
+            name: Assigned to
+          sort:
+            name: 'Sort by'
+            options:
+              started_at: 'Date started (recent first)'
+              submitted_at: 'Date submitted (recent first)'
+              decided_at: 'Date decided (recent first)'
+    problem_reports:
+      messages:
+        resolved: 'The problem report has been resolved'
+        resolve_failed: 'There was a problem resolving this report'
+        updated: 'The problem report was saved'
+        update_failed: 'There was a problem saving this report'
+      search:
+        filters:
+          url:
+            name: URL
+          state:
+            name: Status
+          tag:
+            name: Tag
+    seller_applications:
+      fields:
+        name:
+          name: 'Company name'
+        abn:
+          name: 'ABN'
+        website_url:
+          name: 'Website URL'
+        linkedin_url:
+          name: 'LinkedIn URL'
+        services:
+          name: 'ICT services categories'
+        govdc:
+          name: 'GovDC infrastructure provider?'
+        agree:
+          name: 'Agreement to the Core Terms'
+        number_of_employees_text:
+          name: 'Number of employees'
+        sme:
+          name: 'SME'
+        start_up:
+          name: 'Start-up'
+        not_for_profit:
+          name: 'Not for profit/social enterprise'
+        female_owned:
+          name: 'Female owned'
+        australian_owned:
+          name: 'Australian owned'
+        regional:
+          name: 'Regional or non-metropolitan business'
+        rural_remote:
+          name: 'Rural or remote business'
+        travel:
+          name: 'Happy to travel for regional or interstate opportunities'
+        disability:
+          name: 'Australian disability enterprise'
+        addresses:
+          name: 'Business address'
+        contact_name:
+          name: 'Business contact name'
+        contact_email:
+          name: 'Business contact email'
+        contact_phone:
+          name: 'Business contact phone'
+        representative_name:
+          name: 'Authorised representative name'
+        representative_email:
+          name: 'Authorised representative email'
+        representative_phone:
+          name: 'Authorised representative phone'
+        government_experience:
+          name: 'Government experience'
+          values:
+            no_experience: Working with government for the first time
+            local_government_experience: 'Local government'
+            state_government_experience: 'State or territory government'
+            federal_government_experience: 'Federal government'
+            international_government_experience: 'Government outside Australia'
+        agreed_at:
+          name: 'Agreed at'
+        agreed_by_email:
+          name: 'Agreed by'
+        workers_compensation_certificate:
+          name: Workers Compensation Insurance
+        professional_indemnity_certificate:
+          name: Professional Indemnity and Public Liability Insurance
+        financial_statement:
+          name: Financial statement
+      search:
+        filters:
+          name:
+            name: Seller name
+          email:
+            name: Email address
+          state:
+            name: Status
+          assigned_to:
+            name: Assigned to
+          sort:
+            name: 'Sort by'
+            options:
+              started_at: 'Date started (recent first)'
+              submitted_at: 'Date submitted (recent first)'
+              decided_at: 'Date decided (recent first)'
+      messages:
+        update_assign_success: Application assigned
+        decision_success:
+          approve: Application approved
+          reject: Application rejected
+          return_to_applicant: Application returned to the seller
+    waiting_sellers:
+      search:
+        filters:
+          invitation_state:
+            name: Invitation status
+          term:
+            name: Search
