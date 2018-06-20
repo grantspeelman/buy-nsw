@@ -41,6 +41,7 @@
 
 <% if products.any? %>
   <ul class="products">
+    <h2>Your existing products</h2>
     <%= render partial: 'row', collection: products, as: :product %>
   </ul>
 <% end %>
