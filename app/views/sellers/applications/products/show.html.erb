@@ -2,7 +2,7 @@
 
 <%= render_breadcrumbs(seller_application_product_breadcrumbs) %>
 
-<h1>Provide details about your cloud product or service</h1>
+<h1>Provide details about your cloud product</h1>
 
 <% if product.name.present? %>
   <h2 class="product-name"><%= product.name %></h2>
@@ -22,8 +22,8 @@
 
   <div class="col-sm-4">
     <div class="product-actions">
-       <p>You can permanently remove this product or service.</p>
-       <%= link_to 'Delete this product or service', sellers_application_product_path(application, product),
+       <p>You can permanently remove this product.</p>
+       <%= link_to 'Delete this product', sellers_application_product_path(application, product),
                              method: :delete,
                              data: {
                                confirm: 'Are you sure?'

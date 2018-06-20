@@ -2,10 +2,36 @@
 
 <%= render_breadcrumbs(seller_application_products_list_breadcrumbs) %>
 
-<h1>Your cloud products and services</h1>
+<h1>Your cloud products (optional)</h1>
 
-<p>Here you can add details about your product and service offering.</p>
-<p>These are discrete goods or services which can be purchased by the unit.</p>
+<p>Products here must be:</p>
+
+<ul>
+  <li>discrete goods or services</li>
+  <li>able to be purchased by the unit (eg. per user or per instance)</li>
+  <li>highly specified</li>
+</ul>
+
+<p>It will take approximately 45 minutes per product.</p>
+
+<p>This will not apply to everyone. If your offering does not fit this criteria, you can still sell through buy.nsw.</p>
+<p>We are improving support for other kinds of services soon.</p>
+
+<div class="warning">
+  <span aria-hidden="true"></span>
+
+  <div class="inner">
+    <p>Please don't create products for:</p>
+
+    <ul>
+      <li>professional services</li>
+      <li>services priced as an outcome (eg. a web site)</li>
+      <li>day rates</li>
+    </ul>
+
+    <p>This will delay the processing of your application.</p>
+  </div>
+</div>
 
 <p class="product-add">
   <%= link_to new_sellers_application_product_path(application) do %>
@@ -15,6 +41,7 @@
 
 <% if products.any? %>
   <ul class="products">
+    <h2>Your existing products</h2>
     <%= render partial: 'row', collection: products, as: :product %>
   </ul>
 <% end %>

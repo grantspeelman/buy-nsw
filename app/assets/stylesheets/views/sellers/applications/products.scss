@@ -1,8 +1,34 @@
 .view-sellers-applications.products-list {
   @include two-thirds;
 
+  .warning {
+    display: flex;
+
+    span {
+      @extend .oi;
+      @extend .oi-warning;
+
+      flex: 1;
+      font-size: 1.8rem;
+      max-width: 3rem;
+      padding: .5rem 0;
+    }
+
+    .inner {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    padding: 2rem 0;
+  }
+
   ul.products {
-    padding-left: 0;
+    padding: 2rem 0;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
 
     li {
       @include make-row();
@@ -60,8 +86,6 @@
     padding: .5rem 0;
     a {
       @include button-primary;
-
-      font-size: 1rem;
 
       span {
         @extend .oi;

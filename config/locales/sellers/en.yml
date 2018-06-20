@@ -259,7 +259,7 @@ en:
         recognition:
           short: 'List awards and accreditations'
         products:
-          short: 'Your cloud products and services'
+          short: 'Your cloud products (optional)'
         submit:
           short: 'Submit your application'
       sections:
