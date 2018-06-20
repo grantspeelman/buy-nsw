@@ -25,6 +25,22 @@
         @include button;
         @include button-block;
       }
+
+      dl {
+        dt, dd {
+          @include media-breakpoint-up(md) {
+            @include make-col(6);
+          }
+        }
+        dt {
+          text-align: left;
+        }
+        dd {
+          @include media-breakpoint-up(md) {
+            text-align: right;
+          }
+        }
+      }
     }
   }
 
