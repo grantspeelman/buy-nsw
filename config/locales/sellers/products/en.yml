@@ -2,25 +2,25 @@ en:
   sellers:
     applications:
       products:
-        title: 'Your cloud products and services'
+        title: 'Your cloud products'
         empty_name_label: No name
-        new_product_action_label: Add a product or service
+        new_product_action_label: Add a product
         edit_product_action_label: Edit
         steps:
           type:
-            short: Product or service category
-            long: Which category best describes your product or service?
+            short: Product category
+            long: Which category best describes your product?
           basics:
             short: Basic information
-            long: Product or service basics
+            long: Product basics
             name:
-              label: Tell us the name of your product or service
+              label: Tell us the name of your product
             summary:
               label: Tell us briefly about the need it addresses (200 words)
             audiences:
-              label: Select up to 3 groups of buyers who would be most interested in your product or service
+              label: Select up to 3 groups of buyers who would be most interested in your product
             reseller_type:
-              label: Is this product or service your own, or are you reselling?
+              label: Is this product your own, or are you reselling?
             organisation_resold:
               label: Who is the original supplier?
             custom_contact:
@@ -35,21 +35,21 @@ en:
               label: Contact phone number (optional)
             features:
               title: Features
-              hint_text: List up to 10 features of your product or service
+              hint_text: List up to 10 features of your product
             benefits:
               title: Benefits
-              hint_text: List up to 10 benefits of your product or service
+              hint_text: List up to 10 benefits of your product
           commercials:
             short: Commercials
-            long: Your product or service commercials
+            long: Your product commercials
             free_version:
-              label: Is this product or service available as freeware?
+              label: Is this product available as freeware?
             free_version_details:
-              label: Describe the free version of your product or service (200 words)
+              label: Describe the free version of your product (200 words)
             free_trial:
-              label: Do you provide a free trial option for your product or service?
+              label: Do you provide a free trial option for your product?
             free_trial_url:
-              label: Please provide a link to the free trial for your product or service
+              label: Please provide a link to the free trial for your product
             pricing:
               legend: Your pricing
             pricing_currency:
@@ -85,55 +85,55 @@ en:
             short: On and offboarding
             long: On and offboarding
             onboarding_assistance:
-              label: How do you help buyers get started with your product or service?
+              label: How do you help buyers get started with your product?
               hint: Include, for example, whether you provide professional services to support adoption of your product, online or onsite training, documentation and if there's an additional cost.
             offboarding_assistance:
-              label: What assistance do you provide when a buyer no longer needs your product or service?
+              label: What assistance do you provide when a buyer no longer needs your product?
               hint: Do you provide any assistance in addition to your contractual obligations, and is there any additional cost?
           environment:
             short: Environment
             long: Environment
             deployment_model:
-              label: How is the product or service deployed?
+              label: How is the product deployed?
             deployment_model_other:
               label: Specify the other cloud model
             addon_extension_type:
-              label: Is the product or service an add-on or extension to other software services?
+              label: Is the product an add-on or extension to other software services?
             addon_extension_details:
               label: Specify the software service
             api:
-              label: Is there an API for your product or service?
+              label: Is there an API for your product?
             api_capabilities:
               label: Describe what users can do using your API
             api_automation:
-              label: What automation tools work with your product or service's API?
+              label: What automation tools work with your product's API?
             government_network_type:
-              label: Is your product or service connected to a government network?
+              label: Is your product connected to a government network?
             government_network_other:
               label: Specify the other government network
             web_interface:
-              label: Is there a web browser interface for your product or service?
+              label: Is there a web browser interface for your product?
             web_interface_details:
               label: Describe what users can do using your web browser interface
               hint: 'Include how users can use the web interface to set up the service and make changes, and if there are any limitations'
             supported_browsers:
               label: Which browsers are supported?
             installed_application:
-              label: Do users need to download and install an application to use your product or service?
+              label: Do users need to download and install an application to use your product?
             supported_os:
               label: Which operating systems are supported?
             supported_os_other:
               label: Specify the other operating systems
             mobile_devices:
-              label: Has your product or service been designed to work on mobile devices?
+              label: Has your product been designed to work on mobile devices?
             mobile_desktop_differences:
               label: Describe any differences between the mobile and desktop functionality
             accessibility_type:
-              label: What aspects of your product or service meet WCAG 2.0 AA or EN 301 549 standards?
+              label: What aspects of your product meet WCAG 2.0 AA or EN 301 549 standards?
             accessibility_exclusions:
               label: Specify the exclusions
             scaling_type:
-              label: How does your product or service scale?
+              label: How does your product scale?
           availability_support:
             short: Availability and support
             long: Availability and support
@@ -181,7 +181,7 @@ en:
             data_access_restrictions_details:
               label: Specify, and note restrictions on accessing or extracting data may breach the agreement, and disqualify you as a seller
             audit_information:
-              label: Can users access audit information about activities and transactions performed using your product or service?
+              label: Can users access audit information about activities and transactions performed using your product?
             audit_storage_period:
               label: What is the maximum time audit information data is stored?
             log_storage_period:
@@ -219,9 +219,9 @@ en:
             short: Identity and authentication
             long: Identity and authentication
             authentication_required:
-              label: Do users need to be authenticated when using the product or service?
+              label: Do users need to be authenticated when using the product?
             authentication_types:
-              label: How do you authenticate users when they access the product or service?
+              label: How do you authenticate users when they access the product?
             authentication_other:
               label: Describe how else you authenticate users
             access_testing_frequency:
@@ -232,7 +232,7 @@ en:
             data_centre_security_standards:
               label: What standards does your data centre security setup comply with?
             iso_27001:
-              label: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your product or service?
+              label: Do you have a current ISO/IEC 27001:2013 certification (or later) that covers the security of your product?
             iso_27001_accreditor:
               label: Who accredited the certification?
             iso_27001_date:
@@ -240,7 +240,7 @@ en:
             iso_27001_exclusions:
               label: What's not covered by the certification?
             iso_27017:
-              label: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your product or service?
+              label: Do you have a current ISO/IEC 27017:2015 certification (or later) that covers the security of your product?
             iso_27017_accreditor:
               label: Who accredited the ISO/IEC 27017:2015 certification?
             iso_27017_date:
@@ -248,7 +248,7 @@ en:
             iso_27017_exclusions:
               label: What's not covered by the certification?
             iso_27018:
-              label: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your product or service?
+              label: Do you have a current ISO/IEC 27018:2014 certification (or later) that covers the security of your product?
             iso_27018_accreditor:
               label: Who accredited the ISO/IEC 27018:2014 certification?
             iso_27018_date:
@@ -256,7 +256,7 @@ en:
             iso_27018_exclusions:
               label: What's not covered by the certification?
             csa_star:
-              label: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your product or service?
+              label: Do you have a current CSA Security, Trust & Assurance Registry (STAR) certification that covers the security of your product?
             csa_star_accreditor:
               label: Who accredited the CSA STAR certification?
             csa_star_date:
@@ -266,7 +266,7 @@ en:
             csa_star_exclusions:
               label: What's not covered by the certification?
             pci_dss:
-              label: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your product or service?
+              label: Do you have a current Payment Card Industry Data Security Standard (PCI DSS) certification that covers the security of your product?
             pci_dss_accreditor:
               label: Who accredited the PCI DSS certification?
             pci_dss_date:
@@ -274,7 +274,7 @@ en:
             pci_dss_exclusions:
               label: What's not covered by your PCI DSS certification?
             soc_2:
-              label: Do you have a current SOC II certification that covers the security of your product or service?
+              label: Do you have a current SOC II certification that covers the security of your product?
             soc_2_accreditor:
               label: Who accredited the SOC II certification?
             soc_2_date:
@@ -284,7 +284,7 @@ en:
             irap_type:
               label: Are you Information Security Registered Assessors Program (IRAP) assessed?
             asd_certified:
-              label: Is your cloud product or service certified by the Australian Signals Directorate (ASD)?
+              label: Is your cloud product certified by the Australian Signals Directorate (ASD)?
             security_classification_types:
               label: What data security classificiation is your cloud service certified to in Australia?
             security_information_url:
@@ -338,7 +338,7 @@ en:
             short: Reporting and analytics
             long: Reporting and analytics
             metrics_contents:
-              label: What metrics does your product or service report to users?
+              label: What metrics does your product report to users?
             metrics_channel_types:
               label: How do you provide these reporting metrics to users?
             metrics_channel_other:

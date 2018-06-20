@@ -19,7 +19,7 @@ module Sellers::ApplicationsHelper
 
   def seller_application_products_list_breadcrumbs
     seller_application_root_breadcrumbs + [
-      ['Your cloud products and services', sellers_application_products_path(application)],
+      ['Your cloud products', sellers_application_products_path(application)],
     ]
   end
 
@@ -74,5 +74,5 @@ module Sellers::ApplicationsHelper
       return false
     end
   end
-  
+
 end
