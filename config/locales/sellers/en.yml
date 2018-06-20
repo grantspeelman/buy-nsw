@@ -342,6 +342,7 @@ en:
       sme: SME
       indigenous: Aboriginal or Torres Strait Islander
       not_for_profit: Not-for-profit
+      govdc: GovDC
     waitlist_invitations:
       accept:
         errors:
