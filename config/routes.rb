@@ -85,6 +85,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :sellers, only: [:index]
+
     resources :seller_applications, path: 'seller-applications' do
       member do
         get :seller_details
