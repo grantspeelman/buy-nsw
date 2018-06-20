@@ -46,4 +46,12 @@ module Concerns::Search::SellerTagFilters
       relation
     end
   end
+
+  def govdc_filter(relation)
+    if filter_selected?(:govdc, :govdc)
+      relation.govdc
+    else
+      relation
+    end
+  end
 end

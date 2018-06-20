@@ -51,6 +51,7 @@ class Seller < ApplicationRecord
   scope :regional, ->{ where(regional: true) }
   scope :sme, ->{ where(sme: true) }
   scope :start_up, ->{ where(start_up: true) }
+  scope :govdc, ->{ where(govdc: true) }
   scope :with_service, ->(service){ where(":service = ANY(services)", service: service) }
 
   def application_in_progress?

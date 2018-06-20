@@ -337,6 +337,10 @@ en:
             software-licensing: Software licensing and maintenance
             telecommunications: Telecommunications
             training-learning: Training and learning
+        govdc:
+          name: GovDC
+          options:
+            govdc: GovDC
     tags:
       start_up: Start-up
       sme: SME
