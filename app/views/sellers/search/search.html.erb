@@ -3,21 +3,19 @@
 <section class="view-sellers-search">
   <%= render partial: 'shared/search/form', locals: { search: search } %>
 
-  <% if search.term.present? %>
-    <div class="search-results">
-      <%= render partial: 'shared/search/filters', locals: { search: search, base_i18n_key: :sellers } %>
+  <div class="search-results">
+    <%= render partial: 'shared/search/filters', locals: { search: search, base_i18n_key: :sellers } %>
 
-      <ul class="results">
-        <%= render partial: 'shared/search/result_count', locals: { search: search, object: 'seller' } %>
+    <ul class="results">
+      <%= render partial: 'shared/search/result_count', locals: { search: search, object: 'seller' } %>
 
-        <% search.paginated_results.each do |seller| %>
-          <%= render partial: 'result', locals: { seller: seller } %>
-        <% end %>
-      </ul>
+      <% search.paginated_results.each do |seller| %>
+        <%= render partial: 'result', locals: { seller: seller } %>
+      <% end %>
+    </ul>
 
-      <div class="search-pagination">
-        <%= paginate search.paginated_results %>
-      </div>
+    <div class="search-pagination">
+      <%= paginate search.paginated_results %>
     </div>
-  <% end %>
+  </div>
 </section>

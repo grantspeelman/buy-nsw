@@ -16,6 +16,7 @@ module Search
         term: :term_filter,
         services: service_keys,
         business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
+        govdc: [:govdc]
       }
     end
 
@@ -38,7 +39,8 @@ module Search
             yield_self(&method(:regional_filter)).
             yield_self(&method(:indigenous_filter)).
             yield_self(&method(:not_for_profit_filter)).
-            yield_self(&method(:services_filter))
+            yield_self(&method(:services_filter)).
+            yield_self(&method(:govdc_filter))
     end
 
     def term_filter(relation)
