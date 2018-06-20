@@ -37,6 +37,9 @@ en:
           long: 'Review and submit'
           intro_html: |
             <p>Please double-check the details below before submitting your application.</p>
+  time:
+    formats:
+      simple_date: '%-d %B %Y'
   devise:
     failure:
       unauthenticated: "Please sign in or create an account to continue."

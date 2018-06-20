@@ -1,0 +1,8 @@
+.last-updated {
+  @include make-container();
+  @include make-container-max-widths();
+
+  color: $grey-4;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
