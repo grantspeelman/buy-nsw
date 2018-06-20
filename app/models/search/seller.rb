@@ -1,18 +1,26 @@
 module Search
   class Seller < Base
-    attr_reader :term
+    def initialize(args={})
+      term = args.delete(:term)
 
-    def initialize(term:, selected_filters: {}, page: nil, per_page: nil)
-      @term = term
+      if term.present?
+        args[:selected_filters] ||= {}
+        args[:selected_filters].merge!(term: term)
+      end
 
-      super(selected_filters: selected_filters, page: page, per_page: per_page)
+      super(args)
     end
 
     def available_filters
       {
+        term: :term_filter,
         services: service_keys,
         business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
       }
+    end
+
+    def term
+      filter_value(:term)
     end
 
   private

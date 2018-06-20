@@ -1,6 +1,7 @@
 <ul class="filters">
   <%= form_tag '', method: :get, enforce_utf8: false do %>
     <% search.available_filters.each do |key, options| %>
+      <% next if options == :term_filter %>
       <li class="filter">
         <h3><%= t("#{base_i18n_key}.search.filters.#{key}.name") %></h3>
         <ul class="options">

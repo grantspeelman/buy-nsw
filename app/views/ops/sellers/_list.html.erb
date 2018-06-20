@@ -1,0 +1,33 @@
+<% if results.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Business contact</th>
+        <th scope="col">Team members #</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% results.each do |result| %>
+      <tr>
+        <td><%= result.id %></td>
+        <td><%= result.name %></td>
+        <td>
+          <%= result.contact_name %>
+          <% if result.contact_email.present? %>
+            (<%= result.contact_email %>)
+          <% end %>
+        </td>
+        <td>
+          <%= result.owners.size %>
+        </td>
+        <td><%= result.state %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= render partial: 'ops/shared/no_records_message', locals: local_assigns.slice(:search) %>
+<% end %>

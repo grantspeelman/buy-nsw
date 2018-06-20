@@ -1,0 +1,29 @@
+<% content_for(:ops_content) do %>
+<section class="view-ops-buyers-list">
+  <div class="column-set">
+    <aside>
+      <h1>Sellers</h1>
+
+      <%= render partial: 'ops/shared/filters', locals: { search: search } %>
+    </aside>
+
+    <div class="current-view">
+      <section class="record-list">
+        <header>
+          <h2><%= pluralize(search.result_count, 'seller') %></h2>
+          <% if search.results.any? %>
+            <div class="list-actions">
+              <%= link_to(
+                    t(:export_csv, scope: [:ops, :buyers, :search, :labels]),
+                    ops_sellers_path({ format: :csv }.merge(search.selected_filters)),
+                  ) %>
+            </div>
+          <% end %>
+        </header>
+        <%= render partial: 'list', locals: { search: search, results: search.paginated_results } %>
+        <%= paginate search.paginated_results %>
+      </section>
+    </div>
+  </div>
+</section>
+<% end %>
