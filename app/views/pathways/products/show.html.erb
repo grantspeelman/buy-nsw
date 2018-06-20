@@ -1,4 +1,5 @@
 <% content_for :title, product.name %>
+<% content_for :last_updated, I18n.localize(product.updated_at.localtime, format: :simple_date) %>
 
 <section class="view-pathways-products-show">
   <header class="with-seller-details">

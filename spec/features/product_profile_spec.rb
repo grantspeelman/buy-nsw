@@ -12,6 +12,21 @@ RSpec.describe 'Showing products', type: :feature, js: true do
     within '.basics' do
       expect(page).to have_content(product.summary)
     end
+
+    within '.product-metadata' do
+      expect_list_entry('Product ID', product.id)
+    end
+  end
+
+  it 'shows the last updated date' do
+    time = Time.parse('1 June 2018')
+    product.update_attribute(:updated_at, time)
+
+    visit pathway_product_path(product.section, product)
+
+    within '.last-updated' do
+      expect(page).to have_content('Last updated: 1 June 2018')
+    end
   end
 
   def expect_list_entry(label, *contents)
