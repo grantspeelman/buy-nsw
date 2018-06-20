@@ -168,6 +168,7 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
 
     &:focus {
       box-shadow: none !important;
+      border-color: $black;
       outline: 3px solid $focus-colour;
       outline-offset: 0;
     }
