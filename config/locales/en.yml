@@ -38,6 +38,10 @@ en:
           intro_html: |
             <p>Please double-check the details below before submitting your application.</p>
   product_order:
+    intro_html: |
+      <p><strong>buy.nsw</strong> will help you through the ordering process. In order
+      to tailor our help to you we need to ask you a few more questions.</p>
+
     estimated_contract_value:
       label: How much is your organisation expecting to spend? (excluding GST)
       hint: Only an approximate value is needed
