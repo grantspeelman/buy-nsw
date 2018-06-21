@@ -18,4 +18,18 @@ body.mailer {
     @include button;
   }
 
+  .quote {
+    border-left: .5rem solid $grey-3;
+    padding: .3rem 1rem;
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: .6rem;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
 }

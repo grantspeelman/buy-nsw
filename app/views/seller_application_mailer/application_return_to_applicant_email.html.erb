@@ -1,11 +1,28 @@
 <p>
-  Your application for <%= @application.seller.name %> to become a seller on <strong>buy.nsw</strong> needs to be updated before it can be approved.
+  Dear <%= @application.seller.name %>,
 </p>
+
+<p>Thank you for submitting your application to become a seller on <strong>buy.nsw</strong>.</p>
+
+<p>Unfortunately, your application isn’t quite ready to be published.</p>
 
 <% if @application.response.present? %>
-<p>
-  Here's the feedback you need to address: "<%= @application.response %>"
-</p>
+<p>Here’s the feedback from our review team:</p>
+
+<div class="quote">
+  <%= simple_format(h(@application.response)) %>
+</div>
 <% end %>
 
-<p><%= link_to "Update application", sellers_application_url(@application) %></p>
+<p>
+  You can <%= link_to 'sign in to update your application', sellers_application_url(@application) %>. Once you have made your amendments and re-submitted, we’ll be in touch with an outcome.
+</p>
+
+<p>
+  If you’re having trouble, or have any questions, we’re here to help. You can contact us at <%= mail_to "buy.nsw@finance.nsw.gov.au" %>.
+</p>
+
+<p>
+  Speak soon,<br>
+  The <strong>buy.nsw</strong> team
+</p>
