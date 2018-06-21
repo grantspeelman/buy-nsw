@@ -6,6 +6,8 @@
       <span class="active-icon" aria-hidden="true"></span>
       <%= t :good_standing, scope: [:buyers, :dashboard, :status] %>
     </div>
+
+    <%= render partial: 'interim_message' %>
   <% elsif buyer.inactive? %>
     <% if buyer.recent_application.rejected? %>
       <div class="current-application">
