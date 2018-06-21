@@ -7,8 +7,7 @@ class Buyers::ApplicationsController < Buyers::BaseController
       return redirect_to buyers_application_path(result[:application_model].id)
     end
 
-    flash.alert = I18n.t('buyers.applications.messages.already_submitted')
-    redirect_to root_path
+    redirect_to buyers_dashboard_path
   end
 
   def show
@@ -20,8 +19,7 @@ class Buyers::ApplicationsController < Buyers::BaseController
 
     @operation = run Buyers::BuyerApplication::Update do |result|
       if result['result.submitted'] == true
-        flash.notice = I18n.t('buyers.applications.messages.submitted')
-        return redirect_to root_path
+        return redirect_to buyers_dashboard_path
       else
         flash.notice = I18n.t('buyers.applications.messages.changes_saved')
         return redirect_to buyers_application_step_path(result[:application_model].id, result['result.next_step_slug'])
