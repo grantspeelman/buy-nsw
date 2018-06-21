@@ -238,7 +238,7 @@ en:
             label: 'Happy to travel for opportunities'
           disability:
             label: 'Australian disability enterprise'
-            hint_html: 'Your business is listed on the <a href="https://buyability.org.au/ades-directory">Australian disability enterprise register</a>.'
+            hint_html: 'Your business is listed on the <a href="https://buyability.org.au/directory/">Australian disability enterprise register</a>.'
           female_owned:
             label: 'Female owned'
             hint: Your business has at least 50% female ownership.
