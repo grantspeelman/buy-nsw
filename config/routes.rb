@@ -61,6 +61,10 @@ Rails.application.routes.draw do
     resources :applications
     get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
+
+    scope 'products/:id' do
+      resources :product_orders, only: [:new, :create], path: 'orders'
+    end
   end
 
   get '/cloud', to: 'static#cloud', as: :cloud

@@ -1,0 +1,16 @@
+<h1>Buy <%= @product.name %></h1>
+
+<p>
+  <strong>buy.nsw</strong> will help you through the ordering process. In order
+  to tailor our help to you we need to ask you a few more questions.
+</p>
+
+<%= reform_form_for(@product_order, url: buyers_product_orders_path(@product)) do |f| %>
+  <%= f.input :estimated_contract_value %>
+  <%= f.input :contacted_seller, as: :radio_buttons, label: t('product_order.contacted_seller.label_html', seller: link_to(@product.seller.name, sellers_profile_path(@product.seller))) %>
+  <%= f.input :purchased_cloud_before, as: :radio_buttons %>
+
+  <%= f.submit 'Next' %>
+<% end %>
+
+</section>

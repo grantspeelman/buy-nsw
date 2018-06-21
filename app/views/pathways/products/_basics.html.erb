@@ -98,7 +98,7 @@
       <dd><%= product.id %></dd>
     </dl>
 
-    <a href="" class="btn-primary">Buy this product</a>
+    <%= link_to 'Buy this product', new_buyers_product_order_path(product) %>
 
     <div class="contact">
       <h2>Contact</h2>
