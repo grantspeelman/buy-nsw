@@ -40,6 +40,7 @@ en:
   product_order:
     estimated_contract_value:
       label: How much is your organisation expecting to spend? (excluding GST)
+      hint: Only an approximate value is needed
     contacted_seller:
       label_html: Have you contacted %{seller} about your intention to buy?
     purchased_cloud_before:
