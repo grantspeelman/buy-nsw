@@ -11,8 +11,11 @@ module Sellers::SellerApplication::Products::Contract
       ))
     }
     FeaturePrepopulator = ->(_) {
-      2.times do
+      count = 0
+
+      while (self.features.size < 10 && count < 2)
         self.features << ProductFeature.new(product_id: product_id)
+        count += 1
       end
     }
     BenefitPopulator = -> (options) {
@@ -24,8 +27,11 @@ module Sellers::SellerApplication::Products::Contract
       ))
     }
     BenefitPrepopulator = ->(_) {
-      2.times do
+      count = 0
+
+      while (self.features.size < 10 && count < 2)
         self.benefits << ProductBenefit.new(product_id: product_id)
+        count += 1
       end
     }
 
