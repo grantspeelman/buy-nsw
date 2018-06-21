@@ -1,0 +1,42 @@
+<section class="view-buyers-dashboard">
+  <h1><%= t :title, scope: [:buyers, :dashboard] %></h1>
+
+  <% if buyer.active? %>
+    <div class="seller-status">
+      <span class="active-icon" aria-hidden="true"></span>
+      <%= t :good_standing, scope: [:buyers, :dashboard, :status] %>
+    </div>
+  <% elsif buyer.inactive? %>
+    <% if buyer.recent_application.rejected? %>
+      <div class="current-application">
+        <span class="rejected-icon" aria-hidden="true"></span>
+        <h2><%= t :rejected_title, scope: [:buyers, :dashboard, :status] %></h2>
+        <%=
+          t(:rejected_message_html,
+            scope: [:buyers, :dashboard, :status],
+            contact_us_link: link_to(t(:awaiting_review_contact_us_label, scope: [:buyers, :dashboard, :status]), contact_path)
+          )
+        %>
+      </div>
+    <% else %>
+      <div class="current-application">
+        <span class="under-review-icon" aria-hidden="true"></span>
+        <h2><%= t :awaiting_review_title, scope: [:buyers, :dashboard, :status] %></h2>
+        <%=
+          t(:awaiting_review_message_html,
+            scope: [:buyers, :dashboard, :status],
+            contact_us_link: link_to(t(:awaiting_review_contact_us_label, scope: [:buyers, :dashboard, :status]), contact_path)
+          )
+        %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <section class="account-actions">
+    <h2><%= t :label, scope: [:sellers, :dashboard, :actions] %></h2>
+    <ul>
+      <li><%= link_to t(:change_account, scope: [:sellers, :dashboard, :actions]), edit_account_path %></li>
+      <li><%= link_to t(:contact_support, scope: [:sellers, :dashboard, :actions]), contact_path %></li>
+    </ul>
+  </section>
+</section>

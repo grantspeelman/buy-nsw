@@ -12,6 +12,13 @@
         <li><%= link_to 'Your seller account', sellers_dashboard_path %></li>
       <% end %>
     <% end %>
+    <% if current_user.is_buyer? %>
+      <% if current_user.buyer&.application_in_progress? %>
+        <li><%= link_to 'Continue application', new_buyers_application_path %></li>
+      <% elsif current_user.buyer.present? %>
+        <li><%= link_to 'Your buyer account', buyers_dashboard_path %></li>
+      <% end %>
+    <% end %>
     <li><%= link_to "Settings", edit_account_path %></li>
     <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
   </ul>

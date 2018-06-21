@@ -21,4 +21,12 @@ class Buyer < ApplicationRecord
       transitions from: :active, to: :inactive
     end
   end
+
+  def application_in_progress?
+    applications.created.any?
+  end
+
+  def recent_application
+    applications.last
+  end
 end

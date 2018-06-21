@@ -1,0 +1,34 @@
+.view-buyers-dashboard {
+  @include two-thirds;
+  @include dashboard;
+
+  .current-application {
+    background: $light-blue;
+    padding: 1rem;
+    text-align: center;
+    margin: 1.5rem 0 2.5rem;
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+
+    .under-review-icon {
+      @extend .oi;
+      @extend .oi-check;
+      display: block;
+      font-size: 5rem;
+      margin: 1rem 0;
+      color: #fff;
+      text-shadow: darken($light-blue, 5%) 0px 2px 2px;
+    }
+
+    &, a {
+      color: $white;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+}
