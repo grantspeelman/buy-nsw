@@ -49,4 +49,31 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Basics do
     expect(subject).to_not be_valid
     expect(subject.errors[:contact_email]).to be_present
   end
+
+  describe '#features' do
+    it 'is invalid when there are more than 10 features' do
+      features = []
+      11.times do
+        features << { feature: 'It does things' }
+      end
+
+      subject.validate(atts.merge(features: features))
+
+      expect(subject).to_not be_valid
+      expect(subject.errors[:features]).to be_present
+    end
+
+    it 'is valid when the features in excess of 10 are blank' do
+      features = []
+      10.times do
+        features << { feature: 'It does things' }
+      end
+      2.times do
+        features << { feature: '' }
+      end
+      subject.validate(atts.merge(features: features))
+
+      expect(subject).to be_valid
+    end
+  end
 end
