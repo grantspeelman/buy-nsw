@@ -75,5 +75,30 @@ RSpec.describe Sellers::SellerApplication::Products::Contract::Basics do
 
       expect(subject).to be_valid
     end
+
+    context 'prepopulation' do
+      it 'prepopulates two features by default' do
+        subject.prepopulate!
+        expect(subject.features.size).to eq(2)
+      end
+
+      it 'only adds one feature when 9 already exist' do
+        create_list(:product_feature, 9, product: product)
+        subject.prepopulate!
+        expect(subject.features.size).to eq(10)
+      end
+
+      it 'does not add any extra features when 10 already exist' do
+        create_list(:product_feature, 10, product: product)
+        subject.prepopulate!
+        expect(subject.features.size).to eq(10)
+      end
+
+      it 'does not add any extra features when more than 10 already exist' do
+        create_list(:product_feature, 15, product: product)
+        subject.prepopulate!
+        expect(subject.features.size).to eq(15)
+      end
+    end
   end
 end
