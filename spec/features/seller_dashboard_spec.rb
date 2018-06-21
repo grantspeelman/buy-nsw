@@ -7,7 +7,7 @@ RSpec.describe 'Seller dashboard', type: :feature do
     create(:ready_for_review_seller_application, seller: seller)
 
     visit '/'
-    click_on 'Seller dashboard'
+    click_on 'Your seller account'
 
     expect(page).to have_content('Seller dashboard')
     expect(page).to have_content("We'll be in touch by email soon with the outcome of your application")
@@ -17,7 +17,7 @@ RSpec.describe 'Seller dashboard', type: :feature do
     seller = create(:active_seller, owner: @user)
 
     visit '/'
-    click_on 'Seller dashboard'
+    click_on 'Your seller account'
 
     expect(page).to have_content('Seller dashboard')
     expect(page).to have_content('Your seller account is active')

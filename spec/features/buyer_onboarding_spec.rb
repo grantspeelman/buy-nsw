@@ -122,7 +122,8 @@ RSpec.describe 'Buyer onboarding', type: :feature, js: true, skip_login: true do
   end
 
   def expect_submission_message
-    expect(page).to have_content('Your application has been submitted.')
+    message = I18n.t(:awaiting_review_title, scope: [:buyers, :dashboard, :status])
+    expect(page).to have_content(message)
   end
 
 end

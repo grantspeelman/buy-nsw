@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     resources :applications
     get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
+
+    get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
 
   get '/cloud', to: 'static#cloud', as: :cloud

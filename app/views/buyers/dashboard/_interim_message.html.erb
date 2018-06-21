@@ -1,0 +1,27 @@
+<div class="interim-message">
+  <h2>buy.nsw is almost ready for you</h2>
+
+  <p>We're currently helping sellers apply to join <strong>buy.nsw</strong>. We will be opening for buyers soon.</p>
+  <p>Your buyer account is approved, so you'll be the first to know when <strong>buy.nsw</strong> is open for business.</p>
+
+  <div class="statistics">
+    <h2>Our sellers so far</h3>
+
+    <div class="statistic">
+      <em class="big-number">
+        <%= SellerApplication.created.count %>
+      </em>
+      applying
+    </div>
+    <div class="statistic">
+      <em class="big-number">
+        <%= SellerApplication.for_review.count %>
+      </em> in review
+    </div>
+    <div class="statistic">
+      <em class="big-number">
+        <%= SellerApplication.approved.count %>
+      </em> approved
+    </div>
+  </div>
+</div>
