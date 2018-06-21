@@ -1,0 +1,10 @@
+@mixin statistic {
+  .big-number {
+    font-size: 4rem;
+    line-height: 1.1em;
+
+    font-weight: bold;
+    font-style: normal;
+    display: block;
+  }
+}
