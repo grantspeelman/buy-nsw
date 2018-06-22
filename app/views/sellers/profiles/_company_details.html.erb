@@ -1,15 +1,20 @@
+<% if authorized_buyer %>
+<% end %>
 <dl id="company-details">
   <h2>Company details</h2>
+  <% if authorized_buyer %>
   <dt>Authorised representative</dt>
   <dd>
     <%= seller.representative_name %><br>
     <%= seller.representative_phone %><br>
     <%= link_to seller.representative_email, "mailto:#{seller.representative_email}" %>
   </dd>
+  <% end %>
 
   <dt>ABN</dt>
   <dd><%= link_to formatted_abn(seller.abn), abn_lookup_url(seller.abn) %></dd>
 
+  <% if authorized_buyer %>
   <dt>Location</td>
   <dd>
     <ul class="addresses">
@@ -22,6 +27,7 @@
       <% end %>
     </ul>
   </dd>
+  <% end %>
 
   <% if seller.accreditations.any? %>
   <dt>Accreditations</dt>

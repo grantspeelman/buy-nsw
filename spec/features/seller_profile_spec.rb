@@ -7,6 +7,23 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, skip_login: true do
 
   let(:seller) { create(:active_seller, abn: compact_abn) }
 
+  context 'not signed in' do
+    it 'can display a restricted seller profile' do
+      visit sellers_profile_path(seller)
+
+      expect(page).to have_content(:h1, seller.name)
+
+      expect(page).to have_content('Website')
+      expect(page).to have_no_content('Business contact')
+      expect(page).to have_no_content('Authorised representative')
+      expect(page).to have_content('ABN')
+      expect(page).to have_no_content('Location')
+      expect(page).to have_content('Accreditations')
+      expect(page).to have_content('Industry engagement')
+      expect(page).to have_content('Awards')
+    end
+  end
+
   context 'signed in as active buyer' do
     before :each do
       @user = create(:active_buyer_user)
@@ -52,14 +69,14 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, skip_login: true do
         expect_list_entry('Awards', seller.awards.first.award)
       end
     end
+  end
 
-    def expect_list_entry(label, *contents)
-      term = page.find('dt', text: label)
+  def expect_list_entry(label, *contents)
+    term = page.find('dt', text: label)
 
-      contents.each do |content|
-        definition = term.sibling('dd', text: content)
-        expect(definition).to be_present
-      end
+    contents.each do |content|
+      definition = term.sibling('dd', text: content)
+      expect(definition).to be_present
     end
   end
 end

@@ -7,10 +7,12 @@
     <dd><%= link_to seller.linkedin_url %></dd>
   <% end %>
 
+  <% if authorized_buyer %>
   <dt>Business contact</dt>
   <dd>
     <%= seller.contact_name %><br>
     <%= seller.contact_phone %><br>
     <%= link_to seller.contact_email, "mailto:#{seller.contact_email}" %>
   </dd>
+  <% end %>
 </dl>
