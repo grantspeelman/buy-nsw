@@ -70,6 +70,16 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
         expect(page).to have_content('Not required')
       end
     end
+
+    it 'tags sellers who were invited from the waitlist' do
+      application = create(:awaiting_assignment_seller_application)
+      create(:joined_waiting_seller, seller: application.seller)
+      visit ops_seller_application_path(application)
+
+      within '.current-view' do
+        expect(page).to have_content('This seller was invited')
+      end
+    end
   end
 
   def select_application_from_list(seller_name)

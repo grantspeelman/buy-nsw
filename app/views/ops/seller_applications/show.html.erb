@@ -15,6 +15,9 @@
   </section>
 
   <section class="application-details">
+    <% if application.seller.waiting_seller.present? %>
+      <p class="invited-message">This seller was invited to apply.</p>
+    <% end %>
     <dl>
       <% if application.started_at.present? %>
         <dt>Started at</dt>

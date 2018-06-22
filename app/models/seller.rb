@@ -8,6 +8,8 @@ class Seller < ApplicationRecord
   has_many :owners, class_name: 'User'
   belongs_to :agreed_by, class_name: 'User', optional: true
 
+  has_one :waiting_seller
+
   has_many :accreditations, class_name: 'SellerAccreditation', dependent: :destroy
   has_many :addresses, class_name: 'SellerAddress', dependent: :destroy
   has_many :applications, class_name: 'SellerApplication'

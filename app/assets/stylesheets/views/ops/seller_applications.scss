@@ -9,6 +9,12 @@
     @include operation-box;
   }
 
+  .invited-message {
+    margin: 1rem 0 0;
+    padding: .5rem 1rem;
+    background: $light-purple;
+  }
+
   .documents {
     padding-left: 0;
     margin: 1.5rem 0;
