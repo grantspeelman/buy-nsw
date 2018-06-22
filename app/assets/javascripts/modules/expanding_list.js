@@ -22,7 +22,10 @@
 
   ExpandingListModule.prototype.setupForm = function setupForm () {
     this.$el.addClass('expanding-list')
-    this.insertAddLink()
+
+    if (!this.listFull()) {
+      this.insertAddLink()
+    }
 
     // Only add delete links to the rows which exist in the database, not new
     // empty ones. We can check for this by finding the ones which have an
