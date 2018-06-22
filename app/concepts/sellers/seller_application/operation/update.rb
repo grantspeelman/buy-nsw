@@ -3,7 +3,7 @@ class Sellers::SellerApplication::Update < Trailblazer::Operation
     step :model!
     step :contract!
     success :prevalidate_if_started!
-    step :ensure_authorised_representative_for_legals!
+    step :ensure_legals_can_be_accepted!
 
     def model!(options, params:, **)
       options['model.seller'] = options['config.current_user'].seller
@@ -28,12 +28,28 @@ class Sellers::SellerApplication::Update < Trailblazer::Operation
       end
     end
 
-    def ensure_authorised_representative_for_legals!(options, **)
-      representative_email = options['model.seller'].representative_email
-      current_user_email = options['config.current_user'].email
+    def ensure_legals_can_be_accepted!(options, **)
+      errors = options['result.errors'] ||= {}
 
-      ! options['contract.default'].respond_to?(:agree) ||
-        (representative_email.present? && (current_user_email == representative_email))
+      if options['contract.default'].respond_to?(:agree)
+        representative_email = options['model.seller'].representative_email
+        current_user_email = options['config.current_user'].email
+
+        if options['model.seller'].agree == true
+          return false
+        end
+
+        if !options['contract.default'].representative_details_provided?
+          errors['missing_representative_details'] = true
+        elsif (current_user_email != representative_email)
+          errors['not_authorised_representative'] = true
+        end
+        unless options['contract.default'].business_details_provided?
+          errors['missing_business_details'] = true
+        end
+      end
+
+      errors.empty?
     end
   end
 

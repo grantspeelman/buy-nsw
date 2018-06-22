@@ -37,15 +37,41 @@ RSpec.describe Sellers::SellerApplication::Update do
       Sellers::SellerApplication::Contract::Declaration
     }
 
-    it 'fails when the user is not the authorised representative' do
-      application.seller.update_attribute(:representative_email, 'blah@dev.test.nsw.gov.au')
+    def fill_required_details(email: current_user.email)
+      application.seller.update_attributes!(
+        name: 'Seller name',
+        abn: '12 345 678 910',
+        representative_name: 'Example',
+        representative_phone: '555 1234',
+        representative_position: 'Example',
+        representative_email: email,
+      )
+    end
+
+    it 'fails when the authorised representative is not set' do
       result = perform_operation(contract: contract)
 
       expect(result).to be_failure
+      expect(result['result.errors']).to have_key('missing_representative_details')
+    end
+
+    it 'fails when the business details are not set' do
+      result = perform_operation(contract: contract)
+
+      expect(result).to be_failure
+      expect(result['result.errors']).to have_key('missing_business_details')
+    end
+
+    it 'fails when the user is not the authorised representative' do
+      fill_required_details(email: 'blah@dev.test.nsw.gov.au')
+      result = perform_operation(contract: contract)
+
+      expect(result).to be_failure
+      expect(result['result.errors']).to have_key('not_authorised_representative')
     end
 
     it 'is successful when the user is the authorised representative' do
-      application.seller.update_attribute(:representative_email, current_user.email)
+      fill_required_details
       result = perform_operation(
         contract: contract,
         params: { agree: '1' }
@@ -56,7 +82,7 @@ RSpec.describe Sellers::SellerApplication::Update do
     end
 
     it 'sets the agreed_at and agreed_by attributes' do
-      application.seller.update_attribute(:representative_email, current_user.email)
+      fill_required_details
 
       time = Time.now
       Timecop.freeze(time) do

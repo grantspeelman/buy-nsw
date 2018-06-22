@@ -1,3 +1,27 @@
+<% if operation.failure? && (errors = operation['result.errors']) && errors.any? %>
+  <div class="block-error" role="alert">
+    <h2>You can't accept the Core Terms</h2>
+
+    <% if errors['not_authorised_representative'] %>
+      <p>Only <strong><%= f.object.seller.representative_email %></strong> can accept the Core Terms on behalf of your organisation.</p>
+
+      <% unless f.object.seller.owners.map(&:email).include?(f.object.seller.representative_email) %>
+        <p>You need to <%= link_to 'invite them to your seller account', new_sellers_application_invitation_path(application, email: f.object.seller.representative_email) %> and ask them to sign in to accept the terms.</p>
+      <% else %>
+        <p>They have already been invited to sign in and accept the terms.</p>
+      <% end %>
+    <% elsif errors['missing_representative_details'] %>
+      <p>Only your authorised representative can accept the terms on behalf of your organisation.</p>
+
+      <p>You need to <%= link_to 'nominate who they are', sellers_application_step_path(application, 'contacts') %>. If it's not you, they will need to sign in and accept the terms.</p>
+    <% end %>
+
+    <% if errors['missing_business_details'] %>
+      <p>Please <%= ('also ' if errors.size > 1) %><%= link_to 'complete your basic company information', sellers_application_step_path(application, 'business-details') %>.</p>
+    <% end %>
+  </div>
+<% end %>
+
 <p>You need to accept the Core Terms to become a seller.</p>
 
 <p>Please note these initial terms will be updated soon. We will let you know when they change, what the changes are, and ask you to agree once more when finalised.</p>
@@ -11,10 +35,12 @@
     <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
   </p>
 
-<% elsif operation.success? %>
+<% elsif operation['result.errors'].empty? %>
 
   <%= f.input :agree,
         as: :boolean,
+        error: false,
+        error_html: false,
         label: t('agree_html', scope: [:sellers, :applications, :steps, :declaration],
           name: f.object.seller.representative_name,
           organisation: f.object.seller.name,
@@ -23,15 +49,5 @@
   <fieldset class="actions">
     <%= f.submit step.button_label(default: 'Save and continue'), class: 'btn btn-primary' %>
   </fieldset>
-
-<% else %>
-
-  <p>Only the authorised representative
-    <%= f.object.seller.representative_email.present? ? "(#{f.object.seller.representative_email})" : nil %>
-    can accept the terms.</p>
-
-  <p class="return-link">
-    <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
-  </p>
 
 <% end %>
