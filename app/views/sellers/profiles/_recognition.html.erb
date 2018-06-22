@@ -1,0 +1,13 @@
+<% if seller.awards.any? %>
+<dl id="recognition">
+  <h2>Recognition</h2>
+  <dt>Awards</dt>
+  <dd>
+    <ul>
+      <% seller.awards.each do |item| %>
+        <li><%= item.award %></li>
+      <% end %>
+    </ul>
+  </dd>
+</dl>
+<% end %>
