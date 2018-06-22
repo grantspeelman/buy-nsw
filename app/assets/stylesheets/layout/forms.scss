@@ -253,8 +253,15 @@ input[type=checkbox]:checked + label::after {
   font-weight: 500;
 }
 
-.is-invalid input[type=checkbox] + label::before {
-  border-color: $red;
+.form-check-input.is-invalid ~ .form-check-label {
+  color: $black;
+
+  &::before {
+    border-color: $black;
+  }
+}
+.form-check-input.is-invalid ~ .invalid-feedback {
+  padding-left: 1.6rem;
 }
 
 /* Radio buttons */
