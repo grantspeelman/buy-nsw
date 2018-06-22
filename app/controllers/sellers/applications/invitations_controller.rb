@@ -3,6 +3,10 @@ class Sellers::Applications::InvitationsController < Sellers::Applications::Base
 
   def new
     @operation = run Sellers::SellerApplication::Invitation::Create::Present
+
+    if params[:email].present?
+      operation['contract.default'].email = params[:email]
+    end
   end
 
   def create
