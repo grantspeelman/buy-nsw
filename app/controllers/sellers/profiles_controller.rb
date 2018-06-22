@@ -1,7 +1,4 @@
 class Sellers::ProfilesController < Sellers::BaseController
-  before_action :authenticate_user!
-  before_action :authorize_buyer!
-
   def show
   end
 
@@ -15,4 +12,9 @@ private
     @seller ||= sellers.find(params[:id])
   end
   helper_method :seller
+
+  def authorized_buyer
+    current_user && current_user.buyer.present? && current_user.buyer.active?
+  end
+  helper_method :authorized_buyer
 end

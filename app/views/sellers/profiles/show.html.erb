@@ -1,5 +1,17 @@
 <% content_for :title, seller.name %>
 
+<% if current_user.nil? %>
+<div class="alert alert-secondary" role="alert">
+  To see the full seller profile,
+  <%= link_to 'create a buyer account', registration_path(type: :buyer) %>, or
+  <%= link_to 'sign in', new_user_session_path %>.
+</div>
+<% elsif current_user.buyer.nil? || current_user.buyer.inactive? %>
+<div class="alert alert-secondary" role="alert">
+  To see the full seller profile you need to be an approved buyer
+</div>
+<% end %>
+
 <section class="view-sellers-profiles">
   <h1><%= content_for :title %></h1>
   <div class="tags"><%= seller_profile_tags(seller) %></div>
@@ -23,88 +35,12 @@
           <% if seller.awards.any? %>
             <li><%= link_to 'Recognition', '#recognition' %></li>
           <% end %>
-          <li><%= link_to 'Methods', '#methods' %></li>
         </ol>
       </div>
     </div>
     <div class="profile">
-      <dl id="basic-details">
-        <dt>Website</dt>
-        <dd><%= link_to seller.website_url %></dd>
-
-        <% if seller.linkedin_url.present? %>
-          <dt>LinkedIn</dt>
-          <dd><%= link_to seller.linkedin_url %></dd>
-        <% end %>
-
-        <dt>Business contact</dt>
-        <dd>
-          <%= seller.contact_name %><br>
-          <%= seller.contact_phone %><br>
-          <%= link_to seller.contact_email, "mailto:#{seller.contact_email}" %>
-        </dd>
-      </dl>
-
-      <dl id="company-details">
-        <h2>Company details</h2>
-        <dt>Authorised representative</dt>
-        <dd>
-          <%= seller.representative_name %><br>
-          <%= seller.representative_phone %><br>
-          <%= link_to seller.representative_email, "mailto:#{seller.representative_email}" %>
-        </dd>
-
-        <dt>ABN</dt>
-        <dd><%= link_to formatted_abn(seller.abn), abn_lookup_url(seller.abn) %></dd>
-
-        <dt>Location</td>
-        <dd>
-          <ul class="addresses">
-            <% seller.addresses.each do |address| %>
-              <li>
-                <%= address.address %><br>
-                <%= address.suburb %><br>
-                <%= address.state_text %> <%= address.postcode %>
-              </li>
-            <% end %>
-          </ul>
-        </dd>
-
-        <% if seller.accreditations.any? %>
-        <dt>Accreditations</dt>
-        <dd>
-          <ul>
-            <% seller.accreditations.each do |item| %>
-              <li><%= item.accreditation %></li>
-            <% end %>
-          </ul>
-        </dd>
-        <% end %>
-
-        <% if seller.engagements.any? %>
-        <dt>Industry engagement</dt>
-        <dd>
-          <ul>
-            <% seller.engagements.each do |item| %>
-              <li><%= item.engagement %></li>
-            <% end %>
-          </ul>
-        </dd>
-        <% end %>
-      </dl>
-
-      <% if seller.awards.any? %>
-      <dl id="recognition">
-        <h2>Recognition</h2>
-        <dt>Awards</dt>
-        <dd>
-          <ul>
-            <% seller.awards.each do |item| %>
-              <li><%= item.award %></li>
-            <% end %>
-          </ul>
-        </dd>
-      </dl>
-      <% end %>
+      <%= render 'basic_details' %>
+      <%= render 'company_details' %>
+      <%= render 'recognition' %>
     </div>
 </section>
