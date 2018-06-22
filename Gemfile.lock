@@ -96,6 +96,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     clamby (1.4.0)
     coderay (1.1.2)
+    colorize (0.8.1)
     concurrent-ruby (1.0.5)
     countries (2.1.4)
       i18n_data (~> 0.8.0)
@@ -454,6 +455,7 @@ DEPENDENCIES
   capybara-selenium
   carrierwave (~> 1.0)
   clamby
+  colorize
   countries
   database_cleaner
   devise
