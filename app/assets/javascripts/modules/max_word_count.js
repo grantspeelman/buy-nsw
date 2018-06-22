@@ -38,7 +38,7 @@
   MaxWordCount.prototype.calculateWordCount = function calculateWordCount () {
     var value = this.$input.val()
 
-    var wordCount = value.split(/[\s,]+/).filter(function (word) {
+    var wordCount = value.split(/[\s]+/).filter(function (word) {
       return word.trim().length > 0
     }).length
 
