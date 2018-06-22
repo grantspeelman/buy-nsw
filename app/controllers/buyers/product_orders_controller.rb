@@ -16,6 +16,7 @@ class Buyers::ProductOrdersController < ApplicationController
           product_updated_at: @product.updated_at
         ))
       end
+      # TODO: Send confirmation email
       # TODO: Redirect somewhere
       render :show
     else

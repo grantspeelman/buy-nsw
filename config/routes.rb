@@ -119,6 +119,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :product_orders, only: [:index, :show], path: 'product-orders'
+
     root to: 'root#index'
   end
 
