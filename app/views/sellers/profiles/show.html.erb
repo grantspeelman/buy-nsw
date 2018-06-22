@@ -1,5 +1,17 @@
 <% content_for :title, seller.name %>
 
+<% if current_user.nil? %>
+<div class="alert alert-secondary" role="alert">
+  To see the full seller profile,
+  <%= link_to 'create a buyer account', registration_path(type: :buyer) %>, or
+  <%= link_to 'sign in', new_user_session_path %>.
+</div>
+<% elsif current_user.buyer.nil? || current_user.buyer.inactive? %>
+<div class="alert alert-secondary" role="alert">
+  To see the full seller profile you need to be an approved buyer
+</div>
+<% end %>
+
 <section class="view-sellers-profiles">
   <h1><%= content_for :title %></h1>
   <div class="tags"><%= seller_profile_tags(seller) %></div>

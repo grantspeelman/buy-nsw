@@ -22,12 +22,37 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, skip_login: true do
       expect(page).to have_content('Industry engagement')
       expect(page).to have_content('Awards')
     end
+
+    it 'should tell you what you need to do to see the full seller profile' do
+      visit sellers_profile_path(seller)
+
+      expect(page).to have_content('To see the full seller profile, create a buyer account, or sign in')
+    end
+  end
+
+  context 'signed in as inactive buyer' do
+    before :each do
+      @user = create(:buyer_user)
+      sign_in @user
+    end
+
+    it 'should tell you what you need to do to see the full seller profile' do
+      visit sellers_profile_path(seller)
+
+      expect(page).to have_content('To see the full seller profile you need to be an approved buyer')
+    end
   end
 
   context 'signed in as active buyer' do
     before :each do
       @user = create(:active_buyer_user)
       sign_in @user
+    end
+
+    it 'does not tell you how to see the full seller profile' do
+      visit sellers_profile_path(seller)
+
+      expect(page).to have_no_content('To see the full seller profile')
     end
 
     it 'can display a seller profile' do
