@@ -1,0 +1,85 @@
+@mixin dashboard {
+  .current-application {
+    background: $light-blue;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .icon {
+      @extend .oi;
+      display: block;
+      font-size: 5rem;
+      margin: 1rem 0 1.5rem;
+      color: #fff;
+      text-shadow: darken($light-blue, 5%) 0px 2px 2px;
+    }
+
+    .under-review-icon {
+      @extend .icon;
+      @extend .oi-check;
+    }
+
+    .rejected-icon {
+      @extend .icon;
+      @extend .oi-x;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .seller-status {
+    margin-bottom: 1rem;
+    color: $green;
+    font-weight: 600;
+
+    .active-icon {
+      @extend .oi;
+      @extend .oi-check;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .account-actions {
+    @include make-row();
+
+    margin-left: 0;
+    margin-right: 0;
+
+    border-top: 1px solid $grey-2;
+    padding-top: 1.5rem;
+
+    h2 {
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
+      font-size: 1.3rem;
+      padding-left: 0;
+    }
+    ul {
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
+
+      padding-right: 0;
+    }
+    li {
+      list-style: none;
+    }
+  }
+}

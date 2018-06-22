@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     get '/applications/:id/manager-approve', to: 'applications#manager_approve', as: :manager_approve_application
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 
+    get '/dashboard', to: 'dashboard#show', as: :dashboard
     scope 'products/:id' do
       resources :product_orders, only: [:new, :create], path: 'orders'
     end

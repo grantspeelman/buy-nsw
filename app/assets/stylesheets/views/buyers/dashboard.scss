@@ -1,0 +1,27 @@
+.view-buyers-dashboard {
+  @include two-thirds;
+  @include dashboard;
+
+  .interim-message {
+    padding: 1.5rem 0;
+
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .statistics {
+      padding: 1rem;
+      background: $light-purple;
+    }
+
+    .statistic {
+      @include statistic;
+      display: inline-block;
+      padding: 0 4rem 1rem 0;
+    }
+  }
+}

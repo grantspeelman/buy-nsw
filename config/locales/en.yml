@@ -13,8 +13,6 @@ en:
   buyers:
     applications:
       messages:
-        already_submitted: You've already submitted a buyer application.
-        submitted: Your application has been submitted.
         manager_approve_success: Thanks for approving this application.
         manager_approve_failure: There was a problem approving this application. Please contact the support team for help.
         changes_saved: Your changes have been saved
@@ -37,6 +35,24 @@ en:
           long: 'Review and submit'
           intro_html: |
             <p>Please double-check the details below before submitting your application.</p>
+    dashboard:
+      actions:
+        label: Account actions
+        change_account: Change your email address or password
+        contact_support: Contact support
+      status:
+        good_standing: Your buyer account is active and in good standing.
+        awaiting_review_title: Your buyer application is now being reviewed
+        awaiting_review_message_html: |
+          <p>We'll be in touch by email soon with the outcome of your application.</p>
+          <p>In the meantime, you can %{contact_us_link} if you have any questions.</p>
+        awaiting_review_contact_us_label: contact us
+        rejected_title: Your buyer application has been rejected
+        rejected_message_html: |
+          <p>After a careful review, we decided your application doesn’t quite fit the <strong>buy.nsw</strong> community.</p>
+          <p>Please %{contact_us_link} if you have any questions.</p>
+        rejected_contact_us_label: contact us
+      title: Your buyer account
   product_order:
     intro_html: |
       <p><strong>buy.nsw</strong> will help you through the ordering process. In order
