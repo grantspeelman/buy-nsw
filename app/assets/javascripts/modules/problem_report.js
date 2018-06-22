@@ -75,7 +75,7 @@
   ProblemReportModule.prototype.handleSuccessResponse = function (response) {
     this.$form.remove()
     this.$response.text(response.message)
-    this.$reponse.focus()
+    this.$response.focus()
   }
 
   ProblemReportModule.prototype.handleErrorResponse = function (response) {
