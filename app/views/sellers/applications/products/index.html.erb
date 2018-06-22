@@ -2,20 +2,19 @@
 
 <%= render_breadcrumbs(seller_application_products_list_breadcrumbs) %>
 
-<h1>Your cloud products (optional)</h1>
+<h1>Add cloud products</h1>
 
-<p>Products here must be:</p>
+<p>Adding products is optional and will take around 45 minutes per product.</p>
+
+<p>Each product must:</p>
 
 <ul>
-  <li>discrete goods or services</li>
-  <li>able to be purchased by the unit (eg. per user or per instance)</li>
-  <li>highly specified</li>
+  <li>have a unique name that's not your business name, eg. Nimbus by CloudTech Inc.</li>
+  <li>be priced by the unit, instead of by an hourly or day rate of your employees</li>
+  <li>be described in detail as to how it is hosted and delivered to the end user</li>
 </ul>
 
-<p>It will take approximately 45 minutes per product.</p>
-
-<p>This will not apply to everyone. If your offering does not fit this criteria, you can still sell through buy.nsw.</p>
-<p>We are improving support for other kinds of services soon.</p>
+<p>If waht you offer is different, for example penetration testing services, you can still join <strong>buy.nsw</strong>. Please submit your application without adding cloud products. We may ask you for more information later.</p>
 
 <div class="warning">
   <span aria-hidden="true"></span>
@@ -25,8 +24,8 @@
 
     <ul>
       <li>professional services</li>
-      <li>services priced as an outcome (eg. a web site)</li>
-      <li>day rates</li>
+      <li>services priced as an outcome, eg. a website</li>
+      <li>services priced by day or hourly rates</li>
     </ul>
 
     <p>This will delay the processing of your application.</p>
@@ -41,7 +40,7 @@
 
 <% if products.any? %>
   <ul class="products">
-    <h2>Your existing products</h2>
+    <h2>Your cloud products</h2>
     <%= render partial: 'row', collection: products, as: :product %>
   </ul>
 <% end %>
