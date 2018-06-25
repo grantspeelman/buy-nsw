@@ -10,4 +10,8 @@ private
     end
   end
 
+  def set_content_disposition
+    response.headers['Content-Disposition'] = "attachment; filename=#{csv_filename}"
+  end
+
 end

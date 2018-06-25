@@ -43,8 +43,4 @@ private
   def csv_filename
     "buyers-#{search.selected_filters_string}-#{Time.now.to_i}.csv"
   end
-
-  def set_content_disposition
-    response.headers['Content-Disposition'] = "attachment; filename=#{csv_filename}"
-  end
 end
