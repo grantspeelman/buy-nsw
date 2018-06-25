@@ -1,14 +1,16 @@
-<h1>Buy <%= @product.name %></h1>
+<section class="view-buyers-product-orders-new">
+  <h1>Buy <%= @product.name %></h1>
 
-<%= t('product_order.intro_html') %>
+  <div class="intro">
+    <%= t('product_order.intro_html') %>
+  </div>
 
-<%= reform_form_for(@form, url: buyers_product_orders_path(@product)) do |f| %>
-  <%= f.input :estimated_contract_value, label: t('product_order.estimated_contract_value.label') %>
-  <%= f.input :contacted_seller, as: :radio_buttons, label: t('product_order.contacted_seller.label_html', seller: link_to(@product.seller.name, sellers_profile_path(@product.seller))) %>
-  <%= f.input :purchased_cloud_before, as: :radio_buttons, label: t('product_order.purchased_cloud_before.label') %>
-  <%= hidden_field_tag :product_id, @product.id %>
-  
-  <%= f.submit 'Next' %>
-<% end %>
+  <%= reform_form_for(@form, url: buyers_product_orders_path(@product)) do |f| %>
+    <%= f.input :estimated_contract_value, label: t('product_order.estimated_contract_value.label') %>
+    <%= f.input :contacted_seller, as: :radio_buttons, label: t('product_order.contacted_seller.label_html', seller: link_to(@product.seller.name, sellers_profile_path(@product.seller))) %>
+    <%= f.input :purchased_cloud_before, as: :radio_buttons, label: t('product_order.purchased_cloud_before.label') %>
+    <%= hidden_field_tag :product_id, @product.id %>
 
+    <%= f.submit 'Next' %>
+  <% end %>
 </section>
