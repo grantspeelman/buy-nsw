@@ -14,6 +14,6 @@ module Ops::FiltersHelper
   end
 
   def reset_filters_path(search)
-    '?skip_filters'
+    '?skip_filters=1'
   end
 end
