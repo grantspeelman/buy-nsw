@@ -98,7 +98,7 @@
       <dd><%= product.id %></dd>
     </dl>
 
-    <%= link_to 'Buy this product', new_buyers_product_order_path(product) %>
+    <%= render partial: 'buy_product', locals: { product: product } %>
 
     <div class="contact">
       <h2>Contact</h2>

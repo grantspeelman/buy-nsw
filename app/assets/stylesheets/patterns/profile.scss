@@ -21,9 +21,18 @@
       }
       text-align: right;
 
-      a {
+      a.action {
         @include button;
         @include button-block;
+      }
+
+      .disabled-action-area {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 1rem 15px;
+
+        background: $light-purple;
+        text-align: left;
       }
 
       dl {
