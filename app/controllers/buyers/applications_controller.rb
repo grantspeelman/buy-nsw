@@ -11,18 +11,20 @@ class Buyers::ApplicationsController < Buyers::BaseController
   end
 
   def show
-    @operation = run Buyers::BuyerApplication::Update::Present
+    @operation = Buyers::BuyerApplication::Update::Present.(params, edit_update_options)
   end
 
   def update
     params[:buyer_application] ||= {}
 
-    @operation = run Buyers::BuyerApplication::Update do |result|
-      if result['result.submitted'] == true
+    @operation = Buyers::BuyerApplication::Update.(params, edit_update_options)
+
+    if operation.success?
+      if operation['result.submitted'] == true
         return redirect_to buyers_dashboard_path
       else
         flash.notice = I18n.t('buyers.applications.messages.changes_saved')
-        return redirect_to buyers_application_step_path(result[:application_model].id, result['result.next_step_slug'])
+        return redirect_to buyers_application_step_path(operation['model.application'].id, form.next_step_slug)
       end
     end
 
@@ -40,23 +42,64 @@ class Buyers::ApplicationsController < Buyers::BaseController
   end
 
 private
-  def form
-    operation["contract.default"]
-  end
-  helper_method :form
-
-  def operation
-    @operation
-  end
+  attr_reader :operation
   helper_method :operation
 
+  # TODO: Make this work better
+  #
   def application
-    form.model[:application]
+    if ['new', 'create'].include?(action_name)
+      operation['model.application']
+    else
+      @application ||= BuyerApplication.created.find_by_user_and_application(current_user, params[:id])
+    end
   end
   helper_method :application
 
+  def contract
+    operation['contract.default']
+  end
+  helper_method :contract
+
   def _run_options(options)
-    options.merge( "current_user" => current_user )
+    options.merge(
+      'config.current_user' => current_user,
+    )
+  end
+
+  def edit_update_options
+    _run_options({}).merge(
+      'config.form' => form,
+      'model.application' => application,
+    )
+  end
+
+  def form
+    return @form if @form.is_a?(MultiStepForm)
+
+    @form = MultiStepForm.new(
+      contracts_block: contracts,
+      contracts_args: [application],
+      step: params[:step],
+      i18n_key: 'buyers.applications',
+    )
+  end
+  helper_method :form
+
+  def contracts
+    ->(application) {
+      [].tap {|list|
+        list << Buyers::BuyerApplication::Contract::BasicDetails
+        if application.requires_email_approval?
+          list << Buyers::BuyerApplication::Contract::EmailApproval
+        end
+        list << Buyers::BuyerApplication::Contract::EmploymentStatus
+        if application.requires_manager_approval?
+          list << Buyers::BuyerApplication::Contract::ManagerApproval
+        end
+        list << Buyers::BuyerApplication::Contract::Terms
+      }
+    }
   end
 
 end

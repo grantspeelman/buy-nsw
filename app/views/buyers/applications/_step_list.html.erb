@@ -1,7 +1,0 @@
-<ol>
-<% operation['result.steps'].each do |step| %>
-  <%= content_tag :li, class: step.html_classes do %>
-    <%= link_to step.name, step.path %>
-  <% end %>
-<% end %>
-</ol>

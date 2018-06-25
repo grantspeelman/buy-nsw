@@ -5,8 +5,8 @@ class Buyers::BuyerApplication::Create < Trailblazer::Operation
   step :log_event!
 
   def model!(options, **)
-    options[:buyer_model] = options['current_user'].buyer ||
-                              Buyer.new(user: options['current_user'])
+    options[:buyer_model] = options['config.current_user'].buyer ||
+                              Buyer.new(user: options['config.current_user'])
 
     options[:application_model] = options[:buyer_model].applications.first ||
                                     BuyerApplication.new(started_at: Time.now)
@@ -25,7 +25,7 @@ class Buyers::BuyerApplication::Create < Trailblazer::Operation
 
   def log_event!(options, **)
     Event::StartedApplication.create(
-      user: options['current_user'],
+      user: options['config.current_user'],
       eventable: options[:application_model]
     )
   end
