@@ -40,6 +40,28 @@ RSpec.describe User do
     end
   end
 
+  describe '#is_active_buyer?' do
+    it 'is true when the user has the "buyer" role and an active buyer record' do
+      user = User.new(roles: ['buyer'])
+      create(:active_buyer, user: user)
+
+      expect(user.is_active_buyer?).to be_truthy
+    end
+
+    it 'is false when the user has no associated buyer' do
+      user = User.new(roles: ['buyer'])
+
+      expect(user.is_active_buyer?).to be_falsey
+    end
+
+    it 'is false when the user has an inactive buyer record' do
+      user = User.new(roles: ['buyer'])
+      create(:inactive_buyer, user: user)
+      
+      expect(user.is_active_buyer?).to be_falsey
+    end
+  end
+
   describe '#has_seller_application?' do
     it 'is true when there are associated seller applications' do
       user = create(:user)
