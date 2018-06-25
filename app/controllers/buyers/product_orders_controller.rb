@@ -1,26 +1,36 @@
-class Buyers::ProductOrdersController < ApplicationController
+class Buyers::ProductOrdersController < Buyers::BaseController
+  before_action :validate_active_buyer!
+
   def new
-    # TODO: Make only usable to approved buyers
-    @product = Product.find(params[:id])
-    @form = Buyers::ProductOrder::Contract.new(ProductOrder.new)
+    @operation = run Buyers::ProductOrder::Create::Present
   end
 
   def create
-    @form = Buyers::ProductOrder::Contract.new(ProductOrder.new)
-    @product = Product.find(params[:product_id])
-    if @form.validate(params[:buyers_product_order_contract])
-      @form.save do |hash|
-        ProductOrder.create(hash.merge(
-          buyer_id: current_user.buyer.id,
-          product_id: @product.id,
-          product_updated_at: @product.updated_at
-        ))
-      end
-      # TODO: Send confirmation email
-      # TODO: Redirect somewhere
+    @operation = run Buyers::ProductOrder::Create
+
+    if operation.success?
       render :show
     else
       render :new
     end
   end
+
+private
+  attr_reader :operation
+
+  def _run_options(options)
+    options.merge(
+      'config.current_user' => current_user,
+    )
+  end
+
+  def contract
+    operation['contract.default']
+  end
+
+  def product
+    operation['model.product']
+  end
+
+  helper_method :contract, :operation, :product
 end
