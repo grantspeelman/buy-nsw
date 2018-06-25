@@ -1,0 +1,17 @@
+<% if f.object.errors.present? %>
+  <div class="block-error" role="alert" tabindex="-1">
+
+    <% if f.errors_with_messages.any? %>
+      <h2><%= t('shared.errors.title_with_error_list') %></h2>
+
+      <ul class="invalid-fields-list">
+        <% f.errors_with_messages.each do |(message, anchor)| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h2><%= t('shared.errors.title_without_error_list') %></h2>
+    <% end %>
+    <p><%= t('shared.errors.guidance') %></p>
+  </div>
+<% end %>
