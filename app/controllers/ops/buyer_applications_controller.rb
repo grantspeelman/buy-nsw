@@ -1,8 +1,17 @@
 class Ops::BuyerApplicationsController < Ops::BaseController
 
+  after_action :set_content_disposition, if: :csv_request?, only: :index
+
   layout ->{
     action_name == 'index' ? 'ops' : '../ops/buyer_applications/_layout'
   }
+
+  def index
+    respond_to do |format|
+      format.html
+      format.csv
+    end
+  end
 
   def assign
     run Ops::BuyerApplication::Assign do |result|
@@ -74,5 +83,9 @@ private
 
   def _run_options(options)
     options.merge( "current_user" => current_user )
+  end
+
+  def csv_filename
+    "buyer-applications-#{search.selected_filters_string}-#{Time.now.to_i}.csv"
   end
 end
