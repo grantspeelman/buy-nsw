@@ -1,0 +1,30 @@
+<% if results.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Buyer</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Product</th>
+        <th scope="col">Estimated contract value</th>
+        <th scope="col">Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% results.each do |result| %>
+      <tr>
+        <td><%= result.buyer.name %></td>
+        <td><%= result.product.seller.name %></td>
+        <td><%= result.product.name %></td>
+        <td><%= result.estimated_contract_value %></td>
+        <td>
+          <abbr title="<%= result.created_at.to_s %>">
+            <%= time_ago_in_words result.created_at %> ago
+          </abbr>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= render partial: 'ops/shared/no_records_message', locals: local_assigns.slice(:search) %>
+<% end %>

@@ -53,6 +53,18 @@ en:
           <p>Please %{contact_us_link} if you have any questions.</p>
         rejected_contact_us_label: contact us
       title: Your buyer account
+    product_orders:
+      intro_html: |
+        <p><strong>buy.nsw</strong> will help you through the ordering process. In order
+        to tailor our help to you we need to ask you a few more questions.</p>
+        <p>A member of our team will then contact you to help finalise the order.</p>
+      estimated_contract_value:
+        label: How much is your organisation expecting to spend?
+        hint: Only an approximate value is needed. Please provide the amount in Australian Dollars and excluding GST.
+      contacted_seller:
+        label: Have you contacted the seller about your intention to buy?
+      purchased_cloud_before:
+        label: Have you bought or been involved with buying cloud products before?
   time:
     formats:
       simple_date: '%-d %B %Y'
@@ -136,6 +148,11 @@ en:
         workers_compensation: Provided or exempt from workers compensation
         products: Started at least one product
         terms_agreed: Agreed to the Core Terms
+  shared:
+    errors:
+      title_with_error_list: "There was a problem with your answers to:"
+      title_without_error_list: There was a problem with your answers
+      guidance: "Please check the answers you provided."
   users:
     sessions:
       sign_up:

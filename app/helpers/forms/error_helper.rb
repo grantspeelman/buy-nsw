@@ -12,4 +12,8 @@ module Forms::ErrorHelper
       end
     end.join.html_safe
   end
+
+  def display_block_errors(form_object)
+    render(partial: 'shared/errors', locals: { f: form_object })
+  end
 end

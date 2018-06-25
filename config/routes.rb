@@ -63,6 +63,9 @@ Rails.application.routes.draw do
     get '/applications/:id/:step', to: 'applications#show', as: :application_step
 
     get '/dashboard', to: 'dashboard#show', as: :dashboard
+    scope 'products/:id' do
+      resources :product_orders, only: [:new, :create], path: 'orders'
+    end
   end
 
   get '/cloud', to: 'static#cloud', as: :cloud
@@ -116,6 +119,8 @@ Rails.application.routes.draw do
         put :tag
       end
     end
+
+    resources :product_orders, only: [:index, :show], path: 'product-orders'
 
     root to: 'root#index'
   end

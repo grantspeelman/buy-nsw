@@ -1,0 +1,18 @@
+<section class="view-buyers-product-orders-new">
+  <h1>Buy <%= product.name %></h1>
+
+  <div class="intro">
+    <%= t('buyers.product_orders.intro_html') %>
+  </div>
+
+  <%= reform_form_for(contract, as: :product_order, url: buyers_product_orders_path(product), i18n_scope: 'buyers.product_orders') do |f| %>
+    <%= display_block_errors(f) %>
+
+    <%= f.input :estimated_contract_value %>
+    <%= f.input :contacted_seller, as: :radio_buttons %>
+    <%= f.input :purchased_cloud_before, as: :radio_buttons %>
+    <%= hidden_field_tag :product_id, product.id %>
+
+    <%= f.submit 'Next' %>
+  <% end %>
+</section>

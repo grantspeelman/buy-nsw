@@ -6,6 +6,7 @@ class Buyer < ApplicationRecord
 
   belongs_to :user
   has_many :applications, class_name: 'BuyerApplication'
+  has_many :product_orders
 
   enumerize :employment_status, in: ['employee', 'contractor', 'other-eligible']
 

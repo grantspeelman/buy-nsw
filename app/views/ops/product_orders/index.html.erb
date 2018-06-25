@@ -1,0 +1,21 @@
+<% content_for(:ops_content) do %>
+<section class="view-ops-buyers-list">
+  <div class="column-set">
+    <aside>
+      <h1>Product Orders</h1>
+
+      <%= render partial: 'ops/shared/filters', locals: { search: search } %>
+    </aside>
+
+    <div class="current-view">
+      <section class="record-list">
+        <header>
+          <h2><%= pluralize(search.result_count, 'product order') %></h2>
+        </header>
+        <%= render partial: 'list', locals: { search: search, results: search.paginated_results } %>
+        <%= paginate search.paginated_results %>
+      </section>
+    </div>
+  </div>
+</section>
+<% end %>

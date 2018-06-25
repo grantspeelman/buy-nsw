@@ -1,0 +1,7 @@
+<% if current_user.present? && current_user.is_active_buyer? %>
+  <%= link_to 'Buy this product', new_buyers_product_order_path(product), class: 'action' %>
+<% else %>
+  <div class="disabled-action-area">
+    <%= link_to 'Become a registered buyer', registration_path('buyer') %> to purchase this product.
+  </div>
+<% end %>

@@ -26,6 +26,10 @@ class User < ApplicationRecord
     roles.include?('buyer')
   end
 
+  def is_active_buyer?
+    is_buyer? && buyer.present? && buyer.active?
+  end
+
   def is_seller?
     roles.include?('seller')
   end

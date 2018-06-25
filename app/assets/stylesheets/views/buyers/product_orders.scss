@@ -1,0 +1,13 @@
+.view-buyers-product-orders-new {
+  @include two-thirds;
+  padding-top: 1rem;
+
+  .intro {
+    padding: 1rem 0 .5rem;
+  }
+
+  .form-group {
+    margin: 2rem 0;
+    padding-bottom: 1.5rem;
+  }
+}
