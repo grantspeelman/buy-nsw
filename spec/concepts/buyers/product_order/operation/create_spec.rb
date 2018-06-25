@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Buyers::ProductOrder::Create do
   include ActiveJob::TestHelper
-  
+
   let(:product) { create(:active_product) }
   let(:buyer_user) { create(:active_buyer_user) }
   let(:valid_atts) {
@@ -37,7 +37,7 @@ RSpec.describe Buyers::ProductOrder::Create do
     product.update_attribute(:updated_at, 5.days.ago)
     order = perform_operation['model']
 
-    expect(order.product_updated_at).to eq(product.updated_at)
+    expect(order.product_updated_at.to_i).to eq(product.updated_at.to_i)
   end
 
   it 'sends an email' do
