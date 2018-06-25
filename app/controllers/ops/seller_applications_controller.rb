@@ -1,8 +1,17 @@
 class Ops::SellerApplicationsController < Ops::BaseController
 
+  after_action :set_content_disposition, if: :csv_request?, only: :index
+
   layout ->{
     action_name == 'index' ? 'ops' : '../ops/seller_applications/_layout'
   }
+
+  def index
+    respond_to do |format|
+      format.html
+      format.csv
+    end
+  end
 
   def show
   end
@@ -82,5 +91,9 @@ private
 
   def _run_options(options)
     options.merge( "current_user" => current_user )
+  end
+
+  def csv_filename
+    "seller-applications-#{search.selected_filters_string}-#{Time.now.to_i}.csv"
   end
 end
