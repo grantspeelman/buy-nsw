@@ -56,6 +56,21 @@ RSpec.describe Sellers::SellerApplication::Invitation::Accept do
       expect(result).to be_failure
       expect(user.reload.confirmed_at).to be_blank
     end
-  end
 
+    context 'with errors on the User model' do
+      let(:invalid_password_params) {
+        {
+          password: 'password',
+          password_confirmation: 'password',
+        }
+      }
+      
+      it 'sets them on the contract' do
+        result = subject.({ application_id: application.id, confirmation_token: token, user: invalid_password_params })
+
+        expect(result).to be_failure
+        expect(result['contract.default'].errors[:password]).to be_present
+      end
+    end
+  end
 end

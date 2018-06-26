@@ -92,7 +92,7 @@ en:
     max_size?: "Please choose no more than %{num} options"
     one_of?: ''
     in_list?: ''
-    same_password?: must match
+    same_password?: Please enter the same password
     max_word_count?: exceeds the word count
     max_items?: You have entered too many items
     number?: Please enter a number
