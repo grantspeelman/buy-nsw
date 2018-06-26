@@ -176,6 +176,21 @@ en:
           name: Professional Indemnity and Public Liability Insurance
         financial_statement:
           name: Financial statement
+      forms:
+        assign:
+          assigned_to_id:
+            label: Assigned to
+        decision:
+          decision:
+            label: Outcome
+            approve: Approve this application
+            return_to_applicant: Return this application to the seller for changes
+            reject: Reject this application
+          response:
+            label: Feedback (shared with applicant)
+        note:
+          note:
+            label: Note
       search:
         filters:
           name:
