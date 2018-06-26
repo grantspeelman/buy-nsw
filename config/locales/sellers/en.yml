@@ -170,7 +170,7 @@ en:
             <p>For now, <strong>buy.nsw</strong> is only open to sellers who either:</p>
             <ul>
               <li>provide cloud products, services and support</li>
-              <li>provide physical infrastructure services in GovDC</li>
+              <li>provide services in NSW Government Data Centres (GovDC)</li>
             </ul>
             <p>We will be opening up to more categories soon.</p>
           ineligible_header: You can't join buy.nsw yet
@@ -178,7 +178,7 @@ en:
             <p>For now, <strong>buy.nsw</strong> is only open to sellers who either:</p>
             <ul>
               <li>provide cloud products, services and support</li>
-              <li>provide physical infrastructure services in GovDC</li>
+              <li>provide services in NSW Government Data Centres (GovDC)</li>
             </ul>
             <p>We will be opening up to more categories soon.</p>
           ineligible_change_message_html: |
@@ -186,8 +186,10 @@ en:
           ineligible_change_button_label: Change your details
           offers_cloud:
             label: Do you provide cloud products, services or support?
+            hint: This includes cloud software, hosting and infrastructure, and support services for transitioning to cloud and for monitoring and managing cloud environments.
           govdc:
-            label: Do you offer physical infrastructure services in GovDC?
+            label: Do you offer services in NSW Government Data Centres (GovDC)?
+            hint: This means you provide colocation services inside GovDC or you have a subscription to the GovDC Managed Services Backbone.
           descriptions:
             cloud-services: "Cloud software, hosting and infrastructure. Also includes support services for transitioning to cloud and for monitoring and managing cloud environments."
             software-development: "Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software. Includes all disciplines that support the delivery of software, including design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."

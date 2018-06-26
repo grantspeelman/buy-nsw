@@ -22,6 +22,11 @@ small.form-text {
   line-height: 1.3;
   margin: 0 0 0.6rem;
 }
+.form-group.radio_buttons, .multiple-choice-group {
+  > small.form-text {
+    margin-bottom: 1.5rem;
+  }
+}
 
 legend, .multiple-choice-group .form-group > label {
   font-size: 1.1rem;
