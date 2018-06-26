@@ -13,7 +13,7 @@
                        as: :invitation,
                        i18n_scope: 'sellers.applications.invitations' do |f| %>
 
-  <%= user_error_messages_for_model(operation['model']) %>
+  <%= display_block_errors(f) %>
 
   <%= f.input :email %>
   <%= f.submit 'Send invitation' %>
