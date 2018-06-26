@@ -8,12 +8,13 @@
 <p>Team members get full access to view and edit your company's profile and application.</p>
 <p>We will send an invitation to them by email with further instructions.</p>
 
-<%= bootstrap_form_for form,
+<%= buy_nsw_form_for form,
                        url: sellers_application_invitations_path(operation[:application_model]),
-                       as: :invitation do |f| %>
+                       as: :invitation,
+                       i18n_scope: 'sellers.applications.invitations' do |f| %>
 
   <%= user_error_messages_for_model(operation['model']) %>
 
-  <%= f.text_field :email %>
+  <%= f.input :email %>
   <%= f.submit 'Send invitation' %>
 <% end %>
