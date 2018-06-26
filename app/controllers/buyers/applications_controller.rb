@@ -26,7 +26,6 @@ class Buyers::ApplicationsController < Buyers::BaseController
       end
     end
 
-    flash.now.alert = I18n.t('buyers.applications.messages.changes_saved_with_errors')
     render :show
   end
 

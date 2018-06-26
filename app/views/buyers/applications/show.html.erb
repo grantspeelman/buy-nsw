@@ -1,6 +1,8 @@
 <h1><%= operation['result.step'].name(:long) %></h1>
 
 <%= buy_nsw_form_for form, url: buyers_application_path(application), as: :buyer_application do |f| %>
+  <%= display_block_errors(f) %>
+
   <%= render partial: operation['result.step'].key, locals: { f: f, operation: operation } %>
 
   <%= hidden_field_tag :step, operation['result.step'].slug %>
