@@ -1,6 +1,4 @@
-<p>Please write a few lines to tell us why you need an account on buy.nsw.</p>
-
-<%= f.text_area :application_body, hide_label: true, rows: 5 %>
+<%= f.input :application_body, as: :text, input_html: { rows: 5 } %>
 
 <fieldset class="actions">
   <%= f.submit 'Save and continue' %>
