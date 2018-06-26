@@ -40,9 +40,9 @@
     </tbody>
   </table>
 
-  <%= bootstrap_form_tag url: upload_ops_waiting_sellers_path, method: :post do |f| %>
-    <%= f.hidden_field :file_contents, value: Base64.encode64(operation['result.file_contents']) %>
-    <%= f.hidden_field :complete, value: 'true' %>
+  <%= buy_nsw_form_for :upload, url: upload_ops_waiting_sellers_path, method: :post do |f| %>
+    <%= f.hidden_field :file_contents, value: Base64.encode64(operation['result.file_contents']), name: 'file_contents' %>
+    <%= f.hidden_field :complete, value: 'true', name: 'complete' %>
     <%= f.submit 'Complete upload' %>
   <% end %>
 </section>

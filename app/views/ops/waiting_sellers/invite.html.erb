@@ -3,7 +3,7 @@
     <h1>Send invitations to waitlisted sellers</h1>
   </header>
 
-  <%= bootstrap_form_tag url: invite_ops_waiting_sellers_path, method: :post, as: :invite do |f| %>
+  <%= simple_form_for :invite, url: invite_ops_waiting_sellers_path, method: :post, as: :invite do |f| %>
     <p>Send invites to the following sellers?</p>
 
     <div class="record-list">
@@ -34,7 +34,7 @@
                 <% if operation['result.invalid_model_ids'].include?(model.id) %>
                   <%= link_to 'Fix errors', edit_ops_waiting_seller_path(model), target: '_blank' %>
                 <% end %>
-                <%= f.hidden_field "invite[ids][]", value: model.id %>
+                <%= f.hidden_field :ids, value: model.id, name: 'invite[ids][]' %>
               </td>
             </tr>
           <% end %>
