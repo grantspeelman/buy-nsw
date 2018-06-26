@@ -51,6 +51,20 @@ en:
               decided_at: 'Date decided (recent first)'
         labels:
           export_csv: Download results as CSV
+      forms:
+        assign:
+          assigned_to_id:
+            label: Assigned to
+        decision:
+          decision:
+            label: Outcome
+            approve: Approve this application
+            reject: Reject this application
+          decision_body:
+            label: Response (shared with applicant)
+        note:
+          note:
+            label: Note
     problem_reports:
       messages:
         resolved: 'The problem report has been resolved'

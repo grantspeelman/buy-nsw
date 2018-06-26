@@ -134,11 +134,6 @@ en:
           reject: Reject this application
           return_to_applicant: Return this application to the seller for changes
         response: Feedback (shared with applicant)
-      buyer_application:
-        decision:
-          approve: Approve this application
-          reject: Reject this application
-        decision_body: Response (shared with applicant)
   performance:
     seller_applications:
       progress:

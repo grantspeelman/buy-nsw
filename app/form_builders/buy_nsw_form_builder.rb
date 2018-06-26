@@ -25,6 +25,17 @@ class BuyNswFormBuilder < SimpleForm::FormBuilder
     FormObjectDecorator.new(super, self)
   end
 
+  def i18n_scope
+    if options.key?(:i18n_scope)
+      return options[:i18n_scope]
+    end
+
+    base = object.respond_to?(:i18n_base) ? object.i18n_base : ''
+    key = object.class.name.demodulize.underscore
+
+    [base, key]
+  end
+
 private
   def custom_input_options(attribute_name, options)
     hint_text = options[:hint] || translate_hint(attribute_name)
@@ -56,17 +67,6 @@ private
     else
       translate_if_exists(:hint, scope)
     end
-  end
-
-  def i18n_scope
-    if options.key?(:i18n_scope)
-      return options[:i18n_scope]
-    end
-
-    base = object.respond_to?(:i18n_base) ? object.i18n_base : ''
-    key = object.class.name.demodulize.underscore
-
-    [base, key]
   end
 
   def error_message_for_field(field_name)
