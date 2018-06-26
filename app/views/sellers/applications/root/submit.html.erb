@@ -6,9 +6,9 @@
   <p>You application is now 100% complete, so if you’re satisfied with your responses you can now send your application in for review.</p>
   <p>If you’re approved to join buy.nsw the information you’ve provided will create your seller profile page, which you can then update over time.</p>
 
-  <%= bootstrap_form_tag url: '', method: 'post' do |f| %>
+  <%= buy_nsw_form_for :submit, url: '', method: 'post' do |f| %>
     <%= f.submit 'Submit application', name: '' %>
-    <%= f.hidden_field :complete, value: '1' %>
+    <%= f.hidden_field :complete, value: '1', name: 'complete' %>
   <% end %>
 <% else %>
   <p>You need to complete all other steps before you can submit your application.</p>
