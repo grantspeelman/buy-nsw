@@ -1,7 +1,7 @@
 <section class="upload-form" data-module="collapsible-section">
   <h2>Upload sellers to the waitlist</h2>
   <div class="inner">
-    <%= bootstrap_form_tag url: upload_ops_waiting_sellers_path, method: :post do |f| %>
+    <%= simple_form_for :upload, url: upload_ops_waiting_sellers_path, method: :post do |f| %>
       <p>You can bulk upload sellers to the waitlist as a comma-separated values (CSV) file.</p>
 
       <ul class="column-headings-list">
@@ -22,7 +22,7 @@
 
       <p>You will have chance to preview the data before completing the import.</p>
 
-      <%= f.file_field :file, class: 'form-control' %>
+      <%= f.input :file, as: :file, input_html: { class: 'form-control', name: 'file' } %>
       <%= f.submit 'Upload sellers', class: 'btn btn-primary' %>
     <% end %>
   </div>

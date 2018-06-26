@@ -6,5 +6,9 @@ module Buyers::BuyerApplication::Contract
     include Forms::ValidationHelper
 
     model :application
+
+    def i18n_base
+      'buyers.applications.steps'
+    end
   end
 end

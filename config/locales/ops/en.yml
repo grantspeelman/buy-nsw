@@ -51,6 +51,20 @@ en:
               decided_at: 'Date decided (recent first)'
         labels:
           export_csv: Download results as CSV
+      forms:
+        assign:
+          assigned_to_id:
+            label: Assigned to
+        decision:
+          decision:
+            label: Outcome
+            approve: Approve this application
+            reject: Reject this application
+          decision_body:
+            label: Response (shared with applicant)
+        note:
+          note:
+            label: Note
     problem_reports:
       messages:
         resolved: 'The problem report has been resolved'
@@ -162,6 +176,21 @@ en:
           name: Professional Indemnity and Public Liability Insurance
         financial_statement:
           name: Financial statement
+      forms:
+        assign:
+          assigned_to_id:
+            label: Assigned to
+        decision:
+          decision:
+            label: Outcome
+            approve: Approve this application
+            return_to_applicant: Return this application to the seller for changes
+            reject: Reject this application
+          response:
+            label: Feedback (shared with applicant)
+        note:
+          note:
+            label: Note
       search:
         filters:
           name:
@@ -193,6 +222,29 @@ en:
             name: Invitation status
           term:
             name: Search
+      update:
+        name:
+          label: Seller name
+        abn:
+          label: ABN (optional)
+        contact_name:
+          label: Business contact name
+        contact_email:
+          label: Business contact email
+        contact_position:
+          label: Business contact position (optional)
+        website_url:
+          label: Website URL (optional)
+        address:
+          label: Address (optional)
+        suburb:
+          label: Suburb (optional)
+        postcode:
+          label: Postcode (optional)
+        state:
+          label: State (optional)
+        country:
+          label: Country (optional)
     product_orders:
       search:
         filters:

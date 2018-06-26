@@ -1,15 +1,4 @@
-<p>
-  To create a buyer account you need to be a
-  government employee,
-  be authorised by a government employee or
-  be an employee of another organisation that has
-  <a href=\"https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration\">registered as an eligible buyer</a>.
-  Choose the option below that matches your situation.
-</p>
-
-<fieldset class="multiple-choice-group radio-group">
-  <%= f.collection_radio_buttons(:employment_status, Buyer.employment_status.options, :last, :first, hide_label: true) %>
-</fieldset>
+<%= f.input :employment_status, as: :radio_buttons, collection: Buyer.employment_status.options %>
 
 <fieldset class="actions">
   <%= f.submit 'Save and continue' %>

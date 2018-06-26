@@ -42,6 +42,9 @@ en:
       title: Your application
       aside_html: |
         <p>Complete the steps in any order. Your progress is saved automatically, so you can return at any time.</p>
+      invitations:
+        email:
+          label: Email address
       steps:
         financial_statement:
           short: 'Your financial statement'

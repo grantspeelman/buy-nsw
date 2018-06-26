@@ -19,6 +19,15 @@ class Sellers::SellerApplication::Invitation::Accept < Trailblazer::Operation
   step Contract::Validate( key: :user )
   step :confirm_user!
   step Contract::Persist()
+  failure :pass_devise_errors_to_contract!
+
+  def pass_devise_errors_to_contract!(options, **)
+    return unless options['model'].present?
+    
+    options['model'].errors.each do |key, error|
+      options['contract.default'].errors.add(key, error)
+    end
+  end
 
   def confirm_user!(options, model:, **)
     model.confirmed_at = Time.now

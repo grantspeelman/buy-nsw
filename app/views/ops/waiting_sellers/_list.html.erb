@@ -1,4 +1,4 @@
-<%= bootstrap_form_tag url: invite_ops_waiting_sellers_path, method: :get do |f| %>
+<%= buy_nsw_form_for :waiting_sellers, url: invite_ops_waiting_sellers_path, method: :get do |f| %>
 
 <table class="table">
   <thead>
@@ -14,9 +14,7 @@
     <% results.each do |seller| %>
       <tr>
         <td class="invite-check-box">
-          <% if seller.invitable? %>
-            <%= f.check_box 'invite[ids][]', { label: 'Invite', include_hidden: false }, seller.id.to_s %>
-          <% end %>
+          <%= f.input :ids, as: :boolean, label: 'Invite', checked_value: seller.id.to_s, unchecked_value: nil, input_html: { name: 'invite[ids][]', disabled: !seller.invitable? } %>
         </td>
         <th scope="row"><%= seller.name %></th>
         <td><%= seller.contact_name %></td>

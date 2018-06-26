@@ -1,13 +1,7 @@
-<%= bootstrap_form_for form, url: decide_ops_buyer_application_path(form.model) do |f| %>
-  <fieldset class="multiple-choice-group radio-group">
-    <legend>Outcome</legend>
-    <%= f.form_group :decision do %>
-      <%= f.radio_button :decision, :approve %>
-      <%= f.radio_button :decision, :reject %>
-    <% end %>
-  </fieldset>
+<%= buy_nsw_form_for form, url: decide_ops_buyer_application_path(form.model), i18n_scope: 'ops.buyer_applications.forms.decision' do |f| %>
+  <%= f.input :decision, as: :radio_buttons, collection: form_options_with_labels(f.i18n_scope, :decision, [:approve, :reject]) %>
 
-  <%= f.text_area :decision_body, rows: 5 %>
+  <%= f.input :decision_body, as: :text, input_html: { rows: 5 } %>
 
   <%= f.submit 'Make decision' %>
 <% end %>

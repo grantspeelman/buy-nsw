@@ -1,15 +1,4 @@
 en:
-  activemodel:
-    attributes:
-      buyers:
-        buyer_application:
-          contract:
-            basic_details:
-              name: Full name
-              organisation: Organisation name
-            manager_approval:
-              manager_name: "Your manager's full name"
-              manager_email: "Your manager's email"
   buyers:
     applications:
       messages:
@@ -21,15 +10,32 @@ en:
         basic_details:
           short: 'Your details'
           long: 'Your details'
+          name:
+            label: Full name
+          organisation:
+            label: Organisation name
         email_approval:
           short: 'Application'
           long: 'Why do you need access?'
+          application_body:
+            label: Please write a few lines to tell us why you need an account on buy.nsw
         manager_approval:
           short: 'Your manager'
           long: 'Approval from your line manager'
+          manager_name:
+            label: "Your manager's full name"
+          manager_email:
+            label: "Your manager's email"
         employment_status:
           short: Employment status
-          long: 'What is your employment status?'
+          long: 'Your employment status'
+          employment_status:
+            label: What is your employment status?
+            hint_html: |
+              To create a buyer account you need to be a government employee,
+              be authorised by a government employee or be an employee of another organisation that has
+              <a href=\"https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration\">registered as an eligible buyer</a>.
+              Choose the option below that matches your situation.
         terms:
           short: 'Review and submit'
           long: 'Review and submit'
@@ -92,7 +98,7 @@ en:
     max_size?: "Please choose no more than %{num} options"
     one_of?: ''
     in_list?: ''
-    same_password?: must match
+    same_password?: Please enter the same password
     max_word_count?: exceeds the word count
     max_items?: You have entered too many items
     number?: Please enter a number
@@ -128,11 +134,6 @@ en:
           reject: Reject this application
           return_to_applicant: Return this application to the seller for changes
         response: Feedback (shared with applicant)
-      buyer_application:
-        decision:
-          approve: Approve this application
-          reject: Reject this application
-        decision_body: Response (shared with applicant)
   performance:
     seller_applications:
       progress:

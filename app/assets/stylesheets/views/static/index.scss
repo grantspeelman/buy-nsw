@@ -96,15 +96,20 @@
       @extend .form-inline;
 
       .form-group {
-        flex: 1 0 auto;
+        display: flex;
+        width: 100%;
+
+        input {
+          flex: 1;
+        }
       }
       input.form-control {
-        width: 100%;
         margin-right: .5rem;
       }
       input[type=submit] {
         font-size: 1.1rem;
         border-bottom: none;
+        max-width: 8rem;
       }
     }
   }

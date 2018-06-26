@@ -5,24 +5,24 @@
 
   <p>You can manually amend the details of this waitlisted seller. Once you have invited a seller, the details here can't be changed anymore.</p>
 
-  <%= bootstrap_form_for operation['contract.default'], url: ops_waiting_seller_path(operation['contract.default']), as: :waiting_seller do |f| %>
+  <%= buy_nsw_form_for operation['contract.default'], url: ops_waiting_seller_path(operation['contract.default']), as: :waiting_seller, i18n_scope: 'ops.waiting_sellers.update' do |f| %>
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.text_field :name %>
-        <%= f.text_field :abn %>
+        <%= f.input :name %>
+        <%= f.input :abn %>
 
-        <%= f.text_field :contact_name %>
-        <%= f.text_field :contact_email %>
-        <%= f.text_field :contact_position %>
-        <%= f.text_field :website_url %>
+        <%= f.input :contact_name %>
+        <%= f.input :contact_email %>
+        <%= f.input :contact_position %>
+        <%= f.input :website_url %>
       </div>
       <div class="col-md-6">
-        <%= f.text_field :address %>
-        <%= f.text_field :suburb %>
-        <%= f.text_field :postcode %>
-        <%= f.collection_select :state, SellerAddress.state.options, :last, :first, include_blank: true %>
-        <%= f.collection_select :country, ISO3166::Country.translations, :first, :last, include_blank: true %>
+        <%= f.input :address %>
+        <%= f.input :suburb %>
+        <%= f.input :postcode %>
+        <%= f.input :state, as: :select, collection: SellerAddress.state.options, label_method: :first, value_method: :last, include_blank: true %>
+        <%= f.input :country, as: :select, collection: ISO3166::Country.translations, label_method: :last, value_method: :first, include_blank: true %>
       </div>
     </div>
 

@@ -21,7 +21,14 @@ class Sellers::SellerApplication::Invitation::Create < Trailblazer::Operation
   step :set_random_password!
   step :skip_automatic_confirmation_email!
   step Contract::Persist()
+  failure :pass_devise_errors_to_contract!
   success :send_invitation_email!
+
+  def pass_devise_errors_to_contract!(options, model:, **)
+    model.errors.each do |key, error|
+      options['contract.default'].errors.add(key, error)
+    end
+  end
 
   def set_random_password!(options, model:, **)
     model.password = model.password_confirmation = SecureRandom.hex(32)

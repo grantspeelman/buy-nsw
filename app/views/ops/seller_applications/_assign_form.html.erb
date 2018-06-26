@@ -1,5 +1,4 @@
-<%= bootstrap_form_for form, url: assign_ops_seller_application_path(form.model) do |f| %>
-  <%= f.collection_select :assigned_to_id, available_assignees, :id, :email %>
-
+<%= buy_nsw_form_for form, url: assign_ops_seller_application_path(form.model), i18n_scope: 'ops.seller_applications.forms.assign' do |f| %>
+  <%= f.input :assigned_to_id, as: :select, collection: available_assignees, label_method: :email, value_method: :id, include_blank: false %>
   <%= f.submit 'Assign' %>
 <% end %>

@@ -1,7 +1,6 @@
+<%= buy_nsw_form_for event, url: notes_ops_buyer_application_path(application), i18n_scope: 'ops.buyer_applications.forms.note' do |f| %>
 
-<%= bootstrap_form_for event, url: notes_ops_buyer_application_path(application) do |f| %>
-
-  <%= f.text_area :note, rows: 5 %>
+  <%= f.input :note, as: :text, input_html: { rows: 5 } %>
   <p>This <strong>will be visible</strong> to other ops user and <strong>not visible</strong> to the applicant.</p>
 
   <%= f.submit 'Add Note' %>

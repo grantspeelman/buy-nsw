@@ -14,15 +14,15 @@
       <%= render partial: 'errors', locals: { errors: operation['errors'] } %>
     </div>
   <% else %>
-    <%= bootstrap_form_for(operation['contract.default'], as: :invitation, url: accept_sellers_waitlist_invitation_path(operation['model'].invitation_token)) do |f| %>
+    <%= buy_nsw_form_for(operation['contract.default'], as: :invitation, url: accept_sellers_waitlist_invitation_path(operation['model'].invitation_token)) do |f| %>
       <div data-module="password-strength">
-        <%= f.password_field :password, autocomplete: "off",
-                                        label: t('users.registrations.shared.form.password_label'),
-                                        help: t('users.registrations.shared.form.password_help') %>
+        <%= f.input :password, autocomplete: "off",
+                               label: t('users.registrations.shared.form.password_label'),
+                               hint: t('users.registrations.shared.form.password_help') %>
       </div>
 
-      <%= f.password_field :password_confirmation, autocomplete: "off",
-                                                   label: t('users.registrations.shared.form.password_confirmation_label') %>
+      <%= f.input :password_confirmation, autocomplete: "off",
+                                          label: t('users.registrations.shared.form.password_confirmation_label') %>
 
       <fieldset class="actions">
         <p>

@@ -7,6 +7,10 @@ class FormObjectDecorator < BaseDecorator
   end
 
   def errors
-    FormErrorDecorator.new(super, view_context)
+    if __getobj__.respond_to?(:errors)
+      FormErrorDecorator.new(super, view_context)
+    else
+      Hash.new([])
+    end
   end
 end

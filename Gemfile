@@ -39,8 +39,6 @@ gem 'trailblazer', '~> 2.0.0'
 gem 'trailblazer-rails', '~> 1.0.4'
 
 gem 'bootstrap', '~> 4.0.0'
-gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git',
-                      branch: 'master'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
