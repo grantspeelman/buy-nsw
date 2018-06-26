@@ -222,6 +222,29 @@ en:
             name: Invitation status
           term:
             name: Search
+      update:
+        name:
+          label: Seller name
+        abn:
+          label: ABN (optional)
+        contact_name:
+          label: Business contact name
+        contact_email:
+          label: Business contact email
+        contact_position:
+          label: Business contact position (optional)
+        website_url:
+          label: Website URL (optional)
+        address:
+          label: Address (optional)
+        suburb:
+          label: Suburb (optional)
+        postcode:
+          label: Postcode (optional)
+        state:
+          label: State (optional)
+        country:
+          label: Country (optional)
     product_orders:
       search:
         filters:

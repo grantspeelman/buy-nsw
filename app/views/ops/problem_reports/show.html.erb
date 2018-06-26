@@ -103,8 +103,8 @@
     <h2>Edit the tags on this report</h2>
 
     <div class="inner">
-      <%= bootstrap_form_for operations[:tag]['contract.default'], url: tag_ops_problem_report_path(problem_report), method: :put, as: :problem_report do |f| %>
-        <%= f.text_field :tags %>
+      <%= buy_nsw_form_for operations[:tag]['contract.default'], url: tag_ops_problem_report_path(problem_report), method: :put, as: :problem_report do |f| %>
+        <%= f.input :tags, label: 'Tags' %>
         <%= f.submit "Save" %>
       <% end %>
     </div>
