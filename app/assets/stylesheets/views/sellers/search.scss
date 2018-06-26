@@ -8,15 +8,31 @@
     label {
       display: block;
     }
-    .form-group {
-      width: 50%;
+
+    .input-group {
+      display: flex;
+      @include media-breakpoint-up(md) {
+        width: 70%;
+      }
+
+      input {
+        display: inline-block;
+        vertical-align: top;
+        flex: 1;
+      }
     }
     input[type=text].form-control {
       font-size: 1.1em;
     }
-    .form-group, input[type=submit] {
-      display: inline-block;
-      vertical-align: top;
+    input[type=submit] {
+      flex: auto;
+      width: auto;
+      margin-top: .5rem;
+
+      @include media-breakpoint-up(sm) {
+        max-width: 8rem;
+        margin-top: 0;
+      }
     }
     input[type=submit] {
       @include button-primary;

@@ -1,6 +1,8 @@
 <div class="inline-search-form">
-  <%= bootstrap_form_tag url: sellers_search_path, method: :get, enforce_utf8: false do |f| %>
-    <%= f.text_field :q, placeholder: 'Search for a seller', value: '', class: 'form-control', hide_label: true %>
-    <%= f.submit 'Search', name: nil, class: 'btn btn-primary' %>
+  <%= buy_nsw_form_for :search, url: sellers_search_path, method: :get, enforce_utf8: false do |f| %>
+    <div class="form-group">
+      <%= f.text_field :q, placeholder: 'Search for a seller', name: 'q', value: '', class: 'form-control', hide_label: true %>
+      <%= f.submit 'Search', name: nil, class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>
