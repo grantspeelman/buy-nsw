@@ -5,7 +5,7 @@
     <%= t('buyers.product_orders.intro_html') %>
   </div>
 
-  <%= reform_form_for(contract, as: :product_order, url: buyers_product_orders_path(product), i18n_scope: 'buyers.product_orders') do |f| %>
+  <%= buy_nsw_form_for(contract, as: :product_order, url: buyers_product_orders_path(product), i18n_scope: 'buyers.product_orders') do |f| %>
     <%= display_block_errors(f) %>
 
     <%= f.input :estimated_contract_value %>

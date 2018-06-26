@@ -6,7 +6,7 @@
     <h2><%= content_for :title %></h2>
   </header>
 
-  <%= reform_form_for(resource, as: resource_name, url: account_path, i18n_scope: 'users.registrations.edit', html: { method: :put }) do |f| %>
+  <%= buy_nsw_form_for(resource, as: resource_name, url: account_path, i18n_scope: 'users.registrations.edit', html: { method: :put }) do |f| %>
     <fieldset>
       <%= f.input :email, autocomplete: "email" %>
 

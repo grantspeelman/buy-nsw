@@ -1,4 +1,4 @@
-class ReformFormBuilder < SimpleForm::FormBuilder
+class BuyNswFormBuilder < SimpleForm::FormBuilder
   def input(attribute_name, options = {}, &block)
     super(attribute_name, custom_input_options(attribute_name, options), &block)
   end
@@ -62,7 +62,7 @@ private
     if options.key?(:i18n_scope)
       return options[:i18n_scope]
     end
-    
+
     base = object.respond_to?(:i18n_base) ? object.i18n_base : ''
     key = object.class.name.demodulize.underscore
 
