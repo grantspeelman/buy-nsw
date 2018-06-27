@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :waiting_seller do
     name 'Seller In Waiting'
-    sequence(:abn) {|n| build_abn(n) }
+    abn
     address '123 Test Street'
     suburb 'Test Suburb'
     postcode '2000'

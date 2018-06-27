@@ -1,16 +1,31 @@
+<p>Hello <%= @application.buyer.name %>,</p>
+
 <% if @application.decision_body.present? %>
-<p>
- Your application to become a buyer on <strong>buy.nsw</strong> has been approved.</p> 
-</p>
-<p>
-You also got this feedback from your reviewer:"<%= @application.decision_body %>"
-</p>
+  <p>Your application to become a buyer was approved with this feedback from our team:</p>
+
+  <div class="quote">
+    <%= simple_format(h(@application.decision_body)) %>
+  </div>
 <% else %>
-<p>
- Your application to become a buyer on <strong>buy.nsw</strong> has been approved.
-</p>
+  <p>Your application to become a buyer was approved.</p>
 <% end %>
 
-<p> You're free to start browsing <strong>buy.nsw</strong>.  
+<p>
+  As a registered buyer, you can browse and buy cloud products and services
+  from
+  <%= link_to buyers_dashboard_url do %>
+    <strong>buy.nsw</strong>
+  <% end %>.
+</p>
 
-<p><%= link_to 'Get started', root_url %></p>
+<p>
+  <strong>buy.nsw</strong> is an agile development, which means the platform will evolve over
+  time in response to feedback from buyers and sellers. To share your feedback,
+  or to request an amend to your account information, please contact us at
+  <%= mail_to 'buy.nsw@finance.nsw.gov.au' %>.
+</p>
+
+<p>
+  More soon,<br>
+  The <strong>buy.nsw</strong> team
+</p>

@@ -1,9 +1,26 @@
-<p>
-  Your application to become a buyer on <strong>buy.nsw</strong> wasn't approved.
-</p>
+<p>Hello <%= @application.buyer.name %>,</p>
+
+<p>Thanks for your application to become a buyer on <strong>buy.nsw</strong>.</p>
+
 <% if @application.decision_body.present? %>
+  <p>
+    After a careful review, we’ve decided your application doesn’t meet the
+    criteria at this time because:
+  </p>
+
+  <div class="quote">
+    <%= simple_format(h(@application.decision_body)) %>
+  </div>
+<% else %>
 <p>
-  The reason is because: "<%= @application.decision_body %>"
+  After a careful review, we’ve decided your application doesn’t meet the
+  criteria at this time.
 </p>
 <% end %>
-<p> You can apply again in future if the situation changes. Thanks for your interest in <strong>buy.nsw</strong>.</p>
+
+<p>
+  If you have any questions, you can contact us at
+  <%= mail_to 'buy.nsw.@finance.nsw.gov.au' %>.
+</p>
+
+<p>The <strong>buy.nsw</strong> team</p>

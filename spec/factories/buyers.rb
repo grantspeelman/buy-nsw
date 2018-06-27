@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :buyer do
     association :user
-
+    name 'Sarah'
     trait :inactive do
       state :inactive
     end
