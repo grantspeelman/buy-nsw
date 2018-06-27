@@ -1,7 +1,7 @@
-<% if seller.products.any? %>
+<% if seller.products.active.any? %>
 <ul id="products">
   <h2>Products</h2>
-  <% seller.products.each do |product| %>
+  <% seller.products.active.each do |product| %>
   <li>
     <%= link_to product.name, pathway_product_path(product.section, product) %> &mdash;
     <%= product.summary %>

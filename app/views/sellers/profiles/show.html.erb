@@ -34,7 +34,7 @@
           <% if seller.awards.any? %>
             <li><%= link_to 'Recognition', '#recognition' %></li>
           <% end %>
-          <% if seller.products.any? %>
+          <% if seller.products.active.any? %>
             <li><%= link_to 'Products', '#products' %></li>
           <% end %>
         </ol>
