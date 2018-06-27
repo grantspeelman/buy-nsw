@@ -51,7 +51,7 @@ FactoryBot.define do
     trait :with_tailor_fields do
       name 'Seller Ltd'
       summary 'We sell things'
-      sequence(:abn) {|n| build_abn(n) }
+      abn
       website_url 'http://example.org'
       linkedin_url 'http://linkedin.com/example'
 
