@@ -22,8 +22,8 @@ class Document < ApplicationRecord
     mime_type.preferred_extension.upcase
   end
 
-  def size_in_kilobytes
-    "#{document.size / 1000}KB"
+  def size
+    document.size
   end
 
   def update_document_attributes

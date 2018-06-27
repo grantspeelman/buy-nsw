@@ -44,7 +44,7 @@ module Pathways::ProductsHelper
     case upload.scan_status
     when 'clean'
       out << content_tag(:span, class: 'actions') do
-        label = h("View document (#{upload.extension}, #{upload.size_in_kilobytes})")
+        label = h("View document (#{upload.extension}, #{number_to_human_size(upload.size)})")
         link_to(label, upload.document.url, target: '_blank', title: 'Download this document')
       end
     when 'unscanned'

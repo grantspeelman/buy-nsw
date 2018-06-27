@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Showing products', type: :feature, js: true do
+  include ActionView::Helpers::NumberHelper
 
   let(:product) { create(:active_product) }
 
@@ -36,7 +37,7 @@ RSpec.describe 'Showing products', type: :feature, js: true do
 
     within '.documents' do
       expect(page).to have_link('Additional terms')
-      expect(page).to have_content("#{document.extension}, #{document.size_in_kilobytes}")
+      expect(page).to have_content("#{document.extension}, #{number_to_human_size(document.size)}")
     end
   end
 
@@ -48,5 +49,4 @@ RSpec.describe 'Showing products', type: :feature, js: true do
       expect(definition).to be_present
     end
   end
-
 end
