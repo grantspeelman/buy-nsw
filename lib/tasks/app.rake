@@ -28,11 +28,6 @@ namespace :app do
         services << 'ict-workforce' if [false, true].sample
         services << 'training-learning' if [false, true].sample
 
-        industry = []
-        industry << 'ict' if [false, true].sample
-        industry << 'construction' if [false, true].sample
-        industry << 'other' if [false, true].sample
-
         (1..20).each do |i|
           seller = create(
             :active_seller,
@@ -70,7 +65,6 @@ namespace :app do
             methodologies: Faker::Lorem.paragraph,
             technologies: Faker::Lorem.paragraph,
             services: services,
-            industry: industry,
             australian_owned: [false, true].sample,
             rural_remote: [false, true].sample,
             workers_compensation_exempt: false

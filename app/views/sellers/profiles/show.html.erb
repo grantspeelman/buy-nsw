@@ -21,8 +21,7 @@
       <%= simple_format seller.summary %>
     </div>
     <div class="actions">
-      <a href="" class="btn-dark">See all products</a>
-      <a href="" class="btn-primary">Contact seller</a>
+      <a href="" class="btn btn-primary">Contact seller</a>
     </div>
   </div>
 
@@ -35,6 +34,9 @@
           <% if seller.awards.any? %>
             <li><%= link_to 'Recognition', '#recognition' %></li>
           <% end %>
+          <% if seller.products.active.any? %>
+            <li><%= link_to 'Products', '#products' %></li>
+          <% end %>
         </ol>
       </div>
     </div>
@@ -42,5 +44,6 @@
       <%= render 'basic_details' %>
       <%= render 'company_details' %>
       <%= render 'recognition' %>
+      <%= render 'products' %>
     </div>
 </section>
