@@ -25,7 +25,7 @@ RSpec.describe BuyerApplicationMailer, type: :mailer do
     let(:mail) { BuyerApplicationMailer.with(application: application).application_approved_email }
 
     it 'renders the headers' do
-      expect(mail.subject).to match("Your application has been approved")
+      expect(mail.subject).to match("Welcome to the buy.nsw community")
       expect(mail.to).to contain_exactly(application.user.email)
     end
 
@@ -39,7 +39,7 @@ RSpec.describe BuyerApplicationMailer, type: :mailer do
     let(:mail) { BuyerApplicationMailer.with(application: application).application_rejected_email }
 
     it 'renders the headers' do
-      expect(mail.subject).to match("Your application has been rejected")
+      expect(mail.subject).to match("Feedback on your buy.nsw application")
       expect(mail.to).to contain_exactly(application.user.email)
     end
 
