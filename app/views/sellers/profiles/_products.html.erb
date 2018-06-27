@@ -1,3 +1,4 @@
+<% if seller.products.any? %>
 <ul id="products">
   <h2>Products</h2>
   <% seller.products.each do |product| %>
@@ -7,3 +8,4 @@
   </li>
   <% end %>
 </ul>
+<% end %>
