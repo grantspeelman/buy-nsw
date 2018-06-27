@@ -42,9 +42,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
       select_application_from_list(application.seller.name)
 
-      within '.right-col nav' do
-        click_on 'Documents'
-      end
+      click_navigation_item 'Documents'
 
       within_document ops_field_label(:financial_statement) do
         expect(page).to have_link('View document')
@@ -62,9 +60,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       application = create(:awaiting_assignment_seller_application, seller: seller)
       visit ops_seller_application_path(application)
 
-      within '.right-col nav' do
-        click_on 'Documents'
-      end
+      click_navigation_item 'Documents'
 
       within_document ops_field_label(:workers_compensation_certificate) do
         expect(page).to have_content('Not required')
@@ -111,18 +107,14 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def browse_application_details
-    within '.right-col nav' do
-      click_on 'Seller details'
-      click_on 'Documents'
-      click_on 'Application'
-    end
+    click_navigation_item 'Seller details'
+    click_navigation_item 'Documents'
+    click_navigation_item 'Application'
   end
 
   def browse_product(product)
-    within '.right-col nav' do
-      click_on product.name
-      click_on 'Application'
-    end
+    click_navigation_item product.name
+    click_navigation_item 'Application'
   end
 
   def decide_on_application(decision:, response:)
@@ -148,6 +140,12 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
   def ops_field_label(key)
     I18n.t("#{key}.name", scope: [ :ops, :seller_applications, :fields ])
+  end
+
+  def click_navigation_item(label)
+    within '.right-col nav' do
+      click_on label
+    end
   end
 
 end
