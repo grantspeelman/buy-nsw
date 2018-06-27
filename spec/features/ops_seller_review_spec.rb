@@ -76,6 +76,59 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
         expect(page).to have_content('This seller was invited')
       end
     end
+
+    context 'with uploaded terms for a product' do
+      let!(:application) { create(:awaiting_assignment_seller_application) }
+      let!(:product) { create(:inactive_product, :with_basic_details, seller: application.seller) }
+
+      context 'for an unscanned document' do
+        let!(:document) { create(:unscanned_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows a holding message' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_content('awaiting virus scan')
+          end
+        end
+      end
+
+      context 'for a clean document' do
+        let!(:document) { create(:clean_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows a download button' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_link('View document')
+          end
+        end
+      end
+
+      context 'for an infected document' do
+        let!(:document) { create(:infected_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows an error message' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_content('infected file')
+          end
+        end
+      end
+    end
   end
 
   def select_application_from_list(seller_name)
@@ -146,6 +199,11 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     within '.right-col nav' do
       click_on label
     end
+  end
+
+  def within_product_detail(label, &block)
+    term = page.find(:xpath, "//dt[contains(text(),'#{label}')]/following-sibling::dd")
+    within(term, &block)
   end
 
 end

@@ -49,6 +49,7 @@ private
   def additional_sections
     {
       "Product basics" => product_basics,
+      "Additional terms" => additional_terms,
       "Commercials" => commercials,
     }
   end
@@ -76,6 +77,12 @@ private
         a["Product contact phone"] = product.contact_phone
       end
     end
+  end
+
+  def additional_terms
+    {
+      'Additional terms document' => (product.terms.present? ? product.terms : 'Not provided')
+    }
   end
 
   def commercials
