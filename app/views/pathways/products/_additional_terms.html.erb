@@ -1,0 +1,9 @@
+<% if product.display_additional_terms? %>
+  <ul class="documents">
+    <li>
+      <span aria-hidden="true"></span>
+      <%= link_to 'Additional terms', product.terms.document.url, target: 'blank' %>
+      (<%= product.terms.extension %>, <%= product.terms.size_in_kilobytes %>)
+    </li>
+  </ul>
+<% end %>

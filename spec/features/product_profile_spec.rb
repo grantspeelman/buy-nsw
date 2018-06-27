@@ -29,6 +29,17 @@ RSpec.describe 'Showing products', type: :feature, js: true do
     end
   end
 
+  it 'links to the additional terms' do
+    document = create(:clean_document, documentable: product, kind: 'terms')
+
+    visit pathway_product_path(product.section, product)
+
+    within '.documents' do
+      expect(page).to have_link('Additional terms')
+      expect(page).to have_content("#{document.extension}, #{document.size_in_kilobytes}")
+    end
+  end
+
   def expect_list_entry(label, *contents)
     term = page.find('dt', text: label)
 
