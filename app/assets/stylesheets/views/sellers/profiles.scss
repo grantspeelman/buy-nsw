@@ -2,7 +2,7 @@
   @include profile;
   @include tags;
 
-  ul.addresses {
+  ul.addresses, ul#products {
     padding-left: 0;
 
     li {
@@ -12,6 +12,18 @@
       &:last-of-type {
         padding-bottom: 0;
       }
+    }
+  }
+
+  ul#products {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.7em;
+
+    li {
+      border-top: 1px solid #eee;
+      padding-top: 0.7em;
+      padding-bottom: 0.7em;
+      margin-bottom: 0;
     }
   }
 }
