@@ -23,7 +23,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.user.email,
-      subject: "buy.nsw: Your application has been rejected",
+      subject: "Feedback on your buy.nsw application",
     )
   end
 end
