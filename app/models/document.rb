@@ -19,7 +19,7 @@ class Document < ApplicationRecord
   end
 
   def extension
-    mime_type.preferred_extension
+    mime_type.preferred_extension.upcase
   end
 
   def size_in_kilobytes
