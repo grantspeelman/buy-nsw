@@ -18,6 +18,14 @@ class Document < ApplicationRecord
     MIME::Types[content_type].first
   end
 
+  def extension
+    mime_type.preferred_extension
+  end
+
+  def size_in_kilobytes
+    "#{document.size / 1000}KB"
+  end
+
   def update_document_attributes
     if document.present? && document_changed?
       self.scan_status = 'unscanned'

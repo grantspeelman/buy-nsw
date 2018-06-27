@@ -26,7 +26,7 @@
         <% if file_clean?(upload) %>
           <p>
             <%= link_to upload.url, class: 'btn btn-primary', target: '_blank' do %>
-              View document (<%= upload.mime_type.preferred_extension %>, <%= upload.document.size / 1000 %>KB)
+              View document (<%= upload.extension %>, <%= upload.size_in_kilobytes %>)
             <% end %>
           </p>
         <% else %>
