@@ -16,6 +16,10 @@ class ProductDecorator < BaseDecorator
     custom_contact? ? super : seller.contact_phone
   end
 
+  def display_additional_terms?
+    terms.document.present? && terms.scan_status == 'clean'
+  end
+
   def details
     ProductDetails.new(__getobj__).details
   end

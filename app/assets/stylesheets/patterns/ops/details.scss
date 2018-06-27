@@ -32,6 +32,17 @@
     em {
       color: #888;
     }
+
+    .actions {
+      display: block;
+      margin-top: .5rem;
+
+      a {
+        @include button;
+        @include button-primary;
+        font-size: .9rem;
+      }
+    }
   }
 }
 

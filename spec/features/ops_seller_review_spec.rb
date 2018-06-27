@@ -42,9 +42,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
       select_application_from_list(application.seller.name)
 
-      within '.right-col nav' do
-        click_on 'Documents'
-      end
+      click_navigation_item 'Documents'
 
       within_document ops_field_label(:financial_statement) do
         expect(page).to have_link('View document')
@@ -62,9 +60,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       application = create(:awaiting_assignment_seller_application, seller: seller)
       visit ops_seller_application_path(application)
 
-      within '.right-col nav' do
-        click_on 'Documents'
-      end
+      click_navigation_item 'Documents'
 
       within_document ops_field_label(:workers_compensation_certificate) do
         expect(page).to have_content('Not required')
@@ -78,6 +74,59 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
       within '.current-view' do
         expect(page).to have_content('This seller was invited')
+      end
+    end
+
+    context 'with uploaded terms for a product' do
+      let!(:application) { create(:awaiting_assignment_seller_application) }
+      let!(:product) { create(:inactive_product, :with_basic_details, seller: application.seller) }
+
+      context 'for an unscanned document' do
+        let!(:document) { create(:unscanned_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows a holding message' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_content('awaiting virus scan')
+          end
+        end
+      end
+
+      context 'for a clean document' do
+        let!(:document) { create(:clean_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows a download button' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_link('View document')
+          end
+        end
+      end
+
+      context 'for an infected document' do
+        let!(:document) { create(:infected_document, documentable: product, kind: 'terms') }
+
+        before(:example) {
+          visit ops_seller_application_path(application)
+          click_navigation_item(product.name)
+        }
+
+        it 'shows an error message' do
+          within_product_detail('Additional terms document') do
+            expect(page).to have_content(document.original_filename)
+            expect(page).to have_content('infected file')
+          end
+        end
       end
     end
   end
@@ -111,18 +160,14 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def browse_application_details
-    within '.right-col nav' do
-      click_on 'Seller details'
-      click_on 'Documents'
-      click_on 'Application'
-    end
+    click_navigation_item 'Seller details'
+    click_navigation_item 'Documents'
+    click_navigation_item 'Application'
   end
 
   def browse_product(product)
-    within '.right-col nav' do
-      click_on product.name
-      click_on 'Application'
-    end
+    click_navigation_item product.name
+    click_navigation_item 'Application'
   end
 
   def decide_on_application(decision:, response:)
@@ -148,6 +193,17 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
   def ops_field_label(key)
     I18n.t("#{key}.name", scope: [ :ops, :seller_applications, :fields ])
+  end
+
+  def click_navigation_item(label)
+    within '.right-col nav' do
+      click_on label
+    end
+  end
+
+  def within_product_detail(label, &block)
+    term = page.find(:xpath, "//dt[contains(text(),'#{label}')]/following-sibling::dd")
+    within(term, &block)
   end
 
 end

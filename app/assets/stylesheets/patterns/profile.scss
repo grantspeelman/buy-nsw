@@ -35,6 +35,24 @@
         text-align: left;
       }
 
+      .documents {
+        padding: 1rem 15px;
+        margin: 0 -15px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        font-size: .9rem;
+
+        li {
+          list-style: none;
+        }
+
+        span {
+          @extend .oi;
+          @extend .oi-document;
+          padding-right: .5rem;
+        }
+      }
+
       dl {
         dt, dd {
           @include media-breakpoint-up(md) {

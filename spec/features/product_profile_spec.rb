@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Showing products', type: :feature, js: true do
+  include ActionView::Helpers::NumberHelper
 
   let(:product) { create(:active_product) }
 
@@ -29,6 +30,17 @@ RSpec.describe 'Showing products', type: :feature, js: true do
     end
   end
 
+  it 'links to the additional terms' do
+    document = create(:clean_document, documentable: product, kind: 'terms')
+
+    visit pathway_product_path(product.section, product)
+
+    within '.documents' do
+      expect(page).to have_link('Additional terms')
+      expect(page).to have_content("#{document.extension}, #{number_to_human_size(document.size)}")
+    end
+  end
+
   def expect_list_entry(label, *contents)
     term = page.find('dt', text: label)
 
@@ -37,5 +49,4 @@ RSpec.describe 'Showing products', type: :feature, js: true do
       expect(definition).to be_present
     end
   end
-
 end
