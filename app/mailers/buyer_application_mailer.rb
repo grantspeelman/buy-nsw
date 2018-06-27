@@ -14,7 +14,7 @@ class BuyerApplicationMailer < ApplicationMailer
 
     mail(
       to: @application.user.email,
-      subject: "buy.nsw: Your application has been approved",
+      subject: "Welcome to the buy.nsw community",
     )
   end
 
