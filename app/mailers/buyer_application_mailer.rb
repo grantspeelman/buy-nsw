@@ -1,4 +1,5 @@
 class BuyerApplicationMailer < ApplicationMailer
+  helper :application
 
   def manager_approval_email
     @application = params[:application]

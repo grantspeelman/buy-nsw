@@ -4,8 +4,8 @@
   <dt>Authorised representative</dt>
   <dd>
     <%= seller.representative_name %><br>
-    <%= seller.representative_phone %><br>
-    <%= link_to seller.representative_email, "mailto:#{seller.representative_email}" %>
+    <%= tel_to seller.representative_phone %><br>
+    <%= mail_to seller.representative_email %>
   </dd>
   <% end %>
 

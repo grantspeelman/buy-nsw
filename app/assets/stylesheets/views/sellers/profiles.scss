@@ -24,6 +24,15 @@
       padding-top: 0.7em;
       padding-bottom: 0.7em;
       margin-bottom: 0;
+
+      p {
+        margin-top: 0.5em;
+        margin-bottom: 0;
+      }
+      
+      p:first-of-type {
+        display: inline;
+      }
     }
   }
 }
