@@ -1,0 +1,33 @@
+<% content_for :body_classes, 'with-big-header' %>
+<% content_for :without_container, true %>
+<% content_for :title, 'GovDC on buy.nsw' %>
+
+<div class="container main-title">
+  <div class="row">
+    <h1>Buy GovDC physical data centre space, and products and services to support it</h1>
+  </div>
+</div>
+
+<section class="view-static-index">
+  <div class="container">
+    <div class="audiences">
+      <section class="feature half-width">
+        <div class="inner">
+          <h1>Find and Buy</h1>
+          <p>Buy or expand GovDC space or search for sellers that sell supporting GovDC products and services.</p>
+          <ul>
+            <li><%= link_to 'Find GovDC sellers', sellers_search_path(govdc: "govdc"), class: 'action' %></li>
+            <li><%= mail_to 'GovDC@finance.nsw.gov.au', 'Buy or expand GovDC space', class: 'action' %></li>
+          </ul>
+        </div>
+      </section>
+      <section class="feature half-width">
+        <div class="inner">
+          <h1>Already a GovDC customer?</h1>
+          <p>If you're already a user of GovDC data centres and require help getting a problem fixed you can put in onsite service request.</p>
+          <%= link_to 'Create an onsite service request', '#', class: 'action' %>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

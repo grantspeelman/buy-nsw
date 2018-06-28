@@ -26,6 +26,9 @@ class StaticController < ApplicationController
   def license
   end
 
+  def govdc
+  end
+
   def health
     render plain: 'Yes, the application is running'
   end
