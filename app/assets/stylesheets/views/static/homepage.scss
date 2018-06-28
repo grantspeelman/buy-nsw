@@ -50,14 +50,14 @@
     }
   }
   .sell {
-    @include make-col-ready();
-
     @include media-breakpoint-up(lg) {
       @include make-col(4);
     }
   }
 
   .buy, .sell {
+    @include make-col-ready();
+
     ul {
       padding-left: 0;
     }
@@ -89,6 +89,57 @@
 
     a {
       display: inline;
+    }
+  }
+
+  .updates {
+    @include make-row();
+    padding-top: 1.5rem;
+
+    header, .update-list {
+      @include make-col-ready();
+    }
+
+    header {
+      @include media-breakpoint-up(lg) {
+        @include make-col(4);
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .update-list {
+      @include media-breakpoint-up(lg) {
+        @include make-col(8);
+      }
+
+      ol {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      li {
+        &:not(:last-of-type) {
+          border-bottom: 1px solid $grey-3;
+          padding-bottom: .5rem;
+          margin-bottom: .5rem;
+        }
+
+        a {
+          font-weight: bold;
+          text-decoration: none;
+        }
+
+        .metadata {
+          font-size: .85rem;
+
+          span:not(:last-of-type) {
+            padding-right: .5rem;
+          }
+        }
+      }
     }
   }
 }
