@@ -1,0 +1,59 @@
+.view-static-govdc {
+  background: $light-purple;
+  border-top: 1px solid darken($light-purple, 5%);
+
+  padding-bottom: 2rem;
+  font-size: .9rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1rem;
+  }
+
+  .audiences {
+    @include make-row();
+    padding-bottom: 1em;
+
+    > h2 {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 1.6em;
+      margin: 2em 0 .5em;
+    }
+  }
+
+  .box {
+    margin: 0;
+
+    h2 {
+      font-size: 1.4em;
+      font-weight: 500;
+    }
+
+    @include make-col-ready();
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
+
+    .inner {
+      background: $white;
+      color: $black;
+      padding: 1em;
+      box-shadow: darken($light-purple, 7%) 0px 2px 2px;
+      p:first-of-type {
+        min-height: 5em;
+      }
+    }
+
+    padding: 1em;
+
+    .action {
+      @include button-primary;
+      font-size: 1.3rem;
+    }
+
+    h1 {
+      font-size: 1.8em;
+    }
+  }
+}
