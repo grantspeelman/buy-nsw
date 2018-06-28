@@ -82,5 +82,13 @@
   .coming-soon {
     background: $light-purple;
     padding: .5rem;
+
+    p:last-of-type {
+      margin: 0;
+    }
+
+    a {
+      display: inline;
+    }
   }
 }

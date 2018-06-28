@@ -8,6 +8,9 @@ class StaticController < ApplicationController
   def contact
   end
 
+  def join_mailing_list
+  end
+
   def privacy
   end
 
