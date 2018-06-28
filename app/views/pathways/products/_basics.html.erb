@@ -14,7 +14,7 @@
         </ul>
       </dd>
     </dl>
-    <%= format_text_block product.summary %>
+    <%= simpler_format product.summary %>
 
     <div class="product-section features-benefits">
       <% if product.features.any? %>
@@ -39,7 +39,7 @@
     <dl>
       <% if product.free_version? %>
         <dt>Free version details</dt>
-        <dd><%= format_text_block product.free_version_details %></dd>
+        <dd><%= simpler_format product.free_version_details %></dd>
       <% end %>
       <% if product.free_trial? %>
         <dt>Free trial available</dt>
@@ -62,7 +62,7 @@
 
           <dt>Variables affecting pricing</dt>
           <dd>
-            <%= format_text_block product.pricing_variables %>
+            <%= simpler_format product.pricing_variables %>
           </dd>
         </dl>
         <% end %>
@@ -72,9 +72,9 @@
         <dd>
           <dl class="nested">
             <dt>Eligibility</dt>
-            <dd><%= format_text_block product.education_pricing_eligibility %></dd>
+            <dd><%= simpler_format product.education_pricing_eligibility %></dd>
             <dt>Pricing differences</dt>
-            <dd><%= format_text_block product.education_pricing_differences %></dd>
+            <dd><%= simpler_format product.education_pricing_differences %></dd>
           </dl>
         </dd>
       <% end %>
@@ -83,9 +83,9 @@
         <dd>
           <dl class="nested">
             <dt>Eligibility</dt>
-            <dd><%= format_text_block product.not_for_profit_pricing_eligibility %></dd>
+            <dd><%= simpler_format product.not_for_profit_pricing_eligibility %></dd>
             <dt>Pricing differences</dt>
-            <dd><%= format_text_block product.not_for_profit_pricing_differences %></dd>
+            <dd><%= simpler_format product.not_for_profit_pricing_differences %></dd>
           </dl>
         </dd>
       <% end %>

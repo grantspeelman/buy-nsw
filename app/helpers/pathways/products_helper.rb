@@ -20,7 +20,7 @@ module Pathways::ProductsHelper
     when value.is_a?(FalseClass)
       'No'
     else
-      format_text_block(value)
+      simpler_format(value)
     end
   end
 

@@ -40,7 +40,7 @@ module ApplicationHelper
   # and line break tags, but escapes all HTML so that links and other formatting
   # isn't parsed by simple_format
   #
-  def format_text_block(text)
+  def simpler_format(text)
     simple_format h(text)
   end
 end
