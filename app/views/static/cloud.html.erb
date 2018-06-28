@@ -26,11 +26,15 @@
             eg. website hosting and load balancing services
           </li>
           <li>
-            <%= link_to 'Buy physical data centre space', '', class: 'action' %>
-            eg. space in the GovDC data centre
+            <%= link_to 'Buy physical data centre space and services', '', class: 'action' %>
+            Buy space and support services in Government Data Centres (GovDC)
           </li>
           <li>
-            <%= link_to 'Read the buyer guide', '', class: 'action' %>
+            <%= link_to 'Browse approved sellers', sellers_search_path, class: 'action' %>
+            See the businesses behind our products and services
+          </li>
+          <li>
+            <%= link_to 'Read the buyer guide', guides_buyer_path, class: 'action' %>
             Learn who can be a buyer and how to buy
           </li>
         </ul>
@@ -43,11 +47,12 @@
           </li>
           <li>
             <div class="coming-soon">
-              Apply to sell other ICT services – coming soon
+              <p>Apply to sell other ICT services – coming soon.</p>
+              <p>To stay up to date with changes <%= link_to 'join our mailing list', join_mailing_list_path %></p>
             </div>
           </li>
           <li>
-            <%= link_to 'Read the seller guide', '', class: 'action' %>
+            <%= link_to 'Read the seller guide', guides_seller_path, class: 'action' %>
             Learn how to apply and sell products and services
           </li>
         </ul>
