@@ -1,4 +1,6 @@
 class SellerApplicationMailer < ApplicationMailer
+  helper :application
+
   # TODO: Probably want the person's name in there too
   default to: -> { params[:application].owners.map(&:email) }
 
