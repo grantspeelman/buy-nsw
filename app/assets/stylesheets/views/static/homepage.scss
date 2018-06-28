@@ -1,0 +1,81 @@
+.with-big-header {
+  main {
+    min-height: none;
+  }
+
+  header {
+    height: auto;
+
+    .main-title {
+      padding-top: 4rem;
+    }
+
+    h1.site-title {
+      font-size: 5rem;
+      padding: 0;
+    }
+
+    h2.subtitle {
+      font-weight: normal;
+      padding: .5rem 0 2.5rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.view-static-homepage {
+
+  padding-bottom: 2rem;
+  font-size: .9rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.1rem;
+  }
+
+  .needs {
+    @include make-row();
+    padding-top: 2rem;
+  }
+
+  .buy {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(8);
+    }
+  }
+  .sell {
+    @include make-col-ready();
+
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+    }
+  }
+
+  .buy, .sell {
+    ul {
+      padding-left: 0;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    li {
+      list-style: none;
+      padding-bottom: 1.5rem;
+    }
+
+    a {
+      display: block;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .coming-soon {
+    background: $light-purple;
+    padding: .5rem;
+  }
+}

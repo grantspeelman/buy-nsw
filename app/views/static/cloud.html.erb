@@ -1,81 +1,56 @@
 <% content_for :body_classes, 'with-big-header' %>
 <% content_for :without_container, true %>
-
-<div class="container main-title">
-  <div class="row">
-    <h1>Australia's first government marketplace for cloud</h1>
-  </div>
-</div>
-
-<section class="view-static-index">
+<% content_for :skip_header_title, true %>
+<% content_for :extra_header_content do %>
   <div class="container">
-    <div class="audiences">
-      <h2>What you can do now</h2>
+    <div class="main-title">
+      <h1 class="site-title">buy.nsw</h1>
+      <h2 class="subtitle">Simplifying procurement, starting with cloud</h2>
+    </div>
+  </div>
+<% end %>
 
-      <% unless feature_flag_hide_buyer_pathway %>
-      <section class="feature half-width">
-        <div class="inner">
-          <h1>Buyers</h1>
-          <h2>Buy applications and software</h2>
-          <p>Cloud applications and software that you can access over the internet.</p>
-          <%= link_to 'Find applications and software', pathway_search_path('applications-software'), class: 'action' %>
-        </div>
-      </section>
+<section class="view-static-homepage">
+  <div class="container">
+    <div class="needs">
+      <div class="buy">
+        <h2>Buy cloud products and services</h2>
 
-      <section class="feature half-width">
-        <div class="inner">
-          <h1>Buyers</h1>
-          <h2>Buy hosting and infrastructure</h2>
-          <p>Hosting and infrastructure services to help you deploy, manage and run software.</p>
-          <%= link_to 'Find hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'action' %>
-        </div>
-      </section>
-      <% end %>
-
-      <section class="feature full-width">
-        <div class="inner">
-          <h1>Buyers</h1>
-
-          <h2>Apply to buy cloud software, hosting, infrastructure and support.</h2>
-          <p>You can create a buyer account if you're a NSW Government employee or an employee of <a href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration">another eligible organisation</a>.</p>
-          <p>
-            <%= link_to registration_path('buyer'), class: 'action' do %>
-              Apply now <span aria-hidden="true">&gt;</span>
-            <% end %>
-          </p>
-        </div>
-      </section>
-
-      <section class="feature full-width">
-        <div class="inner">
-          <h1>Sellers</h1>
-
-          <h2>Apply to sell cloud software, hosting, infrastructure and support.</h2>
-          <p>It's quick and simple to offer your cloud products or services to NSW Government.</p>
-          <p>
-            <%= link_to registration_path('seller'), class: 'action' do %>
-              Apply now <span aria-hidden="true">&gt;</span>
-            <% end %>
-          </p>
-        </div>
-      </section>
-
-      <% unless feature_flag_hide_buyer_pathway %>
-      <div class="feature full-width">
-        <div class="inner">
-          <h1>Search for approved sellers</h1>
-          <p>Search the seller catalogue by seller name, or by the service you need.</p>
-          <%= render partial: 'inline_search_form' %>
-        </div>
+        <ul>
+          <li>
+            <%= link_to 'Buy cloud applications and software', pathway_search_path('applications-software'), class: 'action' %>
+            eg. accounting tools or customer management software
+          </li>
+          <li>
+            <%= link_to 'Buy hosting and infrastructure', pathway_search_path('hosting-infrastructure'), class: 'action' %>
+            eg. website hosting and load balancing services
+          </li>
+          <li>
+            <%= link_to 'Buy physical data centre space', '', class: 'action' %>
+            eg. space in the GovDC data centre
+          </li>
+          <li>
+            <%= link_to 'Read the buyer guide', '', class: 'action' %>
+            Learn who can be a buyer and how to buy
+          </li>
+        </ul>
       </div>
-      <% end %>
-
-      <div class="feature full-width">
-        <div class="inner">
-          <h1>Join the buy.nsw community</h1>
-          <p>If you're a buyer or seller you're invited to join <strong>buy.nsw</strong> and be a part of the journey as we transform procurement in NSW.</p>
-          <%= render partial: 'mailing_list_signup_form' %>
-        </div>
+      <div class="sell">
+        <h2>Sell services</h2>
+        <ul>
+          <li>
+            <%= link_to 'Apply to sell cloud products and services', registration_path('seller'), class: 'action' %>
+          </li>
+          <li>
+            <div class="coming-soon">
+              Apply to sell other ICT services – coming soon
+            </div>
+          </li>
+          <li>
+            <%= link_to 'Read the seller guide', '', class: 'action' %>
+            Learn how to apply and sell products and services
+          </li>
+        </ul>
       </div>
     </div>
   </div>
