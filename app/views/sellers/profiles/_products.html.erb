@@ -1,7 +1,7 @@
 <% if seller.products.active.any? %>
 <ul id="products">
   <h2>Products</h2>
-  <% seller.products.active.each do |product| %>
+  <% seller.products.active.order(:name).each do |product| %>
   <li>
     <%= link_to product.name, pathway_product_path(product.section, product) %> &mdash;
     <%= simple_format product.summary %>
