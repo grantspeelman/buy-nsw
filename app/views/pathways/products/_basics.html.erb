@@ -14,7 +14,7 @@
         </ul>
       </dd>
     </dl>
-    <%= simple_format product.summary %>
+    <%= format_text_block product.summary %>
 
     <div class="product-section features-benefits">
       <% if product.features.any? %>

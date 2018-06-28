@@ -4,7 +4,7 @@
   <% seller.products.active.order(:name).each do |product| %>
   <li>
     <%= link_to product.name, pathway_product_path(product.section, product) %> &mdash;
-    <%= simple_format product.summary %>
+    <%= format_text_block product.summary %>
   </li>
   <% end %>
 </ul>
