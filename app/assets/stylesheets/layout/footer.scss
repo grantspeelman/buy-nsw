@@ -38,44 +38,54 @@ footer.global {
     .footer-bottom-row {
       @include make-row();
 
-      margin: 2rem 0 0;
+      margin: 0;
       padding-top: 1rem;
       padding-bottom: 1rem;
       border-top: 1px solid $grey-4;
       position: relative;
       font-size: .95rem;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 2rem;
+      }
     }
 
     .footer-legal {
       @include media-breakpoint-up(md) {
         @include make-col(9);
+        padding-top: 4rem;
       }
 
       padding-left: 0;
-      padding-top: 4rem;
+
 
       ul {
         padding-left: 0;
       }
 
       li {
-        display: inline-block;
         list-style: none;
+        padding-bottom: .2rem;
 
-        &:not(:last-of-type) {
-          padding-right: .8rem;
+        @include media-breakpoint-up(lg) {
+          display: inline-block;
+
+          &:not(:last-of-type) {
+            padding-right: .8rem;
+          }
         }
       }
     }
 
     .footer-logo {
-      @include media-breakpoint-up(md) {
-        @include make-col(3);
-      }
-
-      text-align: right;
+      text-align: center;
       padding-right: 0;
       padding-top: 1rem;
+
+      @include media-breakpoint-up(md) {
+        @include make-col(3);
+        text-align: right;
+      }
 
       a.nsw-gov-logo {
         display: inline-block;
@@ -97,8 +107,13 @@ footer.global {
     .development-info {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       margin-top: 1.5rem;
+
+      @include media-breakpoint-up(md) {
+        left: 0;
+        right: unset;
+      }
 
       background: $focus-colour;
       font-weight: bold;

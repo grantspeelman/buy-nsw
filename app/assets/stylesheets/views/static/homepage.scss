@@ -7,7 +7,11 @@
     height: auto;
 
     .main-title {
-      padding-top: 4rem;
+      padding-top: 2rem;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 4rem;
+      }
     }
 
     h1.logo a {
@@ -15,23 +19,30 @@
     }
 
     h1.site-title {
-      font-size: 5rem;
+      font-size: 2.2rem;
       padding: 0;
+
+      @include media-breakpoint-up(md) {
+        font-size: 5rem;
+      }
     }
 
     p.subtitle {
-      font-size: 1.8rem;
+      font-size: 1.2rem;
       font-weight: normal;
-      padding: .5rem 0 2.5rem;
+      padding: .5rem 0 2rem;
       margin-bottom: 0;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.8rem;
+        padding-bottom: 2.5rem;
+      }
     }
   }
 }
 
 .view-static-homepage {
-
   padding-bottom: 2rem;
-  font-size: .9rem;
 
   @include media-breakpoint-up(md) {
     font-size: 1.1rem;
@@ -63,8 +74,12 @@
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       margin-bottom: 1.5rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.8rem;
+      }
     }
 
     li {
