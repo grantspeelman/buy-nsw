@@ -1,6 +1,6 @@
 <aside class="user">
   <% if user_signed_in? %>
-  <h2><%= current_user.email %></h2>
+  <p class="signed-in-user"><%= current_user.email %></p>
   <ul>
     <% if current_user.is_admin? %>
       <li><%= link_to 'Procurement Ops', ops_root_path %></li>
