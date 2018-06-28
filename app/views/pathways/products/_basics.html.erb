@@ -105,7 +105,7 @@
       <h2>Contact</h2>
       <div class="vcard">
         <span class="fn"><%= product.contact_name %></span>
-        <span class="email"><%= product.contact_email %></span>
+        <span class="email"><%= mail_to product.contact_email %></span>
         <% if product.contact_phone.present? %>
           <span class="tel"><%= tel_to product.contact_phone %></span>
         <% end %>
