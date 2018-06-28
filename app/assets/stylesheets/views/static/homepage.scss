@@ -10,12 +10,17 @@
       padding-top: 4rem;
     }
 
+    h1.logo a {
+      display: inline-block;
+    }
+
     h1.site-title {
       font-size: 5rem;
       padding: 0;
     }
 
-    h2.subtitle {
+    p.subtitle {
+      font-size: 1.8rem;
       font-weight: normal;
       padding: .5rem 0 2.5rem;
       margin-bottom: 0;
