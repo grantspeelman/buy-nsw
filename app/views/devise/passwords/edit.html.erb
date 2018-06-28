@@ -1,6 +1,7 @@
 <section class="view-passwords-edit">
   <h2>Change your password</h2>
 
+  <%= render partial: 'shared/zxcvbn' %>
   <%= buy_nsw_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= display_block_errors(f) %>
     <%= f.hidden_field :reset_password_token %>
