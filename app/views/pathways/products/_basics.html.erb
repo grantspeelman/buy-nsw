@@ -107,7 +107,7 @@
         <span class="fn"><%= product.contact_name %></span>
         <span class="email"><%= product.contact_email %></span>
         <% if product.contact_phone.present? %>
-          <span class="tel"><%= product.contact_phone %></span>
+          <span class="tel"><%= tel_to product.contact_phone %></span>
         <% end %>
       </div>
     </div>

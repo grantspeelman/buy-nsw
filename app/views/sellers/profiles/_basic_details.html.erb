@@ -11,8 +11,8 @@
   <dt>Business contact</dt>
   <dd>
     <%= seller.contact_name %><br>
-    <%= seller.contact_phone %><br>
     <%= link_to seller.contact_email, "mailto:#{seller.contact_email}" %>
+    <%= tel_to seller.contact_phone %><br>
   </dd>
   <% end %>
 </dl>

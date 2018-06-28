@@ -31,4 +31,8 @@ module ApplicationHelper
     # Only show which build we're on and the environment when we're not in production
     deployment_env != 'production'
   end
+
+  def tel_to(phone)
+    link_to phone, "tel:#{phone}"
+  end
 end
