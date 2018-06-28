@@ -29,7 +29,9 @@
               <div class="logo-container">
                 <span class="logo">NSW Government</span>
               </div>
-              <span class="site-title">buy.nsw</span>
+              <% unless content_for(:skip_header_title) %>
+                <span class="site-title">buy.nsw</span>
+              <% end %>
             <% end %>
           </h1>
 
