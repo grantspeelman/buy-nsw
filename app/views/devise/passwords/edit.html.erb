@@ -1,13 +1,21 @@
-<h2>Change your password</h2>
+<section class="view-passwords-edit">
+  <h2>Change your password</h2>
 
-<%= buy_nsw_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= buy_nsw_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= display_block_errors(f) %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <%= f.input :password, autocomplete: "off" %>
-  <%= f.input :password_confirmation, autocomplete: "off" %>
+    <div data-module="password-strength">
+      <%= f.input :password, autocomplete: "off",
+                              label: t('users.registrations.shared.form.password_label'),
+                              hint: t('users.registrations.shared.form.password_help') %>
+    </div>
 
-  <fieldset class="actions">
-    <%= f.submit "Change my password" %>
-  </fieldset>
-<% end %>
+    <%= f.input :password_confirmation, autocomplete: "off",
+                                        label: t('users.registrations.shared.form.password_confirmation_label') %>
+
+    <fieldset class="actions">
+      <%= f.submit "Change my password" %>
+    </fieldset>
+  <% end %>
+</section>
