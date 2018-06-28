@@ -67,6 +67,8 @@ header.global {
 
       a {
         color: $white;
+        text-decoration: none;
+        font-weight: bold;
 
         &:focus {
           color: $black;
