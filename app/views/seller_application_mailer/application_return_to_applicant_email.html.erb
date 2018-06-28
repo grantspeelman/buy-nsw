@@ -10,7 +10,7 @@
 <p>Here’s the feedback from our review team:</p>
 
 <div class="quote">
-  <%= simple_format(h(@application.response)) %>
+  <%= format_text_block @application.response %>
 </div>
 <% end %>
 

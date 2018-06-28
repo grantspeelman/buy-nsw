@@ -4,7 +4,7 @@
   <p>Your application to become a buyer was approved with this feedback from our team:</p>
 
   <div class="quote">
-    <%= simple_format(h(@application.decision_body)) %>
+    <%= format_text_block @application.decision_body %>
   </div>
 <% else %>
   <p>Your application to become a buyer was approved.</p>
