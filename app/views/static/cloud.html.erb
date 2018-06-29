@@ -59,6 +59,7 @@
       </div>
     </div>
 
+    <% if ENV['FEATURE_FLAG_SHOW_HOMEPAGE_UPDATES'].present? %>
     <div class="updates">
       <header>
         <h2>Latest updates</h2>
@@ -82,5 +83,6 @@
         </ol>
       </div>
     </div>
+    <% end %>
   </div>
 </section>
