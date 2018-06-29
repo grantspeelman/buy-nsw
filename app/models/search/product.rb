@@ -2,15 +2,21 @@ module Search
   class Product < Base
     attr_reader :term, :section
 
-    def initialize(term:, section:, selected_filters: {}, page: nil, per_page: nil)
-      @term = term
-      @section = section
+    def initialize(args={})
+      @section = args.delete(:section)
+      term = args.delete(:term)
 
-      super(selected_filters: selected_filters, page: page, per_page: per_page)
+      if term.present?
+        args[:selected_filters] ||= {}
+        args[:selected_filters].merge!(term: term)
+      end
+
+      super(args)
     end
 
     def available_filters
       {
+        term: :term_filter,
         audiences: audiences_keys,
         business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         characteristics: [:data_in_australia, :api, :mobile_devices],
@@ -18,6 +24,10 @@ module Search
         security_standards: security_standards_keys,
         pricing: [:free_version, :free_trial, :education],
       }
+    end
+
+    def term
+      filter_value(:term)
     end
 
   private

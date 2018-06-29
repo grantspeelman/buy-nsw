@@ -1,23 +1,38 @@
 <ul class="filters">
+  <h2>Apply filters</h2>
+
   <%= form_tag '', method: :get, enforce_utf8: false do %>
     <% search.available_filters.each do |key, options| %>
-      <% next if options == :term_filter %>
       <li class="filter">
-        <h3><%= t("#{base_i18n_key}.search.filters.#{key}.name") %></h3>
-        <ul class="options">
-          <% options.each do |option| %>
-            <li>
-              <%= check_box_tag "#{key}[]", option, search.filter_selected?(key, option), id: "#{key}_#{option}" %>
-              <%= label_tag "#{key}_#{option}" do %>
-                <%= t("#{base_i18n_key}.search.filters.#{key}.options.#{option}") %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+        <% if options == :term_filter %>
+          <h3>
+            <label for="<%= key %>">
+              <%= t("#{base_i18n_key}.search.filters.#{key}.name") %>
+            </label>
+          </h3>
+          <div class="search-field">
+            <%= text_field_tag key, search.filter_value(key) %>
+            <%= button_tag name: '', class: 'search-button' do %>
+              <span class="icon" aria-hidden="true"></span>
+              <span class="label">Search</span>
+            <% end %>
+          </div>
+        <% else %>
+          <h3><%= t("#{base_i18n_key}.search.filters.#{key}.name") %></h3>
+          <ul class="options">
+            <% options.each do |option| %>
+              <li>
+                <%= check_box_tag "#{key}[]", option, search.filter_selected?(key, option), id: "#{key}_#{option}" %>
+                <%= label_tag "#{key}_#{option}" do %>
+                  <%= t("#{base_i18n_key}.search.filters.#{key}.options.#{option}") %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </li>
     <% end %>
 
-    <%= hidden_field_tag :q, search.term %>
-    <%= submit_tag 'Apply filters', name: nil, class: 'btn btn-primary' %>
+    <%= submit_tag 'Update results', name: nil, class: 'btn btn-primary' %>
   <% end %>
 </ul>

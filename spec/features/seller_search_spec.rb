@@ -24,7 +24,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
   it 'returns a result for a given term' do
     visit sellers_search_path
 
-    fill_in 'q', with: 'Construction'
+    fill_in 'Keyword', with: 'Construction'
     click_on 'Search'
 
     within '.results' do
@@ -36,7 +36,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
   it 'can filter by a tag' do
     visit sellers_search_path
 
-    fill_in 'q', with: 'Ltd'
+    fill_in 'Keyword', with: 'Ltd'
     click_on 'Search'
 
     expect(page.all('.results li.result').size).to eq(2)
@@ -44,7 +44,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     within '.filters' do
       check 'Start-up'
     end
-    click_on 'Apply filters'
+    click_on 'Update results'
 
     expect(page.all('.results li.result').size).to eq(1)
 
@@ -56,7 +56,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
   it 'can filter by a service' do
     visit sellers_search_path
 
-    fill_in 'q', with: 'Ltd'
+    fill_in 'Keyword', with: 'Ltd'
     click_on 'Search'
 
     expect(page.all('.results li.result').size).to eq(2)
@@ -64,7 +64,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     within '.filters' do
       check 'Cloud products'
     end
-    click_on 'Apply filters'
+    click_on 'Update results'
 
     expect(page.all('.results li.result').size).to eq(1)
 

@@ -87,6 +87,36 @@
         }
       }
 
+      .search-field {
+        display: flex;
+
+        input[type=text] {
+          display: block;
+          width: 100%;
+          padding-left: .4rem;
+          flex: 1;
+          border: none;
+        }
+
+        button {
+          @include button;
+          border: none;
+          padding: 0.3rem 0.2rem 0.2rem 0.5rem;
+          font-size: 1rem;
+
+          .icon {
+            @extend .oi;
+            @extend .oi-magnifying-glass;
+          }
+
+          .label {
+            display: inline-block;
+            text-indent: -9999px;
+          }
+        }
+
+      }
+
       input[type=checkbox] {
         width: 24px;
         height: 24px;

@@ -1,7 +1,7 @@
-<% content_for :title, 'Search' %>
+<% content_for :title, 'All sellers' %>
 
 <section class="view-sellers-search">
-  <%= render partial: 'shared/search/form', locals: { search: search } %>
+  <h1><%= content_for :title %></h1>
 
   <div class="search-results">
     <%= render partial: 'shared/search/filters', locals: { search: search, base_i18n_key: :sellers } %>
