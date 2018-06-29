@@ -68,30 +68,6 @@
 
   .buy, .sell {
     @include make-col-ready();
-
-    ul {
-      padding-left: 0;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-
-      @include media-breakpoint-up(md) {
-        font-size: 1.8rem;
-      }
-    }
-
-    li {
-      list-style: none;
-      padding-bottom: 1.5rem;
-    }
-
-    a {
-      display: block;
-      font-weight: bold;
-      text-decoration: none;
-    }
   }
 
   .coming-soon {

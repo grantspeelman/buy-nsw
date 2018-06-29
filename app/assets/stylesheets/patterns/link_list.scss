@@ -1,0 +1,32 @@
+@mixin link-list {
+  padding-left: 0;
+  font-size: 1rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.1rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.8rem;
+    }
+  }
+
+  li {
+    list-style: none;
+    padding-bottom: 1.5rem;
+  }
+
+  a:not(.inline-link) {
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+ul.link-list {
+  @include link-list;
+}
