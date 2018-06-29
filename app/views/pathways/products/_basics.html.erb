@@ -105,9 +105,9 @@
       <h2>Contact</h2>
       <div class="vcard">
         <span class="fn"><%= product.contact_name %></span>
-        <span class="email"><%= mail_to product.contact_email %></span>
+        <span class="email"><%= mail_to product.contact_email, product.contact_email, "data-module" => "track-outbound-link" %></span>
         <% if product.contact_phone.present? %>
-          <span class="tel"><%= tel_to product.contact_phone %></span>
+          <span class="tel"><%= tel_to product.contact_phone, "data-module" => "track-outbound-link" %></span>
         <% end %>
       </div>
     </div>

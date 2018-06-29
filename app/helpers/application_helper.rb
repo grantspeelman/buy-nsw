@@ -32,8 +32,8 @@ module ApplicationHelper
     deployment_env != 'production'
   end
 
-  def tel_to(phone)
-    link_to phone, "tel:#{phone}"
+  def tel_to(phone, html_options = {})
+    link_to phone, "tel:#{phone}", html_options
   end
 
   # NOTE: This approach allows us to still convert new lines into paragraphs
