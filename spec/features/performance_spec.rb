@@ -4,9 +4,10 @@ RSpec.describe 'Viewing the performance data', type: :feature, js: true do
 
   it 'can load the performance dashboard' do
     create_list(:created_seller_application, 5)
+    create_list(:ready_for_review_seller_application, 3)
 
     visit performance_path
-    expect(page).to have_content('5 applications started')
+    expect(page).to have_content('3 completed and in review')
   end
 
   it 'can load the seller application dashboard' do
