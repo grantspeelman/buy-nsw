@@ -16,7 +16,6 @@ RSpec.describe Sellers::SellerApplication::Contract::Characteristics do
       australian_owned: true,
       rural_remote: false,
       regional: true,
-      travel: true,
       disability: false,
       female_owned: true,
       indigenous: false,

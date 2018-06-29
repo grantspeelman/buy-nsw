@@ -140,8 +140,6 @@ en:
           name: 'Regional or non-metropolitan business'
         rural_remote:
           name: 'Rural or remote business'
-        travel:
-          name: 'Happy to travel for regional or interstate opportunities'
         disability:
           name: 'Australian disability enterprise'
         addresses:

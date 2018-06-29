@@ -239,8 +239,6 @@ en:
             label: 'Rural or remote business'
           regional:
             label: 'Regional or non-metropolitan business'
-          travel:
-            label: 'Happy to travel for opportunities'
           disability:
             label: 'Australian disability enterprise'
             hint_html: 'Your business is listed on the <a href="https://buyability.org.au/directory/">Australian disability enterprise register</a>.'

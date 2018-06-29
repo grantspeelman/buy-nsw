@@ -9,7 +9,6 @@ module Sellers::SellerApplication::Contract
 
     property :rural_remote,                        on: :seller
     property :regional,                            on: :seller
-    property :travel,                              on: :seller
 
     property :australian_owned,                    on: :seller
     property :disability,                          on: :seller

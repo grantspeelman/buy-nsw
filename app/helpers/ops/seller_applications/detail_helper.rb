@@ -49,7 +49,6 @@ module Ops::SellerApplications::DetailHelper
         :australian_owned,
         :regional,
         :rural_remote,
-        :travel,
         :indigenous,
         :disability,
         :female_owned,
