@@ -25,7 +25,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
   it 'returns a result for a given term' do
     visit pathway_search_path(section)
 
-    fill_in 'q', with: 'Unlimited'
+    fill_in 'Keyword search', with: 'Unlimited'
     click_on 'Search'
 
     within '.results' do
@@ -37,16 +37,15 @@ RSpec.describe 'Searching products', type: :feature, js: true do
   it 'can filter by audience' do
     visit pathway_search_path(section)
 
-    fill_in 'q', with: 'Cloud-o-matic'
+    fill_in 'Keyword search', with: 'Cloud-o-matic'
     click_on 'Search'
 
     expect(page.all('.results li.result').size).to eq(2)
 
     within '.filters' do
       page.find('label', text: 'Legal').click
-      # check 'legal', name: 'audiences'
     end
-    click_on 'Apply filters'
+    click_on 'Update results'
 
     expect(page.all('.results li.result').size).to eq(1)
 
@@ -58,7 +57,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
   it 'can filter by a tag' do
     visit pathway_search_path(section)
 
-    fill_in 'q', with: 'Cloud-o-matic'
+    fill_in 'Keyword search', with: 'Cloud-o-matic'
     click_on 'Search'
 
     expect(page.all('.results li.result').size).to eq(2)
@@ -66,7 +65,7 @@ RSpec.describe 'Searching products', type: :feature, js: true do
     within '.filters' do
       page.find('label', text: 'Start-up').click
     end
-    click_on 'Apply filters'
+    click_on 'Update results'
 
     expect(page.all('.results li.result').size).to eq(1)
 

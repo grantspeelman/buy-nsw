@@ -582,6 +582,8 @@ en:
   products:
     search:
       filters:
+        term:
+          name: Keyword search
         audiences:
           name: Products for
           options:

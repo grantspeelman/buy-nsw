@@ -3,8 +3,6 @@
 <section class="view-sellers-search">
   <h1><%= content_for :title %></h1>
 
-  <%= render partial: 'shared/search/form', locals: { search: search } %>
-
   <div class="search-results">
     <%= render partial: 'shared/search/filters', locals: { search: search, base_i18n_key: :products } %>
 

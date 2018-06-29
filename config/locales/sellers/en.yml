@@ -320,6 +320,8 @@ en:
       title: Seller dashboard
     search:
       filters:
+        term:
+          name: Keyword search
         business_identifiers:
           name: Business identifiers
           options:
