@@ -28,6 +28,7 @@ module Sellers::SellerApplication::Contract
           value(included_in?: Seller.number_of_employees.values)
         required(:corporate_structure).
           value(included_in?: Seller.corporate_structure.values)
+        required(:regional).filled(:bool?)
       end
     end
   end

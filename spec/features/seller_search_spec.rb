@@ -7,6 +7,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
       name: 'Construction Ltd',
       summary: 'Buildings',
       start_up: false,
+      regional: false,
       services: ['cloud-services']
     )
   }
@@ -15,6 +16,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
       name: 'Cloud Ltd',
       summary: 'Digital',
       start_up: true,
+      regional: false,
       services: []
     )
   }
