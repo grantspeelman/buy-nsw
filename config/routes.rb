@@ -133,6 +133,7 @@ Rails.application.routes.draw do
   get '/performance/seller-applications', to: 'performance#seller_applications'
 
   get '/contact', to: 'static#contact'
+  get '/join-mailing-list', to: 'static#join_mailing_list'
   get '/privacy', to: 'static#privacy'
   get '/terms-of-use', to: 'static#terms_of_use'
   get '/accessibility', to: 'static#accessibility'
@@ -142,7 +143,7 @@ Rails.application.routes.draw do
   get '/license', to: 'static#license'
   # Health check page for load balancer - never use basic auth
   get '/health', to: 'static#health'
-  get '/landing/gov-dc', to: 'static#govdc'
+  get '/govdc', to: 'static#govdc'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all

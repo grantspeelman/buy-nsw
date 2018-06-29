@@ -24,12 +24,14 @@
     <header role="banner" class="global">
       <div class="container">
         <div class="row">
-          <h1>
+          <h1 class="logo">
             <%= link_to root_path do %>
               <div class="logo-container">
                 <span class="logo">NSW Government</span>
               </div>
-              <span class="site-title">buy.nsw</span>
+              <% unless content_for(:skip_header_title) %>
+                <span class="site-title">buy.nsw</span>
+              <% end %>
             <% end %>
           </h1>
 

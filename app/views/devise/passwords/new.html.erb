@@ -1,13 +1,17 @@
-<% content_for :title, 'Forgot your password?' %>
+<section class="view-user-passwords-new">
+  <% content_for :title, 'Forgot your password?' %>
 
-<h2><%= content_for :title %></h2>
+  <h1><%= content_for :title %></h1>
 
-<%= buy_nsw_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.input :email, autocomplete: "email",
-                      label: t('users.sessions.sign_in.form.email_label') %>
+  <p>We will send a one-time link to your email address, which you can use to reset your password.</p>
 
-  <fieldset class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </fieldset>
-<% end %>
+  <%= buy_nsw_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.input :email, autocomplete: "email",
+                        label: t('users.sessions.sign_in.form.email_label') %>
+
+    <fieldset class="actions">
+      <%= f.submit "Send instructions" %>
+    </fieldset>
+  <% end %>
+</section>

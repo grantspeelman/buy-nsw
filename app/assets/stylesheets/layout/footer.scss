@@ -1,31 +1,125 @@
 footer.global {
   .container {
-    font-size: 1em;
+    font-size: 1rem;
     padding: 1.5em 1em;
     color: #acacac;
 
-    .footer-left, .footer-right {
-      @include make-col-ready();
-      
-      @include media-breakpoint-up(md) {
-        @include make-col(6);
-      }
-
-      ul {
-        list-style: none;
-        padding-left: 0;
-      }
-    }
-    .footer-right {
-      @include media-breakpoint-up(md) {
-        text-align: right;
-      }
-    }
     a {
       color: #acacac;
-      text-decoration: none;
 
       &:focus {
+        color: $black;
+      }
+    }
+
+    .footer-link-list, .footer-legal, .footer-logo {
+      @include make-col-ready();
+    }
+
+    .footer-link-list {
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid $grey-4;
+        margin-bottom: 1rem;
+      }
+
+      li {
+        list-style: none;
+        padding-bottom: .2rem;
+      }
+    }
+
+    .footer-bottom-row {
+      @include make-row();
+
+      margin: 0;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-top: 1px solid $grey-4;
+      position: relative;
+      font-size: .95rem;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 2rem;
+      }
+    }
+
+    .footer-legal {
+      @include media-breakpoint-up(md) {
+        @include make-col(9);
+        padding-top: 4rem;
+      }
+
+      padding-left: 0;
+
+
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        list-style: none;
+        padding-bottom: .2rem;
+
+        @include media-breakpoint-up(lg) {
+          display: inline-block;
+
+          &:not(:last-of-type) {
+            padding-right: .8rem;
+          }
+        }
+      }
+    }
+
+    .footer-logo {
+      text-align: center;
+      padding-right: 0;
+      padding-top: 1rem;
+
+      @include media-breakpoint-up(md) {
+        @include make-col(3);
+        text-align: right;
+      }
+
+      a.nsw-gov-logo {
+        display: inline-block;
+        background: asset-url('logo-white.svg') no-repeat 0;
+        background-size: 6rem;
+        width: 6rem;
+        height: 7rem;
+
+        /* We need this to make text-indent work */
+        text-align: left;
+
+        span {
+          display: inline-block;
+          text-indent: -9999px;
+        }
+      }
+    }
+
+    .development-info {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: 1.5rem;
+
+      @include media-breakpoint-up(md) {
+        left: 0;
+        right: unset;
+      }
+
+      background: $focus-colour;
+      font-weight: bold;
+      padding: .1rem .5rem;
+
+      &, a {
         color: $black;
       }
     }

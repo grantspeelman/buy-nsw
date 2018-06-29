@@ -67,6 +67,8 @@ header.global {
 
       a {
         color: $white;
+        text-decoration: none;
+        font-weight: bold;
 
         &:focus {
           color: $black;
@@ -79,10 +81,10 @@ header.global {
       margin-top: 1.9rem;
     }
 
-    h2 {
+    p.signed-in-user {
       display: block;
       font-size: 1em;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0;
       font-weight: 500;
     }
     ul {
