@@ -350,6 +350,7 @@ en:
       indigenous: Aboriginal or Torres Strait Islander
       not_for_profit: Not-for-profit
       govdc: GovDC
+      regional: Regional
     waitlist_invitations:
       accept:
         errors:
