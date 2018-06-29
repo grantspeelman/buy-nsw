@@ -48,8 +48,6 @@ module Ops::SellerApplications::DetailHelper
         :not_for_profit,
         :australian_owned,
         :regional,
-        :rural_remote,
-        :travel,
         :indigenous,
         :disability,
         :female_owned,

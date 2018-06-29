@@ -7,9 +7,7 @@ module Sellers::SellerApplication::Contract
     property :sme,                                 on: :seller
     property :not_for_profit,                      on: :seller
 
-    property :rural_remote,                        on: :seller
     property :regional,                            on: :seller
-    property :travel,                              on: :seller
 
     property :australian_owned,                    on: :seller
     property :disability,                          on: :seller
@@ -30,6 +28,7 @@ module Sellers::SellerApplication::Contract
           value(included_in?: Seller.number_of_employees.values)
         required(:corporate_structure).
           value(included_in?: Seller.corporate_structure.values)
+        required(:regional).filled(:bool?)
       end
     end
   end

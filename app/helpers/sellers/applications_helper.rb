@@ -48,8 +48,6 @@ module Sellers::ApplicationsHelper
       :sme,
       :not_for_profit,
       :regional,
-      :rural_remote,
-      :travel,
       :disability,
       :australian_owned,
       :female_owned,

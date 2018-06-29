@@ -41,7 +41,6 @@ namespace :app do
             sme: [false, true].sample,
             not_for_profit: [false, true].sample,
             regional: [false, true].sample,
-            travel: [false, true].sample,
             disability: [false, true].sample,
             female_owned: [false, true].sample,
             indigenous: [false, true].sample,
@@ -66,7 +65,6 @@ namespace :app do
             technologies: Faker::Lorem.paragraph,
             services: services,
             australian_owned: [false, true].sample,
-            rural_remote: [false, true].sample,
             workers_compensation_exempt: false
           )
           # Each seller has between 1 and 5 products

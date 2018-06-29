@@ -235,12 +235,9 @@ en:
           australian_owned:
             label: 'Australian owned'
             hint: Your business is founded and headquartered in Australia and owned by Australian nationals.
-          rural_remote:
-            label: 'Rural or remote business'
           regional:
-            label: 'Regional or non-metropolitan business'
-          travel:
-            label: 'Happy to travel for opportunities'
+            label: 'Is your head office located in a regional area?'
+            hint: For NSW businesses this is anywhere outside of Greater Sydney, Newcastle or Wollongong. This will appear on your seller profile.
           disability:
             label: 'Australian disability enterprise'
             hint_html: 'Your business is listed on the <a href="https://buyability.org.au/directory/">Australian disability enterprise register</a>.'
@@ -352,6 +349,7 @@ en:
       indigenous: Aboriginal or Torres Strait Islander
       not_for_profit: Not-for-profit
       govdc: GovDC
+      regional: Regional
     waitlist_invitations:
       accept:
         errors:
