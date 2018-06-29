@@ -11,8 +11,8 @@
   <dt>Business contact</dt>
   <dd>
     <%= seller.contact_name %><br>
-    <%= tel_to seller.contact_phone %><br>
-    <%= mail_to seller.contact_email %>
+    <%= tel_to seller.contact_phone, "data-module" => "track-outbound-link" %><br>
+    <%= mail_to seller.contact_email, seller.contact_email, "data-module" => "track-outbound-link" %>
   </dd>
   <% end %>
 </dl>
