@@ -236,7 +236,8 @@ en:
             label: 'Australian owned'
             hint: Your business is founded and headquartered in Australia and owned by Australian nationals.
           regional:
-            label: 'Regional or non-metropolitan business'
+            label: 'Is your head office located in a regional area?'
+            hint: For NSW businesses this is anywhere outside of Greater Sydney, Newcastle or Wollongong. This will appear on your seller profile.
           disability:
             label: 'Australian disability enterprise'
             hint_html: 'Your business is listed on the <a href="https://buyability.org.au/directory/">Australian disability enterprise register</a>.'

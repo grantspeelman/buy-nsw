@@ -122,7 +122,9 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
     choose 'Standalone organisation'
     check 'Start-up'
     check 'Not for profit'
-    check 'Regional'
+    within_fieldset 'regional' do
+      choose 'Yes'
+    end
     check 'Aboriginal'
     check 'Yes, with local government'
     check 'Yes, with federal government'

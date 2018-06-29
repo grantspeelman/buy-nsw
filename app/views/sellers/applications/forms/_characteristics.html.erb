@@ -2,6 +2,8 @@
 
 <%= f.input(:corporate_structure, collection: Seller.corporate_structure.options, as: :radio_buttons) %>
 
+<%= f.input :regional, as: :radio_buttons %>
+
 <p>The following fields are optional but will help buyers find you.</p>
 
 <fieldset class="multiple-choice-group checkbox-group">
@@ -11,12 +13,6 @@
   <%= f.input :sme, as: :boolean, wrapper: false %>
   <%= f.input :not_for_profit, as: :boolean, wrapper: false %>
   <%= f.input :australian_owned, as: :boolean, wrapper: false %>
-</fieldset>
-
-<fieldset class="multiple-choice-group checkbox-group">
-  <legend>Location (optional)</legend>
-
-  <%= f.input :regional, as: :boolean, wrapper: false %>
 </fieldset>
 
 <fieldset class="multiple-choice-group checkbox-group">
