@@ -43,7 +43,7 @@
       <% end %>
       <% if product.free_trial? %>
         <dt>Free trial available</dt>
-        <dd><%= link_to product.free_trial_url %></dd>
+        <dd><%= link_to product.free_trial_url, product.free_trial_url %></dd>
       <% end %>
       <dt>Pricing</dt>
       <dd>
@@ -57,7 +57,7 @@
         <dl class="nested">
           <% if product.pricing_calculator_url.present? %>
             <dt>Pricing calculator</dt>
-            <dd><%= link_to product.pricing_calculator_url %></dd>
+            <dd><%= link_to product.pricing_calculator_url, product.pricing_calculator_url %></dd>
           <% end %>
 
           <dt>Variables affecting pricing</dt>

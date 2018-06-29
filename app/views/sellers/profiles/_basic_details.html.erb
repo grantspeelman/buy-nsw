@@ -1,10 +1,10 @@
 <dl id="basic-details">
   <dt>Website</dt>
-  <dd><%= link_to seller.website_url %></dd>
+  <dd><%= link_to seller.website_url, seller.website_url %></dd>
 
   <% if seller.linkedin_url.present? %>
     <dt>LinkedIn</dt>
-    <dd><%= link_to seller.linkedin_url %></dd>
+    <dd><%= link_to seller.linkedin_url, seller.linkedin_url %></dd>
   <% end %>
 
   <% if authorized_buyer %>
