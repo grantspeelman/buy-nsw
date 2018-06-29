@@ -235,8 +235,6 @@ en:
           australian_owned:
             label: 'Australian owned'
             hint: Your business is founded and headquartered in Australia and owned by Australian nationals.
-          rural_remote:
-            label: 'Rural or remote business'
           regional:
             label: 'Regional or non-metropolitan business'
           disability:

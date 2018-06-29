@@ -14,7 +14,6 @@ RSpec.describe Sellers::SellerApplication::Contract::Characteristics do
       sme: true,
       not_for_profit: false,
       australian_owned: true,
-      rural_remote: false,
       regional: true,
       disability: false,
       female_owned: true,

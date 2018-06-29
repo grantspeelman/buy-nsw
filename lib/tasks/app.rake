@@ -65,7 +65,6 @@ namespace :app do
             technologies: Faker::Lorem.paragraph,
             services: services,
             australian_owned: [false, true].sample,
-            rural_remote: [false, true].sample,
             workers_compensation_exempt: false
           )
           # Each seller has between 1 and 5 products
