@@ -1,39 +1,22 @@
-<% content_for :body_classes, 'with-big-header' %>
-<% content_for :without_container, true %>
 <% content_for :title, 'GovDC on buy.nsw' %>
 
-<div class="container main-title">
-  <div class="row">
-    <h1>Buy GovDC data centre space and colocation services</h1>
-  </div>
-</div>
-
 <section class="view-static-govdc">
-  <div class="container">
-    <div class="audiences">
-      <section class="box">
-        <div class="inner">
-          <h1>Buy GovDC space</h1>
-          <p>Buy physical space in the GovDC data centre, or expand space already allocated.</p>
-          <%= mail_to 'GovDC@finance.nsw.gov.au', 'Enquire now', class: 'action' %>
-        </div>
-      </section>
-      <section class="box">
-        <div class="inner">
-          <h1>Find GovDC sellers</h1>
-          <p>Search for cloud products and services available on GovDC’s managed services backbone.</p>
-          <%= link_to 'Search sellers', sellers_search_path(govdc: "govdc"), class: 'action' %>
-        </div>
-      </section>
-      <section class="box">
-        <div class="inner">
-          <h1>Request onsite support</h1>
-          <p>Log into the tenant portal to request onsite support from Metronode.</p>
-          <%= link_to 'Sign in', 'https://portal.identityhub.nsw.gov.au/PortalApp/', class: 'action' %>
-          <p>Current tenants only</p>
-          <%= mail_to 'GovDC@finance.nsw.gov.au', 'Request access', class: 'action' %>
-        </div>
-      </section>
-    </div>
-  </div>
+  <h1>Buy GovDC data centre space and colocation services</h1>
+
+  <p>GovDC data centres are efficient, reliable, secure and scalable facilities. They are purpose built for government use and located in Silverwater and Unanderra.</p>
+
+  <ul class="link-list">
+    <li>
+      <%= mail_to 'GovDC@finance.nsw.gov.au', 'Enquire about GovDC space' %>
+      Get in touch with the GovDC team to buy space or expand space already allocated
+    </li>
+    <li>
+      <%= link_to 'Find GovDC sellers', sellers_search_path(govdc: "govdc") %>
+      Search for cloud products and services available on GovDC’s managed services backbone
+    </li>
+    <li>
+      <%= link_to 'Request onsite support', 'https://portal.identityhub.nsw.gov.au/PortalApp/' %>
+      Log into the tenant portal to request onsite support from Metronode. If you don't have access, <%= mail_to 'GovDC@finance.nsw.gov.au', 'contact the team', class: 'inline-link' %>
+    </li>
+  </ul>
 </section>
