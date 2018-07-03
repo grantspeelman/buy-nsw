@@ -1,18 +1,16 @@
 <div class="interim-message">
-  <h2>buy.nsw is almost ready for you</h2>
+  <p>To get started, browse:</p>
 
-  <p>We're currently helping sellers apply to join <strong>buy.nsw</strong>. We will be opening for buyers soon.</p>
-  <p>Your buyer account is approved, so you'll be the first to know when <strong>buy.nsw</strong> is open for business.</p>
+  <ul>
+    <li><%= link_to 'cloud software and applications', pathway_search_path('applications-software') %></li>
+    <li><%= link_to 'hosting and infrastructure', pathway_search_path('hosting-infrastructure') %></li>
+  </ul>
+
+  <p>Or <%= link_to root_path do %>return to the <strong>buy.nsw</strong> homepage<% end %> for more options.</p>
 
   <div class="statistics">
     <h2>Our sellers so far</h3>
 
-    <div class="statistic">
-      <em class="big-number">
-        <%= SellerApplication.created.count %>
-      </em>
-      applying
-    </div>
     <div class="statistic">
       <em class="big-number">
         <%= SellerApplication.for_review.count %>
@@ -24,4 +22,9 @@
       </em> approved
     </div>
   </div>
+
+  <p>If you can't see what you need check back soon, or tell us what you'd like to see more of by emailing <%= mail_to 'buy.nsw@finance.nsw.gov.au' %></p>
+
+  <p>We're always happy to hear from our buyers and sellers.</p>
+
 </div>
