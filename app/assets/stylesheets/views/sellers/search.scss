@@ -1,46 +1,5 @@
 .view-sellers-search {
 
-  .search-form {
-    h1 {
-      font-size: 1.5em;
-      margin-bottom: 0.4em;
-    }
-    label {
-      display: block;
-    }
-
-    .input-group {
-      display: flex;
-      @include media-breakpoint-up(md) {
-        width: 70%;
-      }
-
-      input {
-        display: inline-block;
-        vertical-align: top;
-        flex: 1;
-      }
-    }
-    input[type=text].form-control {
-      font-size: 1.1em;
-    }
-    input[type=submit] {
-      flex: auto;
-      width: auto;
-      margin-top: .5rem;
-
-      @include media-breakpoint-up(sm) {
-        max-width: 8rem;
-        margin-top: 0;
-      }
-    }
-    input[type=submit] {
-      @include button-primary;
-
-      font-size: 1.2rem;
-    }
-  }
-
   .search-results {
     @include make-row();
     padding-top: 1em;
@@ -103,6 +62,7 @@
           border: none;
           padding: 0.3rem 0.2rem 0.2rem 0.5rem;
           font-size: 1rem;
+          flex: 0;
 
           .icon {
             @extend .oi;
