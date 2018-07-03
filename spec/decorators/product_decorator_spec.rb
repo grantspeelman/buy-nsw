@@ -55,4 +55,96 @@ RSpec.describe ProductDecorator do
     end
   end
 
+  describe '#pricing_currency' do
+    context 'when not "other"' do
+      before(:each) {
+        allow(product).to receive(:pricing_currency).and_return('usd')
+      }
+
+      it 'returns the existing value' do
+        expect(subject.pricing_currency).to eq('usd')
+      end
+    end
+
+    context 'when "other"' do
+      before(:each) {
+        allow(product).to receive(:pricing_currency).and_return('other')
+        allow(product).to receive(:pricing_currency_other).and_return('foo')
+      }
+
+      it 'returns the existing value' do
+        expect(subject.pricing_currency).to eq('foo')
+      end
+    end
+  end
+
+  shared_examples_for '#parse_money' do |value_method, decorator_method|
+    let(:value) { BigDecimal.new("100.00") }
+
+    before(:each) {
+      allow(product).to receive(:pricing_currency).and_return(currency)
+      allow(product).to receive(value_method).and_return(value)
+    }
+
+    context 'when a currency exists' do
+      let(:currency) { 'aud' }
+
+      it 'returns a money object' do
+        expect(subject.send(decorator_method)).to be_a(Money)
+      end
+
+      it 'sets the correct currency' do
+        expect(subject.send(decorator_method).currency).to eq(currency)
+      end
+
+      it 'sets the correct value' do
+        expect(subject.send(decorator_method).fractional).to eq(value)
+      end
+    end
+
+    context 'when a currency is invalid' do
+      let(:currency) { 'foo' }
+
+      it 'returns nil' do
+        expect(subject.send(decorator_method)).to be_nil
+      end
+    end
+
+    context 'when a currency is blank' do
+      let(:currency) { nil }
+
+      it 'returns nil' do
+        expect(subject.send(decorator_method)).to be_nil
+      end
+    end
+  end
+
+  shared_examples_for '#formatted_pricing_*' do |value_method, decorator_method|
+    let(:money) { Money.new('10000', :aud) }
+
+    before(:each) {
+      expect(subject).to receive(value_method).and_return(money)
+    }
+
+    it 'formats a money object as currency' do
+      expect(subject.send(decorator_method)).to eq('$100.00 AUD')
+    end
+  end
+
+  describe '#pricing_min_with_currency' do
+    it_should_behave_like '#parse_money', :pricing_min, :pricing_min_with_currency
+  end
+
+  describe '#pricing_max_with_currency' do
+    it_should_behave_like '#parse_money', :pricing_max, :pricing_max_with_currency
+  end
+
+  describe '#formatted_pricing_min' do
+    it_should_behave_like '#formatted_pricing_*', :pricing_min_with_currency, :formatted_pricing_min
+  end
+
+  describe '#formatted_pricing_max' do
+    it_should_behave_like '#formatted_pricing_*', :pricing_max_with_currency, :formatted_pricing_max
+  end
+
 end

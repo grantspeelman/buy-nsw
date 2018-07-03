@@ -16,25 +16,27 @@
     </dl>
     <%= simpler_format product.summary %>
 
-    <div class="product-section features-benefits">
-      <% if product.features.any? %>
-      <ul>
-        <h2>Features</h2>
-        <% product.features.each do |feature| %>
-          <li><%= feature.feature %></li>
+    <% if product.features.any? || product.benefits.any? %>
+      <div class="product-section features-benefits">
+        <% if product.features.any? %>
+        <ul>
+          <h2>Features</h2>
+          <% product.features.each do |feature| %>
+            <li><%= feature.feature %></li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
 
-      <% if product.benefits.any? %>
-      <ul>
-        <h2>Benefits</h2>
-        <% product.benefits.each do |benefit| %>
-          <li><%= benefit.benefit %></li>
+        <% if product.benefits.any? %>
+        <ul>
+          <h2>Benefits</h2>
+          <% product.benefits.each do |benefit| %>
+            <li><%= benefit.benefit %></li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <dl>
       <% if product.free_version? %>
@@ -45,28 +47,21 @@
         <dt>Free trial available</dt>
         <dd><%= link_to product.free_trial_url, product.free_trial_url %></dd>
       <% end %>
-      <dt>Pricing</dt>
-      <dd>
-        <p>
-          From <%= number_to_currency product.pricing_min %>
-          to <%= number_to_currency product.pricing_max %>
-          <%= product.pricing_unit %>
-        </p>
-
-        <% if product.pricing_calculator_url.present? || product.pricing_variables.present? %>
-        <dl class="nested">
-          <% if product.pricing_calculator_url.present? %>
-            <dt>Pricing calculator</dt>
-            <dd><%= link_to product.pricing_calculator_url, product.pricing_calculator_url %></dd>
-          <% end %>
-
-          <dt>Variables affecting pricing</dt>
-          <dd>
-            <%= simpler_format product.pricing_variables %>
-          </dd>
-        </dl>
+      <dt>Minimum price</dt>
+      <dd><%= product.formatted_pricing_min %> <%= product.pricing_unit %></dd>
+      <dt>Maximum price</dt>
+      <dd><%= product.formatted_pricing_max %> <%= product.pricing_unit %></dd>
+      <% if product.pricing_calculator_url.present? || product.pricing_variables.present? %>
+        <% if product.pricing_calculator_url.present? %>
+          <dt>Pricing calculator</dt>
+          <dd><%= link_to product.pricing_calculator_url, product.pricing_calculator_url %></dd>
         <% end %>
-      </dd>
+
+        <dt>Variables affecting pricing</dt>
+        <dd>
+          <%= simpler_format product.pricing_variables %>
+        </dd>
+      <% end %>
       <% if product.education_pricing? %>
         <dt>Education pricing</dt>
         <dd>
