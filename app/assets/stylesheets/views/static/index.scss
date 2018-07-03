@@ -66,27 +66,4 @@
       font-size: 1.8em;
     }
   }
-
-  .inline-search-form {
-    form {
-      @extend .form-inline;
-
-      .form-group {
-        display: flex;
-        width: 100%;
-
-        input {
-          flex: 1;
-        }
-      }
-      input.form-control {
-        margin-right: .5rem;
-      }
-      input[type=submit] {
-        font-size: 1.1rem;
-        border-bottom: none;
-        max-width: 8rem;
-      }
-    }
-  }
 }
