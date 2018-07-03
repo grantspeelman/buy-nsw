@@ -16,25 +16,27 @@
     </dl>
     <%= simpler_format product.summary %>
 
-    <div class="product-section features-benefits">
-      <% if product.features.any? %>
-      <ul>
-        <h2>Features</h2>
-        <% product.features.each do |feature| %>
-          <li><%= feature.feature %></li>
+    <% if product.features.any? || product.benefits.any? %>
+      <div class="product-section features-benefits">
+        <% if product.features.any? %>
+        <ul>
+          <h2>Features</h2>
+          <% product.features.each do |feature| %>
+            <li><%= feature.feature %></li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
 
-      <% if product.benefits.any? %>
-      <ul>
-        <h2>Benefits</h2>
-        <% product.benefits.each do |benefit| %>
-          <li><%= benefit.benefit %></li>
+        <% if product.benefits.any? %>
+        <ul>
+          <h2>Benefits</h2>
+          <% product.benefits.each do |benefit| %>
+            <li><%= benefit.benefit %></li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <dl>
       <% if product.free_version? %>
