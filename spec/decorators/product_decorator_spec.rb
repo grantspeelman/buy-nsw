@@ -98,7 +98,7 @@ RSpec.describe ProductDecorator do
       end
 
       it 'sets the correct value' do
-        expect(subject.send(decorator_method).fractional).to eq(value)
+        expect(subject.send(decorator_method).format).to eq('$100.00')
       end
     end
 

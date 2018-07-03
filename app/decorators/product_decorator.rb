@@ -52,7 +52,7 @@ private
   def parse_money(amount)
     return nil if pricing_currency.blank?
     begin
-      Money.new(amount, pricing_currency)
+      Money.new(amount*100, pricing_currency)
     rescue Money::Currency::UnknownCurrency
       nil
     end
