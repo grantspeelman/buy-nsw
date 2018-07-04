@@ -1,0 +1,16 @@
+<dl>
+  <% [:accreditations, :engagements, :awards].each do |kind| %>
+    <dt><%= t(:name, scope: [:ops, :seller_applications, :fields, kind]) %></dt>
+    <dd>
+      <% if seller.public_send(kind).any? %>
+        <ul>
+          <% seller.public_send(kind).each do |item| %>
+            <li><%= item.send(kind.to_s.singularize) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <em>None</em>
+      <% end %>
+    </dd>
+  <% end %>
+</dl>

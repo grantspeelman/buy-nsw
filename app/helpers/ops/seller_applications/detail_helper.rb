@@ -51,6 +51,7 @@ module Ops::SellerApplications::DetailHelper
         :indigenous,
         :disability,
         :female_owned,
+        :corporate_structure,
       ],
       terms: [
         :agree,

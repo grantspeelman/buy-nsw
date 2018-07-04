@@ -140,6 +140,8 @@ en:
           name: 'Regional or non-metropolitan business'
         disability:
           name: 'Australian disability enterprise'
+        corporate_structure:
+          name: 'Corporate structure'
         addresses:
           name: 'Business address'
         contact_name:
@@ -172,6 +174,12 @@ en:
           name: Professional Indemnity and Public Liability Insurance
         financial_statement:
           name: Financial statement
+        accreditations:
+          name: Accreditations
+        engagements:
+          name: Industry engagement
+        awards:
+          name: Awards
       forms:
         assign:
           assigned_to_id:
