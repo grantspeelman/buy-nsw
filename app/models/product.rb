@@ -106,9 +106,12 @@ class Product < ApplicationRecord
   scope :free_version, -> { where(:free_version => true) }
   scope :free_trial, -> { where(:free_trial => true) }
   scope :education_pricing, -> { where(:education_pricing => true) }
+  scope :not_for_profit_pricing, -> { where(:not_for_profit_pricing => true) }
   scope :with_data_location, ->(location){ where(data_location: location) }
   scope :with_api, ->{ where(api: ['rest', 'non-rest']) }
   scope :mobile_devices, ->{ where(mobile_devices: true) }
+
+  scope :with_government_network_type, ->(type) { where(":type = ANY(government_network_type)", type: type) }
 
   scope :iso_27001, ->{ where(iso_27001: true) }
   scope :iso_27017, ->{ where(iso_27017: true) }
@@ -116,4 +119,6 @@ class Product < ApplicationRecord
   scope :csa_star, ->{ where(csa_star: true) }
   scope :pci_dss, ->{ where(pci_dss: true) }
   scope :soc_2, ->{ where(soc_2: true) }
+  scope :irap_assessed, -> { where("irap_type != 'not-assessed'") }
+  scope :asd_certified, -> { where(asd_certified: true)}
 end

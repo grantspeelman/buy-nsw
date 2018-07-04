@@ -618,6 +618,16 @@ en:
             free_version: Free version available
             free_trial: Free trial available
             education: Pricing for education
+            not_for_profit: Pricing for not-for-profits
+        government_network_type:
+          name: Connections to government networks
+          options:
+            govdc: GovDC
+            govlink: GovLink
+            aarnet: AARNET
+            id-hub: ID Hub
+            icon: ICON
+            other: Other
         characteristics:
           name: Product characteristics
           options:
@@ -633,3 +643,5 @@ en:
             csa_star: CSA STAR
             pci_dss: PCI DSS
             soc_2: SOC II
+            irap_assessed: IRAP assessed
+            asd_certified: ASD certified

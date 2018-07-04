@@ -18,11 +18,12 @@ module Search
       {
         term: :term_filter,
         audiences: audiences_keys,
-        business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         characteristics: [:data_in_australia, :api, :mobile_devices],
+        pricing: [:free_version, :free_trial, :education, :not_for_profit],
+        business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         reseller_type: [:reseller, :not_reseller],
-        security_standards: security_standards_keys,
-        pricing: [:free_version, :free_trial, :education],
+        security_standards: security_standards_keys + [:irap_assessed, :asd_certified],
+        government_network_type: government_network_type_keys
       }
     end
 
@@ -50,10 +51,14 @@ module Search
             yield_self(&method(:free_version_filter)).
             yield_self(&method(:free_trial_filter)).
             yield_self(&method(:education_pricing_filter)).
+            yield_self(&method(:not_for_profit_pricing_filter)).
+            yield_self(&method(:government_network_type_filter)).
             yield_self(&method(:data_location_filter)).
             yield_self(&method(:api_filter)).
             yield_self(&method(:mobile_devices_filter)).
-            yield_self(&method(:security_standards_filter))
+            yield_self(&method(:security_standards_filter)).
+            yield_self(&method(:irap_assessed_filter)).
+            yield_self(&method(:asd_certified_filter))
     end
 
     def term_filter(relation)
@@ -69,6 +74,15 @@ module Search
       audiences_keys.each do |audience|
         if filter_selected?(:audiences, audience)
           relation = relation.with_audience(audience)
+        end
+      end
+      relation
+    end
+
+    def government_network_type_filter(relation)
+      government_network_type_keys.each do |type|
+        if filter_selected?(:government_network_type, type)
+          relation = relation.with_government_network_type(type)
         end
       end
       relation
@@ -110,6 +124,14 @@ module Search
       end
     end
 
+    def not_for_profit_pricing_filter(relation)
+      if filter_selected?(:pricing, :not_for_profit)
+        relation = relation.not_for_profit_pricing
+      else
+        relation
+      end
+    end
+
     def data_location_filter(relation)
       if filter_selected?(:characteristics, :data_in_australia)
         relation = relation.with_data_location('only-australia')
@@ -143,8 +165,28 @@ module Search
       relation
     end
 
+    def irap_assessed_filter(relation)
+      if filter_selected?(:security_standards, :irap_assessed)
+        relation = relation.irap_assessed
+      else
+        relation
+      end
+    end
+
+    def asd_certified_filter(relation)
+      if filter_selected?(:security_standards, :asd_certified)
+        relation = relation.asd_certified
+      else
+        relation
+      end
+    end
+
     def audiences_keys
       ::Product.audiences.values
+    end
+
+    def government_network_type_keys
+      ::Product.government_network_type.values
     end
 
     def security_standards_keys
