@@ -618,6 +618,7 @@ en:
             free_version: Free version available
             free_trial: Free trial available
             education: Pricing for education
+            not_for_profit: Pricing for not-for-profits
         characteristics:
           name: Product characteristics
           options:

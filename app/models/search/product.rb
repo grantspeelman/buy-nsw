@@ -22,7 +22,7 @@ module Search
         characteristics: [:data_in_australia, :api, :mobile_devices],
         reseller_type: [:reseller, :not_reseller],
         security_standards: security_standards_keys,
-        pricing: [:free_version, :free_trial, :education],
+        pricing: [:free_version, :free_trial, :education, :not_for_profit],
       }
     end
 
@@ -50,6 +50,7 @@ module Search
             yield_self(&method(:free_version_filter)).
             yield_self(&method(:free_trial_filter)).
             yield_self(&method(:education_pricing_filter)).
+            yield_self(&method(:not_for_profit_pricing_filter)).
             yield_self(&method(:data_location_filter)).
             yield_self(&method(:api_filter)).
             yield_self(&method(:mobile_devices_filter)).
@@ -105,6 +106,14 @@ module Search
     def education_pricing_filter(relation)
       if filter_selected?(:pricing, :education)
         relation = relation.education_pricing
+      else
+        relation
+      end
+    end
+
+    def not_for_profit_pricing_filter(relation)
+      if filter_selected?(:pricing, :not_for_profit)
+        relation = relation.not_for_profit_pricing
       else
         relation
       end
