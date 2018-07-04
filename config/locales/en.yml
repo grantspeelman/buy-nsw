@@ -154,6 +154,9 @@ en:
       title_with_error_list: "There was a problem with your answers to:"
       title_without_error_list: There was a problem with your answers
       guidance: "Please check the answers you provided."
+  static:
+    cloud:
+      meta_description: Australia's first government marketplace for cloud products and services, where businesses of all sizes sell to NSW Government, not-for-profits and community groups.
   users:
     sessions:
       sign_up:
