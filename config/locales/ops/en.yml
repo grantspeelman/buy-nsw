@@ -140,6 +140,8 @@ en:
           name: 'Regional or non-metropolitan business'
         disability:
           name: 'Australian disability enterprise'
+        corporate_structure:
+          name: 'Corporate structure'
         addresses:
           name: 'Business address'
         contact_name:
