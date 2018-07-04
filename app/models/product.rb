@@ -111,6 +111,8 @@ class Product < ApplicationRecord
   scope :with_api, ->{ where(api: ['rest', 'non-rest']) }
   scope :mobile_devices, ->{ where(mobile_devices: true) }
 
+  scope :with_government_network_type, ->(type) { where(":type = ANY(government_network_type)", type: type) }
+
   scope :iso_27001, ->{ where(iso_27001: true) }
   scope :iso_27017, ->{ where(iso_27017: true) }
   scope :iso_27018, ->{ where(iso_27018: true) }

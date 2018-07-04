@@ -619,6 +619,15 @@ en:
             free_trial: Free trial available
             education: Pricing for education
             not_for_profit: Pricing for not-for-profits
+        government_network_type:
+          name: Connections to government networks
+          options:
+            govdc: GovDC
+            govlink: GovLink
+            aarnet: AARNET
+            id_hub: ID Hub
+            icon: ICON
+            other: Other
         characteristics:
           name: Product characteristics
           options:

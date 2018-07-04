@@ -23,6 +23,7 @@ module Search
         reseller_type: [:reseller, :not_reseller],
         security_standards: security_standards_keys,
         pricing: [:free_version, :free_trial, :education, :not_for_profit],
+        government_network_type: government_network_type_keys
       }
     end
 
@@ -51,6 +52,7 @@ module Search
             yield_self(&method(:free_trial_filter)).
             yield_self(&method(:education_pricing_filter)).
             yield_self(&method(:not_for_profit_pricing_filter)).
+            yield_self(&method(:government_network_type_filter)).
             yield_self(&method(:data_location_filter)).
             yield_self(&method(:api_filter)).
             yield_self(&method(:mobile_devices_filter)).
@@ -70,6 +72,15 @@ module Search
       audiences_keys.each do |audience|
         if filter_selected?(:audiences, audience)
           relation = relation.with_audience(audience)
+        end
+      end
+      relation
+    end
+
+    def government_network_type_filter(relation)
+      government_network_type_keys.each do |type|
+        if filter_selected?(:government_network_type, type)
+          relation = relation.with_government_network_type(type)
         end
       end
       relation
@@ -154,6 +165,10 @@ module Search
 
     def audiences_keys
       ::Product.audiences.values
+    end
+
+    def government_network_type_keys
+      ::Product.government_network_type.values
     end
 
     def security_standards_keys
