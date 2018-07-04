@@ -119,4 +119,6 @@ class Product < ApplicationRecord
   scope :csa_star, ->{ where(csa_star: true) }
   scope :pci_dss, ->{ where(pci_dss: true) }
   scope :soc_2, ->{ where(soc_2: true) }
+  scope :irap_assessed, -> { where("irap_type != 'not-assessed'") }
+  scope :asd_certified, -> { where(asd_certified: true)}
 end

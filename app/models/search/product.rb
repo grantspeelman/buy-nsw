@@ -21,7 +21,7 @@ module Search
         business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         characteristics: [:data_in_australia, :api, :mobile_devices],
         reseller_type: [:reseller, :not_reseller],
-        security_standards: security_standards_keys,
+        security_standards: security_standards_keys + [:irap_assessed, :asd_certified],
         pricing: [:free_version, :free_trial, :education, :not_for_profit],
         government_network_type: government_network_type_keys
       }
@@ -56,7 +56,9 @@ module Search
             yield_self(&method(:data_location_filter)).
             yield_self(&method(:api_filter)).
             yield_self(&method(:mobile_devices_filter)).
-            yield_self(&method(:security_standards_filter))
+            yield_self(&method(:security_standards_filter)).
+            yield_self(&method(:irap_assessed_filter)).
+            yield_self(&method(:asd_certified_filter))
     end
 
     def term_filter(relation)
@@ -161,6 +163,22 @@ module Search
         end
       end
       relation
+    end
+
+    def irap_assessed_filter(relation)
+      if filter_selected?(:security_standards, :irap_assessed)
+        relation = relation.irap_assessed
+      else
+        relation
+      end
+    end
+
+    def asd_certified_filter(relation)
+      if filter_selected?(:security_standards, :asd_certified)
+        relation = relation.asd_certified
+      else
+        relation
+      end
     end
 
     def audiences_keys

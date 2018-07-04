@@ -643,3 +643,5 @@ en:
             csa_star: CSA STAR
             pci_dss: PCI DSS
             soc_2: SOC II
+            irap_assessed: IRAP assessed
+            asd_certified: ASD certified
