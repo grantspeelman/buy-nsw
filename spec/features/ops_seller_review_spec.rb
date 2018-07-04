@@ -129,6 +129,29 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
         end
       end
     end
+
+    it 'shows seller recognition details' do
+      application = create(:awaiting_assignment_seller_application)
+
+      accreditation = create(:seller_accreditation, seller: application.seller)
+      engagement = create(:seller_engagement, seller: application.seller)
+      award = create(:seller_award, seller: application.seller)
+
+      visit ops_seller_application_path(application)
+      click_navigation_item 'Seller details'
+
+      within_definition ops_field_label(:accreditations) do
+        expect(page).to have_content(accreditation.accreditation)
+      end
+
+      within_definition ops_field_label(:engagements) do
+        expect(page).to have_content(engagement.engagement)
+      end
+
+      within_definition ops_field_label(:awards) do
+        expect(page).to have_content(award.award)
+      end
+    end
   end
 
   def select_application_from_list(seller_name)
@@ -202,7 +225,11 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def within_product_detail(label, &block)
-    term = page.find(:xpath, "//dt[contains(text(),'#{label}')]/following-sibling::dd")
+    within_definition(label, &block)
+  end
+
+  def within_definition(label, &block)
+    term = page.find(:xpath, "//dt[contains(text(),'#{label}')]/following-sibling::dd[1]")
     within(term, &block)
   end
 
