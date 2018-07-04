@@ -625,7 +625,7 @@ en:
             govdc: GovDC
             govlink: GovLink
             aarnet: AARNET
-            id_hub: ID Hub
+            id-hub: ID Hub
             icon: ICON
             other: Other
         characteristics:
