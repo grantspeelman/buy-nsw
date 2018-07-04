@@ -18,11 +18,11 @@ module Search
       {
         term: :term_filter,
         audiences: audiences_keys,
-        business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         characteristics: [:data_in_australia, :api, :mobile_devices],
+        pricing: [:free_version, :free_trial, :education, :not_for_profit],
+        business_identifiers: [:disability, :indigenous, :not_for_profit, :regional, :start_up, :sme],
         reseller_type: [:reseller, :not_reseller],
         security_standards: security_standards_keys + [:irap_assessed, :asd_certified],
-        pricing: [:free_version, :free_trial, :education, :not_for_profit],
         government_network_type: government_network_type_keys
       }
     end
