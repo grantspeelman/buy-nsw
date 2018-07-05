@@ -62,3 +62,8 @@ module ProcurementHub
     end
   end
 end
+
+Rails.application.routes.default_url_options = {
+  host: ENV['EMAIL_URL_HOST'],
+  port: ENV.fetch('EMAIL_URL_PORT', 80),
+}

@@ -1,6 +1,4 @@
 class DocumentScanJob < ApplicationJob
-  queue_as ENV.fetch('MAILER_QUEUE_NAME', :default)
-
   class ScanFailure < StandardError; end
 
   def perform(document)
