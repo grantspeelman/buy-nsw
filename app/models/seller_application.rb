@@ -1,16 +1,9 @@
 class SellerApplication < ApplicationRecord
+  self.table_name = 'seller_versions'
+
   include AASM
 
   include Concerns::StateScopes
-
-  class << self
-    def table_name
-      old_table_name = 'seller_applications'
-      new_table_name = 'seller_versions'
-
-      ActiveRecord::Base.connection.table_exists?(new_table_name) ? new_table_name : old_table_name
-    end
-  end
 
   belongs_to :seller
   belongs_to :assigned_to, class_name: 'User', optional: true
