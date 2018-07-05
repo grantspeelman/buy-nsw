@@ -242,3 +242,9 @@ en:
       text: |
         %{buyer} from %{organisation} wants to buy %{product}.
       button: View product order
+    buyer_application_submitted:
+      text: "%{buyer} from %{organisation} just submitted an application to become a buyer."
+      button: Review application
+    seller_version_submitted:
+      text: "%{seller} just submitted an application to become a seller."
+      button: Review application

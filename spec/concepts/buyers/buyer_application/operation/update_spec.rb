@@ -16,6 +16,10 @@ RSpec.describe Buyers::BuyerApplication::Update do
     }
   end
 
+  before :each do
+    allow(SlackPostJob).to receive(:perform_later)    
+  end
+
   it 'can save a buyer given a step and valid attributes' do
     result = Buyers::BuyerApplication::Update.(
                build_params(application, 'basic-details', {
