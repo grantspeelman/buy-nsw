@@ -1,13 +1,11 @@
 class SlackPostJob < ApplicationJob
-  def perform(message)
-    if slack_webhook_url.present?
-      RestClient.post slack_webhook_url, {text: message}.to_json, {content_type: :json}
+  def perform(id, type)
+    product_order = ProductOrder.find(id)
+    case type.to_sym
+    when :new_product_order
+      SlackMessage.new_product_order(product_order)
+    else
+      raise "Unexpected type"
     end
-  end
-
-  private
-
-  def slack_webhook_url
-    ENV["SLACK_WEBHOOK_URL"]
   end
 end
