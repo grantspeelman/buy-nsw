@@ -6,7 +6,7 @@ class Ops::SellerApplications::ProductsController < Ops::BaseController
 
 private
   def application
-    @application ||= SellerApplication.find(params[:seller_application_id])
+    @application ||= SellerVersion.find(params[:seller_application_id])
   end
   helper_method :application
 

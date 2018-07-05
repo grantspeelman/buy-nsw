@@ -36,7 +36,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
   end
 
   def notes
-    application = SellerApplication.find(params[:id])
+    application = SellerVersion.find(params[:id])
     event = Event::Note.create(
       user: current_user,
       eventable: application,
@@ -47,7 +47,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
 
 private
   def applications
-    @applications ||= SellerApplication.includes(:seller)
+    @applications ||= SellerVersion.includes(:seller)
   end
   helper_method :applications
 
@@ -65,7 +65,7 @@ private
   helper_method :search
 
   def application
-    @application ||= SellerApplication.find(params[:id])
+    @application ||= SellerVersion.find(params[:id])
   end
   helper_method :application
 
