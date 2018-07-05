@@ -25,6 +25,7 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
   step :change_application_state!
   step :persist!
   step :log_event!
+  step :send_slack_notification!
 
   def validate_step_change!(options, model:, **)
     model.may_submit?
@@ -46,6 +47,13 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
     Event::SubmittedApplication.create(
       user: options['config.current_user'],
       eventable: model
+    )
+  end
+
+  def send_slack_notification!(options, model:, **)
+    SlackPostJob.perform_later(
+      model.id,
+      :seller_version_submitted.to_s
     )
   end
 end

@@ -67,6 +67,7 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
 
   success :submit_if_valid_and_last_step!
   success :log_event!
+  success :send_slack_notification!
 
   # NOTE: Invoking this again at the end of the flow means that we can add
   # validation errors and show the form again when the fields are invalid.
@@ -94,6 +95,15 @@ class Buyers::BuyerApplication::Update < Trailblazer::Operation
       Event::SubmittedApplication.create(
         user: options['current_user'],
         eventable: options[:application_model]
+      )
+    end
+  end
+
+  def send_slack_notification!(options, **)
+    if options['result.submitted']
+      SlackPostJob.perform_later(
+        options[:application_model].id,
+        :buyer_application_submitted.to_s
       )
     end
   end
