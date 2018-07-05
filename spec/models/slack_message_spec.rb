@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SlackMessage do
+  include Rails.application.routes.url_helpers
+
   it "#message" do
     expect(RestClient).to receive(:post).with(
       "https://hooks.slack.com/services/abc/def/ghi",
@@ -13,14 +15,18 @@ RSpec.describe SlackMessage do
 
   it "#new_product_order" do
     order = create(:product_order)
+    buyer_url = ops_buyer_url(order.buyer)
+    product_url = pathway_product_url(order.product.section, order.product)
+    order_url = ops_product_orders_url
+    
     expect(SlackMessage).to receive(:message).with(
-      text: "<http://localhost:5000/ops/buyers/1|Buyer Buyer> from Organisation Name wants to buy <http://localhost:5000/cloud/applications-software/products/1|Product name>.\n",
+      text: "<#{buyer_url}|Buyer Buyer> from Organisation Name wants to buy <#{product_url}|Product name>.\n",
       attachments: [{
-        fallback: "View product order at http://localhost:5000/ops/product-orders",
+        fallback: "View product order at #{order_url}",
         actions: [
           type: 'button',
           text: 'View product order',
-          url: 'http://localhost:5000/ops/product-orders'
+          url: order_url
         ]
       }]
     )
