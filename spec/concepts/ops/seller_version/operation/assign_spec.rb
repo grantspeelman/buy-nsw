@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Ops::SellerApplication::Assign do
+RSpec.describe Ops::SellerVersion::Assign do
 
   let(:application) { create(:awaiting_assignment_seller_version) }
   let(:current_user) { create(:admin_user) }
@@ -15,7 +15,7 @@ RSpec.describe Ops::SellerApplication::Assign do
    }
 
   it 'can assign a user to an application' do
-    result = Ops::SellerApplication::Assign.(params)
+    result = described_class.(params)
     application.reload
 
     expect(result).to be_success
@@ -23,7 +23,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   end
 
   it 'transitions the application to the assigned state if necessary' do
-    result = Ops::SellerApplication::Assign.(params)
+    result = described_class.(params)
     application.reload
 
     expect(result).to be_success
@@ -31,7 +31,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   end
 
   it 'logs an event' do
-    Ops::SellerApplication::Assign.(params, 'current_user' => current_user)
+    described_class.(params, 'current_user' => current_user)
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
@@ -41,7 +41,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   it 'does not transition the application if another state' do
     created_application = create(:created_seller_version)
 
-    result = Ops::SellerApplication::Assign.(params.merge(id: created_application.id))
+    result = described_class.(params.merge(id: created_application.id))
     created_application.reload
 
     expect(result).to be_success

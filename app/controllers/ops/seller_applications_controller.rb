@@ -17,7 +17,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
   end
 
   def assign
-    run Ops::SellerApplication::Assign do |result|
+    run Ops::SellerVersion::Assign do |result|
       flash.notice = I18n.t('ops.seller_applications.messages.update_assign_success')
       return redirect_to ops_seller_application_path(application)
     end
@@ -26,7 +26,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
   end
 
   def decide
-    run Ops::SellerApplication::Decide do |result|
+    run Ops::SellerVersion::Decide do |result|
       decision = result['contract.default'].decision
       flash.notice = I18n.t("ops.seller_applications.messages.decision_success.#{decision}")
       return redirect_to ops_seller_application_path(application)
@@ -84,8 +84,8 @@ private
 
   def ops
     @ops ||= {
-      assign: (run Ops::SellerApplication::Assign::Present),
-      decide: (run Ops::SellerApplication::Decide::Present),
+      assign: (run Ops::SellerVersion::Assign::Present),
+      decide: (run Ops::SellerVersion::Decide::Present),
     }
   end
 

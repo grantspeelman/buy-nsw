@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Ops::SellerApplication::Decide do
+RSpec.describe Ops::SellerVersion::Decide do
   include ActiveJob::TestHelper
 
   let(:current_user) { create(:admin_user) }
@@ -34,7 +34,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   }
 
   it 'can approve an application' do
-    result = Ops::SellerApplication::Decide.(approve_params)
+    result = described_class.(approve_params)
 
     expect(result).to be_success
 
@@ -45,7 +45,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   end
 
   it 'logs an event when an application is approved' do
-    Ops::SellerApplication::Decide.(approve_params, 'current_user' => current_user)
+    described_class.(approve_params, 'current_user' => current_user)
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
@@ -55,13 +55,13 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when an application is approved' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(approve_params)
+        described_class.(approve_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'can reject an application' do
-    result = Ops::SellerApplication::Decide.(reject_params)
+    result = described_class.(reject_params)
 
     expect(result).to be_success
 
@@ -72,7 +72,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   end
 
   it 'logs an event when an application is rejected' do
-    Ops::SellerApplication::Decide.(reject_params, 'current_user' => current_user)
+    described_class.(reject_params, 'current_user' => current_user)
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
@@ -82,13 +82,13 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when the application is rejected' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(reject_params)
+        described_class.(reject_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'can return an application to the seller' do
-    result = Ops::SellerApplication::Decide.(return_to_seller_params)
+    result = described_class.(return_to_seller_params)
 
     expect(result).to be_success
 
@@ -99,7 +99,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   end
 
   it 'logs an event when an application is returned to the seller' do
-    Ops::SellerApplication::Decide.(return_to_seller_params, 'current_user' => current_user)
+    described_class.(return_to_seller_params, 'current_user' => current_user)
     application.reload
 
     expect(application.events.first.user).to eq(current_user)
@@ -109,7 +109,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'sends an email when the application is returned to the seller' do
     expect {
       perform_enqueued_jobs do
-        Ops::SellerApplication::Decide.(return_to_seller_params)
+        described_class.(return_to_seller_params)
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
@@ -118,7 +118,7 @@ RSpec.describe Ops::SellerApplication::Decide do
     time = Time.now
 
     Timecop.freeze(time) do
-      result = Ops::SellerApplication::Decide.(approve_params)
+      result = described_class.(approve_params)
     end
     application.reload
 
@@ -128,7 +128,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   it 'fails when the state transition is not valid' do
     application = create(:created_seller_version)
 
-    result = Ops::SellerApplication::Decide.(
+    result = described_class.(
                {
                  id: application.id,
                  seller_application: {

@@ -1,7 +1,7 @@
-class Ops::SellerApplication::Assign < Trailblazer::Operation
+class Ops::SellerVersion::Assign < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step Model( SellerVersion, :find_by )
-    step Contract::Build( constant: Ops::SellerApplication::Contract::Assign )
+    step Contract::Build( constant: Ops::SellerVersion::Contract::Assign )
   end
 
   step Nested(Present)

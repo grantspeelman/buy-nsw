@@ -1,7 +1,7 @@
-class Ops::SellerApplication::Decide < Trailblazer::Operation
+class Ops::SellerVersion::Decide < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step Model( SellerVersion, :find_by )
-    step Contract::Build( constant: Ops::SellerApplication::Contract::Decide )
+    step Contract::Build( constant: Ops::SellerVersion::Contract::Decide )
   end
 
   class WithTransaction
