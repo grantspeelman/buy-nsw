@@ -139,10 +139,10 @@ RSpec.describe Sellers::WaitingSeller::Accept do
     it 'creates a seller application for the newly-created seller' do
       expect {
         perform_operation(default_params)
-      }.to change{ SellerApplication.count }.from(0).to(1)
+      }.to change{ SellerVersion.count }.from(0).to(1)
 
       seller = Seller.last
-      application = SellerApplication.last
+      application = SellerVersion.last
 
       expect(application.seller).to eq(seller)
     end
@@ -153,7 +153,7 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       Timecop.freeze(time) do
         perform_operation(default_params)
       end
-      application = SellerApplication.last
+      application = SellerVersion.last
 
       expect(application.started_at.to_i).to eq(time.to_i)
     end

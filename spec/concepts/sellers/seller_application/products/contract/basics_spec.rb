@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Sellers::SellerApplication::Products::Contract::Basics do
   let(:product) { create(:inactive_product) }
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
 
   subject { Sellers::SellerApplication::Products::Contract::Basics.new(
     application: application,

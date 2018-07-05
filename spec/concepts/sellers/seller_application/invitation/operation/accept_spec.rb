@@ -12,7 +12,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Accept do
     }
   }
 
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
   let!(:invited_user) { create(:seller_user, seller: application.seller, confirmed_at: nil, confirmation_token: token) }
 
   it 'confirms the user' do
@@ -38,7 +38,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Accept do
     end
 
     it 'does not confirm the user given a different application' do
-      other_application = create(:created_seller_application)
+      other_application = create(:created_seller_version)
       result = subject.({ application_id: other_application.id, confirmation_token: token, user: password_params })
 
       expect(result).to be_failure
@@ -46,7 +46,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Accept do
     end
 
     it 'does not confirm the user when the application is in the wrong state' do
-      other_application = create(:awaiting_assignment_seller_application)
+      other_application = create(:awaiting_assignment_seller_version)
       other_token = 'another-confirmation-token'
 
       user = create(:seller_user, seller: other_application.seller, confirmed_at: nil, confirmation_token: other_token)
@@ -64,7 +64,7 @@ RSpec.describe Sellers::SellerApplication::Invitation::Accept do
           password_confirmation: 'password',
         }
       }
-      
+
       it 'sets them on the contract' do
         result = subject.({ application_id: application.id, confirmation_token: token, user: invalid_password_params })
 

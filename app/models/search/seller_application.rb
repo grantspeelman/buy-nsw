@@ -15,11 +15,11 @@ module Search
     include Concerns::Search::ApplicationFilters
 
     def base_relation
-      ::SellerApplication.all
+      ::SellerVersion.all
     end
 
     def state_keys
-      ::SellerApplication.aasm.states.map(&:name)
+      ::SellerVersion.aasm.states.map(&:name)
     end
 
     def assigned_to_keys

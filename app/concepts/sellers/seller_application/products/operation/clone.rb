@@ -10,7 +10,7 @@ class Sellers::SellerApplication::Products::Clone < Trailblazer::Operation
   def model!(options, params:, **)
     return false unless options['config.current_user'].present?
 
-    options[:application_model] = options['config.current_user'].seller_applications.find(params[:application_id])
+    options[:application_model] = options['config.current_user'].seller_versions.find(params[:application_id])
     options[:seller_model] = options[:application_model].seller
     options[:product_model] = options[:seller_model].products.find(params[:id])
   end

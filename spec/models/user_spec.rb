@@ -57,23 +57,23 @@ RSpec.describe User do
     it 'is false when the user has an inactive buyer record' do
       user = User.new(roles: ['buyer'])
       create(:inactive_buyer, user: user)
-      
+
       expect(user.is_active_buyer?).to be_falsey
     end
   end
 
-  describe '#has_seller_application?' do
-    it 'is true when there are associated seller applications' do
+  describe '#has_seller_version?' do
+    it 'is true when there are associated seller versions' do
       user = create(:user)
       seller = create(:seller, owner: user)
-      create(:seller_application, seller: seller)
+      create(:seller_version, seller: seller)
 
-      expect(user.has_seller_application?).to be_truthy
+      expect(user.has_seller_version?).to be_truthy
     end
 
-    it 'is false when there are no associated seller applications' do
+    it 'is false when there are no associated seller versions' do
       user = User.new
-      expect(user.has_seller_application?).to be_falsey
+      expect(user.has_seller_version?).to be_falsey
     end
   end
 

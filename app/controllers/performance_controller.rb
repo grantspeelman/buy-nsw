@@ -4,15 +4,15 @@ class PerformanceController < ApplicationController
 
 private
   def seller_application_started_count
-    SellerApplication.created.count
+    SellerVersion.created.count
   end
 
   def seller_application_in_review_count
-    SellerApplication.for_review.count
+    SellerVersion.for_review.count
   end
 
   def seller_application_approved_count
-    SellerApplication.approved.count
+    SellerVersion.approved.count
   end
 
   def buyer_application_started_count

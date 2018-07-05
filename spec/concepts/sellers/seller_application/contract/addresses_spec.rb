@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Sellers::SellerApplication::Contract::Addresses do
   let(:seller) { create(:inactive_seller) }
-  let(:application) { create(:seller_application, seller: seller) }
+  let(:application) { create(:seller_version, seller: seller) }
 
   subject { Sellers::SellerApplication::Contract::Addresses.new(application: application, seller: seller) }
 

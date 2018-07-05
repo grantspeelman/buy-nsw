@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Sellers::SellerApplication::Invitation::Contract::Accept do
-  let(:application) { create(:seller_application) }
+  let(:application) { create(:seller_version) }
   let(:user) { create(:seller_user, seller: application.seller) }
 
   subject { Sellers::SellerApplication::Invitation::Contract::Accept.new(user) }

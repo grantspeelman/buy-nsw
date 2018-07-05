@@ -1,6 +1,6 @@
 class Ops::SellerApplication::Assign < Trailblazer::Operation
   class Present < Trailblazer::Operation
-    step Model( SellerApplication, :find_by )
+    step Model( SellerVersion, :find_by )
     step Contract::Build( constant: Ops::SellerApplication::Contract::Assign )
   end
 

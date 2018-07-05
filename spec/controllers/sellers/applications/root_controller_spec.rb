@@ -4,7 +4,7 @@ RSpec.describe Sellers::Applications::RootController, type: :controller, sign_in
 
   it 'renders a 404 for an application not owned by the user' do
     other_seller = create(:seller)
-    other_application = create(:created_seller_application,
+    other_application = create(:created_seller_version,
       seller: other_seller)
 
     get :show, params: { id: other_application.id }

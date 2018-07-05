@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ops::SellerApplication::Assign do
 
-  let(:application) { create(:awaiting_assignment_seller_application) }
+  let(:application) { create(:awaiting_assignment_seller_version) }
   let(:current_user) { create(:admin_user) }
   let(:user) { create(:admin_user) }
   let(:params) {
@@ -39,7 +39,7 @@ RSpec.describe Ops::SellerApplication::Assign do
   end
 
   it 'does not transition the application if another state' do
-    created_application = create(:created_seller_application)
+    created_application = create(:created_seller_version)
 
     result = Ops::SellerApplication::Assign.(params.merge(id: created_application.id))
     created_application.reload

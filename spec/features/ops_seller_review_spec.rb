@@ -4,7 +4,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
   describe 'as an admin user', user: :admin_user do
     it 'can approve an application' do
-      application = create(:awaiting_assignment_seller_application)
+      application = create(:awaiting_assignment_seller_version)
       product = create(:inactive_product, :with_basic_details, seller: application.seller)
 
       visit '/ops'
@@ -30,7 +30,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     end
 
     it 'can see uploaded documents' do
-      application = create(:awaiting_assignment_seller_application)
+      application = create(:awaiting_assignment_seller_version)
 
       create(:clean_document, documentable: application.seller, kind: 'financial_statement')
       create(:unscanned_document, documentable: application.seller, kind: 'professional_indemnity_certificate')
@@ -57,7 +57,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
 
     it 'tells the user when a seller is exempt from workers compensation insurance' do
       seller = create(:seller, workers_compensation_exempt: true)
-      application = create(:awaiting_assignment_seller_application, seller: seller)
+      application = create(:awaiting_assignment_seller_version, seller: seller)
       visit ops_seller_application_path(application)
 
       click_navigation_item 'Documents'
@@ -68,7 +68,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     end
 
     it 'tags sellers who were invited from the waitlist' do
-      application = create(:awaiting_assignment_seller_application)
+      application = create(:awaiting_assignment_seller_version)
       create(:joined_waiting_seller, seller: application.seller)
       visit ops_seller_application_path(application)
 
@@ -78,7 +78,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     end
 
     context 'with uploaded terms for a product' do
-      let!(:application) { create(:awaiting_assignment_seller_application) }
+      let!(:application) { create(:awaiting_assignment_seller_version) }
       let!(:product) { create(:inactive_product, :with_basic_details, seller: application.seller) }
 
       context 'for an unscanned document' do
@@ -131,7 +131,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     end
 
     it 'shows seller recognition details' do
-      application = create(:awaiting_assignment_seller_application)
+      application = create(:awaiting_assignment_seller_version)
 
       accreditation = create(:seller_accreditation, seller: application.seller)
       engagement = create(:seller_engagement, seller: application.seller)

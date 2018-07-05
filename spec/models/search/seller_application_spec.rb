@@ -18,7 +18,7 @@ RSpec.describe Search::SellerApplication do
   end
 
   it 'returns all seller applications by default' do
-    create_list(:seller_application, 10)
+    create_list(:seller_version, 10)
 
     search = Search::SellerApplication.new(
       selected_filters: {}
@@ -30,8 +30,8 @@ RSpec.describe Search::SellerApplication do
   it 'filters by assignee' do
     user = create(:admin_user)
 
-    create_list(:seller_application, 5)
-    create_list(:seller_application, 3, assigned_to: user)
+    create_list(:seller_version, 5)
+    create_list(:seller_version, 3, assigned_to: user)
 
     search = Search::SellerApplication.new(
       selected_filters: {
@@ -43,8 +43,8 @@ RSpec.describe Search::SellerApplication do
   end
 
   it 'filters by state' do
-    create_list(:seller_application, 5, state: 'created')
-    create_list(:seller_application, 3, state: 'ready_for_review')
+    create_list(:seller_version, 5, state: 'created')
+    create_list(:seller_version, 3, state: 'ready_for_review')
 
     search = Search::SellerApplication.new(
       selected_filters: {

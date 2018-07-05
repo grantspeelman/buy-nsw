@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SellerApplicationMailer, type: :mailer do
 
   describe '#application_approved_email' do
-    let(:application) { create(:approved_seller_application) }
+    let(:application) { create(:approved_seller_version) }
     let(:mail) { SellerApplicationMailer.with(application: application).application_approved_email }
 
     it 'renders the headers' do
@@ -36,7 +36,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
   end
 
   describe "#application_rejected_email" do
-    let(:application) { create(:rejected_seller_application) }
+    let(:application) { create(:rejected_seller_version) }
     let(:mail) { SellerApplicationMailer.with(application: application).application_rejected_email }
 
     it 'renders the headers' do
@@ -59,7 +59,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
   end
 
   describe "#application_return_to_applicant_email" do
-    let(:application) { create(:returned_to_applicant_seller_application) }
+    let(:application) { create(:returned_to_applicant_seller_version) }
     let(:mail) { SellerApplicationMailer.with(application: application).application_return_to_applicant_email }
 
     it 'renders the headers' do

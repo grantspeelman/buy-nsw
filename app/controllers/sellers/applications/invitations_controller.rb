@@ -50,7 +50,7 @@ private
   helper_method :form
 
   def application
-    @application ||= current_user.seller_applications.created.find(params[:application_id])
+    @application ||= current_user.seller_versions.created.find(params[:application_id])
   end
 
   def owners

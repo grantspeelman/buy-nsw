@@ -82,7 +82,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   end
 
   def create_application!(options, **)
-    options['application'] = options['seller'].applications.new(
+    options['application'] = options['seller'].versions.new(
       started_at: Time.now,
     )
     options['application'].save!

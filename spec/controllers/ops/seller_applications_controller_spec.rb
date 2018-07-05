@@ -6,7 +6,7 @@ RSpec.describe Ops::SellerApplicationsController, type: :controller, sign_in: :a
     describe 'format CSV' do
       render_views
 
-      let!(:seller_applications) { create_list(:seller_application, 5) }
+      let!(:seller_applications) { create_list(:seller_version, 5) }
       let(:params) {
         {
           # Reset the default filters

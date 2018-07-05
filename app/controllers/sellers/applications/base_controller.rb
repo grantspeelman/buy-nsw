@@ -10,7 +10,7 @@ private
   end
 
   def application
-    @application ||= current_user.seller_applications.created.find(params[:id])
+    @application ||= current_user.seller_versions.created.find(params[:id])
   end
   helper_method :application
 end

@@ -4,7 +4,7 @@ RSpec.describe Sellers::SellerApplication::Update do
 
   subject { Sellers::SellerApplication::Update }
 
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
   let(:abn) { attributes_for(:inactive_seller_with_tailor_fields)[:abn] }
 
   let(:current_user) { create(:user, seller: application.seller) }

@@ -4,7 +4,7 @@ RSpec.describe Sellers::SellerApplication::Products::Update do
 
   subject { Sellers::SellerApplication::Products::Update }
 
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
   let(:product) { create(:product, seller: application.seller) }
 
   let(:current_user) { create(:user, seller: application.seller) }

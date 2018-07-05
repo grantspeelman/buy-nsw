@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :seller_application do
+  factory :seller_version do
     association :seller
     created
 
@@ -35,11 +35,11 @@ FactoryBot.define do
       response 'Almost there!'
     end
 
-    factory :created_seller_application, traits: [:created]
-    factory :awaiting_assignment_seller_application, traits: [:awaiting_assignment, :with_full_seller_profile]
-    factory :ready_for_review_seller_application, traits: [:ready_for_review]
-    factory :approved_seller_application, traits: [:approved, :with_full_seller_profile]
-    factory :rejected_seller_application, traits: [:rejected, :with_full_seller_profile]
-    factory :returned_to_applicant_seller_application, traits: [:returned_to_applicant, :with_full_seller_profile]
+    factory :created_seller_version, traits: [:created]
+    factory :awaiting_assignment_seller_version, traits: [:awaiting_assignment, :with_full_seller_profile]
+    factory :ready_for_review_seller_version, traits: [:ready_for_review]
+    factory :approved_seller_version, traits: [:approved, :with_full_seller_profile]
+    factory :rejected_seller_version, traits: [:rejected, :with_full_seller_profile]
+    factory :returned_to_applicant_seller_version, traits: [:returned_to_applicant, :with_full_seller_profile]
   end
 end
