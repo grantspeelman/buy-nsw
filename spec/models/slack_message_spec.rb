@@ -52,4 +52,23 @@ RSpec.describe SlackMessage do
     )
     s.buyer_application_submitted(application)
   end
+
+  it '#seller_version_submitted' do
+    application = create(:awaiting_assignment_seller_version)
+    application_url = ops_seller_application_url(application)
+
+    s = SlackMessage.new
+    expect(s).to receive(:message).with(
+      text: "Seller Ltd just submitted an application to become a seller.",
+      attachments: [{
+        fallback: "Review application at #{application_url}",
+        actions: [
+          type: 'button',
+          text: 'Review application',
+          url: application_url
+        ]
+      }]
+    )
+    s.seller_version_submitted(application)
+  end
 end

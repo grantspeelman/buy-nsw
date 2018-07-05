@@ -24,6 +24,16 @@ class SlackMessage
     )
   end
 
+  def seller_version_submitted(application)
+    message_type_with_button(
+      :seller_version_submitted,
+      {
+        seller: application.seller.name
+      },
+      ops_seller_application_url(application)
+    )
+  end
+
   def message_type_with_button(type, params, button_url)
     message_with_button(
       I18n.t("slack_messages.#{type}.text", params),
