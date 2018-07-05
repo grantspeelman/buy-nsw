@@ -3,7 +3,25 @@ module SlackMessage
     buyer = link_to(order.buyer.name, Rails.application.routes.url_helpers.ops_buyer_url(order.buyer))
     product = link_to(order.product.name, Rails.application.routes.url_helpers.pathway_product_url(order.product.section, order.product))
     url = Rails.application.routes.url_helpers.ops_product_orders_url
-    message(text: I18n.t('slack_messages.new_product_order', buyer: buyer, organisation: order.buyer.organisation, product: product, url: url))
+    message(
+      text: I18n.t(
+        'slack_messages.new_product_order.text',
+        buyer: buyer,
+        organisation: order.buyer.organisation,
+        product: product,
+        url: url
+      ),
+      attachments: [
+        {
+          fallback: "#{I18n.t('slack_messages.new_product_order.button')} at #{url}",
+          actions: [
+            type: "button",
+            text: I18n.t('slack_messages.new_product_order.button'),
+            url: url
+          ]
+        }
+      ]
+    )
   end
 
   def self.message(params)
