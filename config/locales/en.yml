@@ -237,3 +237,6 @@ en:
       rejected_application: "Rejected application. Response: %{note}"
       returned_application: "Returned application to seller. Response: %{note}"
       note: "Note added: %{note}"
+  slack_messages:
+    new_product_order: |
+      %{buyer} from %{organisation} wants to buy %{product}. <%{url}|View product order>.

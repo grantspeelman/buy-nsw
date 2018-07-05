@@ -14,7 +14,7 @@ RSpec.describe SlackMessage do
   it "#new_product_order" do
     order = create(:product_order)
     expect(SlackMessage).to receive(:message).with(
-      text: "<http://localhost:5000/ops/buyers/1|Buyer Buyer> from Organisation Name wants to buy <http://localhost:5000/cloud/applications-software/products/1|Product name>. <http://localhost:5000/ops/product-orders|View product order>."
+      text: "<http://localhost:5000/ops/buyers/1|Buyer Buyer> from Organisation Name wants to buy <http://localhost:5000/cloud/applications-software/products/1|Product name>. <http://localhost:5000/ops/product-orders|View product order>.\n"
     )
     SlackMessage.new_product_order(order)
   end
