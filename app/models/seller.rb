@@ -17,8 +17,6 @@ class Seller < ApplicationRecord
   has_many :products
   has_many :versions, class_name: 'SellerVersion'
 
-  alias_method :applications, :versions
-
   has_documents :financial_statement, :professional_indemnity_certificate,
                 :workers_compensation_certificate,
                 :product_liability_certificate
@@ -58,8 +56,8 @@ class Seller < ApplicationRecord
   scope :govdc, ->{ where(govdc: true) }
   scope :with_service, ->(service){ where(":service = ANY(services)", service: service) }
 
-  def application_in_progress?
-    applications.created.any?
+  def version_in_progress?
+    versions.created.any?
   end
 
   private

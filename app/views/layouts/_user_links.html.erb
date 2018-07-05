@@ -6,7 +6,7 @@
       <li><%= link_to 'Procurement Ops', ops_root_path %></li>
     <% end %>
     <% if current_user.is_seller? %>
-      <% if current_user.seller&.application_in_progress? %>
+      <% if current_user.seller&.version_in_progress? %>
         <li><%= link_to 'Continue application', new_sellers_application_path %></li>
       <% elsif current_user.seller.present? %>
         <li><%= link_to 'Your seller account', sellers_dashboard_path %></li>

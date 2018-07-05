@@ -11,7 +11,7 @@ private
   helper_method :seller
 
   def validate_seller!
-    if seller.blank? || seller.application_in_progress?
+    if seller.blank? || seller.version_in_progress?
       redirect_to new_sellers_application_path
     end
   end

@@ -2,7 +2,7 @@ class Sellers::SellerApplication::Products::Update < Trailblazer::Operation
   class Present < Sellers::SellerApplication::Update::Present
     def model!(options, params:, **)
       options['model.seller'] = options['config.current_user'].seller
-      options['model.application'] ||= options['model.seller'].applications.created.find(params[:application_id])
+      options['model.application'] ||= options['model.seller'].versions.created.find(params[:application_id])
       options['model.product'] = options['model.seller'].products.find(params[:id])
 
       options['model.product'].present?
