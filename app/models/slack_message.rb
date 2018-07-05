@@ -27,6 +27,29 @@ class SlackMessage
     )
   end
 
+  def buyer_application_submitted(application)
+    url = ops_buyer_application_url(application)
+    buyer = application.buyer.name
+    organisation = application.buyer.organisation
+    button = I18n.t('slack_messages.buyer_application_submitted.button')
+
+    message(
+      text: I18n.t(
+        'slack_messages.buyer_application_submitted.text',
+        buyer: buyer,
+        organisation: organisation
+      ),
+      attachments: [{
+        fallback: "#{button} at #{url}",
+        actions: [
+          type: "button",
+          text: button,
+          url: url
+        ]
+      }]
+    )
+  end
+
   def message(params)
     if slack_webhook_url.present?
       RestClient.post slack_webhook_url, params.to_json, {content_type: :json}
