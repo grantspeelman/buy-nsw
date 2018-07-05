@@ -10,7 +10,7 @@ namespace :app do
       desc "Create fake sellers data - WARNING deletes MOST data in the database"
       task fake: :environment do
         User.destroy_all
-        SellerApplication.destroy_all
+        SellerVersion.destroy_all
         Seller.destroy_all
         Product.destroy_all
 

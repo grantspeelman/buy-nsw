@@ -39,7 +39,7 @@ private
   end
 
   def in_progress_sellers
-    @in_progress_sellers ||= Seller.where(id: SellerApplication.created.pluck(:seller_id))
+    @in_progress_sellers ||= Seller.where(id: SellerVersion.created.pluck(:seller_id))
   end
 
   def divisor
