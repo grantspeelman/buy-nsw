@@ -52,7 +52,7 @@ private
   helper_method :applications
 
   def search
-    @search ||= Search::SellerApplication.new(
+    @search ||= Search::SellerVersion.new(
       selected_filters: params,
       default_values: {
         state: 'ready_for_review',
