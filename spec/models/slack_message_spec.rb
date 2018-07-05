@@ -10,7 +10,7 @@ RSpec.describe SlackMessage do
       { content_type: :json }
     )
 
-    SlackMessage.message(text: "This is an important message")
+    SlackMessage.new.message(text: "This is an important message")
   end
 
   it "#new_product_order" do
@@ -18,8 +18,9 @@ RSpec.describe SlackMessage do
     buyer_url = ops_buyer_url(order.buyer)
     product_url = pathway_product_url(order.product.section, order.product)
     order_url = ops_product_orders_url
-    
-    expect(SlackMessage).to receive(:message).with(
+
+    s = SlackMessage.new
+    expect(s).to receive(:message).with(
       text: "<#{buyer_url}|Buyer Buyer> from Organisation Name wants to buy <#{product_url}|Product name>.\n",
       attachments: [{
         fallback: "View product order at #{order_url}",
@@ -30,6 +31,6 @@ RSpec.describe SlackMessage do
         ]
       }]
     )
-    SlackMessage.new_product_order(order)
+    s.new_product_order(order)
   end
 end
