@@ -11,11 +11,11 @@ class User < ApplicationRecord
   has_one :buyer
   belongs_to :seller, optional: true
 
-  has_many :seller_applications, through: :seller, source: :applications
-  has_many :assigned_applications, class_name: 'SellerApplication', foreign_key: :assigned_to_id
+  has_many :seller_versions, through: :seller, source: :versions
+  has_many :assigned_versions, class_name: 'SellerVersion', foreign_key: :assigned_to_id
 
-  def has_seller_application?
-    seller_applications.any?
+  def has_seller_version?
+    seller_versions.any?
   end
 
   def is_admin?

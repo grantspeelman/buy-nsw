@@ -62,18 +62,18 @@ RSpec.describe User do
     end
   end
 
-  describe '#has_seller_application?' do
-    it 'is true when there are associated seller applications' do
+  describe '#has_seller_version?' do
+    it 'is true when there are associated seller versions' do
       user = create(:user)
       seller = create(:seller, owner: user)
       create(:seller_version, seller: seller)
 
-      expect(user.has_seller_application?).to be_truthy
+      expect(user.has_seller_version?).to be_truthy
     end
 
-    it 'is false when there are no associated seller applications' do
+    it 'is false when there are no associated seller versions' do
       user = User.new
-      expect(user.has_seller_application?).to be_falsey
+      expect(user.has_seller_version?).to be_falsey
     end
   end
 
