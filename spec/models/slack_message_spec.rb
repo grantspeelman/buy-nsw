@@ -8,7 +8,7 @@ RSpec.describe SlackMessage do
       { content_type: :json }
     )
 
-    SlackMessage.message("This is an important message")
+    SlackMessage.message(text: "This is an important message")
   end
 
   it "#new_product_order" do
