@@ -4,7 +4,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   include ActiveJob::TestHelper
 
   let(:current_user) { create(:admin_user) }
-  let(:application) { create(:ready_for_review_seller_application) }
+  let(:application) { create(:ready_for_review_seller_version) }
   let(:approve_params) {
     {
       id: application.id,
@@ -126,7 +126,7 @@ RSpec.describe Ops::SellerApplication::Decide do
   end
 
   it 'fails when the state transition is not valid' do
-    application = create(:created_seller_application)
+    application = create(:created_seller_version)
 
     result = Ops::SellerApplication::Decide.(
                {

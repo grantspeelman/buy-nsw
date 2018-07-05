@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Sellers::SellerApplication::Invitation::Create do
 
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
   let(:current_user) { create(:seller_user, seller: application.seller) }
 
   it 'creates a new user' do

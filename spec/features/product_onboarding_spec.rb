@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Product onboarding', type: :feature, js: true, user: :seller_user_with_seller do
 
   let(:existing_application) {
-    create(:created_seller_application, seller: @user.seller)
+    create(:created_seller_version, seller: @user.seller)
   }
 
   before(:each) {

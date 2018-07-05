@@ -4,7 +4,7 @@ RSpec.describe Sellers::SellerApplication::Products::Clone do
 
   subject { Sellers::SellerApplication::Products::Clone }
 
-  let!(:application) { create(:created_seller_application) }
+  let!(:application) { create(:created_seller_version) }
   let!(:current_user) { create(:seller_user, seller: application.seller) }
 
   let!(:product) {

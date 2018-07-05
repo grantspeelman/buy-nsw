@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ops::SellerApplication::Contract::Decide do
 
-  let(:application) { create(:seller_application) }
+  let(:application) { create(:seller_version) }
 
   it 'is valid with a decision and response' do
     form = Ops::SellerApplication::Contract::Decide.new(application)

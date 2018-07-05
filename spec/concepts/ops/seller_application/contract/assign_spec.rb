@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Ops::SellerApplication::Contract::Assign do
 
   let(:user) { create(:admin_user) }
-  let(:application) { create(:seller_application) }
+  let(:application) { create(:seller_version) }
 
   it 'is valid with an assignee' do
     form = Ops::SellerApplication::Contract::Assign.new(application)
@@ -11,7 +11,7 @@ RSpec.describe Ops::SellerApplication::Contract::Assign do
     form.validate(
       assigned_to_id: user.id,
     )
-    
+
     expect(form).to be_valid
   end
 

@@ -4,7 +4,7 @@ RSpec.describe Sellers::SellerApplication::Submit do
 
   subject { Sellers::SellerApplication::Submit }
 
-  let(:application) { create(:created_seller_application) }
+  let(:application) { create(:created_seller_version) }
   let(:current_user) { create(:user, seller: application.seller) }
 
   def perform_operation
@@ -31,7 +31,7 @@ RSpec.describe Sellers::SellerApplication::Submit do
     end
 
     it 'fails if the application state cannot be transitioned' do
-      approved_application = create(:approved_seller_application)
+      approved_application = create(:approved_seller_version)
       current_user = create(:user, seller: approved_application.seller)
 
       result = subject.(
