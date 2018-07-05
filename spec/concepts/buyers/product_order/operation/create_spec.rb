@@ -41,11 +41,18 @@ RSpec.describe Buyers::ProductOrder::Create do
   end
 
   it 'sends an email' do
+    allow(SlackPostJob).to receive(:perform_later)
+
     expect {
       perform_enqueued_jobs do
         perform_operation
       end
     }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
+  it 'notifies slack of the new order' do
+    expect(SlackPostJob).to receive(:perform_later)
+    perform_operation
   end
 
   context 'failure states' do
