@@ -228,7 +228,7 @@ RSpec.describe 'Seller onboarding', type: :feature, js: true, skip_login: true d
 
   def accept_invitation
     token = User.find_by_email('authorised@test.org').confirmation_token
-    application_id = SellerApplication.last.id
+    application_id = SellerVersion.last.id
 
     visit accept_sellers_application_invitations_path(application_id, confirmation_token: token)
 
