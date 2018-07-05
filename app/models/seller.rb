@@ -12,10 +12,12 @@ class Seller < ApplicationRecord
 
   has_many :accreditations, class_name: 'SellerAccreditation', dependent: :destroy
   has_many :addresses, class_name: 'SellerAddress', dependent: :destroy
-  has_many :applications, class_name: 'SellerApplication'
   has_many :awards, class_name: 'SellerAward', dependent: :destroy
   has_many :engagements, class_name: 'SellerEngagement', dependent: :destroy
   has_many :products
+  has_many :versions, class_name: 'SellerVersion'
+
+  alias_method :applications, :versions
 
   has_documents :financial_statement, :professional_indemnity_certificate,
                 :workers_compensation_certificate,

@@ -1,8 +1,5 @@
-class SellerApplication < ApplicationRecord
-  self.table_name = 'seller_versions'
-
+class SellerVersion < ApplicationRecord
   include AASM
-
   include Concerns::StateScopes
 
   belongs_to :seller
