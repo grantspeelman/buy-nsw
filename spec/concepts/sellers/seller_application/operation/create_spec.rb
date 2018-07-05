@@ -15,7 +15,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     expect(result).to be_success
 
     expect(Seller.count).to eq(1)
-    expect(SellerApplication.count).to eq(1)
+    expect(SellerVersion.count).to eq(1)
 
     expect(result['model.application']).to be_persisted
     expect(result['model.seller']).to be_persisted
@@ -29,7 +29,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     result = perform_operation
 
     expect(Seller.count).to eq(1)
-    expect(SellerApplication.count).to eq(1)
+    expect(SellerVersion.count).to eq(1)
   end
 
   it 'does not create an additional application when one exists' do
@@ -39,7 +39,7 @@ RSpec.describe Sellers::SellerApplication::Create do
     result = perform_operation
 
     expect(Seller.count).to eq(1)
-    expect(SellerApplication.count).to eq(1)
+    expect(SellerVersion.count).to eq(1)
   end
 
   it 'sets the started_at timestamp for a new application' do

@@ -7,7 +7,7 @@ class Sellers::SellerApplication::Create < Trailblazer::Operation
       options['model.seller'] = options['config.current_user'].seller || Seller.new
 
       options['model.application'] = options['model.seller'].applications.first ||
-                                      SellerApplication.new(started_at: Time.now)
+                                      SellerVersion.new(started_at: Time.now)
     end
 
     def check_application_state!(options, **)

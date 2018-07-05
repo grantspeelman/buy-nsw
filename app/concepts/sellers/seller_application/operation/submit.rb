@@ -4,7 +4,7 @@ class Sellers::SellerApplication::Submit < Trailblazer::Operation
     step :ensure_complete!
 
     def model!(options, params:, **)
-      options['model'] = options['config.current_user'].seller_applications.find(params[:id])
+      options['model'] = options['config.current_user'].seller_versions.find(params[:id])
     end
 
     def ensure_complete!(options, **)

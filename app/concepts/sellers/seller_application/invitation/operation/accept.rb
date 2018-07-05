@@ -4,7 +4,7 @@ class Sellers::SellerApplication::Invitation::Accept < Trailblazer::Operation
     step Contract::Build( constant: Sellers::SellerApplication::Invitation::Contract::Accept )
 
     def validate_confirmation_token!(options, params:, **)
-      options[:application_model] = SellerApplication.created.find_by_id(params[:application_id])
+      options[:application_model] = SellerVersion.created.find_by_id(params[:application_id])
 
       return false unless options[:application_model].present?
 
@@ -23,7 +23,7 @@ class Sellers::SellerApplication::Invitation::Accept < Trailblazer::Operation
 
   def pass_devise_errors_to_contract!(options, **)
     return unless options['model'].present?
-    
+
     options['model'].errors.each do |key, error|
       options['contract.default'].errors.add(key, error)
     end
