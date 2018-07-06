@@ -108,6 +108,8 @@ the tests pass.
 ```
 bin/promote-to-production build-nnn
 ```
-## Licence
+## Copyright & Licence
 
-[MIT License](LICENCE)
+Copyright NSW Department of Finance, Services and Innovation.
+
+Licensed under the [MIT License](LICENCE.md)
