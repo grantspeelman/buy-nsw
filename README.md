@@ -29,7 +29,7 @@ names, is defined in `.env.development`, and loaded automatically in dev.
 
 ### Running the application
 
-`foreman start -m web=1`
+`foreman start`
 
 The app will launch by default at `http://localhost:5000`. (If you configure
 Foreman differently, the port may change.)
