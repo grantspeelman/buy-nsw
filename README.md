@@ -2,13 +2,6 @@
 
 A new digital procurement platform for the NSW Government.
 
-## Nomenclature
-
-- **Pathway**: A category of products or services in the procurement taxonomy
-(eg. the cloud procurement pathway). A pathway will either be 'structured'
-(containing defined products and services) or 'unstructured' (where buyers post
-briefs for potential work).
-
 ## Technical documentation
 
 This is a Ruby on Rails application which contains functionality for external
