@@ -2,13 +2,13 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
   layout '../sellers/applications/shared/_layout'
 
   def show
-    @operation = run Sellers::SellerApplication::Update::Present
+    @operation = run Sellers::SellerVersion::Update::Present
   end
 
   def update
     params[:seller_application] ||= {}
 
-    @operation = run Sellers::SellerApplication::Update do |result|
+    @operation = run Sellers::SellerVersion::Update do |result|
       flash.notice = I18n.t('sellers.applications.messages.changes_saved')
       return redirect_to sellers_application_path(result['model.application'])
     end
@@ -18,22 +18,22 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
 
   def self.contracts(application)
     base_contracts = [
-      Sellers::SellerApplication::Contract::BusinessDetails,
-      Sellers::SellerApplication::Contract::Addresses,
-      Sellers::SellerApplication::Contract::Characteristics,
-      Sellers::SellerApplication::Contract::Contacts,
-      Sellers::SellerApplication::Contract::Disclosures,
-      Sellers::SellerApplication::Contract::FinancialStatement,
-      Sellers::SellerApplication::Contract::ProductLiability,
-      Sellers::SellerApplication::Contract::ProfessionalIndemnity,
-      Sellers::SellerApplication::Contract::ProfileBasics,
-      Sellers::SellerApplication::Contract::Recognition,
-      Sellers::SellerApplication::Contract::Services,
-      Sellers::SellerApplication::Contract::WorkersCompensation,
+      Sellers::SellerVersion::Contract::BusinessDetails,
+      Sellers::SellerVersion::Contract::Addresses,
+      Sellers::SellerVersion::Contract::Characteristics,
+      Sellers::SellerVersion::Contract::Contacts,
+      Sellers::SellerVersion::Contract::Disclosures,
+      Sellers::SellerVersion::Contract::FinancialStatement,
+      Sellers::SellerVersion::Contract::ProductLiability,
+      Sellers::SellerVersion::Contract::ProfessionalIndemnity,
+      Sellers::SellerVersion::Contract::ProfileBasics,
+      Sellers::SellerVersion::Contract::Recognition,
+      Sellers::SellerVersion::Contract::Services,
+      Sellers::SellerVersion::Contract::WorkersCompensation,
     ]
     base_contracts.tap {|contracts|
       if application.seller.services.include?('cloud-services')
-        contracts << Sellers::SellerApplication::Contract::Declaration
+        contracts << Sellers::SellerVersion::Contract::Declaration
       end
     }
   end
