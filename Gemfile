@@ -71,10 +71,6 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'guard-rspec', require: false
-  gem 'guard-zeus'
-  # Output formatter for OS X notification center
-  gem 'rspec-nc', require: false
 end
 
 group :production do
