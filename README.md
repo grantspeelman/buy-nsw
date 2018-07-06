@@ -68,22 +68,6 @@ to staging. You will find an example configuration in `.circleci`.
 
 Documentation explaining the application architecture is available in the `docs` directory of this repo.
 
-## AWS Setup
-
-[Install the Elastic Beanstalk CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html).
-On OS X:
-```
-brew install awsebcli
-```
-
-All commits to `master` are automatically deployed to the staging environment if
-the tests pass.
-
-## Promoting a build in staging to production
-
-```
-bin/promote-to-production build-nnn
-```
 ## Copyright & Licence
 
 Copyright NSW Department of Finance, Services and Innovation.
