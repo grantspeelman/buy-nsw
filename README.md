@@ -72,4 +72,4 @@ Documentation explaining the application architecture is available in the `docs`
 
 Copyright NSW Department of Finance, Services and Innovation.
 
-Licensed under the [MIT License](LICENCE.md)
+Licensed under the [MIT License](LICENCE.md).
