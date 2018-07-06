@@ -52,6 +52,17 @@ Install MailCatcher with `gem install mailcatcher`, then run `mailcatcher` in
 your console to start the server. Don't commit it to the Gemfile, as it causes
 conflicts.
 
+## Deployment to production
+
+The app is a standard [12 factor app](https://12factor.net/) that should be possible to install on many platforms. It has been successfully
+installed on [Heroku](https://www.heroku.com/) and [Elastic Beanstalk on Amazon Web Services (AWS)](https://aws.amazon.com/elasticbeanstalk/).
+
+There is some configuration for Elastic Beanstalk in `.ebextensions` and `.elasticbeanstalk`.
+
+## Continuous integration
+
+We have been using [CircleCI](https://circleci.com/) to run automated tests and deployment
+to staging. You will find an example configuration in `.circleci`.
 
 ## How the application works
 
