@@ -1,1 +1,1 @@
---require spec_helper --format=progress --format=Nc
+--require spec_helper --format=progress
