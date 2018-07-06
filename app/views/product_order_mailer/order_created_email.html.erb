@@ -1,1 +1,13 @@
-<p>Thanks for placing an order.</p>
+<p>Thanks for your order <%= @product_order.buyer.name %>.</p>
+
+<p>
+  Our support team will contact you shortly to help you select the right
+  contracting template and facilitate the transaction.
+</p>
+
+<p>
+  If you have any questions email
+  <%= mail_to 'buy.nsw@finance.nsw.gov.au' %>
+</p>
+
+<p>The <strong>buy.nsw</strong> team</p>
