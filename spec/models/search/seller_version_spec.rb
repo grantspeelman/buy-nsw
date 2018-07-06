@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Search::SellerApplication do
+RSpec.describe Search::SellerVersion do
 
   describe '#available_filters' do
     it 'returns all admin users in the assigned_to filter' do
       user = create(:admin_user)
-      search = Search::SellerApplication.new(
+      search = described_class.new(
         selected_filters: {}
       )
 
@@ -17,10 +17,10 @@ RSpec.describe Search::SellerApplication do
     end
   end
 
-  it 'returns all seller applications by default' do
+  it 'returns all seller versions by default' do
     create_list(:seller_version, 10)
 
-    search = Search::SellerApplication.new(
+    search = described_class.new(
       selected_filters: {}
     )
 
@@ -33,7 +33,7 @@ RSpec.describe Search::SellerApplication do
     create_list(:seller_version, 5)
     create_list(:seller_version, 3, assigned_to: user)
 
-    search = Search::SellerApplication.new(
+    search = described_class.new(
       selected_filters: {
         assigned_to: user.id,
       }
@@ -46,7 +46,7 @@ RSpec.describe Search::SellerApplication do
     create_list(:seller_version, 5, state: 'created')
     create_list(:seller_version, 3, state: 'ready_for_review')
 
-    search = Search::SellerApplication.new(
+    search = described_class.new(
       selected_filters: {
         state: 'created'
       }

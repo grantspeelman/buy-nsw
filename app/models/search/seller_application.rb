@@ -1,5 +1,5 @@
 module Search
-  class SellerApplication < Base
+  class SellerVersion < Base
 
     def available_filters
       {
