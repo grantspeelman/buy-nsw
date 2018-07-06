@@ -9,14 +9,15 @@ and internal users.
 
 ### Dependencies
 
-- Ruby – currently 2.5.0 (as defined in `.ruby-version`)
-- Bundler – install with `gem install bundler`
-- Yarn – for assets. On a Mac, install with `brew install yarn`
-- PostgreSQL – On a Mac, use [Postgres.app](https://postgresapp.com))
-- ChromeDriver and Chrome – for running feature tests. On a Mac, install with
+- [Ruby](https://www.ruby-lang.org/) – currently 2.5.0 (as defined in `.ruby-version`)
+- [Bundler](https://bundler.io/) – install with `gem install bundler`
+- [Yarn](https://yarnpkg.com/) – for assets. On a Mac, install with `brew install yarn`
+- [PostgreSQL](https://www.postgresql.org/) – On a Mac, use [Postgres.app](https://postgresapp.com))
+- [ChromeDriver](http://chromedriver.chromium.org/) and Chrome – for running feature tests. On a Mac, install with
 Caskroom: `brew cask install chromedriver`
-- MailCatcher (optional) – for receiving emails in development. Install with
+- [MailCatcher](https://mailcatcher.me/) (optional) – for receiving emails in development. Install with
 `gem install mailcatcher`
+- [ClamAV](https://www.clamav.net/) - used for virus scanning of uploaded documents
 
 ### Setting up the application
 
