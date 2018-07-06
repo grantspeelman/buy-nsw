@@ -352,6 +352,9 @@ en:
             usage_channel_other:
               label: Specify how else users are notified when nearing service limits
           terms:
+            terms_file:
+              error_label: Your additional terms document
+              hint: The file should be no larger than 5MB and in PDF, PNG or JPEG format.
             short: Your additional terms
             long: Your additional terms
         sections:
