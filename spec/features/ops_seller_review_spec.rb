@@ -215,7 +215,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
   end
 
   def ops_field_label(key)
-    I18n.t("#{key}.name", scope: [ :ops, :seller_applications, :fields ])
+    I18n.t("#{key}.name", scope: [ :ops, :seller_versions, :fields ])
   end
 
   def click_navigation_item(label)

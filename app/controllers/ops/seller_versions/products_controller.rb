@@ -1,5 +1,5 @@
-class Ops::SellerApplications::ProductsController < Ops::BaseController
-  layout '../ops/seller_applications/_layout'
+class Ops::SellerVersions::ProductsController < Ops::BaseController
+  layout '../ops/seller_versions/_layout'
 
   def show
   end

@@ -1,4 +1,4 @@
-<%= buy_nsw_form_for form, url: decide_ops_seller_application_path(form.model), i18n_scope: 'ops.seller_applications.forms.decision' do |f| %>
+<%= buy_nsw_form_for form, url: decide_ops_seller_application_path(form.model), i18n_scope: 'ops.seller_versions.forms.decision' do |f| %>
   <%= f.input :decision, as: :radio_buttons, collection: form_options_with_labels(f.i18n_scope, :decision, [:approve, :return_to_applicant, :reject]) %>
   <%= f.input :response, as: :text, input_html: { rows: 5 } %>
 

@@ -1,9 +1,9 @@
-class Ops::SellerApplicationsController < Ops::BaseController
+class Ops::SellerVersionsController < Ops::BaseController
 
   after_action :set_content_disposition, if: :csv_request?, only: :index
 
   layout ->{
-    action_name == 'index' ? 'ops' : '../ops/seller_applications/_layout'
+    action_name == 'index' ? 'ops' : '../ops/seller_versions/_layout'
   }
 
   def index
@@ -18,7 +18,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
 
   def assign
     run Ops::SellerVersion::Assign do |result|
-      flash.notice = I18n.t('ops.seller_applications.messages.update_assign_success')
+      flash.notice = I18n.t('ops.seller_versions.messages.update_assign_success')
       return redirect_to ops_seller_application_path(application)
     end
 
@@ -28,7 +28,7 @@ class Ops::SellerApplicationsController < Ops::BaseController
   def decide
     run Ops::SellerVersion::Decide do |result|
       decision = result['contract.default'].decision
-      flash.notice = I18n.t("ops.seller_applications.messages.decision_success.#{decision}")
+      flash.notice = I18n.t("ops.seller_versions.messages.decision_success.#{decision}")
       return redirect_to ops_seller_application_path(application)
     end
 

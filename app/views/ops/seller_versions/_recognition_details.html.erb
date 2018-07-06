@@ -1,6 +1,6 @@
 <dl>
   <% [:accreditations, :engagements, :awards].each do |kind| %>
-    <dt><%= t(:name, scope: [:ops, :seller_applications, :fields, kind]) %></dt>
+    <dt><%= t(:name, scope: [:ops, :seller_versions, :fields, kind]) %></dt>
     <dd>
       <% if seller.public_send(kind).any? %>
         <ul>
