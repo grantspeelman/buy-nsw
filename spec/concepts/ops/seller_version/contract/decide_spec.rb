@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Ops::SellerApplication::Contract::Decide do
+RSpec.describe Ops::SellerVersion::Contract::Decide do
 
   let(:application) { create(:seller_version) }
 
   it 'is valid with a decision and response' do
-    form = Ops::SellerApplication::Contract::Decide.new(application)
+    form = described_class.new(application)
 
     form.validate(
        decision: 'approve',
@@ -16,7 +16,7 @@ RSpec.describe Ops::SellerApplication::Contract::Decide do
   end
 
   it 'is invalid without a decision' do
-    form = Ops::SellerApplication::Contract::Decide.new(application)
+    form = described_class.new(application)
 
     form.validate(
        decision: nil,
@@ -27,7 +27,7 @@ RSpec.describe Ops::SellerApplication::Contract::Decide do
   end
 
   it 'is invalid without a decision in the list' do
-    form = Ops::SellerApplication::Contract::Decide.new(application)
+    form = described_class.new(application)
 
     form.validate(
        decision: 'blah',

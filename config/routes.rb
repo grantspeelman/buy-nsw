@@ -92,7 +92,7 @@ Rails.application.routes.draw do
 
     resources :sellers, only: [:index]
 
-    resources :seller_applications, path: 'seller-applications' do
+    resources :seller_applications, path: 'seller-applications', controller: 'seller_versions' do
       member do
         get :seller_details
         get :documents
@@ -102,7 +102,7 @@ Rails.application.routes.draw do
         post :notes
       end
 
-      resources :products, only: :show, controller: 'seller_applications/products'
+      resources :products, only: :show, controller: 'seller_versions/products'
     end
 
     resources :waiting_sellers, path: 'waiting-sellers' do

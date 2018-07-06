@@ -1,8 +1,8 @@
-module Ops::SellerApplications::DetailHelper
+module Ops::SellerVersions::DetailHelper
   def display_seller_list(type:, resource:)
     display_list(
       fields: seller_fields,
-      resource_name: :seller_applications,
+      resource_name: :seller_versions,
       type: type,
       resource: resource,
     )
@@ -70,7 +70,7 @@ module Ops::SellerApplications::DetailHelper
       :federal_government_experience,
       :international_government_experience,
     ]
-    i18n_base = 'ops.seller_applications.fields.government_experience.values'
+    i18n_base = 'ops.seller_versions.fields.government_experience.values'
 
     keys.each do |key|
       labels << t("#{i18n_base}.#{key}") if seller.public_send("#{key}?")

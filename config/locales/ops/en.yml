@@ -108,7 +108,7 @@ en:
               start_up: Start-up
           state:
             name: Status
-    seller_applications:
+    seller_versions:
       fields:
         name:
           name: 'Company name'
