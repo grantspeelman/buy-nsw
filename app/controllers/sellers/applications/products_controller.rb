@@ -7,19 +7,19 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
   end
 
   def new
-    @operation = run Sellers::SellerApplication::Products::Create do |result|
+    @operation = run Sellers::SellerVersion::Products::Create do |result|
       return redirect_to sellers_application_product_path(result[:application_model], result[:product_model])
     end
   end
 
   def edit
-    @operation = run Sellers::SellerApplication::Products::Update::Present
+    @operation = run Sellers::SellerVersion::Products::Update::Present
   end
 
   def update
     params[:seller_application] ||= {}
 
-    @operation = run Sellers::SellerApplication::Products::Update do |result|
+    @operation = run Sellers::SellerVersion::Products::Update do |result|
       flash.notice = I18n.t('sellers.applications.messages.changes_saved')
       return redirect_to sellers_application_product_path(result['model.application'], result['model.product'])
     end
@@ -28,7 +28,7 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
   end
 
   def clone
-    @operation = run Sellers::SellerApplication::Products::Clone do |result|
+    @operation = run Sellers::SellerVersion::Products::Clone do |result|
       flash.notice = I18n.t('sellers.applications.messages.product_cloned')
     end
 
@@ -44,23 +44,23 @@ class Sellers::Applications::ProductsController < Sellers::Applications::BaseCon
 
   def self.contracts
     [
-      Sellers::SellerApplication::Products::Contract::AvailabilitySupport,
-      Sellers::SellerApplication::Products::Contract::BackupRecovery,
-      Sellers::SellerApplication::Products::Contract::Basics,
-      Sellers::SellerApplication::Products::Contract::Commercials,
-      Sellers::SellerApplication::Products::Contract::DataProtection,
-      Sellers::SellerApplication::Products::Contract::Environment,
-      Sellers::SellerApplication::Products::Contract::IdentityAuthentication,
-      Sellers::SellerApplication::Products::Contract::Locations,
-      Sellers::SellerApplication::Products::Contract::OnboardingOffboarding,
-      Sellers::SellerApplication::Products::Contract::OperationalSecurity,
-      Sellers::SellerApplication::Products::Contract::ReportingAnalytics,
-      Sellers::SellerApplication::Products::Contract::SecurityPractices,
-      Sellers::SellerApplication::Products::Contract::SecurityStandards,
-      Sellers::SellerApplication::Products::Contract::Terms,
-      Sellers::SellerApplication::Products::Contract::Type,
-      Sellers::SellerApplication::Products::Contract::UserData,
-      Sellers::SellerApplication::Products::Contract::UserSeparation,
+      Sellers::SellerVersion::Products::Contract::AvailabilitySupport,
+      Sellers::SellerVersion::Products::Contract::BackupRecovery,
+      Sellers::SellerVersion::Products::Contract::Basics,
+      Sellers::SellerVersion::Products::Contract::Commercials,
+      Sellers::SellerVersion::Products::Contract::DataProtection,
+      Sellers::SellerVersion::Products::Contract::Environment,
+      Sellers::SellerVersion::Products::Contract::IdentityAuthentication,
+      Sellers::SellerVersion::Products::Contract::Locations,
+      Sellers::SellerVersion::Products::Contract::OnboardingOffboarding,
+      Sellers::SellerVersion::Products::Contract::OperationalSecurity,
+      Sellers::SellerVersion::Products::Contract::ReportingAnalytics,
+      Sellers::SellerVersion::Products::Contract::SecurityPractices,
+      Sellers::SellerVersion::Products::Contract::SecurityStandards,
+      Sellers::SellerVersion::Products::Contract::Terms,
+      Sellers::SellerVersion::Products::Contract::Type,
+      Sellers::SellerVersion::Products::Contract::UserData,
+      Sellers::SellerVersion::Products::Contract::UserSeparation,
     ]
   end
 

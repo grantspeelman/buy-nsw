@@ -2,7 +2,7 @@ class Sellers::Applications::InvitationsController < Sellers::Applications::Base
   skip_before_action :authenticate_user!, only: [:accept, :update_accept]
 
   def new
-    @operation = run Sellers::SellerApplication::Invitation::Create::Present
+    @operation = run Sellers::SellerVersion::Invitation::Create::Present
 
     if params[:email].present?
       operation['contract.default'].email = params[:email]
@@ -10,7 +10,7 @@ class Sellers::Applications::InvitationsController < Sellers::Applications::Base
   end
 
   def create
-    @operation = run Sellers::SellerApplication::Invitation::Create do |result|
+    @operation = run Sellers::SellerVersion::Invitation::Create do |result|
       flash.notice = I18n.t('sellers.applications.messages.invitation_sent', email: result['model'].email)
       return redirect_to sellers_application_path(result[:application_model])
     end
@@ -19,7 +19,7 @@ class Sellers::Applications::InvitationsController < Sellers::Applications::Base
   end
 
   def accept
-    @operation = run Sellers::SellerApplication::Invitation::Accept::Present
+    @operation = run Sellers::SellerVersion::Invitation::Accept::Present
 
     if operation.failure?
       flash.alert = I18n.t('sellers.applications.messages.invitation_invalid')
@@ -28,7 +28,7 @@ class Sellers::Applications::InvitationsController < Sellers::Applications::Base
   end
 
   def update_accept
-    @operation = run Sellers::SellerApplication::Invitation::Accept do |result|
+    @operation = run Sellers::SellerVersion::Invitation::Accept do |result|
       sign_in(result['model'])
 
       flash.notice = I18n.t('sellers.applications.messages.invitation_accepted')
