@@ -1,5 +1,7 @@
 class SellerVersion < ApplicationRecord
   include AASM
+  extend Enumerize
+  
   include Concerns::StateScopes
 
   belongs_to :seller
@@ -61,4 +63,19 @@ class SellerVersion < ApplicationRecord
 
   scope :unassigned, -> { where('assigned_to_id IS NULL') }
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
+
+  enumerize :number_of_employees, in: ['sole', '2to4', '5to19', '20to49', '50to99', '100to199', '200plus']
+  enumerize :corporate_structure, in: ['standalone', 'subsidiary']
+  enumerize :services, multiple: true, in: [
+    'cloud-services',
+    'software-development',
+    'software-licensing',
+    'end-user-computing',
+    'infrastructure',
+    'telecommunications',
+    'managed-services',
+    'advisory-consulting',
+    'ict-workforce',
+    'training-learning',
+  ]
 end
