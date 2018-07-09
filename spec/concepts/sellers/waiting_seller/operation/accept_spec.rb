@@ -135,16 +135,21 @@ RSpec.describe Sellers::WaitingSeller::Accept do
     end
   end
 
-  describe '#create_application!' do
-    it 'creates a seller application for the newly-created seller' do
+  describe '#create_version!' do
+    it 'creates a seller version for the newly-created seller' do
       expect {
         perform_operation(default_params)
       }.to change{ SellerVersion.count }.from(0).to(1)
 
       seller = Seller.last
-      application = SellerVersion.last
+      version = SellerVersion.last
 
-      expect(application.seller).to eq(seller)
+      expect(version.seller).to eq(seller)
+      expect(version.name).to eq(waiting_seller.name)
+      expect(version.abn).to eq(waiting_seller.abn)
+      expect(version.contact_name).to eq(waiting_seller.contact_name)
+      expect(version.contact_email).to eq(waiting_seller.contact_email)
+      expect(version.website_url).to eq(waiting_seller.website_url)
     end
 
     it 'sets the "started_at" timestamp' do
@@ -153,9 +158,9 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       Timecop.freeze(time) do
         perform_operation(default_params)
       end
-      application = SellerVersion.last
+      version = SellerVersion.last
 
-      expect(application.started_at.to_i).to eq(time.to_i)
+      expect(version.started_at.to_i).to eq(time.to_i)
     end
   end
 
