@@ -3,13 +3,9 @@
  *= require _font_path_override
  */
 
-@import '_bootstrap_variables';
-@import 'bootstrap';
-
-@import '_variables';
+@import 'digital_nsw_template';
 @import '_font_path_override';
 
 @import 'patterns/**/*';
-
 @import 'layout/**/*';
 @import 'views/**/*';

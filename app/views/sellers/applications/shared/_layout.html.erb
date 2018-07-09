@@ -1,9 +1,6 @@
-<% content_for(:without_container, true) %>
 <% content_for(:content) do %>
-  <div class="container">
-    <section class="view-sellers-applications <%= yield(:seller_application_class) if content_for?(:seller_application_class) %>">
-      <%= yield %>
-    </section>
-  </div>
+  <section class="view-sellers-applications <%= yield(:seller_application_class) if content_for?(:seller_application_class) %>">
+    <%= yield %>
+  </section>
 <% end %>
 <%= render template: 'layouts/application' %>

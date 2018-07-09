@@ -38,7 +38,6 @@ gem 'textacular', '~> 5.0'
 gem 'trailblazer', '~> 2.0.0'
 gem 'trailblazer-rails', '~> 1.0.4'
 
-gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -52,6 +51,12 @@ gem 'abn'
 gem 'faker'
 gem 'factory_bot_rails', "~> 4.0"
 gem 'rest-client'
+
+if ENV['TEMPLATE_DEV']
+  gem 'digital_nsw_template', path: '../digital_nsw_template'
+else
+  gem 'digital_nsw_template', '0.0.1'
+end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
