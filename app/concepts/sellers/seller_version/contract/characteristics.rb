@@ -1,27 +1,27 @@
 module Sellers::SellerVersion::Contract
   class Characteristics < Base
-    property :number_of_employees, on: :seller
-    property :corporate_structure, on: :seller
+    property :number_of_employees, on: :seller_version
+    property :corporate_structure, on: :seller_version
 
-    property :start_up,                            on: :seller
-    property :sme,                                 on: :seller
-    property :not_for_profit,                      on: :seller
+    property :start_up,                            on: :seller_version
+    property :sme,                                 on: :seller_version
+    property :not_for_profit,                      on: :seller_version
 
-    property :regional,                            on: :seller
+    property :regional,                            on: :seller_version
 
-    property :australian_owned,                    on: :seller
-    property :disability,                          on: :seller
-    property :female_owned,                        on: :seller
-    property :indigenous,                          on: :seller
+    property :australian_owned,                    on: :seller_version
+    property :disability,                          on: :seller_version
+    property :female_owned,                        on: :seller_version
+    property :indigenous,                          on: :seller_version
 
-    property :no_experience,                       on: :seller
-    property :local_government_experience,         on: :seller
-    property :state_government_experience,         on: :seller
-    property :federal_government_experience,       on: :seller
-    property :international_government_experience, on: :seller
+    property :no_experience,                       on: :seller_version
+    property :local_government_experience,         on: :seller_version
+    property :state_government_experience,         on: :seller_version
+    property :federal_government_experience,       on: :seller_version
+    property :international_government_experience, on: :seller_version
 
     validation :default do
-      required(:seller).schema do
+      required(:seller_version).schema do
         # TODO: These don't currently return a nice human-friendly
         # error message currently
         required(:number_of_employees).

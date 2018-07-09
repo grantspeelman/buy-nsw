@@ -4,7 +4,7 @@ module Sellers::SellerVersion::Contract
     feature Reform::Form::MultiParameterAttributes
 
     property :product_liability_certificate_file,   on: :seller
-    property :product_liability_certificate_expiry, on: :seller, multi_params: true
+    property :product_liability_certificate_expiry, on: :seller_version, multi_params: true
     property :remove_product_liability_certificate, on: :seller
 
     module Types
@@ -41,11 +41,18 @@ module Sellers::SellerVersion::Contract
 
       required(:seller).schema do
         required(:product_liability_certificate_file, Types::File).maybe(:file_uploaded?)
-        required(:product_liability_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
+      end
 
-        rule(product_liability_certificate_expiry: [:product_liability_certificate_file, :product_liability_certificate_expiry]) do |file, expiry|
-          file.filled?.then(expiry.filled?)
-        end
+      required(:seller_version).schema do
+        required(:product_liability_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
+      end
+
+      rule(product_liability_certificate_file: [[:seller, :product_liability_certificate_file], [:seller_version, :product_liability_certificate_expiry]]) do |file, expiry|
+        expiry.filled?.then(file.filled?)
+      end
+
+      rule(product_liability_certificate_expiry: [[:seller, :product_liability_certificate_file], [:seller_version, :product_liability_certificate_expiry]]) do |file, expiry|
+        file.filled?.then(expiry.filled?)
       end
     end
 

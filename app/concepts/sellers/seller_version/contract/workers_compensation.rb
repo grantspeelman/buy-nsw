@@ -4,8 +4,8 @@ module Sellers::SellerVersion::Contract
     feature Reform::Form::MultiParameterAttributes
 
     property :workers_compensation_certificate_file,   on: :seller
-    property :workers_compensation_certificate_expiry, on: :seller, multi_params: true
-    property :workers_compensation_exempt,             on: :seller
+    property :workers_compensation_certificate_expiry, on: :seller_version, multi_params: true
+    property :workers_compensation_exempt,             on: :seller_version
     property :remove_workers_compensation_certificate, on: :seller
 
     # NOTE: Trying to implement conditional validation on this model has been
@@ -80,22 +80,26 @@ module Sellers::SellerVersion::Contract
         end
       end
 
-      required(:seller).schema do
+      required(:seller_version).schema do
         # NOTE: When you enable types in Dry-validation, you are then required
         # to specify the type of all attributes in the schema.
         #
         # If you miss an attribute, it will quietly fail and ignore it.
         #
         required(:workers_compensation_exempt, Types::Bool).filled
-        required(:workers_compensation_certificate_file, Types::File).maybe(:file_uploaded?)
         required(:workers_compensation_certificate_expiry, Types::Date).maybe(:date?, :in_future?)
 
-        rule(workers_compensation_certificate_file: [:workers_compensation_exempt, :workers_compensation_certificate_file]) do |exempt, document|
-          (exempt.false? | exempt.eql?('0')).then(document.filled?)
-        end
         rule(workers_compensation_certificate_expiry: [:workers_compensation_exempt, :workers_compensation_certificate_expiry]) do |exempt, expiry|
           (exempt.false? | exempt.eql?('0')).then(expiry.filled?)
         end
+      end
+
+      required(:seller).schema do
+        required(:workers_compensation_certificate_file, Types::File).maybe(:file_uploaded?)
+      end
+
+      rule(workers_compensation_certificate_file: [[:seller_version, :workers_compensation_exempt], [:seller, :workers_compensation_certificate_file]]) do |exempt, document|
+        (exempt.false? | exempt.eql?('0')).then(document.filled?)
       end
     end
   end

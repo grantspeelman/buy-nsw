@@ -10,10 +10,10 @@ module Sellers::SellerVersion::Contract
       seller.name.present? && seller.abn.present?
     end
 
-    property :agree, on: :seller
+    property :agree, on: :seller_version
 
     validation :default do
-      required(:seller).schema do
+      required(:seller_version).schema do
         required(:agree).filled(:bool?, :true?)
       end
     end
