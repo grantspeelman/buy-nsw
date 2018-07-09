@@ -38,8 +38,8 @@ module Sellers::Applications
       )
     end
 
-    def complete?(application, validate_optional_steps: false)
-      contract = build_contract(application)
+    def complete?(version, validate_optional_steps: false)
+      contract = build_contract(version)
 
       if validate_optional_steps
         contract.valid?
@@ -48,15 +48,15 @@ module Sellers::Applications
       end
     end
 
-    def started?(application)
-      build_contract(application).started?
+    def started?(version)
+      build_contract(version).started?
     end
 
   private
-    def build_contract(application)
+    def build_contract(version)
       contract_class.new(
-        application: application,
-        seller: application.seller,
+        seller_version: version,
+        seller: version.seller,
       )
     end
   end
