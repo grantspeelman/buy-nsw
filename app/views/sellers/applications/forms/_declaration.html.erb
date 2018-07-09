@@ -42,9 +42,9 @@
         error: false,
         error_html: false,
         label: t('agree_html', scope: [:sellers, :applications, :steps, :declaration],
-          name: f.object.seller.representative_name,
-          organisation: f.object.seller.name,
-          abn: f.object.seller.abn) %>
+          name: f.object.seller_version.representative_name,
+          organisation: f.object.seller_version.name,
+          abn: f.object.seller_version.abn) %>
 
   <fieldset class="actions">
     <%= f.submit step.button_label(default: 'Save and continue'), class: 'btn btn-primary' %>
