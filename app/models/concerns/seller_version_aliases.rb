@@ -61,8 +61,4 @@ module Concerns::SellerVersionAliases
     end
   end
 
-  included do
-    after_save :propagate_changes_to_version!
-  end
-
 end

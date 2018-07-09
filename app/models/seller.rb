@@ -3,7 +3,6 @@ class Seller < ApplicationRecord
   extend Enumerize
 
   include Concerns::Documentable
-  include Concerns::SellerVersionAliases
   include Concerns::StateScopes
 
   has_many :owners, class_name: 'User'

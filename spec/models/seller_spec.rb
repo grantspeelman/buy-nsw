@@ -28,16 +28,4 @@ RSpec.describe Seller do
       expect(ABN.valid?(seller3.abn)).to be_truthy
     end
   end
-
-  describe '#propagate_changes_to_version!' do
-    let!(:seller) { create(:seller) }
-    let!(:version) { create(:seller_version, seller: seller) }
-
-    it 'updates the version on save with the same attributes' do
-      seller.update_attributes!(name: 'An updated name')
-      version.reload
-
-      expect(version.name).to eq('An updated name')
-    end
-  end
 end
