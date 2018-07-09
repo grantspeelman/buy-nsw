@@ -9,8 +9,14 @@ private
     options.merge( 'config.current_user' => current_user )
   end
 
+  def seller_version
+    @seller_version ||= current_user.seller_versions.created.find(params[:id])
+  end
+  helper_method :seller_version
+
+  # NOTE: This is deprecated and `seller_version` should be used instead.
   def application
-    @application ||= current_user.seller_versions.created.find(params[:id])
+    seller_version
   end
   helper_method :application
 end

@@ -71,14 +71,12 @@ private
   end
   helper_method :seller
 
-  def seller
-    operation['model.application']
-  end
-  helper_method :application
-
   def form
     operation["contract.default"]
   end
   helper_method :form
 
+  def seller_version
+    operation.present? ? operation['model.seller_version'] : super
+  end
 end
