@@ -1,0 +1,4 @@
+/* Explicitly set the image paths using the Sprockets helpers */
+
+$nsw-logo-image-path: asset-url('nsw-logo.png');
+$logo-white-image-path: asset-url('logo-white.svg');
