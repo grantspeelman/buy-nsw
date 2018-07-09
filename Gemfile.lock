@@ -1,11 +1,3 @@
-PATH
-  remote: ../digital_nsw_template
-  specs:
-    digital_nsw_template (0.0.1)
-      bootstrap (~> 4.0.0)
-      sass (>= 3.5.2)
-      sprockets (>= 3.7.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -123,6 +115,10 @@ GEM
       devise
       zxcvbn-js (~> 4.4.1)
     diff-lcs (1.3)
+    digital_nsw_template (0.0.1)
+      bootstrap (~> 4.0.0)
+      sass (>= 3.5.2)
+      sprockets (>= 3.7.0)
     disposable (0.4.3)
       declarative (>= 0.0.9, < 1.0.0)
       declarative-builder (< 0.2.0)
@@ -433,7 +429,7 @@ DEPENDENCIES
   devise
   devise-async
   devise_zxcvbn
-  digital_nsw_template!
+  digital_nsw_template (= 0.0.1)
   dotenv-rails (~> 2.4.0)
   dry-validation
   enumerize

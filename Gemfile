@@ -55,7 +55,7 @@ gem 'rest-client'
 if ENV['TEMPLATE_DEV']
   gem 'digital_nsw_template', path: '../digital_nsw_template'
 else
-  gem 'digital_nsw_template', git: 'https://github.com/digitalnsw/digital_nsw_template.git'
+  gem 'digital_nsw_template', '0.0.1'
 end
 
 group :development, :test do
