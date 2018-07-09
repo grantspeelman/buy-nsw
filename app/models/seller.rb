@@ -3,6 +3,7 @@ class Seller < ApplicationRecord
   extend Enumerize
 
   include Concerns::Documentable
+  include Concerns::SellerVersionAliases
   include Concerns::StateScopes
 
   has_many :owners, class_name: 'User'
@@ -58,6 +59,10 @@ class Seller < ApplicationRecord
 
   def version_in_progress?
     versions.created.any?
+  end
+
+  def first_version
+    versions.first
   end
 
   private

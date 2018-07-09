@@ -15,7 +15,7 @@ RSpec.describe Seller do
 
     it "should not normalise an invalid value" do
       seller = create(:inactive_seller_with_full_profile, abn: "1234")
-      expect(seller.abn).to eq("1234")      
+      expect(seller.abn).to eq("1234")
     end
 
     # This is actually testing the factory
@@ -26,6 +26,18 @@ RSpec.describe Seller do
       expect(ABN.valid?(seller1.abn)).to be_truthy
       expect(ABN.valid?(seller2.abn)).to be_truthy
       expect(ABN.valid?(seller3.abn)).to be_truthy
+    end
+  end
+
+  describe '#propagate_changes_to_version!' do
+    let!(:seller) { create(:seller) }
+    let!(:version) { create(:seller_version, seller: seller) }
+
+    it 'updates the version on save with the same attributes' do
+      seller.update_attributes!(name: 'An updated name')
+      version.reload
+
+      expect(version.name).to eq('An updated name')
     end
   end
 end
