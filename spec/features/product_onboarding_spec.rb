@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Product onboarding', type: :feature, js: true, user: :seller_user_with_seller do
 
   let(:existing_application) {
-    create(:created_seller_version, seller: @user.seller)
-  }
-
-  before(:each) {
-    @user.seller.update_attribute(:services, ['cloud-services'])
+    create(:created_seller_version, seller: @user.seller, services: ['cloud-services'])
   }
 
   it 'can complete product basics' do
