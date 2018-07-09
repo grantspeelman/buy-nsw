@@ -6,6 +6,6 @@ class PropagateSellerDetailsToSellerVersions < ActiveRecord::Migration[5.1]
   end
 
   def down
-    puts "PropagateSellerDetailsToSellerVersions cannot be reversed"
+    raise ActiveRecord::IrreversibleMigration
   end
 end
