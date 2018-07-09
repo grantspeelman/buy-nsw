@@ -101,7 +101,9 @@
 }
 
 .view-sellers-applications.product-dashboard {
-  width: auto;
+  @include media-breakpoint-up(lg) {
+    max-width: 100%;
+  }
 
   ol.task-list {
     width: 90%;

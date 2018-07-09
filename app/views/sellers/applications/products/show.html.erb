@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="list-container">
-  <div class="col-sm-8">
+  <div class="two-thirds-inside-row">
     <%= render partial: 'sellers/applications/root/task_list',
                locals: {
                  task_list: presenter.task_list,
@@ -20,7 +20,7 @@
                } %>
   </div>
 
-  <div class="col-sm-4">
+  <div class="one-third-inside-row">
     <div class="product-actions">
        <p>You can permanently remove this product.</p>
        <%= link_to 'Delete this product', sellers_application_product_path(application, product),
