@@ -1,3 +1,11 @@
+PATH
+  remote: ../digital_nsw_template
+  specs:
+    digital_nsw_template (0.0.1)
+      bootstrap (~> 4.0.0)
+      sass (>= 3.5.2)
+      sprockets (>= 3.7.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -51,7 +59,7 @@ GEM
       airbrake-ruby (~> 2.5)
     airbrake-ruby (2.10.0)
     arel (8.0.0)
-    autoprefixer-rails (8.4.1)
+    autoprefixer-rails (8.6.5)
       execjs
     aws-sdk (2.11.42)
       aws-sdk-resources (= 2.11.42)
@@ -413,7 +421,6 @@ DEPENDENCIES
   abn
   active_elastic_job
   airbrake (~> 7.2)
-  bootstrap (~> 4.0.0)
   brakeman
   byebug
   capybara (~> 2.18.0)
@@ -426,6 +433,7 @@ DEPENDENCIES
   devise
   devise-async
   devise_zxcvbn
+  digital_nsw_template!
   dotenv-rails (~> 2.4.0)
   dry-validation
   enumerize
