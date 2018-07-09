@@ -10,8 +10,8 @@ module Sellers::Applications
       end
     end
 
-    def initialize(application, steps)
-      @application = application
+    def initialize(seller_version, steps)
+      @seller_version = seller_version
       @steps = steps
     end
 
@@ -58,12 +58,12 @@ module Sellers::Applications
     end
 
     def ineligible?
-      step('services').started?(application) &&
-        (application.seller.govdc == false && !provides_cloud_services?)
+      step('services').started?(seller_version) &&
+        (!govdc_seller? && !provides_cloud_services?)
     end
 
   private
-    attr_reader :steps, :application
+    attr_reader :steps, :seller_version
 
     def step(key)
       steps.find {|s| s.key == key }
@@ -75,13 +75,17 @@ module Sellers::Applications
 
     def progress_report
       @progress_report ||= SellerApplicationProgressReport.new(
-        application: application,
+        application: seller_version,
         base_steps: steps,
       )
     end
 
     def provides_cloud_services?
-      application.seller.services.include?('cloud-services')
+      seller_version.services.include?('cloud-services')
+    end
+
+    def govdc_seller?
+      seller_version.seller.govdc == true
     end
 
     def product_step
