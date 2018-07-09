@@ -2,7 +2,7 @@ module Concerns::Contracts::SellerApplication
   extend ActiveSupport::Concern
 
   included do
-    model :application
+    model :seller_version
   end
 
   def seller_id
