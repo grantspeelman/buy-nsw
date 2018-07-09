@@ -1,10 +1,4 @@
 body.ops {
-  main {
-    max-width: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
   .column-set {
     @include app-column-container;
 

@@ -50,7 +50,7 @@
 
     <%= render partial: 'layouts/notices' %>
 
-    <main id="content" role="main" <% unless content_for?(:without_container) %> class="with-container" <% end %>>
+    <main id="content" role="main" <% if content_for?(:without_container) %> class="full-width" <% end %>>
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
 
