@@ -7,14 +7,14 @@ class Sellers::SellerVersion::Update < Trailblazer::Operation
 
     def model!(options, params:, **)
       options['model.seller'] = options['config.current_user'].seller
-      options['model.application'] ||= options['model.seller'].versions.created.find(params[:id])
+      options['model.seller_version'] ||= options['model.seller'].versions.created.find(params[:id])
 
-      options['model.application'].present?
+      options['model.seller_version'].present?
     end
 
     def contract!(options, **)
       options['contract.default'] = options['config.contract_class'].new(
-        application: options['model.application'],
+        seller_version: options['model.seller_version'],
         seller: options['model.seller'],
       )
     end
@@ -32,10 +32,10 @@ class Sellers::SellerVersion::Update < Trailblazer::Operation
       errors = options['result.errors'] ||= {}
 
       if options['contract.default'].respond_to?(:agree)
-        representative_email = options['model.seller'].representative_email
+        representative_email = options['model.seller_version'].representative_email
         current_user_email = options['config.current_user'].email
 
-        if options['model.seller'].agree == true
+        if options['model.seller_version'].agree == true
           return false
         end
 
@@ -72,17 +72,17 @@ class Sellers::SellerVersion::Update < Trailblazer::Operation
   end
 
   def expire_progress_cache!(options, **)
-    cache_key = "sellers.applications.#{options['model.application'].id}.*"
+    cache_key = "sellers.applications.#{options['model.seller_version'].id}.*"
     Rails.cache.delete_matched(cache_key)
   end
 
   def set_agreement_details!(options, **)
     contract = options['contract.default']
-    seller = options['model.seller']
+    seller_version = options['model.seller_version']
 
     if contract.changed.keys.include?('agree') && contract.agree == '1'
-      seller.agreed_at = Time.now
-      seller.agreed_by = options['config.current_user']
+      seller_version.agreed_at = Time.now
+      seller_version.agreed_by = options['config.current_user']
     end
   end
 

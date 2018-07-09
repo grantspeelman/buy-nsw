@@ -1,11 +1,13 @@
 class SellerVersion < ApplicationRecord
   include AASM
   extend Enumerize
-  
+
   include Concerns::StateScopes
 
   belongs_to :seller
   belongs_to :assigned_to, class_name: 'User', optional: true
+  belongs_to :agreed_by, class_name: 'User', optional: true
+
   has_many :events, -> { order(created_at: :desc) }, as: :eventable, class_name: 'Event::Event'
   has_many :owners, through: :seller, class_name: 'User'
 
