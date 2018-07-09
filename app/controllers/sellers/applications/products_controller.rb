@@ -134,7 +134,7 @@ private
   helper_method :form
 
   def ensure_cloud_services_provided!
-    unless application.seller.services.include?('cloud-services')
+    unless application.services.include?('cloud-services')
       return redirect_to sellers_application_path(application)
     end
   end
