@@ -35,13 +35,13 @@ private
   helper_method :operation
 
   def steps
-    Sellers::Applications::StepsController.steps(application)
+    Sellers::Applications::StepsController.steps(seller_version)
   end
   helper_method :steps
 
   def presenter
     @presenter ||= Sellers::Applications::DashboardPresenter.new(
-      application,
+      seller_version,
       steps,
     )
   end
@@ -53,6 +53,6 @@ private
   helper_method :submit_form
 
   def assert_application_presence!
-    raise NotFound unless application.present?
+    raise NotFound unless seller_version.present?
   end
 end
