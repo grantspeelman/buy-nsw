@@ -24,13 +24,13 @@ class SlackMessage
     )
   end
 
-  def seller_version_submitted(application)
+  def seller_version_submitted(version)
     message_type_with_button(
       :seller_version_submitted,
       {
-        seller: application.seller.name
+        seller: version.name
       },
-      ops_seller_application_url(application)
+      ops_seller_application_url(version)
     )
   end
 

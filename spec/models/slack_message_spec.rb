@@ -54,21 +54,21 @@ RSpec.describe SlackMessage do
   end
 
   it '#seller_version_submitted' do
-    application = create(:awaiting_assignment_seller_version)
-    application_url = ops_seller_application_url(application)
+    version = create(:awaiting_assignment_seller_version)
+    version_url = ops_seller_application_url(version)
 
     s = SlackMessage.new
     expect(s).to receive(:message).with(
-      text: "Seller Ltd just submitted an application to become a seller. :rainbow: :tada:",
+      text: "#{version.name} just submitted an application to become a seller. :rainbow: :tada:",
       attachments: [{
-        fallback: "Review application at #{application_url}",
+        fallback: "Review application at #{version_url}",
         actions: [
           type: 'button',
           text: 'Review application',
-          url: application_url
+          url: version_url
         ]
       }]
     )
-    s.seller_version_submitted(application)
+    s.seller_version_submitted(version)
   end
 end
