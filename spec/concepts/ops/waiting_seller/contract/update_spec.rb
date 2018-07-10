@@ -61,7 +61,7 @@ RSpec.describe Ops::WaitingSeller::Contract::Update do
   end
 
   it "is invalid when the ABN already exists for a seller" do
-    existing_seller = create(:active_seller)
+    existing_seller = create(:approved_seller_version)
 
     form = described_class.new(waiting_seller)
     form.validate(atts.merge(abn: existing_seller.abn))

@@ -25,7 +25,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
     end
 
     def check_seller_does_not_exist!(options, model:, **)
-      if Seller.where(abn: model.abn).any?
+      if SellerVersion.where(abn: model.abn).any?
         options['errors'] << 'seller_exists'
         return false
       end

@@ -46,11 +46,18 @@ RSpec.describe Sellers::SellerVersion::Contract::BusinessDetails do
   end
 
   it 'is invalid if the ABN has already been used' do
-    create(:inactive_seller, abn: '24 138 089 942')
+    create(:created_seller_version, abn: atts[:abn])
 
     subject.validate(atts)
 
     expect(subject).to_not be_valid
     expect(subject.errors[:abn]).to be_present
+  end
+
+  it 'is valid when the ABN is in use for another version of the same seller' do
+    create(:approved_seller_version, seller: seller, abn: atts[:abn])
+    subject.validate(atts)
+
+    expect(subject).to be_valid
   end
 end

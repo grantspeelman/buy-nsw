@@ -109,7 +109,7 @@ RSpec.describe Sellers::WaitingSeller::Accept do
     end
 
     it 'fails when the ABN already exists' do
-      create(:seller, abn: waiting_seller.abn)
+      create(:seller_version, abn: waiting_seller.abn)
       result = perform_operation(default_params)
 
       expect(result).to be_failure

@@ -9,7 +9,7 @@ module Sellers::SellerVersion::Contract
           option :form
 
           def unique_abn?(value)
-            Seller.where.not(id: form.seller.id).where(abn: value).empty?
+            SellerVersion.where.not(seller_id: form.seller.id).where(abn: value).empty?
           end
 
           def abn?(value)

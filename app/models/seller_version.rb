@@ -4,6 +4,8 @@ class SellerVersion < ApplicationRecord
 
   include Concerns::StateScopes
 
+  before_save :normalise_abn
+
   belongs_to :seller
   belongs_to :assigned_to, class_name: 'User', optional: true
   belongs_to :agreed_by, class_name: 'User', optional: true
@@ -89,4 +91,9 @@ class SellerVersion < ApplicationRecord
     'ict-workforce',
     'training-learning',
   ]
+
+private
+  def normalise_abn
+    self.abn = ABN.new(abn).to_s if ABN.valid?(abn)
+  end
 end
