@@ -48,38 +48,7 @@ FactoryBot.define do
       end
     end
 
-    trait :with_tailor_fields do
-      name 'Seller Ltd'
-      summary 'We sell things'
-      abn
-      website_url 'http://example.org'
-      linkedin_url 'http://linkedin.com/example'
-
-      services [ 'cloud-services' ]
-    end
-
     trait :with_full_profile do
-      with_tailor_fields
-
-      number_of_employees '2to4'
-      start_up true
-      regional true
-      state_government_experience true
-
-      contact_name 'Seller Sellerton'
-      contact_email 'seller@example.org'
-      contact_phone '02 9123 4567'
-
-      representative_name 'Signy Signerton'
-      representative_email 'signy@example.org'
-      representative_phone '02 9765 4321'
-
-      tools 'Some tools'
-      methodologies 'Some methodologies'
-      technologies 'Some technologies'
-
-      agree true
-
       with_accreditation
       with_address
       with_award
@@ -88,7 +57,9 @@ FactoryBot.define do
 
     factory :active_seller, traits: [:active, :with_full_profile]
     factory :inactive_seller, traits: [:inactive]
-    factory :inactive_seller_with_tailor_fields, traits: [:inactive, :with_tailor_fields]
     factory :inactive_seller_with_full_profile, traits: [:inactive, :with_full_profile]
+
+    # TODO: Remove this in future
+    factory :inactive_seller_with_tailor_fields, traits: [:inactive]
   end
 end
