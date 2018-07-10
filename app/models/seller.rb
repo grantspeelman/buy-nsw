@@ -22,8 +22,6 @@ class Seller < ApplicationRecord
                 :workers_compensation_certificate,
                 :product_liability_certificate
 
-  before_save :normalise_abn
-
   aasm column: :state do
     state :inactive, initial: true
     state :active
@@ -64,10 +62,4 @@ class Seller < ApplicationRecord
   def first_version
     versions.first
   end
-
-  private
-
-    def normalise_abn
-      self.abn = ABN.new(abn).to_s if ABN.valid?(abn)
-    end
 end
