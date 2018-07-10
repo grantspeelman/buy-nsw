@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Seller dashboard', type: :feature do
 
   it 'shows a message to sellers awaiting review' do
-    seller = create(:inactive_seller_with_full_profile, owner: @user)
-    create(:ready_for_review_seller_version, seller: seller)
+    create(:ready_for_review_seller_version, owner: @user)
 
     visit '/'
     click_on 'Your seller account'
@@ -14,7 +13,7 @@ RSpec.describe 'Seller dashboard', type: :feature do
   end
 
   it 'shows a message to sellers with an active profile' do
-    seller = create(:active_seller, owner: @user)
+    create(:approved_seller_version, owner: @user)
 
     visit '/'
     click_on 'Your seller account'

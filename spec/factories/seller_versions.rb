@@ -85,6 +85,7 @@ FactoryBot.define do
     end
 
     factory :created_seller_version, traits: [:created]
+    factory :created_seller_version_with_profile, traits: [:created, :with_full_seller_profile]
     factory :awaiting_assignment_seller_version, traits: [:awaiting_assignment]
     factory :ready_for_review_seller_version, traits: [:ready_for_review]
     factory :approved_seller_version, traits: [:approved]

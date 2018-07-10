@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Sellers::SellerVersion::Update do
 
   let(:seller_version) { create(:created_seller_version) }
-  let(:abn) { attributes_for(:inactive_seller_with_tailor_fields)[:abn] }
+  let(:abn) { attributes_for(:created_seller_version_with_profile)[:abn] }
 
   let(:current_user) { create(:user, seller: seller_version.seller) }
   let(:default_params) {
