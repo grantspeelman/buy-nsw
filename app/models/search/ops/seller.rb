@@ -1,5 +1,5 @@
 module Search::Ops
-  class Seller < Search::Seller
+  class Seller < Search::SellerVersion
 
     def available_filters
       super.merge(

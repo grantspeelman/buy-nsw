@@ -1,5 +1,5 @@
-module Search
-  class SellerVersion < Base
+module Search::Ops
+  class SellerVersion < Search::Base
 
     def available_filters
       {
