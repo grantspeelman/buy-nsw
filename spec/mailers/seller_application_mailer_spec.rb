@@ -17,7 +17,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     end
 
     it 'should include the name of the seller' do
-      expect(mail.body.encoded).to match(application.seller.name)
+      expect(mail.body.encoded).to match(application.name)
     end
 
     it 'should include the feedback from the reviewer' do
@@ -50,7 +50,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     end
 
     it 'should include the name of the seller' do
-      expect(mail.body.encoded).to match(application.seller.name)
+      expect(mail.body.encoded).to match(application.name)
     end
 
     it 'should include the feedback from the reviewer' do
@@ -73,7 +73,7 @@ RSpec.describe SellerApplicationMailer, type: :mailer do
     end
 
     it 'should include the name of the seller' do
-      expect(mail.body.encoded).to match(application.seller.name)
+      expect(mail.body.encoded).to match(application.name)
     end
 
     it 'should include the feedback from the reviewer' do
