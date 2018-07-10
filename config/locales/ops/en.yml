@@ -84,28 +84,6 @@ en:
         filters:
           term:
             name: Seller name
-          services:
-            name: Services
-            options:
-              advisory-consulting: Advisory and consulting
-              cloud-services: Cloud products and support
-              end-user-computing: End-user computing and peripherals
-              ict-workforce: ICT workforce
-              infrastructure: Infrastructure and networks
-              managed-services: Managed services
-              software-development: Software design and development
-              software-licensing: Software licensing and maintenance
-              telecommunications: Telecommunications
-              training-learning: Training and learning
-          business_identifiers:
-            name: Identifiers
-            options:
-              disability: Australian disability enterprise
-              indigenous: Aboriginal or Torres Strait Islander
-              not_for_profit: Not for profit/social enterprise
-              regional: Regional
-              sme: SME
-              start_up: Start-up
           state:
             name: Status
     seller_versions:
