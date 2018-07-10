@@ -60,14 +60,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   end
 
   def create_seller!(options, model:, **)
-    options['seller'] = Seller.new(
-      name: model.name,
-      abn: model.abn,
-      contact_name: model.contact_name,
-      contact_email: model.contact_email,
-      website_url: model.website_url,
-    )
-    options['seller'].save!
+    options['seller'] = Seller.create!
   end
 
   def create_seller_address!(options, model:, **)

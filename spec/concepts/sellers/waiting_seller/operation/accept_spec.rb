@@ -42,6 +42,16 @@ RSpec.describe Sellers::WaitingSeller::Accept do
         subject.({ id: other_waiting_seller.invitation_token })
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
+
+    describe '#check_seller_does_not_exist!' do
+      it 'fails when the ABN already exists' do
+        create(:seller_version, abn: waiting_seller.abn)
+        result = subject.({ id: waiting_seller.invitation_token })
+
+        expect(result).to be_failure
+        expect(result['errors']).to include('seller_exists')
+      end
+    end
   end
 
   it 'is successful given valid parameters' do
@@ -98,22 +108,6 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       expect {
         perform_operation(default_params)
       }.to change{ Seller.count }.from(0).to(1)
-
-      seller = Seller.last
-
-      expect(seller.name).to eq(waiting_seller.name)
-      expect(seller.abn).to eq(waiting_seller.abn)
-      expect(seller.contact_name).to eq(waiting_seller.contact_name)
-      expect(seller.contact_email).to eq(waiting_seller.contact_email)
-      expect(seller.website_url).to eq(waiting_seller.website_url)
-    end
-
-    it 'fails when the ABN already exists' do
-      create(:seller_version, abn: waiting_seller.abn)
-      result = perform_operation(default_params)
-
-      expect(result).to be_failure
-      expect(result['errors']).to include('seller_exists')
     end
   end
 
