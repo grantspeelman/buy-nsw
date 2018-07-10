@@ -14,17 +14,6 @@ RSpec.describe Sellers::SellerVersion::Contract::ProductLiability do
   let(:future_date) { Date.today + 1.year }
   let(:historical_date) { Date.today - 1.year }
 
-  # context '#started?' do
-  #   it 'returns false when all fields are empty' do
-  #     expect(subject.started?).to be_falsey
-  #   end
-  #
-  #   it 'returns false when all fields are empty and workers_compensation_exempt is false' do
-  #     subject.workers_compensation_exempt = false
-  #     expect(subject.started?).to be_falsey
-  #   end
-  # end
-  #
   context 'when all blank' do
     before(:each) do
       subject.validate(
