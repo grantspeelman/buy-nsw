@@ -1,6 +1,6 @@
 # buy.nsw
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/d6d8c416a59958d14127/maintainability)](https://codeclimate.com/github/digitalnsw/buy-nsw/maintainability)
+[![Build Status](https://circleci.com/gh/digitalnsw/buy-nsw/tree/master.svg?style=shield)](https://circleci.com/gh/digitalnsw/buy-nsw) [![Maintainability](https://api.codeclimate.com/v1/badges/d6d8c416a59958d14127/maintainability)](https://codeclimate.com/github/digitalnsw/buy-nsw/maintainability)
 
 A new digital procurement platform for the NSW Government.
 
