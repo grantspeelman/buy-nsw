@@ -55,4 +55,17 @@ RSpec.describe Search::Ops::SellerVersion do
     expect(search.results.size).to eq(5)
   end
 
+  it 'filters by name' do
+    create_list(:seller_version, 5, name: 'Foo')
+    create_list(:seller_version, 3, name: 'Bar')
+
+    search = described_class.new(
+      selected_filters: {
+        name: 'Bar'
+      }
+    )
+
+    expect(search.results.size).to eq(3)
+  end
+
 end
