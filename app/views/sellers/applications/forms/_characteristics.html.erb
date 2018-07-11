@@ -1,6 +1,6 @@
-<%= f.input(:number_of_employees, collection: Seller.number_of_employees.options, as: :radio_buttons) %>
+<%= f.input(:number_of_employees, collection: SellerVersion.number_of_employees.options, as: :radio_buttons) %>
 
-<%= f.input(:corporate_structure, collection: Seller.corporate_structure.options, as: :radio_buttons) %>
+<%= f.input(:corporate_structure, collection: SellerVersion.corporate_structure.options, as: :radio_buttons) %>
 
 <%= f.input :regional, as: :radio_buttons %>
 

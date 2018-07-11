@@ -1,6 +1,0 @@
-<%= t('sellers.applications.tailor.steps.industry.intro_html') %>
-
-<fieldset class="multiple-choice-group checkbox-group">
-  <%= f.collection_check_boxes(:industry, Seller.industry.options, :last, :first, skip_label: true,
-                                                                                  wrapper: { class: error_class_for(f, :industry) }) %>
-</fieldset>

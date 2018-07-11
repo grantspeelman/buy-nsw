@@ -31,30 +31,6 @@ class Seller < ApplicationRecord
     end
   end
 
-  enumerize :number_of_employees, in: ['sole', '2to4', '5to19', '20to49', '50to99', '100to199', '200plus']
-  enumerize :corporate_structure, in: ['standalone', 'subsidiary']
-  enumerize :services, multiple: true, in: [
-    'cloud-services',
-    'software-development',
-    'software-licensing',
-    'end-user-computing',
-    'infrastructure',
-    'telecommunications',
-    'managed-services',
-    'advisory-consulting',
-    'ict-workforce',
-    'training-learning',
-  ]
-
-  scope :disability, ->{ where(disability: true) }
-  scope :indigenous, ->{ where(indigenous: true) }
-  scope :not_for_profit, ->{ where(not_for_profit: true) }
-  scope :regional, ->{ where(regional: true) }
-  scope :sme, ->{ where(sme: true) }
-  scope :start_up, ->{ where(start_up: true) }
-  scope :govdc, ->{ where(govdc: true) }
-  scope :with_service, ->(service){ where(":service = ANY(services)", service: service) }
-
   def version_in_progress?
     versions.created.any?
   end
