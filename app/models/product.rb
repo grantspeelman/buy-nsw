@@ -108,6 +108,7 @@ class Product < ApplicationRecord
   scope :education_pricing, -> { where(:education_pricing => true) }
   scope :not_for_profit_pricing, -> { where(:not_for_profit_pricing => true) }
   scope :with_data_location, ->(location){ where(data_location: location) }
+  scope :with_data_in_australia, -> { where(data_location: ['australia-default', 'australia-request']) }
   scope :with_api, ->{ where(api: ['rest', 'non-rest']) }
   scope :mobile_devices, ->{ where(mobile_devices: true) }
 
