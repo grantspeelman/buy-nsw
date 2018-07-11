@@ -25,7 +25,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
     end
 
     def check_seller_does_not_exist!(options, model:, **)
-      if Seller.where(abn: model.abn).any?
+      if SellerVersion.where(abn: model.abn).any?
         options['errors'] << 'seller_exists'
         return false
       end
@@ -41,7 +41,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   failure :include_devise_errors!, fail_fast: true
   step :create_seller!
   step :create_seller_address!
-  step :create_application!
+  step :create_version!
   step :log_event!
   step :update_seller_assignment!
   step :update_invitation_state!
@@ -60,14 +60,7 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
   end
 
   def create_seller!(options, model:, **)
-    options['seller'] = Seller.new(
-      name: model.name,
-      abn: model.abn,
-      contact_name: model.contact_name,
-      contact_email: model.contact_email,
-      website_url: model.website_url,
-    )
-    options['seller'].save!
+    options['seller'] = Seller.create!
   end
 
   def create_seller_address!(options, model:, **)
@@ -81,9 +74,14 @@ class Sellers::WaitingSeller::Accept < Trailblazer::Operation
     options['seller_address'].save!
   end
 
-  def create_application!(options, **)
+  def create_version!(options, model:, **)
     options['application'] = options['seller'].versions.new(
       started_at: Time.now,
+      name: model.name,
+      abn: model.abn,
+      contact_name: model.contact_name,
+      contact_email: model.contact_email,
+      website_url: model.website_url,
     )
     options['application'].save!
   end

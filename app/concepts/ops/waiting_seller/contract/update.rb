@@ -27,7 +27,7 @@ module Ops::WaitingSeller::Contract
         end
 
         def waiting_seller_not_existing_seller_abn?(value)
-          Seller.where(abn: value).empty?
+          SellerVersion.where(abn: value).empty?
         end
 
         def waiting_seller_unique_abn?(value)

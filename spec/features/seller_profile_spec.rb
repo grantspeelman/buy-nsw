@@ -5,13 +5,14 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, skip_login: true do
   let(:abn) { '24 138 089 942' }
   let(:compact_abn) { abn.gsub(/\s/, '') }
 
-  let(:seller) { create(:active_seller, abn: compact_abn) }
+  let!(:version) { create(:approved_seller_version, abn: compact_abn) }
+  let!(:seller) { version.seller }
 
   context 'not signed in' do
     it 'can display a restricted seller profile' do
       visit sellers_profile_path(seller)
 
-      expect(page).to have_content(:h1, seller.name)
+      expect(page).to have_content(:h1, version.name)
 
       expect(page).to have_content('Website')
       expect(page).to have_no_content('Business contact')
@@ -58,26 +59,26 @@ RSpec.describe 'Seller profiles', type: :feature, js: true, skip_login: true do
     it 'can display a seller profile' do
       visit sellers_profile_path(seller)
 
-      expect(page).to have_content(:h1, seller.name)
+      expect(page).to have_content(:h1, version.name)
 
       within '.intro' do
-        expect(page).to have_content(seller.summary)
+        expect(page).to have_content(version.summary)
       end
 
       within '#basic-details' do
-        expect_list_entry('Website', seller.website_url)
+        expect_list_entry('Website', version.website_url)
         expect_list_entry('Business contact',
-          seller.contact_name,
-          seller.contact_phone,
-          seller.contact_email
+          version.contact_name,
+          version.contact_phone,
+          version.contact_email
         )
       end
 
       within '#company-details' do
         expect_list_entry('Authorised representative',
-          seller.representative_name,
-          seller.representative_phone,
-          seller.representative_email
+          version.representative_name,
+          version.representative_phone,
+          version.representative_email
         )
         expect_list_entry('ABN', abn)
         expect_list_entry('Location',

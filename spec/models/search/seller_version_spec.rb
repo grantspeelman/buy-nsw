@@ -1,58 +1,30 @@
 require 'rails_helper'
+require_relative '../concerns/search/seller_tag_filters'
 
 RSpec.describe Search::SellerVersion do
 
-  describe '#available_filters' do
-    it 'returns all admin users in the assigned_to filter' do
-      user = create(:admin_user)
-      search = described_class.new(
-        selected_filters: {}
-      )
+  it_behaves_like 'Concerns::Search::SellerTagFilters', term: 'test'
 
-      expect(search.available_filters[:assigned_to]).to eq(
-        [
-          [ user.email, user.id ]
-        ]
-      )
+  context 'pagination' do
+    it 'returns results only for the specific page' do
+      create_list(:approved_seller_version, 8, name: 'Seller')
+
+      args = {
+        term: 'Seller',
+        selected_filters: {},
+        per_page: 5,
+      }
+
+      first_page = described_class.new(args.merge(page: 1))
+
+      expect(first_page.results.size).to eq(8)
+      expect(first_page.paginated_results.size).to eq(5)
+
+      second_page = described_class.new(args.merge(page: 2))
+
+      expect(second_page.results.size).to eq(8)
+      expect(second_page.paginated_results.size).to eq(3)
     end
-  end
-
-  it 'returns all seller versions by default' do
-    create_list(:seller_version, 10)
-
-    search = described_class.new(
-      selected_filters: {}
-    )
-
-    expect(search.results.size).to eq(10)
-  end
-
-  it 'filters by assignee' do
-    user = create(:admin_user)
-
-    create_list(:seller_version, 5)
-    create_list(:seller_version, 3, assigned_to: user)
-
-    search = described_class.new(
-      selected_filters: {
-        assigned_to: user.id,
-      }
-    )
-
-    expect(search.results.size).to eq(3)
-  end
-
-  it 'filters by state' do
-    create_list(:seller_version, 5, state: 'created')
-    create_list(:seller_version, 3, state: 'ready_for_review')
-
-    search = described_class.new(
-      selected_filters: {
-        state: 'created'
-      }
-    )
-
-    expect(search.results.size).to eq(5)
   end
 
 end

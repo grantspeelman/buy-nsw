@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Searching sellers', type: :feature, js: true do
 
   let!(:seller_1) {
-    create(:active_seller,
+    create(:approved_seller_version,
       name: 'Construction Ltd',
       summary: 'Buildings',
       start_up: false,
@@ -12,7 +12,7 @@ RSpec.describe 'Searching sellers', type: :feature, js: true do
     )
   }
   let!(:seller_2) {
-    create(:active_seller,
+    create(:approved_seller_version,
       name: 'Cloud Ltd',
       summary: 'Digital',
       start_up: true,

@@ -1,10 +1,10 @@
 module Search::Ops
-  class Seller < Search::Seller
+  class Seller < Search::Base
 
     def available_filters
-      super.merge(
+      {
         state: state_keys,
-      )
+      }
     end
 
   private
@@ -19,7 +19,7 @@ module Search::Ops
     end
 
     def apply_filters(scope)
-      super(scope).yield_self(&method(:state_filter))
+      scope.yield_self(&method(:state_filter))
     end
   end
 end

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Sellers::SellerVersion::Update do
 
-  let(:application) { create(:created_seller_version) }
-  let(:abn) { attributes_for(:inactive_seller_with_tailor_fields)[:abn] }
+  let(:seller_version) { create(:created_seller_version) }
+  let(:abn) { attributes_for(:created_seller_version_with_profile)[:abn] }
 
-  let(:current_user) { create(:user, seller: application.seller) }
+  let(:current_user) { create(:user, seller: seller_version.seller) }
   let(:default_params) {
     { name: 'Company', abn: abn }
   }
@@ -13,7 +13,7 @@ RSpec.describe Sellers::SellerVersion::Update do
 
   def perform_operation(user: current_user, params: default_params, contract: default_contract)
     described_class.(
-      { id: application.id, seller_application: params },
+      { id: seller_version.id, seller_application: params },
       'config.current_user' => user,
       'config.contract_class' => contract
     )
@@ -24,10 +24,10 @@ RSpec.describe Sellers::SellerVersion::Update do
 
     expect(result).to be_success
 
-    expect(result['model.application']).to be_persisted
+    expect(result['model.seller_version']).to be_persisted
     expect(result['model.seller']).to be_persisted
 
-    expect(application.seller.reload.name).to eq('Company')
+    expect(seller_version.reload.name).to eq('Company')
   end
 
   context 'for legals' do
@@ -36,7 +36,7 @@ RSpec.describe Sellers::SellerVersion::Update do
     }
 
     def fill_required_details(email: current_user.email)
-      application.seller.update_attributes!(
+      seller_version.update_attributes!(
         name: 'Seller name',
         abn: '12 345 678 910',
         representative_name: 'Example',
@@ -76,7 +76,7 @@ RSpec.describe Sellers::SellerVersion::Update do
       )
 
       expect(result).to be_success
-      expect(application.seller.reload.agree).to be_truthy
+      expect(seller_version.reload.agree).to be_truthy
     end
 
     it 'sets the agreed_at and agreed_by attributes' do
@@ -90,10 +90,10 @@ RSpec.describe Sellers::SellerVersion::Update do
         )
       end
 
-      seller = application.seller.reload
+      seller_version.reload
 
-      expect(seller.agreed_by).to eq(current_user)
-      expect(seller.agreed_at.to_i).to eq(time.to_i)
+      expect(seller_version.agreed_by).to eq(current_user)
+      expect(seller_version.agreed_at.to_i).to eq(time.to_i)
     end
   end
 end

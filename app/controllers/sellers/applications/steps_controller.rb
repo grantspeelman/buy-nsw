@@ -10,13 +10,13 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
 
     @operation = run Sellers::SellerVersion::Update do |result|
       flash.notice = I18n.t('sellers.applications.messages.changes_saved')
-      return redirect_to sellers_application_path(result['model.application'])
+      return redirect_to sellers_application_path(result['model.seller_version'])
     end
 
     render :show
   end
 
-  def self.contracts(application)
+  def self.contracts(seller_version)
     base_contracts = [
       Sellers::SellerVersion::Contract::BusinessDetails,
       Sellers::SellerVersion::Contract::Addresses,
@@ -32,14 +32,14 @@ class Sellers::Applications::StepsController < Sellers::Applications::BaseContro
       Sellers::SellerVersion::Contract::WorkersCompensation,
     ]
     base_contracts.tap {|contracts|
-      if application.seller.services.include?('cloud-services')
+      if seller_version.services.include?('cloud-services')
         contracts << Sellers::SellerVersion::Contract::Declaration
       end
     }
   end
 
-  def self.steps(application)
-    contracts(application).map {|contract|
+  def self.steps(seller_version)
+    contracts(seller_version).map {|contract|
       Sellers::Applications::StepPresenter.new(contract)
     }
   end
@@ -53,7 +53,7 @@ private
   end
 
   def step
-    self.class.steps(application).find {|step| step.slug == params[:step] } || raise(NotFound)
+    self.class.steps(seller_version).find {|step| step.slug == params[:step] } || raise(NotFound)
   end
   helper_method :step
 
@@ -71,14 +71,12 @@ private
   end
   helper_method :seller
 
-  def seller
-    operation['model.application']
-  end
-  helper_method :application
-
   def form
     operation["contract.default"]
   end
   helper_method :form
 
+  def seller_version
+    operation.present? ? operation['model.seller_version'] : super
+  end
 end

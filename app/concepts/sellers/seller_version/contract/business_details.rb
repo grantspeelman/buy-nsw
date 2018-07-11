@@ -1,15 +1,15 @@
 module Sellers::SellerVersion::Contract
   class BusinessDetails < Base
-    property :name,         on: :seller
-    property :abn,          on: :seller
+    property :name,         on: :seller_version
+    property :abn,          on: :seller_version
 
     validation :default, with: {form: true} do
-      required(:seller).schema do
+      required(:seller_version).schema do
         configure do
           option :form
 
           def unique_abn?(value)
-            Seller.where.not(id: form.seller.id).where(abn: value).empty?
+            SellerVersion.where.not(seller_id: form.seller.id).where(abn: value).empty?
           end
 
           def abn?(value)

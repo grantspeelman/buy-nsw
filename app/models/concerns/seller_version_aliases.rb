@@ -53,16 +53,14 @@ module Concerns::SellerVersionAliases
     :agreed_by_id,
   ]
 
-  def propagate_changes_to_version!
-    if first_version.present?
-      first_version.update_attributes!(
-        self.attributes.symbolize_keys.slice(*FIELDS)
-      )
-    end
-  end
-
   included do
-    after_save :propagate_changes_to_version!
+    FIELDS.each do |field|
+      define_method(field) do |*args, &block|
+        if first_version.present?
+          first_version.public_send(field, *args, &block)
+        end
+      end
+    end
   end
 
 end

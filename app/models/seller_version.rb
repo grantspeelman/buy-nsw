@@ -1,9 +1,15 @@
 class SellerVersion < ApplicationRecord
   include AASM
+  extend Enumerize
+
   include Concerns::StateScopes
+
+  before_save :normalise_abn
 
   belongs_to :seller
   belongs_to :assigned_to, class_name: 'User', optional: true
+  belongs_to :agreed_by, class_name: 'User', optional: true
+
   has_many :events, -> { order(created_at: :desc) }, as: :eventable, class_name: 'Event::Event'
   has_many :owners, through: :seller, class_name: 'User'
 
@@ -61,4 +67,33 @@ class SellerVersion < ApplicationRecord
 
   scope :unassigned, -> { where('assigned_to_id IS NULL') }
   scope :assigned_to, ->(user) { where('assigned_to_id = ?', user) }
+
+  scope :disability, ->{ where(disability: true) }
+  scope :indigenous, ->{ where(indigenous: true) }
+  scope :not_for_profit, ->{ where(not_for_profit: true) }
+  scope :regional, ->{ where(regional: true) }
+  scope :sme, ->{ where(sme: true) }
+  scope :start_up, ->{ where(start_up: true) }
+  scope :govdc, ->{ where(govdc: true) }
+  scope :with_service, ->(service){ where(":service = ANY(services)", service: service) }
+
+  enumerize :number_of_employees, in: ['sole', '2to4', '5to19', '20to49', '50to99', '100to199', '200plus']
+  enumerize :corporate_structure, in: ['standalone', 'subsidiary']
+  enumerize :services, multiple: true, in: [
+    'cloud-services',
+    'software-development',
+    'software-licensing',
+    'end-user-computing',
+    'infrastructure',
+    'telecommunications',
+    'managed-services',
+    'advisory-consulting',
+    'ict-workforce',
+    'training-learning',
+  ]
+
+private
+  def normalise_abn
+    self.abn = ABN.new(abn).to_s if ABN.valid?(abn)
+  end
 end

@@ -42,6 +42,16 @@ RSpec.describe Sellers::WaitingSeller::Accept do
         subject.({ id: other_waiting_seller.invitation_token })
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
+
+    describe '#check_seller_does_not_exist!' do
+      it 'fails when the ABN already exists' do
+        create(:seller_version, abn: waiting_seller.abn)
+        result = subject.({ id: waiting_seller.invitation_token })
+
+        expect(result).to be_failure
+        expect(result['errors']).to include('seller_exists')
+      end
+    end
   end
 
   it 'is successful given valid parameters' do
@@ -98,22 +108,6 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       expect {
         perform_operation(default_params)
       }.to change{ Seller.count }.from(0).to(1)
-
-      seller = Seller.last
-
-      expect(seller.name).to eq(waiting_seller.name)
-      expect(seller.abn).to eq(waiting_seller.abn)
-      expect(seller.contact_name).to eq(waiting_seller.contact_name)
-      expect(seller.contact_email).to eq(waiting_seller.contact_email)
-      expect(seller.website_url).to eq(waiting_seller.website_url)
-    end
-
-    it 'fails when the ABN already exists' do
-      create(:seller, abn: waiting_seller.abn)
-      result = perform_operation(default_params)
-
-      expect(result).to be_failure
-      expect(result['errors']).to include('seller_exists')
     end
   end
 
@@ -135,16 +129,21 @@ RSpec.describe Sellers::WaitingSeller::Accept do
     end
   end
 
-  describe '#create_application!' do
-    it 'creates a seller application for the newly-created seller' do
+  describe '#create_version!' do
+    it 'creates a seller version for the newly-created seller' do
       expect {
         perform_operation(default_params)
       }.to change{ SellerVersion.count }.from(0).to(1)
 
       seller = Seller.last
-      application = SellerVersion.last
+      version = SellerVersion.last
 
-      expect(application.seller).to eq(seller)
+      expect(version.seller).to eq(seller)
+      expect(version.name).to eq(waiting_seller.name)
+      expect(version.abn).to eq(waiting_seller.abn)
+      expect(version.contact_name).to eq(waiting_seller.contact_name)
+      expect(version.contact_email).to eq(waiting_seller.contact_email)
+      expect(version.website_url).to eq(waiting_seller.website_url)
     end
 
     it 'sets the "started_at" timestamp' do
@@ -153,9 +152,9 @@ RSpec.describe Sellers::WaitingSeller::Accept do
       Timecop.freeze(time) do
         perform_operation(default_params)
       end
-      application = SellerVersion.last
+      version = SellerVersion.last
 
-      expect(application.started_at.to_i).to eq(time.to_i)
+      expect(version.started_at.to_i).to eq(time.to_i)
     end
   end
 

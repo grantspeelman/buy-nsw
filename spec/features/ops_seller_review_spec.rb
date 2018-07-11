@@ -11,7 +11,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       click_on 'Seller applications'
       click_on 'Reset filters'
 
-      select_application_from_list(application.seller.name)
+      select_application_from_list(application.name)
 
       expect_application_state('awaiting_assignment')
 
@@ -40,7 +40,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
       click_on 'Seller applications'
       click_on 'Reset filters'
 
-      select_application_from_list(application.seller.name)
+      select_application_from_list(application.name)
 
       click_navigation_item 'Documents'
 
@@ -56,8 +56,7 @@ RSpec.describe 'Reviewing seller applications', type: :feature, js: true do
     end
 
     it 'tells the user when a seller is exempt from workers compensation insurance' do
-      seller = create(:seller, workers_compensation_exempt: true)
-      application = create(:awaiting_assignment_seller_version, seller: seller)
+      application = create(:awaiting_assignment_seller_version, workers_compensation_exempt: true)
       visit ops_seller_application_path(application)
 
       click_navigation_item 'Documents'

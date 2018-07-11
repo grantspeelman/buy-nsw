@@ -3,10 +3,10 @@
     <h2>You can't accept the Core Terms</h2>
 
     <% if errors['not_authorised_representative'] %>
-      <p>Only <strong><%= f.object.seller.representative_email %></strong> can accept the Core Terms on behalf of your organisation.</p>
+      <p>Only <strong><%= f.object.seller_version.representative_email %></strong> can accept the Core Terms on behalf of your organisation.</p>
 
-      <% unless f.object.seller.owners.map(&:email).include?(f.object.seller.representative_email) %>
-        <p>You need to <%= link_to 'invite them to your seller account', new_sellers_application_invitation_path(application, email: f.object.seller.representative_email) %> and ask them to sign in to accept the terms.</p>
+      <% unless f.object.seller_version.owners.map(&:email).include?(f.object.seller_version.representative_email) %>
+        <p>You need to <%= link_to 'invite them to your seller account', new_sellers_application_invitation_path(application, email: f.object.seller_version.representative_email) %> and ask them to sign in to accept the terms.</p>
       <% else %>
         <p>They have already been invited to sign in and accept the terms.</p>
       <% end %>
@@ -28,9 +28,9 @@
 
 <%= render partial: 'sellers/applications/forms/shared/core_terms', locals: { scrollable: true } %>
 
-<% if f.object.seller.agree == true %>
+<% if f.object.seller_version.agree == true %>
 
-  <p>The Core Terms were agreed to at <strong><%= f.object.seller.agreed_at.localtime.to_formatted_s(:long) %></strong><% if f.object.seller.agreed_by.present? %> by <strong><%= f.object.seller.agreed_by.email %></strong><% end %>.</p>
+  <p>The Core Terms were agreed to at <strong><%= f.object.seller_version.agreed_at.localtime.to_formatted_s(:long) %></strong><% if f.object.seller_version.agreed_by.present? %> by <strong><%= f.object.seller_version.agreed_by.email %></strong><% end %>.</p>
   <p class="return-link">
     <%= link_to 'Return to application', sellers_application_path(application), class: 'btn btn-primary' %>
   </p>
@@ -42,9 +42,9 @@
         error: false,
         error_html: false,
         label: t('agree_html', scope: [:sellers, :applications, :steps, :declaration],
-          name: f.object.seller.representative_name,
-          organisation: f.object.seller.name,
-          abn: f.object.seller.abn) %>
+          name: f.object.seller_version.representative_name,
+          organisation: f.object.seller_version.name,
+          abn: f.object.seller_version.abn) %>
 
   <fieldset class="actions">
     <%= f.submit step.button_label(default: 'Save and continue'), class: 'btn btn-primary' %>

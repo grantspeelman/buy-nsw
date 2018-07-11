@@ -2,7 +2,7 @@ module Concerns::Contracts::SellerApplication
   extend ActiveSupport::Concern
 
   included do
-    model :application
+    model :seller_version
   end
 
   def seller_id
@@ -13,7 +13,12 @@ module Concerns::Contracts::SellerApplication
     self.model[:seller]
   end
 
+  def seller_version
+    self.model[:seller_version]
+  end
+
+  # NOTE: This is deprecated and `seller_version` should be used instead.
   def application
-    self.model[:application]
+    seller_version
   end
 end

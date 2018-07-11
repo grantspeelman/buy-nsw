@@ -6,7 +6,7 @@ class Sellers::SearchController < Sellers::BaseController
 
 private
   def search
-    @search ||= Search::Seller.new(
+    @search ||= Search::SellerVersion.new(
       selected_filters: params,
       page: params.fetch(:page, 1),
       per_page: 25,

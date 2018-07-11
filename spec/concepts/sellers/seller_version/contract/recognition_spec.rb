@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Sellers::SellerVersion::Contract::Recognition do
   let(:seller) { create(:inactive_seller) }
-  let(:application) { create(:seller_version, seller: seller) }
+  let(:version) { create(:seller_version, seller: seller) }
 
-  subject { described_class.new(application: application, seller: seller) }
+  subject { described_class.new(seller_version: version, seller: seller) }
 
   let(:atts) {
     {

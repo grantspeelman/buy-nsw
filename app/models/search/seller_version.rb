@@ -1,5 +1,5 @@
 module Search
-  class Seller < Base
+  class SellerVersion < Base
     def initialize(args={})
       term = args.delete(:term)
 
@@ -28,7 +28,7 @@ module Search
     include Concerns::Search::SellerTagFilters
 
     def base_relation
-      ::Seller.active
+      ::SellerVersion.approved
     end
 
     def apply_filters(scope)
@@ -62,7 +62,7 @@ module Search
     end
 
     def service_keys
-      ::Seller.services.values
+      ::SellerVersion.services.values
     end
   end
 end

@@ -6,13 +6,13 @@ class Sellers::Applications::RootController < Sellers::Applications::BaseControl
 
     if operation.failure?
       return redirect_to sellers_dashboard_path if operation['application_submitted']
-      return redirect_to sellers_application_path(operation['model.application'].id) if operation['application_created']
+      return redirect_to sellers_application_path(operation['model.seller_version'].id) if operation['application_created']
     end
   end
 
   def create
     run Sellers::SellerVersion::Create do |result|
-      return redirect_to sellers_application_path(result['model.application'].id)
+      return redirect_to sellers_application_path(result['model.seller_version'].id)
     end
 
     redirect_to new_sellers_application_path
@@ -35,13 +35,13 @@ private
   helper_method :operation
 
   def steps
-    Sellers::Applications::StepsController.steps(application)
+    Sellers::Applications::StepsController.steps(seller_version)
   end
   helper_method :steps
 
   def presenter
     @presenter ||= Sellers::Applications::DashboardPresenter.new(
-      application,
+      seller_version,
       steps,
     )
   end
@@ -53,6 +53,6 @@ private
   helper_method :submit_form
 
   def assert_application_presence!
-    raise NotFound unless application.present?
+    raise NotFound unless seller_version.present?
   end
 end
