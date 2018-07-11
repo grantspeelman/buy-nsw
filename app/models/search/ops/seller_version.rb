@@ -39,7 +39,7 @@ module Search::Ops
     def name_filter(relation)
       if filter_selected?(:name)
         term = filter_value(:name)
-        relation.joins(:seller).basic_search(sellers: { name: term })
+        relation.basic_search(name: term)
       else
         relation
       end
