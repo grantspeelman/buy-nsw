@@ -134,7 +134,7 @@ module Search
 
     def data_location_filter(relation)
       if filter_selected?(:characteristics, :data_in_australia)
-        relation = relation.with_data_location('only-australia')
+        relation = relation.with_data_in_australia
       else
         relation
       end
