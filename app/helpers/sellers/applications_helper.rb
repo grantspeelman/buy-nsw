@@ -1,6 +1,6 @@
 module Sellers::ApplicationsHelper
   def other_service_options
-    Seller.services.options.reject {|(_, key)|
+    SellerVersion.services.options.reject {|(_, key)|
       key == 'cloud-services'
     }
   end
