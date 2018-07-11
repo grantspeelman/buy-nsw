@@ -19,9 +19,9 @@
   <small class="form-text text-muted">Are you involved in any boards, committees or groups for your industry?</small>
 
   <ol>
-  <%= f.simple_fields_for :awards do |a| %>
+  <%= f.simple_fields_for :engagements do |a| %>
     <li>
-      <%= a.input :award, label: "#{a.options[:child_index]+1}." %>
+      <%= a.input :engagement, label: "#{a.options[:child_index]+1}." %>
       <%= a.hidden_field :id %>
     </li>
   <% end %>
@@ -33,9 +33,9 @@
   <small class="form-text text-muted">Has your work been recognised and awarded within your industry or by others?</small>
 
   <ol>
-  <%= f.simple_fields_for :engagements do |a| %>
+  <%= f.simple_fields_for :awards do |a| %>
     <li>
-      <%= a.input :engagement, label: "#{a.options[:child_index]+1}." %>
+      <%= a.input :award, label: "#{a.options[:child_index]+1}." %>
       <%= a.hidden_field :id %>
     </li>
   <% end %>
