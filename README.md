@@ -1,5 +1,7 @@
 # buy.nsw
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/d6d8c416a59958d14127/maintainability)](https://codeclimate.com/github/digitalnsw/buy-nsw/maintainability)
+
 A new digital procurement platform for the NSW Government.
 
 ## Technical documentation
