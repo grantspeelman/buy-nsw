@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180706050520) do
+ActiveRecord::Schema.define(version: 20180711060734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -348,60 +348,11 @@ ActiveRecord::Schema.define(version: 20180706050520) do
 
   create_table "sellers", force: :cascade do |t|
     t.string "state", null: false
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "abn"
-    t.text "summary"
-    t.string "website_url"
-    t.string "linkedin_url"
-    t.string "number_of_employees"
-    t.boolean "start_up"
-    t.boolean "sme"
-    t.boolean "not_for_profit"
-    t.boolean "regional"
-    t.boolean "disability"
-    t.boolean "female_owned"
-    t.boolean "indigenous"
-    t.boolean "no_experience"
-    t.boolean "local_government_experience"
-    t.boolean "state_government_experience"
-    t.boolean "federal_government_experience"
-    t.boolean "international_government_experience"
-    t.string "contact_name"
-    t.string "contact_email"
-    t.string "contact_phone"
-    t.string "representative_name"
-    t.string "representative_email"
-    t.string "representative_phone"
-    t.boolean "investigations"
-    t.boolean "legal_proceedings"
-    t.boolean "insurance_claims"
-    t.boolean "conflicts_of_interest"
-    t.boolean "other_circumstances"
-    t.text "investigations_details"
-    t.text "legal_proceedings_details"
-    t.text "insurance_claims_details"
-    t.text "conflicts_of_interest_details"
-    t.text "other_circumstances_details"
     t.text "tools"
     t.text "methodologies"
     t.text "technologies"
-    t.text "services", default: [], array: true
-    t.date "financial_statement_expiry"
-    t.date "professional_indemnity_certificate_expiry"
-    t.date "workers_compensation_certificate_expiry"
-    t.boolean "agree"
-    t.datetime "agreed_at"
-    t.integer "agreed_by_id"
-    t.boolean "australian_owned"
-    t.boolean "workers_compensation_exempt"
-    t.string "representative_position"
-    t.date "product_liability_certificate_expiry"
-    t.boolean "receivership"
-    t.text "receivership_details"
-    t.string "corporate_structure"
-    t.boolean "govdc"
   end
 
   create_table "users", force: :cascade do |t|
