@@ -1,6 +1,6 @@
 en:
   enumerize:
-    seller:
+    seller_version:
       industry:
         ict: 'ICT'
         other: 'Other'

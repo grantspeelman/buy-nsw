@@ -36,7 +36,7 @@ namespace :app do
             summary: Faker::Company.catch_phrase,
             website_url: "https://#{Faker::Internet.domain_name}",
             linkedin_url: "http://linkedin.com/#{Faker::Internet.slug}",
-            number_of_employees: Seller.number_of_employees.values.sample,
+            number_of_employees: SellerVersion.number_of_employees.values.sample,
             start_up: [false, true].sample,
             sme: [false, true].sample,
             not_for_profit: [false, true].sample,

@@ -130,7 +130,6 @@ Rails.application.routes.draw do
   end
 
   get '/performance', to: 'performance#index'
-  get '/performance/seller-applications', to: 'performance#seller_applications'
 
   get '/contact', to: 'static#contact'
   get '/join-mailing-list', to: 'static#join_mailing_list'

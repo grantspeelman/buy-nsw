@@ -51,7 +51,7 @@ module Ops::SellerVersions::DetailHelper
         :indigenous,
         :disability,
         :female_owned,
-        :corporate_structure,
+        :corporate_structure_text,
       ],
       terms: [
         :agree,
@@ -73,7 +73,7 @@ module Ops::SellerVersions::DetailHelper
     i18n_base = 'ops.seller_versions.fields.government_experience.values'
 
     keys.each do |key|
-      labels << t("#{i18n_base}.#{key}") if seller.public_send("#{key}?")
+      labels << t("#{i18n_base}.#{key}") if seller.public_send("#{key}")
     end
 
     labels.join('<br>').html_safe
