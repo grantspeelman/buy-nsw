@@ -29,8 +29,9 @@ namespace :app do
         services << 'training-learning' if [false, true].sample
 
         (1..20).each do |i|
-          seller = create(
-            :active_seller,
+          seller = create(:active_seller)
+          seller_version = create(:approved_seller_version,
+            seller_id: seller.id,
             name: Faker::Company.unique.name,
             abn: Faker::Company.unique.australian_business_number,
             summary: Faker::Company.catch_phrase,
@@ -60,9 +61,6 @@ namespace :app do
             insurance_claims: false,
             conflicts_of_interest: false,
             other_circumstances: false,
-            tools: Faker::Lorem.paragraph,
-            methodologies: Faker::Lorem.paragraph,
-            technologies: Faker::Lorem.paragraph,
             services: services,
             australian_owned: [false, true].sample,
             workers_compensation_exempt: false
