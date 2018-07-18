@@ -58,5 +58,9 @@ class DropMigratedColumnsFromSellers < ActiveRecord::Migration[5.1]
     remove_column :sellers, :agree, :boolean
     remove_column :sellers, :agreed_at, :datetime
     remove_column :sellers, :agreed_by_id, :integer
+
+    remove_column :sellers, :tools, :text
+    remove_column :sellers, :methodologies, :text
+    remove_column :sellers, :technologies, :text
   end
 end

@@ -350,9 +350,6 @@ ActiveRecord::Schema.define(version: 20180711061500) do
     t.string "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "tools"
-    t.text "methodologies"
-    t.text "technologies"
   end
 
   create_table "users", force: :cascade do |t|
