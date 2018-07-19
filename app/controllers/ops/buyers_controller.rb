@@ -14,12 +14,14 @@ class Ops::BuyersController < Ops::BaseController
   end
 
   def deactivate
-    run Ops::Buyer::Deactivate do |result|
+    operation = Ops::DeactivateBuyer.call(buyer_id: params[:id])
+
+    if operation.success?
       flash.notice = I18n.t('ops.buyers.messages.deactivate_success')
       return redirect_to ops_buyer_path(buyer)
+    else
+      render :show
     end
-
-    render :show
   end
 
 private
