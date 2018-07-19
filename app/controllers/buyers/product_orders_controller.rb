@@ -2,7 +2,7 @@ class Buyers::ProductOrdersController < Buyers::BaseController
   before_action :validate_active_buyer!
 
   def new
-    @operation = CreateProductOrder.new(
+    @operation = BuildProductOrder.call(
       user: current_user,
       product_id: params[:id],
     )
@@ -12,7 +12,7 @@ class Buyers::ProductOrdersController < Buyers::BaseController
     @operation = CreateProductOrder.call(
       user: current_user,
       product_id: params[:id],
-      attributes: params,
+      attributes: params[:product_order],
     )
 
     if operation.success?

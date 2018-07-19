@@ -1,9 +1,15 @@
 class CreateProductOrder
   extend Enumerize
+  extend Forwardable
 
   class Failure < StandardError; end
 
   enumerize :state, in: [:success, :failure], predicates: true
+  def_delegators :@build_operation, :buyer, :product, :product_order, :form
+
+  def self.call(*args)
+    self.new(*args).tap(&:call)
+  end
 
   def initialize(user:, product_id:, attributes: {})
     @user = user
@@ -11,14 +17,11 @@ class CreateProductOrder
     @attributes = attributes
   end
 
-  def self.call(*args)
-    self.new(*args).tap(&:call)
-  end
-
   def call
     begin
+      raise Failure unless build_operation.success?
+
       ActiveRecord::Base.transaction do
-        ensure_active_buyer
         assign_and_validate_attributes
         set_order_details
         persist_product_order
@@ -32,24 +35,15 @@ class CreateProductOrder
     end
   end
 
-  def buyer
-    @buyer ||= user.buyer
-  end
-
-  def product
-    @product ||= Product.active.find(product_id)
-  end
-
-  def product_order
-    @product_order ||= buyer.product_orders.build(product: product)
-  end
-
-  def form
-    @form ||= Buyers::ProductOrder::Contract::Create.new(product_order)
-  end
-
 private
   attr_reader :user, :product_id, :attributes
+
+  def build_operation
+    @build_operation ||= BuildProductOrder.call(
+      user: user,
+      product_id: product_id,
+    )
+  end
 
   def ensure_active_buyer
     raise Failure unless user.present? && user.is_active_buyer?
