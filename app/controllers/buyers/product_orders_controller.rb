@@ -6,7 +6,11 @@ class Buyers::ProductOrdersController < Buyers::BaseController
   end
 
   def create
-    @operation = run Buyers::ProductOrder::Create
+    @operation = CreateProductOrder.call(
+      user: current_user,
+      product_id: params[:id],
+      attributes: params,
+    )
 
     if operation.success?
       render :show
@@ -25,11 +29,19 @@ private
   end
 
   def contract
-    operation['contract.default']
+    if action_name == 'create'
+      operation.form
+    else
+      operation['contract.default']
+    end
   end
 
   def product
-    operation['model.product']
+    if action_name == 'create'
+      operation.product
+    else
+      operation['model.product']
+    end
   end
 
   helper_method :contract, :operation, :product
