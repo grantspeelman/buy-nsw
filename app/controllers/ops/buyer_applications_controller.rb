@@ -14,12 +14,18 @@ class Ops::BuyerApplicationsController < Ops::BaseController
   end
 
   def assign
-    run Ops::BuyerApplication::Assign do |result|
+    operation = Ops::AssignBuyerApplication.call(
+      buyer_application_id: params[:id],
+      current_user: current_user,
+      attributes: params[:buyer_application],
+    )
+
+    if operation.success?
       flash.notice = I18n.t('ops.buyer_applications.messages.update_assign_success')
       return redirect_to ops_buyer_application_path(application)
+    else
+      render :show
     end
-
-    render :show
   end
 
   def decide
@@ -68,7 +74,7 @@ private
 
   def forms
     @forms ||= {
-      assign: ops[:assign]['contract.default'],
+      assign: ops[:assign].form,
       decide: ops[:decide]['contract.default'],
     }
   end
@@ -76,7 +82,7 @@ private
 
   def ops
     @ops ||= {
-      assign: (run Ops::BuyerApplication::Assign::Present),
+      assign: Ops::BuildAssignBuyerApplication.call(buyer_application_id: params[:id]),
       decide: (run Ops::BuyerApplication::Decide::Present),
     }
   end
