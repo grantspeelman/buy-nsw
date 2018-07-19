@@ -2,11 +2,18 @@ class Buyers::ProductOrdersController < Buyers::BaseController
   before_action :validate_active_buyer!
 
   def new
-    @operation = run Buyers::ProductOrder::Create::Present
+    @operation = BuildProductOrder.call(
+      user: current_user,
+      product_id: params[:id],
+    )
   end
 
   def create
-    @operation = run Buyers::ProductOrder::Create
+    @operation = CreateProductOrder.call(
+      user: current_user,
+      product_id: params[:id],
+      attributes: params[:product_order],
+    )
 
     if operation.success?
       render :show
@@ -18,18 +25,12 @@ class Buyers::ProductOrdersController < Buyers::BaseController
 private
   attr_reader :operation
 
-  def _run_options(options)
-    options.merge(
-      'config.current_user' => current_user,
-    )
-  end
-
   def contract
-    operation['contract.default']
+    operation.form
   end
 
   def product
-    operation['model.product']
+    operation.product
   end
 
   helper_method :contract, :operation, :product
