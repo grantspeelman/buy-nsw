@@ -75,7 +75,7 @@ private
   def forms
     @forms ||= {
       assign: ops[:assign].form,
-      decide: ops[:decide]['contract.default'],
+      decide: ops[:decide].form,
     }
   end
   helper_method :forms
@@ -83,7 +83,7 @@ private
   def ops
     @ops ||= {
       assign: Ops::BuildAssignBuyerApplication.call(buyer_application_id: params[:id]),
-      decide: (run Ops::BuyerApplication::Decide::Present),
+      decide: Ops::BuildDecideBuyerApplication.call(buyer_application_id: params[:id]),
     }
   end
 
