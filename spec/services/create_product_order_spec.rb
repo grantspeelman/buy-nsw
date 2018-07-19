@@ -71,46 +71,14 @@ RSpec.describe CreateProductOrder do
     end
 
     context 'failure states' do
-      it 'fails when the current user is blank' do
-        operation = perform_operation(user: nil)
+      it 'fails when the BuildProductOrder operation fails' do
+        expect(BuildProductOrder).to receive(:call).
+          with(user: buyer_user, product_id: product.id).
+          and_return(
+            double(success?: false, failure?: true)
+          )
 
-        expect(operation).to be_failure
-      end
-
-      it 'fails when the current user is not a buyer' do
-        user = create(:seller_user)
-        operation = perform_operation(user: user)
-
-        expect(operation).to be_failure
-      end
-
-      it 'fails when the current user does not have a buyer record' do
-        user = create(:user, roles: ['buyer'])
-        operation = perform_operation(user: user)
-
-        expect(operation).to be_failure
-      end
-
-      it 'fails when the current user is an inactive buyer' do
-        user = create(:buyer_user)
-        create(:inactive_buyer, user: user)
-        operation = perform_operation(user: user)
-
-        expect(operation).to be_failure
-      end
-
-      it 'fails when the product is blank' do
-        expect {
-          perform_operation(product_id: nil)
-        }.to raise_error(ActiveRecord::RecordNotFound)
-      end
-
-      it 'fails when the product is inactive' do
-        product = create(:inactive_product)
-
-        expect {
-          perform_operation(product_id: product.id)
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        expect(perform_operation).to be_failure
       end
 
       it 'fails when an attribute is invalid' do
