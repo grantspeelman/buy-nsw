@@ -29,13 +29,19 @@ class Ops::BuyerApplicationsController < Ops::BaseController
   end
 
   def decide
-    run Ops::BuyerApplication::Decide do |result|
-      decision = result['contract.default'].decision
+    operation = Ops::DecideBuyerApplication.call(
+      buyer_application_id: params[:id],
+      current_user: current_user,
+      attributes: params[:buyer_application],
+    )
+
+    if operation.success?
+      decision = operation.form.decision
       flash.notice = I18n.t("ops.buyer_applications.messages.decision_success.#{decision}")
       return redirect_to ops_buyer_application_path(application)
+    else
+      render :show
     end
-
-    render :show
   end
 
   def notes
