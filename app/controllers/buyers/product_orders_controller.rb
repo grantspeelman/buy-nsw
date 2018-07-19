@@ -2,7 +2,10 @@ class Buyers::ProductOrdersController < Buyers::BaseController
   before_action :validate_active_buyer!
 
   def new
-    @operation = run Buyers::ProductOrder::Create::Present
+    @operation = CreateProductOrder.new(
+      user: current_user,
+      product_id: params[:id],
+    )
   end
 
   def create
@@ -22,26 +25,12 @@ class Buyers::ProductOrdersController < Buyers::BaseController
 private
   attr_reader :operation
 
-  def _run_options(options)
-    options.merge(
-      'config.current_user' => current_user,
-    )
-  end
-
   def contract
-    if action_name == 'create'
-      operation.form
-    else
-      operation['contract.default']
-    end
+    operation.form
   end
 
   def product
-    if action_name == 'create'
-      operation.product
-    else
-      operation['model.product']
-    end
+    operation.product
   end
 
   helper_method :contract, :operation, :product
