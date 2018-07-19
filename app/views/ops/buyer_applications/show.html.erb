@@ -37,7 +37,7 @@
     <h2>Assign this application to a user</h2>
 
     <div class="inner">
-      <%= render partial: 'assign_form', locals: { form: forms[:assign] } %>
+      <%= render partial: 'assign_form', locals: { form: assign_form } %>
     </div>
   </section>
 
@@ -46,7 +46,7 @@
       <h2>Make a decision on this application</h2>
 
       <div class="inner">
-        <%= render partial: 'decision_form', locals: { form: forms[:decide] } %>
+        <%= render partial: 'decision_form', locals: { form: decide_form } %>
       </div>
     </section>
   <% end %>

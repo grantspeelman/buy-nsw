@@ -55,11 +55,6 @@ class Ops::BuyerApplicationsController < Ops::BaseController
   end
 
 private
-  def applications
-    @applications ||= BuyerApplication.includes(:seller)
-  end
-  helper_method :applications
-
   def search
     @search ||= Search::BuyerApplication.new(
       selected_filters: params,
@@ -78,24 +73,15 @@ private
   end
   helper_method :application
 
-  def forms
-    @forms ||= {
-      assign: ops[:assign].form,
-      decide: ops[:decide].form,
-    }
+  def assign_form
+    @assign_form ||= Ops::BuildAssignBuyerApplication.call(buyer_application_id: params[:id]).form
   end
-  helper_method :forms
+  helper_method :assign_form
 
-  def ops
-    @ops ||= {
-      assign: Ops::BuildAssignBuyerApplication.call(buyer_application_id: params[:id]),
-      decide: Ops::BuildDecideBuyerApplication.call(buyer_application_id: params[:id]),
-    }
+  def decide_form
+    @decide_form ||= Ops::BuildDecideBuyerApplication.call(buyer_application_id: params[:id]).form
   end
-
-  def _run_options(options)
-    options.merge( "current_user" => current_user )
-  end
+  helper_method :decide_form
 
   def csv_filename
     "buyer-applications-#{search.selected_filters_string}-#{Time.now.to_i}.csv"
