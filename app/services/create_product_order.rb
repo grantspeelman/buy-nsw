@@ -5,7 +5,7 @@ class CreateProductOrder
 
   enumerize :state, in: [:success, :failure], predicates: true
 
-  def initialize(user:, product_id:, attributes:)
+  def initialize(user:, product_id:, attributes: {})
     @user = user
     @product_id = product_id
     @attributes = attributes
@@ -19,6 +19,7 @@ class CreateProductOrder
     begin
       ActiveRecord::Base.transaction do
         ensure_active_buyer
+        assign_and_validate_attributes
         set_order_details
         persist_product_order
         send_confirmation_email
@@ -54,12 +55,16 @@ private
     raise Failure unless user.present? && user.is_active_buyer?
   end
 
+  def assign_and_validate_attributes
+    raise Failure unless form.validate(attributes)
+  end
+
   def set_order_details
     product_order.product_updated_at = product.updated_at
   end
 
   def persist_product_order
-    product_order.save
+    form.save
   end
 
   def send_confirmation_email

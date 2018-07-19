@@ -7,7 +7,7 @@ RSpec.describe CreateProductOrder do
   let(:buyer_user) { create(:active_buyer_user) }
   let(:valid_atts) {
     {
-      estimated_contract_value: '123000',
+      estimated_contract_value: 123000,
       contacted_seller: true,
       purchased_cloud_before: true,
     }
@@ -44,6 +44,14 @@ RSpec.describe CreateProductOrder do
         order = perform_operation.product_order
 
         expect(order.product_updated_at.to_i).to eq(product.updated_at.to_i)
+      end
+
+      it 'sets the attributes' do
+        order = perform_operation.product_order
+
+        expect(order.estimated_contract_value.to_i).to eq(valid_atts[:estimated_contract_value])
+        expect(order.contacted_seller).to eq(valid_atts[:contacted_seller])
+        expect(order.purchased_cloud_before).to eq(valid_atts[:purchased_cloud_before])
       end
 
       it 'sends an email' do
@@ -103,6 +111,14 @@ RSpec.describe CreateProductOrder do
         expect {
           perform_operation(product_id: product.id)
         }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it 'fails when an attribute is invalid' do
+        operation = perform_operation(
+          attributes: valid_atts.merge(estimated_contract_value: nil)
+        )
+
+        expect(operation).to be_failure
       end
     end
   end
