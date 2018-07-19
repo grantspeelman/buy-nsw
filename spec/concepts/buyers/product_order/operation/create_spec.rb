@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Buyers::ProductOrder::Create do
+RSpec.describe Buyers::ProductOrder::Create::Present do
   include ActiveJob::TestHelper
 
   let(:product) { create(:active_product) }
@@ -15,44 +15,6 @@ RSpec.describe Buyers::ProductOrder::Create do
 
   def perform_operation(user: buyer_user, product_id: product.id, params: valid_atts)
     described_class.({ id: product_id, product_order: params }, { 'config.current_user' => user })
-  end
-
-  it 'creates a product order' do
-    expect{ perform_operation }.to change{ ProductOrder.count }.from(0).to(1)
-  end
-
-  it 'sets the buyer from the current user' do
-    order = perform_operation['model']
-
-    expect(order.buyer).to eq(buyer_user.buyer)
-  end
-
-  it 'sets the product from the given ID' do
-    order = perform_operation['model']
-
-    expect(order.product).to eq(product)
-  end
-
-  it 'sets the product_updated_at timestamp' do
-    product.update_attribute(:updated_at, 5.days.ago)
-    order = perform_operation['model']
-
-    expect(order.product_updated_at.to_i).to eq(product.updated_at.to_i)
-  end
-
-  it 'sends an email' do
-    allow(SlackPostJob).to receive(:perform_later)
-
-    expect {
-      perform_enqueued_jobs do
-        perform_operation
-      end
-    }.to change { ActionMailer::Base.deliveries.count }.by(1)
-  end
-
-  it 'notifies slack of the new order' do
-    expect(SlackPostJob).to receive(:perform_later)
-    perform_operation
   end
 
   context 'failure states' do

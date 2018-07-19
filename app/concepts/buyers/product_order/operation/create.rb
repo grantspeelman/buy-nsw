@@ -16,24 +16,4 @@ class Buyers::ProductOrder::Create < Trailblazer::Operation
       )
     end
   end
-
-  step Nested(Present)
-  step Contract::Validate(key: :product_order)
-  step :set_order_details!
-  step Contract::Persist()
-  step :send_confirmation_email!
-  step :send_slack_notification!
-
-  def set_order_details!(options, model:, **)
-    model.product_updated_at = options['model.product'].updated_at
-  end
-
-  def send_confirmation_email!(options, model:, **)
-    mailer = ProductOrderMailer.with(product_order: model)
-    mailer.order_created_email.deliver_later
-  end
-
-  def send_slack_notification!(options, model:, **)
-    SlackPostJob.perform_later(model.id, :new_product_order.to_s)
-  end
 end
