@@ -1,7 +1,7 @@
 class CreateProductOrder < ApplicationService
   extend Forwardable
 
-  def_delegators :@build_operation, :buyer, :product, :product_order, :form
+  def_delegators :build_operation, :buyer, :product, :product_order, :form
 
   def initialize(user:, product_id:, attributes: {})
     @user = user
@@ -35,10 +35,6 @@ private
       user: user,
       product_id: product_id,
     )
-  end
-
-  def ensure_active_buyer
-    raise Failure unless user.present? && user.is_active_buyer?
   end
 
   def assign_and_validate_attributes

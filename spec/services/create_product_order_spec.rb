@@ -13,7 +13,7 @@ RSpec.describe CreateProductOrder do
     }
   }
 
-  describe '#call' do
+  describe '.call' do
     def perform_operation(user: buyer_user, product_id: product.id, attributes: valid_atts)
       CreateProductOrder.call(
         user: user,
