@@ -1,19 +1,11 @@
-class BuildProductOrder
-  extend Enumerize
-
-  enumerize :state, in: [:success, :failure], predicates: true
-
+class BuildProductOrder < ApplicationService
   def initialize(user:, product_id:)
     @user = user
     @product_id = product_id
   end
 
-  def self.call(*args)
-    self.new(*args).tap(&:call)
-  end
-
   def call
-    if user.present? && user.is_active_buyer?
+    if active_buyer? && product.present?
       self.state = :success
     else
       self.state = :failure
@@ -38,4 +30,8 @@ class BuildProductOrder
 
 private
   attr_reader :user, :product_id
+
+  def active_buyer?
+    user.present? && user.is_active_buyer?
+  end
 end

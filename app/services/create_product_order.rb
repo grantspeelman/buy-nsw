@@ -1,15 +1,7 @@
-class CreateProductOrder
-  extend Enumerize
+class CreateProductOrder < ApplicationService
   extend Forwardable
 
-  class Failure < StandardError; end
-
-  enumerize :state, in: [:success, :failure], predicates: true
   def_delegators :@build_operation, :buyer, :product, :product_order, :form
-
-  def self.call(*args)
-    self.new(*args).tap(&:call)
-  end
 
   def initialize(user:, product_id:, attributes: {})
     @user = user
